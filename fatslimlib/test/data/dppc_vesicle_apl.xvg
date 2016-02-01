@@ -1,0 +1,23 @@
+@TYPE xy
+@ title "Area per lipid"
+@ xaxis  label "Time (ps)"
+@ yaxis  label "Area per lipid (nm^2)"
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Membrane"
+@ s1 legend "Outer leaflet"
+@ s2 legend "Inner leaflet"
+   0.000    0.680    0.796    0.498 
+ 500.000    0.679    0.794    0.499 
+1000.000    0.678    0.794    0.497 
+1500.000    0.680    0.795    0.499 
+2000.000    0.680    0.796    0.497 
+2500.000    0.678    0.794    0.497 
+3000.000    0.675    0.791    0.494 
+3500.000    0.676    0.792    0.493 
+4000.000    0.674    0.790    0.492 
+4500.000    0.675    0.791    0.493 
+5000.000    0.676    0.792    0.494 

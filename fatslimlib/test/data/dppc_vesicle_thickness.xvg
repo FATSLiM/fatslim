@@ -1,0 +1,23 @@
+@TYPE xy
+@ title "Thickness"
+@ xaxis  label "Time (ps)"
+@ yaxis  label "Thickness (nm)"
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Membrane"
+@ s1 legend "Outer leaflet"
+@ s2 legend "Inner leaflet"
+   0.000    3.958    3.962    3.952 
+ 500.000    3.963    3.967    3.957 
+1000.000    3.966    3.974    3.954 
+1500.000    3.954    3.962    3.943 
+2000.000    3.963    3.972    3.948 
+2500.000    3.971    3.980    3.956 
+3000.000    3.977    3.986    3.963 
+3500.000    3.980    3.986    3.969 
+4000.000    3.987    3.993    3.977 
+4500.000    3.978    3.983    3.969 
+5000.000    3.973    3.979    3.963 

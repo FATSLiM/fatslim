@@ -1,0 +1,13 @@
+@TYPE xy
+@ title "Thickness"
+@ xaxis  label "Time (ps)"
+@ yaxis  label "Thickness (nm)"
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Membrane"
+@ s1 legend "Lower leaflet"
+@ s2 legend "Upper leaflet"
+   0.000    5.664    5.664    5.664 

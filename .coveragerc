@@ -1,0 +1,7 @@
+[run]
+plugins = Cython.Coverage
+omit = *fatslimlib/test/*
+
+[report]
+show_missing = true
+precision = 2
