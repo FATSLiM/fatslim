@@ -1,0 +1,64 @@
+# whitelist
+branches:
+  only:
+    - master
+    - develop
+
+language: python
+os:
+  - linux
+  - osx
+python:
+  - "2.7"
+  - "3.5"
+env:
+  - CYTHONIZE=true
+  - CYTHONIZE=false
+  - OPENMP=true
+  - OPENMP=false
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      # Update MacOSX env
+      brew update;
+      if [[ "$OPENMP" == "true" ]]; then brew install clang-omp; fi
+      if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+        wget http://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh -O miniconda.sh;
+      else
+        wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+      fi
+    else
+      # Update Ubuntu env
+      sudo apt-get update
+      if [[ "$OPENMP" == "true" ]]; then sudo apt-get install libgomp1; fi
+      if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+        wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
+      else
+        wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+      fi
+    fi
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy nose
+  - source activate test-environment
+
+  - if [[ "$CYTHONIZE" == "true" ]]; then
+      conda install --yes python=$TRAVIS_PYTHON_VERSION cython;
+    fi
+  - pip install coveralls
+  - pip install -v ./
+
+
+script:
+  - OMP_NUM_THREADS=4 fatslim self-test
+
+after_success:
+  - coveralls
+
+
