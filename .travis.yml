@@ -38,7 +38,7 @@ install:
   - if [[ "$CYTHONIZE" == "true" ]]; then
       conda install --yes python=$TRAVIS_PYTHON_VERSION cython;
     fi
-  - pip install coveralls
+  - pip install coveralls pytest-cov
   - pip install -v ./
 
 
