@@ -43,7 +43,8 @@ install:
 
 
 script:
-  - OMP_NUM_THREADS=4 fatslim self-test
+  - OMP_NUM_THREADS=4 fatslim version
+  - OMP_NUM_THREADS=4 py.test --pyargs fatslimlib.test --cov=fatslimlib
 
 after_success:
   - coveralls

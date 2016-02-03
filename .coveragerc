@@ -1,5 +1,4 @@
 [run]
-plugins = Cython.Coverage
 omit = *fatslimlib/test/*
 
 [report]
