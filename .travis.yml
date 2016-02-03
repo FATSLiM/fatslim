@@ -44,7 +44,7 @@ install:
 
 script:
   - OMP_NUM_THREADS=4 fatslim version
-  - OMP_NUM_THREADS=4 py.test --pyargs fatslimlib.test --cov=fatslimlib
+  - OMP_NUM_THREADS=4 py.test --cov=fatslimlib `python -c "from distutils.sysconfig import get_python_lib; print(\"%s/fatslimlib/test\" % get_python_lib())"`
 
 after_success:
   - coveralls
