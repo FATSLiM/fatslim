@@ -5,7 +5,8 @@ Version numbers comply with [Python recommandation](https://www.python.org/dev/p
 ## [Unreleased]
 ### Added
 - Changelog file.
-- [Travis CI](https://travis-ci.org/) support.
+- [Travis CI](https://travis-ci.org/FATSLiM/fatslim) support.
+- [Coveralls](https://coveralls.io/github/FATSLiM/fatslim) support
 
 ### Fixed
 - README.rst is now correctly rendered by github.

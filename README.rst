@@ -6,6 +6,15 @@ FATSLiM
 As you can imagine, the goal is to provide ~~the Ultimate Question of Life, the Universe, and Everything~~ a fast and efficient tool to extract membrane-related physical properties from Molecular Dynamics simulations of lipid bilayers.
 To see what `FATSLiM`_ is able to do, please visit the homepage at http://fatslim.github.io/.
 
+------
+Health
+------
+
+Develop branch
+--------------
+Build: [![Build Status](https://travis-ci.org/FATSLiM/fatslim.svg?branch=develop)](https://travis-ci.org/FATSLiM/fatslim)
+Coverage (Python code only): [![Coverage Status](https://coveralls.io/repos/github/FATSLiM/fatslim/badge.svg?branch=develop)](https://coveralls.io/github/FATSLiM/fatslim?branch=develop)
+
 ------------
 Installation
 ------------

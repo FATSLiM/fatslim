@@ -39,6 +39,8 @@ install:
       conda install --yes python=$TRAVIS_PYTHON_VERSION cython;
     fi
   - pip install coveralls pytest-cov
+  # Add setup.py --help to check if openMP is on or not
+  - python setup.py --help
   - pip install -v ./
 
 
