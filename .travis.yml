@@ -11,10 +11,10 @@ python:
   - "3.5"
 
 env:
-  - CYTHONIZE=true
-  - CYTHONIZE=false
-  - OPENMP=true
-  - OPENMP=false
+  - CYTHONIZE=false OPENMP=false
+  - CYTHONIZE=false OPENMP=true
+  - CYTHONIZE=true OPENMP=false
+  - CYTHONIZE=true OPENMP=true
 
 install:
   - sudo apt-get update
@@ -32,7 +32,7 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy nose
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy pytest
   - source activate test-environment
 
   - if [[ "$CYTHONIZE" == "true" ]]; then
