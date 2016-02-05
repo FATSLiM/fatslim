@@ -7,13 +7,27 @@ As you can imagine, the goal is to provide ~~the Ultimate Question of Life, the 
 To see what `FATSLiM`_ is able to do, please visit the homepage at http://fatslim.github.io/.
 
 ------
-Health
+Status
 ------
 
-Develop branch
---------------
-Build: [![Build Status](https://travis-ci.org/FATSLiM/fatslim.svg?branch=develop)](https://travis-ci.org/FATSLiM/fatslim)
-Coverage (Python code only): [![Coverage Status](https://coveralls.io/repos/github/FATSLiM/fatslim/badge.svg?branch=develop)](https://coveralls.io/github/FATSLiM/fatslim?branch=develop)
+`Master branch`_:
+-----------------
+
+.. image:: https://travis-ci.org/FATSLiM/fatslim.svg?branch=master
+    :target: https://travis-ci.org/FATSLiM/fatslim
+
+.. image:: https://coveralls.io/repos/github/FATSLiM/fatslim/badge.svg?branch=master
+    :target: https://coveralls.io/github/FATSLiM/fatslim?branch=master
+
+`Develop branch`_:
+------------------
+
+.. image:: https://travis-ci.org/FATSLiM/fatslim.svg?branch=develop
+    :target: https://travis-ci.org/FATSLiM/fatslim
+
+.. image:: https://coveralls.io/repos/github/FATSLiM/fatslim/badge.svg?branch=develop
+    :target: https://coveralls.io/github/FATSLiM/fatslim?branch=develop
+
 
 ------------
 Installation
@@ -51,3 +65,5 @@ Finally, it is always a good idea to run the ``self-test`` command to make sure 
 
 .. _FATSLiM: http://fatslim.github.io/
 .. _license: https://github.com/FATSLiM/fatslim/blob/master/LICENSE
+.. _`develop branch`: https://github.com/FATSLiM/fatslim/tree/develop
+.. _`master branch`: https://github.com/FATSLiM/fatslim/tree/master
