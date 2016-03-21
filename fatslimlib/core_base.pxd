@@ -99,6 +99,8 @@ cdef class PBCBox:
     cdef void fast_pbc_dx_leaflet(self, rvec ref, rvec other, rvec dx, rvec normal) nogil
     cdef real fast_distance2(self, rvec ref, rvec other) nogil
     cdef real fast_distance(self, rvec aref, rvec other) nogil
+    cdef real fast_leaflet_distance2(self, rvec a, rvec b, rvec normal) nogil
+    cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil
     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=*) nogil
     cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref, rvec xcm, fsl_int limit=*) nogil
     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil

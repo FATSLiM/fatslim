@@ -640,11 +640,26 @@ cdef class PBCBox(object):
     cdef real fast_distance(self, rvec a, rvec b) nogil:
         return sqrt(self.fast_distance2(a,b))
 
+    cdef real fast_leaflet_distance2(self, rvec a, rvec b, rvec normal) nogil:
+        cdef rvec dx
+        self.fast_pbc_dx_leaflet(a, b, dx, normal)
+        return rvec_norm2(dx)
+
+    cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil:
+        return sqrt(self.fast_leaflet_distance2(a,b,normal))
+
     def distance2(self, real[:] a_memview, real[:] b_memview):
         return self.fast_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0])
 
     def distance(self, real[:] a_memview, real[:] b_memview):
         return sqrt(self.distance2(a_memview, b_memview))
+
+    def leaflet_distance2(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):
+        return self.fast_leaflet_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0],
+                                           <rvec> &normal_memview[0])
+
+    def leaflet_distance(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):
+        return sqrt(self.leaflet_distance2(a_memview, b_memview, normal_memview))
 
     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=NOTSET) nogil:
         self.fast_pbc_xcm_from_ref(coords, &coords[0, XX], xcm, limit)

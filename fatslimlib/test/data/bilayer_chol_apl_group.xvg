@@ -16,4 +16,5 @@
 @ s6 legend "Upper leaflet CHOL"
 @ s7 legend "Upper leaflet DPPC"
 @ s8 legend "Upper leaflet DUPC"
-   0.000    0.388    0.464    0.639    0.388    0.471    0.632    0.389    0.456    0.646 
+   0.000    0.388    0.464    0.639    0.389    0.456    0.646    0.388    0.471    0.632 
+

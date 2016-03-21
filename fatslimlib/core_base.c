@@ -820,9 +820,9 @@ struct __pyx_t_10fatslimlib_9core_base_cPBCBox_t {
   real tric_vec[12][3];
 };
 
-/* "fatslimlib/core_base.pxd":102
- *     cdef real fast_distance2(self, rvec ref, rvec other) nogil
- *     cdef real fast_distance(self, rvec aref, rvec other) nogil
+/* "fatslimlib/core_base.pxd":104
+ *     cdef real fast_leaflet_distance2(self, rvec a, rvec b, rvec normal) nogil
+ *     cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil
  *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=*) nogil             # <<<<<<<<<<<<<<
  *     cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref, rvec xcm, fsl_int limit=*) nogil
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil
@@ -832,8 +832,8 @@ struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm {
   fsl_int limit;
 };
 
-/* "fatslimlib/core_base.pxd":103
- *     cdef real fast_distance(self, rvec aref, rvec other) nogil
+/* "fatslimlib/core_base.pxd":105
+ *     cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil
  *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=*) nogil
  *     cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref, rvec xcm, fsl_int limit=*) nogil             # <<<<<<<<<<<<<<
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil
@@ -844,7 +844,7 @@ struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref {
   fsl_int limit;
 };
 
-/* "fatslimlib/core_base.pxd":106
+/* "fatslimlib/core_base.pxd":108
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil
  * 
  * cdef struct topol_atom_t:             # <<<<<<<<<<<<<<
@@ -859,7 +859,7 @@ struct __pyx_t_10fatslimlib_9core_base_topol_atom_t {
   fsl_int residue_internal_id;
 };
 
-/* "fatslimlib/core_base.pxd":113
+/* "fatslimlib/core_base.pxd":115
  *     fsl_int residue_internal_id
  * 
  * cdef struct topol_residue_t:             # <<<<<<<<<<<<<<
@@ -876,7 +876,7 @@ struct __pyx_t_10fatslimlib_9core_base_topol_residue_t {
   fsl_int *atomids;
 };
 
-/* "fatslimlib/core_base.pxd":259
+/* "fatslimlib/core_base.pxd":261
  *     cdef list get_lipid_coords_bbox_aslist(self)
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil             # <<<<<<<<<<<<<<
@@ -888,7 +888,7 @@ struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_fast_get_normals {
   real proximity_cutoff;
 };
 
-/* "fatslimlib/core_base.pxd":260
+/* "fatslimlib/core_base.pxd":262
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil
  *     cpdef list get_aggregates(self, real cutoff=*, bint update=*)             # <<<<<<<<<<<<<<
@@ -901,7 +901,7 @@ struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_get_aggregates {
   int update;
 };
 
-/* "fatslimlib/core_base.pxd":261
+/* "fatslimlib/core_base.pxd":263
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil
  *     cpdef list get_aggregates(self, real cutoff=*, bint update=*)
  *     cpdef list get_membranes(self, real cutoff=*, bint update=*)             # <<<<<<<<<<<<<<
@@ -1037,7 +1037,7 @@ struct __pyx_obj_10fatslimlib_9core_base_PBCBox {
 };
 
 
-/* "fatslimlib/core_base.pxd":122
+/* "fatslimlib/core_base.pxd":124
  *     fsl_int *atomids
  * 
  * cdef class TopologyGroup(object):             # <<<<<<<<<<<<<<
@@ -1057,7 +1057,7 @@ struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup {
 };
 
 
-/* "fatslimlib/core_base.pxd":140
+/* "fatslimlib/core_base.pxd":142
  * 
  * 
  * cdef class Topology(object):             # <<<<<<<<<<<<<<
@@ -1088,7 +1088,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Topology {
 };
 
 
-/* "fatslimlib/core_base.pxd":178
+/* "fatslimlib/core_base.pxd":180
  *     cdef topol_residue_t *fast_get_residue_from_atomid(self, fsl_int atomid) nogil
  * 
  * cdef class TopologyReader(object):             # <<<<<<<<<<<<<<
@@ -1103,7 +1103,7 @@ struct __pyx_obj_10fatslimlib_9core_base_TopologyReader {
 };
 
 
-/* "fatslimlib/core_base.pxd":187
+/* "fatslimlib/core_base.pxd":189
  * 
  * 
  * cdef class CoordinateReader(object):             # <<<<<<<<<<<<<<
@@ -1121,7 +1121,7 @@ struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader {
 };
 
 
-/* "fatslimlib/core_base.pxd":202
+/* "fatslimlib/core_base.pxd":204
  * 
  * 
  * cdef class IndexReader(object):             # <<<<<<<<<<<<<<
@@ -1137,7 +1137,7 @@ struct __pyx_obj_10fatslimlib_9core_base_IndexReader {
 };
 
 
-/* "fatslimlib/core_base.pxd":211
+/* "fatslimlib/core_base.pxd":213
  *     cdef fast_load(self)
  * 
  * cdef class Frame:             # <<<<<<<<<<<<<<
@@ -1178,7 +1178,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Frame {
 };
 
 
-/* "fatslimlib/core_base.pxd":264
+/* "fatslimlib/core_base.pxd":266
  * 
  * 
  * cdef class Trajectory(object):             # <<<<<<<<<<<<<<
@@ -1358,6 +1358,8 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox {
   void (*fast_pbc_dx_leaflet)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *, real *);
   real (*fast_distance2)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *);
   real (*fast_distance)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *);
+  real (*fast_leaflet_distance2)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *);
+  real (*fast_leaflet_distance)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *);
   void (*fast_pbc_xcm)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice, real *, struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm *__pyx_optional_args);
   void (*fast_pbc_xcm_from_ref)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice, real *, real *, struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref *__pyx_optional_args);
   __Pyx_memviewslice (*fast_put_atoms_in_bbox)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice);
@@ -1365,7 +1367,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *__pyx_vtabptr_10fatslimlib_9core_base_PBCBox;
 
 
-/* "fatslimlib/core_base.pyx":700
+/* "fatslimlib/core_base.pyx":715
  * 
  * 
  * cdef class TopologyGroup(object):             # <<<<<<<<<<<<<<
@@ -1383,7 +1385,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *__pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup;
 
 
-/* "fatslimlib/core_base.pyx":857
+/* "fatslimlib/core_base.pyx":872
  *     residue.size += 1
  * 
  * cdef class Topology(object):             # <<<<<<<<<<<<<<
@@ -1405,7 +1407,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *__pyx_vtabptr_10fatslimlib_9core_base_Topology;
 
 
-/* "fatslimlib/core_base.pyx":1197
+/* "fatslimlib/core_base.pyx":1212
  *         return self.atoms_size
  * 
  * cdef class TopologyReader(object):             # <<<<<<<<<<<<<<
@@ -1419,7 +1421,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyReader *__pyx_vtabptr_10fatslimlib_9core_base_TopologyReader;
 
 
-/* "fatslimlib/core_base.pyx":1221
+/* "fatslimlib/core_base.pyx":1236
  * 
  * 
  * cdef class CoordinateReader(object):             # <<<<<<<<<<<<<<
@@ -1436,7 +1438,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *__pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader;
 
 
-/* "fatslimlib/core_base.pyx":1251
+/* "fatslimlib/core_base.pyx":1266
  * 
  * 
  * cdef class IndexReader(object):             # <<<<<<<<<<<<<<
@@ -1450,7 +1452,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_IndexReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_IndexReader *__pyx_vtabptr_10fatslimlib_9core_base_IndexReader;
 
 
-/* "fatslimlib/core_base.pyx":1285
+/* "fatslimlib/core_base.pyx":1300
  * 
  * 
  * cdef class Frame(object):             # <<<<<<<<<<<<<<
@@ -1478,7 +1480,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *__pyx_vtabptr_10fatslimlib_9core_base_Frame;
 
 
-/* "fatslimlib/core_base.pyx":1686
+/* "fatslimlib/core_base.pyx":1701
  * FORCEFIELDTYPE_UNKNOWN = fft_unknown
  * 
  * cdef class Trajectory(object):             # <<<<<<<<<<<<<<
@@ -2056,6 +2058,8 @@ static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_dx(struct __pyx_obj
 static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_dx_leaflet(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, real *__pyx_v_ref, real *__pyx_v_other, real *__pyx_v_dx, real *__pyx_v_ref_normal); /* proto*/
 static real __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_distance2(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, real *__pyx_v_a, real *__pyx_v_b); /* proto*/
 static real __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_distance(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, real *__pyx_v_a, real *__pyx_v_b); /* proto*/
+static real __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_leaflet_distance2(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, real *__pyx_v_a, real *__pyx_v_b, real *__pyx_v_normal); /* proto*/
+static real __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_leaflet_distance(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, real *__pyx_v_a, real *__pyx_v_b, real *__pyx_v_normal); /* proto*/
 static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords, real *__pyx_v_xcm, struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm *__pyx_optional_args); /* proto*/
 static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords, real *__pyx_v_ref, real *__pyx_v_xcm, struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref *__pyx_optional_args); /* proto*/
 static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms_in_bbox(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords); /* proto*/
@@ -2352,6 +2356,7 @@ static char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static char __pyx_k_dtype_is_object[] = "dtype_is_object";
 static char __pyx_k_proc_self_status[] = "/proc/self/status";
 static char __pyx_k_interacting_group[] = "interacting_group";
+static char __pyx_k_leaflet_distance2[] = "leaflet_distance2";
 static char __pyx_k_resid_not_valid_i[] = "resid not valid: %i";
 static char __pyx_k_OPENMP_MAX_THREADS[] = "OPENMP_MAX_THREADS";
 static char __pyx_k_OPENMP_NUM_THREADS[] = "OPENMP_NUM_THREADS";
@@ -2536,6 +2541,7 @@ static PyObject *__pyx_n_s_itemsize;
 static PyObject *__pyx_kp_s_itemsize_0_for_cython_array;
 static PyObject *__pyx_n_s_leaflet1;
 static PyObject *__pyx_n_s_leaflet2;
+static PyObject *__pyx_n_s_leaflet_distance2;
 static PyObject *__pyx_n_s_load;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_memview;
@@ -2632,9 +2638,11 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_8dx(struct __pyx_obj_1
 static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_10dx_leaflet(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_a_memview, __Pyx_memviewslice __pyx_v_b_memview, __Pyx_memviewslice __pyx_v_normal_memview); /* proto */
 static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_12distance2(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_a_memview, __Pyx_memviewslice __pyx_v_b_memview); /* proto */
 static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_14distance(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_a_memview, __Pyx_memviewslice __pyx_v_b_memview); /* proto */
-static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords); /* proto */
-static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18asarray(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20put_atoms_in_bbox(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16leaflet_distance2(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_a_memview, __Pyx_memviewslice __pyx_v_b_memview, __Pyx_memviewslice __pyx_v_normal_memview); /* proto */
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18leaflet_distance(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_a_memview, __Pyx_memviewslice __pyx_v_b_memview, __Pyx_memviewslice __pyx_v_normal_memview); /* proto */
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20get_xcm(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords); /* proto */
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_22asarray(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_24put_atoms_in_bbox(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords); /* proto */
 static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *__pyx_v_self, struct __pyx_obj_10fatslimlib_9core_base_Topology *__pyx_v_parent, PyObject *__pyx_v_resname, fsl_int __pyx_v_resid); /* proto */
 static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_13TopologyGroup_2__len__(struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *__pyx_v_self); /* proto */
 static void __pyx_pf_10fatslimlib_9core_base_13TopologyGroup_4__dealloc__(struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *__pyx_v_self); /* proto */
@@ -9364,7 +9372,7 @@ static real __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_distance(struct __pyx_o
  *     cdef real fast_distance(self, rvec a, rvec b) nogil:
  *         return sqrt(self.fast_distance2(a,b))             # <<<<<<<<<<<<<<
  * 
- *     def distance2(self, real[:] a_memview, real[:] b_memview):
+ *     cdef real fast_leaflet_distance2(self, rvec a, rvec b, rvec normal) nogil:
  */
   __pyx_r = sqrt(((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_distance2(__pyx_v_self, __pyx_v_a, __pyx_v_b));
   goto __pyx_L0;
@@ -9384,6 +9392,84 @@ static real __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_distance(struct __pyx_o
 
 /* "fatslimlib/core_base.pyx":643
  *         return sqrt(self.fast_distance2(a,b))
+ * 
+ *     cdef real fast_leaflet_distance2(self, rvec a, rvec b, rvec normal) nogil:             # <<<<<<<<<<<<<<
+ *         cdef rvec dx
+ *         self.fast_pbc_dx_leaflet(a, b, dx, normal)
+ */
+
+static real __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_leaflet_distance2(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, real *__pyx_v_a, real *__pyx_v_b, real *__pyx_v_normal) {
+  rvec __pyx_v_dx;
+  real __pyx_r;
+
+  /* "fatslimlib/core_base.pyx":645
+ *     cdef real fast_leaflet_distance2(self, rvec a, rvec b, rvec normal) nogil:
+ *         cdef rvec dx
+ *         self.fast_pbc_dx_leaflet(a, b, dx, normal)             # <<<<<<<<<<<<<<
+ *         return rvec_norm2(dx)
+ * 
+ */
+  ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_pbc_dx_leaflet(__pyx_v_self, __pyx_v_a, __pyx_v_b, __pyx_v_dx, __pyx_v_normal);
+
+  /* "fatslimlib/core_base.pyx":646
+ *         cdef rvec dx
+ *         self.fast_pbc_dx_leaflet(a, b, dx, normal)
+ *         return rvec_norm2(dx)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil:
+ */
+  __pyx_r = rvec_norm2(__pyx_v_dx);
+  goto __pyx_L0;
+
+  /* "fatslimlib/core_base.pyx":643
+ *         return sqrt(self.fast_distance2(a,b))
+ * 
+ *     cdef real fast_leaflet_distance2(self, rvec a, rvec b, rvec normal) nogil:             # <<<<<<<<<<<<<<
+ *         cdef rvec dx
+ *         self.fast_pbc_dx_leaflet(a, b, dx, normal)
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "fatslimlib/core_base.pyx":648
+ *         return rvec_norm2(dx)
+ * 
+ *     cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil:             # <<<<<<<<<<<<<<
+ *         return sqrt(self.fast_leaflet_distance2(a,b,normal))
+ * 
+ */
+
+static real __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_leaflet_distance(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, real *__pyx_v_a, real *__pyx_v_b, real *__pyx_v_normal) {
+  real __pyx_r;
+
+  /* "fatslimlib/core_base.pyx":649
+ * 
+ *     cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil:
+ *         return sqrt(self.fast_leaflet_distance2(a,b,normal))             # <<<<<<<<<<<<<<
+ * 
+ *     def distance2(self, real[:] a_memview, real[:] b_memview):
+ */
+  __pyx_r = sqrt(((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_leaflet_distance2(__pyx_v_self, __pyx_v_a, __pyx_v_b, __pyx_v_normal));
+  goto __pyx_L0;
+
+  /* "fatslimlib/core_base.pyx":648
+ *         return rvec_norm2(dx)
+ * 
+ *     cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil:             # <<<<<<<<<<<<<<
+ *         return sqrt(self.fast_leaflet_distance2(a,b,normal))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "fatslimlib/core_base.pyx":651
+ *         return sqrt(self.fast_leaflet_distance2(a,b,normal))
  * 
  *     def distance2(self, real[:] a_memview, real[:] b_memview):             # <<<<<<<<<<<<<<
  *         return self.fast_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0])
@@ -9421,11 +9507,11 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_13distance2(PyObject *
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_b_memview)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("distance2", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 643; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("distance2", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 651; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "distance2") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 643; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "distance2") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 651; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -9433,12 +9519,12 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_13distance2(PyObject *
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_a_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[0]); if (unlikely(!__pyx_v_a_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 643; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_b_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[1]); if (unlikely(!__pyx_v_b_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 643; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_a_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[0]); if (unlikely(!__pyx_v_a_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 651; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_b_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[1]); if (unlikely(!__pyx_v_b_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 651; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("distance2", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 643; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("distance2", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 651; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.PBCBox.distance2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9462,7 +9548,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_12distance2(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("distance2", 0);
 
-  /* "fatslimlib/core_base.pyx":644
+  /* "fatslimlib/core_base.pyx":652
  * 
  *     def distance2(self, real[:] a_memview, real[:] b_memview):
  *         return self.fast_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0])             # <<<<<<<<<<<<<<
@@ -9472,14 +9558,14 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_12distance2(struct __p
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_distance2(__pyx_v_self, ((real *)(&(*((real *) ( /* dim=0 */ (__pyx_v_a_memview.data + __pyx_t_1 * __pyx_v_a_memview.strides[0]) ))))), ((real *)(&(*((real *) ( /* dim=0 */ (__pyx_v_b_memview.data + __pyx_t_2 * __pyx_v_b_memview.strides[0]) ))))))); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_distance2(__pyx_v_self, ((real *)(&(*((real *) ( /* dim=0 */ (__pyx_v_a_memview.data + __pyx_t_1 * __pyx_v_a_memview.strides[0]) ))))), ((real *)(&(*((real *) ( /* dim=0 */ (__pyx_v_b_memview.data + __pyx_t_2 * __pyx_v_b_memview.strides[0]) ))))))); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 652; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":643
- *         return sqrt(self.fast_distance2(a,b))
+  /* "fatslimlib/core_base.pyx":651
+ *         return sqrt(self.fast_leaflet_distance2(a,b,normal))
  * 
  *     def distance2(self, real[:] a_memview, real[:] b_memview):             # <<<<<<<<<<<<<<
  *         return self.fast_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0])
@@ -9499,7 +9585,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_12distance2(struct __p
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":646
+/* "fatslimlib/core_base.pyx":654
  *         return self.fast_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0])
  * 
  *     def distance(self, real[:] a_memview, real[:] b_memview):             # <<<<<<<<<<<<<<
@@ -9538,11 +9624,11 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_15distance(PyObject *_
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_b_memview)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 646; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 654; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "distance") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 646; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "distance") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 654; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -9550,12 +9636,12 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_15distance(PyObject *_
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_a_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[0]); if (unlikely(!__pyx_v_a_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 646; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_b_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[1]); if (unlikely(!__pyx_v_b_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 646; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_a_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[0]); if (unlikely(!__pyx_v_a_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 654; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_b_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[1]); if (unlikely(!__pyx_v_b_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 654; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 646; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 654; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.PBCBox.distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9584,19 +9670,19 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_14distance(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("distance", 0);
 
-  /* "fatslimlib/core_base.pyx":647
+  /* "fatslimlib/core_base.pyx":655
  * 
  *     def distance(self, real[:] a_memview, real[:] b_memview):
  *         return sqrt(self.distance2(a_memview, b_memview))             # <<<<<<<<<<<<<<
  * 
- *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=NOTSET) nogil:
+ *     def leaflet_distance2(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_distance2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 647; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_distance2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 655; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_a_memview, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 647; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_a_memview, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 655; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_b_memview, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 647; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_b_memview, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 655; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -9610,7 +9696,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_14distance(struct __py
       __pyx_t_6 = 1;
     }
   }
-  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 647; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 655; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   if (__pyx_t_5) {
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -9621,19 +9707,19 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_14distance(struct __py
   PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_4);
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 647; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 655; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 647; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 655; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyFloat_FromDouble(sqrt(__pyx_t_8)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 647; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(sqrt(__pyx_t_8)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 655; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":646
+  /* "fatslimlib/core_base.pyx":654
  *         return self.fast_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0])
  * 
  *     def distance(self, real[:] a_memview, real[:] b_memview):             # <<<<<<<<<<<<<<
@@ -9659,8 +9745,330 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_14distance(struct __py
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":649
+/* "fatslimlib/core_base.pyx":657
  *         return sqrt(self.distance2(a_memview, b_memview))
+ * 
+ *     def leaflet_distance2(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):             # <<<<<<<<<<<<<<
+ *         return self.fast_leaflet_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0],
+ *                                            <rvec> &normal_memview[0])
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_17leaflet_distance2(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_17leaflet_distance2(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  __Pyx_memviewslice __pyx_v_a_memview = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_b_memview = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_normal_memview = { 0, 0, { 0 }, { 0 }, { 0 } };
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("leaflet_distance2 (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_a_memview,&__pyx_n_s_b_memview,&__pyx_n_s_normal_memview,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_a_memview)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        case  1:
+        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_b_memview)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("leaflet_distance2", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 657; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        }
+        case  2:
+        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_normal_memview)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("leaflet_distance2", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 657; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "leaflet_distance2") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 657; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_a_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[0]); if (unlikely(!__pyx_v_a_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 657; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_b_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[1]); if (unlikely(!__pyx_v_b_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 657; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_normal_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[2]); if (unlikely(!__pyx_v_normal_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 657; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("leaflet_distance2", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 657; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("fatslimlib.core_base.PBCBox.leaflet_distance2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_10fatslimlib_9core_base_6PBCBox_16leaflet_distance2(((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_v_self), __pyx_v_a_memview, __pyx_v_b_memview, __pyx_v_normal_memview);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16leaflet_distance2(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_a_memview, __Pyx_memviewslice __pyx_v_b_memview, __Pyx_memviewslice __pyx_v_normal_memview) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  Py_ssize_t __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("leaflet_distance2", 0);
+
+  /* "fatslimlib/core_base.pyx":658
+ * 
+ *     def leaflet_distance2(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):
+ *         return self.fast_leaflet_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0],             # <<<<<<<<<<<<<<
+ *                                            <rvec> &normal_memview[0])
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = 0;
+  __pyx_t_2 = 0;
+
+  /* "fatslimlib/core_base.pyx":659
+ *     def leaflet_distance2(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):
+ *         return self.fast_leaflet_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0],
+ *                                            <rvec> &normal_memview[0])             # <<<<<<<<<<<<<<
+ * 
+ *     def leaflet_distance(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):
+ */
+  __pyx_t_3 = 0;
+
+  /* "fatslimlib/core_base.pyx":658
+ * 
+ *     def leaflet_distance2(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):
+ *         return self.fast_leaflet_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0],             # <<<<<<<<<<<<<<
+ *                                            <rvec> &normal_memview[0])
+ * 
+ */
+  __pyx_t_4 = PyFloat_FromDouble(((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_leaflet_distance2(__pyx_v_self, ((real *)(&(*((real *) ( /* dim=0 */ (__pyx_v_a_memview.data + __pyx_t_1 * __pyx_v_a_memview.strides[0]) ))))), ((real *)(&(*((real *) ( /* dim=0 */ (__pyx_v_b_memview.data + __pyx_t_2 * __pyx_v_b_memview.strides[0]) ))))), ((real *)(&(*((real *) ( /* dim=0 */ (__pyx_v_normal_memview.data + __pyx_t_3 * __pyx_v_normal_memview.strides[0]) ))))))); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
+
+  /* "fatslimlib/core_base.pyx":657
+ *         return sqrt(self.distance2(a_memview, b_memview))
+ * 
+ *     def leaflet_distance2(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):             # <<<<<<<<<<<<<<
+ *         return self.fast_leaflet_distance2(<rvec> &a_memview[0], <rvec> &b_memview[0],
+ *                                            <rvec> &normal_memview[0])
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("fatslimlib.core_base.PBCBox.leaflet_distance2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&__pyx_v_a_memview, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_b_memview, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_normal_memview, 1);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fatslimlib/core_base.pyx":661
+ *                                            <rvec> &normal_memview[0])
+ * 
+ *     def leaflet_distance(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):             # <<<<<<<<<<<<<<
+ *         return sqrt(self.leaflet_distance2(a_memview, b_memview, normal_memview))
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_19leaflet_distance(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_19leaflet_distance(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  __Pyx_memviewslice __pyx_v_a_memview = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_b_memview = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_normal_memview = { 0, 0, { 0 }, { 0 }, { 0 } };
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("leaflet_distance (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_a_memview,&__pyx_n_s_b_memview,&__pyx_n_s_normal_memview,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_a_memview)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        case  1:
+        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_b_memview)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("leaflet_distance", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        }
+        case  2:
+        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_normal_memview)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("leaflet_distance", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "leaflet_distance") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_a_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[0]); if (unlikely(!__pyx_v_a_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_b_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[1]); if (unlikely(!__pyx_v_b_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_normal_memview = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[2]); if (unlikely(!__pyx_v_normal_memview.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("leaflet_distance", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("fatslimlib.core_base.PBCBox.leaflet_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_10fatslimlib_9core_base_6PBCBox_18leaflet_distance(((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_v_self), __pyx_v_a_memview, __pyx_v_b_memview, __pyx_v_normal_memview);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18leaflet_distance(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_a_memview, __Pyx_memviewslice __pyx_v_b_memview, __Pyx_memviewslice __pyx_v_normal_memview) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  Py_ssize_t __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  double __pyx_t_9;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("leaflet_distance", 0);
+
+  /* "fatslimlib/core_base.pyx":662
+ * 
+ *     def leaflet_distance(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):
+ *         return sqrt(self.leaflet_distance2(a_memview, b_memview, normal_memview))             # <<<<<<<<<<<<<<
+ * 
+ *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=NOTSET) nogil:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_leaflet_distance2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_a_memview, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_b_memview, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_normal_memview, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_7 = 1;
+    }
+  }
+  __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_8);
+  if (__pyx_t_6) {
+    __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
+  }
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_7, __pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_8, 2+__pyx_t_7, __pyx_t_5);
+  __pyx_t_3 = 0;
+  __pyx_t_4 = 0;
+  __pyx_t_5 = 0;
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyFloat_FromDouble(sqrt(__pyx_t_9)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "fatslimlib/core_base.pyx":661
+ *                                            <rvec> &normal_memview[0])
+ * 
+ *     def leaflet_distance(self, real[:] a_memview, real[:] b_memview, real[:] normal_memview):             # <<<<<<<<<<<<<<
+ *         return sqrt(self.leaflet_distance2(a_memview, b_memview, normal_memview))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("fatslimlib.core_base.PBCBox.leaflet_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&__pyx_v_a_memview, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_b_memview, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_normal_memview, 1);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fatslimlib/core_base.pyx":664
+ *         return sqrt(self.leaflet_distance2(a_memview, b_memview, normal_memview))
  * 
  *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=NOTSET) nogil:             # <<<<<<<<<<<<<<
  *         self.fast_pbc_xcm_from_ref(coords, &coords[0, XX], xcm, limit)
@@ -9678,7 +10086,7 @@ static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm(struct __pyx_ob
     }
   }
 
-  /* "fatslimlib/core_base.pyx":650
+  /* "fatslimlib/core_base.pyx":665
  * 
  *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=NOTSET) nogil:
  *         self.fast_pbc_xcm_from_ref(coords, &coords[0, XX], xcm, limit)             # <<<<<<<<<<<<<<
@@ -9691,8 +10099,8 @@ static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm(struct __pyx_ob
   __pyx_t_3.limit = __pyx_v_limit;
   ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_pbc_xcm_from_ref(__pyx_v_self, __pyx_v_coords, (&(*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_1 * __pyx_v_coords.strides[0]) )) + __pyx_t_2)) )))), __pyx_v_xcm, &__pyx_t_3); 
 
-  /* "fatslimlib/core_base.pyx":649
- *         return sqrt(self.distance2(a_memview, b_memview))
+  /* "fatslimlib/core_base.pyx":664
+ *         return sqrt(self.leaflet_distance2(a_memview, b_memview, normal_memview))
  * 
  *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=NOTSET) nogil:             # <<<<<<<<<<<<<<
  *         self.fast_pbc_xcm_from_ref(coords, &coords[0, XX], xcm, limit)
@@ -9702,7 +10110,7 @@ static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm(struct __pyx_ob
   /* function exit code */
 }
 
-/* "fatslimlib/core_base.pyx":652
+/* "fatslimlib/core_base.pyx":667
  *         self.fast_pbc_xcm_from_ref(coords, &coords[0, XX], xcm, limit)
  * 
  *     cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref,             # <<<<<<<<<<<<<<
@@ -9719,7 +10127,7 @@ static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref(struct
     }
   }
 
-  /* "fatslimlib/core_base.pyx":654
+  /* "fatslimlib/core_base.pyx":669
  *     cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref,
  *                                     rvec xcm, fsl_int limit=NOTSET) nogil:
  *         fast_pbc_xcm_from_ref_c(self.c_pbcbox, coords, ref, xcm, limit)             # <<<<<<<<<<<<<<
@@ -9730,7 +10138,7 @@ static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref(struct
   __pyx_t_1.first = __pyx_v_limit;
   __pyx_f_10fatslimlib_9core_base_fast_pbc_xcm_from_ref_c(__pyx_v_self->c_pbcbox, __pyx_v_coords, __pyx_v_ref, __pyx_v_xcm, &__pyx_t_1); 
 
-  /* "fatslimlib/core_base.pyx":652
+  /* "fatslimlib/core_base.pyx":667
  *         self.fast_pbc_xcm_from_ref(coords, &coords[0, XX], xcm, limit)
  * 
  *     cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref,             # <<<<<<<<<<<<<<
@@ -9741,7 +10149,7 @@ static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref(struct
   /* function exit code */
 }
 
-/* "fatslimlib/core_base.pyx":656
+/* "fatslimlib/core_base.pyx":671
  *         fast_pbc_xcm_from_ref_c(self.c_pbcbox, coords, ref, xcm, limit)
  * 
  *     def get_xcm(self, real[:, ::1] coords):             # <<<<<<<<<<<<<<
@@ -9750,8 +10158,8 @@ static void __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref(struct
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_17get_xcm(PyObject *__pyx_v_self, PyObject *__pyx_arg_coords); /*proto*/
-static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_17get_xcm(PyObject *__pyx_v_self, PyObject *__pyx_arg_coords) {
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_21get_xcm(PyObject *__pyx_v_self, PyObject *__pyx_arg_coords); /*proto*/
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_21get_xcm(PyObject *__pyx_v_self, PyObject *__pyx_arg_coords) {
   __Pyx_memviewslice __pyx_v_coords = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -9760,7 +10168,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_17get_xcm(PyObject *__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_xcm (wrapper)", 0);
   assert(__pyx_arg_coords); {
-    __pyx_v_coords = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_arg_coords); if (unlikely(!__pyx_v_coords.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 656; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_coords = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_arg_coords); if (unlikely(!__pyx_v_coords.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 671; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -9768,14 +10176,14 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_17get_xcm(PyObject *__
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_v_self), __pyx_v_coords);
+  __pyx_r = __pyx_pf_10fatslimlib_9core_base_6PBCBox_20get_xcm(((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_v_self), __pyx_v_coords);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords) {
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20get_xcm(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords) {
   rvec __pyx_v_xcm;
   PyObject *__pyx_v_xcm_py = NULL;
   PyObject *__pyx_r = NULL;
@@ -9788,7 +10196,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_xcm", 0);
 
-  /* "fatslimlib/core_base.pyx":658
+  /* "fatslimlib/core_base.pyx":673
  *     def get_xcm(self, real[:, ::1] coords):
  *         cdef rvec xcm
  *         self.fast_pbc_xcm(coords, xcm)             # <<<<<<<<<<<<<<
@@ -9797,25 +10205,25 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(struct __pyx
  */
   ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_pbc_xcm(__pyx_v_self, __pyx_v_coords, __pyx_v_xcm, NULL);
 
-  /* "fatslimlib/core_base.pyx":660
+  /* "fatslimlib/core_base.pyx":675
  *         self.fast_pbc_xcm(coords, xcm)
  * 
  *         xcm_py = np.empty(DIM)             # <<<<<<<<<<<<<<
  *         rvec_to_memview(xcm, xcm_py)
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_xcm_py = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":661
+  /* "fatslimlib/core_base.pyx":676
  * 
  *         xcm_py = np.empty(DIM)
  *         rvec_to_memview(xcm, xcm_py)             # <<<<<<<<<<<<<<
@@ -9823,11 +10231,11 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(struct __pyx
  *         return xcm_py
  */
   __pyx_t_3 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(__pyx_v_xcm_py);
-  if (unlikely(!__pyx_t_3.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_3.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 676; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_f_10fatslimlib_9core_base_rvec_to_memview(__pyx_v_xcm, __pyx_t_3);
   __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
 
-  /* "fatslimlib/core_base.pyx":663
+  /* "fatslimlib/core_base.pyx":678
  *         rvec_to_memview(xcm, xcm_py)
  * 
  *         return xcm_py             # <<<<<<<<<<<<<<
@@ -9839,7 +10247,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(struct __pyx
   __pyx_r = __pyx_v_xcm_py;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":656
+  /* "fatslimlib/core_base.pyx":671
  *         fast_pbc_xcm_from_ref_c(self.c_pbcbox, coords, ref, xcm, limit)
  * 
  *     def get_xcm(self, real[:, ::1] coords):             # <<<<<<<<<<<<<<
@@ -9862,7 +10270,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(struct __pyx
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":665
+/* "fatslimlib/core_base.pyx":680
  *         return xcm_py
  * 
  *     def asarray(self):             # <<<<<<<<<<<<<<
@@ -9871,19 +10279,19 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_16get_xcm(struct __pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_19asarray(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_19asarray(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_23asarray(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_23asarray(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("asarray (wrapper)", 0);
-  __pyx_r = __pyx_pf_10fatslimlib_9core_base_6PBCBox_18asarray(((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10fatslimlib_9core_base_6PBCBox_22asarray(((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18asarray(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self) {
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_22asarray(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self) {
   fsl_int __pyx_v_i;
   fsl_int __pyx_v_j;
   PyObject *__pyx_v_box = NULL;
@@ -9898,25 +10306,25 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18asarray(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("asarray", 0);
 
-  /* "fatslimlib/core_base.pyx":667
+  /* "fatslimlib/core_base.pyx":682
  *     def asarray(self):
  *         cdef fsl_int i, j
  *         box = np.empty((DIM, DIM))             # <<<<<<<<<<<<<<
  * 
  *         for i in range(DIM):
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_box = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":669
+  /* "fatslimlib/core_base.pyx":684
  *         box = np.empty((DIM, DIM))
  * 
  *         for i in range(DIM):             # <<<<<<<<<<<<<<
@@ -9926,7 +10334,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18asarray(struct __pyx
   for (__pyx_t_3 = 0; __pyx_t_3 < 3; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fatslimlib/core_base.pyx":670
+    /* "fatslimlib/core_base.pyx":685
  * 
  *         for i in range(DIM):
  *             for j in range(DIM):             # <<<<<<<<<<<<<<
@@ -9936,24 +10344,24 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18asarray(struct __pyx
     for (__pyx_t_4 = 0; __pyx_t_4 < 3; __pyx_t_4+=1) {
       __pyx_v_j = __pyx_t_4;
 
-      /* "fatslimlib/core_base.pyx":671
+      /* "fatslimlib/core_base.pyx":686
  *         for i in range(DIM):
  *             for j in range(DIM):
  *                 box[i][j] = self.c_pbcbox.box[i][j]             # <<<<<<<<<<<<<<
  * 
  *         return box
  */
-      __pyx_t_1 = PyFloat_FromDouble(((__pyx_v_self->c_pbcbox.box[__pyx_v_i])[__pyx_v_j])); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PyFloat_FromDouble(((__pyx_v_self->c_pbcbox.box[__pyx_v_i])[__pyx_v_j])); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box, __pyx_v_i, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 671; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box, __pyx_v_i, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 686; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_j, __pyx_t_1, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_j, __pyx_t_1, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
 
-  /* "fatslimlib/core_base.pyx":673
+  /* "fatslimlib/core_base.pyx":688
  *                 box[i][j] = self.c_pbcbox.box[i][j]
  * 
  *         return box             # <<<<<<<<<<<<<<
@@ -9965,7 +10373,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18asarray(struct __pyx
   __pyx_r = __pyx_v_box;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":665
+  /* "fatslimlib/core_base.pyx":680
  *         return xcm_py
  * 
  *     def asarray(self):             # <<<<<<<<<<<<<<
@@ -9986,7 +10394,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_18asarray(struct __pyx
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":675
+/* "fatslimlib/core_base.pyx":690
  *         return box
  * 
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil:             # <<<<<<<<<<<<<<
@@ -10031,7 +10439,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":676
+  /* "fatslimlib/core_base.pyx":691
  * 
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil:
  *         cdef fsl_int i, m, d, natoms, wd = 0             # <<<<<<<<<<<<<<
@@ -10041,7 +10449,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
   /*try:*/ {
     __pyx_v_wd = 0;
 
-    /* "fatslimlib/core_base.pyx":679
+    /* "fatslimlib/core_base.pyx":694
  *         cdef real[:,::1] bbox_coords
  * 
  *         natoms = coords.shape[0]             # <<<<<<<<<<<<<<
@@ -10050,7 +10458,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
  */
     __pyx_v_natoms = (__pyx_v_coords.shape[0]);
 
-    /* "fatslimlib/core_base.pyx":680
+    /* "fatslimlib/core_base.pyx":695
  * 
  *         natoms = coords.shape[0]
  *         with gil:             # <<<<<<<<<<<<<<
@@ -10063,7 +10471,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_base.pyx":681
+          /* "fatslimlib/core_base.pyx":696
  *         natoms = coords.shape[0]
  *         with gil:
  *             if natoms == 0:             # <<<<<<<<<<<<<<
@@ -10073,29 +10481,29 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
           __pyx_t_1 = ((__pyx_v_natoms == 0) != 0);
           if (__pyx_t_1) {
 
-            /* "fatslimlib/core_base.pyx":682
+            /* "fatslimlib/core_base.pyx":697
  *         with gil:
  *             if natoms == 0:
  *                 bbox_coords = np.empty((0, DIM))             # <<<<<<<<<<<<<<
  *             else:
  *                 bbox_coords = coords.copy()
  */
-            __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+            __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
             __Pyx_GOTREF(__pyx_t_2);
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_2);
-            if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+            if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __pyx_v_bbox_coords = __pyx_t_4;
             __pyx_t_4.memview = NULL;
             __pyx_t_4.data = NULL;
 
-            /* "fatslimlib/core_base.pyx":681
+            /* "fatslimlib/core_base.pyx":696
  *         natoms = coords.shape[0]
  *         with gil:
  *             if natoms == 0:             # <<<<<<<<<<<<<<
@@ -10105,7 +10513,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
             goto __pyx_L9;
           }
 
-          /* "fatslimlib/core_base.pyx":684
+          /* "fatslimlib/core_base.pyx":699
  *                 bbox_coords = np.empty((0, DIM))
  *             else:
  *                 bbox_coords = coords.copy()             # <<<<<<<<<<<<<<
@@ -10113,7 +10521,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
  *         for i in range(natoms):
  */
           /*else*/ {
-            __pyx_t_4 = __pyx_memoryview_copy_slice_d_dc_nn_real_c(__pyx_v_coords); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 684; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+            __pyx_t_4 = __pyx_memoryview_copy_slice_d_dc_nn_real_c(__pyx_v_coords); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 699; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
             __pyx_v_bbox_coords = __pyx_t_4;
             __pyx_t_4.memview = NULL;
             __pyx_t_4.data = NULL;
@@ -10121,7 +10529,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
           __pyx_L9:;
         }
 
-        /* "fatslimlib/core_base.pyx":680
+        /* "fatslimlib/core_base.pyx":695
  * 
  *         natoms = coords.shape[0]
  *         with gil:             # <<<<<<<<<<<<<<
@@ -10145,7 +10553,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
         }
     }
 
-    /* "fatslimlib/core_base.pyx":686
+    /* "fatslimlib/core_base.pyx":701
  *                 bbox_coords = coords.copy()
  * 
  *         for i in range(natoms):             # <<<<<<<<<<<<<<
@@ -10156,7 +10564,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_i = __pyx_t_6;
 
-      /* "fatslimlib/core_base.pyx":687
+      /* "fatslimlib/core_base.pyx":702
  * 
  *         for i in range(natoms):
  *             for m in range(DIM - 1, -1, -1):             # <<<<<<<<<<<<<<
@@ -10166,7 +10574,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
       for (__pyx_t_7 = 2; __pyx_t_7 > -1L; __pyx_t_7-=1) {
         __pyx_v_m = __pyx_t_7;
 
-        /* "fatslimlib/core_base.pyx":688
+        /* "fatslimlib/core_base.pyx":703
  *         for i in range(natoms):
  *             for m in range(DIM - 1, -1, -1):
  *                 while bbox_coords[i, m] < 0:             # <<<<<<<<<<<<<<
@@ -10179,7 +10587,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
           __pyx_t_1 = (((*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_bbox_coords.data + __pyx_t_8 * __pyx_v_bbox_coords.strides[0]) )) + __pyx_t_9)) ))) < 0.0) != 0);
           if (!__pyx_t_1) break;
 
-          /* "fatslimlib/core_base.pyx":689
+          /* "fatslimlib/core_base.pyx":704
  *             for m in range(DIM - 1, -1, -1):
  *                 while bbox_coords[i, m] < 0:
  *                     for d in range(m+1):             # <<<<<<<<<<<<<<
@@ -10190,7 +10598,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
           for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
             __pyx_v_d = __pyx_t_11;
 
-            /* "fatslimlib/core_base.pyx":690
+            /* "fatslimlib/core_base.pyx":705
  *                 while bbox_coords[i, m] < 0:
  *                     for d in range(m+1):
  *                         bbox_coords[i, d] += self.c_pbcbox.box[m][d]             # <<<<<<<<<<<<<<
@@ -10203,7 +10611,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
           }
         }
 
-        /* "fatslimlib/core_base.pyx":691
+        /* "fatslimlib/core_base.pyx":706
  *                     for d in range(m+1):
  *                         bbox_coords[i, d] += self.c_pbcbox.box[m][d]
  *                 while bbox_coords[i, m] >= self.c_pbcbox.box[m][m]:             # <<<<<<<<<<<<<<
@@ -10216,7 +10624,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
           __pyx_t_1 = (((*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_bbox_coords.data + __pyx_t_14 * __pyx_v_bbox_coords.strides[0]) )) + __pyx_t_15)) ))) >= ((__pyx_v_self->c_pbcbox.box[__pyx_v_m])[__pyx_v_m])) != 0);
           if (!__pyx_t_1) break;
 
-          /* "fatslimlib/core_base.pyx":692
+          /* "fatslimlib/core_base.pyx":707
  *                         bbox_coords[i, d] += self.c_pbcbox.box[m][d]
  *                 while bbox_coords[i, m] >= self.c_pbcbox.box[m][m]:
  *                     for d in range(m+1):             # <<<<<<<<<<<<<<
@@ -10227,7 +10635,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
           for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
             __pyx_v_d = __pyx_t_11;
 
-            /* "fatslimlib/core_base.pyx":693
+            /* "fatslimlib/core_base.pyx":708
  *                 while bbox_coords[i, m] >= self.c_pbcbox.box[m][m]:
  *                     for d in range(m+1):
  *                         bbox_coords[i, d] -= self.c_pbcbox.box[m][d]             # <<<<<<<<<<<<<<
@@ -10242,7 +10650,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
       }
     }
 
-    /* "fatslimlib/core_base.pyx":694
+    /* "fatslimlib/core_base.pyx":709
  *                     for d in range(m+1):
  *                         bbox_coords[i, d] -= self.c_pbcbox.box[m][d]
  *         return bbox_coords             # <<<<<<<<<<<<<<
@@ -10254,7 +10662,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_base.pyx":676
+  /* "fatslimlib/core_base.pyx":691
  * 
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil:
  *         cdef fsl_int i, m, d, natoms, wd = 0             # <<<<<<<<<<<<<<
@@ -10276,7 +10684,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
     }
   }
 
-  /* "fatslimlib/core_base.pyx":675
+  /* "fatslimlib/core_base.pyx":690
  *         return box
  * 
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil:             # <<<<<<<<<<<<<<
@@ -10307,7 +10715,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":696
+/* "fatslimlib/core_base.pyx":711
  *         return bbox_coords
  * 
  *     def put_atoms_in_bbox(self, real[:,::1] coords):             # <<<<<<<<<<<<<<
@@ -10316,8 +10724,8 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_21put_atoms_in_bbox(PyObject *__pyx_v_self, PyObject *__pyx_arg_coords); /*proto*/
-static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_21put_atoms_in_bbox(PyObject *__pyx_v_self, PyObject *__pyx_arg_coords) {
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_25put_atoms_in_bbox(PyObject *__pyx_v_self, PyObject *__pyx_arg_coords); /*proto*/
+static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_25put_atoms_in_bbox(PyObject *__pyx_v_self, PyObject *__pyx_arg_coords) {
   __Pyx_memviewslice __pyx_v_coords = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -10326,7 +10734,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_21put_atoms_in_bbox(Py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_atoms_in_bbox (wrapper)", 0);
   assert(__pyx_arg_coords); {
-    __pyx_v_coords = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_arg_coords); if (unlikely(!__pyx_v_coords.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 696; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_coords = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_arg_coords); if (unlikely(!__pyx_v_coords.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 711; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -10334,14 +10742,14 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_6PBCBox_21put_atoms_in_bbox(Py
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10fatslimlib_9core_base_6PBCBox_20put_atoms_in_bbox(((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_v_self), __pyx_v_coords);
+  __pyx_r = __pyx_pf_10fatslimlib_9core_base_6PBCBox_24put_atoms_in_bbox(((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_v_self), __pyx_v_coords);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20put_atoms_in_bbox(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords) {
+static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_24put_atoms_in_bbox(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_v_self, __Pyx_memviewslice __pyx_v_coords) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -10355,7 +10763,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20put_atoms_in_bbox(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_atoms_in_bbox", 0);
 
-  /* "fatslimlib/core_base.pyx":697
+  /* "fatslimlib/core_base.pyx":712
  * 
  *     def put_atoms_in_bbox(self, real[:,::1] coords):
  *         return np.asarray(self.fast_put_atoms_in_bbox(coords))             # <<<<<<<<<<<<<<
@@ -10363,13 +10771,13 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20put_atoms_in_bbox(st
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self, __pyx_v_coords); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_4, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self, __pyx_v_coords); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_4, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
   __pyx_t_5 = NULL;
@@ -10383,17 +10791,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20put_atoms_in_bbox(st
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -10402,7 +10810,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20put_atoms_in_bbox(st
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":696
+  /* "fatslimlib/core_base.pyx":711
  *         return bbox_coords
  * 
  *     def put_atoms_in_bbox(self, real[:,::1] coords):             # <<<<<<<<<<<<<<
@@ -10427,7 +10835,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_6PBCBox_20put_atoms_in_bbox(st
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":702
+/* "fatslimlib/core_base.pyx":717
  * cdef class TopologyGroup(object):
  * 
  *     def __init__(self, Topology parent, str resname="group", fsl_int resid=1):             # <<<<<<<<<<<<<<
@@ -10478,7 +10886,7 @@ static int __pyx_pw_10fatslimlib_9core_base_13TopologyGroup_1__init__(PyObject *
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 702; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 717; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -10492,21 +10900,21 @@ static int __pyx_pw_10fatslimlib_9core_base_13TopologyGroup_1__init__(PyObject *
     __pyx_v_parent = ((struct __pyx_obj_10fatslimlib_9core_base_Topology *)values[0]);
     __pyx_v_resname = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_resid = __Pyx_PyInt_As_fsl_int(values[2]); if (unlikely((__pyx_v_resid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 702; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_resid = __Pyx_PyInt_As_fsl_int(values[2]); if (unlikely((__pyx_v_resid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 717; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_resid = ((fsl_int)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 702; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 717; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.TopologyGroup.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_parent), __pyx_ptype_10fatslimlib_9core_base_Topology, 1, "parent", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 702; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_resname), (&PyString_Type), 1, "resname", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 702; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_parent), __pyx_ptype_10fatslimlib_9core_base_Topology, 1, "parent", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 717; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_resname), (&PyString_Type), 1, "resname", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 717; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(((struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_self), __pyx_v_parent, __pyx_v_resname, __pyx_v_resid);
 
   /* function exit code */
@@ -10529,7 +10937,7 @@ static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "fatslimlib/core_base.pyx":703
+  /* "fatslimlib/core_base.pyx":718
  * 
  *     def __init__(self, Topology parent, str resname="group", fsl_int resid=1):
  *         self.parent = parent             # <<<<<<<<<<<<<<
@@ -10542,14 +10950,14 @@ static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __py
   __Pyx_DECREF(((PyObject *)__pyx_v_self->parent));
   __pyx_v_self->parent = __pyx_v_parent;
 
-  /* "fatslimlib/core_base.pyx":704
+  /* "fatslimlib/core_base.pyx":719
  *     def __init__(self, Topology parent, str resname="group", fsl_int resid=1):
  *         self.parent = parent
  *         self.resname = resname.encode()             # <<<<<<<<<<<<<<
  *         self.resid = resid
  *         self.name = self.resname + b"%i" % resid
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_resname, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 704; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_resname, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 719; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -10562,21 +10970,21 @@ static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __py
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 704; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 719; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 704; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 719; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 704; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 719; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->resname);
   __Pyx_DECREF(__pyx_v_self->resname);
   __pyx_v_self->resname = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":705
+  /* "fatslimlib/core_base.pyx":720
  *         self.parent = parent
  *         self.resname = resname.encode()
  *         self.resid = resid             # <<<<<<<<<<<<<<
@@ -10585,29 +10993,29 @@ static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __py
  */
   __pyx_v_self->resid = __pyx_v_resid;
 
-  /* "fatslimlib/core_base.pyx":706
+  /* "fatslimlib/core_base.pyx":721
  *         self.resname = resname.encode()
  *         self.resid = resid
  *         self.name = self.resname + b"%i" % resid             # <<<<<<<<<<<<<<
  *         self.atoms = NULL
  *         self.size = 0
  */
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_resid); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 706; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_resid); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 721; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Remainder(__pyx_kp_b_i, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 706; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyNumber_Remainder(__pyx_kp_b_i, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 721; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_v_self->resname, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 706; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyNumber_Add(__pyx_v_self->resname, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 721; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 706; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 721; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->name);
   __Pyx_DECREF(__pyx_v_self->name);
   __pyx_v_self->name = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":707
+  /* "fatslimlib/core_base.pyx":722
  *         self.resid = resid
  *         self.name = self.resname + b"%i" % resid
  *         self.atoms = NULL             # <<<<<<<<<<<<<<
@@ -10616,7 +11024,7 @@ static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __py
  */
   __pyx_v_self->atoms = NULL;
 
-  /* "fatslimlib/core_base.pyx":708
+  /* "fatslimlib/core_base.pyx":723
  *         self.name = self.resname + b"%i" % resid
  *         self.atoms = NULL
  *         self.size = 0             # <<<<<<<<<<<<<<
@@ -10625,7 +11033,7 @@ static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __py
  */
   __pyx_v_self->size = 0;
 
-  /* "fatslimlib/core_base.pyx":709
+  /* "fatslimlib/core_base.pyx":724
  *         self.atoms = NULL
  *         self.size = 0
  *         self.allocated_size = 0             # <<<<<<<<<<<<<<
@@ -10634,7 +11042,7 @@ static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __py
  */
   __pyx_v_self->allocated_size = 0;
 
-  /* "fatslimlib/core_base.pyx":702
+  /* "fatslimlib/core_base.pyx":717
  * cdef class TopologyGroup(object):
  * 
  *     def __init__(self, Topology parent, str resname="group", fsl_int resid=1):             # <<<<<<<<<<<<<<
@@ -10656,7 +11064,7 @@ static int __pyx_pf_10fatslimlib_9core_base_13TopologyGroup___init__(struct __py
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":711
+/* "fatslimlib/core_base.pyx":726
  *         self.allocated_size = 0
  * 
  *     cdef bint fast_contains(self, topol_atom_t atom) nogil except *:             # <<<<<<<<<<<<<<
@@ -10671,7 +11079,7 @@ static int __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_contains(struct 
   fsl_int __pyx_t_2;
   int __pyx_t_3;
 
-  /* "fatslimlib/core_base.pyx":713
+  /* "fatslimlib/core_base.pyx":728
  *     cdef bint fast_contains(self, topol_atom_t atom) nogil except *:
  *         cdef fsl_int i
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -10682,7 +11090,7 @@ static int __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_contains(struct 
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "fatslimlib/core_base.pyx":714
+    /* "fatslimlib/core_base.pyx":729
  *         cdef fsl_int i
  *         for i in range(self.size):
  *             if self.atoms[i].atomid == atom.atomid:             # <<<<<<<<<<<<<<
@@ -10692,7 +11100,7 @@ static int __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_contains(struct 
     __pyx_t_3 = (((__pyx_v_self->atoms[__pyx_v_i]).atomid == __pyx_v_atom.atomid) != 0);
     if (__pyx_t_3) {
 
-      /* "fatslimlib/core_base.pyx":715
+      /* "fatslimlib/core_base.pyx":730
  *         for i in range(self.size):
  *             if self.atoms[i].atomid == atom.atomid:
  *                 return True             # <<<<<<<<<<<<<<
@@ -10702,7 +11110,7 @@ static int __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_contains(struct 
       __pyx_r = 1;
       goto __pyx_L0;
 
-      /* "fatslimlib/core_base.pyx":714
+      /* "fatslimlib/core_base.pyx":729
  *         cdef fsl_int i
  *         for i in range(self.size):
  *             if self.atoms[i].atomid == atom.atomid:             # <<<<<<<<<<<<<<
@@ -10712,7 +11120,7 @@ static int __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_contains(struct 
     }
   }
 
-  /* "fatslimlib/core_base.pyx":716
+  /* "fatslimlib/core_base.pyx":731
  *             if self.atoms[i].atomid == atom.atomid:
  *                 return True
  *         return False             # <<<<<<<<<<<<<<
@@ -10722,7 +11130,7 @@ static int __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_contains(struct 
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":711
+  /* "fatslimlib/core_base.pyx":726
  *         self.allocated_size = 0
  * 
  *     cdef bint fast_contains(self, topol_atom_t atom) nogil except *:             # <<<<<<<<<<<<<<
@@ -10735,7 +11143,7 @@ static int __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_contains(struct 
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":718
+/* "fatslimlib/core_base.pyx":733
  *         return False
  * 
  *     cdef void add_atom(self, topol_atom_t atom) nogil except *:             # <<<<<<<<<<<<<<
@@ -10758,7 +11166,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":719
+  /* "fatslimlib/core_base.pyx":734
  * 
  *     cdef void add_atom(self, topol_atom_t atom) nogil except *:
  *         if self.fast_contains(atom):             # <<<<<<<<<<<<<<
@@ -10766,11 +11174,11 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
  * 
  */
   /*try:*/ {
-    __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_self->__pyx_vtab)->fast_contains(__pyx_v_self, __pyx_v_atom); if (unlikely(__Pyx_ErrOccurredWithGIL())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 719; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+    __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_self->__pyx_vtab)->fast_contains(__pyx_v_self, __pyx_v_atom); if (unlikely(__Pyx_ErrOccurredWithGIL())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 734; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
     __pyx_t_2 = (__pyx_t_1 != 0);
     if (__pyx_t_2) {
 
-      /* "fatslimlib/core_base.pyx":720
+      /* "fatslimlib/core_base.pyx":735
  *     cdef void add_atom(self, topol_atom_t atom) nogil except *:
  *         if self.fast_contains(atom):
  *             return             # <<<<<<<<<<<<<<
@@ -10779,7 +11187,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
  */
       goto __pyx_L3_return;
 
-      /* "fatslimlib/core_base.pyx":719
+      /* "fatslimlib/core_base.pyx":734
  * 
  *     cdef void add_atom(self, topol_atom_t atom) nogil except *:
  *         if self.fast_contains(atom):             # <<<<<<<<<<<<<<
@@ -10788,7 +11196,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
  */
     }
 
-    /* "fatslimlib/core_base.pyx":723
+    /* "fatslimlib/core_base.pyx":738
  * 
  *         # Allocate memory
  *         with gil:             # <<<<<<<<<<<<<<
@@ -10801,7 +11209,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_base.pyx":724
+          /* "fatslimlib/core_base.pyx":739
  *         # Allocate memory
  *         with gil:
  *             while self.size + 1 > self.allocated_size:             # <<<<<<<<<<<<<<
@@ -10812,7 +11220,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
             __pyx_t_2 = (((__pyx_v_self->size + 1) > __pyx_v_self->allocated_size) != 0);
             if (!__pyx_t_2) break;
 
-            /* "fatslimlib/core_base.pyx":725
+            /* "fatslimlib/core_base.pyx":740
  *         with gil:
  *             while self.size + 1 > self.allocated_size:
  *                 self.allocated_size += RESIDUE_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -10821,7 +11229,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
  */
             __pyx_v_self->allocated_size = (__pyx_v_self->allocated_size + 20);
 
-            /* "fatslimlib/core_base.pyx":727
+            /* "fatslimlib/core_base.pyx":742
  *                 self.allocated_size += RESIDUE_ALLOCATION_INCREMENT
  * 
  *                 self.atoms = \             # <<<<<<<<<<<<<<
@@ -10830,7 +11238,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
  */
             __pyx_v_self->atoms = ((struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *)PyMem_Realloc(__pyx_v_self->atoms, ((sizeof(struct __pyx_t_10fatslimlib_9core_base_topol_atom_t)) * __pyx_v_self->allocated_size)));
 
-            /* "fatslimlib/core_base.pyx":730
+            /* "fatslimlib/core_base.pyx":745
  *                     <topol_atom_t *> PyMem_Realloc(self.atoms,
  *                                                    sizeof(topol_atom_t ) * self.allocated_size)
  *                 if self.atoms == NULL:             # <<<<<<<<<<<<<<
@@ -10840,16 +11248,16 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
             __pyx_t_2 = ((__pyx_v_self->atoms == NULL) != 0);
             if (__pyx_t_2) {
 
-              /* "fatslimlib/core_base.pyx":731
+              /* "fatslimlib/core_base.pyx":746
  *                                                    sizeof(topol_atom_t ) * self.allocated_size)
  *                 if self.atoms == NULL:
  *                     raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *         self.atoms[self.size] = atom
  */
-              PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 731; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+              PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 746; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
 
-              /* "fatslimlib/core_base.pyx":730
+              /* "fatslimlib/core_base.pyx":745
  *                     <topol_atom_t *> PyMem_Realloc(self.atoms,
  *                                                    sizeof(topol_atom_t ) * self.allocated_size)
  *                 if self.atoms == NULL:             # <<<<<<<<<<<<<<
@@ -10860,7 +11268,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
           }
         }
 
-        /* "fatslimlib/core_base.pyx":723
+        /* "fatslimlib/core_base.pyx":738
  * 
  *         # Allocate memory
  *         with gil:             # <<<<<<<<<<<<<<
@@ -10884,7 +11292,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
         }
     }
 
-    /* "fatslimlib/core_base.pyx":733
+    /* "fatslimlib/core_base.pyx":748
  *                     raise MemoryError
  * 
  *         self.atoms[self.size] = atom             # <<<<<<<<<<<<<<
@@ -10893,7 +11301,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
  */
     (__pyx_v_self->atoms[__pyx_v_self->size]) = __pyx_v_atom;
 
-    /* "fatslimlib/core_base.pyx":734
+    /* "fatslimlib/core_base.pyx":749
  * 
  *         self.atoms[self.size] = atom
  *         self.size += 1             # <<<<<<<<<<<<<<
@@ -10903,7 +11311,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
     __pyx_v_self->size = (__pyx_v_self->size + 1);
   }
 
-  /* "fatslimlib/core_base.pyx":719
+  /* "fatslimlib/core_base.pyx":734
  * 
  *     cdef void add_atom(self, topol_atom_t atom) nogil except *:
  *         if self.fast_contains(atom):             # <<<<<<<<<<<<<<
@@ -10932,7 +11340,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
     __pyx_L5:;
   }
 
-  /* "fatslimlib/core_base.pyx":718
+  /* "fatslimlib/core_base.pyx":733
  *         return False
  * 
  *     cdef void add_atom(self, topol_atom_t atom) nogil except *:             # <<<<<<<<<<<<<<
@@ -10950,7 +11358,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_add_atom(struct __py
   #endif
 }
 
-/* "fatslimlib/core_base.pyx":736
+/* "fatslimlib/core_base.pyx":751
  *         self.size += 1
  * 
  *     cdef void merge_other_group(self, TopologyGroup other) nogil:             # <<<<<<<<<<<<<<
@@ -10966,7 +11374,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_merge_other_group(st
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fatslimlib/core_base.pyx":738
+  /* "fatslimlib/core_base.pyx":753
  *     cdef void merge_other_group(self, TopologyGroup other) nogil:
  *         cdef fsl_int i
  *         for i in range(other.size):             # <<<<<<<<<<<<<<
@@ -10977,17 +11385,17 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_merge_other_group(st
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "fatslimlib/core_base.pyx":739
+    /* "fatslimlib/core_base.pyx":754
  *         cdef fsl_int i
  *         for i in range(other.size):
  *             self.add_atom(other.atoms[i])             # <<<<<<<<<<<<<<
  * 
  *     cdef fsl_int[:] fast_get_atomids(self) nogil:
  */
-    ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_self->__pyx_vtab)->add_atom(__pyx_v_self, (__pyx_v_other->atoms[__pyx_v_i])); if (unlikely(__Pyx_ErrOccurredWithGIL())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 739; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_self->__pyx_vtab)->add_atom(__pyx_v_self, (__pyx_v_other->atoms[__pyx_v_i])); if (unlikely(__Pyx_ErrOccurredWithGIL())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 754; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "fatslimlib/core_base.pyx":736
+  /* "fatslimlib/core_base.pyx":751
  *         self.size += 1
  * 
  *     cdef void merge_other_group(self, TopologyGroup other) nogil:             # <<<<<<<<<<<<<<
@@ -11002,7 +11410,7 @@ static void __pyx_f_10fatslimlib_9core_base_13TopologyGroup_merge_other_group(st
   __pyx_L0:;
 }
 
-/* "fatslimlib/core_base.pyx":741
+/* "fatslimlib/core_base.pyx":756
  *             self.add_atom(other.atoms[i])
  * 
  *     cdef fsl_int[:] fast_get_atomids(self) nogil:             # <<<<<<<<<<<<<<
@@ -11036,7 +11444,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":742
+  /* "fatslimlib/core_base.pyx":757
  * 
  *     cdef fsl_int[:] fast_get_atomids(self) nogil:
  *         cdef fsl_int[:] atomids             # <<<<<<<<<<<<<<
@@ -11045,7 +11453,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
  */
   /*try:*/ {
 
-    /* "fatslimlib/core_base.pyx":747
+    /* "fatslimlib/core_base.pyx":762
  * 
  *         # Create numpy array
  *         with gil:             # <<<<<<<<<<<<<<
@@ -11058,48 +11466,48 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_base.pyx":748
+          /* "fatslimlib/core_base.pyx":763
  *         # Create numpy array
  *         with gil:
  *             atomids = np.empty(self.size, dtype=np.int64)             # <<<<<<<<<<<<<<
  * 
  *         for i in range(self.size):
  */
-          __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GIVEREF(__pyx_t_1);
           PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
           __pyx_t_1 = 0;
-          __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int64); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int64); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_5);
-          if (unlikely(!__pyx_t_6.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          if (unlikely(!__pyx_t_6.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_v_atomids = __pyx_t_6;
           __pyx_t_6.memview = NULL;
           __pyx_t_6.data = NULL;
         }
 
-        /* "fatslimlib/core_base.pyx":747
+        /* "fatslimlib/core_base.pyx":762
  * 
  *         # Create numpy array
  *         with gil:             # <<<<<<<<<<<<<<
@@ -11123,7 +11531,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
         }
     }
 
-    /* "fatslimlib/core_base.pyx":750
+    /* "fatslimlib/core_base.pyx":765
  *             atomids = np.empty(self.size, dtype=np.int64)
  * 
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -11134,7 +11542,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "fatslimlib/core_base.pyx":751
+      /* "fatslimlib/core_base.pyx":766
  * 
  *         for i in range(self.size):
  *             atomids[i] = self.atoms[i].atomid             # <<<<<<<<<<<<<<
@@ -11146,7 +11554,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
       *((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_10 * __pyx_v_atomids.strides[0]) )) = __pyx_t_9;
     }
 
-    /* "fatslimlib/core_base.pyx":753
+    /* "fatslimlib/core_base.pyx":768
  *             atomids[i] = self.atoms[i].atomid
  * 
  *         return atomids             # <<<<<<<<<<<<<<
@@ -11158,7 +11566,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_base.pyx":742
+  /* "fatslimlib/core_base.pyx":757
  * 
  *     cdef fsl_int[:] fast_get_atomids(self) nogil:
  *         cdef fsl_int[:] atomids             # <<<<<<<<<<<<<<
@@ -11180,7 +11588,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
     }
   }
 
-  /* "fatslimlib/core_base.pyx":741
+  /* "fatslimlib/core_base.pyx":756
  *             self.add_atom(other.atoms[i])
  * 
  *     cdef fsl_int[:] fast_get_atomids(self) nogil:             # <<<<<<<<<<<<<<
@@ -11214,7 +11622,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_g
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":755
+/* "fatslimlib/core_base.pyx":770
  *         return atomids
  * 
  *     cdef object group_by_resid(self):             # <<<<<<<<<<<<<<
@@ -11242,7 +11650,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("group_by_resid", 0);
 
-  /* "fatslimlib/core_base.pyx":758
+  /* "fatslimlib/core_base.pyx":773
  *         cdef fsl_int i, internal_id
  *         cdef fsl_int atomid
  *         cdef fsl_int last_resid = -1             # <<<<<<<<<<<<<<
@@ -11251,19 +11659,19 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
  */
   __pyx_v_last_resid = -1;
 
-  /* "fatslimlib/core_base.pyx":762
+  /* "fatslimlib/core_base.pyx":777
  *         cdef TopologyGroup new_group
  * 
  *         groups = []             # <<<<<<<<<<<<<<
  *         for i in range(self.size):
  *             atom = self.atoms[i]
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 762; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 777; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_groups = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":763
+  /* "fatslimlib/core_base.pyx":778
  * 
  *         groups = []
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -11274,7 +11682,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fatslimlib/core_base.pyx":764
+    /* "fatslimlib/core_base.pyx":779
  *         groups = []
  *         for i in range(self.size):
  *             atom = self.atoms[i]             # <<<<<<<<<<<<<<
@@ -11283,7 +11691,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
  */
     __pyx_v_atom = (__pyx_v_self->atoms[__pyx_v_i]);
 
-    /* "fatslimlib/core_base.pyx":766
+    /* "fatslimlib/core_base.pyx":781
  *             atom = self.atoms[i]
  * 
  *             if atom.resid != last_resid:             # <<<<<<<<<<<<<<
@@ -11293,34 +11701,34 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
     __pyx_t_4 = ((__pyx_v_atom.resid != __pyx_v_last_resid) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":767
+      /* "fatslimlib/core_base.pyx":782
  * 
  *             if atom.resid != last_resid:
  *                 new_group = TopologyGroup(self.parent)             # <<<<<<<<<<<<<<
  *                 groups.append(new_group)
  *                 last_resid = atom.resid
  */
-      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 767; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(((PyObject *)__pyx_v_self->parent));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_self->parent));
       PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_self->parent));
-      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_TopologyGroup), __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 767; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_TopologyGroup), __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF_SET(__pyx_v_new_group, ((struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "fatslimlib/core_base.pyx":768
+      /* "fatslimlib/core_base.pyx":783
  *             if atom.resid != last_resid:
  *                 new_group = TopologyGroup(self.parent)
  *                 groups.append(new_group)             # <<<<<<<<<<<<<<
  *                 last_resid = atom.resid
  *             new_group.add_atom(atom)
  */
-      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_groups, ((PyObject *)__pyx_v_new_group)); if (unlikely(__pyx_t_6 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 768; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_groups, ((PyObject *)__pyx_v_new_group)); if (unlikely(__pyx_t_6 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "fatslimlib/core_base.pyx":769
+      /* "fatslimlib/core_base.pyx":784
  *                 new_group = TopologyGroup(self.parent)
  *                 groups.append(new_group)
  *                 last_resid = atom.resid             # <<<<<<<<<<<<<<
@@ -11330,7 +11738,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
       __pyx_t_7 = __pyx_v_atom.resid;
       __pyx_v_last_resid = __pyx_t_7;
 
-      /* "fatslimlib/core_base.pyx":766
+      /* "fatslimlib/core_base.pyx":781
  *             atom = self.atoms[i]
  * 
  *             if atom.resid != last_resid:             # <<<<<<<<<<<<<<
@@ -11339,18 +11747,18 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
  */
     }
 
-    /* "fatslimlib/core_base.pyx":770
+    /* "fatslimlib/core_base.pyx":785
  *                 groups.append(new_group)
  *                 last_resid = atom.resid
  *             new_group.add_atom(atom)             # <<<<<<<<<<<<<<
  * 
  *         return groups
  */
-    if (unlikely(!__pyx_v_new_group)) { __Pyx_RaiseUnboundLocalError("new_group"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 770; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
-    ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_new_group->__pyx_vtab)->add_atom(__pyx_v_new_group, __pyx_v_atom); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_v_new_group)) { __Pyx_RaiseUnboundLocalError("new_group"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 785; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
+    ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_new_group->__pyx_vtab)->add_atom(__pyx_v_new_group, __pyx_v_atom); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 785; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "fatslimlib/core_base.pyx":772
+  /* "fatslimlib/core_base.pyx":787
  *             new_group.add_atom(atom)
  * 
  *         return groups             # <<<<<<<<<<<<<<
@@ -11362,7 +11770,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
   __pyx_r = __pyx_v_groups;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":755
+  /* "fatslimlib/core_base.pyx":770
  *         return atomids
  * 
  *     cdef object group_by_resid(self):             # <<<<<<<<<<<<<<
@@ -11384,7 +11792,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid(
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":774
+/* "fatslimlib/core_base.pyx":789
  *         return groups
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -11410,7 +11818,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_13TopologyGroup_2__len__(stru
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "fatslimlib/core_base.pyx":775
+  /* "fatslimlib/core_base.pyx":790
  * 
  *     def __len__(self):
  *         return self.size             # <<<<<<<<<<<<<<
@@ -11420,7 +11828,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_13TopologyGroup_2__len__(stru
   __pyx_r = __pyx_v_self->size;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":774
+  /* "fatslimlib/core_base.pyx":789
  *         return groups
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -11434,7 +11842,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_13TopologyGroup_2__len__(stru
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":777
+/* "fatslimlib/core_base.pyx":792
  *         return self.size
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -11457,7 +11865,7 @@ static void __pyx_pf_10fatslimlib_9core_base_13TopologyGroup_4__dealloc__(struct
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "fatslimlib/core_base.pyx":778
+  /* "fatslimlib/core_base.pyx":793
  * 
  *     def __dealloc__(self):
  *         PyMem_Free(self.atoms)             # <<<<<<<<<<<<<<
@@ -11466,7 +11874,7 @@ static void __pyx_pf_10fatslimlib_9core_base_13TopologyGroup_4__dealloc__(struct
  */
   PyMem_Free(__pyx_v_self->atoms);
 
-  /* "fatslimlib/core_base.pyx":777
+  /* "fatslimlib/core_base.pyx":792
  *         return self.size
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -11478,7 +11886,7 @@ static void __pyx_pf_10fatslimlib_9core_base_13TopologyGroup_4__dealloc__(struct
   __Pyx_RefNannyFinishContext();
 }
 
-/* "fatslimlib/core_base.pyx":781
+/* "fatslimlib/core_base.pyx":796
  * 
  *     property atomids:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11513,7 +11921,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_7atomids___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":782
+  /* "fatslimlib/core_base.pyx":797
  *     property atomids:
  *         def __get__(self):
  *             return np.asarray(self.fast_get_atomids())             # <<<<<<<<<<<<<<
@@ -11521,13 +11929,13 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_7atomids___get
  *     property residue_atomids:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 797; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 797; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_self->__pyx_vtab)->fast_get_atomids(__pyx_v_self); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_4, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_fsl_int, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *)__pyx_v_self->__pyx_vtab)->fast_get_atomids(__pyx_v_self); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 797; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_4, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_fsl_int, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 797; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
   __pyx_t_5 = NULL;
@@ -11541,17 +11949,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_7atomids___get
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 797; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 797; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 797; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -11560,7 +11968,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_7atomids___get
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":781
+  /* "fatslimlib/core_base.pyx":796
  * 
  *     property atomids:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11584,7 +11992,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_7atomids___get
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":785
+/* "fatslimlib/core_base.pyx":800
  * 
  *     property residue_atomids:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11627,7 +12035,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":788
+  /* "fatslimlib/core_base.pyx":803
  *             cdef fsl_int i, internal_id
  *             cdef fsl_int atomid
  *             cdef fsl_int last_resid = -1             # <<<<<<<<<<<<<<
@@ -11636,19 +12044,19 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
  */
   __pyx_v_last_resid = -1;
 
-  /* "fatslimlib/core_base.pyx":791
+  /* "fatslimlib/core_base.pyx":806
  *             cdef topol_atom_t atom
  * 
  *             atomids = []             # <<<<<<<<<<<<<<
  *             for i in range(self.size):
  *                 atom = self.atoms[i]
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 791; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 806; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_atomids = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":792
+  /* "fatslimlib/core_base.pyx":807
  * 
  *             atomids = []
  *             for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -11659,7 +12067,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fatslimlib/core_base.pyx":793
+    /* "fatslimlib/core_base.pyx":808
  *             atomids = []
  *             for i in range(self.size):
  *                 atom = self.atoms[i]             # <<<<<<<<<<<<<<
@@ -11668,7 +12076,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
  */
     __pyx_v_atom = (__pyx_v_self->atoms[__pyx_v_i]);
 
-    /* "fatslimlib/core_base.pyx":795
+    /* "fatslimlib/core_base.pyx":810
  *                 atom = self.atoms[i]
  * 
  *                 if atom.resid != last_resid:             # <<<<<<<<<<<<<<
@@ -11678,28 +12086,28 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
     __pyx_t_4 = ((__pyx_v_atom.resid != __pyx_v_last_resid) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":796
+      /* "fatslimlib/core_base.pyx":811
  * 
  *                 if atom.resid != last_resid:
  *                     atomids.extend(list(self.parent._residues[atom.resid].atomids))             # <<<<<<<<<<<<<<
  *                     last_resid = atom.resid
  *             return np.array(atomids, dtype=np.int64)
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->parent), __pyx_n_s_residues); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 796; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->parent), __pyx_n_s_residues); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 811; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_atom.resid, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0); if (unlikely(__pyx_t_5 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 796; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_atom.resid, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0); if (unlikely(__pyx_t_5 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 811; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_atomids); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 796; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_atomids); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 811; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 796; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 811; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_6 = __Pyx_PyList_Extend(__pyx_v_atomids, __pyx_t_5); if (unlikely(__pyx_t_6 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 796; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = __Pyx_PyList_Extend(__pyx_v_atomids, __pyx_t_5); if (unlikely(__pyx_t_6 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 811; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "fatslimlib/core_base.pyx":797
+      /* "fatslimlib/core_base.pyx":812
  *                 if atom.resid != last_resid:
  *                     atomids.extend(list(self.parent._residues[atom.resid].atomids))
  *                     last_resid = atom.resid             # <<<<<<<<<<<<<<
@@ -11709,7 +12117,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
       __pyx_t_7 = __pyx_v_atom.resid;
       __pyx_v_last_resid = __pyx_t_7;
 
-      /* "fatslimlib/core_base.pyx":795
+      /* "fatslimlib/core_base.pyx":810
  *                 atom = self.atoms[i]
  * 
  *                 if atom.resid != last_resid:             # <<<<<<<<<<<<<<
@@ -11719,7 +12127,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
     }
   }
 
-  /* "fatslimlib/core_base.pyx":798
+  /* "fatslimlib/core_base.pyx":813
  *                     atomids.extend(list(self.parent._residues[atom.resid].atomids))
  *                     last_resid = atom.resid
  *             return np.array(atomids, dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -11727,26 +12135,26 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
  *     def __str__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_atomids);
   __Pyx_GIVEREF(__pyx_v_atomids);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_atomids);
-  __pyx_t_8 = PyDict_New(); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = PyDict_New(); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_int64); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_int64); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_10) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_10) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -11755,7 +12163,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
   __pyx_t_10 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":785
+  /* "fatslimlib/core_base.pyx":800
  * 
  *     property residue_atomids:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11779,7 +12187,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_15residue_atom
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":800
+/* "fatslimlib/core_base.pyx":815
  *             return np.array(atomids, dtype=np.int64)
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -11810,7 +12218,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_6__str__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "fatslimlib/core_base.pyx":801
+  /* "fatslimlib/core_base.pyx":816
  * 
  *     def __str__(self):
  *         return "TopologyGroup '%s': %i atoms" % (self.name, self.size)             # <<<<<<<<<<<<<<
@@ -11818,9 +12226,9 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_6__str__(struc
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 801; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 816; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 801; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 816; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_self->name);
   __Pyx_GIVEREF(__pyx_v_self->name);
@@ -11828,14 +12236,14 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_6__str__(struc
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_TopologyGroup_s_i_atoms, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 801; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_TopologyGroup_s_i_atoms, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 816; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":800
+  /* "fatslimlib/core_base.pyx":815
  *             return np.array(atomids, dtype=np.int64)
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -11855,7 +12263,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_6__str__(struc
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":124
+/* "fatslimlib/core_base.pxd":126
  * cdef class TopologyGroup(object):
  *     # Attrbutes
  *     cdef readonly Topology parent             # <<<<<<<<<<<<<<
@@ -11892,7 +12300,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_6parent___get_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":127
+/* "fatslimlib/core_base.pxd":129
  *     cdef bytes name
  *     cdef bytes resname
  *     cdef readonly fsl_int resid             # <<<<<<<<<<<<<<
@@ -11922,7 +12330,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_5resid___get__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->resid); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->resid); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11939,7 +12347,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_5resid___get__
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":129
+/* "fatslimlib/core_base.pxd":131
  *     cdef readonly fsl_int resid
  *     cdef topol_atom_t *atoms
  *     cdef readonly fsl_int size             # <<<<<<<<<<<<<<
@@ -11969,7 +12377,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_4size___get__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11986,7 +12394,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_13TopologyGroup_4size___get__(
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":804
+/* "fatslimlib/core_base.pyx":819
  * 
  * 
  * cdef list topol_residue_atomids_as_list(topol_residue_t *residue):             # <<<<<<<<<<<<<<
@@ -12008,19 +12416,19 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_atomids_as_list(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("topol_residue_atomids_as_list", 0);
 
-  /* "fatslimlib/core_base.pyx":807
+  /* "fatslimlib/core_base.pyx":822
  *     cdef fsl_int i
  * 
  *     obj = []             # <<<<<<<<<<<<<<
  *     for i in range(residue.size):
  *         obj.append(residue.atomids[i])
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 807; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 822; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_obj = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":808
+  /* "fatslimlib/core_base.pyx":823
  * 
  *     obj = []
  *     for i in range(residue.size):             # <<<<<<<<<<<<<<
@@ -12031,20 +12439,20 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_atomids_as_list(s
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fatslimlib/core_base.pyx":809
+    /* "fatslimlib/core_base.pyx":824
  *     obj = []
  *     for i in range(residue.size):
  *         obj.append(residue.atomids[i])             # <<<<<<<<<<<<<<
  * 
  *     return obj
  */
-    __pyx_t_1 = __Pyx_PyInt_From_fsl_int((__pyx_v_residue->atomids[__pyx_v_i])); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyInt_From_fsl_int((__pyx_v_residue->atomids[__pyx_v_i])); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyList_Append(__pyx_v_obj, __pyx_t_1); if (unlikely(__pyx_t_4 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyList_Append(__pyx_v_obj, __pyx_t_1); if (unlikely(__pyx_t_4 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":811
+  /* "fatslimlib/core_base.pyx":826
  *         obj.append(residue.atomids[i])
  * 
  *     return obj             # <<<<<<<<<<<<<<
@@ -12056,7 +12464,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_atomids_as_list(s
   __pyx_r = __pyx_v_obj;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":804
+  /* "fatslimlib/core_base.pyx":819
  * 
  * 
  * cdef list topol_residue_atomids_as_list(topol_residue_t *residue):             # <<<<<<<<<<<<<<
@@ -12076,7 +12484,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_atomids_as_list(s
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":813
+/* "fatslimlib/core_base.pyx":828
  *     return obj
  * 
  * cdef fsl_int topol_residue_atomid_index(topol_residue_t *residue, fsl_int atomid):             # <<<<<<<<<<<<<<
@@ -12093,7 +12501,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_topol_residue_atomid_index(struct
   int __pyx_t_3;
   __Pyx_RefNannySetupContext("topol_residue_atomid_index", 0);
 
-  /* "fatslimlib/core_base.pyx":815
+  /* "fatslimlib/core_base.pyx":830
  * cdef fsl_int topol_residue_atomid_index(topol_residue_t *residue, fsl_int atomid):
  *     cdef fsl_int i
  *     for i in range(residue.size):             # <<<<<<<<<<<<<<
@@ -12104,7 +12512,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_topol_residue_atomid_index(struct
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "fatslimlib/core_base.pyx":816
+    /* "fatslimlib/core_base.pyx":831
  *     cdef fsl_int i
  *     for i in range(residue.size):
  *         if residue.atomids[i] == atomid:             # <<<<<<<<<<<<<<
@@ -12114,7 +12522,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_topol_residue_atomid_index(struct
     __pyx_t_3 = (((__pyx_v_residue->atomids[__pyx_v_i]) == __pyx_v_atomid) != 0);
     if (__pyx_t_3) {
 
-      /* "fatslimlib/core_base.pyx":817
+      /* "fatslimlib/core_base.pyx":832
  *     for i in range(residue.size):
  *         if residue.atomids[i] == atomid:
  *             return i             # <<<<<<<<<<<<<<
@@ -12124,7 +12532,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_topol_residue_atomid_index(struct
       __pyx_r = __pyx_v_i;
       goto __pyx_L0;
 
-      /* "fatslimlib/core_base.pyx":816
+      /* "fatslimlib/core_base.pyx":831
  *     cdef fsl_int i
  *     for i in range(residue.size):
  *         if residue.atomids[i] == atomid:             # <<<<<<<<<<<<<<
@@ -12134,7 +12542,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_topol_residue_atomid_index(struct
     }
   }
 
-  /* "fatslimlib/core_base.pyx":818
+  /* "fatslimlib/core_base.pyx":833
  *         if residue.atomids[i] == atomid:
  *             return i
  *     return -1             # <<<<<<<<<<<<<<
@@ -12144,7 +12552,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_topol_residue_atomid_index(struct
   __pyx_r = -1;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":813
+  /* "fatslimlib/core_base.pyx":828
  *     return obj
  * 
  * cdef fsl_int topol_residue_atomid_index(topol_residue_t *residue, fsl_int atomid):             # <<<<<<<<<<<<<<
@@ -12158,7 +12566,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_topol_residue_atomid_index(struct
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":820
+/* "fatslimlib/core_base.pyx":835
  *     return -1
  * 
  * cdef dict topol_residue_to_dict(topol_residue_t *residue, bytes resname):             # <<<<<<<<<<<<<<
@@ -12186,19 +12594,19 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("topol_residue_to_dict", 0);
 
-  /* "fatslimlib/core_base.pyx":821
+  /* "fatslimlib/core_base.pyx":836
  * 
  * cdef dict topol_residue_to_dict(topol_residue_t *residue, bytes resname):
  *     atomids = []             # <<<<<<<<<<<<<<
  *     for i in range(residue.size):
  *         atomids.append(residue.atomids[i])
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 836; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_atomids = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":822
+  /* "fatslimlib/core_base.pyx":837
  * cdef dict topol_residue_to_dict(topol_residue_t *residue, bytes resname):
  *     atomids = []
  *     for i in range(residue.size):             # <<<<<<<<<<<<<<
@@ -12209,67 +12617,67 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(struct __
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fatslimlib/core_base.pyx":823
+    /* "fatslimlib/core_base.pyx":838
  *     atomids = []
  *     for i in range(residue.size):
  *         atomids.append(residue.atomids[i])             # <<<<<<<<<<<<<<
  *     atomids.sort()
  * 
  */
-    __pyx_t_1 = __Pyx_PyInt_From_fsl_int((__pyx_v_residue->atomids[__pyx_v_i])); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyInt_From_fsl_int((__pyx_v_residue->atomids[__pyx_v_i])); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 838; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyList_Append(__pyx_v_atomids, __pyx_t_1); if (unlikely(__pyx_t_4 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyList_Append(__pyx_v_atomids, __pyx_t_1); if (unlikely(__pyx_t_4 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 838; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":824
+  /* "fatslimlib/core_base.pyx":839
  *     for i in range(residue.size):
  *         atomids.append(residue.atomids[i])
  *     atomids.sort()             # <<<<<<<<<<<<<<
  * 
  *     resdict = {
  */
-  __pyx_t_4 = PyList_Sort(__pyx_v_atomids); if (unlikely(__pyx_t_4 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyList_Sort(__pyx_v_atomids); if (unlikely(__pyx_t_4 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 839; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":827
+  /* "fatslimlib/core_base.pyx":842
  * 
  *     resdict = {
  *         "resname": str(resname.decode()),             # <<<<<<<<<<<<<<
  *         "resid": residue.resid,
  *         "name": str(resname.decode()) + "%i" % residue.resid,
  */
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if (unlikely(__pyx_v_resname == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_5 = __Pyx_decode_bytes(__pyx_v_resname, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_decode_bytes(__pyx_v_resname, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_resname, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_resname, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "fatslimlib/core_base.pyx":828
+  /* "fatslimlib/core_base.pyx":843
  *     resdict = {
  *         "resname": str(resname.decode()),
  *         "resid": residue.resid,             # <<<<<<<<<<<<<<
  *         "name": str(resname.decode()) + "%i" % residue.resid,
  *         "atomids": np.array(atomids, dtype=np.int64),
  */
-  __pyx_t_5 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->resid); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->resid); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_resid, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_resid, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "fatslimlib/core_base.pyx":829
+  /* "fatslimlib/core_base.pyx":844
  *         "resname": str(resname.decode()),
  *         "resid": residue.resid,
  *         "name": str(resname.decode()) + "%i" % residue.resid,             # <<<<<<<<<<<<<<
@@ -12278,79 +12686,79 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(struct __
  */
   if (unlikely(__pyx_v_resname == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 829; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 844; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_5 = __Pyx_decode_bytes(__pyx_v_resname, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 829; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_decode_bytes(__pyx_v_resname, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 844; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 829; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 844; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 829; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 844; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->resid); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 829; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->resid); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 844; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_i, __pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 829; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_i, __pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 844; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyNumber_Add(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 829; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyNumber_Add(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 844; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "fatslimlib/core_base.pyx":830
+  /* "fatslimlib/core_base.pyx":845
  *         "resid": residue.resid,
  *         "name": str(resname.decode()) + "%i" % residue.resid,
  *         "atomids": np.array(atomids, dtype=np.int64),             # <<<<<<<<<<<<<<
  *         "size": residue.size}
  * 
  */
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_v_atomids);
   __Pyx_GIVEREF(__pyx_v_atomids);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_atomids);
-  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_int64); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_int64); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_atomids, __pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_atomids, __pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "fatslimlib/core_base.pyx":831
+  /* "fatslimlib/core_base.pyx":846
  *         "name": str(resname.decode()) + "%i" % residue.resid,
  *         "atomids": np.array(atomids, dtype=np.int64),
  *         "size": residue.size}             # <<<<<<<<<<<<<<
  * 
  *     return resdict
  */
-  __pyx_t_9 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->size); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 831; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->size); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 846; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_size, __pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_size, __pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 842; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_resdict = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":833
+  /* "fatslimlib/core_base.pyx":848
  *         "size": residue.size}
  * 
  *     return resdict             # <<<<<<<<<<<<<<
@@ -12362,7 +12770,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(struct __
   __pyx_r = __pyx_v_resdict;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":820
+  /* "fatslimlib/core_base.pyx":835
  *     return -1
  * 
  * cdef dict topol_residue_to_dict(topol_residue_t *residue, bytes resname):             # <<<<<<<<<<<<<<
@@ -12388,7 +12796,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(struct __
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":835
+/* "fatslimlib/core_base.pyx":850
  *     return resdict
  * 
  * cdef void topol_residue_append_atom(topol_residue_t *residue, topol_atom_t *atom):             # <<<<<<<<<<<<<<
@@ -12405,7 +12813,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("topol_residue_append_atom", 0);
 
-  /* "fatslimlib/core_base.pyx":836
+  /* "fatslimlib/core_base.pyx":851
  * 
  * cdef void topol_residue_append_atom(topol_residue_t *residue, topol_atom_t *atom):
  *     if residue == NULL:             # <<<<<<<<<<<<<<
@@ -12415,7 +12823,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
   __pyx_t_1 = ((__pyx_v_residue == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":837
+    /* "fatslimlib/core_base.pyx":852
  * cdef void topol_residue_append_atom(topol_residue_t *residue, topol_atom_t *atom):
  *     if residue == NULL:
  *         raise RuntimeError             # <<<<<<<<<<<<<<
@@ -12423,9 +12831,9 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  *     if residue.size == residue.allocated_size:
  */
     __Pyx_Raise(__pyx_builtin_RuntimeError, 0, 0, 0);
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 837; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 852; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":836
+    /* "fatslimlib/core_base.pyx":851
  * 
  * cdef void topol_residue_append_atom(topol_residue_t *residue, topol_atom_t *atom):
  *     if residue == NULL:             # <<<<<<<<<<<<<<
@@ -12434,7 +12842,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":839
+  /* "fatslimlib/core_base.pyx":854
  *         raise RuntimeError
  * 
  *     if residue.size == residue.allocated_size:             # <<<<<<<<<<<<<<
@@ -12444,7 +12852,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
   __pyx_t_1 = ((__pyx_v_residue->size == __pyx_v_residue->allocated_size) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":840
+    /* "fatslimlib/core_base.pyx":855
  * 
  *     if residue.size == residue.allocated_size:
  *         residue.allocated_size += RESIDUE_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -12453,7 +12861,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  */
     __pyx_v_residue->allocated_size = (__pyx_v_residue->allocated_size + 20);
 
-    /* "fatslimlib/core_base.pyx":841
+    /* "fatslimlib/core_base.pyx":856
  *     if residue.size == residue.allocated_size:
  *         residue.allocated_size += RESIDUE_ALLOCATION_INCREMENT
  *         residue.atom_internal_ids = \             # <<<<<<<<<<<<<<
@@ -12462,7 +12870,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  */
     __pyx_v_residue->atom_internal_ids = ((fsl_int *)PyMem_Realloc(((void *)__pyx_v_residue->atom_internal_ids), ((sizeof(fsl_int)) * __pyx_v_residue->allocated_size)));
 
-    /* "fatslimlib/core_base.pyx":844
+    /* "fatslimlib/core_base.pyx":859
  *             <fsl_int *> PyMem_Realloc(<void *> residue.atom_internal_ids,
  *                                   sizeof(fsl_int) * residue.allocated_size)
  *         if residue.atom_internal_ids == NULL:             # <<<<<<<<<<<<<<
@@ -12472,16 +12880,16 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
     __pyx_t_1 = ((__pyx_v_residue->atom_internal_ids == NULL) != 0);
     if (__pyx_t_1) {
 
-      /* "fatslimlib/core_base.pyx":845
+      /* "fatslimlib/core_base.pyx":860
  *                                   sizeof(fsl_int) * residue.allocated_size)
  *         if residue.atom_internal_ids == NULL:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  *         residue.atomids = \
  *             <fsl_int *> PyMem_Realloc(<void *> residue.atomids, sizeof(fsl_int) * residue.allocated_size)
  */
-      PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "fatslimlib/core_base.pyx":844
+      /* "fatslimlib/core_base.pyx":859
  *             <fsl_int *> PyMem_Realloc(<void *> residue.atom_internal_ids,
  *                                   sizeof(fsl_int) * residue.allocated_size)
  *         if residue.atom_internal_ids == NULL:             # <<<<<<<<<<<<<<
@@ -12490,7 +12898,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  */
     }
 
-    /* "fatslimlib/core_base.pyx":846
+    /* "fatslimlib/core_base.pyx":861
  *         if residue.atom_internal_ids == NULL:
  *             raise MemoryError
  *         residue.atomids = \             # <<<<<<<<<<<<<<
@@ -12499,7 +12907,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  */
     __pyx_v_residue->atomids = ((fsl_int *)PyMem_Realloc(((void *)__pyx_v_residue->atomids), ((sizeof(fsl_int)) * __pyx_v_residue->allocated_size)));
 
-    /* "fatslimlib/core_base.pyx":848
+    /* "fatslimlib/core_base.pyx":863
  *         residue.atomids = \
  *             <fsl_int *> PyMem_Realloc(<void *> residue.atomids, sizeof(fsl_int) * residue.allocated_size)
  *         if residue.atomids == NULL:             # <<<<<<<<<<<<<<
@@ -12509,16 +12917,16 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
     __pyx_t_1 = ((__pyx_v_residue->atomids == NULL) != 0);
     if (__pyx_t_1) {
 
-      /* "fatslimlib/core_base.pyx":849
+      /* "fatslimlib/core_base.pyx":864
  *             <fsl_int *> PyMem_Realloc(<void *> residue.atomids, sizeof(fsl_int) * residue.allocated_size)
  *         if residue.atomids == NULL:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *     atom.resid = residue.resid
  */
-      PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 849; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "fatslimlib/core_base.pyx":848
+      /* "fatslimlib/core_base.pyx":863
  *         residue.atomids = \
  *             <fsl_int *> PyMem_Realloc(<void *> residue.atomids, sizeof(fsl_int) * residue.allocated_size)
  *         if residue.atomids == NULL:             # <<<<<<<<<<<<<<
@@ -12527,7 +12935,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  */
     }
 
-    /* "fatslimlib/core_base.pyx":839
+    /* "fatslimlib/core_base.pyx":854
  *         raise RuntimeError
  * 
  *     if residue.size == residue.allocated_size:             # <<<<<<<<<<<<<<
@@ -12536,7 +12944,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":851
+  /* "fatslimlib/core_base.pyx":866
  *             raise MemoryError
  * 
  *     atom.resid = residue.resid             # <<<<<<<<<<<<<<
@@ -12546,7 +12954,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
   __pyx_t_2 = __pyx_v_residue->resid;
   __pyx_v_atom->resid = __pyx_t_2;
 
-  /* "fatslimlib/core_base.pyx":852
+  /* "fatslimlib/core_base.pyx":867
  * 
  *     atom.resid = residue.resid
  *     atom.residue_internal_id = residue.internal_id             # <<<<<<<<<<<<<<
@@ -12556,7 +12964,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
   __pyx_t_2 = __pyx_v_residue->internal_id;
   __pyx_v_atom->residue_internal_id = __pyx_t_2;
 
-  /* "fatslimlib/core_base.pyx":853
+  /* "fatslimlib/core_base.pyx":868
  *     atom.resid = residue.resid
  *     atom.residue_internal_id = residue.internal_id
  *     residue.atom_internal_ids[residue.size] = atom.internal_id             # <<<<<<<<<<<<<<
@@ -12566,7 +12974,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
   __pyx_t_2 = __pyx_v_atom->internal_id;
   (__pyx_v_residue->atom_internal_ids[__pyx_v_residue->size]) = __pyx_t_2;
 
-  /* "fatslimlib/core_base.pyx":854
+  /* "fatslimlib/core_base.pyx":869
  *     atom.residue_internal_id = residue.internal_id
  *     residue.atom_internal_ids[residue.size] = atom.internal_id
  *     residue.atomids[residue.size] = atom.atomid             # <<<<<<<<<<<<<<
@@ -12576,7 +12984,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
   __pyx_t_2 = __pyx_v_atom->atomid;
   (__pyx_v_residue->atomids[__pyx_v_residue->size]) = __pyx_t_2;
 
-  /* "fatslimlib/core_base.pyx":855
+  /* "fatslimlib/core_base.pyx":870
  *     residue.atom_internal_ids[residue.size] = atom.internal_id
  *     residue.atomids[residue.size] = atom.atomid
  *     residue.size += 1             # <<<<<<<<<<<<<<
@@ -12585,7 +12993,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
  */
   __pyx_v_residue->size = (__pyx_v_residue->size + 1);
 
-  /* "fatslimlib/core_base.pyx":835
+  /* "fatslimlib/core_base.pyx":850
  *     return resdict
  * 
  * cdef void topol_residue_append_atom(topol_residue_t *residue, topol_atom_t *atom):             # <<<<<<<<<<<<<<
@@ -12601,7 +13009,7 @@ static void __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(struct __p
   __Pyx_RefNannyFinishContext();
 }
 
-/* "fatslimlib/core_base.pyx":859
+/* "fatslimlib/core_base.pyx":874
  * cdef class Topology(object):
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -12636,7 +13044,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "fatslimlib/core_base.pyx":860
+  /* "fatslimlib/core_base.pyx":875
  * 
  *     def __init__(self):
  *         self.atomnames = \             # <<<<<<<<<<<<<<
@@ -12645,7 +13053,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atomnames = ((__pyx_t_10fatslimlib_9core_base_strname_t *)PyMem_Realloc(NULL, ((sizeof(__pyx_t_10fatslimlib_9core_base_strname_t)) * 10)));
 
-  /* "fatslimlib/core_base.pyx":862
+  /* "fatslimlib/core_base.pyx":877
  *         self.atomnames = \
  *             <strname_t *> PyMem_Realloc(NULL, sizeof(strname_t) * NAME_ALLOCATION_INCREMENT)
  *         if self.atomnames == NULL:             # <<<<<<<<<<<<<<
@@ -12655,16 +13063,16 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
   __pyx_t_1 = ((__pyx_v_self->atomnames == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":863
+    /* "fatslimlib/core_base.pyx":878
  *             <strname_t *> PyMem_Realloc(NULL, sizeof(strname_t) * NAME_ALLOCATION_INCREMENT)
  *         if self.atomnames == NULL:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  *         self.atomnames_size = 0
  *         self.atomnames_allocated_size = NAME_ALLOCATION_INCREMENT
  */
-    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 878; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":862
+    /* "fatslimlib/core_base.pyx":877
  *         self.atomnames = \
  *             <strname_t *> PyMem_Realloc(NULL, sizeof(strname_t) * NAME_ALLOCATION_INCREMENT)
  *         if self.atomnames == NULL:             # <<<<<<<<<<<<<<
@@ -12673,7 +13081,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   }
 
-  /* "fatslimlib/core_base.pyx":864
+  /* "fatslimlib/core_base.pyx":879
  *         if self.atomnames == NULL:
  *             raise MemoryError
  *         self.atomnames_size = 0             # <<<<<<<<<<<<<<
@@ -12682,7 +13090,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atomnames_size = 0;
 
-  /* "fatslimlib/core_base.pyx":865
+  /* "fatslimlib/core_base.pyx":880
  *             raise MemoryError
  *         self.atomnames_size = 0
  *         self.atomnames_allocated_size = NAME_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -12691,7 +13099,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atomnames_allocated_size = 10;
 
-  /* "fatslimlib/core_base.pyx":867
+  /* "fatslimlib/core_base.pyx":882
  *         self.atomnames_allocated_size = NAME_ALLOCATION_INCREMENT
  * 
  *         self.resnames = \             # <<<<<<<<<<<<<<
@@ -12700,7 +13108,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->resnames = ((__pyx_t_10fatslimlib_9core_base_strname_t *)PyMem_Realloc(NULL, ((sizeof(__pyx_t_10fatslimlib_9core_base_strname_t)) * 10)));
 
-  /* "fatslimlib/core_base.pyx":869
+  /* "fatslimlib/core_base.pyx":884
  *         self.resnames = \
  *             <strname_t *> PyMem_Realloc(NULL, sizeof(strname_t) * NAME_ALLOCATION_INCREMENT)
  *         if self.resnames == NULL:             # <<<<<<<<<<<<<<
@@ -12710,16 +13118,16 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
   __pyx_t_1 = ((__pyx_v_self->resnames == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":870
+    /* "fatslimlib/core_base.pyx":885
  *             <strname_t *> PyMem_Realloc(NULL, sizeof(strname_t) * NAME_ALLOCATION_INCREMENT)
  *         if self.resnames == NULL:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  *         self.resnames_size = 0
  *         self.resnames_allocated_size = NAME_ALLOCATION_INCREMENT
  */
-    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 870; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 885; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":869
+    /* "fatslimlib/core_base.pyx":884
  *         self.resnames = \
  *             <strname_t *> PyMem_Realloc(NULL, sizeof(strname_t) * NAME_ALLOCATION_INCREMENT)
  *         if self.resnames == NULL:             # <<<<<<<<<<<<<<
@@ -12728,7 +13136,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   }
 
-  /* "fatslimlib/core_base.pyx":871
+  /* "fatslimlib/core_base.pyx":886
  *         if self.resnames == NULL:
  *             raise MemoryError
  *         self.resnames_size = 0             # <<<<<<<<<<<<<<
@@ -12737,7 +13145,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->resnames_size = 0;
 
-  /* "fatslimlib/core_base.pyx":872
+  /* "fatslimlib/core_base.pyx":887
  *             raise MemoryError
  *         self.resnames_size = 0
  *         self.resnames_allocated_size = NAME_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -12746,7 +13154,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->resnames_allocated_size = 10;
 
-  /* "fatslimlib/core_base.pyx":874
+  /* "fatslimlib/core_base.pyx":889
  *         self.resnames_allocated_size = NAME_ALLOCATION_INCREMENT
  * 
  *         self.atoms = NULL             # <<<<<<<<<<<<<<
@@ -12755,7 +13163,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atoms = NULL;
 
-  /* "fatslimlib/core_base.pyx":875
+  /* "fatslimlib/core_base.pyx":890
  * 
  *         self.atoms = NULL
  *         self.atoms_size = 0             # <<<<<<<<<<<<<<
@@ -12764,7 +13172,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atoms_size = 0;
 
-  /* "fatslimlib/core_base.pyx":876
+  /* "fatslimlib/core_base.pyx":891
  *         self.atoms = NULL
  *         self.atoms_size = 0
  *         self.atoms_allocated_size = 0             # <<<<<<<<<<<<<<
@@ -12773,7 +13181,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atoms_allocated_size = 0;
 
-  /* "fatslimlib/core_base.pyx":877
+  /* "fatslimlib/core_base.pyx":892
  *         self.atoms_size = 0
  *         self.atoms_allocated_size = 0
  *         self.set_atoms_allocation(ATOMS_ALLOCATION_INCREMENT)             # <<<<<<<<<<<<<<
@@ -12782,7 +13190,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->set_atoms_allocation(__pyx_v_self, 0x3E8);
 
-  /* "fatslimlib/core_base.pyx":879
+  /* "fatslimlib/core_base.pyx":894
  *         self.set_atoms_allocation(ATOMS_ALLOCATION_INCREMENT)
  * 
  *         self.atomids_to_internalids = \             # <<<<<<<<<<<<<<
@@ -12791,7 +13199,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atomids_to_internalids = ((fsl_int *)PyMem_Realloc(NULL, ((sizeof(fsl_int)) * 0x3E8)));
 
-  /* "fatslimlib/core_base.pyx":881
+  /* "fatslimlib/core_base.pyx":896
  *         self.atomids_to_internalids = \
  *             <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * ATOMS_ALLOCATION_INCREMENT)
  *         if self.atomids_to_internalids == NULL:             # <<<<<<<<<<<<<<
@@ -12801,16 +13209,16 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
   __pyx_t_1 = ((__pyx_v_self->atomids_to_internalids == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":882
+    /* "fatslimlib/core_base.pyx":897
  *             <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * ATOMS_ALLOCATION_INCREMENT)
  *         if self.atomids_to_internalids == NULL:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  *         for i in range(ATOMS_ALLOCATION_INCREMENT):
  *             self.atomids_to_internalids[i] = NOTSET
  */
-    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 882; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 897; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":881
+    /* "fatslimlib/core_base.pyx":896
  *         self.atomids_to_internalids = \
  *             <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * ATOMS_ALLOCATION_INCREMENT)
  *         if self.atomids_to_internalids == NULL:             # <<<<<<<<<<<<<<
@@ -12819,7 +13227,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   }
 
-  /* "fatslimlib/core_base.pyx":883
+  /* "fatslimlib/core_base.pyx":898
  *         if self.atomids_to_internalids == NULL:
  *             raise MemoryError
  *         for i in range(ATOMS_ALLOCATION_INCREMENT):             # <<<<<<<<<<<<<<
@@ -12829,7 +13237,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
   for (__pyx_t_2 = 0; __pyx_t_2 < 0x3E8; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "fatslimlib/core_base.pyx":884
+    /* "fatslimlib/core_base.pyx":899
  *             raise MemoryError
  *         for i in range(ATOMS_ALLOCATION_INCREMENT):
  *             self.atomids_to_internalids[i] = NOTSET             # <<<<<<<<<<<<<<
@@ -12839,7 +13247,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
     (__pyx_v_self->atomids_to_internalids[__pyx_v_i]) = -12345;
   }
 
-  /* "fatslimlib/core_base.pyx":885
+  /* "fatslimlib/core_base.pyx":900
  *         for i in range(ATOMS_ALLOCATION_INCREMENT):
  *             self.atomids_to_internalids[i] = NOTSET
  *         self.atomids_to_internalids_size = 0             # <<<<<<<<<<<<<<
@@ -12848,7 +13256,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atomids_to_internalids_size = 0;
 
-  /* "fatslimlib/core_base.pyx":886
+  /* "fatslimlib/core_base.pyx":901
  *             self.atomids_to_internalids[i] = NOTSET
  *         self.atomids_to_internalids_size = 0
  *         self.atomids_to_internalids_allocated_size = ATOMS_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -12857,7 +13265,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->atomids_to_internalids_allocated_size = 0x3E8;
 
-  /* "fatslimlib/core_base.pyx":888
+  /* "fatslimlib/core_base.pyx":903
  *         self.atomids_to_internalids_allocated_size = ATOMS_ALLOCATION_INCREMENT
  * 
  *         self.residues = NULL             # <<<<<<<<<<<<<<
@@ -12866,7 +13274,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->residues = NULL;
 
-  /* "fatslimlib/core_base.pyx":889
+  /* "fatslimlib/core_base.pyx":904
  * 
  *         self.residues = NULL
  *         self.residues_size = 0             # <<<<<<<<<<<<<<
@@ -12875,7 +13283,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->residues_size = 0;
 
-  /* "fatslimlib/core_base.pyx":890
+  /* "fatslimlib/core_base.pyx":905
  *         self.residues = NULL
  *         self.residues_size = 0
  *         self.residues_allocated_size = 0             # <<<<<<<<<<<<<<
@@ -12884,7 +13292,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->residues_allocated_size = 0;
 
-  /* "fatslimlib/core_base.pyx":891
+  /* "fatslimlib/core_base.pyx":906
  *         self.residues_size = 0
  *         self.residues_allocated_size = 0
  *         self.set_residues_allocation(RESIDUES_ALLOCATION_INCREMENT)             # <<<<<<<<<<<<<<
@@ -12893,7 +13301,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->set_residues_allocation(__pyx_v_self, 50);
 
-  /* "fatslimlib/core_base.pyx":893
+  /* "fatslimlib/core_base.pyx":908
  *         self.set_residues_allocation(RESIDUES_ALLOCATION_INCREMENT)
  * 
  *         self.resids_to_internalids = \             # <<<<<<<<<<<<<<
@@ -12902,7 +13310,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->resids_to_internalids = ((fsl_int *)PyMem_Realloc(NULL, ((sizeof(fsl_int)) * 50)));
 
-  /* "fatslimlib/core_base.pyx":895
+  /* "fatslimlib/core_base.pyx":910
  *         self.resids_to_internalids = \
  *             <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * RESIDUES_ALLOCATION_INCREMENT)
  *         if self.resids_to_internalids == NULL:             # <<<<<<<<<<<<<<
@@ -12912,16 +13320,16 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
   __pyx_t_1 = ((__pyx_v_self->resids_to_internalids == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":896
+    /* "fatslimlib/core_base.pyx":911
  *             <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * RESIDUES_ALLOCATION_INCREMENT)
  *         if self.resids_to_internalids == NULL:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  *         for i in range(RESIDUES_ALLOCATION_INCREMENT):
  *             self.resids_to_internalids[i] = NOTSET
  */
-    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":895
+    /* "fatslimlib/core_base.pyx":910
  *         self.resids_to_internalids = \
  *             <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * RESIDUES_ALLOCATION_INCREMENT)
  *         if self.resids_to_internalids == NULL:             # <<<<<<<<<<<<<<
@@ -12930,7 +13338,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   }
 
-  /* "fatslimlib/core_base.pyx":897
+  /* "fatslimlib/core_base.pyx":912
  *         if self.resids_to_internalids == NULL:
  *             raise MemoryError
  *         for i in range(RESIDUES_ALLOCATION_INCREMENT):             # <<<<<<<<<<<<<<
@@ -12940,7 +13348,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
   for (__pyx_t_2 = 0; __pyx_t_2 < 50; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "fatslimlib/core_base.pyx":898
+    /* "fatslimlib/core_base.pyx":913
  *             raise MemoryError
  *         for i in range(RESIDUES_ALLOCATION_INCREMENT):
  *             self.resids_to_internalids[i] = NOTSET             # <<<<<<<<<<<<<<
@@ -12950,7 +13358,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
     (__pyx_v_self->resids_to_internalids[__pyx_v_i]) = -12345;
   }
 
-  /* "fatslimlib/core_base.pyx":900
+  /* "fatslimlib/core_base.pyx":915
  *             self.resids_to_internalids[i] = NOTSET
  * 
  *         self.resids_to_internalids_size = 0             # <<<<<<<<<<<<<<
@@ -12959,7 +13367,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->resids_to_internalids_size = 0;
 
-  /* "fatslimlib/core_base.pyx":901
+  /* "fatslimlib/core_base.pyx":916
  * 
  *         self.resids_to_internalids_size = 0
  *         self.resids_to_internalids_allocated_size = RESIDUES_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -12968,7 +13376,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
  */
   __pyx_v_self->resids_to_internalids_allocated_size = 50;
 
-  /* "fatslimlib/core_base.pyx":859
+  /* "fatslimlib/core_base.pyx":874
  * cdef class Topology(object):
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -12987,7 +13395,7 @@ static int __pyx_pf_10fatslimlib_9core_base_8Topology___init__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":903
+/* "fatslimlib/core_base.pyx":918
  *         self.resids_to_internalids_allocated_size = RESIDUES_ALLOCATION_INCREMENT
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -13013,7 +13421,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
   fsl_int __pyx_t_2;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "fatslimlib/core_base.pyx":905
+  /* "fatslimlib/core_base.pyx":920
  *     def __dealloc__(self):
  *         cdef fsl_int i
  *         PyMem_Free(self.atomnames)             # <<<<<<<<<<<<<<
@@ -13022,7 +13430,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
  */
   PyMem_Free(__pyx_v_self->atomnames);
 
-  /* "fatslimlib/core_base.pyx":906
+  /* "fatslimlib/core_base.pyx":921
  *         cdef fsl_int i
  *         PyMem_Free(self.atomnames)
  *         PyMem_Free(self.resnames)             # <<<<<<<<<<<<<<
@@ -13031,7 +13439,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
  */
   PyMem_Free(__pyx_v_self->resnames);
 
-  /* "fatslimlib/core_base.pyx":908
+  /* "fatslimlib/core_base.pyx":923
  *         PyMem_Free(self.resnames)
  * 
  *         for i in range(self.residues_size):             # <<<<<<<<<<<<<<
@@ -13042,7 +13450,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "fatslimlib/core_base.pyx":909
+    /* "fatslimlib/core_base.pyx":924
  * 
  *         for i in range(self.residues_size):
  *             PyMem_Free(self.residues[i].atom_internal_ids)             # <<<<<<<<<<<<<<
@@ -13051,7 +13459,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
  */
     PyMem_Free((__pyx_v_self->residues[__pyx_v_i]).atom_internal_ids);
 
-    /* "fatslimlib/core_base.pyx":910
+    /* "fatslimlib/core_base.pyx":925
  *         for i in range(self.residues_size):
  *             PyMem_Free(self.residues[i].atom_internal_ids)
  *             PyMem_Free(self.residues[i].atomids)             # <<<<<<<<<<<<<<
@@ -13061,7 +13469,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
     PyMem_Free((__pyx_v_self->residues[__pyx_v_i]).atomids);
   }
 
-  /* "fatslimlib/core_base.pyx":911
+  /* "fatslimlib/core_base.pyx":926
  *             PyMem_Free(self.residues[i].atom_internal_ids)
  *             PyMem_Free(self.residues[i].atomids)
  *         PyMem_Free(self.residues)             # <<<<<<<<<<<<<<
@@ -13070,7 +13478,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
  */
   PyMem_Free(__pyx_v_self->residues);
 
-  /* "fatslimlib/core_base.pyx":912
+  /* "fatslimlib/core_base.pyx":927
  *             PyMem_Free(self.residues[i].atomids)
  *         PyMem_Free(self.residues)
  *         PyMem_Free(self.resids_to_internalids)             # <<<<<<<<<<<<<<
@@ -13079,7 +13487,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
  */
   PyMem_Free(__pyx_v_self->resids_to_internalids);
 
-  /* "fatslimlib/core_base.pyx":914
+  /* "fatslimlib/core_base.pyx":929
  *         PyMem_Free(self.resids_to_internalids)
  * 
  *         PyMem_Free(self.atoms)             # <<<<<<<<<<<<<<
@@ -13088,7 +13496,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
  */
   PyMem_Free(__pyx_v_self->atoms);
 
-  /* "fatslimlib/core_base.pyx":915
+  /* "fatslimlib/core_base.pyx":930
  * 
  *         PyMem_Free(self.atoms)
  *         PyMem_Free(self.atomids_to_internalids)             # <<<<<<<<<<<<<<
@@ -13097,7 +13505,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
  */
   PyMem_Free(__pyx_v_self->atomids_to_internalids);
 
-  /* "fatslimlib/core_base.pyx":903
+  /* "fatslimlib/core_base.pyx":918
  *         self.resids_to_internalids_allocated_size = RESIDUES_ALLOCATION_INCREMENT
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -13109,7 +13517,7 @@ static void __pyx_pf_10fatslimlib_9core_base_8Topology_2__dealloc__(struct __pyx
   __Pyx_RefNannyFinishContext();
 }
 
-/* "fatslimlib/core_base.pyx":917
+/* "fatslimlib/core_base.pyx":932
  *         PyMem_Free(self.atomids_to_internalids)
  * 
  *     cdef void set_atoms_allocation(self, fsl_int size):             # <<<<<<<<<<<<<<
@@ -13128,7 +13536,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_atoms_allocation", 0);
 
-  /* "fatslimlib/core_base.pyx":919
+  /* "fatslimlib/core_base.pyx":934
  *     cdef void set_atoms_allocation(self, fsl_int size):
  *         cdef fsl_int i
  *         self.atoms = <topol_atom_t *> PyMem_Realloc(<void *> self.atoms,             # <<<<<<<<<<<<<<
@@ -13137,7 +13545,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
  */
   __pyx_v_self->atoms = ((struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *)PyMem_Realloc(((void *)__pyx_v_self->atoms), ((sizeof(struct __pyx_t_10fatslimlib_9core_base_topol_atom_t)) * __pyx_v_size)));
 
-  /* "fatslimlib/core_base.pyx":921
+  /* "fatslimlib/core_base.pyx":936
  *         self.atoms = <topol_atom_t *> PyMem_Realloc(<void *> self.atoms,
  *                                                     sizeof(topol_atom_t) * size)
  *         if self.atoms == NULL:             # <<<<<<<<<<<<<<
@@ -13147,16 +13555,16 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
   __pyx_t_1 = ((__pyx_v_self->atoms == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":922
+    /* "fatslimlib/core_base.pyx":937
  *                                                     sizeof(topol_atom_t) * size)
  *         if self.atoms == NULL:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *         for i in range(self.atoms_allocated_size, size):
  */
-    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 922; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 937; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":921
+    /* "fatslimlib/core_base.pyx":936
  *         self.atoms = <topol_atom_t *> PyMem_Realloc(<void *> self.atoms,
  *                                                     sizeof(topol_atom_t) * size)
  *         if self.atoms == NULL:             # <<<<<<<<<<<<<<
@@ -13165,7 +13573,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
  */
   }
 
-  /* "fatslimlib/core_base.pyx":924
+  /* "fatslimlib/core_base.pyx":939
  *             raise MemoryError
  * 
  *         for i in range(self.atoms_allocated_size, size):             # <<<<<<<<<<<<<<
@@ -13176,7 +13584,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
   for (__pyx_t_3 = __pyx_v_self->atoms_allocated_size; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fatslimlib/core_base.pyx":925
+    /* "fatslimlib/core_base.pyx":940
  * 
  *         for i in range(self.atoms_allocated_size, size):
  *             self.atoms[i].atomid = NOTSET             # <<<<<<<<<<<<<<
@@ -13185,7 +13593,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
  */
     (__pyx_v_self->atoms[__pyx_v_i]).atomid = -12345;
 
-    /* "fatslimlib/core_base.pyx":926
+    /* "fatslimlib/core_base.pyx":941
  *         for i in range(self.atoms_allocated_size, size):
  *             self.atoms[i].atomid = NOTSET
  *             self.atoms[i].internal_id = NOTSET             # <<<<<<<<<<<<<<
@@ -13194,7 +13602,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
  */
     (__pyx_v_self->atoms[__pyx_v_i]).internal_id = -12345;
 
-    /* "fatslimlib/core_base.pyx":927
+    /* "fatslimlib/core_base.pyx":942
  *             self.atoms[i].atomid = NOTSET
  *             self.atoms[i].internal_id = NOTSET
  *             self.atoms[i].resid = NOTSET             # <<<<<<<<<<<<<<
@@ -13203,7 +13611,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
  */
     (__pyx_v_self->atoms[__pyx_v_i]).resid = -12345;
 
-    /* "fatslimlib/core_base.pyx":928
+    /* "fatslimlib/core_base.pyx":943
  *             self.atoms[i].internal_id = NOTSET
  *             self.atoms[i].resid = NOTSET
  *             self.atoms[i].residue_internal_id = NOTSET             # <<<<<<<<<<<<<<
@@ -13212,7 +13620,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
  */
     (__pyx_v_self->atoms[__pyx_v_i]).residue_internal_id = -12345;
 
-    /* "fatslimlib/core_base.pyx":929
+    /* "fatslimlib/core_base.pyx":944
  *             self.atoms[i].resid = NOTSET
  *             self.atoms[i].residue_internal_id = NOTSET
  *             self.atoms[i].name_id = NOTSET             # <<<<<<<<<<<<<<
@@ -13222,7 +13630,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
     (__pyx_v_self->atoms[__pyx_v_i]).name_id = -12345;
   }
 
-  /* "fatslimlib/core_base.pyx":931
+  /* "fatslimlib/core_base.pyx":946
  *             self.atoms[i].name_id = NOTSET
  * 
  *         self.atoms_allocated_size = size             # <<<<<<<<<<<<<<
@@ -13231,7 +13639,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
  */
   __pyx_v_self->atoms_allocated_size = __pyx_v_size;
 
-  /* "fatslimlib/core_base.pyx":917
+  /* "fatslimlib/core_base.pyx":932
  *         PyMem_Free(self.atomids_to_internalids)
  * 
  *     cdef void set_atoms_allocation(self, fsl_int size):             # <<<<<<<<<<<<<<
@@ -13247,7 +13655,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_atoms_allocation(struc
   __Pyx_RefNannyFinishContext();
 }
 
-/* "fatslimlib/core_base.pyx":933
+/* "fatslimlib/core_base.pyx":948
  *         self.atoms_allocated_size = size
  * 
  *     cdef void set_residues_allocation(self, fsl_int size):             # <<<<<<<<<<<<<<
@@ -13266,7 +13674,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_residues_allocation", 0);
 
-  /* "fatslimlib/core_base.pyx":935
+  /* "fatslimlib/core_base.pyx":950
  *     cdef void set_residues_allocation(self, fsl_int size):
  *         cdef fsl_int i
  *         self.residues = <topol_residue_t *> PyMem_Realloc(<void *>self.residues,             # <<<<<<<<<<<<<<
@@ -13275,7 +13683,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
   __pyx_v_self->residues = ((struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *)PyMem_Realloc(((void *)__pyx_v_self->residues), ((sizeof(struct __pyx_t_10fatslimlib_9core_base_topol_residue_t)) * __pyx_v_size)));
 
-  /* "fatslimlib/core_base.pyx":937
+  /* "fatslimlib/core_base.pyx":952
  *         self.residues = <topol_residue_t *> PyMem_Realloc(<void *>self.residues,
  *                                                           sizeof(topol_residue_t) * size)
  *         if self.residues == NULL:             # <<<<<<<<<<<<<<
@@ -13285,16 +13693,16 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
   __pyx_t_1 = ((__pyx_v_self->residues == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":938
+    /* "fatslimlib/core_base.pyx":953
  *                                                           sizeof(topol_residue_t) * size)
  *         if self.residues == NULL:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *         # Initialize residues
  */
-    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 938; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 953; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":937
+    /* "fatslimlib/core_base.pyx":952
  *         self.residues = <topol_residue_t *> PyMem_Realloc(<void *>self.residues,
  *                                                           sizeof(topol_residue_t) * size)
  *         if self.residues == NULL:             # <<<<<<<<<<<<<<
@@ -13303,7 +13711,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
   }
 
-  /* "fatslimlib/core_base.pyx":941
+  /* "fatslimlib/core_base.pyx":956
  * 
  *         # Initialize residues
  *         for i in range(self.residues_allocated_size, size):             # <<<<<<<<<<<<<<
@@ -13314,7 +13722,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
   for (__pyx_t_3 = __pyx_v_self->residues_allocated_size; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fatslimlib/core_base.pyx":943
+    /* "fatslimlib/core_base.pyx":958
  *         for i in range(self.residues_allocated_size, size):
  * 
  *             self.residues[i].name_id = NOTSET             # <<<<<<<<<<<<<<
@@ -13323,7 +13731,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
     (__pyx_v_self->residues[__pyx_v_i]).name_id = -12345;
 
-    /* "fatslimlib/core_base.pyx":944
+    /* "fatslimlib/core_base.pyx":959
  * 
  *             self.residues[i].name_id = NOTSET
  *             self.residues[i].internal_id = NOTSET             # <<<<<<<<<<<<<<
@@ -13332,7 +13740,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
     (__pyx_v_self->residues[__pyx_v_i]).internal_id = -12345;
 
-    /* "fatslimlib/core_base.pyx":945
+    /* "fatslimlib/core_base.pyx":960
  *             self.residues[i].name_id = NOTSET
  *             self.residues[i].internal_id = NOTSET
  *             self.residues[i].resid = NOTSET             # <<<<<<<<<<<<<<
@@ -13341,7 +13749,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
     (__pyx_v_self->residues[__pyx_v_i]).resid = -12345;
 
-    /* "fatslimlib/core_base.pyx":946
+    /* "fatslimlib/core_base.pyx":961
  *             self.residues[i].internal_id = NOTSET
  *             self.residues[i].resid = NOTSET
  *             self.residues[i].atom_internal_ids = \             # <<<<<<<<<<<<<<
@@ -13350,7 +13758,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
     (__pyx_v_self->residues[__pyx_v_i]).atom_internal_ids = ((fsl_int *)PyMem_Realloc(NULL, ((sizeof(fsl_int)) * 20)));
 
-    /* "fatslimlib/core_base.pyx":948
+    /* "fatslimlib/core_base.pyx":963
  *             self.residues[i].atom_internal_ids = \
  *                 <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * RESIDUE_ALLOCATION_INCREMENT)
  *             self.residues[i].atomids = \             # <<<<<<<<<<<<<<
@@ -13359,7 +13767,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
     (__pyx_v_self->residues[__pyx_v_i]).atomids = ((fsl_int *)PyMem_Realloc(NULL, ((sizeof(fsl_int)) * 20)));
 
-    /* "fatslimlib/core_base.pyx":950
+    /* "fatslimlib/core_base.pyx":965
  *             self.residues[i].atomids = \
  *                 <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * RESIDUE_ALLOCATION_INCREMENT)
  *             self.residues[i].allocated_size = RESIDUE_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -13368,7 +13776,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
     (__pyx_v_self->residues[__pyx_v_i]).allocated_size = 20;
 
-    /* "fatslimlib/core_base.pyx":951
+    /* "fatslimlib/core_base.pyx":966
  *                 <fsl_int *> PyMem_Realloc(NULL, sizeof(fsl_int) * RESIDUE_ALLOCATION_INCREMENT)
  *             self.residues[i].allocated_size = RESIDUE_ALLOCATION_INCREMENT
  *             self.residues[i].size = 0             # <<<<<<<<<<<<<<
@@ -13378,7 +13786,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
     (__pyx_v_self->residues[__pyx_v_i]).size = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":953
+  /* "fatslimlib/core_base.pyx":968
  *             self.residues[i].size = 0
  * 
  *         self.residues_allocated_size = size             # <<<<<<<<<<<<<<
@@ -13387,7 +13795,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
  */
   __pyx_v_self->residues_allocated_size = __pyx_v_size;
 
-  /* "fatslimlib/core_base.pyx":933
+  /* "fatslimlib/core_base.pyx":948
  *         self.atoms_allocated_size = size
  * 
  *     cdef void set_residues_allocation(self, fsl_int size):             # <<<<<<<<<<<<<<
@@ -13403,7 +13811,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation(st
   __Pyx_RefNannyFinishContext();
 }
 
-/* "fatslimlib/core_base.pyx":955
+/* "fatslimlib/core_base.pyx":970
  *         self.residues_allocated_size = size
  * 
  *     def append(self, fsl_int resid, str resname_str, str atomname_str, fsl_int atomid, bint strip_name=True):             # <<<<<<<<<<<<<<
@@ -13448,17 +13856,17 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_8Topology_5append(PyObject *__
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_resname_str)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("append", 0, 4, 5, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("append", 0, 4, 5, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_atomname_str)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("append", 0, 4, 5, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("append", 0, 4, 5, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_atomid)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("append", 0, 4, 5, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("append", 0, 4, 5, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  4:
         if (kw_args > 0) {
@@ -13467,7 +13875,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_8Topology_5append(PyObject *__
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "append") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "append") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -13480,26 +13888,26 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_8Topology_5append(PyObject *__
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_resid = __Pyx_PyInt_As_fsl_int(values[0]); if (unlikely((__pyx_v_resid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_resid = __Pyx_PyInt_As_fsl_int(values[0]); if (unlikely((__pyx_v_resid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_resname_str = ((PyObject*)values[1]);
     __pyx_v_atomname_str = ((PyObject*)values[2]);
-    __pyx_v_atomid = __Pyx_PyInt_As_fsl_int(values[3]); if (unlikely((__pyx_v_atomid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_atomid = __Pyx_PyInt_As_fsl_int(values[3]); if (unlikely((__pyx_v_atomid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     if (values[4]) {
-      __pyx_v_strip_name = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_strip_name == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_strip_name = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_strip_name == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_strip_name = ((int)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("append", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("append", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.Topology.append", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_resname_str), (&PyString_Type), 1, "resname_str", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_atomname_str), (&PyString_Type), 1, "atomname_str", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 955; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_resname_str), (&PyString_Type), 1, "resname_str", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_atomname_str), (&PyString_Type), 1, "atomname_str", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 970; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_8Topology_4append(((struct __pyx_obj_10fatslimlib_9core_base_Topology *)__pyx_v_self), __pyx_v_resid, __pyx_v_resname_str, __pyx_v_atomname_str, __pyx_v_atomid, __pyx_v_strip_name);
 
   /* function exit code */
@@ -13526,7 +13934,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("append", 0);
 
-  /* "fatslimlib/core_base.pyx":958
+  /* "fatslimlib/core_base.pyx":973
  *         cdef bytes resname, atomname
  * 
  *         if strip_name:             # <<<<<<<<<<<<<<
@@ -13536,14 +13944,14 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
   __pyx_t_1 = (__pyx_v_strip_name != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":959
+    /* "fatslimlib/core_base.pyx":974
  * 
  *         if strip_name:
  *             resname = resname_str.strip().encode()             # <<<<<<<<<<<<<<
  *             atomname = atomname_str.strip().encode()
  *         else:
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_resname_str, __pyx_n_s_strip); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_resname_str, __pyx_n_s_strip); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_4))) {
@@ -13556,14 +13964,14 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
       }
     }
     if (__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -13577,25 +13985,25 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
       }
     }
     if (__pyx_t_3) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
-      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_resname = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fatslimlib/core_base.pyx":960
+    /* "fatslimlib/core_base.pyx":975
  *         if strip_name:
  *             resname = resname_str.strip().encode()
  *             atomname = atomname_str.strip().encode()             # <<<<<<<<<<<<<<
  *         else:
  *             resname = resname_str.encode()
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_atomname_str, __pyx_n_s_strip); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 960; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_atomname_str, __pyx_n_s_strip); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -13608,14 +14016,14 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
       }
     }
     if (__pyx_t_5) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 960; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 960; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 960; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -13629,18 +14037,18 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
       }
     }
     if (__pyx_t_4) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 960; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else {
-      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 960; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 960; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_atomname = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fatslimlib/core_base.pyx":958
+    /* "fatslimlib/core_base.pyx":973
  *         cdef bytes resname, atomname
  * 
  *         if strip_name:             # <<<<<<<<<<<<<<
@@ -13650,7 +14058,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
     goto __pyx_L3;
   }
 
-  /* "fatslimlib/core_base.pyx":962
+  /* "fatslimlib/core_base.pyx":977
  *             atomname = atomname_str.strip().encode()
  *         else:
  *             resname = resname_str.encode()             # <<<<<<<<<<<<<<
@@ -13658,7 +14066,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
  * 
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_resname_str, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 962; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_resname_str, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 977; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -13671,25 +14079,25 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
       }
     }
     if (__pyx_t_4) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 962; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 977; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else {
-      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 962; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 977; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 962; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 977; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_resname = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fatslimlib/core_base.pyx":963
+    /* "fatslimlib/core_base.pyx":978
  *         else:
  *             resname = resname_str.encode()
  *             atomname = atomname_str.encode()             # <<<<<<<<<<<<<<
  * 
  *         self.internal_append(resid, resname, atomname, atomid)
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_atomname_str, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 963; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_atomname_str, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 978; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -13702,20 +14110,20 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
       }
     }
     if (__pyx_t_4) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 963; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 978; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else {
-      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 963; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 978; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 963; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 978; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_atomname = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
   }
   __pyx_L3:;
 
-  /* "fatslimlib/core_base.pyx":965
+  /* "fatslimlib/core_base.pyx":980
  *             atomname = atomname_str.encode()
  * 
  *         self.internal_append(resid, resname, atomname, atomid)             # <<<<<<<<<<<<<<
@@ -13724,7 +14132,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
  */
   ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->internal_append(__pyx_v_self, __pyx_v_resid, __pyx_v_resname, __pyx_v_atomname, __pyx_v_atomid);
 
-  /* "fatslimlib/core_base.pyx":955
+  /* "fatslimlib/core_base.pyx":970
  *         self.residues_allocated_size = size
  * 
  *     def append(self, fsl_int resid, str resname_str, str atomname_str, fsl_int atomid, bint strip_name=True):             # <<<<<<<<<<<<<<
@@ -13750,7 +14158,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_4append(struct __pyx
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":967
+/* "fatslimlib/core_base.pyx":982
  *         self.internal_append(resid, resname, atomname, atomid)
  * 
  *     cdef void internal_append(self, fsl_int resid, bytes resname, bytes atomname, fsl_int atomid):             # <<<<<<<<<<<<<<
@@ -13780,7 +14188,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("internal_append", 0);
 
-  /* "fatslimlib/core_base.pyx":972
+  /* "fatslimlib/core_base.pyx":987
  *         cdef fsl_int residue_internal_id, atom_internal_id
  *         cdef fsl_int old_size
  *         cdef bint residue_created = False             # <<<<<<<<<<<<<<
@@ -13789,7 +14197,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_residue_created = 0;
 
-  /* "fatslimlib/core_base.pyx":977
+  /* "fatslimlib/core_base.pyx":992
  * 
  *         # Handles atomname
  *         atomname_id = -1             # <<<<<<<<<<<<<<
@@ -13798,7 +14206,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_atomname_id = -1;
 
-  /* "fatslimlib/core_base.pyx":978
+  /* "fatslimlib/core_base.pyx":993
  *         # Handles atomname
  *         atomname_id = -1
  *         for i in range(self.atomnames_size):             # <<<<<<<<<<<<<<
@@ -13809,18 +14217,18 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "fatslimlib/core_base.pyx":979
+    /* "fatslimlib/core_base.pyx":994
  *         atomname_id = -1
  *         for i in range(self.atomnames_size):
  *             if strncmp(self.atomnames[i], atomname, NAME_SIZE-1) == 0:             # <<<<<<<<<<<<<<
  *                 atomname_id = i
  *                 break
  */
-    __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_atomname); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 979; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_atomname); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 994; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_4 = ((strncmp((__pyx_v_self->atomnames[__pyx_v_i]), __pyx_t_3, 5) == 0) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":980
+      /* "fatslimlib/core_base.pyx":995
  *         for i in range(self.atomnames_size):
  *             if strncmp(self.atomnames[i], atomname, NAME_SIZE-1) == 0:
  *                 atomname_id = i             # <<<<<<<<<<<<<<
@@ -13829,7 +14237,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       __pyx_v_atomname_id = __pyx_v_i;
 
-      /* "fatslimlib/core_base.pyx":981
+      /* "fatslimlib/core_base.pyx":996
  *             if strncmp(self.atomnames[i], atomname, NAME_SIZE-1) == 0:
  *                 atomname_id = i
  *                 break             # <<<<<<<<<<<<<<
@@ -13838,7 +14246,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       goto __pyx_L4_break;
 
-      /* "fatslimlib/core_base.pyx":979
+      /* "fatslimlib/core_base.pyx":994
  *         atomname_id = -1
  *         for i in range(self.atomnames_size):
  *             if strncmp(self.atomnames[i], atomname, NAME_SIZE-1) == 0:             # <<<<<<<<<<<<<<
@@ -13849,7 +14257,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   }
   __pyx_L4_break:;
 
-  /* "fatslimlib/core_base.pyx":982
+  /* "fatslimlib/core_base.pyx":997
  *                 atomname_id = i
  *                 break
  *         if atomname_id == -1: # We need to add the new atomname             # <<<<<<<<<<<<<<
@@ -13859,7 +14267,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_4 = ((__pyx_v_atomname_id == -1L) != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":984
+    /* "fatslimlib/core_base.pyx":999
  *         if atomname_id == -1: # We need to add the new atomname
  *             # Allocate memory if necessary
  *             if self.atomnames_size == self.atomnames_allocated_size:             # <<<<<<<<<<<<<<
@@ -13869,7 +14277,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     __pyx_t_4 = ((__pyx_v_self->atomnames_size == __pyx_v_self->atomnames_allocated_size) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":985
+      /* "fatslimlib/core_base.pyx":1000
  *             # Allocate memory if necessary
  *             if self.atomnames_size == self.atomnames_allocated_size:
  *                 self.atomnames_allocated_size += NAME_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -13878,7 +14286,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       __pyx_v_self->atomnames_allocated_size = (__pyx_v_self->atomnames_allocated_size + 10);
 
-      /* "fatslimlib/core_base.pyx":986
+      /* "fatslimlib/core_base.pyx":1001
  *             if self.atomnames_size == self.atomnames_allocated_size:
  *                 self.atomnames_allocated_size += NAME_ALLOCATION_INCREMENT
  *                 self.atomnames = <strname_t *> PyMem_Realloc(<void *> self.atomnames,             # <<<<<<<<<<<<<<
@@ -13887,7 +14295,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       __pyx_v_self->atomnames = ((__pyx_t_10fatslimlib_9core_base_strname_t *)PyMem_Realloc(((void *)__pyx_v_self->atomnames), ((sizeof(__pyx_t_10fatslimlib_9core_base_strname_t)) * __pyx_v_self->atomnames_allocated_size)));
 
-      /* "fatslimlib/core_base.pyx":989
+      /* "fatslimlib/core_base.pyx":1004
  *                                                              sizeof(strname_t) *
  *                                                              self.atomnames_allocated_size)
  *                 if self.atomnames == NULL:             # <<<<<<<<<<<<<<
@@ -13897,16 +14305,16 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
       __pyx_t_4 = ((__pyx_v_self->atomnames == NULL) != 0);
       if (__pyx_t_4) {
 
-        /* "fatslimlib/core_base.pyx":990
+        /* "fatslimlib/core_base.pyx":1005
  *                                                              self.atomnames_allocated_size)
  *                 if self.atomnames == NULL:
  *                     raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *             atomname_id = self.atomnames_size
  */
-        PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 990; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1005; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "fatslimlib/core_base.pyx":989
+        /* "fatslimlib/core_base.pyx":1004
  *                                                              sizeof(strname_t) *
  *                                                              self.atomnames_allocated_size)
  *                 if self.atomnames == NULL:             # <<<<<<<<<<<<<<
@@ -13915,7 +14323,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       }
 
-      /* "fatslimlib/core_base.pyx":984
+      /* "fatslimlib/core_base.pyx":999
  *         if atomname_id == -1: # We need to add the new atomname
  *             # Allocate memory if necessary
  *             if self.atomnames_size == self.atomnames_allocated_size:             # <<<<<<<<<<<<<<
@@ -13924,7 +14332,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     }
 
-    /* "fatslimlib/core_base.pyx":992
+    /* "fatslimlib/core_base.pyx":1007
  *                     raise MemoryError
  * 
  *             atomname_id = self.atomnames_size             # <<<<<<<<<<<<<<
@@ -13934,7 +14342,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     __pyx_t_1 = __pyx_v_self->atomnames_size;
     __pyx_v_atomname_id = __pyx_t_1;
 
-    /* "fatslimlib/core_base.pyx":993
+    /* "fatslimlib/core_base.pyx":1008
  * 
  *             atomname_id = self.atomnames_size
  *             self.atomnames_size += 1             # <<<<<<<<<<<<<<
@@ -13943,17 +14351,17 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->atomnames_size = (__pyx_v_self->atomnames_size + 1);
 
-    /* "fatslimlib/core_base.pyx":994
+    /* "fatslimlib/core_base.pyx":1009
  *             atomname_id = self.atomnames_size
  *             self.atomnames_size += 1
  *             strncpy(self.atomnames[atomname_id], atomname, NAME_SIZE)             # <<<<<<<<<<<<<<
  *             self.atomnames[atomname_id][NAME_SIZE-1] = b'\0'
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_AsString(__pyx_v_atomname); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 994; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_AsString(__pyx_v_atomname); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1009; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     strncpy((__pyx_v_self->atomnames[__pyx_v_atomname_id]), __pyx_t_5, 6);
 
-    /* "fatslimlib/core_base.pyx":995
+    /* "fatslimlib/core_base.pyx":1010
  *             self.atomnames_size += 1
  *             strncpy(self.atomnames[atomname_id], atomname, NAME_SIZE)
  *             self.atomnames[atomname_id][NAME_SIZE-1] = b'\0'             # <<<<<<<<<<<<<<
@@ -13962,7 +14370,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     ((__pyx_v_self->atomnames[__pyx_v_atomname_id])[5]) = '\x00';
 
-    /* "fatslimlib/core_base.pyx":982
+    /* "fatslimlib/core_base.pyx":997
  *                 atomname_id = i
  *                 break
  *         if atomname_id == -1: # We need to add the new atomname             # <<<<<<<<<<<<<<
@@ -13971,7 +14379,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":998
+  /* "fatslimlib/core_base.pyx":1013
  * 
  *         # Handles resname
  *         resname_id = -1             # <<<<<<<<<<<<<<
@@ -13980,7 +14388,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_resname_id = -1;
 
-  /* "fatslimlib/core_base.pyx":999
+  /* "fatslimlib/core_base.pyx":1014
  *         # Handles resname
  *         resname_id = -1
  *         for i in range(self.resnames_size):             # <<<<<<<<<<<<<<
@@ -13991,18 +14399,18 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "fatslimlib/core_base.pyx":1000
+    /* "fatslimlib/core_base.pyx":1015
  *         resname_id = -1
  *         for i in range(self.resnames_size):
  *             if strncmp(self.resnames[i], resname, NAME_SIZE-1) == 0:             # <<<<<<<<<<<<<<
  *                 resname_id = i
  *                 break
  */
-    __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_resname); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1000; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_resname); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1015; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_4 = ((strncmp((__pyx_v_self->resnames[__pyx_v_i]), __pyx_t_3, 5) == 0) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":1001
+      /* "fatslimlib/core_base.pyx":1016
  *         for i in range(self.resnames_size):
  *             if strncmp(self.resnames[i], resname, NAME_SIZE-1) == 0:
  *                 resname_id = i             # <<<<<<<<<<<<<<
@@ -14011,7 +14419,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       __pyx_v_resname_id = __pyx_v_i;
 
-      /* "fatslimlib/core_base.pyx":1002
+      /* "fatslimlib/core_base.pyx":1017
  *             if strncmp(self.resnames[i], resname, NAME_SIZE-1) == 0:
  *                 resname_id = i
  *                 break             # <<<<<<<<<<<<<<
@@ -14020,7 +14428,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       goto __pyx_L10_break;
 
-      /* "fatslimlib/core_base.pyx":1000
+      /* "fatslimlib/core_base.pyx":1015
  *         resname_id = -1
  *         for i in range(self.resnames_size):
  *             if strncmp(self.resnames[i], resname, NAME_SIZE-1) == 0:             # <<<<<<<<<<<<<<
@@ -14031,7 +14439,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   }
   __pyx_L10_break:;
 
-  /* "fatslimlib/core_base.pyx":1003
+  /* "fatslimlib/core_base.pyx":1018
  *                 resname_id = i
  *                 break
  *         if resname_id == -1: # We need to add the new resname             # <<<<<<<<<<<<<<
@@ -14041,7 +14449,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_4 = ((__pyx_v_resname_id == -1L) != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1005
+    /* "fatslimlib/core_base.pyx":1020
  *         if resname_id == -1: # We need to add the new resname
  *             # Allocate memory if necessary
  *             if self.resnames_size == self.resnames_allocated_size:             # <<<<<<<<<<<<<<
@@ -14051,7 +14459,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     __pyx_t_4 = ((__pyx_v_self->resnames_size == __pyx_v_self->resnames_allocated_size) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":1006
+      /* "fatslimlib/core_base.pyx":1021
  *             # Allocate memory if necessary
  *             if self.resnames_size == self.resnames_allocated_size:
  *                 self.resnames_allocated_size += NAME_ALLOCATION_INCREMENT             # <<<<<<<<<<<<<<
@@ -14060,7 +14468,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       __pyx_v_self->resnames_allocated_size = (__pyx_v_self->resnames_allocated_size + 10);
 
-      /* "fatslimlib/core_base.pyx":1007
+      /* "fatslimlib/core_base.pyx":1022
  *             if self.resnames_size == self.resnames_allocated_size:
  *                 self.resnames_allocated_size += NAME_ALLOCATION_INCREMENT
  *                 self.resnames = <strname_t *> PyMem_Realloc(<void *> self.resnames,             # <<<<<<<<<<<<<<
@@ -14069,7 +14477,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       __pyx_v_self->resnames = ((__pyx_t_10fatslimlib_9core_base_strname_t *)PyMem_Realloc(((void *)__pyx_v_self->resnames), ((sizeof(__pyx_t_10fatslimlib_9core_base_strname_t)) * __pyx_v_self->resnames_allocated_size)));
 
-      /* "fatslimlib/core_base.pyx":1010
+      /* "fatslimlib/core_base.pyx":1025
  *                                                             sizeof(strname_t) *
  *                                                             self.resnames_allocated_size)
  *                 if self.resnames == NULL:             # <<<<<<<<<<<<<<
@@ -14079,16 +14487,16 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
       __pyx_t_4 = ((__pyx_v_self->resnames == NULL) != 0);
       if (__pyx_t_4) {
 
-        /* "fatslimlib/core_base.pyx":1011
+        /* "fatslimlib/core_base.pyx":1026
  *                                                             self.resnames_allocated_size)
  *                 if self.resnames == NULL:
  *                     raise MemoryError             # <<<<<<<<<<<<<<
  *             resname_id = self.resnames_size
  *             self.resnames_size += 1
  */
-        PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1011; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1026; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "fatslimlib/core_base.pyx":1010
+        /* "fatslimlib/core_base.pyx":1025
  *                                                             sizeof(strname_t) *
  *                                                             self.resnames_allocated_size)
  *                 if self.resnames == NULL:             # <<<<<<<<<<<<<<
@@ -14097,7 +14505,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       }
 
-      /* "fatslimlib/core_base.pyx":1005
+      /* "fatslimlib/core_base.pyx":1020
  *         if resname_id == -1: # We need to add the new resname
  *             # Allocate memory if necessary
  *             if self.resnames_size == self.resnames_allocated_size:             # <<<<<<<<<<<<<<
@@ -14106,7 +14514,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1012
+    /* "fatslimlib/core_base.pyx":1027
  *                 if self.resnames == NULL:
  *                     raise MemoryError
  *             resname_id = self.resnames_size             # <<<<<<<<<<<<<<
@@ -14116,7 +14524,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     __pyx_t_1 = __pyx_v_self->resnames_size;
     __pyx_v_resname_id = __pyx_t_1;
 
-    /* "fatslimlib/core_base.pyx":1013
+    /* "fatslimlib/core_base.pyx":1028
  *                     raise MemoryError
  *             resname_id = self.resnames_size
  *             self.resnames_size += 1             # <<<<<<<<<<<<<<
@@ -14125,17 +14533,17 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->resnames_size = (__pyx_v_self->resnames_size + 1);
 
-    /* "fatslimlib/core_base.pyx":1014
+    /* "fatslimlib/core_base.pyx":1029
  *             resname_id = self.resnames_size
  *             self.resnames_size += 1
  *             strncpy(self.resnames[resname_id], resname, NAME_SIZE)             # <<<<<<<<<<<<<<
  *             self.resnames[resname_id][NAME_SIZE-1] = b'\0'
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_AsString(__pyx_v_resname); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1014; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_AsString(__pyx_v_resname); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1029; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     strncpy((__pyx_v_self->resnames[__pyx_v_resname_id]), __pyx_t_5, 6);
 
-    /* "fatslimlib/core_base.pyx":1015
+    /* "fatslimlib/core_base.pyx":1030
  *             self.resnames_size += 1
  *             strncpy(self.resnames[resname_id], resname, NAME_SIZE)
  *             self.resnames[resname_id][NAME_SIZE-1] = b'\0'             # <<<<<<<<<<<<<<
@@ -14144,7 +14552,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     ((__pyx_v_self->resnames[__pyx_v_resname_id])[5]) = '\x00';
 
-    /* "fatslimlib/core_base.pyx":1003
+    /* "fatslimlib/core_base.pyx":1018
  *                 resname_id = i
  *                 break
  *         if resname_id == -1: # We need to add the new resname             # <<<<<<<<<<<<<<
@@ -14153,7 +14561,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1020
+  /* "fatslimlib/core_base.pyx":1035
  * 
  *         # First we need to handle the translation resid->internalid
  *         if resid >= self.resids_to_internalids_allocated_size:             # <<<<<<<<<<<<<<
@@ -14163,7 +14571,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_4 = ((__pyx_v_resid >= __pyx_v_self->resids_to_internalids_allocated_size) != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1022
+    /* "fatslimlib/core_base.pyx":1037
  *         if resid >= self.resids_to_internalids_allocated_size:
  *             # Allocate enough memory to store the new resid plus extra for future resids
  *             self.resids_to_internalids_allocated_size += \             # <<<<<<<<<<<<<<
@@ -14172,7 +14580,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->resids_to_internalids_allocated_size = (__pyx_v_self->resids_to_internalids_allocated_size + ((__pyx_v_resid - __pyx_v_self->resids_to_internalids_allocated_size) + 50));
 
-    /* "fatslimlib/core_base.pyx":1024
+    /* "fatslimlib/core_base.pyx":1039
  *             self.resids_to_internalids_allocated_size += \
  *                 (resid - self.resids_to_internalids_allocated_size) + RESIDUES_ALLOCATION_INCREMENT
  *             self.resids_to_internalids = \             # <<<<<<<<<<<<<<
@@ -14181,7 +14589,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->resids_to_internalids = ((fsl_int *)PyMem_Realloc(((void *)__pyx_v_self->resids_to_internalids), ((sizeof(fsl_int)) * __pyx_v_self->resids_to_internalids_allocated_size)));
 
-    /* "fatslimlib/core_base.pyx":1027
+    /* "fatslimlib/core_base.pyx":1042
  *                 <fsl_int *> PyMem_Realloc(<void *>self.resids_to_internalids,
  *                                       sizeof(fsl_int) * self.resids_to_internalids_allocated_size)
  *             if self.resids_to_internalids == NULL:             # <<<<<<<<<<<<<<
@@ -14191,16 +14599,16 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     __pyx_t_4 = ((__pyx_v_self->resids_to_internalids == NULL) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":1028
+      /* "fatslimlib/core_base.pyx":1043
  *                                       sizeof(fsl_int) * self.resids_to_internalids_allocated_size)
  *             if self.resids_to_internalids == NULL:
  *                 raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *             # We also need to initialize the newly allocated memory:
  */
-      PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1043; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "fatslimlib/core_base.pyx":1027
+      /* "fatslimlib/core_base.pyx":1042
  *                 <fsl_int *> PyMem_Realloc(<void *>self.resids_to_internalids,
  *                                       sizeof(fsl_int) * self.resids_to_internalids_allocated_size)
  *             if self.resids_to_internalids == NULL:             # <<<<<<<<<<<<<<
@@ -14209,7 +14617,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1032
+    /* "fatslimlib/core_base.pyx":1047
  *             # We also need to initialize the newly allocated memory:
  *             for i in range(self.resids_to_internalids_size,
  *                            self.resids_to_internalids_allocated_size):             # <<<<<<<<<<<<<<
@@ -14218,7 +14626,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_t_1 = __pyx_v_self->resids_to_internalids_allocated_size;
 
-    /* "fatslimlib/core_base.pyx":1031
+    /* "fatslimlib/core_base.pyx":1046
  * 
  *             # We also need to initialize the newly allocated memory:
  *             for i in range(self.resids_to_internalids_size,             # <<<<<<<<<<<<<<
@@ -14228,7 +14636,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     for (__pyx_t_2 = __pyx_v_self->resids_to_internalids_size; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
       __pyx_v_i = __pyx_t_2;
 
-      /* "fatslimlib/core_base.pyx":1033
+      /* "fatslimlib/core_base.pyx":1048
  *             for i in range(self.resids_to_internalids_size,
  *                            self.resids_to_internalids_allocated_size):
  *                 self.resids_to_internalids[i] = NOTSET             # <<<<<<<<<<<<<<
@@ -14238,7 +14646,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
       (__pyx_v_self->resids_to_internalids[__pyx_v_i]) = -12345;
     }
 
-    /* "fatslimlib/core_base.pyx":1034
+    /* "fatslimlib/core_base.pyx":1049
  *                            self.resids_to_internalids_allocated_size):
  *                 self.resids_to_internalids[i] = NOTSET
  *             self.resids_to_internalids_size = resid             # <<<<<<<<<<<<<<
@@ -14247,7 +14655,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->resids_to_internalids_size = __pyx_v_resid;
 
-    /* "fatslimlib/core_base.pyx":1020
+    /* "fatslimlib/core_base.pyx":1035
  * 
  *         # First we need to handle the translation resid->internalid
  *         if resid >= self.resids_to_internalids_allocated_size:             # <<<<<<<<<<<<<<
@@ -14256,7 +14664,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1037
+  /* "fatslimlib/core_base.pyx":1052
  * 
  *         # Watch out! resids start from 1 but are stored from 0
  *         residue_internal_id = self.resids_to_internalids[resid-1]             # <<<<<<<<<<<<<<
@@ -14265,7 +14673,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_residue_internal_id = (__pyx_v_self->resids_to_internalids[(__pyx_v_resid - 1)]);
 
-  /* "fatslimlib/core_base.pyx":1040
+  /* "fatslimlib/core_base.pyx":1055
  * 
  *         # Second we need to handle the internal id
  *         if residue_internal_id == NOTSET: # The residue is not registered yet             # <<<<<<<<<<<<<<
@@ -14275,7 +14683,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_4 = ((__pyx_v_residue_internal_id == -12345L) != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1042
+    /* "fatslimlib/core_base.pyx":1057
  *         if residue_internal_id == NOTSET: # The residue is not registered yet
  *             # Allocate memory if necessary
  *             if self.residues_size == self.residues_allocated_size:             # <<<<<<<<<<<<<<
@@ -14285,7 +14693,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     __pyx_t_4 = ((__pyx_v_self->residues_size == __pyx_v_self->residues_allocated_size) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":1043
+      /* "fatslimlib/core_base.pyx":1058
  *             # Allocate memory if necessary
  *             if self.residues_size == self.residues_allocated_size:
  *                 self.set_residues_allocation(self.residues_allocated_size             # <<<<<<<<<<<<<<
@@ -14294,7 +14702,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
       ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->set_residues_allocation(__pyx_v_self, (__pyx_v_self->residues_allocated_size + 50));
 
-      /* "fatslimlib/core_base.pyx":1042
+      /* "fatslimlib/core_base.pyx":1057
  *         if residue_internal_id == NOTSET: # The residue is not registered yet
  *             # Allocate memory if necessary
  *             if self.residues_size == self.residues_allocated_size:             # <<<<<<<<<<<<<<
@@ -14303,7 +14711,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1046
+    /* "fatslimlib/core_base.pyx":1061
  *                                              + RESIDUES_ALLOCATION_INCREMENT)
  * 
  *             residue_internal_id = self.residues_size             # <<<<<<<<<<<<<<
@@ -14313,7 +14721,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     __pyx_t_1 = __pyx_v_self->residues_size;
     __pyx_v_residue_internal_id = __pyx_t_1;
 
-    /* "fatslimlib/core_base.pyx":1047
+    /* "fatslimlib/core_base.pyx":1062
  * 
  *             residue_internal_id = self.residues_size
  *             self.residues_size += 1             # <<<<<<<<<<<<<<
@@ -14322,7 +14730,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->residues_size = (__pyx_v_self->residues_size + 1);
 
-    /* "fatslimlib/core_base.pyx":1048
+    /* "fatslimlib/core_base.pyx":1063
  *             residue_internal_id = self.residues_size
  *             self.residues_size += 1
  *             residue_created = True             # <<<<<<<<<<<<<<
@@ -14331,7 +14739,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_residue_created = 1;
 
-    /* "fatslimlib/core_base.pyx":1049
+    /* "fatslimlib/core_base.pyx":1064
  *             self.residues_size += 1
  *             residue_created = True
  *             self.resids_to_internalids[resid - 1] = residue_internal_id             # <<<<<<<<<<<<<<
@@ -14340,7 +14748,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     (__pyx_v_self->resids_to_internalids[(__pyx_v_resid - 1)]) = __pyx_v_residue_internal_id;
 
-    /* "fatslimlib/core_base.pyx":1050
+    /* "fatslimlib/core_base.pyx":1065
  *             residue_created = True
  *             self.resids_to_internalids[resid - 1] = residue_internal_id
  *             self.resids_to_internalids_size = resid             # <<<<<<<<<<<<<<
@@ -14349,7 +14757,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->resids_to_internalids_size = __pyx_v_resid;
 
-    /* "fatslimlib/core_base.pyx":1040
+    /* "fatslimlib/core_base.pyx":1055
  * 
  *         # Second we need to handle the internal id
  *         if residue_internal_id == NOTSET: # The residue is not registered yet             # <<<<<<<<<<<<<<
@@ -14358,7 +14766,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1056
+  /* "fatslimlib/core_base.pyx":1071
  * 
  *         # First we need to handle the translation atomid->internalid
  *         if atomid >= self.atomids_to_internalids_allocated_size:             # <<<<<<<<<<<<<<
@@ -14368,7 +14776,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_4 = ((__pyx_v_atomid >= __pyx_v_self->atomids_to_internalids_allocated_size) != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1058
+    /* "fatslimlib/core_base.pyx":1073
  *         if atomid >= self.atomids_to_internalids_allocated_size:
  *             # Allocate enough memory to store the new resid plus extra for future resids
  *             self.atomids_to_internalids_allocated_size += \             # <<<<<<<<<<<<<<
@@ -14377,7 +14785,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->atomids_to_internalids_allocated_size = (__pyx_v_self->atomids_to_internalids_allocated_size + ((__pyx_v_atomid - __pyx_v_self->atomids_to_internalids_allocated_size) + 0x3E8));
 
-    /* "fatslimlib/core_base.pyx":1060
+    /* "fatslimlib/core_base.pyx":1075
  *             self.atomids_to_internalids_allocated_size += \
  *                 (atomid - self.atomids_to_internalids_allocated_size) + ATOMS_ALLOCATION_INCREMENT
  *             self.atomids_to_internalids = \             # <<<<<<<<<<<<<<
@@ -14386,7 +14794,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_self->atomids_to_internalids = ((fsl_int *)PyMem_Realloc(((void *)__pyx_v_self->atomids_to_internalids), ((sizeof(fsl_int)) * __pyx_v_self->atomids_to_internalids_allocated_size)));
 
-    /* "fatslimlib/core_base.pyx":1063
+    /* "fatslimlib/core_base.pyx":1078
  *                 <fsl_int *> PyMem_Realloc(<void *>self.atomids_to_internalids,
  *                                       sizeof(fsl_int) * self.atomids_to_internalids_allocated_size)
  *             if self.atomids_to_internalids == NULL:             # <<<<<<<<<<<<<<
@@ -14396,16 +14804,16 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     __pyx_t_4 = ((__pyx_v_self->atomids_to_internalids == NULL) != 0);
     if (__pyx_t_4) {
 
-      /* "fatslimlib/core_base.pyx":1064
+      /* "fatslimlib/core_base.pyx":1079
  *                                       sizeof(fsl_int) * self.atomids_to_internalids_allocated_size)
  *             if self.atomids_to_internalids == NULL:
  *                 raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *             # We also need to initialize the newly allocated memory:
  */
-      PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1064; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1079; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "fatslimlib/core_base.pyx":1063
+      /* "fatslimlib/core_base.pyx":1078
  *                 <fsl_int *> PyMem_Realloc(<void *>self.atomids_to_internalids,
  *                                       sizeof(fsl_int) * self.atomids_to_internalids_allocated_size)
  *             if self.atomids_to_internalids == NULL:             # <<<<<<<<<<<<<<
@@ -14414,7 +14822,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1068
+    /* "fatslimlib/core_base.pyx":1083
  *             # We also need to initialize the newly allocated memory:
  *             for i in range(self.atomids_to_internalids_size,
  *                            self.atomids_to_internalids_allocated_size):             # <<<<<<<<<<<<<<
@@ -14423,7 +14831,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_t_1 = __pyx_v_self->atomids_to_internalids_allocated_size;
 
-    /* "fatslimlib/core_base.pyx":1067
+    /* "fatslimlib/core_base.pyx":1082
  * 
  *             # We also need to initialize the newly allocated memory:
  *             for i in range(self.atomids_to_internalids_size,             # <<<<<<<<<<<<<<
@@ -14433,7 +14841,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
     for (__pyx_t_2 = __pyx_v_self->atomids_to_internalids_size; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
       __pyx_v_i = __pyx_t_2;
 
-      /* "fatslimlib/core_base.pyx":1069
+      /* "fatslimlib/core_base.pyx":1084
  *             for i in range(self.atomids_to_internalids_size,
  *                            self.atomids_to_internalids_allocated_size):
  *                 self.atomids_to_internalids[i] = NOTSET             # <<<<<<<<<<<<<<
@@ -14443,7 +14851,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
       (__pyx_v_self->atomids_to_internalids[__pyx_v_i]) = -12345;
     }
 
-    /* "fatslimlib/core_base.pyx":1056
+    /* "fatslimlib/core_base.pyx":1071
  * 
  *         # First we need to handle the translation atomid->internalid
  *         if atomid >= self.atomids_to_internalids_allocated_size:             # <<<<<<<<<<<<<<
@@ -14452,7 +14860,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1072
+  /* "fatslimlib/core_base.pyx":1087
  * 
  *         # Watch out! atomids start from 1 but are stored from 0
  *         atom_internal_id = self.atomids_to_internalids[atomid-1]             # <<<<<<<<<<<<<<
@@ -14461,7 +14869,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_atom_internal_id = (__pyx_v_self->atomids_to_internalids[(__pyx_v_atomid - 1)]);
 
-  /* "fatslimlib/core_base.pyx":1075
+  /* "fatslimlib/core_base.pyx":1090
  * 
  *         # Second we create the atom
  *         if atom_internal_id != NOTSET: # The atom is not registered yet             # <<<<<<<<<<<<<<
@@ -14471,31 +14879,31 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_4 = ((__pyx_v_atom_internal_id != -12345L) != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1076
+    /* "fatslimlib/core_base.pyx":1091
  *         # Second we create the atom
  *         if atom_internal_id != NOTSET: # The atom is not registered yet
  *             raise IndexError("Atom with atomid #%i is already registered" % atomid)             # <<<<<<<<<<<<<<
  * 
  *         # Allocate memory if necessary
  */
-    __pyx_t_6 = __Pyx_PyInt_From_fsl_int(__pyx_v_atomid); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1076; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyInt_From_fsl_int(__pyx_v_atomid); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1091; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_Atom_with_atomid_i_is_already_re, __pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1076; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_Atom_with_atomid_i_is_already_re, __pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1091; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1076; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1091; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_t_6, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1076; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_t_6, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1091; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_Raise(__pyx_t_7, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1076; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1091; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1075
+    /* "fatslimlib/core_base.pyx":1090
  * 
  *         # Second we create the atom
  *         if atom_internal_id != NOTSET: # The atom is not registered yet             # <<<<<<<<<<<<<<
@@ -14504,7 +14912,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1079
+  /* "fatslimlib/core_base.pyx":1094
  * 
  *         # Allocate memory if necessary
  *         if self.atoms_size == self.atoms_allocated_size:             # <<<<<<<<<<<<<<
@@ -14514,7 +14922,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_4 = ((__pyx_v_self->atoms_size == __pyx_v_self->atoms_allocated_size) != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1080
+    /* "fatslimlib/core_base.pyx":1095
  *         # Allocate memory if necessary
  *         if self.atoms_size == self.atoms_allocated_size:
  *             self.set_atoms_allocation(self.atoms_allocated_size + ATOMS_ALLOCATION_INCREMENT)             # <<<<<<<<<<<<<<
@@ -14523,7 +14931,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->set_atoms_allocation(__pyx_v_self, (__pyx_v_self->atoms_allocated_size + 0x3E8));
 
-    /* "fatslimlib/core_base.pyx":1079
+    /* "fatslimlib/core_base.pyx":1094
  * 
  *         # Allocate memory if necessary
  *         if self.atoms_size == self.atoms_allocated_size:             # <<<<<<<<<<<<<<
@@ -14532,7 +14940,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1082
+  /* "fatslimlib/core_base.pyx":1097
  *             self.set_atoms_allocation(self.atoms_allocated_size + ATOMS_ALLOCATION_INCREMENT)
  * 
  *         atom_internal_id = self.atoms_size             # <<<<<<<<<<<<<<
@@ -14542,7 +14950,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_1 = __pyx_v_self->atoms_size;
   __pyx_v_atom_internal_id = __pyx_t_1;
 
-  /* "fatslimlib/core_base.pyx":1083
+  /* "fatslimlib/core_base.pyx":1098
  * 
  *         atom_internal_id = self.atoms_size
  *         self.atoms_size += 1             # <<<<<<<<<<<<<<
@@ -14551,7 +14959,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_self->atoms_size = (__pyx_v_self->atoms_size + 1);
 
-  /* "fatslimlib/core_base.pyx":1086
+  /* "fatslimlib/core_base.pyx":1101
  * 
  *         # Create the atom
  *         atom = &self.atoms[atom_internal_id]             # <<<<<<<<<<<<<<
@@ -14560,7 +14968,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_atom = (&(__pyx_v_self->atoms[__pyx_v_atom_internal_id]));
 
-  /* "fatslimlib/core_base.pyx":1087
+  /* "fatslimlib/core_base.pyx":1102
  *         # Create the atom
  *         atom = &self.atoms[atom_internal_id]
  *         atom.name_id = atomname_id             # <<<<<<<<<<<<<<
@@ -14569,7 +14977,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_atom->name_id = __pyx_v_atomname_id;
 
-  /* "fatslimlib/core_base.pyx":1088
+  /* "fatslimlib/core_base.pyx":1103
  *         atom = &self.atoms[atom_internal_id]
  *         atom.name_id = atomname_id
  *         atom.internal_id = atom_internal_id             # <<<<<<<<<<<<<<
@@ -14578,7 +14986,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_atom->internal_id = __pyx_v_atom_internal_id;
 
-  /* "fatslimlib/core_base.pyx":1089
+  /* "fatslimlib/core_base.pyx":1104
  *         atom.name_id = atomname_id
  *         atom.internal_id = atom_internal_id
  *         atom.atomid = atomid             # <<<<<<<<<<<<<<
@@ -14587,7 +14995,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_atom->atomid = __pyx_v_atomid;
 
-  /* "fatslimlib/core_base.pyx":1090
+  /* "fatslimlib/core_base.pyx":1105
  *         atom.internal_id = atom_internal_id
  *         atom.atomid = atomid
  *         self.atomids_to_internalids[atomid-1] = atom_internal_id             # <<<<<<<<<<<<<<
@@ -14596,7 +15004,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   (__pyx_v_self->atomids_to_internalids[(__pyx_v_atomid - 1)]) = __pyx_v_atom_internal_id;
 
-  /* "fatslimlib/core_base.pyx":1091
+  /* "fatslimlib/core_base.pyx":1106
  *         atom.atomid = atomid
  *         self.atomids_to_internalids[atomid-1] = atom_internal_id
  *         self.atomids_to_internalids_size = atomid             # <<<<<<<<<<<<<<
@@ -14605,7 +15013,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_self->atomids_to_internalids_size = __pyx_v_atomid;
 
-  /* "fatslimlib/core_base.pyx":1094
+  /* "fatslimlib/core_base.pyx":1109
  * 
  *         # Populate the residue
  *         residue = &self.residues[residue_internal_id]             # <<<<<<<<<<<<<<
@@ -14614,7 +15022,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_v_residue = (&(__pyx_v_self->residues[__pyx_v_residue_internal_id]));
 
-  /* "fatslimlib/core_base.pyx":1096
+  /* "fatslimlib/core_base.pyx":1111
  *         residue = &self.residues[residue_internal_id]
  * 
  *         if residue_created:             # <<<<<<<<<<<<<<
@@ -14624,7 +15032,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __pyx_t_4 = (__pyx_v_residue_created != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1097
+    /* "fatslimlib/core_base.pyx":1112
  * 
  *         if residue_created:
  *             residue.name_id = resname_id             # <<<<<<<<<<<<<<
@@ -14633,7 +15041,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_residue->name_id = __pyx_v_resname_id;
 
-    /* "fatslimlib/core_base.pyx":1098
+    /* "fatslimlib/core_base.pyx":1113
  *         if residue_created:
  *             residue.name_id = resname_id
  *             residue.internal_id = residue_internal_id             # <<<<<<<<<<<<<<
@@ -14642,7 +15050,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_residue->internal_id = __pyx_v_residue_internal_id;
 
-    /* "fatslimlib/core_base.pyx":1099
+    /* "fatslimlib/core_base.pyx":1114
  *             residue.name_id = resname_id
  *             residue.internal_id = residue_internal_id
  *             residue.resid = resid             # <<<<<<<<<<<<<<
@@ -14651,7 +15059,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
     __pyx_v_residue->resid = __pyx_v_resid;
 
-    /* "fatslimlib/core_base.pyx":1096
+    /* "fatslimlib/core_base.pyx":1111
  *         residue = &self.residues[residue_internal_id]
  * 
  *         if residue_created:             # <<<<<<<<<<<<<<
@@ -14660,7 +15068,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1102
+  /* "fatslimlib/core_base.pyx":1117
  * 
  *         # Add the atom to the residue
  *         topol_residue_append_atom(residue, atom)             # <<<<<<<<<<<<<<
@@ -14669,7 +15077,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
  */
   __pyx_f_10fatslimlib_9core_base_topol_residue_append_atom(__pyx_v_residue, __pyx_v_atom);
 
-  /* "fatslimlib/core_base.pyx":967
+  /* "fatslimlib/core_base.pyx":982
  *         self.internal_append(resid, resname, atomname, atomid)
  * 
  *     cdef void internal_append(self, fsl_int resid, bytes resname, bytes atomname, fsl_int atomid):             # <<<<<<<<<<<<<<
@@ -14687,7 +15095,7 @@ static void __pyx_f_10fatslimlib_9core_base_8Topology_internal_append(struct __p
   __Pyx_RefNannyFinishContext();
 }
 
-/* "fatslimlib/core_base.pyx":1104
+/* "fatslimlib/core_base.pyx":1119
  *         topol_residue_append_atom(residue, atom)
  * 
  *     cdef fsl_int fast_get_atom_internal_id(self, fsl_int atomid) nogil:             # <<<<<<<<<<<<<<
@@ -14700,7 +15108,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_atom_internal_
   int __pyx_t_1;
   int __pyx_t_2;
 
-  /* "fatslimlib/core_base.pyx":1105
+  /* "fatslimlib/core_base.pyx":1120
  * 
  *     cdef fsl_int fast_get_atom_internal_id(self, fsl_int atomid) nogil:
  *         if not 0 < atomid <= self.atomids_to_internalids_size:             # <<<<<<<<<<<<<<
@@ -14714,7 +15122,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_atom_internal_
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "fatslimlib/core_base.pyx":1106
+    /* "fatslimlib/core_base.pyx":1121
  *     cdef fsl_int fast_get_atom_internal_id(self, fsl_int atomid) nogil:
  *         if not 0 < atomid <= self.atomids_to_internalids_size:
  *             return -1             # <<<<<<<<<<<<<<
@@ -14724,7 +15132,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_atom_internal_
     __pyx_r = -1;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1105
+    /* "fatslimlib/core_base.pyx":1120
  * 
  *     cdef fsl_int fast_get_atom_internal_id(self, fsl_int atomid) nogil:
  *         if not 0 < atomid <= self.atomids_to_internalids_size:             # <<<<<<<<<<<<<<
@@ -14733,7 +15141,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_atom_internal_
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1107
+  /* "fatslimlib/core_base.pyx":1122
  *         if not 0 < atomid <= self.atomids_to_internalids_size:
  *             return -1
  *         return self.atomids_to_internalids[atomid-1]             # <<<<<<<<<<<<<<
@@ -14743,7 +15151,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_atom_internal_
   __pyx_r = (__pyx_v_self->atomids_to_internalids[(__pyx_v_atomid - 1)]);
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1104
+  /* "fatslimlib/core_base.pyx":1119
  *         topol_residue_append_atom(residue, atom)
  * 
  *     cdef fsl_int fast_get_atom_internal_id(self, fsl_int atomid) nogil:             # <<<<<<<<<<<<<<
@@ -14756,7 +15164,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_atom_internal_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1109
+/* "fatslimlib/core_base.pyx":1124
  *         return self.atomids_to_internalids[atomid-1]
  * 
  *     cdef topol_atom_t *fast_get_atom(self, fsl_int atomid) nogil:             # <<<<<<<<<<<<<<
@@ -14769,7 +15177,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *__pyx_f_10fatslimlib
   struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *__pyx_r;
   int __pyx_t_1;
 
-  /* "fatslimlib/core_base.pyx":1110
+  /* "fatslimlib/core_base.pyx":1125
  * 
  *     cdef topol_atom_t *fast_get_atom(self, fsl_int atomid) nogil:
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)             # <<<<<<<<<<<<<<
@@ -14778,7 +15186,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *__pyx_f_10fatslimlib
  */
   __pyx_v_internal_id = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->fast_get_atom_internal_id(__pyx_v_self, __pyx_v_atomid);
 
-  /* "fatslimlib/core_base.pyx":1112
+  /* "fatslimlib/core_base.pyx":1127
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -14788,7 +15196,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *__pyx_f_10fatslimlib
   __pyx_t_1 = ((__pyx_v_internal_id < 0) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1113
+    /* "fatslimlib/core_base.pyx":1128
  * 
  *         if internal_id < 0:
  *             return NULL             # <<<<<<<<<<<<<<
@@ -14798,7 +15206,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *__pyx_f_10fatslimlib
     __pyx_r = NULL;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1112
+    /* "fatslimlib/core_base.pyx":1127
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -14807,7 +15215,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *__pyx_f_10fatslimlib
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1115
+  /* "fatslimlib/core_base.pyx":1130
  *             return NULL
  * 
  *         return &self.atoms[internal_id]             # <<<<<<<<<<<<<<
@@ -14817,7 +15225,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *__pyx_f_10fatslimlib
   __pyx_r = (&(__pyx_v_self->atoms[__pyx_v_internal_id]));
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1109
+  /* "fatslimlib/core_base.pyx":1124
  *         return self.atomids_to_internalids[atomid-1]
  * 
  *     cdef topol_atom_t *fast_get_atom(self, fsl_int atomid) nogil:             # <<<<<<<<<<<<<<
@@ -14830,7 +15238,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *__pyx_f_10fatslimlib
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1117
+/* "fatslimlib/core_base.pyx":1132
  *         return &self.atoms[internal_id]
  * 
  *     def get_atom(self, fsl_int atomid):             # <<<<<<<<<<<<<<
@@ -14849,7 +15257,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_8Topology_7get_atom(PyObject *
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_atom (wrapper)", 0);
   assert(__pyx_arg_atomid); {
-    __pyx_v_atomid = __Pyx_PyInt_As_fsl_int(__pyx_arg_atomid); if (unlikely((__pyx_v_atomid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1117; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_atomid = __Pyx_PyInt_As_fsl_int(__pyx_arg_atomid); if (unlikely((__pyx_v_atomid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1132; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -14886,7 +15294,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_atom", 0);
 
-  /* "fatslimlib/core_base.pyx":1120
+  /* "fatslimlib/core_base.pyx":1135
  *         cdef topol_atom_t atom
  *         cdef topol_residue_t residue
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)             # <<<<<<<<<<<<<<
@@ -14895,7 +15303,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
  */
   __pyx_v_internal_id = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->fast_get_atom_internal_id(__pyx_v_self, __pyx_v_atomid);
 
-  /* "fatslimlib/core_base.pyx":1123
+  /* "fatslimlib/core_base.pyx":1138
  *         cdef bytes resname, atomname
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -14905,30 +15313,30 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
   __pyx_t_1 = ((__pyx_v_internal_id < 0) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1124
+    /* "fatslimlib/core_base.pyx":1139
  * 
  *         if internal_id < 0:
  *             for i in range(self.atomids_to_internalids_size):             # <<<<<<<<<<<<<<
  *                 print("Atomid #%i -> internal id #%i" % (i+1, self.atomids_to_internalids[i]))
  *             raise KeyError("atomid not valid: %i (max atomid:%i)" %
  */
-    __pyx_t_2 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->atomids_to_internalids_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->atomids_to_internalids_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
       __pyx_t_3 = __pyx_t_2; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
       __pyx_t_5 = NULL;
     } else {
-      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     for (;;) {
@@ -14936,17 +15344,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
         if (likely(PyList_CheckExact(__pyx_t_3))) {
           if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -14956,7 +15364,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           break;
         }
@@ -14965,19 +15373,19 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
       __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "fatslimlib/core_base.pyx":1125
+      /* "fatslimlib/core_base.pyx":1140
  *         if internal_id < 0:
  *             for i in range(self.atomids_to_internalids_size):
  *                 print("Atomid #%i -> internal id #%i" % (i+1, self.atomids_to_internalids[i]))             # <<<<<<<<<<<<<<
  *             raise KeyError("atomid not valid: %i (max atomid:%i)" %
  *                            (atomid, self.atomids_to_internalids_size))
  */
-      __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-      __pyx_t_7 = __Pyx_PyInt_From_fsl_int((__pyx_v_self->atomids_to_internalids[__pyx_t_6])); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = __Pyx_PyInt_From_fsl_int((__pyx_v_self->atomids_to_internalids[__pyx_t_6])); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_2);
@@ -14985,20 +15393,20 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
       PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_7);
       __pyx_t_2 = 0;
       __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_Atomid_i_internal_id_i, __pyx_t_8); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_Atomid_i_internal_id_i, __pyx_t_8); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_7);
       PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7);
       __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "fatslimlib/core_base.pyx":1124
+      /* "fatslimlib/core_base.pyx":1139
  * 
  *         if internal_id < 0:
  *             for i in range(self.atomids_to_internalids_size):             # <<<<<<<<<<<<<<
@@ -15008,18 +15416,18 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "fatslimlib/core_base.pyx":1127
+    /* "fatslimlib/core_base.pyx":1142
  *                 print("Atomid #%i -> internal id #%i" % (i+1, self.atomids_to_internalids[i]))
  *             raise KeyError("atomid not valid: %i (max atomid:%i)" %
  *                            (atomid, self.atomids_to_internalids_size))             # <<<<<<<<<<<<<<
  * 
  *         atom = self.atoms[internal_id]
  */
-    __pyx_t_3 = __Pyx_PyInt_From_fsl_int(__pyx_v_atomid); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyInt_From_fsl_int(__pyx_v_atomid); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->atomids_to_internalids_size); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->atomids_to_internalids_size); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_3);
@@ -15028,29 +15436,29 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
     __pyx_t_3 = 0;
     __pyx_t_7 = 0;
 
-    /* "fatslimlib/core_base.pyx":1126
+    /* "fatslimlib/core_base.pyx":1141
  *             for i in range(self.atomids_to_internalids_size):
  *                 print("Atomid #%i -> internal id #%i" % (i+1, self.atomids_to_internalids[i]))
  *             raise KeyError("atomid not valid: %i (max atomid:%i)" %             # <<<<<<<<<<<<<<
  *                            (atomid, self.atomids_to_internalids_size))
  * 
  */
-    __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_atomid_not_valid_i_max_atomid_i, __pyx_t_8); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_atomid_not_valid_i_max_atomid_i, __pyx_t_8); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_Raise(__pyx_t_7, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1123
+    /* "fatslimlib/core_base.pyx":1138
  *         cdef bytes resname, atomname
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -15059,7 +15467,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1129
+  /* "fatslimlib/core_base.pyx":1144
  *                            (atomid, self.atomids_to_internalids_size))
  * 
  *         atom = self.atoms[internal_id]             # <<<<<<<<<<<<<<
@@ -15068,7 +15476,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
  */
   __pyx_v_atom = (__pyx_v_self->atoms[__pyx_v_internal_id]);
 
-  /* "fatslimlib/core_base.pyx":1130
+  /* "fatslimlib/core_base.pyx":1145
  * 
  *         atom = self.atoms[internal_id]
  *         residue = self.residues[atom.residue_internal_id]             # <<<<<<<<<<<<<<
@@ -15077,7 +15485,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
  */
   __pyx_v_residue = (__pyx_v_self->residues[__pyx_v_atom.residue_internal_id]);
 
-  /* "fatslimlib/core_base.pyx":1132
+  /* "fatslimlib/core_base.pyx":1147
  *         residue = self.residues[atom.residue_internal_id]
  * 
  *         return atom.resid, \             # <<<<<<<<<<<<<<
@@ -15085,10 +15493,10 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
  *                str(self.atomnames[atom.name_id].decode()), \
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom.resid); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1132; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom.resid); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
 
-  /* "fatslimlib/core_base.pyx":1133
+  /* "fatslimlib/core_base.pyx":1148
  * 
  *         return atom.resid, \
  *                str(self.resnames[residue.name_id].decode()), \             # <<<<<<<<<<<<<<
@@ -15096,19 +15504,19 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
  *                atom.atomid
  */
   __pyx_t_9 = (__pyx_v_self->resnames[__pyx_v_residue.name_id]);
-  __pyx_t_8 = __Pyx_decode_c_string(__pyx_t_9, 0, strlen(__pyx_t_9), NULL, NULL, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1133; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_decode_c_string(__pyx_t_9, 0, strlen(__pyx_t_9), NULL, NULL, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1133; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_8);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_8);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1133; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1134
+  /* "fatslimlib/core_base.pyx":1149
  *         return atom.resid, \
  *                str(self.resnames[residue.name_id].decode()), \
  *                str(self.atomnames[atom.name_id].decode()), \             # <<<<<<<<<<<<<<
@@ -15116,36 +15524,36 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
  * 
  */
   __pyx_t_9 = (__pyx_v_self->atomnames[__pyx_v_atom.name_id]);
-  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_9, 0, strlen(__pyx_t_9), NULL, NULL, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_9, 0, strlen(__pyx_t_9), NULL, NULL, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1135
+  /* "fatslimlib/core_base.pyx":1150
  *                str(self.resnames[residue.name_id].decode()), \
  *                str(self.atomnames[atom.name_id].decode()), \
  *                atom.atomid             # <<<<<<<<<<<<<<
  * 
  *     cdef fsl_int fast_get_resid_from_atomid(self, fsl_int atomid) nogil:
  */
-  __pyx_t_2 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom.atomid); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1135; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom.atomid); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1150; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "fatslimlib/core_base.pyx":1132
+  /* "fatslimlib/core_base.pyx":1147
  *         residue = self.residues[atom.residue_internal_id]
  * 
  *         return atom.resid, \             # <<<<<<<<<<<<<<
  *                str(self.resnames[residue.name_id].decode()), \
  *                str(self.atomnames[atom.name_id].decode()), \
  */
-  __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1132; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_7);
@@ -15163,7 +15571,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
   __pyx_t_10 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1117
+  /* "fatslimlib/core_base.pyx":1132
  *         return &self.atoms[internal_id]
  * 
  *     def get_atom(self, fsl_int atomid):             # <<<<<<<<<<<<<<
@@ -15187,7 +15595,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6get_atom(struct __p
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1137
+/* "fatslimlib/core_base.pyx":1152
  *                atom.atomid
  * 
  *     cdef fsl_int fast_get_resid_from_atomid(self, fsl_int atomid) nogil:             # <<<<<<<<<<<<<<
@@ -15201,7 +15609,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_resid_from_ato
   fsl_int __pyx_r;
   int __pyx_t_1;
 
-  /* "fatslimlib/core_base.pyx":1139
+  /* "fatslimlib/core_base.pyx":1154
  *     cdef fsl_int fast_get_resid_from_atomid(self, fsl_int atomid) nogil:
  *         cdef topol_atom_t atom
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)             # <<<<<<<<<<<<<<
@@ -15210,7 +15618,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_resid_from_ato
  */
   __pyx_v_internal_id = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->fast_get_atom_internal_id(__pyx_v_self, __pyx_v_atomid);
 
-  /* "fatslimlib/core_base.pyx":1141
+  /* "fatslimlib/core_base.pyx":1156
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -15220,7 +15628,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_resid_from_ato
   __pyx_t_1 = ((__pyx_v_internal_id < 0) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1142
+    /* "fatslimlib/core_base.pyx":1157
  * 
  *         if internal_id < 0:
  *             return -1             # <<<<<<<<<<<<<<
@@ -15230,7 +15638,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_resid_from_ato
     __pyx_r = -1;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1141
+    /* "fatslimlib/core_base.pyx":1156
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -15239,7 +15647,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_resid_from_ato
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1144
+  /* "fatslimlib/core_base.pyx":1159
  *             return -1
  * 
  *         atom = self.atoms[internal_id]             # <<<<<<<<<<<<<<
@@ -15248,7 +15656,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_resid_from_ato
  */
   __pyx_v_atom = (__pyx_v_self->atoms[__pyx_v_internal_id]);
 
-  /* "fatslimlib/core_base.pyx":1145
+  /* "fatslimlib/core_base.pyx":1160
  * 
  *         atom = self.atoms[internal_id]
  *         return atom.resid             # <<<<<<<<<<<<<<
@@ -15258,7 +15666,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_resid_from_ato
   __pyx_r = __pyx_v_atom.resid;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1137
+  /* "fatslimlib/core_base.pyx":1152
  *                atom.atomid
  * 
  *     cdef fsl_int fast_get_resid_from_atomid(self, fsl_int atomid) nogil:             # <<<<<<<<<<<<<<
@@ -15271,7 +15679,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_resid_from_ato
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1147
+/* "fatslimlib/core_base.pyx":1162
  *         return atom.resid
  * 
  *     cdef topol_residue_t *fast_get_residue_from_atomid(self, fsl_int atomid) nogil:             # <<<<<<<<<<<<<<
@@ -15285,7 +15693,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
   struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_r;
   int __pyx_t_1;
 
-  /* "fatslimlib/core_base.pyx":1149
+  /* "fatslimlib/core_base.pyx":1164
  *     cdef topol_residue_t *fast_get_residue_from_atomid(self, fsl_int atomid) nogil:
  *         cdef topol_atom_t atom
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)             # <<<<<<<<<<<<<<
@@ -15294,7 +15702,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
  */
   __pyx_v_internal_id = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->fast_get_atom_internal_id(__pyx_v_self, __pyx_v_atomid);
 
-  /* "fatslimlib/core_base.pyx":1151
+  /* "fatslimlib/core_base.pyx":1166
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -15304,7 +15712,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
   __pyx_t_1 = ((__pyx_v_internal_id < 0) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1152
+    /* "fatslimlib/core_base.pyx":1167
  * 
  *         if internal_id < 0:
  *             return NULL             # <<<<<<<<<<<<<<
@@ -15314,7 +15722,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
     __pyx_r = NULL;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1151
+    /* "fatslimlib/core_base.pyx":1166
  *         cdef fsl_int internal_id = self.fast_get_atom_internal_id(atomid)
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -15323,7 +15731,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1153
+  /* "fatslimlib/core_base.pyx":1168
  *         if internal_id < 0:
  *             return NULL
  *         atom = self.atoms[internal_id]             # <<<<<<<<<<<<<<
@@ -15332,7 +15740,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
  */
   __pyx_v_atom = (__pyx_v_self->atoms[__pyx_v_internal_id]);
 
-  /* "fatslimlib/core_base.pyx":1155
+  /* "fatslimlib/core_base.pyx":1170
  *         atom = self.atoms[internal_id]
  * 
  *         return &self.residues[atom.residue_internal_id]             # <<<<<<<<<<<<<<
@@ -15342,7 +15750,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
   __pyx_r = (&(__pyx_v_self->residues[__pyx_v_atom.residue_internal_id]));
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1147
+  /* "fatslimlib/core_base.pyx":1162
  *         return atom.resid
  * 
  *     cdef topol_residue_t *fast_get_residue_from_atomid(self, fsl_int atomid) nogil:             # <<<<<<<<<<<<<<
@@ -15355,7 +15763,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1157
+/* "fatslimlib/core_base.pyx":1172
  *         return &self.residues[atom.residue_internal_id]
  * 
  *     def get_residue_from_atomid(self, fsl_int atomid):             # <<<<<<<<<<<<<<
@@ -15374,7 +15782,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_8Topology_9get_residue_from_at
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_residue_from_atomid (wrapper)", 0);
   assert(__pyx_arg_atomid); {
-    __pyx_v_atomid = __Pyx_PyInt_As_fsl_int(__pyx_arg_atomid); if (unlikely((__pyx_v_atomid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1157; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_atomid = __Pyx_PyInt_As_fsl_int(__pyx_arg_atomid); if (unlikely((__pyx_v_atomid == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1172; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -15401,7 +15809,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_8get_residue_from_at
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_residue_from_atomid", 0);
 
-  /* "fatslimlib/core_base.pyx":1158
+  /* "fatslimlib/core_base.pyx":1173
  * 
  *     def get_residue_from_atomid(self, fsl_int atomid):
  *         cdef topol_residue_t *residue = self.fast_get_residue_from_atomid(atomid)             # <<<<<<<<<<<<<<
@@ -15410,7 +15818,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_8get_residue_from_at
  */
   __pyx_v_residue = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->fast_get_residue_from_atomid(__pyx_v_self, __pyx_v_atomid);
 
-  /* "fatslimlib/core_base.pyx":1160
+  /* "fatslimlib/core_base.pyx":1175
  *         cdef topol_residue_t *residue = self.fast_get_residue_from_atomid(atomid)
  * 
  *         if residue == NULL:             # <<<<<<<<<<<<<<
@@ -15420,31 +15828,31 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_8get_residue_from_at
   __pyx_t_1 = ((__pyx_v_residue == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1161
+    /* "fatslimlib/core_base.pyx":1176
  * 
  *         if residue == NULL:
  *             raise KeyError("atomid not valid: %i" % atomid)             # <<<<<<<<<<<<<<
  * 
  *         return topol_residue_to_dict(residue, self.resnames[residue.name_id])
  */
-    __pyx_t_2 = __Pyx_PyInt_From_fsl_int(__pyx_v_atomid); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1161; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyInt_From_fsl_int(__pyx_v_atomid); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_atomid_not_valid_i, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1161; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_atomid_not_valid_i, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1161; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1161; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1161; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1160
+    /* "fatslimlib/core_base.pyx":1175
  *         cdef topol_residue_t *residue = self.fast_get_residue_from_atomid(atomid)
  * 
  *         if residue == NULL:             # <<<<<<<<<<<<<<
@@ -15453,7 +15861,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_8get_residue_from_at
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1163
+  /* "fatslimlib/core_base.pyx":1178
  *             raise KeyError("atomid not valid: %i" % atomid)
  * 
  *         return topol_residue_to_dict(residue, self.resnames[residue.name_id])             # <<<<<<<<<<<<<<
@@ -15461,16 +15869,16 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_8get_residue_from_at
  *     cdef fsl_int fast_get_residue_internal_id(self, fsl_int resid) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_FromString((__pyx_v_self->resnames[__pyx_v_residue->name_id])); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1163; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_FromString((__pyx_v_self->resnames[__pyx_v_residue->name_id])); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1178; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(__pyx_v_residue, ((PyObject*)__pyx_t_3)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1163; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(__pyx_v_residue, ((PyObject*)__pyx_t_3)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1178; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1157
+  /* "fatslimlib/core_base.pyx":1172
  *         return &self.residues[atom.residue_internal_id]
  * 
  *     def get_residue_from_atomid(self, fsl_int atomid):             # <<<<<<<<<<<<<<
@@ -15490,7 +15898,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_8get_residue_from_at
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1165
+/* "fatslimlib/core_base.pyx":1180
  *         return topol_residue_to_dict(residue, self.resnames[residue.name_id])
  * 
  *     cdef fsl_int fast_get_residue_internal_id(self, fsl_int resid) nogil:             # <<<<<<<<<<<<<<
@@ -15503,7 +15911,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue_intern
   int __pyx_t_1;
   int __pyx_t_2;
 
-  /* "fatslimlib/core_base.pyx":1166
+  /* "fatslimlib/core_base.pyx":1181
  * 
  *     cdef fsl_int fast_get_residue_internal_id(self, fsl_int resid) nogil:
  *         if not 0 < resid <= self.resids_to_internalids_size:             # <<<<<<<<<<<<<<
@@ -15517,7 +15925,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue_intern
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "fatslimlib/core_base.pyx":1167
+    /* "fatslimlib/core_base.pyx":1182
  *     cdef fsl_int fast_get_residue_internal_id(self, fsl_int resid) nogil:
  *         if not 0 < resid <= self.resids_to_internalids_size:
  *             return -1             # <<<<<<<<<<<<<<
@@ -15527,7 +15935,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue_intern
     __pyx_r = -1;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1166
+    /* "fatslimlib/core_base.pyx":1181
  * 
  *     cdef fsl_int fast_get_residue_internal_id(self, fsl_int resid) nogil:
  *         if not 0 < resid <= self.resids_to_internalids_size:             # <<<<<<<<<<<<<<
@@ -15536,7 +15944,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue_intern
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1168
+  /* "fatslimlib/core_base.pyx":1183
  *         if not 0 < resid <= self.resids_to_internalids_size:
  *             return -1
  *         return self.resids_to_internalids[resid-1]             # <<<<<<<<<<<<<<
@@ -15546,7 +15954,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue_intern
   __pyx_r = (__pyx_v_self->resids_to_internalids[(__pyx_v_resid - 1)]);
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1165
+  /* "fatslimlib/core_base.pyx":1180
  *         return topol_residue_to_dict(residue, self.resnames[residue.name_id])
  * 
  *     cdef fsl_int fast_get_residue_internal_id(self, fsl_int resid) nogil:             # <<<<<<<<<<<<<<
@@ -15559,7 +15967,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue_intern
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1170
+/* "fatslimlib/core_base.pyx":1185
  *         return self.resids_to_internalids[resid-1]
  * 
  *     cdef topol_residue_t *fast_get_residue(self, fsl_int resid) nogil:             # <<<<<<<<<<<<<<
@@ -15572,7 +15980,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
   struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_r;
   int __pyx_t_1;
 
-  /* "fatslimlib/core_base.pyx":1171
+  /* "fatslimlib/core_base.pyx":1186
  * 
  *     cdef topol_residue_t *fast_get_residue(self, fsl_int resid) nogil:
  *         cdef fsl_int internal_id = self.fast_get_residue_internal_id(resid)             # <<<<<<<<<<<<<<
@@ -15581,7 +15989,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
  */
   __pyx_v_internal_id = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->fast_get_residue_internal_id(__pyx_v_self, __pyx_v_resid);
 
-  /* "fatslimlib/core_base.pyx":1173
+  /* "fatslimlib/core_base.pyx":1188
  *         cdef fsl_int internal_id = self.fast_get_residue_internal_id(resid)
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -15591,7 +15999,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
   __pyx_t_1 = ((__pyx_v_internal_id < 0) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1174
+    /* "fatslimlib/core_base.pyx":1189
  * 
  *         if internal_id < 0:
  *             return NULL             # <<<<<<<<<<<<<<
@@ -15601,7 +16009,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
     __pyx_r = NULL;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1173
+    /* "fatslimlib/core_base.pyx":1188
  *         cdef fsl_int internal_id = self.fast_get_residue_internal_id(resid)
  * 
  *         if internal_id < 0:             # <<<<<<<<<<<<<<
@@ -15610,7 +16018,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1176
+  /* "fatslimlib/core_base.pyx":1191
  *             return NULL
  * 
  *         return &self.residues[internal_id]             # <<<<<<<<<<<<<<
@@ -15620,7 +16028,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
   __pyx_r = (&(__pyx_v_self->residues[__pyx_v_internal_id]));
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1170
+  /* "fatslimlib/core_base.pyx":1185
  *         return self.resids_to_internalids[resid-1]
  * 
  *     cdef topol_residue_t *fast_get_residue(self, fsl_int resid) nogil:             # <<<<<<<<<<<<<<
@@ -15633,7 +16041,7 @@ static struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *__pyx_f_10fatslim
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1178
+/* "fatslimlib/core_base.pyx":1193
  *         return &self.residues[internal_id]
  * 
  *     def get_residue(self, resid):             # <<<<<<<<<<<<<<
@@ -15667,17 +16075,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_10get_residue(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_residue", 0);
 
-  /* "fatslimlib/core_base.pyx":1179
+  /* "fatslimlib/core_base.pyx":1194
  * 
  *     def get_residue(self, resid):
  *         cdef topol_residue_t *residue = self.fast_get_residue(resid)             # <<<<<<<<<<<<<<
  * 
  *         if residue == NULL:
  */
-  __pyx_t_1 = __Pyx_PyInt_As_fsl_int(__pyx_v_resid); if (unlikely((__pyx_t_1 == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_fsl_int(__pyx_v_resid); if (unlikely((__pyx_t_1 == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1194; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_residue = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_self->__pyx_vtab)->fast_get_residue(__pyx_v_self, __pyx_t_1);
 
-  /* "fatslimlib/core_base.pyx":1181
+  /* "fatslimlib/core_base.pyx":1196
  *         cdef topol_residue_t *residue = self.fast_get_residue(resid)
  * 
  *         if residue == NULL:             # <<<<<<<<<<<<<<
@@ -15687,28 +16095,28 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_10get_residue(struct
   __pyx_t_2 = ((__pyx_v_residue == NULL) != 0);
   if (__pyx_t_2) {
 
-    /* "fatslimlib/core_base.pyx":1182
+    /* "fatslimlib/core_base.pyx":1197
  * 
  *         if residue == NULL:
  *             raise KeyError("resid not valid: %i" % resid)             # <<<<<<<<<<<<<<
  * 
  *         return topol_residue_to_dict(residue, self.resnames[residue.name_id])
  */
-    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_resid_not_valid_i, __pyx_v_resid); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1182; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_resid_not_valid_i, __pyx_v_resid); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1182; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1182; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1182; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1181
+    /* "fatslimlib/core_base.pyx":1196
  *         cdef topol_residue_t *residue = self.fast_get_residue(resid)
  * 
  *         if residue == NULL:             # <<<<<<<<<<<<<<
@@ -15717,7 +16125,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_10get_residue(struct
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1184
+  /* "fatslimlib/core_base.pyx":1199
  *             raise KeyError("resid not valid: %i" % resid)
  * 
  *         return topol_residue_to_dict(residue, self.resnames[residue.name_id])             # <<<<<<<<<<<<<<
@@ -15725,16 +16133,16 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_10get_residue(struct
  *     property nresidues:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_FromString((__pyx_v_self->resnames[__pyx_v_residue->name_id])); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1184; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_FromString((__pyx_v_self->resnames[__pyx_v_residue->name_id])); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1199; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(__pyx_v_residue, ((PyObject*)__pyx_t_3)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1184; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __pyx_f_10fatslimlib_9core_base_topol_residue_to_dict(__pyx_v_residue, ((PyObject*)__pyx_t_3)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1199; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1178
+  /* "fatslimlib/core_base.pyx":1193
  *         return &self.residues[internal_id]
  * 
  *     def get_residue(self, resid):             # <<<<<<<<<<<<<<
@@ -15754,7 +16162,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_10get_residue(struct
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1187
+/* "fatslimlib/core_base.pyx":1202
  * 
  *     property nresidues:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -15784,7 +16192,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_9nresidues___get__(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1188
+  /* "fatslimlib/core_base.pyx":1203
  *     property nresidues:
  *         def __get__(self):
  *             return self.residues_size             # <<<<<<<<<<<<<<
@@ -15792,13 +16200,13 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_9nresidues___get__(s
  *     property natoms:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->residues_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->residues_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1187
+  /* "fatslimlib/core_base.pyx":1202
  * 
  *     property nresidues:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -15817,7 +16225,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_9nresidues___get__(s
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1191
+/* "fatslimlib/core_base.pyx":1206
  * 
  *     property natoms:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -15847,7 +16255,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6natoms___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1192
+  /* "fatslimlib/core_base.pyx":1207
  *     property natoms:
  *         def __get__(self):
  *             return self.atoms_size             # <<<<<<<<<<<<<<
@@ -15855,13 +16263,13 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6natoms___get__(stru
  *     def __len__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->atoms_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1192; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->atoms_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1191
+  /* "fatslimlib/core_base.pyx":1206
  * 
  *     property natoms:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -15880,7 +16288,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_8Topology_6natoms___get__(stru
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1194
+/* "fatslimlib/core_base.pyx":1209
  *             return self.atoms_size
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -15906,7 +16314,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_8Topology_12__len__(struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "fatslimlib/core_base.pyx":1195
+  /* "fatslimlib/core_base.pyx":1210
  * 
  *     def __len__(self):
  *         return self.atoms_size             # <<<<<<<<<<<<<<
@@ -15916,7 +16324,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_8Topology_12__len__(struct __
   __pyx_r = __pyx_v_self->atoms_size;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1194
+  /* "fatslimlib/core_base.pyx":1209
  *             return self.atoms_size
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -15930,7 +16338,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_8Topology_12__len__(struct __
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1199
+/* "fatslimlib/core_base.pyx":1214
  * cdef class TopologyReader(object):
  * 
  *     def __init__(self, str filename, bint verbose=True):             # <<<<<<<<<<<<<<
@@ -15973,7 +16381,7 @@ static int __pyx_pw_10fatslimlib_9core_base_14TopologyReader_1__init__(PyObject 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1199; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1214; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -15985,20 +16393,20 @@ static int __pyx_pw_10fatslimlib_9core_base_14TopologyReader_1__init__(PyObject 
     }
     __pyx_v_filename = ((PyObject*)values[0]);
     if (values[1]) {
-      __pyx_v_verbose = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1199; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_verbose = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1214; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_verbose = ((int)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1199; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1214; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.TopologyReader.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filename), (&PyString_Type), 1, "filename", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1199; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filename), (&PyString_Type), 1, "filename", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1214; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(((struct __pyx_obj_10fatslimlib_9core_base_TopologyReader *)__pyx_v_self), __pyx_v_filename, __pyx_v_verbose);
 
   /* function exit code */
@@ -16027,14 +16435,14 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "fatslimlib/core_base.pyx":1200
+  /* "fatslimlib/core_base.pyx":1215
  * 
  *     def __init__(self, str filename, bint verbose=True):
  *         self.filename = filename.encode()             # <<<<<<<<<<<<<<
  *         self.topology = Topology()
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1200; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1215; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -16047,28 +16455,28 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1200; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1215; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1200; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1215; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1200; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1215; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->filename);
   __Pyx_DECREF(__pyx_v_self->filename);
   __pyx_v_self->filename = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1201
+  /* "fatslimlib/core_base.pyx":1216
  *     def __init__(self, str filename, bint verbose=True):
  *         self.filename = filename.encode()
  *         self.topology = Topology()             # <<<<<<<<<<<<<<
  * 
  *         # load topology file
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_Topology), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_Topology), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->topology);
@@ -16076,36 +16484,36 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
   __pyx_v_self->topology = ((struct __pyx_obj_10fatslimlib_9core_base_Topology *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1204
+  /* "fatslimlib/core_base.pyx":1219
  * 
  *         # load topology file
  *         verbose_print("Loading topology from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1204; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "fatslimlib/core_base.pyx":1205
+  /* "fatslimlib/core_base.pyx":1220
  *         # load topology file
  *         verbose_print("Loading topology from '%s'... " %
  *                       os.path.basename(self.filename.decode()),             # <<<<<<<<<<<<<<
  *                       verbose,
  *                       end="")
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_path); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_path); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_basename); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_basename); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (unlikely(__pyx_v_self->filename == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_4 = __Pyx_decode_bytes(__pyx_v_self->filename, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_decode_bytes(__pyx_v_self->filename, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -16118,51 +16526,51 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1204
+  /* "fatslimlib/core_base.pyx":1219
  * 
  *         # load topology file
  *         verbose_print("Loading topology from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  */
-  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Loading_topology_from_s, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1204; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Loading_topology_from_s, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1206
+  /* "fatslimlib/core_base.pyx":1221
  *         verbose_print("Loading topology from '%s'... " %
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,             # <<<<<<<<<<<<<<
  *                       end="")
  *         begin = time()
  */
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1221; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "fatslimlib/core_base.pyx":1204
+  /* "fatslimlib/core_base.pyx":1219
  * 
  *         # load topology file
  *         verbose_print("Loading topology from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  */
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1204; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3);
@@ -16171,39 +16579,39 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1207
+  /* "fatslimlib/core_base.pyx":1222
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  *                       end="")             # <<<<<<<<<<<<<<
  *         begin = time()
  *         self.load()
  */
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1222; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_end, __pyx_kp_s__19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_end, __pyx_kp_s__19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1222; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":1204
+  /* "fatslimlib/core_base.pyx":1219
  * 
  *         # load topology file
  *         verbose_print("Loading topology from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1204; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1208
+  /* "fatslimlib/core_base.pyx":1223
  *                       verbose,
  *                       end="")
  *         begin = time()             # <<<<<<<<<<<<<<
  *         self.load()
  *         verbose_print("%i topology atoms (from %i residues) loaded in %s" %
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1208; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1223; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -16216,65 +16624,65 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
     }
   }
   if (__pyx_t_6) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1208; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1223; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   } else {
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1208; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1223; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_begin = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1209
+  /* "fatslimlib/core_base.pyx":1224
  *                       end="")
  *         begin = time()
  *         self.load()             # <<<<<<<<<<<<<<
  *         verbose_print("%i topology atoms (from %i residues) loaded in %s" %
  *                       (self.topology.natoms,
  */
-  __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyReader *)__pyx_v_self->__pyx_vtab)->load(__pyx_v_self); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1209; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyReader *)__pyx_v_self->__pyx_vtab)->load(__pyx_v_self); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1224; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1210
+  /* "fatslimlib/core_base.pyx":1225
  *         begin = time()
  *         self.load()
  *         verbose_print("%i topology atoms (from %i residues) loaded in %s" %             # <<<<<<<<<<<<<<
  *                       (self.topology.natoms,
  *                        self.topology.nresidues,
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "fatslimlib/core_base.pyx":1211
+  /* "fatslimlib/core_base.pyx":1226
  *         self.load()
  *         verbose_print("%i topology atoms (from %i residues) loaded in %s" %
  *                       (self.topology.natoms,             # <<<<<<<<<<<<<<
  *                        self.topology.nresidues,
  *                        pretty_delta(begin, time())),
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->topology), __pyx_n_s_natoms); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->topology), __pyx_n_s_natoms); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1226; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
 
-  /* "fatslimlib/core_base.pyx":1212
+  /* "fatslimlib/core_base.pyx":1227
  *         verbose_print("%i topology atoms (from %i residues) loaded in %s" %
  *                       (self.topology.natoms,
  *                        self.topology.nresidues,             # <<<<<<<<<<<<<<
  *                        pretty_delta(begin, time())),
  *                       verbose)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->topology), __pyx_n_s_nresidues); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->topology), __pyx_n_s_nresidues); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1227; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "fatslimlib/core_base.pyx":1213
+  /* "fatslimlib/core_base.pyx":1228
  *                       (self.topology.natoms,
  *                        self.topology.nresidues,
  *                        pretty_delta(begin, time())),             # <<<<<<<<<<<<<<
  *                       verbose)
  * 
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_7 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -16287,25 +16695,25 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
     }
   }
   if (__pyx_t_7) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __pyx_f_10fatslimlib_9core_base_pretty_delta(__pyx_v_begin, __pyx_t_4, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __pyx_f_10fatslimlib_9core_base_pretty_delta(__pyx_v_begin, __pyx_t_4, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1211
+  /* "fatslimlib/core_base.pyx":1226
  *         self.load()
  *         verbose_print("%i topology atoms (from %i residues) loaded in %s" %
  *                       (self.topology.natoms,             # <<<<<<<<<<<<<<
  *                        self.topology.nresidues,
  *                        pretty_delta(begin, time())),
  */
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1226; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
@@ -16317,25 +16725,25 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
   __pyx_t_1 = 0;
   __pyx_t_5 = 0;
 
-  /* "fatslimlib/core_base.pyx":1210
+  /* "fatslimlib/core_base.pyx":1225
  *         begin = time()
  *         self.load()
  *         verbose_print("%i topology atoms (from %i residues) loaded in %s" %             # <<<<<<<<<<<<<<
  *                       (self.topology.natoms,
  *                        self.topology.nresidues,
  */
-  __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_i_topology_atoms_from_i_residue, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_i_topology_atoms_from_i_residue, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1214
+  /* "fatslimlib/core_base.pyx":1229
  *                        self.topology.nresidues,
  *                        pretty_delta(begin, time())),
  *                       verbose)             # <<<<<<<<<<<<<<
  * 
  *     cdef load(self):
  */
-  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1214; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1229; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_1 = NULL;
   __pyx_t_8 = 0;
@@ -16349,7 +16757,7 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
       __pyx_t_8 = 1;
     }
   }
-  __pyx_t_6 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   if (__pyx_t_1) {
     __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -16360,13 +16768,13 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
   PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_8, __pyx_t_4);
   __pyx_t_5 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1199
+  /* "fatslimlib/core_base.pyx":1214
  * cdef class TopologyReader(object):
  * 
  *     def __init__(self, str filename, bint verbose=True):             # <<<<<<<<<<<<<<
@@ -16393,7 +16801,7 @@ static int __pyx_pf_10fatslimlib_9core_base_14TopologyReader___init__(struct __p
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1216
+/* "fatslimlib/core_base.pyx":1231
  *                       verbose)
  * 
  *     cdef load(self):             # <<<<<<<<<<<<<<
@@ -16409,7 +16817,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_14TopologyReader_load(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("load", 0);
 
-  /* "fatslimlib/core_base.pyx":1217
+  /* "fatslimlib/core_base.pyx":1232
  * 
  *     cdef load(self):
  *         raise NotImplementedError             # <<<<<<<<<<<<<<
@@ -16417,9 +16825,9 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_14TopologyReader_load(CYTHON_UN
  * 
  */
   __Pyx_Raise(__pyx_builtin_NotImplementedError, 0, 0, 0);
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":1216
+  /* "fatslimlib/core_base.pyx":1231
  *                       verbose)
  * 
  *     cdef load(self):             # <<<<<<<<<<<<<<
@@ -16436,7 +16844,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_14TopologyReader_load(CYTHON_UN
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":181
+/* "fatslimlib/core_base.pxd":183
  *     # Attributes
  *     cdef bytes filename
  *     cdef readonly Topology topology             # <<<<<<<<<<<<<<
@@ -16473,7 +16881,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_14TopologyReader_8topology___g
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1223
+/* "fatslimlib/core_base.pyx":1238
  * cdef class CoordinateReader(object):
  * 
  *     def __init__(self, str filename, bint verbose=True):             # <<<<<<<<<<<<<<
@@ -16516,7 +16924,7 @@ static int __pyx_pw_10fatslimlib_9core_base_16CoordinateReader_1__init__(PyObjec
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1223; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1238; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -16528,20 +16936,20 @@ static int __pyx_pw_10fatslimlib_9core_base_16CoordinateReader_1__init__(PyObjec
     }
     __pyx_v_filename = ((PyObject*)values[0]);
     if (values[1]) {
-      __pyx_v_verbose = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1223; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_verbose = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1238; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_verbose = ((int)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1223; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1238; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.CoordinateReader.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filename), (&PyString_Type), 1, "filename", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1223; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filename), (&PyString_Type), 1, "filename", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(((struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self), __pyx_v_filename, __pyx_v_verbose);
 
   /* function exit code */
@@ -16569,14 +16977,14 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "fatslimlib/core_base.pyx":1224
+  /* "fatslimlib/core_base.pyx":1239
  * 
  *     def __init__(self, str filename, bint verbose=True):
  *         self.filename = filename.encode()             # <<<<<<<<<<<<<<
  * 
  *         # Preload file
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1224; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1239; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -16589,50 +16997,50 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1224; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1239; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1224; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1239; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1224; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1239; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->filename);
   __Pyx_DECREF(__pyx_v_self->filename);
   __pyx_v_self->filename = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1227
+  /* "fatslimlib/core_base.pyx":1242
  * 
  *         # Preload file
  *         verbose_print("Preloading coordinates from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1227; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1242; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "fatslimlib/core_base.pyx":1228
+  /* "fatslimlib/core_base.pyx":1243
  *         # Preload file
  *         verbose_print("Preloading coordinates from '%s'... " %
  *                       os.path.basename(self.filename.decode()),             # <<<<<<<<<<<<<<
  *                       verbose,
  *                       end="")
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_path); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_path); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_basename); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_basename); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (unlikely(__pyx_v_self->filename == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_4 = __Pyx_decode_bytes(__pyx_v_self->filename, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_decode_bytes(__pyx_v_self->filename, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -16645,51 +17053,51 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1227
+  /* "fatslimlib/core_base.pyx":1242
  * 
  *         # Preload file
  *         verbose_print("Preloading coordinates from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  */
-  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Preloading_coordinates_from_s, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1227; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Preloading_coordinates_from_s, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1242; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1229
+  /* "fatslimlib/core_base.pyx":1244
  *         verbose_print("Preloading coordinates from '%s'... " %
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,             # <<<<<<<<<<<<<<
  *                       end="")
  *         begin = time()
  */
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1229; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "fatslimlib/core_base.pyx":1227
+  /* "fatslimlib/core_base.pyx":1242
  * 
  *         # Preload file
  *         verbose_print("Preloading coordinates from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  */
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1227; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1242; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3);
@@ -16698,39 +17106,39 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1230
+  /* "fatslimlib/core_base.pyx":1245
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  *                       end="")             # <<<<<<<<<<<<<<
  *         begin = time()
  *         self.preload()
  */
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1230; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_end, __pyx_kp_s__19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1230; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_end, __pyx_kp_s__19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":1227
+  /* "fatslimlib/core_base.pyx":1242
  * 
  *         # Preload file
  *         verbose_print("Preloading coordinates from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename.decode()),
  *                       verbose,
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1227; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1242; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1231
+  /* "fatslimlib/core_base.pyx":1246
  *                       verbose,
  *                       end="")
  *         begin = time()             # <<<<<<<<<<<<<<
  *         self.preload()
  *         verbose_print("%i frames preloaded in %s" % (self.nframes, pretty_delta(begin, time())),
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -16743,39 +17151,39 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
     }
   }
   if (__pyx_t_6) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   } else {
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_begin = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1232
+  /* "fatslimlib/core_base.pyx":1247
  *                       end="")
  *         begin = time()
  *         self.preload()             # <<<<<<<<<<<<<<
  *         verbose_print("%i frames preloaded in %s" % (self.nframes, pretty_delta(begin, time())),
  *                       verbose)
  */
-  __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->__pyx_vtab)->preload(__pyx_v_self); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->__pyx_vtab)->preload(__pyx_v_self); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1233
+  /* "fatslimlib/core_base.pyx":1248
  *         begin = time()
  *         self.preload()
  *         verbose_print("%i frames preloaded in %s" % (self.nframes, pretty_delta(begin, time())),             # <<<<<<<<<<<<<<
  *                       verbose)
  * 
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->nframes); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->nframes); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -16788,17 +17196,17 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_f_10fatslimlib_9core_base_pretty_delta(__pyx_v_begin, __pyx_t_1, 0); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __pyx_f_10fatslimlib_9core_base_pretty_delta(__pyx_v_begin, __pyx_t_1, 0); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6);
@@ -16806,18 +17214,18 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_4);
   __pyx_t_6 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_i_frames_preloaded_in_s, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_i_frames_preloaded_in_s, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1234
+  /* "fatslimlib/core_base.pyx":1249
  *         self.preload()
  *         verbose_print("%i frames preloaded in %s" % (self.nframes, pretty_delta(begin, time())),
  *                       verbose)             # <<<<<<<<<<<<<<
  * 
  *     cdef preload(self):
  */
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1234; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1249; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_6 = NULL;
   __pyx_t_7 = 0;
@@ -16831,7 +17239,7 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
       __pyx_t_7 = 1;
     }
   }
-  __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   if (__pyx_t_6) {
     __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -16842,13 +17250,13 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
   PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_7, __pyx_t_1);
   __pyx_t_4 = 0;
   __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1223
+  /* "fatslimlib/core_base.pyx":1238
  * cdef class CoordinateReader(object):
  * 
  *     def __init__(self, str filename, bint verbose=True):             # <<<<<<<<<<<<<<
@@ -16874,7 +17282,7 @@ static int __pyx_pf_10fatslimlib_9core_base_16CoordinateReader___init__(struct _
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1236
+/* "fatslimlib/core_base.pyx":1251
  *                       verbose)
  * 
  *     cdef preload(self):             # <<<<<<<<<<<<<<
@@ -16890,7 +17298,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_16CoordinateReader_preload(CYTH
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("preload", 0);
 
-  /* "fatslimlib/core_base.pyx":1237
+  /* "fatslimlib/core_base.pyx":1252
  * 
  *     cdef preload(self):
  *         raise NotImplementedError             # <<<<<<<<<<<<<<
@@ -16898,9 +17306,9 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_16CoordinateReader_preload(CYTH
  *     cdef PBCBox load_box(self, fsl_int frame_id):
  */
   __Pyx_Raise(__pyx_builtin_NotImplementedError, 0, 0, 0);
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1237; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1252; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":1236
+  /* "fatslimlib/core_base.pyx":1251
  *                       verbose)
  * 
  *     cdef preload(self):             # <<<<<<<<<<<<<<
@@ -16917,7 +17325,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_16CoordinateReader_preload(CYTH
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1239
+/* "fatslimlib/core_base.pyx":1254
  *         raise NotImplementedError
  * 
  *     cdef PBCBox load_box(self, fsl_int frame_id):             # <<<<<<<<<<<<<<
@@ -16933,7 +17341,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_9co
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("load_box", 0);
 
-  /* "fatslimlib/core_base.pyx":1240
+  /* "fatslimlib/core_base.pyx":1255
  * 
  *     cdef PBCBox load_box(self, fsl_int frame_id):
  *         raise NotImplementedError             # <<<<<<<<<<<<<<
@@ -16941,9 +17349,9 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_9co
  *     cdef assert_frame_id(self, fsl_int frame_id):
  */
   __Pyx_Raise(__pyx_builtin_NotImplementedError, 0, 0, 0);
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1240; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1255; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":1239
+  /* "fatslimlib/core_base.pyx":1254
  *         raise NotImplementedError
  * 
  *     cdef PBCBox load_box(self, fsl_int frame_id):             # <<<<<<<<<<<<<<
@@ -16960,7 +17368,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_9co
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1242
+/* "fatslimlib/core_base.pyx":1257
  *         raise NotImplementedError
  * 
  *     cdef assert_frame_id(self, fsl_int frame_id):             # <<<<<<<<<<<<<<
@@ -16981,7 +17389,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_16CoordinateReader_assert_frame
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("assert_frame_id", 0);
 
-  /* "fatslimlib/core_base.pyx":1243
+  /* "fatslimlib/core_base.pyx":1258
  * 
  *     cdef assert_frame_id(self, fsl_int frame_id):
  *         if not 0 <= frame_id < self.nframes:             # <<<<<<<<<<<<<<
@@ -16995,18 +17403,18 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_16CoordinateReader_assert_frame
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "fatslimlib/core_base.pyx":1244
+    /* "fatslimlib/core_base.pyx":1259
  *     cdef assert_frame_id(self, fsl_int frame_id):
  *         if not 0 <= frame_id < self.nframes:
  *             raise IndexError("Frame index error: %i (%i frames)" % (frame_id, self.nframes))             # <<<<<<<<<<<<<<
  * 
  *     cdef real[:,::1] load_coords(self, fsl_int frame_id, fsl_int[:] atomids) nogil except *:
  */
-    __pyx_t_3 = __Pyx_PyInt_From_fsl_int(__pyx_v_frame_id); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyInt_From_fsl_int(__pyx_v_frame_id); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->nframes); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->nframes); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -17014,22 +17422,22 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_16CoordinateReader_assert_frame
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Frame_index_error_i_i_frames, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Frame_index_error_i_i_frames, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1243
+    /* "fatslimlib/core_base.pyx":1258
  * 
  *     cdef assert_frame_id(self, fsl_int frame_id):
  *         if not 0 <= frame_id < self.nframes:             # <<<<<<<<<<<<<<
@@ -17038,7 +17446,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_16CoordinateReader_assert_frame
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1242
+  /* "fatslimlib/core_base.pyx":1257
  *         raise NotImplementedError
  * 
  *     cdef assert_frame_id(self, fsl_int frame_id):             # <<<<<<<<<<<<<<
@@ -17061,7 +17469,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_16CoordinateReader_assert_frame
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1246
+/* "fatslimlib/core_base.pyx":1261
  *             raise IndexError("Frame index error: %i (%i frames)" % (frame_id, self.nframes))
  * 
  *     cdef real[:,::1] load_coords(self, fsl_int frame_id, fsl_int[:] atomids) nogil except *:             # <<<<<<<<<<<<<<
@@ -17083,7 +17491,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_16CoordinateReader_loa
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":1247
+  /* "fatslimlib/core_base.pyx":1262
  * 
  *     cdef real[:,::1] load_coords(self, fsl_int frame_id, fsl_int[:] atomids) nogil except *:
  *         with gil:             # <<<<<<<<<<<<<<
@@ -17097,7 +17505,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_16CoordinateReader_loa
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_base.pyx":1248
+          /* "fatslimlib/core_base.pyx":1263
  *     cdef real[:,::1] load_coords(self, fsl_int frame_id, fsl_int[:] atomids) nogil except *:
  *         with gil:
  *             raise NotImplementedError             # <<<<<<<<<<<<<<
@@ -17105,10 +17513,10 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_16CoordinateReader_loa
  * 
  */
           __Pyx_Raise(__pyx_builtin_NotImplementedError, 0, 0, 0);
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1248; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1263; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
         }
 
-        /* "fatslimlib/core_base.pyx":1247
+        /* "fatslimlib/core_base.pyx":1262
  * 
  *     cdef real[:,::1] load_coords(self, fsl_int frame_id, fsl_int[:] atomids) nogil except *:
  *         with gil:             # <<<<<<<<<<<<<<
@@ -17134,7 +17542,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_16CoordinateReader_loa
     }
   }
 
-  /* "fatslimlib/core_base.pyx":1246
+  /* "fatslimlib/core_base.pyx":1261
  *             raise IndexError("Frame index error: %i (%i frames)" % (frame_id, self.nframes))
  * 
  *     cdef real[:,::1] load_coords(self, fsl_int frame_id, fsl_int[:] atomids) nogil except *:             # <<<<<<<<<<<<<<
@@ -17161,7 +17569,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_16CoordinateReader_loa
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":190
+/* "fatslimlib/core_base.pxd":192
  *     # Attributes
  *     cdef bytes filename
  *     cdef readonly fsl_int nframes             # <<<<<<<<<<<<<<
@@ -17191,7 +17599,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_16CoordinateReader_7nframes___
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->nframes); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->nframes); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 192; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -17208,7 +17616,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_16CoordinateReader_7nframes___
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":193
+/* "fatslimlib/core_base.pxd":195
  *     cdef fsl_int[:] coordinate_offsets
  *     cdef fsl_int[:] box_offsets
  *     cdef readonly real[:] timesteps             # <<<<<<<<<<<<<<
@@ -17238,8 +17646,8 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_16CoordinateReader_9timesteps_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_self->timesteps.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[1]; __pyx_lineno = 193; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_self->timesteps, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 193; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_v_self->timesteps.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[1]; __pyx_lineno = 195; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_self->timesteps, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 195; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -17256,7 +17664,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_16CoordinateReader_9timesteps_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1253
+/* "fatslimlib/core_base.pyx":1268
  * cdef class IndexReader(object):
  * 
  *     def __init__(self, str filename, bint verbose=True):             # <<<<<<<<<<<<<<
@@ -17299,7 +17707,7 @@ static int __pyx_pw_10fatslimlib_9core_base_11IndexReader_1__init__(PyObject *__
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1253; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1268; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -17311,20 +17719,20 @@ static int __pyx_pw_10fatslimlib_9core_base_11IndexReader_1__init__(PyObject *__
     }
     __pyx_v_filename = ((PyObject*)values[0]);
     if (values[1]) {
-      __pyx_v_verbose = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1253; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_verbose = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1268; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_verbose = ((int)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1253; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1268; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.IndexReader.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filename), (&PyString_Type), 1, "filename", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1253; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filename), (&PyString_Type), 1, "filename", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1268; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(((struct __pyx_obj_10fatslimlib_9core_base_IndexReader *)__pyx_v_self), __pyx_v_filename, __pyx_v_verbose);
 
   /* function exit code */
@@ -17352,14 +17760,14 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "fatslimlib/core_base.pyx":1254
+  /* "fatslimlib/core_base.pyx":1269
  * 
  *     def __init__(self, str filename, bint verbose=True):
  *         self.filename = filename.encode()             # <<<<<<<<<<<<<<
  *         self.loaded = False
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -17372,21 +17780,21 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->filename);
   __Pyx_DECREF(__pyx_v_self->filename);
   __pyx_v_self->filename = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1255
+  /* "fatslimlib/core_base.pyx":1270
  *     def __init__(self, str filename, bint verbose=True):
  *         self.filename = filename.encode()
  *         self.loaded = False             # <<<<<<<<<<<<<<
@@ -17395,14 +17803,14 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
  */
   __pyx_v_self->loaded = 0;
 
-  /* "fatslimlib/core_base.pyx":1257
+  /* "fatslimlib/core_base.pyx":1272
  *         self.loaded = False
  * 
  *         self.groups = {}             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1257; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->groups);
@@ -17410,29 +17818,29 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
   __pyx_v_self->groups = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1260
+  /* "fatslimlib/core_base.pyx":1275
  * 
  * 
  *         verbose_print("Loading groups from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename),
  *                       verbose,
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1260; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "fatslimlib/core_base.pyx":1261
+  /* "fatslimlib/core_base.pyx":1276
  * 
  *         verbose_print("Loading groups from '%s'... " %
  *                       os.path.basename(self.filename),             # <<<<<<<<<<<<<<
  *                       verbose,
  *                       end="")
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_path); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_path); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_basename); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_basename); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -17446,50 +17854,50 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_self->filename); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_self->filename); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_INCREF(__pyx_v_self->filename);
     __Pyx_GIVEREF(__pyx_v_self->filename);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_self->filename);
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1260
+  /* "fatslimlib/core_base.pyx":1275
  * 
  * 
  *         verbose_print("Loading groups from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename),
  *                       verbose,
  */
-  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Loading_groups_from_s, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1260; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Loading_groups_from_s, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1262
+  /* "fatslimlib/core_base.pyx":1277
  *         verbose_print("Loading groups from '%s'... " %
  *                       os.path.basename(self.filename),
  *                       verbose,             # <<<<<<<<<<<<<<
  *                       end="")
  *         begin = time()
  */
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1262; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1277; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "fatslimlib/core_base.pyx":1260
+  /* "fatslimlib/core_base.pyx":1275
  * 
  * 
  *         verbose_print("Loading groups from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename),
  *                       verbose,
  */
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1260; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -17498,39 +17906,39 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1263
+  /* "fatslimlib/core_base.pyx":1278
  *                       os.path.basename(self.filename),
  *                       verbose,
  *                       end="")             # <<<<<<<<<<<<<<
  *         begin = time()
  *         self.load()
  */
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1263; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1278; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_end, __pyx_kp_s__19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1263; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_end, __pyx_kp_s__19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1278; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":1260
+  /* "fatslimlib/core_base.pyx":1275
  * 
  * 
  *         verbose_print("Loading groups from '%s'... " %             # <<<<<<<<<<<<<<
  *                       os.path.basename(self.filename),
  *                       verbose,
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1260; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1264
+  /* "fatslimlib/core_base.pyx":1279
  *                       verbose,
  *                       end="")
  *         begin = time()             # <<<<<<<<<<<<<<
  *         self.load()
  *         self.loaded = True
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -17543,24 +17951,24 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_begin = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1265
+  /* "fatslimlib/core_base.pyx":1280
  *                       end="")
  *         begin = time()
  *         self.load()             # <<<<<<<<<<<<<<
  *         self.loaded = True
  *         verbose_print("%i groups loaded in %s" % (len(self), pretty_delta(begin, time())),
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_load); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_load); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -17573,16 +17981,16 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1266
+  /* "fatslimlib/core_base.pyx":1281
  *         begin = time()
  *         self.load()
  *         self.loaded = True             # <<<<<<<<<<<<<<
@@ -17591,19 +17999,19 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
  */
   __pyx_v_self->loaded = 1;
 
-  /* "fatslimlib/core_base.pyx":1267
+  /* "fatslimlib/core_base.pyx":1282
  *         self.load()
  *         self.loaded = True
  *         verbose_print("%i groups loaded in %s" % (len(self), pretty_delta(begin, time())),             # <<<<<<<<<<<<<<
  *                       verbose)
  * 
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_6 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_6 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_7 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -17616,17 +18024,17 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
     }
   }
   if (__pyx_t_7) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_7); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_7); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_f_10fatslimlib_9core_base_pretty_delta(__pyx_v_begin, __pyx_t_1, 0); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __pyx_f_10fatslimlib_9core_base_pretty_delta(__pyx_v_begin, __pyx_t_1, 0); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5);
@@ -17634,18 +18042,18 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_4);
   __pyx_t_5 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_i_groups_loaded_in_s, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_i_groups_loaded_in_s, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1268
+  /* "fatslimlib/core_base.pyx":1283
  *         self.loaded = True
  *         verbose_print("%i groups loaded in %s" % (len(self), pretty_delta(begin, time())),
  *                       verbose)             # <<<<<<<<<<<<<<
  * 
  *     def load(self):
  */
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1268; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_verbose); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -17659,7 +18067,7 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
       __pyx_t_6 = 1;
     }
   }
-  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   if (__pyx_t_5) {
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -17670,13 +18078,13 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
   PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_1);
   __pyx_t_4 = 0;
   __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1253
+  /* "fatslimlib/core_base.pyx":1268
  * cdef class IndexReader(object):
  * 
  *     def __init__(self, str filename, bint verbose=True):             # <<<<<<<<<<<<<<
@@ -17702,7 +18110,7 @@ static int __pyx_pf_10fatslimlib_9core_base_11IndexReader___init__(struct __pyx_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1270
+/* "fatslimlib/core_base.pyx":1285
  *                       verbose)
  * 
  *     def load(self):             # <<<<<<<<<<<<<<
@@ -17733,7 +18141,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_2load(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("load", 0);
 
-  /* "fatslimlib/core_base.pyx":1271
+  /* "fatslimlib/core_base.pyx":1286
  * 
  *     def load(self):
  *         if self.loaded:             # <<<<<<<<<<<<<<
@@ -17743,7 +18151,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_2load(struct __p
   __pyx_t_1 = (__pyx_v_self->loaded != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1272
+    /* "fatslimlib/core_base.pyx":1287
  *     def load(self):
  *         if self.loaded:
  *             return             # <<<<<<<<<<<<<<
@@ -17754,7 +18162,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_2load(struct __p
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1271
+    /* "fatslimlib/core_base.pyx":1286
  * 
  *     def load(self):
  *         if self.loaded:             # <<<<<<<<<<<<<<
@@ -17763,18 +18171,18 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_2load(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1273
+  /* "fatslimlib/core_base.pyx":1288
  *         if self.loaded:
  *             return
  *         self.fast_load()             # <<<<<<<<<<<<<<
  * 
  *     cdef fast_load(self):
  */
-  __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_IndexReader *)__pyx_v_self->__pyx_vtab)->fast_load(__pyx_v_self); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_IndexReader *)__pyx_v_self->__pyx_vtab)->fast_load(__pyx_v_self); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1288; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1270
+  /* "fatslimlib/core_base.pyx":1285
  *                       verbose)
  * 
  *     def load(self):             # <<<<<<<<<<<<<<
@@ -17795,7 +18203,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_2load(struct __p
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1275
+/* "fatslimlib/core_base.pyx":1290
  *         self.fast_load()
  * 
  *     cdef fast_load(self):             # <<<<<<<<<<<<<<
@@ -17811,7 +18219,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_11IndexReader_fast_load(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fast_load", 0);
 
-  /* "fatslimlib/core_base.pyx":1276
+  /* "fatslimlib/core_base.pyx":1291
  * 
  *     cdef fast_load(self):
  *         raise NotImplementedError             # <<<<<<<<<<<<<<
@@ -17819,9 +18227,9 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_11IndexReader_fast_load(CYTHON_
  *     def __len__(self):
  */
   __Pyx_Raise(__pyx_builtin_NotImplementedError, 0, 0, 0);
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1291; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":1275
+  /* "fatslimlib/core_base.pyx":1290
  *         self.fast_load()
  * 
  *     cdef fast_load(self):             # <<<<<<<<<<<<<<
@@ -17838,7 +18246,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_11IndexReader_fast_load(CYTHON_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1278
+/* "fatslimlib/core_base.pyx":1293
  *         raise NotImplementedError
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -17869,7 +18277,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_11IndexReader_4__len__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "fatslimlib/core_base.pyx":1279
+  /* "fatslimlib/core_base.pyx":1294
  * 
  *     def __len__(self):
  *         return len(self.groups)             # <<<<<<<<<<<<<<
@@ -17878,12 +18286,12 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_11IndexReader_4__len__(struct
  */
   __pyx_t_1 = __pyx_v_self->groups;
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1294; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1278
+  /* "fatslimlib/core_base.pyx":1293
  *         raise NotImplementedError
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -17901,7 +18309,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_11IndexReader_4__len__(struct
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1281
+/* "fatslimlib/core_base.pyx":1296
  *         return len(self.groups)
  * 
  *     def __getitem__(self, str item):             # <<<<<<<<<<<<<<
@@ -17918,7 +18326,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_11IndexReader_7__getitem__(PyO
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_item), (&PyString_Type), 1, "item", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1281; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_item), (&PyString_Type), 1, "item", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1296; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_11IndexReader_6__getitem__(((struct __pyx_obj_10fatslimlib_9core_base_IndexReader *)__pyx_v_self), ((PyObject*)__pyx_v_item));
 
   /* function exit code */
@@ -17941,7 +18349,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_6__getitem__(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__getitem__", 0);
 
-  /* "fatslimlib/core_base.pyx":1282
+  /* "fatslimlib/core_base.pyx":1297
  * 
  *     def __getitem__(self, str item):
  *         return self.groups[item.encode()]             # <<<<<<<<<<<<<<
@@ -17949,7 +18357,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_6__getitem__(str
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_item, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_item, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1297; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -17962,21 +18370,21 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_6__getitem__(str
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1297; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1297; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_GetItem(__pyx_v_self->groups, __pyx_t_1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1282; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = PyObject_GetItem(__pyx_v_self->groups, __pyx_t_1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1297; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1281
+  /* "fatslimlib/core_base.pyx":1296
  *         return len(self.groups)
  * 
  *     def __getitem__(self, str item):             # <<<<<<<<<<<<<<
@@ -17997,7 +18405,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_6__getitem__(str
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":206
+/* "fatslimlib/core_base.pxd":208
  *     cdef bint loaded
  *     cdef bytes filename
  *     cdef readonly object groups             # <<<<<<<<<<<<<<
@@ -18034,7 +18442,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_11IndexReader_6groups___get__(
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1286
+/* "fatslimlib/core_base.pyx":1301
  * 
  * cdef class Frame(object):
  *     def __init__(self, Trajectory trajectory, fsl_int index, real timestep):             # <<<<<<<<<<<<<<
@@ -18075,16 +18483,16 @@ static int __pyx_pw_10fatslimlib_9core_base_5Frame_1__init__(PyObject *__pyx_v_s
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_index)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1301; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_timestep)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1301; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1301; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -18094,18 +18502,18 @@ static int __pyx_pw_10fatslimlib_9core_base_5Frame_1__init__(PyObject *__pyx_v_s
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
     __pyx_v_trajectory = ((struct __pyx_obj_10fatslimlib_9core_base_Trajectory *)values[0]);
-    __pyx_v_index = __Pyx_PyInt_As_fsl_int(values[1]); if (unlikely((__pyx_v_index == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_timestep = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_timestep == (real)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_index = __Pyx_PyInt_As_fsl_int(values[1]); if (unlikely((__pyx_v_index == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1301; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_timestep = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_timestep == (real)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1301; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1301; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.Frame.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_trajectory), __pyx_ptype_10fatslimlib_9core_base_Trajectory, 1, "trajectory", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_trajectory), __pyx_ptype_10fatslimlib_9core_base_Trajectory, 1, "trajectory", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_5Frame___init__(((struct __pyx_obj_10fatslimlib_9core_base_Frame *)__pyx_v_self), __pyx_v_trajectory, __pyx_v_index, __pyx_v_timestep);
 
   /* function exit code */
@@ -18128,7 +18536,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "fatslimlib/core_base.pyx":1287
+  /* "fatslimlib/core_base.pyx":1302
  * cdef class Frame(object):
  *     def __init__(self, Trajectory trajectory, fsl_int index, real timestep):
  *         self.trajectory = trajectory             # <<<<<<<<<<<<<<
@@ -18141,7 +18549,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __Pyx_DECREF(((PyObject *)__pyx_v_self->trajectory));
   __pyx_v_self->trajectory = __pyx_v_trajectory;
 
-  /* "fatslimlib/core_base.pyx":1288
+  /* "fatslimlib/core_base.pyx":1303
  *     def __init__(self, Trajectory trajectory, fsl_int index, real timestep):
  *         self.trajectory = trajectory
  *         self.topology = trajectory.topology             # <<<<<<<<<<<<<<
@@ -18156,7 +18564,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __pyx_v_self->topology = ((struct __pyx_obj_10fatslimlib_9core_base_Topology *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1289
+  /* "fatslimlib/core_base.pyx":1304
  *         self.trajectory = trajectory
  *         self.topology = trajectory.topology
  *         self.coords_reader = trajectory.coords_reader             # <<<<<<<<<<<<<<
@@ -18171,7 +18579,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __pyx_v_self->coords_reader = ((struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1290
+  /* "fatslimlib/core_base.pyx":1305
  *         self.topology = trajectory.topology
  *         self.coords_reader = trajectory.coords_reader
  *         self.index = index             # <<<<<<<<<<<<<<
@@ -18180,7 +18588,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  */
   __pyx_v_self->index = __pyx_v_index;
 
-  /* "fatslimlib/core_base.pyx":1291
+  /* "fatslimlib/core_base.pyx":1306
  *         self.coords_reader = trajectory.coords_reader
  *         self.index = index
  *         self.timestep = timestep             # <<<<<<<<<<<<<<
@@ -18189,14 +18597,14 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  */
   __pyx_v_self->timestep = __pyx_v_timestep;
 
-  /* "fatslimlib/core_base.pyx":1292
+  /* "fatslimlib/core_base.pyx":1307
  *         self.index = index
  *         self.timestep = timestep
  *         self.box = self.coords_reader.load_box(index)             # <<<<<<<<<<<<<<
  *         # -1 line below => there is one more offset compared to actual number of lipids!
  *         self.size = self.trajectory.lipid_atomids_offsets.shape[0] - 1
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_box(__pyx_v_self->coords_reader, __pyx_v_index)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_box(__pyx_v_self->coords_reader, __pyx_v_index)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1307; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->box);
@@ -18204,17 +18612,17 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __pyx_v_self->box = ((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1294
+  /* "fatslimlib/core_base.pyx":1309
  *         self.box = self.coords_reader.load_box(index)
  *         # -1 line below => there is one more offset compared to actual number of lipids!
  *         self.size = self.trajectory.lipid_atomids_offsets.shape[0] - 1             # <<<<<<<<<<<<<<
  * 
  *         # Headgroups
  */
-  if (unlikely(!__pyx_v_self->trajectory->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1294; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->trajectory->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1309; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_v_self->size = ((__pyx_v_self->trajectory->lipid_atomids_offsets.shape[0]) - 1);
 
-  /* "fatslimlib/core_base.pyx":1297
+  /* "fatslimlib/core_base.pyx":1312
  * 
  *         # Headgroups
  *         self.hg_group_coords = None             # <<<<<<<<<<<<<<
@@ -18222,13 +18630,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  *         # Lipids
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1297; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_group_coords, 0);
   __pyx_v_self->hg_group_coords = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1298
+  /* "fatslimlib/core_base.pyx":1313
  *         # Headgroups
  *         self.hg_group_coords = None
  *         self.hg_coords_bbox = None             # <<<<<<<<<<<<<<
@@ -18236,13 +18644,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  *         self.lipid_coords = None
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1298; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_coords_bbox, 0);
   __pyx_v_self->hg_coords_bbox = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1300
+  /* "fatslimlib/core_base.pyx":1315
  *         self.hg_coords_bbox = None
  *         # Lipids
  *         self.lipid_coords = None             # <<<<<<<<<<<<<<
@@ -18250,13 +18658,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  *         self.lipid_coords_bbox = None
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1315; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_coords, 0);
   __pyx_v_self->lipid_coords = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1301
+  /* "fatslimlib/core_base.pyx":1316
  *         # Lipids
  *         self.lipid_coords = None
  *         self.lipid_coords_aslist = None             # <<<<<<<<<<<<<<
@@ -18269,7 +18677,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __Pyx_DECREF(__pyx_v_self->lipid_coords_aslist);
   __pyx_v_self->lipid_coords_aslist = ((PyObject*)Py_None);
 
-  /* "fatslimlib/core_base.pyx":1302
+  /* "fatslimlib/core_base.pyx":1317
  *         self.lipid_coords = None
  *         self.lipid_coords_aslist = None
  *         self.lipid_coords_bbox = None             # <<<<<<<<<<<<<<
@@ -18277,13 +18685,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  *         self.lipid_atomids_offsets = self.trajectory.lipid_atomids_offsets
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1302; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_coords_bbox, 0);
   __pyx_v_self->lipid_coords_bbox = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1303
+  /* "fatslimlib/core_base.pyx":1318
  *         self.lipid_coords_aslist = None
  *         self.lipid_coords_bbox = None
  *         self.lipids_coords_bbox_aslist = None             # <<<<<<<<<<<<<<
@@ -18296,14 +18704,14 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __Pyx_DECREF(__pyx_v_self->lipids_coords_bbox_aslist);
   __pyx_v_self->lipids_coords_bbox_aslist = ((PyObject*)Py_None);
 
-  /* "fatslimlib/core_base.pyx":1304
+  /* "fatslimlib/core_base.pyx":1319
  *         self.lipid_coords_bbox = None
  *         self.lipids_coords_bbox_aslist = None
  *         self.lipid_atomids_offsets = self.trajectory.lipid_atomids_offsets             # <<<<<<<<<<<<<<
  *         # Simplified lipids
  *         self.bead_coords = None
  */
-  if (unlikely(!__pyx_v_self->trajectory->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1304; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->trajectory->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_3 = __pyx_v_self->trajectory->lipid_atomids_offsets;
   __PYX_INC_MEMVIEW(&__pyx_t_3, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
@@ -18311,7 +18719,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __pyx_t_3.memview = NULL;
   __pyx_t_3.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1306
+  /* "fatslimlib/core_base.pyx":1321
  *         self.lipid_atomids_offsets = self.trajectory.lipid_atomids_offsets
  *         # Simplified lipids
  *         self.bead_coords = None             # <<<<<<<<<<<<<<
@@ -18319,13 +18727,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  *         # Interacting groups
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1306; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->bead_coords, 0);
   __pyx_v_self->bead_coords = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1307
+  /* "fatslimlib/core_base.pyx":1322
  *         # Simplified lipids
  *         self.bead_coords = None
  *         self.bead_coords_bbox = None             # <<<<<<<<<<<<<<
@@ -18333,13 +18741,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  *         self.interacting_group_coords = None
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1307; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->bead_coords_bbox, 0);
   __pyx_v_self->bead_coords_bbox = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1309
+  /* "fatslimlib/core_base.pyx":1324
  *         self.bead_coords_bbox = None
  *         # Interacting groups
  *         self.interacting_group_coords = None             # <<<<<<<<<<<<<<
@@ -18347,13 +18755,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  * 
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1309; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->interacting_group_coords, 0);
   __pyx_v_self->interacting_group_coords = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1310
+  /* "fatslimlib/core_base.pyx":1325
  *         # Interacting groups
  *         self.interacting_group_coords = None
  *         self.interacting_group_coords_bbox = None             # <<<<<<<<<<<<<<
@@ -18361,13 +18769,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  *         # NS-related
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->interacting_group_coords_bbox, 0);
   __pyx_v_self->interacting_group_coords_bbox = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1313
+  /* "fatslimlib/core_base.pyx":1328
  * 
  *         # NS-related
  *         self.proximity_cutoff = NOTSET             # <<<<<<<<<<<<<<
@@ -18376,7 +18784,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  */
   __pyx_v_self->proximity_cutoff = -12345.0;
 
-  /* "fatslimlib/core_base.pyx":1314
+  /* "fatslimlib/core_base.pyx":1329
  *         # NS-related
  *         self.proximity_cutoff = NOTSET
  *         self.neighbors = NULL             # <<<<<<<<<<<<<<
@@ -18385,7 +18793,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  */
   __pyx_v_self->neighbors = NULL;
 
-  /* "fatslimlib/core_base.pyx":1317
+  /* "fatslimlib/core_base.pyx":1332
  * 
  *         # Directions & Normals
  *         self.directions = None             # <<<<<<<<<<<<<<
@@ -18393,13 +18801,13 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  * 
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->directions, 0);
   __pyx_v_self->directions = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1318
+  /* "fatslimlib/core_base.pyx":1333
  *         # Directions & Normals
  *         self.directions = None
  *         self.normals = None             # <<<<<<<<<<<<<<
@@ -18407,20 +18815,20 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  *         # Aggregates
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1318; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1333; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->normals, 0);
   __pyx_v_self->normals = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1321
+  /* "fatslimlib/core_base.pyx":1336
  * 
  *         # Aggregates
  *         self.aggregates = []             # <<<<<<<<<<<<<<
  *         self.aggregates_retrieved = False
  *         self.aggregates_cutoff = NOTSET
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1336; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->aggregates);
@@ -18428,7 +18836,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __pyx_v_self->aggregates = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1322
+  /* "fatslimlib/core_base.pyx":1337
  *         # Aggregates
  *         self.aggregates = []
  *         self.aggregates_retrieved = False             # <<<<<<<<<<<<<<
@@ -18437,7 +18845,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  */
   __pyx_v_self->aggregates_retrieved = 0;
 
-  /* "fatslimlib/core_base.pyx":1323
+  /* "fatslimlib/core_base.pyx":1338
  *         self.aggregates = []
  *         self.aggregates_retrieved = False
  *         self.aggregates_cutoff = NOTSET             # <<<<<<<<<<<<<<
@@ -18446,14 +18854,14 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  */
   __pyx_v_self->aggregates_cutoff = -12345.0;
 
-  /* "fatslimlib/core_base.pyx":1326
+  /* "fatslimlib/core_base.pyx":1341
  * 
  *         # Leaflets & Membranes
  *         self.membranes = []             # <<<<<<<<<<<<<<
  *         self.membranes_retrieved = False
  *         self.membranes_cutoff = NOTSET
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1341; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->membranes);
@@ -18461,7 +18869,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   __pyx_v_self->membranes = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1327
+  /* "fatslimlib/core_base.pyx":1342
  *         # Leaflets & Membranes
  *         self.membranes = []
  *         self.membranes_retrieved = False             # <<<<<<<<<<<<<<
@@ -18470,7 +18878,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  */
   __pyx_v_self->membranes_retrieved = 0;
 
-  /* "fatslimlib/core_base.pyx":1328
+  /* "fatslimlib/core_base.pyx":1343
  *         self.membranes = []
  *         self.membranes_retrieved = False
  *         self.membranes_cutoff = NOTSET             # <<<<<<<<<<<<<<
@@ -18479,7 +18887,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
  */
   __pyx_v_self->membranes_cutoff = -12345.0;
 
-  /* "fatslimlib/core_base.pyx":1286
+  /* "fatslimlib/core_base.pyx":1301
  * 
  * cdef class Frame(object):
  *     def __init__(self, Trajectory trajectory, fsl_int index, real timestep):             # <<<<<<<<<<<<<<
@@ -18501,7 +18909,7 @@ static int __pyx_pf_10fatslimlib_9core_base_5Frame___init__(struct __pyx_obj_10f
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1330
+/* "fatslimlib/core_base.pyx":1345
  *         self.membranes_cutoff = NOTSET
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18524,7 +18932,7 @@ static void __pyx_pf_10fatslimlib_9core_base_5Frame_2__dealloc__(struct __pyx_ob
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "fatslimlib/core_base.pyx":1331
+  /* "fatslimlib/core_base.pyx":1346
  * 
  *     def __dealloc__(self):
  *         free_neighborhood_holder(self.neighbors)             # <<<<<<<<<<<<<<
@@ -18533,7 +18941,7 @@ static void __pyx_pf_10fatslimlib_9core_base_5Frame_2__dealloc__(struct __pyx_ob
  */
   __pyx_f_10fatslimlib_7core_ns_free_neighborhood_holder(__pyx_v_self->neighbors);
 
-  /* "fatslimlib/core_base.pyx":1332
+  /* "fatslimlib/core_base.pyx":1347
  *     def __dealloc__(self):
  *         free_neighborhood_holder(self.neighbors)
  *         self.neighbors = NULL             # <<<<<<<<<<<<<<
@@ -18542,7 +18950,7 @@ static void __pyx_pf_10fatslimlib_9core_base_5Frame_2__dealloc__(struct __pyx_ob
  */
   __pyx_v_self->neighbors = NULL;
 
-  /* "fatslimlib/core_base.pyx":1330
+  /* "fatslimlib/core_base.pyx":1345
  *         self.membranes_cutoff = NOTSET
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18554,7 +18962,7 @@ static void __pyx_pf_10fatslimlib_9core_base_5Frame_2__dealloc__(struct __pyx_ob
   __Pyx_RefNannyFinishContext();
 }
 
-/* "fatslimlib/core_base.pyx":1334
+/* "fatslimlib/core_base.pyx":1349
  *         self.neighbors = NULL
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -18580,7 +18988,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_5Frame_4__len__(struct __pyx_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "fatslimlib/core_base.pyx":1335
+  /* "fatslimlib/core_base.pyx":1350
  * 
  *     def __len__(self):
  *         return self.size             # <<<<<<<<<<<<<<
@@ -18590,7 +18998,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_5Frame_4__len__(struct __pyx_
   __pyx_r = __pyx_v_self->size;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1334
+  /* "fatslimlib/core_base.pyx":1349
  *         self.neighbors = NULL
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -18604,7 +19012,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_5Frame_4__len__(struct __pyx_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1337
+/* "fatslimlib/core_base.pyx":1352
  *         return self.size
  * 
  *     cpdef fsl_int get_forcefield_type(self):             # <<<<<<<<<<<<<<
@@ -18629,7 +19037,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_5Frame_get_forcefield_type(struct
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_forcefield_type); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_forcefield_type); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1352; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_10fatslimlib_9core_base_5Frame_7get_forcefield_type)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -18644,14 +19052,14 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_5Frame_get_forcefield_type(struct
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1352; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1352; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __Pyx_PyInt_As_fsl_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyInt_As_fsl_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1352; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_r = __pyx_t_5;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -18660,7 +19068,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_5Frame_get_forcefield_type(struct
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":1338
+  /* "fatslimlib/core_base.pyx":1353
  * 
  *     cpdef fsl_int get_forcefield_type(self):
  *         return self.trajectory.get_forcefield_type()             # <<<<<<<<<<<<<<
@@ -18670,7 +19078,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_5Frame_get_forcefield_type(struct
   __pyx_r = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory *)__pyx_v_self->trajectory->__pyx_vtab)->get_forcefield_type(__pyx_v_self->trajectory, 0);
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1337
+  /* "fatslimlib/core_base.pyx":1352
  *         return self.size
  * 
  *     cpdef fsl_int get_forcefield_type(self):             # <<<<<<<<<<<<<<
@@ -18713,7 +19121,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_6get_forcefield_type(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_forcefield_type", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_f_10fatslimlib_9core_base_5Frame_get_forcefield_type(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_f_10fatslimlib_9core_base_5Frame_get_forcefield_type(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1352; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -18730,7 +19138,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_6get_forcefield_type(st
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1340
+/* "fatslimlib/core_base.pyx":1355
  *         return self.trajectory.get_forcefield_type()
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords(self) nogil:             # <<<<<<<<<<<<<<
@@ -18754,7 +19162,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":1341
+  /* "fatslimlib/core_base.pyx":1356
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords(self) nogil:
  *         if self.hg_group_coords is None:             # <<<<<<<<<<<<<<
@@ -18762,11 +19170,11 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
  *                 self.hg_group_coords = self.coords_reader.\
  */
   /*try:*/ {
-    if (unlikely(!__pyx_v_self->hg_group_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1341; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->hg_group_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1356; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __pyx_t_1 = ((((PyObject *) __pyx_v_self->hg_group_coords.memview) == Py_None) != 0);
     if (__pyx_t_1) {
 
-      /* "fatslimlib/core_base.pyx":1342
+      /* "fatslimlib/core_base.pyx":1357
  *     cdef real[:,::1] fast_get_hg_group_coords(self) nogil:
  *         if self.hg_group_coords is None:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -18779,17 +19187,17 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_base.pyx":1344
+            /* "fatslimlib/core_base.pyx":1359
  *             with gil:
  *                 self.hg_group_coords = self.coords_reader.\
  *                     load_coords(self.index,self.trajectory.hg_group_atomids)             # <<<<<<<<<<<<<<
  *         return self.hg_group_coords
  * 
  */
-            if (unlikely(!__pyx_v_self->trajectory->hg_group_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1344; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
-            __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_coords(__pyx_v_self->coords_reader, __pyx_v_self->index, __pyx_v_self->trajectory->hg_group_atomids); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1344; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            if (unlikely(!__pyx_v_self->trajectory->hg_group_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1359; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
+            __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_coords(__pyx_v_self->coords_reader, __pyx_v_self->index, __pyx_v_self->trajectory->hg_group_atomids); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1359; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
 
-            /* "fatslimlib/core_base.pyx":1343
+            /* "fatslimlib/core_base.pyx":1358
  *         if self.hg_group_coords is None:
  *             with gil:
  *                 self.hg_group_coords = self.coords_reader.\             # <<<<<<<<<<<<<<
@@ -18802,7 +19210,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
             __pyx_t_2.data = NULL;
           }
 
-          /* "fatslimlib/core_base.pyx":1342
+          /* "fatslimlib/core_base.pyx":1357
  *     cdef real[:,::1] fast_get_hg_group_coords(self) nogil:
  *         if self.hg_group_coords is None:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -18826,7 +19234,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
           }
       }
 
-      /* "fatslimlib/core_base.pyx":1341
+      /* "fatslimlib/core_base.pyx":1356
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords(self) nogil:
  *         if self.hg_group_coords is None:             # <<<<<<<<<<<<<<
@@ -18835,20 +19243,20 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1345
+    /* "fatslimlib/core_base.pyx":1360
  *                 self.hg_group_coords = self.coords_reader.\
  *                     load_coords(self.index,self.trajectory.hg_group_atomids)
  *         return self.hg_group_coords             # <<<<<<<<<<<<<<
  * 
  *     # Associated python property
  */
-    if (unlikely(!__pyx_v_self->hg_group_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1345; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->hg_group_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1360; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __PYX_INC_MEMVIEW(&__pyx_v_self->hg_group_coords, 1);
     __pyx_r = __pyx_v_self->hg_group_coords;
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_base.pyx":1341
+  /* "fatslimlib/core_base.pyx":1356
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords(self) nogil:
  *         if self.hg_group_coords is None:             # <<<<<<<<<<<<<<
@@ -18870,7 +19278,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
     }
   }
 
-  /* "fatslimlib/core_base.pyx":1340
+  /* "fatslimlib/core_base.pyx":1355
  *         return self.trajectory.get_forcefield_type()
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords(self) nogil:             # <<<<<<<<<<<<<<
@@ -18898,7 +19306,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1349
+/* "fatslimlib/core_base.pyx":1364
  *     # Associated python property
  *     property hg_group_coords:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -18934,7 +19342,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_15hg_group_coords___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1351
+  /* "fatslimlib/core_base.pyx":1366
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -18948,20 +19356,20 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_15hg_group_coords___get
       #endif
       /*try:*/ {
 
-        /* "fatslimlib/core_base.pyx":1352
+        /* "fatslimlib/core_base.pyx":1367
  *             cdef real[:, ::1] memview
  *             with nogil:
  *                 memview = self.fast_get_hg_group_coords()             # <<<<<<<<<<<<<<
  *             return np.asarray(memview)
  * 
  */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_hg_group_coords(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1352; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_hg_group_coords(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1367; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_v_memview = __pyx_t_1;
         __pyx_t_1.memview = NULL;
         __pyx_t_1.data = NULL;
       }
 
-      /* "fatslimlib/core_base.pyx":1351
+      /* "fatslimlib/core_base.pyx":1366
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -18985,7 +19393,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_15hg_group_coords___get
       }
   }
 
-  /* "fatslimlib/core_base.pyx":1353
+  /* "fatslimlib/core_base.pyx":1368
  *             with nogil:
  *                 memview = self.fast_get_hg_group_coords()
  *             return np.asarray(memview)             # <<<<<<<<<<<<<<
@@ -18993,12 +19401,12 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_15hg_group_coords___get
  *     cdef real[:,::1] fast_get_hg_group_coords_bbox(self) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1353; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1368; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1353; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1368; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1353; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1368; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -19011,17 +19419,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_15hg_group_coords___get
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1353; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1368; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1353; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1368; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1353; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1368; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -19030,7 +19438,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_15hg_group_coords___get
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1349
+  /* "fatslimlib/core_base.pyx":1364
  *     # Associated python property
  *     property hg_group_coords:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -19055,7 +19463,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_15hg_group_coords___get
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1355
+/* "fatslimlib/core_base.pyx":1370
  *             return np.asarray(memview)
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
@@ -19072,33 +19480,33 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fatslimlib/core_base.pyx":1356
+  /* "fatslimlib/core_base.pyx":1371
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords_bbox(self) nogil:
  *         if self.hg_coords_bbox is None:             # <<<<<<<<<<<<<<
  *             self.hg_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_hg_group_coords())
  *         return self.hg_coords_bbox
  */
-  if (unlikely(!__pyx_v_self->hg_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1356; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->hg_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1371; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_1 = ((((PyObject *) __pyx_v_self->hg_coords_bbox.memview) == Py_None) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1357
+    /* "fatslimlib/core_base.pyx":1372
  *     cdef real[:,::1] fast_get_hg_group_coords_bbox(self) nogil:
  *         if self.hg_coords_bbox is None:
  *             self.hg_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_hg_group_coords())             # <<<<<<<<<<<<<<
  *         return self.hg_coords_bbox
  * 
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_hg_group_coords(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1357; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self->box, __pyx_t_2); if (unlikely(!__pyx_t_3.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1357; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_hg_group_coords(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1372; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self->box, __pyx_t_2); if (unlikely(!__pyx_t_3.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1372; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_XDEC_MEMVIEW(&__pyx_t_2, 0);
     __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_coords_bbox, 0);
     __pyx_v_self->hg_coords_bbox = __pyx_t_3;
     __pyx_t_3.memview = NULL;
     __pyx_t_3.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1356
+    /* "fatslimlib/core_base.pyx":1371
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords_bbox(self) nogil:
  *         if self.hg_coords_bbox is None:             # <<<<<<<<<<<<<<
@@ -19107,19 +19515,19 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1358
+  /* "fatslimlib/core_base.pyx":1373
  *         if self.hg_coords_bbox is None:
  *             self.hg_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_hg_group_coords())
  *         return self.hg_coords_bbox             # <<<<<<<<<<<<<<
  * 
  *     # Associated python property
  */
-  if (unlikely(!__pyx_v_self->hg_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1358; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->hg_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1373; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __PYX_INC_MEMVIEW(&__pyx_v_self->hg_coords_bbox, 1);
   __pyx_r = __pyx_v_self->hg_coords_bbox;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1355
+  /* "fatslimlib/core_base.pyx":1370
  *             return np.asarray(memview)
  * 
  *     cdef real[:,::1] fast_get_hg_group_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
@@ -19152,7 +19560,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_hg_gro
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1362
+/* "fatslimlib/core_base.pyx":1377
  *     # Associated python property
  *     property hg_group_coords_bbox:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -19188,7 +19596,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_20hg_group_coords_bbox_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1364
+  /* "fatslimlib/core_base.pyx":1379
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -19202,20 +19610,20 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_20hg_group_coords_bbox_
       #endif
       /*try:*/ {
 
-        /* "fatslimlib/core_base.pyx":1365
+        /* "fatslimlib/core_base.pyx":1380
  *             cdef real[:, ::1] memview
  *             with nogil:
  *                 memview = self.fast_get_hg_group_coords_bbox()             # <<<<<<<<<<<<<<
  *             return np.asarray(memview)
  * 
  */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_hg_group_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1365; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_hg_group_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1380; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_v_memview = __pyx_t_1;
         __pyx_t_1.memview = NULL;
         __pyx_t_1.data = NULL;
       }
 
-      /* "fatslimlib/core_base.pyx":1364
+      /* "fatslimlib/core_base.pyx":1379
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -19239,7 +19647,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_20hg_group_coords_bbox_
       }
   }
 
-  /* "fatslimlib/core_base.pyx":1366
+  /* "fatslimlib/core_base.pyx":1381
  *             with nogil:
  *                 memview = self.fast_get_hg_group_coords_bbox()
  *             return np.asarray(memview)             # <<<<<<<<<<<<<<
@@ -19247,12 +19655,12 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_20hg_group_coords_bbox_
  *     cdef real[:, ::1] fast_get_lipid_coords(self) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -19265,17 +19673,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_20hg_group_coords_bbox_
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -19284,7 +19692,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_20hg_group_coords_bbox_
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1362
+  /* "fatslimlib/core_base.pyx":1377
  *     # Associated python property
  *     property hg_group_coords_bbox:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -19309,7 +19717,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_20hg_group_coords_bbox_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1368
+/* "fatslimlib/core_base.pyx":1383
  *             return np.asarray(memview)
  * 
  *     cdef real[:, ::1] fast_get_lipid_coords(self) nogil:             # <<<<<<<<<<<<<<
@@ -19325,28 +19733,28 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_lipid_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fatslimlib/core_base.pyx":1369
+  /* "fatslimlib/core_base.pyx":1384
  * 
  *     cdef real[:, ::1] fast_get_lipid_coords(self) nogil:
  *         if self.lipid_coords is None:             # <<<<<<<<<<<<<<
  *             self.lipid_coords = self.coords_reader.\
  *                 load_coords(self.index, self.trajectory.lipid_atomids)
  */
-  if (unlikely(!__pyx_v_self->lipid_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1369; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_1 = ((((PyObject *) __pyx_v_self->lipid_coords.memview) == Py_None) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1371
+    /* "fatslimlib/core_base.pyx":1386
  *         if self.lipid_coords is None:
  *             self.lipid_coords = self.coords_reader.\
  *                 load_coords(self.index, self.trajectory.lipid_atomids)             # <<<<<<<<<<<<<<
  *         return self.lipid_coords
  * 
  */
-    if (unlikely(!__pyx_v_self->trajectory->lipid_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1371; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
-    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_coords(__pyx_v_self->coords_reader, __pyx_v_self->index, __pyx_v_self->trajectory->lipid_atomids); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1371; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_v_self->trajectory->lipid_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1386; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_coords(__pyx_v_self->coords_reader, __pyx_v_self->index, __pyx_v_self->trajectory->lipid_atomids); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1386; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1370
+    /* "fatslimlib/core_base.pyx":1385
  *     cdef real[:, ::1] fast_get_lipid_coords(self) nogil:
  *         if self.lipid_coords is None:
  *             self.lipid_coords = self.coords_reader.\             # <<<<<<<<<<<<<<
@@ -19358,7 +19766,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_lipid_
     __pyx_t_2.memview = NULL;
     __pyx_t_2.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1369
+    /* "fatslimlib/core_base.pyx":1384
  * 
  *     cdef real[:, ::1] fast_get_lipid_coords(self) nogil:
  *         if self.lipid_coords is None:             # <<<<<<<<<<<<<<
@@ -19367,19 +19775,19 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_lipid_
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1372
+  /* "fatslimlib/core_base.pyx":1387
  *             self.lipid_coords = self.coords_reader.\
  *                 load_coords(self.index, self.trajectory.lipid_atomids)
  *         return self.lipid_coords             # <<<<<<<<<<<<<<
  * 
  *     cdef list get_lipid_coords_aslist(self):
  */
-  if (unlikely(!__pyx_v_self->lipid_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1372; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1387; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __PYX_INC_MEMVIEW(&__pyx_v_self->lipid_coords, 1);
   __pyx_r = __pyx_v_self->lipid_coords;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1368
+  /* "fatslimlib/core_base.pyx":1383
  *             return np.asarray(memview)
  * 
  *     cdef real[:, ::1] fast_get_lipid_coords(self) nogil:             # <<<<<<<<<<<<<<
@@ -19411,7 +19819,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_lipid_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1374
+/* "fatslimlib/core_base.pyx":1389
  *         return self.lipid_coords
  * 
  *     cdef list get_lipid_coords_aslist(self):             # <<<<<<<<<<<<<<
@@ -19446,33 +19854,33 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_lipid_coords_aslist(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_lipid_coords_aslist", 0);
 
-  /* "fatslimlib/core_base.pyx":1375
+  /* "fatslimlib/core_base.pyx":1390
  * 
  *     cdef list get_lipid_coords_aslist(self):
  *         cdef fsl_int[:] offsets = self.lipid_atomids_offsets             # <<<<<<<<<<<<<<
  *         cdef real[:, ::1] coords = self.fast_get_lipid_coords()
  *         cdef fsl_int i
  */
-  if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1375; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_1 = __pyx_v_self->lipid_atomids_offsets;
   __PYX_INC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_v_offsets = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1376
+  /* "fatslimlib/core_base.pyx":1391
  *     cdef list get_lipid_coords_aslist(self):
  *         cdef fsl_int[:] offsets = self.lipid_atomids_offsets
  *         cdef real[:, ::1] coords = self.fast_get_lipid_coords()             # <<<<<<<<<<<<<<
  *         cdef fsl_int i
  *         if self.lipid_coords_aslist is None:
  */
-  __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1376; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1391; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_coords = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1378
+  /* "fatslimlib/core_base.pyx":1393
  *         cdef real[:, ::1] coords = self.fast_get_lipid_coords()
  *         cdef fsl_int i
  *         if self.lipid_coords_aslist is None:             # <<<<<<<<<<<<<<
@@ -19483,19 +19891,19 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_lipid_coords_aslist(
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1379
+    /* "fatslimlib/core_base.pyx":1394
  *         cdef fsl_int i
  *         if self.lipid_coords_aslist is None:
  *             coords_list = []             # <<<<<<<<<<<<<<
  * 
  *             for i in range(offsets.shape[0] - 1):
  */
-    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_v_coords_list = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fatslimlib/core_base.pyx":1381
+    /* "fatslimlib/core_base.pyx":1396
  *             coords_list = []
  * 
  *             for i in range(offsets.shape[0] - 1):             # <<<<<<<<<<<<<<
@@ -19506,16 +19914,16 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_lipid_coords_aslist(
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_i = __pyx_t_7;
 
-      /* "fatslimlib/core_base.pyx":1382
+      /* "fatslimlib/core_base.pyx":1397
  * 
  *             for i in range(offsets.shape[0] - 1):
  *                 coords_list.append(np.asarray(coords[offsets[i]:offsets[i+1]]))             # <<<<<<<<<<<<<<
  * 
  *             self.lipid_coords_aslist = coords_list
  */
-      __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_asarray); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_asarray); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_10 = __pyx_v_i;
@@ -19538,14 +19946,14 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_lipid_coords_aslist(
     0,
     1) < 0))
 {
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 }
 
 __pyx_t_2.shape[1] = __pyx_v_coords.shape[1];
 __pyx_t_2.strides[1] = __pyx_v_coords.strides[1];
     __pyx_t_2.suboffsets[1] = -1;
 
-__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
       __pyx_t_13 = NULL;
@@ -19559,26 +19967,26 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
         }
       }
       if (!__pyx_t_13) {
-        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_5);
       } else {
-        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_GIVEREF(__pyx_t_13); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_13); __pyx_t_13 = NULL;
         __Pyx_GIVEREF(__pyx_t_8);
         PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_coords_list, __pyx_t_5); if (unlikely(__pyx_t_15 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_coords_list, __pyx_t_5); if (unlikely(__pyx_t_15 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
 
-    /* "fatslimlib/core_base.pyx":1384
+    /* "fatslimlib/core_base.pyx":1399
  *                 coords_list.append(np.asarray(coords[offsets[i]:offsets[i+1]]))
  * 
  *             self.lipid_coords_aslist = coords_list             # <<<<<<<<<<<<<<
@@ -19591,7 +19999,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
     __Pyx_DECREF(__pyx_v_self->lipid_coords_aslist);
     __pyx_v_self->lipid_coords_aslist = __pyx_v_coords_list;
 
-    /* "fatslimlib/core_base.pyx":1378
+    /* "fatslimlib/core_base.pyx":1393
  *         cdef real[:, ::1] coords = self.fast_get_lipid_coords()
  *         cdef fsl_int i
  *         if self.lipid_coords_aslist is None:             # <<<<<<<<<<<<<<
@@ -19600,7 +20008,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1386
+  /* "fatslimlib/core_base.pyx":1401
  *             self.lipid_coords_aslist = coords_list
  * 
  *         return self.lipid_coords_aslist             # <<<<<<<<<<<<<<
@@ -19612,7 +20020,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
   __pyx_r = __pyx_v_self->lipid_coords_aslist;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1374
+  /* "fatslimlib/core_base.pyx":1389
  *         return self.lipid_coords
  * 
  *     cdef list get_lipid_coords_aslist(self):             # <<<<<<<<<<<<<<
@@ -19640,7 +20048,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1390
+/* "fatslimlib/core_base.pyx":1405
  *     # Associated python property
  *     property lipid_coords:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -19670,7 +20078,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_12lipid_coords___get__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1391
+  /* "fatslimlib/core_base.pyx":1406
  *     property lipid_coords:
  *         def __get__(self):
  *             return self.get_lipid_coords_aslist()             # <<<<<<<<<<<<<<
@@ -19678,13 +20086,13 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_12lipid_coords___get__(
  *     cdef real[:, ::1] fast_get_lipid_coords_bbox(self) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->get_lipid_coords_aslist(__pyx_v_self); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1391; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->get_lipid_coords_aslist(__pyx_v_self); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1390
+  /* "fatslimlib/core_base.pyx":1405
  *     # Associated python property
  *     property lipid_coords:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -19703,7 +20111,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_12lipid_coords___get__(
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1393
+/* "fatslimlib/core_base.pyx":1408
  *             return self.get_lipid_coords_aslist()
  * 
  *     cdef real[:, ::1] fast_get_lipid_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
@@ -19720,33 +20128,33 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_lipid_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fatslimlib/core_base.pyx":1394
+  /* "fatslimlib/core_base.pyx":1409
  * 
  *     cdef real[:, ::1] fast_get_lipid_coords_bbox(self) nogil:
  *         if self.lipid_coords_bbox is None:             # <<<<<<<<<<<<<<
  *             self.lipid_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_lipid_coords())
  *         return self.lipid_coords_bbox
  */
-  if (unlikely(!__pyx_v_self->lipid_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1409; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_1 = ((((PyObject *) __pyx_v_self->lipid_coords_bbox.memview) == Py_None) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1395
+    /* "fatslimlib/core_base.pyx":1410
  *     cdef real[:, ::1] fast_get_lipid_coords_bbox(self) nogil:
  *         if self.lipid_coords_bbox is None:
  *             self.lipid_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_lipid_coords())             # <<<<<<<<<<<<<<
  *         return self.lipid_coords_bbox
  * 
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1395; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self->box, __pyx_t_2); if (unlikely(!__pyx_t_3.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1395; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self->box, __pyx_t_2); if (unlikely(!__pyx_t_3.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_XDEC_MEMVIEW(&__pyx_t_2, 0);
     __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_coords_bbox, 0);
     __pyx_v_self->lipid_coords_bbox = __pyx_t_3;
     __pyx_t_3.memview = NULL;
     __pyx_t_3.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1394
+    /* "fatslimlib/core_base.pyx":1409
  * 
  *     cdef real[:, ::1] fast_get_lipid_coords_bbox(self) nogil:
  *         if self.lipid_coords_bbox is None:             # <<<<<<<<<<<<<<
@@ -19755,19 +20163,19 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_lipid_
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1396
+  /* "fatslimlib/core_base.pyx":1411
  *         if self.lipid_coords_bbox is None:
  *             self.lipid_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_lipid_coords())
  *         return self.lipid_coords_bbox             # <<<<<<<<<<<<<<
  * 
  *     cdef list get_lipid_coords_bbox_aslist(self):
  */
-  if (unlikely(!__pyx_v_self->lipid_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1396; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __PYX_INC_MEMVIEW(&__pyx_v_self->lipid_coords_bbox, 1);
   __pyx_r = __pyx_v_self->lipid_coords_bbox;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1393
+  /* "fatslimlib/core_base.pyx":1408
  *             return self.get_lipid_coords_aslist()
  * 
  *     cdef real[:, ::1] fast_get_lipid_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
@@ -19800,7 +20208,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_lipid_
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1398
+/* "fatslimlib/core_base.pyx":1413
  *         return self.lipid_coords_bbox
  * 
  *     cdef list get_lipid_coords_bbox_aslist(self):             # <<<<<<<<<<<<<<
@@ -19835,33 +20243,33 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_lipid_coords_bbox_as
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_lipid_coords_bbox_aslist", 0);
 
-  /* "fatslimlib/core_base.pyx":1399
+  /* "fatslimlib/core_base.pyx":1414
  * 
  *     cdef list get_lipid_coords_bbox_aslist(self):
  *         cdef fsl_int[:] offsets = self.lipid_atomids_offsets             # <<<<<<<<<<<<<<
  *         cdef real[:, ::1] coords = self.fast_get_lipid_coords_bbox()
  *         cdef fsl_int i
  */
-  if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1399; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1414; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_1 = __pyx_v_self->lipid_atomids_offsets;
   __PYX_INC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_v_offsets = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1400
+  /* "fatslimlib/core_base.pyx":1415
  *     cdef list get_lipid_coords_bbox_aslist(self):
  *         cdef fsl_int[:] offsets = self.lipid_atomids_offsets
  *         cdef real[:, ::1] coords = self.fast_get_lipid_coords_bbox()             # <<<<<<<<<<<<<<
  *         cdef fsl_int i
  *         if self.lipids_coords_bbox_aslist is None:
  */
-  __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_coords = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1402
+  /* "fatslimlib/core_base.pyx":1417
  *         cdef real[:, ::1] coords = self.fast_get_lipid_coords_bbox()
  *         cdef fsl_int i
  *         if self.lipids_coords_bbox_aslist is None:             # <<<<<<<<<<<<<<
@@ -19872,19 +20280,19 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_lipid_coords_bbox_as
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "fatslimlib/core_base.pyx":1403
+    /* "fatslimlib/core_base.pyx":1418
  *         cdef fsl_int i
  *         if self.lipids_coords_bbox_aslist is None:
  *             coords_list = []             # <<<<<<<<<<<<<<
  * 
  *             for i in range(offsets.shape[0] - 1):
  */
-    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1403; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_v_coords_list = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fatslimlib/core_base.pyx":1405
+    /* "fatslimlib/core_base.pyx":1420
  *             coords_list = []
  * 
  *             for i in range(offsets.shape[0] - 1):             # <<<<<<<<<<<<<<
@@ -19895,16 +20303,16 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_lipid_coords_bbox_as
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_i = __pyx_t_7;
 
-      /* "fatslimlib/core_base.pyx":1406
+      /* "fatslimlib/core_base.pyx":1421
  * 
  *             for i in range(offsets.shape[0] - 1):
  *                 coords_list.append(np.asarray(coords[offsets[i]:offsets[i+1]]))             # <<<<<<<<<<<<<<
  * 
  *             self.lipids_coords_bbox_aslist = coords_list
  */
-      __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_asarray); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_asarray); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_10 = __pyx_v_i;
@@ -19927,14 +20335,14 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_lipid_coords_bbox_as
     0,
     1) < 0))
 {
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 }
 
 __pyx_t_2.shape[1] = __pyx_v_coords.shape[1];
 __pyx_t_2.strides[1] = __pyx_v_coords.strides[1];
     __pyx_t_2.suboffsets[1] = -1;
 
-__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       __PYX_XDEC_MEMVIEW(&__pyx_t_2, 1);
       __pyx_t_13 = NULL;
@@ -19948,26 +20356,26 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
         }
       }
       if (!__pyx_t_13) {
-        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_5);
       } else {
-        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_GIVEREF(__pyx_t_13); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_13); __pyx_t_13 = NULL;
         __Pyx_GIVEREF(__pyx_t_8);
         PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_coords_list, __pyx_t_5); if (unlikely(__pyx_t_15 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_coords_list, __pyx_t_5); if (unlikely(__pyx_t_15 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
 
-    /* "fatslimlib/core_base.pyx":1408
+    /* "fatslimlib/core_base.pyx":1423
  *                 coords_list.append(np.asarray(coords[offsets[i]:offsets[i+1]]))
  * 
  *             self.lipids_coords_bbox_aslist = coords_list             # <<<<<<<<<<<<<<
@@ -19980,7 +20388,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
     __Pyx_DECREF(__pyx_v_self->lipids_coords_bbox_aslist);
     __pyx_v_self->lipids_coords_bbox_aslist = __pyx_v_coords_list;
 
-    /* "fatslimlib/core_base.pyx":1402
+    /* "fatslimlib/core_base.pyx":1417
  *         cdef real[:, ::1] coords = self.fast_get_lipid_coords_bbox()
  *         cdef fsl_int i
  *         if self.lipids_coords_bbox_aslist is None:             # <<<<<<<<<<<<<<
@@ -19989,7 +20397,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1410
+  /* "fatslimlib/core_base.pyx":1425
  *             self.lipids_coords_bbox_aslist = coords_list
  * 
  *         return self.lipids_coords_bbox_aslist             # <<<<<<<<<<<<<<
@@ -20001,7 +20409,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
   __pyx_r = __pyx_v_self->lipids_coords_bbox_aslist;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1398
+  /* "fatslimlib/core_base.pyx":1413
  *         return self.lipid_coords_bbox
  * 
  *     cdef list get_lipid_coords_bbox_aslist(self):             # <<<<<<<<<<<<<<
@@ -20029,7 +20437,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_2, 2, (PyObject *(*)(char *)) __p
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1414
+/* "fatslimlib/core_base.pyx":1429
  *     # Associated python property
  *     property lipid_coords_bbox:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -20059,7 +20467,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_17lipid_coords_bbox___g
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1415
+  /* "fatslimlib/core_base.pyx":1430
  *     property lipid_coords_bbox:
  *         def __get__(self):
  *             return self.get_lipid_coords_bbox_aslist()             # <<<<<<<<<<<<<<
@@ -20067,13 +20475,13 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_17lipid_coords_bbox___g
  *     cdef real[:,::1] fast_get_interacting_group_coords(self) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->get_lipid_coords_bbox_aslist(__pyx_v_self); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->get_lipid_coords_bbox_aslist(__pyx_v_self); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1430; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1414
+  /* "fatslimlib/core_base.pyx":1429
  *     # Associated python property
  *     property lipid_coords_bbox:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -20092,7 +20500,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_17lipid_coords_bbox___g
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1417
+/* "fatslimlib/core_base.pyx":1432
  *             return self.get_lipid_coords_bbox_aslist()
  * 
  *     cdef real[:,::1] fast_get_interacting_group_coords(self) nogil:             # <<<<<<<<<<<<<<
@@ -20118,7 +20526,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":1418
+  /* "fatslimlib/core_base.pyx":1433
  * 
  *     cdef real[:,::1] fast_get_interacting_group_coords(self) nogil:
  *         if self.interacting_group_coords is None:             # <<<<<<<<<<<<<<
@@ -20126,11 +20534,11 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
  *                 if self.trajectory.interacting_atomids.shape[0] > 0:
  */
   /*try:*/ {
-    if (unlikely(!__pyx_v_self->interacting_group_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1418; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->interacting_group_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1433; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __pyx_t_1 = ((((PyObject *) __pyx_v_self->interacting_group_coords.memview) == Py_None) != 0);
     if (__pyx_t_1) {
 
-      /* "fatslimlib/core_base.pyx":1419
+      /* "fatslimlib/core_base.pyx":1434
  *     cdef real[:,::1] fast_get_interacting_group_coords(self) nogil:
  *         if self.interacting_group_coords is None:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -20143,28 +20551,28 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_base.pyx":1420
+            /* "fatslimlib/core_base.pyx":1435
  *         if self.interacting_group_coords is None:
  *             with gil:
  *                 if self.trajectory.interacting_atomids.shape[0] > 0:             # <<<<<<<<<<<<<<
  *                     self.interacting_group_coords = self.coords_reader.\
  *                         load_coords(self.index, self.trajectory.interacting_atomids)
  */
-            if (unlikely(!__pyx_v_self->trajectory->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1420; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
+            if (unlikely(!__pyx_v_self->trajectory->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1435; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
             __pyx_t_1 = (((__pyx_v_self->trajectory->interacting_atomids.shape[0]) > 0) != 0);
             if (__pyx_t_1) {
 
-              /* "fatslimlib/core_base.pyx":1422
+              /* "fatslimlib/core_base.pyx":1437
  *                 if self.trajectory.interacting_atomids.shape[0] > 0:
  *                     self.interacting_group_coords = self.coords_reader.\
  *                         load_coords(self.index, self.trajectory.interacting_atomids)             # <<<<<<<<<<<<<<
  *                 else:
  *                     self.interacting_group_coords = np.empty((0, DIM))
  */
-              if (unlikely(!__pyx_v_self->trajectory->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1422; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
-              __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_coords(__pyx_v_self->coords_reader, __pyx_v_self->index, __pyx_v_self->trajectory->interacting_atomids); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1422; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+              if (unlikely(!__pyx_v_self->trajectory->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1437; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
+              __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_coords(__pyx_v_self->coords_reader, __pyx_v_self->index, __pyx_v_self->trajectory->interacting_atomids); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1437; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
 
-              /* "fatslimlib/core_base.pyx":1421
+              /* "fatslimlib/core_base.pyx":1436
  *             with gil:
  *                 if self.trajectory.interacting_atomids.shape[0] > 0:
  *                     self.interacting_group_coords = self.coords_reader.\             # <<<<<<<<<<<<<<
@@ -20176,7 +20584,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
               __pyx_t_2.memview = NULL;
               __pyx_t_2.data = NULL;
 
-              /* "fatslimlib/core_base.pyx":1420
+              /* "fatslimlib/core_base.pyx":1435
  *         if self.interacting_group_coords is None:
  *             with gil:
  *                 if self.trajectory.interacting_atomids.shape[0] > 0:             # <<<<<<<<<<<<<<
@@ -20186,7 +20594,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
               goto __pyx_L10;
             }
 
-            /* "fatslimlib/core_base.pyx":1424
+            /* "fatslimlib/core_base.pyx":1439
  *                         load_coords(self.index, self.trajectory.interacting_atomids)
  *                 else:
  *                     self.interacting_group_coords = np.empty((0, DIM))             # <<<<<<<<<<<<<<
@@ -20194,16 +20602,16 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
  * 
  */
             /*else*/ {
-              __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1424; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+              __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1439; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
               __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1424; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+              __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1439; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1424; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1439; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_3);
-              if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1424; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+              if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1439; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               __PYX_XDEC_MEMVIEW(&__pyx_v_self->interacting_group_coords, 0);
               __pyx_v_self->interacting_group_coords = __pyx_t_2;
@@ -20213,7 +20621,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
             __pyx_L10:;
           }
 
-          /* "fatslimlib/core_base.pyx":1419
+          /* "fatslimlib/core_base.pyx":1434
  *     cdef real[:,::1] fast_get_interacting_group_coords(self) nogil:
  *         if self.interacting_group_coords is None:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -20237,7 +20645,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
           }
       }
 
-      /* "fatslimlib/core_base.pyx":1418
+      /* "fatslimlib/core_base.pyx":1433
  * 
  *     cdef real[:,::1] fast_get_interacting_group_coords(self) nogil:
  *         if self.interacting_group_coords is None:             # <<<<<<<<<<<<<<
@@ -20246,20 +20654,20 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1425
+    /* "fatslimlib/core_base.pyx":1440
  *                 else:
  *                     self.interacting_group_coords = np.empty((0, DIM))
  *         return self.interacting_group_coords             # <<<<<<<<<<<<<<
  * 
  *     # Associated python property
  */
-    if (unlikely(!__pyx_v_self->interacting_group_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1425; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->interacting_group_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1440; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __PYX_INC_MEMVIEW(&__pyx_v_self->interacting_group_coords, 1);
     __pyx_r = __pyx_v_self->interacting_group_coords;
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_base.pyx":1418
+  /* "fatslimlib/core_base.pyx":1433
  * 
  *     cdef real[:,::1] fast_get_interacting_group_coords(self) nogil:
  *         if self.interacting_group_coords is None:             # <<<<<<<<<<<<<<
@@ -20281,7 +20689,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
     }
   }
 
-  /* "fatslimlib/core_base.pyx":1417
+  /* "fatslimlib/core_base.pyx":1432
  *             return self.get_lipid_coords_bbox_aslist()
  * 
  *     cdef real[:,::1] fast_get_interacting_group_coords(self) nogil:             # <<<<<<<<<<<<<<
@@ -20311,7 +20719,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_intera
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1429
+/* "fatslimlib/core_base.pyx":1444
  *     # Associated python property
  *     property interacting_group_coords:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -20347,275 +20755,11 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_24interacting_group_coo
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1431
- *         def __get__(self):
- *             cdef real[:, ::1] memview
- *             with nogil:             # <<<<<<<<<<<<<<
- *                 memview = self.fast_get_interacting_group_coords()
- *             return np.asarray(memview)
- */
-  {
-      #ifdef WITH_THREAD
-      PyThreadState *_save;
-      Py_UNBLOCK_THREADS
-      #endif
-      /*try:*/ {
-
-        /* "fatslimlib/core_base.pyx":1432
- *             cdef real[:, ::1] memview
- *             with nogil:
- *                 memview = self.fast_get_interacting_group_coords()             # <<<<<<<<<<<<<<
- *             return np.asarray(memview)
- * 
- */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_interacting_group_coords(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1432; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
-        __pyx_v_memview = __pyx_t_1;
-        __pyx_t_1.memview = NULL;
-        __pyx_t_1.data = NULL;
-      }
-
-      /* "fatslimlib/core_base.pyx":1431
- *         def __get__(self):
- *             cdef real[:, ::1] memview
- *             with nogil:             # <<<<<<<<<<<<<<
- *                 memview = self.fast_get_interacting_group_coords()
- *             return np.asarray(memview)
- */
-      /*finally:*/ {
-        /*normal exit:*/{
-          #ifdef WITH_THREAD
-          Py_BLOCK_THREADS
-          #endif
-          goto __pyx_L5;
-        }
-        __pyx_L4_error: {
-          #ifdef WITH_THREAD
-          Py_BLOCK_THREADS
-          #endif
-          goto __pyx_L1_error;
-        }
-        __pyx_L5:;
-      }
-  }
-
-  /* "fatslimlib/core_base.pyx":1433
- *             with nogil:
- *                 memview = self.fast_get_interacting_group_coords()
- *             return np.asarray(memview)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = NULL;
-  if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_5);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
-    }
-  }
-  if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GOTREF(__pyx_t_2);
-  } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
-    __Pyx_GIVEREF(__pyx_t_3);
-    PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
-    __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* "fatslimlib/core_base.pyx":1429
- *     # Associated python property
- *     property interacting_group_coords:
- *         def __get__(self):             # <<<<<<<<<<<<<<
- *             cdef real[:, ::1] memview
- *             with nogil:
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("fatslimlib.core_base.Frame.interacting_group_coords.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_memview, 1);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "fatslimlib/core_base.pyx":1436
- * 
- * 
- *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
- *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
- *         if self.interacting_group_coords_bbox is None:
- */
-
-static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_interacting_group_coords_bbox(struct __pyx_obj_10fatslimlib_9core_base_Frame *__pyx_v_self) {
-  __Pyx_memviewslice __pyx_v_coords_bbox = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_r = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_2;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
-  /* "fatslimlib/core_base.pyx":1437
- * 
- *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:
- *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()             # <<<<<<<<<<<<<<
- *         if self.interacting_group_coords_bbox is None:
- *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)
- */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_interacting_group_coords(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_v_coords_bbox = __pyx_t_1;
-  __pyx_t_1.memview = NULL;
-  __pyx_t_1.data = NULL;
-
-  /* "fatslimlib/core_base.pyx":1438
- *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:
- *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
- *         if self.interacting_group_coords_bbox is None:             # <<<<<<<<<<<<<<
- *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)
- *         return self.interacting_group_coords_bbox
- */
-  if (unlikely(!__pyx_v_self->interacting_group_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1438; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
-  __pyx_t_2 = ((((PyObject *) __pyx_v_self->interacting_group_coords_bbox.memview) == Py_None) != 0);
-  if (__pyx_t_2) {
-
-    /* "fatslimlib/core_base.pyx":1439
- *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
- *         if self.interacting_group_coords_bbox is None:
- *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)             # <<<<<<<<<<<<<<
- *         return self.interacting_group_coords_bbox
- * 
- */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self->box, __pyx_v_coords_bbox); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __PYX_XDEC_MEMVIEW(&__pyx_v_self->interacting_group_coords_bbox, 0);
-    __pyx_v_self->interacting_group_coords_bbox = __pyx_t_1;
-    __pyx_t_1.memview = NULL;
-    __pyx_t_1.data = NULL;
-
-    /* "fatslimlib/core_base.pyx":1438
- *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:
- *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
- *         if self.interacting_group_coords_bbox is None:             # <<<<<<<<<<<<<<
- *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)
- *         return self.interacting_group_coords_bbox
- */
-  }
-
-  /* "fatslimlib/core_base.pyx":1440
- *         if self.interacting_group_coords_bbox is None:
- *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)
- *         return self.interacting_group_coords_bbox             # <<<<<<<<<<<<<<
- * 
- *     # Associated python property
- */
-  if (unlikely(!__pyx_v_self->interacting_group_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1440; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
-  __PYX_INC_MEMVIEW(&__pyx_v_self->interacting_group_coords_bbox, 1);
-  __pyx_r = __pyx_v_self->interacting_group_coords_bbox;
-  goto __pyx_L0;
-
-  /* "fatslimlib/core_base.pyx":1436
- * 
- * 
- *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
- *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
- *         if self.interacting_group_coords_bbox is None:
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 0);
-  __pyx_r.data = NULL;
-  __pyx_r.memview = NULL;
-  {
-    #ifdef WITH_THREAD
-    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-    #endif
-    __Pyx_AddTraceback("fatslimlib.core_base.Frame.fast_get_interacting_group_coords_bbox", __pyx_clineno, __pyx_lineno, __pyx_filename);
-    #ifdef WITH_THREAD
-    PyGILState_Release(__pyx_gilstate_save);
-    #endif
-  }
-
-  goto __pyx_L2;
-  __pyx_L0:;
-  if (unlikely(!__pyx_r.memview)) {
-    PyErr_SetString(PyExc_TypeError,"Memoryview return value is not initialized");
-  }
-  __pyx_L2:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_coords_bbox, 0);
-  return __pyx_r;
-}
-
-/* "fatslimlib/core_base.pyx":1444
- *     # Associated python property
- *     property interacting_group_coords_bbox:
- *         def __get__(self):             # <<<<<<<<<<<<<<
- *             cdef real[:, ::1] memview
- *             with nogil:
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_10fatslimlib_9core_base_5Frame_29interacting_group_coords_bbox_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10fatslimlib_9core_base_5Frame_29interacting_group_coords_bbox_1__get__(PyObject *__pyx_v_self) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coords_bbox___get__(((struct __pyx_obj_10fatslimlib_9core_base_Frame *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coords_bbox___get__(struct __pyx_obj_10fatslimlib_9core_base_Frame *__pyx_v_self) {
-  __Pyx_memviewslice __pyx_v_memview = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__get__", 0);
-
   /* "fatslimlib/core_base.pyx":1446
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
- *                 memview = self.fast_get_interacting_group_coords_bbox()
+ *                 memview = self.fast_get_interacting_group_coords()
  *             return np.asarray(memview)
  */
   {
@@ -20628,11 +20772,11 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coo
         /* "fatslimlib/core_base.pyx":1447
  *             cdef real[:, ::1] memview
  *             with nogil:
- *                 memview = self.fast_get_interacting_group_coords_bbox()             # <<<<<<<<<<<<<<
+ *                 memview = self.fast_get_interacting_group_coords()             # <<<<<<<<<<<<<<
  *             return np.asarray(memview)
  * 
  */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_interacting_group_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1447; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_interacting_group_coords(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1447; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_v_memview = __pyx_t_1;
         __pyx_t_1.memview = NULL;
         __pyx_t_1.data = NULL;
@@ -20642,7 +20786,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coo
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
- *                 memview = self.fast_get_interacting_group_coords_bbox()
+ *                 memview = self.fast_get_interacting_group_coords()
  *             return np.asarray(memview)
  */
       /*finally:*/ {
@@ -20664,7 +20808,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coo
 
   /* "fatslimlib/core_base.pyx":1448
  *             with nogil:
- *                 memview = self.fast_get_interacting_group_coords_bbox()
+ *                 memview = self.fast_get_interacting_group_coords()
  *             return np.asarray(memview)             # <<<<<<<<<<<<<<
  * 
  * 
@@ -20709,6 +20853,270 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coo
 
   /* "fatslimlib/core_base.pyx":1444
  *     # Associated python property
+ *     property interacting_group_coords:
+ *         def __get__(self):             # <<<<<<<<<<<<<<
+ *             cdef real[:, ::1] memview
+ *             with nogil:
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_AddTraceback("fatslimlib.core_base.Frame.interacting_group_coords.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&__pyx_v_memview, 1);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fatslimlib/core_base.pyx":1451
+ * 
+ * 
+ *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
+ *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
+ *         if self.interacting_group_coords_bbox is None:
+ */
+
+static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_interacting_group_coords_bbox(struct __pyx_obj_10fatslimlib_9core_base_Frame *__pyx_v_self) {
+  __Pyx_memviewslice __pyx_v_coords_bbox = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_r = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  int __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "fatslimlib/core_base.pyx":1452
+ * 
+ *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:
+ *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()             # <<<<<<<<<<<<<<
+ *         if self.interacting_group_coords_bbox is None:
+ *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)
+ */
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_interacting_group_coords(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1452; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_v_coords_bbox = __pyx_t_1;
+  __pyx_t_1.memview = NULL;
+  __pyx_t_1.data = NULL;
+
+  /* "fatslimlib/core_base.pyx":1453
+ *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:
+ *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
+ *         if self.interacting_group_coords_bbox is None:             # <<<<<<<<<<<<<<
+ *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)
+ *         return self.interacting_group_coords_bbox
+ */
+  if (unlikely(!__pyx_v_self->interacting_group_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  __pyx_t_2 = ((((PyObject *) __pyx_v_self->interacting_group_coords_bbox.memview) == Py_None) != 0);
+  if (__pyx_t_2) {
+
+    /* "fatslimlib/core_base.pyx":1454
+ *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
+ *         if self.interacting_group_coords_bbox is None:
+ *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)             # <<<<<<<<<<<<<<
+ *         return self.interacting_group_coords_bbox
+ * 
+ */
+    __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self->box, __pyx_v_coords_bbox); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1454; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __PYX_XDEC_MEMVIEW(&__pyx_v_self->interacting_group_coords_bbox, 0);
+    __pyx_v_self->interacting_group_coords_bbox = __pyx_t_1;
+    __pyx_t_1.memview = NULL;
+    __pyx_t_1.data = NULL;
+
+    /* "fatslimlib/core_base.pyx":1453
+ *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:
+ *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
+ *         if self.interacting_group_coords_bbox is None:             # <<<<<<<<<<<<<<
+ *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)
+ *         return self.interacting_group_coords_bbox
+ */
+  }
+
+  /* "fatslimlib/core_base.pyx":1455
+ *         if self.interacting_group_coords_bbox is None:
+ *             self.interacting_group_coords_bbox = self.box.fast_put_atoms_in_bbox(coords_bbox)
+ *         return self.interacting_group_coords_bbox             # <<<<<<<<<<<<<<
+ * 
+ *     # Associated python property
+ */
+  if (unlikely(!__pyx_v_self->interacting_group_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1455; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  __PYX_INC_MEMVIEW(&__pyx_v_self->interacting_group_coords_bbox, 1);
+  __pyx_r = __pyx_v_self->interacting_group_coords_bbox;
+  goto __pyx_L0;
+
+  /* "fatslimlib/core_base.pyx":1451
+ * 
+ * 
+ *     cdef real[:,::1] fast_get_interacting_group_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
+ *         cdef real[:, ::1] coords_bbox = self.fast_get_interacting_group_coords()
+ *         if self.interacting_group_coords_bbox is None:
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 0);
+  __pyx_r.data = NULL;
+  __pyx_r.memview = NULL;
+  {
+    #ifdef WITH_THREAD
+    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
+    #endif
+    __Pyx_AddTraceback("fatslimlib.core_base.Frame.fast_get_interacting_group_coords_bbox", __pyx_clineno, __pyx_lineno, __pyx_filename);
+    #ifdef WITH_THREAD
+    PyGILState_Release(__pyx_gilstate_save);
+    #endif
+  }
+
+  goto __pyx_L2;
+  __pyx_L0:;
+  if (unlikely(!__pyx_r.memview)) {
+    PyErr_SetString(PyExc_TypeError,"Memoryview return value is not initialized");
+  }
+  __pyx_L2:;
+  __PYX_XDEC_MEMVIEW(&__pyx_v_coords_bbox, 0);
+  return __pyx_r;
+}
+
+/* "fatslimlib/core_base.pyx":1459
+ *     # Associated python property
+ *     property interacting_group_coords_bbox:
+ *         def __get__(self):             # <<<<<<<<<<<<<<
+ *             cdef real[:, ::1] memview
+ *             with nogil:
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10fatslimlib_9core_base_5Frame_29interacting_group_coords_bbox_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10fatslimlib_9core_base_5Frame_29interacting_group_coords_bbox_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coords_bbox___get__(((struct __pyx_obj_10fatslimlib_9core_base_Frame *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coords_bbox___get__(struct __pyx_obj_10fatslimlib_9core_base_Frame *__pyx_v_self) {
+  __Pyx_memviewslice __pyx_v_memview = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "fatslimlib/core_base.pyx":1461
+ *         def __get__(self):
+ *             cdef real[:, ::1] memview
+ *             with nogil:             # <<<<<<<<<<<<<<
+ *                 memview = self.fast_get_interacting_group_coords_bbox()
+ *             return np.asarray(memview)
+ */
+  {
+      #ifdef WITH_THREAD
+      PyThreadState *_save;
+      Py_UNBLOCK_THREADS
+      #endif
+      /*try:*/ {
+
+        /* "fatslimlib/core_base.pyx":1462
+ *             cdef real[:, ::1] memview
+ *             with nogil:
+ *                 memview = self.fast_get_interacting_group_coords_bbox()             # <<<<<<<<<<<<<<
+ *             return np.asarray(memview)
+ * 
+ */
+        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_interacting_group_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1462; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_v_memview = __pyx_t_1;
+        __pyx_t_1.memview = NULL;
+        __pyx_t_1.data = NULL;
+      }
+
+      /* "fatslimlib/core_base.pyx":1461
+ *         def __get__(self):
+ *             cdef real[:, ::1] memview
+ *             with nogil:             # <<<<<<<<<<<<<<
+ *                 memview = self.fast_get_interacting_group_coords_bbox()
+ *             return np.asarray(memview)
+ */
+      /*finally:*/ {
+        /*normal exit:*/{
+          #ifdef WITH_THREAD
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L5;
+        }
+        __pyx_L4_error: {
+          #ifdef WITH_THREAD
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L1_error;
+        }
+        __pyx_L5:;
+      }
+  }
+
+  /* "fatslimlib/core_base.pyx":1463
+ *             with nogil:
+ *                 memview = self.fast_get_interacting_group_coords_bbox()
+ *             return np.asarray(memview)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = NULL;
+  if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  if (!__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_2);
+  } else {
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
+    __pyx_t_3 = 0;
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "fatslimlib/core_base.pyx":1459
+ *     # Associated python property
  *     property interacting_group_coords_bbox:
  *         def __get__(self):             # <<<<<<<<<<<<<<
  *             cdef real[:, ::1] memview
@@ -20732,7 +21140,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_29interacting_group_coo
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1451
+/* "fatslimlib/core_base.pyx":1466
  * 
  * 
  *     cdef real[:,::1] fast_get_bead_coords(self) nogil:             # <<<<<<<<<<<<<<
@@ -20797,7 +21205,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":1452
+  /* "fatslimlib/core_base.pyx":1467
  * 
  *     cdef real[:,::1] fast_get_bead_coords(self) nogil:
  *         cdef real[:, ::1] bead_coords, coords             # <<<<<<<<<<<<<<
@@ -20806,58 +21214,58 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
  */
   /*try:*/ {
 
-    /* "fatslimlib/core_base.pyx":1454
+    /* "fatslimlib/core_base.pyx":1469
  *         cdef real[:, ::1] bead_coords, coords
  *         cdef real[:,::1] tmp_coords
  *         cdef fsl_int[:] hg_offsets = self.trajectory.hg_bead_atomids_offsets             # <<<<<<<<<<<<<<
  *         cdef fsl_int[:] hg_indices = self.trajectory.lipid_hg_indices
  *         cdef fsl_int i, j, residue_hg_size
  */
-    if (unlikely(!__pyx_v_self->trajectory->hg_bead_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1454; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->trajectory->hg_bead_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1469; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __pyx_t_1 = __pyx_v_self->trajectory->hg_bead_atomids_offsets;
     __PYX_INC_MEMVIEW(&__pyx_t_1, 0);
     __pyx_v_hg_offsets = __pyx_t_1;
     __pyx_t_1.memview = NULL;
     __pyx_t_1.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1455
+    /* "fatslimlib/core_base.pyx":1470
  *         cdef real[:,::1] tmp_coords
  *         cdef fsl_int[:] hg_offsets = self.trajectory.hg_bead_atomids_offsets
  *         cdef fsl_int[:] hg_indices = self.trajectory.lipid_hg_indices             # <<<<<<<<<<<<<<
  *         cdef fsl_int i, j, residue_hg_size
  *         cdef rvec xcm
  */
-    if (unlikely(!__pyx_v_self->trajectory->lipid_hg_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1455; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->trajectory->lipid_hg_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1470; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __pyx_t_1 = __pyx_v_self->trajectory->lipid_hg_indices;
     __PYX_INC_MEMVIEW(&__pyx_t_1, 0);
     __pyx_v_hg_indices = __pyx_t_1;
     __pyx_t_1.memview = NULL;
     __pyx_t_1.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1459
+    /* "fatslimlib/core_base.pyx":1474
  *         cdef rvec xcm
  * 
  *         if self.bead_coords is not None:             # <<<<<<<<<<<<<<
  *             return self.bead_coords
  * 
  */
-    if (unlikely(!__pyx_v_self->bead_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1459; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->bead_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1474; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __pyx_t_2 = ((((PyObject *) __pyx_v_self->bead_coords.memview) != Py_None) != 0);
     if (__pyx_t_2) {
 
-      /* "fatslimlib/core_base.pyx":1460
+      /* "fatslimlib/core_base.pyx":1475
  * 
  *         if self.bead_coords is not None:
  *             return self.bead_coords             # <<<<<<<<<<<<<<
  * 
  *         # Load coords & allocate memory
  */
-      if (unlikely(!__pyx_v_self->bead_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1460; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+      if (unlikely(!__pyx_v_self->bead_coords.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1475; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
       __PYX_INC_MEMVIEW(&__pyx_v_self->bead_coords, 1);
       __pyx_r = __pyx_v_self->bead_coords;
       goto __pyx_L3_return;
 
-      /* "fatslimlib/core_base.pyx":1459
+      /* "fatslimlib/core_base.pyx":1474
  *         cdef rvec xcm
  * 
  *         if self.bead_coords is not None:             # <<<<<<<<<<<<<<
@@ -20866,7 +21274,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1463
+    /* "fatslimlib/core_base.pyx":1478
  * 
  *         # Load coords & allocate memory
  *         with gil:             # <<<<<<<<<<<<<<
@@ -20879,22 +21287,22 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_base.pyx":1464
+          /* "fatslimlib/core_base.pyx":1479
  *         # Load coords & allocate memory
  *         with gil:
  *             bead_coords = np.empty((self.trajectory.hg_bead_atomids_offsets.shape[0] - 1, DIM))             # <<<<<<<<<<<<<<
  *             tmp_coords = np.empty((self.trajectory.hg_bead_atomids_offsets.shape[0] - 1, DIM))
  *             coords = self.fast_get_lipid_coords()
  */
-          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_v_self->trajectory->hg_bead_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
-          __pyx_t_4 = PyInt_FromSsize_t(((__pyx_v_self->trajectory->hg_bead_atomids_offsets.shape[0]) - 1)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          if (unlikely(!__pyx_v_self->trajectory->hg_bead_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
+          __pyx_t_4 = PyInt_FromSsize_t(((__pyx_v_self->trajectory->hg_bead_atomids_offsets.shape[0]) - 1)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_GIVEREF(__pyx_t_4);
           PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -20913,44 +21321,44 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
             }
           }
           if (!__pyx_t_4) {
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
             __Pyx_GOTREF(__pyx_t_3);
           } else {
-            __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
             __Pyx_GIVEREF(__pyx_t_6);
             PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_6);
             __pyx_t_6 = 0;
-            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           }
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_3);
-          if (unlikely(!__pyx_t_8.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1464; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          if (unlikely(!__pyx_t_8.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1479; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_v_bead_coords = __pyx_t_8;
           __pyx_t_8.memview = NULL;
           __pyx_t_8.data = NULL;
 
-          /* "fatslimlib/core_base.pyx":1465
+          /* "fatslimlib/core_base.pyx":1480
  *         with gil:
  *             bead_coords = np.empty((self.trajectory.hg_bead_atomids_offsets.shape[0] - 1, DIM))
  *             tmp_coords = np.empty((self.trajectory.hg_bead_atomids_offsets.shape[0] - 1, DIM))             # <<<<<<<<<<<<<<
  *             coords = self.fast_get_lipid_coords()
  * 
  */
-          __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (unlikely(!__pyx_v_self->trajectory->hg_bead_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
-          __pyx_t_5 = PyInt_FromSsize_t(((__pyx_v_self->trajectory->hg_bead_atomids_offsets.shape[0]) - 1)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          if (unlikely(!__pyx_v_self->trajectory->hg_bead_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}}
+          __pyx_t_5 = PyInt_FromSsize_t(((__pyx_v_self->trajectory->hg_bead_atomids_offsets.shape[0]) - 1)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_GIVEREF(__pyx_t_5);
           PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
@@ -20969,42 +21377,42 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
             }
           }
           if (!__pyx_t_5) {
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
             __Pyx_GOTREF(__pyx_t_3);
           } else {
-            __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
             __Pyx_GIVEREF(__pyx_t_6);
             PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_6);
             __pyx_t_6 = 0;
-            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           }
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_3);
-          if (unlikely(!__pyx_t_8.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1465; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          if (unlikely(!__pyx_t_8.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1480; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_v_tmp_coords = __pyx_t_8;
           __pyx_t_8.memview = NULL;
           __pyx_t_8.data = NULL;
 
-          /* "fatslimlib/core_base.pyx":1466
+          /* "fatslimlib/core_base.pyx":1481
  *             bead_coords = np.empty((self.trajectory.hg_bead_atomids_offsets.shape[0] - 1, DIM))
  *             tmp_coords = np.empty((self.trajectory.hg_bead_atomids_offsets.shape[0] - 1, DIM))
  *             coords = self.fast_get_lipid_coords()             # <<<<<<<<<<<<<<
  * 
  *         for i in range(hg_offsets.shape[0] - 1):
  */
-          __pyx_t_8 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords(__pyx_v_self); if (unlikely(!__pyx_t_8.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1466; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_8 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords(__pyx_v_self); if (unlikely(!__pyx_t_8.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1481; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __pyx_v_coords = __pyx_t_8;
           __pyx_t_8.memview = NULL;
           __pyx_t_8.data = NULL;
         }
 
-        /* "fatslimlib/core_base.pyx":1463
+        /* "fatslimlib/core_base.pyx":1478
  * 
  *         # Load coords & allocate memory
  *         with gil:             # <<<<<<<<<<<<<<
@@ -21028,7 +21436,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
         }
     }
 
-    /* "fatslimlib/core_base.pyx":1468
+    /* "fatslimlib/core_base.pyx":1483
  *             coords = self.fast_get_lipid_coords()
  * 
  *         for i in range(hg_offsets.shape[0] - 1):             # <<<<<<<<<<<<<<
@@ -21039,7 +21447,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_i = __pyx_t_10;
 
-      /* "fatslimlib/core_base.pyx":1469
+      /* "fatslimlib/core_base.pyx":1484
  * 
  *         for i in range(hg_offsets.shape[0] - 1):
  *             residue_hg_size = hg_offsets[i+1] - hg_offsets[i]             # <<<<<<<<<<<<<<
@@ -21050,7 +21458,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
       __pyx_t_12 = __pyx_v_i;
       __pyx_v_residue_hg_size = ((*((fsl_int *) ( /* dim=0 */ (__pyx_v_hg_offsets.data + __pyx_t_11 * __pyx_v_hg_offsets.strides[0]) ))) - (*((fsl_int *) ( /* dim=0 */ (__pyx_v_hg_offsets.data + __pyx_t_12 * __pyx_v_hg_offsets.strides[0]) ))));
 
-      /* "fatslimlib/core_base.pyx":1470
+      /* "fatslimlib/core_base.pyx":1485
  *         for i in range(hg_offsets.shape[0] - 1):
  *             residue_hg_size = hg_offsets[i+1] - hg_offsets[i]
  *             for j in range(residue_hg_size):             # <<<<<<<<<<<<<<
@@ -21061,7 +21469,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
       for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
         __pyx_v_j = __pyx_t_14;
 
-        /* "fatslimlib/core_base.pyx":1471
+        /* "fatslimlib/core_base.pyx":1486
  *             residue_hg_size = hg_offsets[i+1] - hg_offsets[i]
  *             for j in range(residue_hg_size):
  *                 tmp_coords[j, XX] = coords[hg_indices[hg_offsets[i] + j], XX]             # <<<<<<<<<<<<<<
@@ -21076,7 +21484,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
         __pyx_t_20 = 0;
         *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_tmp_coords.data + __pyx_t_19 * __pyx_v_tmp_coords.strides[0]) )) + __pyx_t_20)) )) = (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_17 * __pyx_v_coords.strides[0]) )) + __pyx_t_18)) )));
 
-        /* "fatslimlib/core_base.pyx":1472
+        /* "fatslimlib/core_base.pyx":1487
  *             for j in range(residue_hg_size):
  *                 tmp_coords[j, XX] = coords[hg_indices[hg_offsets[i] + j], XX]
  *                 tmp_coords[j, YY] = coords[hg_indices[hg_offsets[i] + j], YY]             # <<<<<<<<<<<<<<
@@ -21091,7 +21499,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
         __pyx_t_26 = 1;
         *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_tmp_coords.data + __pyx_t_25 * __pyx_v_tmp_coords.strides[0]) )) + __pyx_t_26)) )) = (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_23 * __pyx_v_coords.strides[0]) )) + __pyx_t_24)) )));
 
-        /* "fatslimlib/core_base.pyx":1473
+        /* "fatslimlib/core_base.pyx":1488
  *                 tmp_coords[j, XX] = coords[hg_indices[hg_offsets[i] + j], XX]
  *                 tmp_coords[j, YY] = coords[hg_indices[hg_offsets[i] + j], YY]
  *                 tmp_coords[j, ZZ] = coords[hg_indices[hg_offsets[i] + j], ZZ]             # <<<<<<<<<<<<<<
@@ -21107,7 +21515,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
         *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_tmp_coords.data + __pyx_t_31 * __pyx_v_tmp_coords.strides[0]) )) + __pyx_t_32)) )) = (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_29 * __pyx_v_coords.strides[0]) )) + __pyx_t_30)) )));
       }
 
-      /* "fatslimlib/core_base.pyx":1474
+      /* "fatslimlib/core_base.pyx":1489
  *                 tmp_coords[j, YY] = coords[hg_indices[hg_offsets[i] + j], YY]
  *                 tmp_coords[j, ZZ] = coords[hg_indices[hg_offsets[i] + j], ZZ]
  *             self.box.fast_pbc_xcm(tmp_coords[:residue_hg_size], xcm)             # <<<<<<<<<<<<<<
@@ -21132,7 +21540,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
     0,
     1) < 0))
 {
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1474; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1489; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
 }
 
 __pyx_t_8.shape[1] = __pyx_v_tmp_coords.shape[1];
@@ -21142,7 +21550,7 @@ __pyx_t_8.strides[1] = __pyx_v_tmp_coords.strides[1];
 ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_pbc_xcm(__pyx_v_self->box, __pyx_t_8, __pyx_v_xcm, NULL);
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 0);
 
-      /* "fatslimlib/core_base.pyx":1475
+      /* "fatslimlib/core_base.pyx":1490
  *                 tmp_coords[j, ZZ] = coords[hg_indices[hg_offsets[i] + j], ZZ]
  *             self.box.fast_pbc_xcm(tmp_coords[:residue_hg_size], xcm)
  *             rvec_to_memview(xcm, bead_coords[i])             # <<<<<<<<<<<<<<
@@ -21166,7 +21574,7 @@ __pyx_t_8.strides[1] = __pyx_v_tmp_coords.strides[1];
             #ifdef WITH_THREAD
             PyGILState_Release(__pyx_gilstate_save);
             #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1475; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1490; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
     }
         __pyx_t_34.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -21179,7 +21587,7 @@ __pyx_f_10fatslimlib_9core_base_rvec_to_memview(__pyx_v_xcm, __pyx_t_34);
       __PYX_XDEC_MEMVIEW(&__pyx_t_34, 0);
     }
 
-    /* "fatslimlib/core_base.pyx":1477
+    /* "fatslimlib/core_base.pyx":1492
  *             rvec_to_memview(xcm, bead_coords[i])
  * 
  *         self.bead_coords = bead_coords             # <<<<<<<<<<<<<<
@@ -21190,7 +21598,7 @@ __pyx_f_10fatslimlib_9core_base_rvec_to_memview(__pyx_v_xcm, __pyx_t_34);
     __PYX_INC_MEMVIEW(&__pyx_v_bead_coords, 1);
     __pyx_v_self->bead_coords = __pyx_v_bead_coords;
 
-    /* "fatslimlib/core_base.pyx":1478
+    /* "fatslimlib/core_base.pyx":1493
  * 
  *         self.bead_coords = bead_coords
  *         return bead_coords             # <<<<<<<<<<<<<<
@@ -21202,7 +21610,7 @@ __pyx_f_10fatslimlib_9core_base_rvec_to_memview(__pyx_v_xcm, __pyx_t_34);
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_base.pyx":1452
+  /* "fatslimlib/core_base.pyx":1467
  * 
  *     cdef real[:,::1] fast_get_bead_coords(self) nogil:
  *         cdef real[:, ::1] bead_coords, coords             # <<<<<<<<<<<<<<
@@ -21224,7 +21632,7 @@ __pyx_f_10fatslimlib_9core_base_rvec_to_memview(__pyx_v_xcm, __pyx_t_34);
     }
   }
 
-  /* "fatslimlib/core_base.pyx":1451
+  /* "fatslimlib/core_base.pyx":1466
  * 
  * 
  *     cdef real[:,::1] fast_get_bead_coords(self) nogil:             # <<<<<<<<<<<<<<
@@ -21264,7 +21672,7 @@ __pyx_f_10fatslimlib_9core_base_rvec_to_memview(__pyx_v_xcm, __pyx_t_34);
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1482
+/* "fatslimlib/core_base.pyx":1497
  *     # Associated python property
  *     property bead_coords:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -21300,7 +21708,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_11bead_coords___get__(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1484
+  /* "fatslimlib/core_base.pyx":1499
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -21314,20 +21722,20 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_11bead_coords___get__(s
       #endif
       /*try:*/ {
 
-        /* "fatslimlib/core_base.pyx":1485
+        /* "fatslimlib/core_base.pyx":1500
  *             cdef real[:, ::1] memview
  *             with nogil:
  *                 memview = self.fast_get_bead_coords()             # <<<<<<<<<<<<<<
  *             return np.asarray(memview)
  * 
  */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1485; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1500; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_v_memview = __pyx_t_1;
         __pyx_t_1.memview = NULL;
         __pyx_t_1.data = NULL;
       }
 
-      /* "fatslimlib/core_base.pyx":1484
+      /* "fatslimlib/core_base.pyx":1499
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -21351,7 +21759,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_11bead_coords___get__(s
       }
   }
 
-  /* "fatslimlib/core_base.pyx":1486
+  /* "fatslimlib/core_base.pyx":1501
  *             with nogil:
  *                 memview = self.fast_get_bead_coords()
  *             return np.asarray(memview)             # <<<<<<<<<<<<<<
@@ -21359,12 +21767,12 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_11bead_coords___get__(s
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -21377,17 +21785,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_11bead_coords___get__(s
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -21396,7 +21804,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_11bead_coords___get__(s
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1482
+  /* "fatslimlib/core_base.pyx":1497
  *     # Associated python property
  *     property bead_coords:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -21421,7 +21829,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_11bead_coords___get__(s
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1489
+/* "fatslimlib/core_base.pyx":1504
  * 
  * 
  *     cdef real[:,::1] fast_get_bead_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
@@ -21438,33 +21846,33 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "fatslimlib/core_base.pyx":1490
+  /* "fatslimlib/core_base.pyx":1505
  * 
  *     cdef real[:,::1] fast_get_bead_coords_bbox(self) nogil:
  *         if self.bead_coords_bbox is None:             # <<<<<<<<<<<<<<
  *             self.bead_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_bead_coords())
  *         return self.bead_coords_bbox
  */
-  if (unlikely(!__pyx_v_self->bead_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->bead_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1505; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_1 = ((((PyObject *) __pyx_v_self->bead_coords_bbox.memview) == Py_None) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1491
+    /* "fatslimlib/core_base.pyx":1506
  *     cdef real[:,::1] fast_get_bead_coords_bbox(self) nogil:
  *         if self.bead_coords_bbox is None:
  *             self.bead_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_bead_coords())             # <<<<<<<<<<<<<<
  *         return self.bead_coords_bbox
  * 
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1491; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self->box, __pyx_t_2); if (unlikely(!__pyx_t_3.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1491; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_put_atoms_in_bbox(__pyx_v_self->box, __pyx_t_2); if (unlikely(!__pyx_t_3.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_XDEC_MEMVIEW(&__pyx_t_2, 0);
     __PYX_XDEC_MEMVIEW(&__pyx_v_self->bead_coords_bbox, 0);
     __pyx_v_self->bead_coords_bbox = __pyx_t_3;
     __pyx_t_3.memview = NULL;
     __pyx_t_3.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1490
+    /* "fatslimlib/core_base.pyx":1505
  * 
  *     cdef real[:,::1] fast_get_bead_coords_bbox(self) nogil:
  *         if self.bead_coords_bbox is None:             # <<<<<<<<<<<<<<
@@ -21473,19 +21881,19 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1492
+  /* "fatslimlib/core_base.pyx":1507
  *         if self.bead_coords_bbox is None:
  *             self.bead_coords_bbox = self.box.fast_put_atoms_in_bbox(self.fast_get_bead_coords())
  *         return self.bead_coords_bbox             # <<<<<<<<<<<<<<
  * 
  *     # Associated python property
  */
-  if (unlikely(!__pyx_v_self->bead_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1492; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->bead_coords_bbox.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1507; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __PYX_INC_MEMVIEW(&__pyx_v_self->bead_coords_bbox, 1);
   __pyx_r = __pyx_v_self->bead_coords_bbox;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1489
+  /* "fatslimlib/core_base.pyx":1504
  * 
  * 
  *     cdef real[:,::1] fast_get_bead_coords_bbox(self) nogil:             # <<<<<<<<<<<<<<
@@ -21518,7 +21926,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_bead_c
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1496
+/* "fatslimlib/core_base.pyx":1511
  *     # Associated python property
  *     property bead_coords_bbox:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -21554,7 +21962,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_16bead_coords_bbox___ge
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1498
+  /* "fatslimlib/core_base.pyx":1513
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -21568,20 +21976,20 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_16bead_coords_bbox___ge
       #endif
       /*try:*/ {
 
-        /* "fatslimlib/core_base.pyx":1499
+        /* "fatslimlib/core_base.pyx":1514
  *             cdef real[:, ::1] memview
  *             with nogil:
  *                 memview = self.fast_get_bead_coords_bbox()             # <<<<<<<<<<<<<<
  *             return np.asarray(memview)
  * 
  */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1499; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1514; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_v_memview = __pyx_t_1;
         __pyx_t_1.memview = NULL;
         __pyx_t_1.data = NULL;
       }
 
-      /* "fatslimlib/core_base.pyx":1498
+      /* "fatslimlib/core_base.pyx":1513
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -21605,7 +22013,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_16bead_coords_bbox___ge
       }
   }
 
-  /* "fatslimlib/core_base.pyx":1500
+  /* "fatslimlib/core_base.pyx":1515
  *             with nogil:
  *                 memview = self.fast_get_bead_coords_bbox()
  *             return np.asarray(memview)             # <<<<<<<<<<<<<<
@@ -21613,12 +22021,12 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_16bead_coords_bbox___ge
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -21631,17 +22039,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_16bead_coords_bbox___ge
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -21650,7 +22058,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_16bead_coords_bbox___ge
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1496
+  /* "fatslimlib/core_base.pyx":1511
  *     # Associated python property
  *     property bead_coords_bbox:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -21675,7 +22083,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_16bead_coords_bbox___ge
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1502
+/* "fatslimlib/core_base.pyx":1517
  *             return np.asarray(memview)
  * 
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *:             # <<<<<<<<<<<<<<
@@ -21722,7 +22130,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":1503
+  /* "fatslimlib/core_base.pyx":1518
  * 
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *:
  *         if self.directions is not None:             # <<<<<<<<<<<<<<
@@ -21730,23 +22138,23 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
  * 
  */
   /*try:*/ {
-    if (unlikely(!__pyx_v_self->directions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1503; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->directions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1518; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __pyx_t_1 = ((((PyObject *) __pyx_v_self->directions.memview) != Py_None) != 0);
     if (__pyx_t_1) {
 
-      /* "fatslimlib/core_base.pyx":1504
+      /* "fatslimlib/core_base.pyx":1519
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *:
  *         if self.directions is not None:
  *             return self.directions             # <<<<<<<<<<<<<<
  * 
  *         cdef fsl_int i
  */
-      if (unlikely(!__pyx_v_self->directions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1504; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+      if (unlikely(!__pyx_v_self->directions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1519; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
       __PYX_INC_MEMVIEW(&__pyx_v_self->directions, 1);
       __pyx_r = __pyx_v_self->directions;
       goto __pyx_L3_return;
 
-      /* "fatslimlib/core_base.pyx":1503
+      /* "fatslimlib/core_base.pyx":1518
  * 
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *:
  *         if self.directions is not None:             # <<<<<<<<<<<<<<
@@ -21755,21 +22163,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1510
+    /* "fatslimlib/core_base.pyx":1525
  *         cdef fsl_int beads
  *         cdef real[:,::1] lipid_coords, all_lipid_coords
  *         cdef fsl_int[:] offsets = self.lipid_atomids_offsets             # <<<<<<<<<<<<<<
  *         cdef cPBCBox_t box = self.box.c_pbcbox
  *         cdef real[:, ::1] directions
  */
-    if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1510; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1525; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __pyx_t_2 = __pyx_v_self->lipid_atomids_offsets;
     __PYX_INC_MEMVIEW(&__pyx_t_2, 0);
     __pyx_v_offsets = __pyx_t_2;
     __pyx_t_2.memview = NULL;
     __pyx_t_2.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1511
+    /* "fatslimlib/core_base.pyx":1526
  *         cdef real[:,::1] lipid_coords, all_lipid_coords
  *         cdef fsl_int[:] offsets = self.lipid_atomids_offsets
  *         cdef cPBCBox_t box = self.box.c_pbcbox             # <<<<<<<<<<<<<<
@@ -21779,31 +22187,31 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
     __pyx_t_3 = __pyx_v_self->box->c_pbcbox;
     __pyx_v_box = __pyx_t_3;
 
-    /* "fatslimlib/core_base.pyx":1515
+    /* "fatslimlib/core_base.pyx":1530
  * 
  *         # Loads coordinates
  *         all_lipid_coords = self.fast_get_lipid_coords_bbox()             # <<<<<<<<<<<<<<
  *         bead_coords = self.fast_get_bead_coords_bbox()
  *         nbeads = bead_coords.shape[0]
  */
-    __pyx_t_4 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1515; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+    __pyx_t_4 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_lipid_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1530; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
     __pyx_v_all_lipid_coords = __pyx_t_4;
     __pyx_t_4.memview = NULL;
     __pyx_t_4.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1516
+    /* "fatslimlib/core_base.pyx":1531
  *         # Loads coordinates
  *         all_lipid_coords = self.fast_get_lipid_coords_bbox()
  *         bead_coords = self.fast_get_bead_coords_bbox()             # <<<<<<<<<<<<<<
  *         nbeads = bead_coords.shape[0]
  * 
  */
-    __pyx_t_4 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1516; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+    __pyx_t_4 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1531; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
     __pyx_v_bead_coords = __pyx_t_4;
     __pyx_t_4.memview = NULL;
     __pyx_t_4.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1517
+    /* "fatslimlib/core_base.pyx":1532
  *         all_lipid_coords = self.fast_get_lipid_coords_bbox()
  *         bead_coords = self.fast_get_bead_coords_bbox()
  *         nbeads = bead_coords.shape[0]             # <<<<<<<<<<<<<<
@@ -21812,7 +22220,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
  */
     __pyx_v_nbeads = (__pyx_v_bead_coords.shape[0]);
 
-    /* "fatslimlib/core_base.pyx":1519
+    /* "fatslimlib/core_base.pyx":1534
  *         nbeads = bead_coords.shape[0]
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -21825,21 +22233,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_base.pyx":1520
+          /* "fatslimlib/core_base.pyx":1535
  * 
  *         with gil:
  *             directions = np.empty((nbeads, DIM))             # <<<<<<<<<<<<<<
  * 
  *         #for i in range(nbeads):
  */
-          __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1520; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1535; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1520; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1535; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_nbeads); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1520; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_nbeads); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1535; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1520; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1535; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GIVEREF(__pyx_t_6);
           PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6);
@@ -21858,30 +22266,30 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
             }
           }
           if (!__pyx_t_6) {
-            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1520; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1535; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
             __Pyx_GOTREF(__pyx_t_5);
           } else {
-            __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1520; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1535; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_6); __pyx_t_6 = NULL;
             __Pyx_GIVEREF(__pyx_t_8);
             PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_8);
             __pyx_t_8 = 0;
-            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1520; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1535; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           }
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_5);
-          if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1520; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          if (unlikely(!__pyx_t_4.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1535; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_v_directions = __pyx_t_4;
           __pyx_t_4.memview = NULL;
           __pyx_t_4.data = NULL;
         }
 
-        /* "fatslimlib/core_base.pyx":1519
+        /* "fatslimlib/core_base.pyx":1534
  *         nbeads = bead_coords.shape[0]
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -21905,7 +22313,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
         }
     }
 
-    /* "fatslimlib/core_base.pyx":1523
+    /* "fatslimlib/core_base.pyx":1538
  * 
  *         #for i in range(nbeads):
  *         for i in prange(nbeads, schedule='dynamic', num_threads=OPENMP_NUM_THREADS):             # <<<<<<<<<<<<<<
@@ -21925,7 +22333,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
         if (__pyx_t_12 > 0)
         {
             #ifdef _OPENMP
-            #pragma omp parallel num_threads(__pyx_v_10fatslimlib_9core_base_OPENMP_NUM_THREADS) private(__pyx_t_18, __pyx_t_13, __pyx_t_17, __pyx_t_16, __pyx_t_15, __pyx_t_14)
+            #pragma omp parallel num_threads(__pyx_v_10fatslimlib_9core_base_OPENMP_NUM_THREADS) private(__pyx_t_15, __pyx_t_17, __pyx_t_16, __pyx_t_18, __pyx_t_13, __pyx_t_14)
             #endif /* _OPENMP */
             {
                 #ifdef _OPENMP
@@ -21935,7 +22343,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
                     {
                         __pyx_v_i = 0 + 1 * __pyx_t_11;
 
-                        /* "fatslimlib/core_base.pyx":1524
+                        /* "fatslimlib/core_base.pyx":1539
  *         #for i in range(nbeads):
  *         for i in prange(nbeads, schedule='dynamic', num_threads=OPENMP_NUM_THREADS):
  *             calculate_lipid_direction(&bead_coords[i, XX],             # <<<<<<<<<<<<<<
@@ -21945,7 +22353,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
                         __pyx_t_13 = __pyx_v_i;
                         __pyx_t_14 = 0;
 
-                        /* "fatslimlib/core_base.pyx":1527
+                        /* "fatslimlib/core_base.pyx":1542
  *                                       box,
  *                                       all_lipid_coords,
  *                                       offsets[i],             # <<<<<<<<<<<<<<
@@ -21954,7 +22362,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
  */
                         __pyx_t_15 = __pyx_v_i;
 
-                        /* "fatslimlib/core_base.pyx":1528
+                        /* "fatslimlib/core_base.pyx":1543
  *                                       all_lipid_coords,
  *                                       offsets[i],
  *                                       offsets[i+1],             # <<<<<<<<<<<<<<
@@ -21963,7 +22371,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
  */
                         __pyx_t_16 = (__pyx_v_i + 1);
 
-                        /* "fatslimlib/core_base.pyx":1529
+                        /* "fatslimlib/core_base.pyx":1544
  *                                       offsets[i],
  *                                       offsets[i+1],
  *                                       &directions[i, XX])             # <<<<<<<<<<<<<<
@@ -21973,7 +22381,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
                         __pyx_t_17 = __pyx_v_i;
                         __pyx_t_18 = 0;
 
-                        /* "fatslimlib/core_base.pyx":1524
+                        /* "fatslimlib/core_base.pyx":1539
  *         #for i in range(nbeads):
  *         for i in prange(nbeads, schedule='dynamic', num_threads=OPENMP_NUM_THREADS):
  *             calculate_lipid_direction(&bead_coords[i, XX],             # <<<<<<<<<<<<<<
@@ -21993,7 +22401,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
         #define unlikely(x) __builtin_expect(!!(x), 0)
     #endif
 
-    /* "fatslimlib/core_base.pyx":1531
+    /* "fatslimlib/core_base.pyx":1546
  *                                       &directions[i, XX])
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -22006,7 +22414,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_base.pyx":1532
+          /* "fatslimlib/core_base.pyx":1547
  * 
  *         with gil:
  *             self.directions = directions             # <<<<<<<<<<<<<<
@@ -22018,7 +22426,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
           __pyx_v_self->directions = __pyx_v_directions;
         }
 
-        /* "fatslimlib/core_base.pyx":1531
+        /* "fatslimlib/core_base.pyx":1546
  *                                       &directions[i, XX])
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -22036,7 +22444,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
         }
     }
 
-    /* "fatslimlib/core_base.pyx":1533
+    /* "fatslimlib/core_base.pyx":1548
  *         with gil:
  *             self.directions = directions
  *         return directions             # <<<<<<<<<<<<<<
@@ -22048,7 +22456,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_base.pyx":1503
+  /* "fatslimlib/core_base.pyx":1518
  * 
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *:
  *         if self.directions is not None:             # <<<<<<<<<<<<<<
@@ -22070,7 +22478,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
     }
   }
 
-  /* "fatslimlib/core_base.pyx":1502
+  /* "fatslimlib/core_base.pyx":1517
  *             return np.asarray(memview)
  * 
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *:             # <<<<<<<<<<<<<<
@@ -22108,7 +22516,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_direct
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1537
+/* "fatslimlib/core_base.pyx":1552
  *     # Associated python property
  *     property directions:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -22144,7 +22552,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10directions___get__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1539
+  /* "fatslimlib/core_base.pyx":1554
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -22158,20 +22566,20 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10directions___get__(st
       #endif
       /*try:*/ {
 
-        /* "fatslimlib/core_base.pyx":1540
+        /* "fatslimlib/core_base.pyx":1555
  *             cdef real[:, ::1] memview
  *             with nogil:
  *                 memview = self.fast_get_directions()             # <<<<<<<<<<<<<<
  *             return np.asarray(memview)
  * 
  */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_directions(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1540; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_directions(__pyx_v_self); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1555; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_v_memview = __pyx_t_1;
         __pyx_t_1.memview = NULL;
         __pyx_t_1.data = NULL;
       }
 
-      /* "fatslimlib/core_base.pyx":1539
+      /* "fatslimlib/core_base.pyx":1554
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -22195,7 +22603,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10directions___get__(st
       }
   }
 
-  /* "fatslimlib/core_base.pyx":1541
+  /* "fatslimlib/core_base.pyx":1556
  *             with nogil:
  *                 memview = self.fast_get_directions()
  *             return np.asarray(memview)             # <<<<<<<<<<<<<<
@@ -22203,12 +22611,12 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10directions___get__(st
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1541; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1556; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1541; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1556; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1541; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1556; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -22221,17 +22629,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10directions___get__(st
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1541; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1556; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1541; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1556; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1541; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1556; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -22240,7 +22648,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10directions___get__(st
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1537
+  /* "fatslimlib/core_base.pyx":1552
  *     # Associated python property
  *     property directions:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -22265,7 +22673,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10directions___get__(st
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1544
+/* "fatslimlib/core_base.pyx":1559
  * 
  * 
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=-1) nogil:             # <<<<<<<<<<<<<<
@@ -22315,7 +22723,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_base.pyx":1545
+  /* "fatslimlib/core_base.pyx":1560
  * 
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=-1) nogil:
  *         cdef fsl_int ncoords = self.size             # <<<<<<<<<<<<<<
@@ -22326,31 +22734,31 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     __pyx_t_1 = __pyx_v_self->size;
     __pyx_v_ncoords = __pyx_t_1;
 
-    /* "fatslimlib/core_base.pyx":1546
+    /* "fatslimlib/core_base.pyx":1561
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=-1) nogil:
  *         cdef fsl_int ncoords = self.size
  *         cdef real[:, ::1] coords = self.fast_get_bead_coords_bbox()             # <<<<<<<<<<<<<<
  *         cdef real[:, ::1] directions = self.fast_get_directions()
  *         cdef real[:, ::1] normals
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1546; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_bead_coords_bbox(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1561; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
     __pyx_v_coords = __pyx_t_2;
     __pyx_t_2.memview = NULL;
     __pyx_t_2.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1547
+    /* "fatslimlib/core_base.pyx":1562
  *         cdef fsl_int ncoords = self.size
  *         cdef real[:, ::1] coords = self.fast_get_bead_coords_bbox()
  *         cdef real[:, ::1] directions = self.fast_get_directions()             # <<<<<<<<<<<<<<
  *         cdef real[:, ::1] normals
  *         cdef fsl_int *neighborhood_buffer = NULL
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_directions(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1547; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_directions(__pyx_v_self); if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1562; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
     __pyx_v_directions = __pyx_t_2;
     __pyx_t_2.memview = NULL;
     __pyx_t_2.data = NULL;
 
-    /* "fatslimlib/core_base.pyx":1549
+    /* "fatslimlib/core_base.pyx":1564
  *         cdef real[:, ::1] directions = self.fast_get_directions()
  *         cdef real[:, ::1] normals
  *         cdef fsl_int *neighborhood_buffer = NULL             # <<<<<<<<<<<<<<
@@ -22359,7 +22767,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
     __pyx_v_neighborhood_buffer = NULL;
 
-    /* "fatslimlib/core_base.pyx":1550
+    /* "fatslimlib/core_base.pyx":1565
  *         cdef real[:, ::1] normals
  *         cdef fsl_int *neighborhood_buffer = NULL
  *         cdef fsl_int buffer_size = 0             # <<<<<<<<<<<<<<
@@ -22368,7 +22776,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
     __pyx_v_buffer_size = 0;
 
-    /* "fatslimlib/core_base.pyx":1553
+    /* "fatslimlib/core_base.pyx":1568
  *         cdef fsl_int nid, i
  * 
  *         if self.proximity_cutoff == proximity_cutoff and self.normals is not None:             # <<<<<<<<<<<<<<
@@ -22381,25 +22789,25 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
       __pyx_t_3 = __pyx_t_4;
       goto __pyx_L7_bool_binop_done;
     }
-    if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1553; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1568; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __pyx_t_4 = ((((PyObject *) __pyx_v_self->normals.memview) != Py_None) != 0);
     __pyx_t_3 = __pyx_t_4;
     __pyx_L7_bool_binop_done:;
     if (__pyx_t_3) {
 
-      /* "fatslimlib/core_base.pyx":1554
+      /* "fatslimlib/core_base.pyx":1569
  * 
  *         if self.proximity_cutoff == proximity_cutoff and self.normals is not None:
  *             return self.normals             # <<<<<<<<<<<<<<
  * 
  *         if proximity_cutoff < 0:
  */
-      if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1554; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+      if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1569; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
       __PYX_INC_MEMVIEW(&__pyx_v_self->normals, 1);
       __pyx_r = __pyx_v_self->normals;
       goto __pyx_L3_return;
 
-      /* "fatslimlib/core_base.pyx":1553
+      /* "fatslimlib/core_base.pyx":1568
  *         cdef fsl_int nid, i
  * 
  *         if self.proximity_cutoff == proximity_cutoff and self.normals is not None:             # <<<<<<<<<<<<<<
@@ -22408,7 +22816,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1556
+    /* "fatslimlib/core_base.pyx":1571
  *             return self.normals
  * 
  *         if proximity_cutoff < 0:             # <<<<<<<<<<<<<<
@@ -22418,30 +22826,30 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     __pyx_t_3 = ((__pyx_v_proximity_cutoff < 0.0) != 0);
     if (__pyx_t_3) {
 
-      /* "fatslimlib/core_base.pyx":1557
+      /* "fatslimlib/core_base.pyx":1572
  * 
  *         if proximity_cutoff < 0:
  *             if self.normals is not None:             # <<<<<<<<<<<<<<
  *                 return self.normals
  *             else:
  */
-      if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1557; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+      if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1572; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
       __pyx_t_3 = ((((PyObject *) __pyx_v_self->normals.memview) != Py_None) != 0);
       if (__pyx_t_3) {
 
-        /* "fatslimlib/core_base.pyx":1558
+        /* "fatslimlib/core_base.pyx":1573
  *         if proximity_cutoff < 0:
  *             if self.normals is not None:
  *                 return self.normals             # <<<<<<<<<<<<<<
  *             else:
  *                 self.proximity_cutoff = self.trajectory.normal_cutoff
  */
-        if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1558; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+        if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1573; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
         __PYX_INC_MEMVIEW(&__pyx_v_self->normals, 1);
         __pyx_r = __pyx_v_self->normals;
         goto __pyx_L3_return;
 
-        /* "fatslimlib/core_base.pyx":1557
+        /* "fatslimlib/core_base.pyx":1572
  * 
  *         if proximity_cutoff < 0:
  *             if self.normals is not None:             # <<<<<<<<<<<<<<
@@ -22450,7 +22858,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
       }
 
-      /* "fatslimlib/core_base.pyx":1560
+      /* "fatslimlib/core_base.pyx":1575
  *                 return self.normals
  *             else:
  *                 self.proximity_cutoff = self.trajectory.normal_cutoff             # <<<<<<<<<<<<<<
@@ -22462,7 +22870,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
         __pyx_v_self->proximity_cutoff = __pyx_t_5;
       }
 
-      /* "fatslimlib/core_base.pyx":1556
+      /* "fatslimlib/core_base.pyx":1571
  *             return self.normals
  * 
  *         if proximity_cutoff < 0:             # <<<<<<<<<<<<<<
@@ -22472,7 +22880,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
       goto __pyx_L9;
     }
 
-    /* "fatslimlib/core_base.pyx":1562
+    /* "fatslimlib/core_base.pyx":1577
  *                 self.proximity_cutoff = self.trajectory.normal_cutoff
  *         else:
  *             self.proximity_cutoff = proximity_cutoff             # <<<<<<<<<<<<<<
@@ -22484,7 +22892,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     }
     __pyx_L9:;
 
-    /* "fatslimlib/core_base.pyx":1564
+    /* "fatslimlib/core_base.pyx":1579
  *             self.proximity_cutoff = proximity_cutoff
  * 
  *         self.trajectory.normal_cutoff = self.proximity_cutoff             # <<<<<<<<<<<<<<
@@ -22494,7 +22902,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     __pyx_t_5 = __pyx_v_self->proximity_cutoff;
     __pyx_v_self->trajectory->normal_cutoff = __pyx_t_5;
 
-    /* "fatslimlib/core_base.pyx":1567
+    /* "fatslimlib/core_base.pyx":1582
  * 
  *         # Delete old ref if needed
  *         if self.neighbors != NULL:             # <<<<<<<<<<<<<<
@@ -22504,7 +22912,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     __pyx_t_3 = ((__pyx_v_self->neighbors != NULL) != 0);
     if (__pyx_t_3) {
 
-      /* "fatslimlib/core_base.pyx":1568
+      /* "fatslimlib/core_base.pyx":1583
  *         # Delete old ref if needed
  *         if self.neighbors != NULL:
  *             free_neighborhood_holder(self.neighbors)             # <<<<<<<<<<<<<<
@@ -22513,7 +22921,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
       __pyx_f_10fatslimlib_7core_ns_free_neighborhood_holder(__pyx_v_self->neighbors);
 
-      /* "fatslimlib/core_base.pyx":1569
+      /* "fatslimlib/core_base.pyx":1584
  *         if self.neighbors != NULL:
  *             free_neighborhood_holder(self.neighbors)
  *             self.neighbors = NULL             # <<<<<<<<<<<<<<
@@ -22522,7 +22930,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
       __pyx_v_self->neighbors = NULL;
 
-      /* "fatslimlib/core_base.pyx":1567
+      /* "fatslimlib/core_base.pyx":1582
  * 
  *         # Delete old ref if needed
  *         if self.neighbors != NULL:             # <<<<<<<<<<<<<<
@@ -22531,7 +22939,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1572
+    /* "fatslimlib/core_base.pyx":1587
  * 
  *         # Retrieve neighborhoods
  *         self.neighbors = fast_neighbor_search(coords, coords,             # <<<<<<<<<<<<<<
@@ -22540,7 +22948,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
     __pyx_v_self->neighbors = __pyx_f_10fatslimlib_7core_ns_fast_neighbor_search(__pyx_v_coords, __pyx_v_coords, __pyx_v_self->box, __pyx_v_self->proximity_cutoff);
 
-    /* "fatslimlib/core_base.pyx":1576
+    /* "fatslimlib/core_base.pyx":1591
  *                                   self.proximity_cutoff)
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -22553,21 +22961,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_base.pyx":1577
+          /* "fatslimlib/core_base.pyx":1592
  * 
  *         with gil:
  *             normals = np.empty((ncoords, DIM))             # <<<<<<<<<<<<<<
  * 
  *         for i in range(ncoords):
  */
-          __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1577; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
+          __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1592; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1577; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1592; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = __Pyx_PyInt_From_fsl_int(__pyx_v_ncoords); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1577; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
+          __pyx_t_7 = __Pyx_PyInt_From_fsl_int(__pyx_v_ncoords); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1592; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1577; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
+          __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1592; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_GIVEREF(__pyx_t_7);
           PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7);
@@ -22586,30 +22994,30 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
             }
           }
           if (!__pyx_t_7) {
-            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1577; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
+            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1592; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_6);
           } else {
-            __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1577; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
+            __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1592; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_7); __pyx_t_7 = NULL;
             __Pyx_GIVEREF(__pyx_t_9);
             PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_9);
             __pyx_t_9 = 0;
-            __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1577; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
+            __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1592; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
             __Pyx_GOTREF(__pyx_t_6);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           }
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_6);
-          if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1577; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
+          if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1592; __pyx_clineno = __LINE__; goto __pyx_L13_error;}
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __pyx_v_normals = __pyx_t_2;
           __pyx_t_2.memview = NULL;
           __pyx_t_2.data = NULL;
         }
 
-        /* "fatslimlib/core_base.pyx":1576
+        /* "fatslimlib/core_base.pyx":1591
  *                                   self.proximity_cutoff)
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -22633,7 +23041,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
         }
     }
 
-    /* "fatslimlib/core_base.pyx":1579
+    /* "fatslimlib/core_base.pyx":1594
  *             normals = np.empty((ncoords, DIM))
  * 
  *         for i in range(ncoords):             # <<<<<<<<<<<<<<
@@ -22644,7 +23052,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_1; __pyx_t_11+=1) {
       __pyx_v_i = __pyx_t_11;
 
-      /* "fatslimlib/core_base.pyx":1580
+      /* "fatslimlib/core_base.pyx":1595
  * 
  *         for i in range(ncoords):
  *             if self.neighbors.neighborhoods[i].size > buffer_size:             # <<<<<<<<<<<<<<
@@ -22654,7 +23062,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
       __pyx_t_3 = (((__pyx_v_self->neighbors->neighborhoods[__pyx_v_i])->size > __pyx_v_buffer_size) != 0);
       if (__pyx_t_3) {
 
-        /* "fatslimlib/core_base.pyx":1581
+        /* "fatslimlib/core_base.pyx":1596
  *         for i in range(ncoords):
  *             if self.neighbors.neighborhoods[i].size > buffer_size:
  *                 buffer_size = self.neighbors.neighborhoods[i].size             # <<<<<<<<<<<<<<
@@ -22664,7 +23072,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
         __pyx_t_12 = (__pyx_v_self->neighbors->neighborhoods[__pyx_v_i])->size;
         __pyx_v_buffer_size = __pyx_t_12;
 
-        /* "fatslimlib/core_base.pyx":1580
+        /* "fatslimlib/core_base.pyx":1595
  * 
  *         for i in range(ncoords):
  *             if self.neighbors.neighborhoods[i].size > buffer_size:             # <<<<<<<<<<<<<<
@@ -22674,7 +23082,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
       }
     }
 
-    /* "fatslimlib/core_base.pyx":1583
+    /* "fatslimlib/core_base.pyx":1598
  *                 buffer_size = self.neighbors.neighborhoods[i].size
  * 
  *         neighborhood_buffer = <fsl_int *> malloc(buffer_size * sizeof(fsl_int) * OPENMP_NUM_THREADS)             # <<<<<<<<<<<<<<
@@ -22683,7 +23091,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
     __pyx_v_neighborhood_buffer = ((fsl_int *)malloc(((__pyx_v_buffer_size * (sizeof(fsl_int))) * __pyx_v_10fatslimlib_9core_base_OPENMP_NUM_THREADS)));
 
-    /* "fatslimlib/core_base.pyx":1584
+    /* "fatslimlib/core_base.pyx":1599
  * 
  *         neighborhood_buffer = <fsl_int *> malloc(buffer_size * sizeof(fsl_int) * OPENMP_NUM_THREADS)
  *         if neighborhood_buffer == NULL:             # <<<<<<<<<<<<<<
@@ -22693,7 +23101,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     __pyx_t_3 = ((__pyx_v_neighborhood_buffer == NULL) != 0);
     if (__pyx_t_3) {
 
-      /* "fatslimlib/core_base.pyx":1585
+      /* "fatslimlib/core_base.pyx":1600
  *         neighborhood_buffer = <fsl_int *> malloc(buffer_size * sizeof(fsl_int) * OPENMP_NUM_THREADS)
  *         if neighborhood_buffer == NULL:
  *             abort()             # <<<<<<<<<<<<<<
@@ -22702,7 +23110,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
       abort();
 
-      /* "fatslimlib/core_base.pyx":1584
+      /* "fatslimlib/core_base.pyx":1599
  * 
  *         neighborhood_buffer = <fsl_int *> malloc(buffer_size * sizeof(fsl_int) * OPENMP_NUM_THREADS)
  *         if neighborhood_buffer == NULL:             # <<<<<<<<<<<<<<
@@ -22711,7 +23119,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1587
+    /* "fatslimlib/core_base.pyx":1602
  *             abort()
  * 
  *         for nid in prange(ncoords, schedule='dynamic', num_threads=OPENMP_NUM_THREADS):             # <<<<<<<<<<<<<<
@@ -22741,7 +23149,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
                     {
                         __pyx_v_nid = 0 + 1 * __pyx_t_11;
 
-                        /* "fatslimlib/core_base.pyx":1594
+                        /* "fatslimlib/core_base.pyx":1609
  *                                           self.neighbors.neighborhoods[nid],
  *                                           self.box,
  *                                           &normals[nid, XX],             # <<<<<<<<<<<<<<
@@ -22751,7 +23159,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
                         __pyx_t_13 = __pyx_v_nid;
                         __pyx_t_14 = 0;
 
-                        /* "fatslimlib/core_base.pyx":1589
+                        /* "fatslimlib/core_base.pyx":1604
  *         for nid in prange(ncoords, schedule='dynamic', num_threads=OPENMP_NUM_THREADS):
  *         #for nid in range(ncoords):
  *             calculate_neighborhood_normal(nid,             # <<<<<<<<<<<<<<
@@ -22771,7 +23179,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
         #define unlikely(x) __builtin_expect(!!(x), 0)
     #endif
 
-    /* "fatslimlib/core_base.pyx":1598
+    /* "fatslimlib/core_base.pyx":1613
  *                                                                * buffer_size])
  * 
  *         free(neighborhood_buffer)             # <<<<<<<<<<<<<<
@@ -22780,7 +23188,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
  */
     free(__pyx_v_neighborhood_buffer);
 
-    /* "fatslimlib/core_base.pyx":1600
+    /* "fatslimlib/core_base.pyx":1615
  *         free(neighborhood_buffer)
  * 
  *         self.normals = normals             # <<<<<<<<<<<<<<
@@ -22791,20 +23199,20 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     __PYX_INC_MEMVIEW(&__pyx_v_normals, 1);
     __pyx_v_self->normals = __pyx_v_normals;
 
-    /* "fatslimlib/core_base.pyx":1601
+    /* "fatslimlib/core_base.pyx":1616
  * 
  *         self.normals = normals
  *         return self.normals             # <<<<<<<<<<<<<<
  * 
  *     # Associated python property
  */
-    if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1601; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
+    if (unlikely(!__pyx_v_self->normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1616; __pyx_clineno = __LINE__; goto __pyx_L4_error;}}
     __PYX_INC_MEMVIEW(&__pyx_v_self->normals, 1);
     __pyx_r = __pyx_v_self->normals;
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_base.pyx":1545
+  /* "fatslimlib/core_base.pyx":1560
  * 
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=-1) nogil:
  *         cdef fsl_int ncoords = self.size             # <<<<<<<<<<<<<<
@@ -22826,7 +23234,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
     }
   }
 
-  /* "fatslimlib/core_base.pyx":1544
+  /* "fatslimlib/core_base.pyx":1559
  * 
  * 
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=-1) nogil:             # <<<<<<<<<<<<<<
@@ -22862,7 +23270,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normal
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1605
+/* "fatslimlib/core_base.pyx":1620
  *     # Associated python property
  *     property normals:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -22898,7 +23306,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_7normals___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1607
+  /* "fatslimlib/core_base.pyx":1622
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -22912,20 +23320,20 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_7normals___get__(struct
       #endif
       /*try:*/ {
 
-        /* "fatslimlib/core_base.pyx":1608
+        /* "fatslimlib/core_base.pyx":1623
  *             cdef real[:, ::1] memview
  *             with nogil:
  *                 memview = self.fast_get_normals()             # <<<<<<<<<<<<<<
  *             #memview = np.empty((self.size, DIM))
  *             return np.asarray(memview)
  */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_normals(__pyx_v_self, NULL); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1608; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *)__pyx_v_self->__pyx_vtab)->fast_get_normals(__pyx_v_self, NULL); if (unlikely(!__pyx_t_1.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1623; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_v_memview = __pyx_t_1;
         __pyx_t_1.memview = NULL;
         __pyx_t_1.data = NULL;
       }
 
-      /* "fatslimlib/core_base.pyx":1607
+      /* "fatslimlib/core_base.pyx":1622
  *         def __get__(self):
  *             cdef real[:, ::1] memview
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -22949,7 +23357,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_7normals___get__(struct
       }
   }
 
-  /* "fatslimlib/core_base.pyx":1610
+  /* "fatslimlib/core_base.pyx":1625
  *                 memview = self.fast_get_normals()
  *             #memview = np.empty((self.size, DIM))
  *             return np.asarray(memview)             # <<<<<<<<<<<<<<
@@ -22957,12 +23365,12 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_7normals___get__(struct
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1610; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1625; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1610; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1625; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1610; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_memview, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1625; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -22975,17 +23383,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_7normals___get__(struct
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1610; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1625; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1610; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1625; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1610; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1625; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -22994,7 +23402,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_7normals___get__(struct
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1605
+  /* "fatslimlib/core_base.pyx":1620
  *     # Associated python property
  *     property normals:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -23019,7 +23427,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_7normals___get__(struct
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1613
+/* "fatslimlib/core_base.pyx":1628
  * 
  * 
  *     cpdef list get_aggregates(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):             # <<<<<<<<<<<<<<
@@ -23063,13 +23471,13 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_aggregates); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_aggregates); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_10fatslimlib_9core_base_5Frame_9get_aggregates)) {
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_cutoff); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_cutoff); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_update); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_update); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_5 = __pyx_t_1; __pyx_t_6 = NULL;
@@ -23084,7 +23492,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
           __pyx_t_7 = 1;
         }
       }
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -23095,11 +23503,11 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_4);
       __pyx_t_3 = 0;
       __pyx_t_4 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __pyx_r = ((PyObject*)__pyx_t_2);
       __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23108,7 +23516,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":1614
+  /* "fatslimlib/core_base.pyx":1629
  * 
  *     cpdef list get_aggregates(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):
  *         if self.aggregates_cutoff == cutoff and self.aggregates_retrieved and not update:             # <<<<<<<<<<<<<<
@@ -23132,7 +23540,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_9) {
 
-    /* "fatslimlib/core_base.pyx":1615
+    /* "fatslimlib/core_base.pyx":1630
  *     cpdef list get_aggregates(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):
  *         if self.aggregates_cutoff == cutoff and self.aggregates_retrieved and not update:
  *             return self.aggregates             # <<<<<<<<<<<<<<
@@ -23144,7 +23552,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     __pyx_r = __pyx_v_self->aggregates;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1614
+    /* "fatslimlib/core_base.pyx":1629
  * 
  *     cpdef list get_aggregates(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):
  *         if self.aggregates_cutoff == cutoff and self.aggregates_retrieved and not update:             # <<<<<<<<<<<<<<
@@ -23153,7 +23561,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1617
+  /* "fatslimlib/core_base.pyx":1632
  *             return self.aggregates
  * 
  *         self.aggregates_cutoff = cutoff             # <<<<<<<<<<<<<<
@@ -23162,7 +23570,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  */
   __pyx_v_self->aggregates_cutoff = __pyx_v_cutoff;
 
-  /* "fatslimlib/core_base.pyx":1618
+  /* "fatslimlib/core_base.pyx":1633
  * 
  *         self.aggregates_cutoff = cutoff
  *         if not update \             # <<<<<<<<<<<<<<
@@ -23176,7 +23584,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     goto __pyx_L8_bool_binop_done;
   }
 
-  /* "fatslimlib/core_base.pyx":1619
+  /* "fatslimlib/core_base.pyx":1634
  *         self.aggregates_cutoff = cutoff
  *         if not update \
  *                 and self.trajectory.aggregates is not None \             # <<<<<<<<<<<<<<
@@ -23191,7 +23599,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     goto __pyx_L8_bool_binop_done;
   }
 
-  /* "fatslimlib/core_base.pyx":1620
+  /* "fatslimlib/core_base.pyx":1635
  *         if not update \
  *                 and self.trajectory.aggregates is not None \
  *                 and self.trajectory.normal_cutoff == cutoff:             # <<<<<<<<<<<<<<
@@ -23202,7 +23610,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
   __pyx_t_9 = __pyx_t_11;
   __pyx_L8_bool_binop_done:;
 
-  /* "fatslimlib/core_base.pyx":1618
+  /* "fatslimlib/core_base.pyx":1633
  * 
  *         self.aggregates_cutoff = cutoff
  *         if not update \             # <<<<<<<<<<<<<<
@@ -23211,7 +23619,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  */
   if (__pyx_t_9) {
 
-    /* "fatslimlib/core_base.pyx":1621
+    /* "fatslimlib/core_base.pyx":1636
  *                 and self.trajectory.aggregates is not None \
  *                 and self.trajectory.normal_cutoff == cutoff:
  *             traj_aggregates = self.trajectory.aggregates             # <<<<<<<<<<<<<<
@@ -23223,14 +23631,14 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     __pyx_v_traj_aggregates = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1622
+    /* "fatslimlib/core_base.pyx":1637
  *                 and self.trajectory.normal_cutoff == cutoff:
  *             traj_aggregates = self.trajectory.aggregates
  *             self.aggregates = []             # <<<<<<<<<<<<<<
  *             for aggregate in traj_aggregates:
  *                 self.aggregates.append(Aggregate(self, aggregate))
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1622; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_v_self->aggregates);
@@ -23238,7 +23646,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     __pyx_v_self->aggregates = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1623
+    /* "fatslimlib/core_base.pyx":1638
  *             traj_aggregates = self.trajectory.aggregates
  *             self.aggregates = []
  *             for aggregate in traj_aggregates:             # <<<<<<<<<<<<<<
@@ -23247,21 +23655,21 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  */
     if (unlikely(__pyx_v_traj_aggregates == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1623; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_t_1 = __pyx_v_traj_aggregates; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_COMPILING_IN_CPYTHON
-      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1623; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       #else
-      __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1623; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_aggregate, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "fatslimlib/core_base.pyx":1624
+      /* "fatslimlib/core_base.pyx":1639
  *             self.aggregates = []
  *             for aggregate in traj_aggregates:
  *                 self.aggregates.append(Aggregate(self, aggregate))             # <<<<<<<<<<<<<<
@@ -23270,9 +23678,9 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  */
       if (unlikely(__pyx_v_self->aggregates == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "append");
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1624; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1624; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_INCREF(((PyObject *)__pyx_v_self));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
@@ -23280,13 +23688,13 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
       __Pyx_INCREF(__pyx_v_aggregate);
       __Pyx_GIVEREF(__pyx_v_aggregate);
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_aggregate);
-      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_13core_analysis_Aggregate), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1624; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_13core_analysis_Aggregate), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_self->aggregates, __pyx_t_5); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1624; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_self->aggregates, __pyx_t_5); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "fatslimlib/core_base.pyx":1623
+      /* "fatslimlib/core_base.pyx":1638
  *             traj_aggregates = self.trajectory.aggregates
  *             self.aggregates = []
  *             for aggregate in traj_aggregates:             # <<<<<<<<<<<<<<
@@ -23296,7 +23704,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1618
+    /* "fatslimlib/core_base.pyx":1633
  * 
  *         self.aggregates_cutoff = cutoff
  *         if not update \             # <<<<<<<<<<<<<<
@@ -23306,7 +23714,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     goto __pyx_L7;
   }
 
-  /* "fatslimlib/core_base.pyx":1626
+  /* "fatslimlib/core_base.pyx":1641
  *                 self.aggregates.append(Aggregate(self, aggregate))
  *         else:
  *             self.aggregates = core_analysis.retrieve_aggregates(self, cutoff)             # <<<<<<<<<<<<<<
@@ -23314,7 +23722,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  *             for aggregate in self.aggregates:
  */
   /*else*/ {
-    __pyx_t_1 = __pyx_f_10fatslimlib_13core_analysis_retrieve_aggregates(__pyx_v_self, __pyx_v_cutoff); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1626; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __pyx_f_10fatslimlib_13core_analysis_retrieve_aggregates(__pyx_v_self, __pyx_v_cutoff); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1641; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_v_self->aggregates);
@@ -23322,14 +23730,14 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     __pyx_v_self->aggregates = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1627
+    /* "fatslimlib/core_base.pyx":1642
  *         else:
  *             self.aggregates = core_analysis.retrieve_aggregates(self, cutoff)
  *             self.trajectory.aggregates = []             # <<<<<<<<<<<<<<
  *             for aggregate in self.aggregates:
  *                 self.trajectory.aggregates.append(np.asarray(aggregate.beadids))
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1627; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1642; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_v_self->trajectory->aggregates);
@@ -23337,7 +23745,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
     __pyx_v_self->trajectory->aggregates = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1628
+    /* "fatslimlib/core_base.pyx":1643
  *             self.aggregates = core_analysis.retrieve_aggregates(self, cutoff)
  *             self.trajectory.aggregates = []
  *             for aggregate in self.aggregates:             # <<<<<<<<<<<<<<
@@ -23346,21 +23754,21 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  */
     if (unlikely(__pyx_v_self->aggregates == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1643; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_t_1 = __pyx_v_self->aggregates; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_COMPILING_IN_CPYTHON
-      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1643; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       #else
-      __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1643; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_aggregate, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "fatslimlib/core_base.pyx":1629
+      /* "fatslimlib/core_base.pyx":1644
  *             self.trajectory.aggregates = []
  *             for aggregate in self.aggregates:
  *                 self.trajectory.aggregates.append(np.asarray(aggregate.beadids))             # <<<<<<<<<<<<<<
@@ -23369,14 +23777,14 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  */
       if (unlikely(__pyx_v_self->trajectory->aggregates == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "append");
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_aggregate, __pyx_n_s_beadids); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_aggregate, __pyx_n_s_beadids); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_4 = NULL;
       if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -23389,25 +23797,25 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_5);
       } else {
-        __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_2);
         __pyx_t_2 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_self->trajectory->aggregates, __pyx_t_5); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_self->trajectory->aggregates, __pyx_t_5); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "fatslimlib/core_base.pyx":1628
+      /* "fatslimlib/core_base.pyx":1643
  *             self.aggregates = core_analysis.retrieve_aggregates(self, cutoff)
  *             self.trajectory.aggregates = []
  *             for aggregate in self.aggregates:             # <<<<<<<<<<<<<<
@@ -23419,7 +23827,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
   }
   __pyx_L7:;
 
-  /* "fatslimlib/core_base.pyx":1630
+  /* "fatslimlib/core_base.pyx":1645
  *             for aggregate in self.aggregates:
  *                 self.trajectory.aggregates.append(np.asarray(aggregate.beadids))
  *         self.aggregates_retrieved = True             # <<<<<<<<<<<<<<
@@ -23428,7 +23836,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
  */
   __pyx_v_self->aggregates_retrieved = 1;
 
-  /* "fatslimlib/core_base.pyx":1632
+  /* "fatslimlib/core_base.pyx":1647
  *         self.aggregates_retrieved = True
  * 
  *         return self.aggregates             # <<<<<<<<<<<<<<
@@ -23440,7 +23848,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates(struct __
   __pyx_r = __pyx_v_self->aggregates;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1613
+  /* "fatslimlib/core_base.pyx":1628
  * 
  * 
  *     cpdef list get_aggregates(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):             # <<<<<<<<<<<<<<
@@ -23504,7 +23912,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_5Frame_9get_aggregates(PyObjec
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_aggregates") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_aggregates") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -23515,19 +23923,19 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_5Frame_9get_aggregates(PyObjec
       }
     }
     if (values[0]) {
-      __pyx_v_cutoff = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_cutoff == (real)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_cutoff = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_cutoff == (real)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_cutoff = ((real)2.0);
     }
     if (values[1]) {
-      __pyx_v_update = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_update == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_update = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_update == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_update = ((int)0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_aggregates", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("get_aggregates", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.Frame.get_aggregates", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -23553,7 +23961,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_8get_aggregates(struct 
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.cutoff = __pyx_v_cutoff;
   __pyx_t_2.update = __pyx_v_update;
-  __pyx_t_1 = __pyx_vtabptr_10fatslimlib_9core_base_Frame->get_aggregates(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1613; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_vtabptr_10fatslimlib_9core_base_Frame->get_aggregates(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1628; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -23570,7 +23978,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_8get_aggregates(struct 
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1634
+/* "fatslimlib/core_base.pyx":1649
  *         return self.aggregates
  * 
  *     cpdef list get_membranes(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):             # <<<<<<<<<<<<<<
@@ -23617,13 +24025,13 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_membranes); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_membranes); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_10fatslimlib_9core_base_5Frame_11get_membranes)) {
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_cutoff); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_cutoff); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_update); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_update); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_5 = __pyx_t_1; __pyx_t_6 = NULL;
@@ -23638,7 +24046,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
           __pyx_t_7 = 1;
         }
       }
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -23649,11 +24057,11 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_4);
       __pyx_t_3 = 0;
       __pyx_t_4 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __pyx_r = ((PyObject*)__pyx_t_2);
       __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23662,7 +24070,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":1635
+  /* "fatslimlib/core_base.pyx":1650
  * 
  *     cpdef list get_membranes(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):
  *         if self.membranes_cutoff == cutoff and self.membranes_retrieved and not update:             # <<<<<<<<<<<<<<
@@ -23686,7 +24094,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_9) {
 
-    /* "fatslimlib/core_base.pyx":1636
+    /* "fatslimlib/core_base.pyx":1651
  *     cpdef list get_membranes(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):
  *         if self.membranes_cutoff == cutoff and self.membranes_retrieved and not update:
  *             return self.membranes             # <<<<<<<<<<<<<<
@@ -23698,7 +24106,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
     __pyx_r = __pyx_v_self->membranes;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1635
+    /* "fatslimlib/core_base.pyx":1650
  * 
  *     cpdef list get_membranes(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):
  *         if self.membranes_cutoff == cutoff and self.membranes_retrieved and not update:             # <<<<<<<<<<<<<<
@@ -23707,7 +24115,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1638
+  /* "fatslimlib/core_base.pyx":1653
  *             return self.membranes
  * 
  *         self.proximity_cutoff = cutoff             # <<<<<<<<<<<<<<
@@ -23716,7 +24124,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
  */
   __pyx_v_self->proximity_cutoff = __pyx_v_cutoff;
 
-  /* "fatslimlib/core_base.pyx":1639
+  /* "fatslimlib/core_base.pyx":1654
  * 
  *         self.proximity_cutoff = cutoff
  *         if not update and self.trajectory.membranes is not None:             # <<<<<<<<<<<<<<
@@ -23735,7 +24143,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
   __pyx_L8_bool_binop_done:;
   if (__pyx_t_9) {
 
-    /* "fatslimlib/core_base.pyx":1640
+    /* "fatslimlib/core_base.pyx":1655
  *         self.proximity_cutoff = cutoff
  *         if not update and self.trajectory.membranes is not None:
  *             traj_membranes = self.trajectory.membranes             # <<<<<<<<<<<<<<
@@ -23747,14 +24155,14 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
     __pyx_v_traj_membranes = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1641
+    /* "fatslimlib/core_base.pyx":1656
  *         if not update and self.trajectory.membranes is not None:
  *             traj_membranes = self.trajectory.membranes
  *             self.membranes = []             # <<<<<<<<<<<<<<
  *             for membrane in traj_membranes:
  *                 l1 = Aggregate(self, membrane[0])
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1641; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1656; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_v_self->membranes);
@@ -23762,7 +24170,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
     __pyx_v_self->membranes = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1642
+    /* "fatslimlib/core_base.pyx":1657
  *             traj_membranes = self.trajectory.membranes
  *             self.membranes = []
  *             for membrane in traj_membranes:             # <<<<<<<<<<<<<<
@@ -23771,30 +24179,30 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
  */
     if (unlikely(__pyx_v_traj_membranes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1642; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1657; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_t_1 = __pyx_v_traj_membranes; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_COMPILING_IN_CPYTHON
-      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1642; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1657; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       #else
-      __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1642; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1657; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_membrane, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "fatslimlib/core_base.pyx":1643
+      /* "fatslimlib/core_base.pyx":1658
  *             self.membranes = []
  *             for membrane in traj_membranes:
  *                 l1 = Aggregate(self, membrane[0])             # <<<<<<<<<<<<<<
  *                 l2 = Aggregate(self, membrane[1])
  *                 self.membranes.append(Membrane(self, l1, l2))
  */
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_membrane, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1643; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_membrane, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1658; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1643; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(((PyObject *)__pyx_v_self));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
@@ -23802,22 +24210,22 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_13core_analysis_Aggregate), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1643; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_13core_analysis_Aggregate), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XDECREF_SET(__pyx_v_l1, ((struct __pyx_obj_10fatslimlib_13core_analysis_Aggregate *)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "fatslimlib/core_base.pyx":1644
+      /* "fatslimlib/core_base.pyx":1659
  *             for membrane in traj_membranes:
  *                 l1 = Aggregate(self, membrane[0])
  *                 l2 = Aggregate(self, membrane[1])             # <<<<<<<<<<<<<<
  *                 self.membranes.append(Membrane(self, l1, l2))
  *         else:
  */
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_membrane, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_membrane, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1659; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1659; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(((PyObject *)__pyx_v_self));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
@@ -23825,13 +24233,13 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_13core_analysis_Aggregate), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_13core_analysis_Aggregate), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1659; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XDECREF_SET(__pyx_v_l2, ((struct __pyx_obj_10fatslimlib_13core_analysis_Aggregate *)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "fatslimlib/core_base.pyx":1645
+      /* "fatslimlib/core_base.pyx":1660
  *                 l1 = Aggregate(self, membrane[0])
  *                 l2 = Aggregate(self, membrane[1])
  *                 self.membranes.append(Membrane(self, l1, l2))             # <<<<<<<<<<<<<<
@@ -23840,9 +24248,9 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
  */
       if (unlikely(__pyx_v_self->membranes == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "append");
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1645; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
-      __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1645; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_INCREF(((PyObject *)__pyx_v_self));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
@@ -23853,13 +24261,13 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
       __Pyx_INCREF(((PyObject *)__pyx_v_l2));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_l2));
       PyTuple_SET_ITEM(__pyx_t_2, 2, ((PyObject *)__pyx_v_l2));
-      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_13core_analysis_Membrane), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1645; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_13core_analysis_Membrane), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_self->membranes, __pyx_t_5); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1645; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_self->membranes, __pyx_t_5); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "fatslimlib/core_base.pyx":1642
+      /* "fatslimlib/core_base.pyx":1657
  *             traj_membranes = self.trajectory.membranes
  *             self.membranes = []
  *             for membrane in traj_membranes:             # <<<<<<<<<<<<<<
@@ -23869,7 +24277,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1639
+    /* "fatslimlib/core_base.pyx":1654
  * 
  *         self.proximity_cutoff = cutoff
  *         if not update and self.trajectory.membranes is not None:             # <<<<<<<<<<<<<<
@@ -23879,7 +24287,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
     goto __pyx_L7;
   }
 
-  /* "fatslimlib/core_base.pyx":1647
+  /* "fatslimlib/core_base.pyx":1662
  *                 self.membranes.append(Membrane(self, l1, l2))
  *         else:
  *             self.membranes = core_analysis.retrieve_membranes(self, cutoff)             # <<<<<<<<<<<<<<
@@ -23887,7 +24295,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
  *             for membrane in self.membranes:
  */
   /*else*/ {
-    __pyx_t_1 = __pyx_f_10fatslimlib_13core_analysis_retrieve_membranes(__pyx_v_self, __pyx_v_cutoff); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1647; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __pyx_f_10fatslimlib_13core_analysis_retrieve_membranes(__pyx_v_self, __pyx_v_cutoff); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_v_self->membranes);
@@ -23895,19 +24303,19 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
     __pyx_v_self->membranes = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1648
+    /* "fatslimlib/core_base.pyx":1663
  *         else:
  *             self.membranes = core_analysis.retrieve_membranes(self, cutoff)
  *             traj_membranes = []             # <<<<<<<<<<<<<<
  *             for membrane in self.membranes:
  *                 memb_beadids = [np.asarray(membrane.leaflet1.beadids),
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1648; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1663; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_traj_membranes = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1649
+    /* "fatslimlib/core_base.pyx":1664
  *             self.membranes = core_analysis.retrieve_membranes(self, cutoff)
  *             traj_membranes = []
  *             for membrane in self.membranes:             # <<<<<<<<<<<<<<
@@ -23916,35 +24324,35 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
  */
     if (unlikely(__pyx_v_self->membranes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_t_1 = __pyx_v_self->membranes; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_COMPILING_IN_CPYTHON
-      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       #else
-      __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_membrane, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "fatslimlib/core_base.pyx":1650
+      /* "fatslimlib/core_base.pyx":1665
  *             traj_membranes = []
  *             for membrane in self.membranes:
  *                 memb_beadids = [np.asarray(membrane.leaflet1.beadids),             # <<<<<<<<<<<<<<
  *                                 np.asarray(membrane.leaflet2.beadids)]
  * 
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_membrane, __pyx_n_s_leaflet1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_membrane, __pyx_n_s_leaflet1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_beadids); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_beadids); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = NULL;
@@ -23958,37 +24366,37 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
         }
       }
       if (!__pyx_t_2) {
-        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_5);
       } else {
-        __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
         __Pyx_GIVEREF(__pyx_t_4);
         PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_4);
         __pyx_t_4 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "fatslimlib/core_base.pyx":1651
+      /* "fatslimlib/core_base.pyx":1666
  *             for membrane in self.membranes:
  *                 memb_beadids = [np.asarray(membrane.leaflet1.beadids),
  *                                 np.asarray(membrane.leaflet2.beadids)]             # <<<<<<<<<<<<<<
  * 
  *                 traj_membranes.append(memb_beadids)
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1651; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1651; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_membrane, __pyx_n_s_leaflet2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1651; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_membrane, __pyx_n_s_leaflet2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_beadids); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1651; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_beadids); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_3 = NULL;
@@ -24002,30 +24410,30 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
         }
       }
       if (!__pyx_t_3) {
-        __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1651; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_8);
       } else {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1651; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __pyx_t_3 = NULL;
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_2);
         __pyx_t_2 = 0;
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1651; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "fatslimlib/core_base.pyx":1650
+      /* "fatslimlib/core_base.pyx":1665
  *             traj_membranes = []
  *             for membrane in self.membranes:
  *                 memb_beadids = [np.asarray(membrane.leaflet1.beadids),             # <<<<<<<<<<<<<<
  *                                 np.asarray(membrane.leaflet2.beadids)]
  * 
  */
-      __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_5);
       PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
@@ -24036,16 +24444,16 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
       __Pyx_XDECREF_SET(__pyx_v_memb_beadids, ((PyObject*)__pyx_t_4));
       __pyx_t_4 = 0;
 
-      /* "fatslimlib/core_base.pyx":1653
+      /* "fatslimlib/core_base.pyx":1668
  *                                 np.asarray(membrane.leaflet2.beadids)]
  * 
  *                 traj_membranes.append(memb_beadids)             # <<<<<<<<<<<<<<
  *             self.trajectory.membranes = traj_membranes
  *         self.membranes_retrieved = True
  */
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_traj_membranes, __pyx_v_memb_beadids); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1653; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_traj_membranes, __pyx_v_memb_beadids); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1668; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "fatslimlib/core_base.pyx":1649
+      /* "fatslimlib/core_base.pyx":1664
  *             self.membranes = core_analysis.retrieve_membranes(self, cutoff)
  *             traj_membranes = []
  *             for membrane in self.membranes:             # <<<<<<<<<<<<<<
@@ -24055,7 +24463,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "fatslimlib/core_base.pyx":1654
+    /* "fatslimlib/core_base.pyx":1669
  * 
  *                 traj_membranes.append(memb_beadids)
  *             self.trajectory.membranes = traj_membranes             # <<<<<<<<<<<<<<
@@ -24070,7 +24478,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
   }
   __pyx_L7:;
 
-  /* "fatslimlib/core_base.pyx":1655
+  /* "fatslimlib/core_base.pyx":1670
  *                 traj_membranes.append(memb_beadids)
  *             self.trajectory.membranes = traj_membranes
  *         self.membranes_retrieved = True             # <<<<<<<<<<<<<<
@@ -24079,7 +24487,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
  */
   __pyx_v_self->membranes_retrieved = 1;
 
-  /* "fatslimlib/core_base.pyx":1657
+  /* "fatslimlib/core_base.pyx":1672
  *         self.membranes_retrieved = True
  * 
  *         return self.membranes             # <<<<<<<<<<<<<<
@@ -24091,7 +24499,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes(struct __p
   __pyx_r = __pyx_v_self->membranes;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1634
+  /* "fatslimlib/core_base.pyx":1649
  *         return self.aggregates
  * 
  *     cpdef list get_membranes(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):             # <<<<<<<<<<<<<<
@@ -24158,7 +24566,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_5Frame_11get_membranes(PyObjec
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_membranes") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_membranes") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -24169,19 +24577,19 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_5Frame_11get_membranes(PyObjec
       }
     }
     if (values[0]) {
-      __pyx_v_cutoff = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_cutoff == (real)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_cutoff = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_cutoff == (real)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_cutoff = ((real)2.0);
     }
     if (values[1]) {
-      __pyx_v_update = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_update == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_update = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_update == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_update = ((int)0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_membranes", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("get_membranes", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.Frame.get_membranes", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -24207,7 +24615,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10get_membranes(struct 
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.cutoff = __pyx_v_cutoff;
   __pyx_t_2.update = __pyx_v_update;
-  __pyx_t_1 = __pyx_vtabptr_10fatslimlib_9core_base_Frame->get_membranes(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_vtabptr_10fatslimlib_9core_base_Frame->get_membranes(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1649; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -24224,7 +24632,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10get_membranes(struct 
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1661
+/* "fatslimlib/core_base.pyx":1676
  *     # Additional python properties
  *     property hg_atomids:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -24258,7 +24666,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10hg_atomids___get__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1662
+  /* "fatslimlib/core_base.pyx":1677
  *     property hg_atomids:
  *         def __get__(self):
  *             return np.asarray(self.trajectory.hg_group_atomids)             # <<<<<<<<<<<<<<
@@ -24266,13 +24674,13 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10hg_atomids___get__(st
  *     property lipid_atomids:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_v_self->trajectory->hg_group_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_self->trajectory->hg_group_atomids, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_fsl_int, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_v_self->trajectory->hg_group_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_self->trajectory->hg_group_atomids, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_fsl_int, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -24285,17 +24693,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10hg_atomids___get__(st
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -24304,7 +24712,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10hg_atomids___get__(st
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1661
+  /* "fatslimlib/core_base.pyx":1676
  *     # Additional python properties
  *     property hg_atomids:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -24327,7 +24735,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10hg_atomids___get__(st
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1665
+/* "fatslimlib/core_base.pyx":1680
  * 
  *     property lipid_atomids:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -24372,33 +24780,33 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_13lipid_atomids___get__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1667
+  /* "fatslimlib/core_base.pyx":1682
  *         def __get__(self):
  *             cdef fsl_int i
  *             cdef fsl_int[:] offsets = self.trajectory.lipid_atomids_offsets             # <<<<<<<<<<<<<<
  * 
  *             lipid_atomids = []
  */
-  if (unlikely(!__pyx_v_self->trajectory->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->trajectory->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_1 = __pyx_v_self->trajectory->lipid_atomids_offsets;
   __PYX_INC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_v_offsets = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1669
+  /* "fatslimlib/core_base.pyx":1684
  *             cdef fsl_int[:] offsets = self.trajectory.lipid_atomids_offsets
  * 
  *             lipid_atomids = []             # <<<<<<<<<<<<<<
  *             for i in range(offsets.shape[0] - 1):
  *                 lipid_atomids.append(np.asarray(self.trajectory.
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1669; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1684; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_lipid_atomids = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1670
+  /* "fatslimlib/core_base.pyx":1685
  * 
  *             lipid_atomids = []
  *             for i in range(offsets.shape[0] - 1):             # <<<<<<<<<<<<<<
@@ -24409,23 +24817,23 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_13lipid_atomids___get__
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "fatslimlib/core_base.pyx":1671
+    /* "fatslimlib/core_base.pyx":1686
  *             lipid_atomids = []
  *             for i in range(offsets.shape[0] - 1):
  *                 lipid_atomids.append(np.asarray(self.trajectory.             # <<<<<<<<<<<<<<
  *                                                 lipid_atomids[offsets[i]:offsets[i+1]]))
  *             return lipid_atomids
  */
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_v_self->trajectory->lipid_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+    if (unlikely(!__pyx_v_self->trajectory->lipid_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
     __pyx_t_1 = __pyx_v_self->trajectory->lipid_atomids;
     __PYX_INC_MEMVIEW(&__pyx_t_1, 1);
 
-    /* "fatslimlib/core_base.pyx":1672
+    /* "fatslimlib/core_base.pyx":1687
  *             for i in range(offsets.shape[0] - 1):
  *                 lipid_atomids.append(np.asarray(self.trajectory.
  *                                                 lipid_atomids[offsets[i]:offsets[i+1]]))             # <<<<<<<<<<<<<<
@@ -24452,11 +24860,11 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_13lipid_atomids___get__
     0,
     1) < 0))
 {
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1687; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
-    __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_9, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_fsl_int, 0);; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_9, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_fsl_int, 0);; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1687; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
     __pyx_t_11 = NULL;
@@ -24470,34 +24878,34 @@ __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
       }
     }
     if (!__pyx_t_11) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else {
-      __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_11); __pyx_t_11 = NULL;
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_12, 0+1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_12, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_12, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "fatslimlib/core_base.pyx":1671
+    /* "fatslimlib/core_base.pyx":1686
  *             lipid_atomids = []
  *             for i in range(offsets.shape[0] - 1):
  *                 lipid_atomids.append(np.asarray(self.trajectory.             # <<<<<<<<<<<<<<
  *                                                 lipid_atomids[offsets[i]:offsets[i+1]]))
  *             return lipid_atomids
  */
-    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_lipid_atomids, __pyx_t_2); if (unlikely(__pyx_t_13 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_lipid_atomids, __pyx_t_2); if (unlikely(__pyx_t_13 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":1673
+  /* "fatslimlib/core_base.pyx":1688
  *                 lipid_atomids.append(np.asarray(self.trajectory.
  *                                                 lipid_atomids[offsets[i]:offsets[i+1]]))
  *             return lipid_atomids             # <<<<<<<<<<<<<<
@@ -24509,7 +24917,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __pyx_r = __pyx_v_lipid_atomids;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1665
+  /* "fatslimlib/core_base.pyx":1680
  * 
  *     property lipid_atomids:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -24536,7 +24944,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1676
+/* "fatslimlib/core_base.pyx":1691
  * 
  *     property index:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -24566,7 +24974,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_5index___get__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "fatslimlib/core_base.pyx":1677
+  /* "fatslimlib/core_base.pyx":1692
  *     property index:
  *         def __get__(self):
  *             return self.index             # <<<<<<<<<<<<<<
@@ -24574,13 +24982,13 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_5index___get__(struct _
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->index); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->index); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1692; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1676
+  /* "fatslimlib/core_base.pyx":1691
  * 
  *     property index:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -24599,7 +25007,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_5index___get__(struct _
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":214
+/* "fatslimlib/core_base.pxd":216
  *     # Attributes
  *     cdef fsl_int index
  *     cdef readonly real timestep             # <<<<<<<<<<<<<<
@@ -24629,7 +25037,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_8timestep___get__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->timestep); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 214; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->timestep); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -24646,7 +25054,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_8timestep___get__(struc
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":215
+/* "fatslimlib/core_base.pxd":217
  *     cdef fsl_int index
  *     cdef readonly real timestep
  *     cdef readonly Trajectory trajectory             # <<<<<<<<<<<<<<
@@ -24683,7 +25091,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_10trajectory___get__(st
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":216
+/* "fatslimlib/core_base.pxd":218
  *     cdef readonly real timestep
  *     cdef readonly Trajectory trajectory
  *     cdef readonly Topology topology             # <<<<<<<<<<<<<<
@@ -24720,7 +25128,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_8topology___get__(struc
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":218
+/* "fatslimlib/core_base.pxd":220
  *     cdef readonly Topology topology
  *     cdef CoordinateReader coords_reader
  *     cdef readonly PBCBox box             # <<<<<<<<<<<<<<
@@ -24757,7 +25165,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_3box___get__(struct __p
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pxd":219
+/* "fatslimlib/core_base.pxd":221
  *     cdef CoordinateReader coords_reader
  *     cdef readonly PBCBox box
  *     cdef readonly fsl_int size             # <<<<<<<<<<<<<<
@@ -24787,7 +25195,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_4size___get__(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 221; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -24804,7 +25212,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_5Frame_4size___get__(struct __
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1687
+/* "fatslimlib/core_base.pyx":1702
  * 
  * cdef class Trajectory(object):
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -24847,12 +25255,12 @@ static int __pyx_pw_10fatslimlib_9core_base_10Trajectory_1__init__(PyObject *__p
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_index_reader)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1687; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1702; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_coords_reader)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1687; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1702; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  3:
         if (kw_args > 0) {
@@ -24861,7 +25269,7 @@ static int __pyx_pw_10fatslimlib_9core_base_10Trajectory_1__init__(PyObject *__p
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1687; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1702; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -24877,10 +25285,10 @@ static int __pyx_pw_10fatslimlib_9core_base_10Trajectory_1__init__(PyObject *__p
     __pyx_v_index_reader = ((struct __pyx_obj_10fatslimlib_9core_base_IndexReader *)values[1]);
     __pyx_v_coords_reader = ((struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *)values[2]);
     if (values[3]) {
-      __pyx_v_be_verbose = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_be_verbose == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1691; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_be_verbose = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_be_verbose == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1706; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
 
-      /* "fatslimlib/core_base.pyx":1691
+      /* "fatslimlib/core_base.pyx":1706
  *                  IndexReader index_reader,
  *                  CoordinateReader coords_reader,
  *                  bint be_verbose=True):             # <<<<<<<<<<<<<<
@@ -24892,18 +25300,18 @@ static int __pyx_pw_10fatslimlib_9core_base_10Trajectory_1__init__(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1687; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1702; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.Trajectory.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_top_reader), __pyx_ptype_10fatslimlib_9core_base_TopologyReader, 1, "top_reader", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1688; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_index_reader), __pyx_ptype_10fatslimlib_9core_base_IndexReader, 1, "index_reader", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1689; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords_reader), __pyx_ptype_10fatslimlib_9core_base_CoordinateReader, 1, "coords_reader", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1690; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_top_reader), __pyx_ptype_10fatslimlib_9core_base_TopologyReader, 1, "top_reader", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1703; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_index_reader), __pyx_ptype_10fatslimlib_9core_base_IndexReader, 1, "index_reader", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1704; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords_reader), __pyx_ptype_10fatslimlib_9core_base_CoordinateReader, 1, "coords_reader", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1705; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(((struct __pyx_obj_10fatslimlib_9core_base_Trajectory *)__pyx_v_self), __pyx_v_top_reader, __pyx_v_index_reader, __pyx_v_coords_reader, __pyx_v_be_verbose);
 
-  /* "fatslimlib/core_base.pyx":1687
+  /* "fatslimlib/core_base.pyx":1702
  * 
  * cdef class Trajectory(object):
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -24931,7 +25339,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "fatslimlib/core_base.pyx":1692
+  /* "fatslimlib/core_base.pyx":1707
  *                  CoordinateReader coords_reader,
  *                  bint be_verbose=True):
  *         self.be_verbose = be_verbose             # <<<<<<<<<<<<<<
@@ -24940,7 +25348,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  */
   __pyx_v_self->be_verbose = __pyx_v_be_verbose;
 
-  /* "fatslimlib/core_base.pyx":1693
+  /* "fatslimlib/core_base.pyx":1708
  *                  bint be_verbose=True):
  *         self.be_verbose = be_verbose
  *         self.bead_group_name = None             # <<<<<<<<<<<<<<
@@ -24953,7 +25361,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   __Pyx_DECREF(__pyx_v_self->bead_group_name);
   __pyx_v_self->bead_group_name = ((PyObject*)Py_None);
 
-  /* "fatslimlib/core_base.pyx":1694
+  /* "fatslimlib/core_base.pyx":1709
  *         self.be_verbose = be_verbose
  *         self.bead_group_name = None
  *         self.interacting_group_name = None             # <<<<<<<<<<<<<<
@@ -24966,7 +25374,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   __Pyx_DECREF(__pyx_v_self->interacting_group_name);
   __pyx_v_self->interacting_group_name = ((PyObject*)Py_None);
 
-  /* "fatslimlib/core_base.pyx":1696
+  /* "fatslimlib/core_base.pyx":1711
  *         self.interacting_group_name = None
  * 
  *         assert isinstance(top_reader, TopologyReader)             # <<<<<<<<<<<<<<
@@ -24978,12 +25386,12 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
     __pyx_t_1 = __Pyx_TypeCheck(((PyObject *)__pyx_v_top_reader), __pyx_ptype_10fatslimlib_9core_base_TopologyReader); 
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1696; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1711; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
 
-  /* "fatslimlib/core_base.pyx":1697
+  /* "fatslimlib/core_base.pyx":1712
  * 
  *         assert isinstance(top_reader, TopologyReader)
  *         self.topol_reader = top_reader             # <<<<<<<<<<<<<<
@@ -24996,7 +25404,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   __Pyx_DECREF(((PyObject *)__pyx_v_self->topol_reader));
   __pyx_v_self->topol_reader = __pyx_v_top_reader;
 
-  /* "fatslimlib/core_base.pyx":1699
+  /* "fatslimlib/core_base.pyx":1714
  *         self.topol_reader = top_reader
  * 
  *         assert isinstance(index_reader, IndexReader)             # <<<<<<<<<<<<<<
@@ -25008,12 +25416,12 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
     __pyx_t_1 = __Pyx_TypeCheck(((PyObject *)__pyx_v_index_reader), __pyx_ptype_10fatslimlib_9core_base_IndexReader); 
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1699; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1714; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
 
-  /* "fatslimlib/core_base.pyx":1700
+  /* "fatslimlib/core_base.pyx":1715
  * 
  *         assert isinstance(index_reader, IndexReader)
  *         self.index_reader = index_reader             # <<<<<<<<<<<<<<
@@ -25026,7 +25434,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   __Pyx_DECREF(((PyObject *)__pyx_v_self->index_reader));
   __pyx_v_self->index_reader = __pyx_v_index_reader;
 
-  /* "fatslimlib/core_base.pyx":1702
+  /* "fatslimlib/core_base.pyx":1717
  *         self.index_reader = index_reader
  * 
  *         assert isinstance(coords_reader, CoordinateReader)             # <<<<<<<<<<<<<<
@@ -25038,12 +25446,12 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
     __pyx_t_1 = __Pyx_TypeCheck(((PyObject *)__pyx_v_coords_reader), __pyx_ptype_10fatslimlib_9core_base_CoordinateReader); 
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1702; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1717; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
 
-  /* "fatslimlib/core_base.pyx":1703
+  /* "fatslimlib/core_base.pyx":1718
  * 
  *         assert isinstance(coords_reader, CoordinateReader)
  *         self.coords_reader = coords_reader             # <<<<<<<<<<<<<<
@@ -25056,7 +25464,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   __Pyx_DECREF(((PyObject *)__pyx_v_self->coords_reader));
   __pyx_v_self->coords_reader = __pyx_v_coords_reader;
 
-  /* "fatslimlib/core_base.pyx":1706
+  /* "fatslimlib/core_base.pyx":1721
  * 
  *         # Load atomids & group
  *         self.hg_group_atomids = None             # <<<<<<<<<<<<<<
@@ -25064,13 +25472,13 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  *         self.lipid_atomids_offsets = None
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1706; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1721; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_group_atomids, 0);
   __pyx_v_self->hg_group_atomids = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1707
+  /* "fatslimlib/core_base.pyx":1722
  *         # Load atomids & group
  *         self.hg_group_atomids = None
  *         self.lipid_atomids = None             # <<<<<<<<<<<<<<
@@ -25078,13 +25486,13 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  *         self.interacting_atomids = None
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1707; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1722; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids, 0);
   __pyx_v_self->lipid_atomids = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1708
+  /* "fatslimlib/core_base.pyx":1723
  *         self.hg_group_atomids = None
  *         self.lipid_atomids = None
  *         self.lipid_atomids_offsets = None             # <<<<<<<<<<<<<<
@@ -25092,13 +25500,13 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  *         self.hg_bead_atomids = None
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1708; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
   __pyx_v_self->lipid_atomids_offsets = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1709
+  /* "fatslimlib/core_base.pyx":1724
  *         self.lipid_atomids = None
  *         self.lipid_atomids_offsets = None
  *         self.interacting_atomids = None             # <<<<<<<<<<<<<<
@@ -25106,13 +25514,13 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  *         self.hg_bead_atomids_offsets = None
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1709; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1724; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->interacting_atomids, 0);
   __pyx_v_self->interacting_atomids = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1710
+  /* "fatslimlib/core_base.pyx":1725
  *         self.lipid_atomids_offsets = None
  *         self.interacting_atomids = None
  *         self.hg_bead_atomids = None             # <<<<<<<<<<<<<<
@@ -25120,13 +25528,13 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  *         self.forcefield_type = fft_notset
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1710; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_bead_atomids, 0);
   __pyx_v_self->hg_bead_atomids = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1711
+  /* "fatslimlib/core_base.pyx":1726
  *         self.interacting_atomids = None
  *         self.hg_bead_atomids = None
  *         self.hg_bead_atomids_offsets = None             # <<<<<<<<<<<<<<
@@ -25134,13 +25542,13 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  *         cur_frame = 0
  */
   __pyx_t_2 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(Py_None);
-  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1711; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_2.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1726; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_bead_atomids_offsets, 0);
   __pyx_v_self->hg_bead_atomids_offsets = __pyx_t_2;
   __pyx_t_2.memview = NULL;
   __pyx_t_2.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1712
+  /* "fatslimlib/core_base.pyx":1727
  *         self.hg_bead_atomids = None
  *         self.hg_bead_atomids_offsets = None
  *         self.forcefield_type = fft_notset             # <<<<<<<<<<<<<<
@@ -25149,7 +25557,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  */
   __pyx_v_self->forcefield_type = __pyx_e_10fatslimlib_9core_base_fft_notset;
 
-  /* "fatslimlib/core_base.pyx":1713
+  /* "fatslimlib/core_base.pyx":1728
  *         self.hg_bead_atomids_offsets = None
  *         self.forcefield_type = fft_notset
  *         cur_frame = 0             # <<<<<<<<<<<<<<
@@ -25158,7 +25566,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  */
   __pyx_v_cur_frame = 0;
 
-  /* "fatslimlib/core_base.pyx":1716
+  /* "fatslimlib/core_base.pyx":1731
  * 
  *         # Cache related
  *         self.normal_cutoff = DEFAULT_PROXIMITY_CUTOFF             # <<<<<<<<<<<<<<
@@ -25167,7 +25575,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  */
   __pyx_v_self->normal_cutoff = 2.0;
 
-  /* "fatslimlib/core_base.pyx":1717
+  /* "fatslimlib/core_base.pyx":1732
  *         # Cache related
  *         self.normal_cutoff = DEFAULT_PROXIMITY_CUTOFF
  *         self.membranes = None             # <<<<<<<<<<<<<<
@@ -25180,7 +25588,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   __Pyx_DECREF(__pyx_v_self->membranes);
   __pyx_v_self->membranes = ((PyObject*)Py_None);
 
-  /* "fatslimlib/core_base.pyx":1718
+  /* "fatslimlib/core_base.pyx":1733
  *         self.normal_cutoff = DEFAULT_PROXIMITY_CUTOFF
  *         self.membranes = None
  *         self.aggregates = None             # <<<<<<<<<<<<<<
@@ -25193,7 +25601,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   __Pyx_DECREF(__pyx_v_self->aggregates);
   __pyx_v_self->aggregates = ((PyObject*)Py_None);
 
-  /* "fatslimlib/core_base.pyx":1720
+  /* "fatslimlib/core_base.pyx":1735
  *         self.aggregates = None
  * 
  *         self.topology = None             # <<<<<<<<<<<<<<
@@ -25206,7 +25614,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   __Pyx_DECREF(((PyObject *)__pyx_v_self->topology));
   __pyx_v_self->topology = ((struct __pyx_obj_10fatslimlib_9core_base_Topology *)Py_None);
 
-  /* "fatslimlib/core_base.pyx":1721
+  /* "fatslimlib/core_base.pyx":1736
  * 
  *         self.topology = None
  *         self.initialized = False             # <<<<<<<<<<<<<<
@@ -25215,7 +25623,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
  */
   __pyx_v_self->initialized = 0;
 
-  /* "fatslimlib/core_base.pyx":1687
+  /* "fatslimlib/core_base.pyx":1702
  * 
  * cdef class Trajectory(object):
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -25235,7 +25643,7 @@ static int __pyx_pf_10fatslimlib_9core_base_10Trajectory___init__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1724
+/* "fatslimlib/core_base.pyx":1739
  * 
  * 
  *     def initialize(self, str hg_group="headgroups", str interacting_group="protein"):             # <<<<<<<<<<<<<<
@@ -25282,7 +25690,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_10Trajectory_3initialize(PyObj
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "initialize") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1724; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "initialize") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1739; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -25297,14 +25705,14 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_10Trajectory_3initialize(PyObj
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("initialize", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1724; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("initialize", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1739; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("fatslimlib.core_base.Trajectory.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_hg_group), (&PyString_Type), 1, "hg_group", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1724; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_interacting_group), (&PyString_Type), 1, "interacting_group", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1724; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_hg_group), (&PyString_Type), 1, "hg_group", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1739; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_interacting_group), (&PyString_Type), 1, "interacting_group", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1739; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(((struct __pyx_obj_10fatslimlib_9core_base_Trajectory *)__pyx_v_self), __pyx_v_hg_group, __pyx_v_interacting_group);
 
   /* function exit code */
@@ -25377,24 +25785,24 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("initialize", 0);
 
-  /* "fatslimlib/core_base.pyx":1738
+  /* "fatslimlib/core_base.pyx":1753
  * 
  *         # Preload file
  *         verbose_print("Initializing trajectory using groups: '%s' and '%s'... "             # <<<<<<<<<<<<<<
  *                       % (hg_group, interacting_group),
  *                       self.be_verbose,
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1753; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "fatslimlib/core_base.pyx":1739
+  /* "fatslimlib/core_base.pyx":1754
  *         # Preload file
  *         verbose_print("Initializing trajectory using groups: '%s' and '%s'... "
  *                       % (hg_group, interacting_group),             # <<<<<<<<<<<<<<
  *                       self.be_verbose,
  *                       end="")
  */
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1739; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1754; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_hg_group);
   __Pyx_GIVEREF(__pyx_v_hg_group);
@@ -25402,28 +25810,28 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   __Pyx_INCREF(__pyx_v_interacting_group);
   __Pyx_GIVEREF(__pyx_v_interacting_group);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_interacting_group);
-  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Initializing_trajectory_using_gr, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1739; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Initializing_trajectory_using_gr, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1754; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1740
+  /* "fatslimlib/core_base.pyx":1755
  *         verbose_print("Initializing trajectory using groups: '%s' and '%s'... "
  *                       % (hg_group, interacting_group),
  *                       self.be_verbose,             # <<<<<<<<<<<<<<
  *                       end="")
  *         sys.stdout.flush()
  */
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->be_verbose); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1740; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->be_verbose); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "fatslimlib/core_base.pyx":1738
+  /* "fatslimlib/core_base.pyx":1753
  * 
  *         # Preload file
  *         verbose_print("Initializing trajectory using groups: '%s' and '%s'... "             # <<<<<<<<<<<<<<
  *                       % (hg_group, interacting_group),
  *                       self.be_verbose,
  */
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1753; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
@@ -25432,44 +25840,44 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_base.pyx":1741
+  /* "fatslimlib/core_base.pyx":1756
  *                       % (hg_group, interacting_group),
  *                       self.be_verbose,
  *                       end="")             # <<<<<<<<<<<<<<
  *         sys.stdout.flush()
  *         begin = time()
  */
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1741; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_end, __pyx_kp_s__19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1741; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_end, __pyx_kp_s__19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "fatslimlib/core_base.pyx":1738
+  /* "fatslimlib/core_base.pyx":1753
  * 
  *         # Preload file
  *         verbose_print("Initializing trajectory using groups: '%s' and '%s'... "             # <<<<<<<<<<<<<<
  *                       % (hg_group, interacting_group),
  *                       self.be_verbose,
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1753; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1742
+  /* "fatslimlib/core_base.pyx":1757
  *                       self.be_verbose,
  *                       end="")
  *         sys.stdout.flush()             # <<<<<<<<<<<<<<
  *         begin = time()
  * 
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_sys); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_sys); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_stdout); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_stdout); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_flush); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_flush); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -25483,23 +25891,23 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     }
   }
   if (__pyx_t_4) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1743
+  /* "fatslimlib/core_base.pyx":1758
  *                       end="")
  *         sys.stdout.flush()
  *         begin = time()             # <<<<<<<<<<<<<<
  * 
  *         topology = self.topol_reader.topology
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1743; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -25512,17 +25920,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     }
   }
   if (__pyx_t_4) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1743; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1743; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_begin = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1745
+  /* "fatslimlib/core_base.pyx":1760
  *         begin = time()
  * 
  *         topology = self.topol_reader.topology             # <<<<<<<<<<<<<<
@@ -25534,7 +25942,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   __pyx_v_topology = ((struct __pyx_obj_10fatslimlib_9core_base_Topology *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1746
+  /* "fatslimlib/core_base.pyx":1761
  * 
  *         topology = self.topol_reader.topology
  *         self.topology = topology             # <<<<<<<<<<<<<<
@@ -25547,14 +25955,14 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   __Pyx_DECREF(((PyObject *)__pyx_v_self->topology));
   __pyx_v_self->topology = __pyx_v_topology;
 
-  /* "fatslimlib/core_base.pyx":1749
+  /* "fatslimlib/core_base.pyx":1764
  * 
  *         # Handle headgroups
  *         self.bead_group_name = hg_group.encode()             # <<<<<<<<<<<<<<
  *         hg_group_atomids = self.index_reader[hg_group]
  *         self.hg_group_atomids = hg_group_atomids
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_hg_group, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1749; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_hg_group, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1764; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -25567,37 +25975,37 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     }
   }
   if (__pyx_t_4) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1749; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1764; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1749; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1764; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_3)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1749; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_3)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1764; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->bead_group_name);
   __Pyx_DECREF(__pyx_v_self->bead_group_name);
   __pyx_v_self->bead_group_name = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1750
+  /* "fatslimlib/core_base.pyx":1765
  *         # Handle headgroups
  *         self.bead_group_name = hg_group.encode()
  *         hg_group_atomids = self.index_reader[hg_group]             # <<<<<<<<<<<<<<
  *         self.hg_group_atomids = hg_group_atomids
  * 
  */
-  __pyx_t_3 = PyObject_GetItem(((PyObject *)__pyx_v_self->index_reader), __pyx_v_hg_group); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1750; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_3 = PyObject_GetItem(((PyObject *)__pyx_v_self->index_reader), __pyx_v_hg_group); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1765; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_3);
-  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1750; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1765; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_hg_group_atomids = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1751
+  /* "fatslimlib/core_base.pyx":1766
  *         self.bead_group_name = hg_group.encode()
  *         hg_group_atomids = self.index_reader[hg_group]
  *         self.hg_group_atomids = hg_group_atomids             # <<<<<<<<<<<<<<
@@ -25608,7 +26016,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   __PYX_INC_MEMVIEW(&__pyx_v_hg_group_atomids, 0);
   __pyx_v_self->hg_group_atomids = __pyx_v_hg_group_atomids;
 
-  /* "fatslimlib/core_base.pyx":1754
+  /* "fatslimlib/core_base.pyx":1769
  * 
  *         # Group by resid and retrieve offsets
  *         size = hg_group_atomids.shape[0]             # <<<<<<<<<<<<<<
@@ -25617,179 +26025,179 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
   __pyx_v_size = (__pyx_v_hg_group_atomids.shape[0]);
 
-  /* "fatslimlib/core_base.pyx":1755
+  /* "fatslimlib/core_base.pyx":1770
  *         # Group by resid and retrieve offsets
  *         size = hg_group_atomids.shape[0]
  *         resids = np.empty(size, dtype=np.int64)             # <<<<<<<<<<<<<<
  *         hg_bead_atomids_offsets = np.empty(size+1, dtype=np.int64)
  *         lipid_atomids_offsets = np.empty(size+1, dtype=np.int64)
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_fsl_int(__pyx_v_size); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_fsl_int(__pyx_v_size); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_6);
-  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1755; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_resids = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1756
+  /* "fatslimlib/core_base.pyx":1771
  *         size = hg_group_atomids.shape[0]
  *         resids = np.empty(size, dtype=np.int64)
  *         hg_bead_atomids_offsets = np.empty(size+1, dtype=np.int64)             # <<<<<<<<<<<<<<
  *         lipid_atomids_offsets = np.empty(size+1, dtype=np.int64)
  *         lipid_hg_indices = np.empty(size, dtype=np.int64)
  */
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_size + 1)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_size + 1)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
   __pyx_t_6 = 0;
-  __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_1);
-  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1771; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_hg_bead_atomids_offsets = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1757
+  /* "fatslimlib/core_base.pyx":1772
  *         resids = np.empty(size, dtype=np.int64)
  *         hg_bead_atomids_offsets = np.empty(size+1, dtype=np.int64)
  *         lipid_atomids_offsets = np.empty(size+1, dtype=np.int64)             # <<<<<<<<<<<<<<
  *         lipid_hg_indices = np.empty(size, dtype=np.int64)
  *         lipid_atomids_list = []
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_long((__pyx_v_size + 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_long((__pyx_v_size + 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_2);
-  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1757; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1772; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_lipid_atomids_offsets = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1758
+  /* "fatslimlib/core_base.pyx":1773
  *         hg_bead_atomids_offsets = np.empty(size+1, dtype=np.int64)
  *         lipid_atomids_offsets = np.empty(size+1, dtype=np.int64)
  *         lipid_hg_indices = np.empty(size, dtype=np.int64)             # <<<<<<<<<<<<<<
  *         lipid_atomids_list = []
  *         last_resid = -1
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_fsl_int(__pyx_v_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_fsl_int(__pyx_v_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int64); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int64); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_3);
-  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1773; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_lipid_hg_indices = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1759
+  /* "fatslimlib/core_base.pyx":1774
  *         lipid_atomids_offsets = np.empty(size+1, dtype=np.int64)
  *         lipid_hg_indices = np.empty(size, dtype=np.int64)
  *         lipid_atomids_list = []             # <<<<<<<<<<<<<<
  *         last_resid = -1
  *         lipid_atomids_offsets[0] = 0
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1759; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1774; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_lipid_atomids_list = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1760
+  /* "fatslimlib/core_base.pyx":1775
  *         lipid_hg_indices = np.empty(size, dtype=np.int64)
  *         lipid_atomids_list = []
  *         last_resid = -1             # <<<<<<<<<<<<<<
@@ -25798,7 +26206,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
   __pyx_v_last_resid = -1;
 
-  /* "fatslimlib/core_base.pyx":1761
+  /* "fatslimlib/core_base.pyx":1776
  *         lipid_atomids_list = []
  *         last_resid = -1
  *         lipid_atomids_offsets[0] = 0             # <<<<<<<<<<<<<<
@@ -25808,7 +26216,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   __pyx_t_7 = 0;
   *((fsl_int *) ( /* dim=0 */ (__pyx_v_lipid_atomids_offsets.data + __pyx_t_7 * __pyx_v_lipid_atomids_offsets.strides[0]) )) = 0;
 
-  /* "fatslimlib/core_base.pyx":1762
+  /* "fatslimlib/core_base.pyx":1777
  *         last_resid = -1
  *         lipid_atomids_offsets[0] = 0
  *         resid_size = 0             # <<<<<<<<<<<<<<
@@ -25817,19 +26225,19 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
   __pyx_v_resid_size = 0;
 
-  /* "fatslimlib/core_base.pyx":1764
+  /* "fatslimlib/core_base.pyx":1779
  *         resid_size = 0
  * 
  *         residues_dict = {}             # <<<<<<<<<<<<<<
  *         for i in range(size):
  *             atom = topology.fast_get_atom(hg_group_atomids[i])
  */
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1764; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1779; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_residues_dict = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1765
+  /* "fatslimlib/core_base.pyx":1780
  * 
  *         residues_dict = {}
  *         for i in range(size):             # <<<<<<<<<<<<<<
@@ -25840,7 +26248,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "fatslimlib/core_base.pyx":1766
+    /* "fatslimlib/core_base.pyx":1781
  *         residues_dict = {}
  *         for i in range(size):
  *             atom = topology.fast_get_atom(hg_group_atomids[i])             # <<<<<<<<<<<<<<
@@ -25850,7 +26258,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     __pyx_t_10 = __pyx_v_i;
     __pyx_v_atom = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_topology->__pyx_vtab)->fast_get_atom(__pyx_v_topology, (*((fsl_int *) ( /* dim=0 */ (__pyx_v_hg_group_atomids.data + __pyx_t_10 * __pyx_v_hg_group_atomids.strides[0]) ))));
 
-    /* "fatslimlib/core_base.pyx":1767
+    /* "fatslimlib/core_base.pyx":1782
  *         for i in range(size):
  *             atom = topology.fast_get_atom(hg_group_atomids[i])
  *             if atom == NULL:             # <<<<<<<<<<<<<<
@@ -25860,7 +26268,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     __pyx_t_11 = ((__pyx_v_atom == NULL) != 0);
     if (__pyx_t_11) {
 
-      /* "fatslimlib/core_base.pyx":1769
+      /* "fatslimlib/core_base.pyx":1784
  *             if atom == NULL:
  *                 raise KeyError("Atomid not registered in topology: %i. Does group '%s' from '%s'"
  *                                    " file contains H?" % (hg_group_atomids[i],             # <<<<<<<<<<<<<<
@@ -25868,17 +26276,17 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  *                                                           self.index_reader.filename))
  */
       __pyx_t_12 = __pyx_v_i;
-      __pyx_t_3 = __Pyx_PyInt_From_fsl_int((*((fsl_int *) ( /* dim=0 */ (__pyx_v_hg_group_atomids.data + __pyx_t_12 * __pyx_v_hg_group_atomids.strides[0]) )))); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1769; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyInt_From_fsl_int((*((fsl_int *) ( /* dim=0 */ (__pyx_v_hg_group_atomids.data + __pyx_t_12 * __pyx_v_hg_group_atomids.strides[0]) )))); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1784; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
 
-      /* "fatslimlib/core_base.pyx":1771
+      /* "fatslimlib/core_base.pyx":1786
  *                                    " file contains H?" % (hg_group_atomids[i],
  *                                                           hg_group,
  *                                                           self.index_reader.filename))             # <<<<<<<<<<<<<<
  *             residue = &topology.residues[atom.residue_internal_id]
  * 
  */
-      __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1769; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1784; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
@@ -25890,37 +26298,37 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_self->index_reader->filename);
       __pyx_t_3 = 0;
 
-      /* "fatslimlib/core_base.pyx":1769
+      /* "fatslimlib/core_base.pyx":1784
  *             if atom == NULL:
  *                 raise KeyError("Atomid not registered in topology: %i. Does group '%s' from '%s'"
  *                                    " file contains H?" % (hg_group_atomids[i],             # <<<<<<<<<<<<<<
  *                                                           hg_group,
  *                                                           self.index_reader.filename))
  */
-      __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Atomid_not_registered_in_topolog, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1769; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_Atomid_not_registered_in_topolog, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1784; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "fatslimlib/core_base.pyx":1768
+      /* "fatslimlib/core_base.pyx":1783
  *             atom = topology.fast_get_atom(hg_group_atomids[i])
  *             if atom == NULL:
  *                 raise KeyError("Atomid not registered in topology: %i. Does group '%s' from '%s'"             # <<<<<<<<<<<<<<
  *                                    " file contains H?" % (hg_group_atomids[i],
  *                                                           hg_group,
  */
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1768; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1768; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1768; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "fatslimlib/core_base.pyx":1767
+      /* "fatslimlib/core_base.pyx":1782
  *         for i in range(size):
  *             atom = topology.fast_get_atom(hg_group_atomids[i])
  *             if atom == NULL:             # <<<<<<<<<<<<<<
@@ -25929,7 +26337,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1772
+    /* "fatslimlib/core_base.pyx":1787
  *                                                           hg_group,
  *                                                           self.index_reader.filename))
  *             residue = &topology.residues[atom.residue_internal_id]             # <<<<<<<<<<<<<<
@@ -25938,7 +26346,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
     __pyx_v_residue = (&(__pyx_v_topology->residues[__pyx_v_atom->residue_internal_id]));
 
-    /* "fatslimlib/core_base.pyx":1774
+    /* "fatslimlib/core_base.pyx":1789
  *             residue = &topology.residues[atom.residue_internal_id]
  * 
  *             resid = residue.resid             # <<<<<<<<<<<<<<
@@ -25948,7 +26356,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     __pyx_t_13 = __pyx_v_residue->resid;
     __pyx_v_resid = __pyx_t_13;
 
-    /* "fatslimlib/core_base.pyx":1776
+    /* "fatslimlib/core_base.pyx":1791
  *             resid = residue.resid
  * 
  *             if resid > last_resid: # WARNING: It is assumed that atomids (hence resids) are sorted!             # <<<<<<<<<<<<<<
@@ -25958,7 +26366,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     __pyx_t_11 = ((__pyx_v_resid > __pyx_v_last_resid) != 0);
     if (__pyx_t_11) {
 
-      /* "fatslimlib/core_base.pyx":1777
+      /* "fatslimlib/core_base.pyx":1792
  * 
  *             if resid > last_resid: # WARNING: It is assumed that atomids (hence resids) are sorted!
  *                 resids[resid_size] = resid             # <<<<<<<<<<<<<<
@@ -25968,7 +26376,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       __pyx_t_14 = __pyx_v_resid_size;
       *((fsl_int *) ( /* dim=0 */ (__pyx_v_resids.data + __pyx_t_14 * __pyx_v_resids.strides[0]) )) = __pyx_v_resid;
 
-      /* "fatslimlib/core_base.pyx":1778
+      /* "fatslimlib/core_base.pyx":1793
  *             if resid > last_resid: # WARNING: It is assumed that atomids (hence resids) are sorted!
  *                 resids[resid_size] = resid
  *                 hg_bead_atomids_offsets[resid_size] = i             # <<<<<<<<<<<<<<
@@ -25978,7 +26386,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       __pyx_t_15 = __pyx_v_resid_size;
       *((fsl_int *) ( /* dim=0 */ (__pyx_v_hg_bead_atomids_offsets.data + __pyx_t_15 * __pyx_v_hg_bead_atomids_offsets.strides[0]) )) = __pyx_v_i;
 
-      /* "fatslimlib/core_base.pyx":1779
+      /* "fatslimlib/core_base.pyx":1794
  *                 resids[resid_size] = resid
  *                 hg_bead_atomids_offsets[resid_size] = i
  *                 lipid_atomids_offsets[resid_size + 1] = lipid_atomids_offsets[resid_size] \             # <<<<<<<<<<<<<<
@@ -25987,7 +26395,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
       __pyx_t_16 = __pyx_v_resid_size;
 
-      /* "fatslimlib/core_base.pyx":1780
+      /* "fatslimlib/core_base.pyx":1795
  *                 hg_bead_atomids_offsets[resid_size] = i
  *                 lipid_atomids_offsets[resid_size + 1] = lipid_atomids_offsets[resid_size] \
  *                                                         + residue.size             # <<<<<<<<<<<<<<
@@ -25997,19 +26405,19 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       __pyx_t_17 = (__pyx_v_resid_size + 1);
       *((fsl_int *) ( /* dim=0 */ (__pyx_v_lipid_atomids_offsets.data + __pyx_t_17 * __pyx_v_lipid_atomids_offsets.strides[0]) )) = ((*((fsl_int *) ( /* dim=0 */ (__pyx_v_lipid_atomids_offsets.data + __pyx_t_16 * __pyx_v_lipid_atomids_offsets.strides[0]) ))) + __pyx_v_residue->size);
 
-      /* "fatslimlib/core_base.pyx":1781
+      /* "fatslimlib/core_base.pyx":1796
  *                 lipid_atomids_offsets[resid_size + 1] = lipid_atomids_offsets[resid_size] \
  *                                                         + residue.size
  *                 lipid_atomids_list.extend(topol_residue_atomids_as_list(residue))             # <<<<<<<<<<<<<<
  *                 last_resid = resid
  *                 resid_size += 1
  */
-      __pyx_t_3 = __pyx_f_10fatslimlib_9core_base_topol_residue_atomids_as_list(__pyx_v_residue); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1781; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __pyx_f_10fatslimlib_9core_base_topol_residue_atomids_as_list(__pyx_v_residue); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1796; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_18 = __Pyx_PyList_Extend(__pyx_v_lipid_atomids_list, __pyx_t_3); if (unlikely(__pyx_t_18 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1781; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_18 = __Pyx_PyList_Extend(__pyx_v_lipid_atomids_list, __pyx_t_3); if (unlikely(__pyx_t_18 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1796; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "fatslimlib/core_base.pyx":1782
+      /* "fatslimlib/core_base.pyx":1797
  *                                                         + residue.size
  *                 lipid_atomids_list.extend(topol_residue_atomids_as_list(residue))
  *                 last_resid = resid             # <<<<<<<<<<<<<<
@@ -26018,7 +26426,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
       __pyx_v_last_resid = __pyx_v_resid;
 
-      /* "fatslimlib/core_base.pyx":1783
+      /* "fatslimlib/core_base.pyx":1798
  *                 lipid_atomids_list.extend(topol_residue_atomids_as_list(residue))
  *                 last_resid = resid
  *                 resid_size += 1             # <<<<<<<<<<<<<<
@@ -26027,7 +26435,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
       __pyx_v_resid_size = (__pyx_v_resid_size + 1);
 
-      /* "fatslimlib/core_base.pyx":1776
+      /* "fatslimlib/core_base.pyx":1791
  *             resid = residue.resid
  * 
  *             if resid > last_resid: # WARNING: It is assumed that atomids (hence resids) are sorted!             # <<<<<<<<<<<<<<
@@ -26036,7 +26444,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
     }
 
-    /* "fatslimlib/core_base.pyx":1786
+    /* "fatslimlib/core_base.pyx":1801
  * 
  * 
  *             try:             # <<<<<<<<<<<<<<
@@ -26050,26 +26458,26 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       __Pyx_XGOTREF(__pyx_t_21);
       /*try:*/ {
 
-        /* "fatslimlib/core_base.pyx":1787
+        /* "fatslimlib/core_base.pyx":1802
  * 
  *             try:
  *                 atom_index = residues_dict[residue.name_id][atom.name_id]             # <<<<<<<<<<<<<<
  *             except KeyError:
  *                 atom_index = topol_residue_atomid_index(residue, atom.atomid)
  */
-        __pyx_t_3 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->name_id); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1787; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+        __pyx_t_3 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->name_id); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1802; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_residues_dict, __pyx_t_3); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1787; __pyx_clineno = __LINE__; goto __pyx_L7_error;};
+        __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_residues_dict, __pyx_t_3); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1802; __pyx_clineno = __LINE__; goto __pyx_L7_error;};
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, __pyx_v_atom->name_id, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1787; __pyx_clineno = __LINE__; goto __pyx_L7_error;};
+        __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, __pyx_v_atom->name_id, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1802; __pyx_clineno = __LINE__; goto __pyx_L7_error;};
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_13 = __Pyx_PyInt_As_fsl_int(__pyx_t_3); if (unlikely((__pyx_t_13 == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1787; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
+        __pyx_t_13 = __Pyx_PyInt_As_fsl_int(__pyx_t_3); if (unlikely((__pyx_t_13 == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1802; __pyx_clineno = __LINE__; goto __pyx_L7_error;}
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_v_atom_index = __pyx_t_13;
 
-        /* "fatslimlib/core_base.pyx":1786
+        /* "fatslimlib/core_base.pyx":1801
  * 
  * 
  *             try:             # <<<<<<<<<<<<<<
@@ -26089,7 +26497,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
 
-      /* "fatslimlib/core_base.pyx":1788
+      /* "fatslimlib/core_base.pyx":1803
  *             try:
  *                 atom_index = residues_dict[residue.name_id][atom.name_id]
  *             except KeyError:             # <<<<<<<<<<<<<<
@@ -26099,12 +26507,12 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       __pyx_t_22 = PyErr_ExceptionMatches(__pyx_builtin_KeyError);
       if (__pyx_t_22) {
         __Pyx_AddTraceback("fatslimlib.core_base.Trajectory.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_2, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1788; __pyx_clineno = __LINE__; goto __pyx_L9_except_error;}
+        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_2, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1803; __pyx_clineno = __LINE__; goto __pyx_L9_except_error;}
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GOTREF(__pyx_t_4);
 
-        /* "fatslimlib/core_base.pyx":1789
+        /* "fatslimlib/core_base.pyx":1804
  *                 atom_index = residues_dict[residue.name_id][atom.name_id]
  *             except KeyError:
  *                 atom_index = topol_residue_atomid_index(residue, atom.atomid)             # <<<<<<<<<<<<<<
@@ -26113,7 +26521,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
  */
         __pyx_v_atom_index = __pyx_f_10fatslimlib_9core_base_topol_residue_atomid_index(__pyx_v_residue, __pyx_v_atom->atomid);
 
-        /* "fatslimlib/core_base.pyx":1790
+        /* "fatslimlib/core_base.pyx":1805
  *             except KeyError:
  *                 atom_index = topol_residue_atomid_index(residue, atom.atomid)
  *                 try:             # <<<<<<<<<<<<<<
@@ -26127,25 +26535,25 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
           __Pyx_XGOTREF(__pyx_t_25);
           /*try:*/ {
 
-            /* "fatslimlib/core_base.pyx":1791
+            /* "fatslimlib/core_base.pyx":1806
  *                 atom_index = topol_residue_atomid_index(residue, atom.atomid)
  *                 try:
  *                     residues_dict[residue.name_id][atom.name_id] = atom_index             # <<<<<<<<<<<<<<
  *                 except KeyError:
  *                     residues_dict[residue.name_id] = {atom.name_id: atom_index}
  */
-            __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom_index); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1791; __pyx_clineno = __LINE__; goto __pyx_L17_error;}
+            __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom_index); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1806; __pyx_clineno = __LINE__; goto __pyx_L17_error;}
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_6 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->name_id); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1791; __pyx_clineno = __LINE__; goto __pyx_L17_error;}
+            __pyx_t_6 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->name_id); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1806; __pyx_clineno = __LINE__; goto __pyx_L17_error;}
             __Pyx_GOTREF(__pyx_t_6);
-            __pyx_t_26 = __Pyx_PyDict_GetItem(__pyx_v_residues_dict, __pyx_t_6); if (unlikely(__pyx_t_26 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1791; __pyx_clineno = __LINE__; goto __pyx_L17_error;};
+            __pyx_t_26 = __Pyx_PyDict_GetItem(__pyx_v_residues_dict, __pyx_t_6); if (unlikely(__pyx_t_26 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1806; __pyx_clineno = __LINE__; goto __pyx_L17_error;};
             __Pyx_GOTREF(__pyx_t_26);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-            if (unlikely(__Pyx_SetItemInt(__pyx_t_26, __pyx_v_atom->name_id, __pyx_t_1, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1791; __pyx_clineno = __LINE__; goto __pyx_L17_error;}
+            if (unlikely(__Pyx_SetItemInt(__pyx_t_26, __pyx_v_atom->name_id, __pyx_t_1, fsl_int, 1, __Pyx_PyInt_From_fsl_int, 0, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1806; __pyx_clineno = __LINE__; goto __pyx_L17_error;}
             __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "fatslimlib/core_base.pyx":1790
+            /* "fatslimlib/core_base.pyx":1805
  *             except KeyError:
  *                 atom_index = topol_residue_atomid_index(residue, atom.atomid)
  *                 try:             # <<<<<<<<<<<<<<
@@ -26158,12 +26566,12 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
           __Pyx_XDECREF(__pyx_t_25); __pyx_t_25 = 0;
           goto __pyx_L24_try_end;
           __pyx_L17_error:;
-          __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
 
-          /* "fatslimlib/core_base.pyx":1792
+          /* "fatslimlib/core_base.pyx":1807
  *                 try:
  *                     residues_dict[residue.name_id][atom.name_id] = atom_index
  *                 except KeyError:             # <<<<<<<<<<<<<<
@@ -26173,30 +26581,30 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
           __pyx_t_22 = PyErr_ExceptionMatches(__pyx_builtin_KeyError);
           if (__pyx_t_22) {
             __Pyx_AddTraceback("fatslimlib.core_base.Trajectory.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
-            if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_26, &__pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1792; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
+            if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_26, &__pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1807; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_GOTREF(__pyx_t_26);
             __Pyx_GOTREF(__pyx_t_6);
 
-            /* "fatslimlib/core_base.pyx":1793
+            /* "fatslimlib/core_base.pyx":1808
  *                     residues_dict[residue.name_id][atom.name_id] = atom_index
  *                 except KeyError:
  *                     residues_dict[residue.name_id] = {atom.name_id: atom_index}             # <<<<<<<<<<<<<<
  * 
  *             lipid_hg_indices[i] = atom_index + lipid_atomids_offsets[resid_size-1]
  */
-            __pyx_t_27 = PyDict_New(); if (unlikely(!__pyx_t_27)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1793; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
+            __pyx_t_27 = PyDict_New(); if (unlikely(!__pyx_t_27)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1808; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
             __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_28 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom->name_id); if (unlikely(!__pyx_t_28)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1793; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
+            __pyx_t_28 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom->name_id); if (unlikely(!__pyx_t_28)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1808; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
             __Pyx_GOTREF(__pyx_t_28);
-            __pyx_t_29 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom_index); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1793; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
+            __pyx_t_29 = __Pyx_PyInt_From_fsl_int(__pyx_v_atom_index); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1808; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
             __Pyx_GOTREF(__pyx_t_29);
-            if (PyDict_SetItem(__pyx_t_27, __pyx_t_28, __pyx_t_29) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1793; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
+            if (PyDict_SetItem(__pyx_t_27, __pyx_t_28, __pyx_t_29) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1808; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
             __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
             __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
-            __pyx_t_29 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->name_id); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1793; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
+            __pyx_t_29 = __Pyx_PyInt_From_fsl_int(__pyx_v_residue->name_id); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1808; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
             __Pyx_GOTREF(__pyx_t_29);
-            if (unlikely(PyDict_SetItem(__pyx_v_residues_dict, __pyx_t_29, __pyx_t_27) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1793; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
+            if (unlikely(PyDict_SetItem(__pyx_v_residues_dict, __pyx_t_29, __pyx_t_27) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1808; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
             __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
             __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -26207,7 +26615,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
           goto __pyx_L19_except_error;
           __pyx_L19_except_error:;
 
-          /* "fatslimlib/core_base.pyx":1790
+          /* "fatslimlib/core_base.pyx":1805
  *             except KeyError:
  *                 atom_index = topol_residue_atomid_index(residue, atom.atomid)
  *                 try:             # <<<<<<<<<<<<<<
@@ -26234,7 +26642,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       goto __pyx_L9_except_error;
       __pyx_L9_except_error:;
 
-      /* "fatslimlib/core_base.pyx":1786
+      /* "fatslimlib/core_base.pyx":1801
  * 
  * 
  *             try:             # <<<<<<<<<<<<<<
@@ -26254,7 +26662,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
       __pyx_L14_try_end:;
     }
 
-    /* "fatslimlib/core_base.pyx":1795
+    /* "fatslimlib/core_base.pyx":1810
  *                     residues_dict[residue.name_id] = {atom.name_id: atom_index}
  * 
  *             lipid_hg_indices[i] = atom_index + lipid_atomids_offsets[resid_size-1]             # <<<<<<<<<<<<<<
@@ -26266,7 +26674,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     *((fsl_int *) ( /* dim=0 */ (__pyx_v_lipid_hg_indices.data + __pyx_t_31 * __pyx_v_lipid_hg_indices.strides[0]) )) = (__pyx_v_atom_index + (*((fsl_int *) ( /* dim=0 */ (__pyx_v_lipid_atomids_offsets.data + __pyx_t_30 * __pyx_v_lipid_atomids_offsets.strides[0]) ))));
   }
 
-  /* "fatslimlib/core_base.pyx":1797
+  /* "fatslimlib/core_base.pyx":1812
  *             lipid_hg_indices[i] = atom_index + lipid_atomids_offsets[resid_size-1]
  * 
  *         hg_bead_atomids_offsets[resid_size] = size             # <<<<<<<<<<<<<<
@@ -26276,86 +26684,86 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
   __pyx_t_32 = __pyx_v_resid_size;
   *((fsl_int *) ( /* dim=0 */ (__pyx_v_hg_bead_atomids_offsets.data + __pyx_t_32 * __pyx_v_hg_bead_atomids_offsets.strides[0]) )) = __pyx_v_size;
 
-  /* "fatslimlib/core_base.pyx":1798
+  /* "fatslimlib/core_base.pyx":1813
  * 
  *         hg_bead_atomids_offsets[resid_size] = size
  *         lipid_atomids = np.array(lipid_atomids_list, dtype=np.int64)             # <<<<<<<<<<<<<<
  * 
  *         self.hg_bead_atomids = np.array(hg_group_atomids, dtype=np.int64)
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_lipid_atomids_list);
   __Pyx_GIVEREF(__pyx_v_lipid_atomids_list);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_lipid_atomids_list);
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int64); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int64); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_26) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_26) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-  __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_26);
-  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
   __pyx_v_lipid_atomids = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1800
+  /* "fatslimlib/core_base.pyx":1815
  *         lipid_atomids = np.array(lipid_atomids_list, dtype=np.int64)
  * 
  *         self.hg_bead_atomids = np.array(hg_group_atomids, dtype=np.int64)             # <<<<<<<<<<<<<<
  *         self.hg_bead_atomids_offsets = hg_bead_atomids_offsets[:resid_size + 1]
  * 
  */
-  __pyx_t_26 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_26, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_26, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-  __pyx_t_26 = __pyx_memoryview_fromslice(__pyx_v_hg_group_atomids, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_fsl_int, 0);; if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = __pyx_memoryview_fromslice(__pyx_v_hg_group_atomids, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_fsl_int, 0);; if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_26);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_26);
   __pyx_t_26 = 0;
-  __pyx_t_26 = PyDict_New(); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = PyDict_New(); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_26, __pyx_n_s_dtype, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_26, __pyx_n_s_dtype, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_26); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_26); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
   __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_6);
-  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1815; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_bead_atomids, 0);
   __pyx_v_self->hg_bead_atomids = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1801
+  /* "fatslimlib/core_base.pyx":1816
  * 
  *         self.hg_bead_atomids = np.array(hg_group_atomids, dtype=np.int64)
  *         self.hg_bead_atomids_offsets = hg_bead_atomids_offsets[:resid_size + 1]             # <<<<<<<<<<<<<<
@@ -26380,7 +26788,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_2initialize(struc
     0,
     1) < 0))
 {
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1801; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1816; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_bead_atomids_offsets, 0);
@@ -26388,7 +26796,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_bead_atomids_offsets, 0);
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1803
+  /* "fatslimlib/core_base.pyx":1818
  *         self.hg_bead_atomids_offsets = hg_bead_atomids_offsets[:resid_size + 1]
  * 
  *         self.lipid_atomids = lipid_atomids             # <<<<<<<<<<<<<<
@@ -26399,7 +26807,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_bead_atomids_offsets, 0);
   __PYX_INC_MEMVIEW(&__pyx_v_lipid_atomids, 0);
   __pyx_v_self->lipid_atomids = __pyx_v_lipid_atomids;
 
-  /* "fatslimlib/core_base.pyx":1804
+  /* "fatslimlib/core_base.pyx":1819
  * 
  *         self.lipid_atomids = lipid_atomids
  *         self.lipid_atomids_offsets = lipid_atomids_offsets[:resid_size + 1]             # <<<<<<<<<<<<<<
@@ -26424,7 +26832,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->hg_bead_atomids_offsets, 0);
     0,
     1) < 0))
 {
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1804; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1819; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
@@ -26432,7 +26840,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1805
+  /* "fatslimlib/core_base.pyx":1820
  *         self.lipid_atomids = lipid_atomids
  *         self.lipid_atomids_offsets = lipid_atomids_offsets[:resid_size + 1]
  *         self.lipid_hg_indices = lipid_hg_indices             # <<<<<<<<<<<<<<
@@ -26443,14 +26851,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
   __PYX_INC_MEMVIEW(&__pyx_v_lipid_hg_indices, 0);
   __pyx_v_self->lipid_hg_indices = __pyx_v_lipid_hg_indices;
 
-  /* "fatslimlib/core_base.pyx":1809
+  /* "fatslimlib/core_base.pyx":1824
  * 
  *         # Handle interacting group (if any)
  *         self.interacting_group_name = interacting_group.encode()             # <<<<<<<<<<<<<<
  *         try:
  *             self.interacting_atomids = self.index_reader[interacting_group]
  */
-  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_v_interacting_group, __pyx_n_s_encode); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_v_interacting_group, __pyx_n_s_encode); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_26))) {
@@ -26463,21 +26871,21 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     }
   }
   if (__pyx_t_4) {
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_26, __pyx_t_4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_26, __pyx_t_4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_26); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_26); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_6);
   __Pyx_GOTREF(__pyx_v_self->interacting_group_name);
   __Pyx_DECREF(__pyx_v_self->interacting_group_name);
   __pyx_v_self->interacting_group_name = ((PyObject*)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "fatslimlib/core_base.pyx":1810
+  /* "fatslimlib/core_base.pyx":1825
  *         # Handle interacting group (if any)
  *         self.interacting_group_name = interacting_group.encode()
  *         try:             # <<<<<<<<<<<<<<
@@ -26491,24 +26899,24 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     __Pyx_XGOTREF(__pyx_t_19);
     /*try:*/ {
 
-      /* "fatslimlib/core_base.pyx":1811
+      /* "fatslimlib/core_base.pyx":1826
  *         self.interacting_group_name = interacting_group.encode()
  *         try:
  *             self.interacting_atomids = self.index_reader[interacting_group]             # <<<<<<<<<<<<<<
  *         except KeyError:
  *             self.interacting_atomids = np.array([], dtype=np.int64)
  */
-      __pyx_t_6 = PyObject_GetItem(((PyObject *)__pyx_v_self->index_reader), __pyx_v_interacting_group); if (unlikely(__pyx_t_6 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1811; __pyx_clineno = __LINE__; goto __pyx_L27_error;};
+      __pyx_t_6 = PyObject_GetItem(((PyObject *)__pyx_v_self->index_reader), __pyx_v_interacting_group); if (unlikely(__pyx_t_6 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1826; __pyx_clineno = __LINE__; goto __pyx_L27_error;};
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_6);
-      if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1811; __pyx_clineno = __LINE__; goto __pyx_L27_error;}
+      if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1826; __pyx_clineno = __LINE__; goto __pyx_L27_error;}
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __PYX_XDEC_MEMVIEW(&__pyx_v_self->interacting_atomids, 0);
       __pyx_v_self->interacting_atomids = __pyx_t_5;
       __pyx_t_5.memview = NULL;
       __pyx_t_5.data = NULL;
 
-      /* "fatslimlib/core_base.pyx":1810
+      /* "fatslimlib/core_base.pyx":1825
  *         # Handle interacting group (if any)
  *         self.interacting_group_name = interacting_group.encode()
  *         try:             # <<<<<<<<<<<<<<
@@ -26521,7 +26929,6 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
     goto __pyx_L34_try_end;
     __pyx_L27_error:;
-    __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
     __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
     __Pyx_XDECREF(__pyx_t_29); __pyx_t_29 = 0;
     __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
@@ -26531,8 +26938,9 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
 
-    /* "fatslimlib/core_base.pyx":1812
+    /* "fatslimlib/core_base.pyx":1827
  *         try:
  *             self.interacting_atomids = self.index_reader[interacting_group]
  *         except KeyError:             # <<<<<<<<<<<<<<
@@ -26542,46 +26950,46 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     __pyx_t_22 = PyErr_ExceptionMatches(__pyx_builtin_KeyError);
     if (__pyx_t_22) {
       __Pyx_AddTraceback("fatslimlib.core_base.Trajectory.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_26, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1812; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_26, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1827; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_26);
       __Pyx_GOTREF(__pyx_t_4);
 
-      /* "fatslimlib/core_base.pyx":1813
+      /* "fatslimlib/core_base.pyx":1828
  *             self.interacting_atomids = self.index_reader[interacting_group]
  *         except KeyError:
  *             self.interacting_atomids = np.array([], dtype=np.int64)             # <<<<<<<<<<<<<<
  * 
  *         # Sanity check the interacting atomids
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_27 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_27)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      __pyx_t_27 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_27)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_27);
-      __pyx_t_29 = __Pyx_PyObject_GetAttrStr(__pyx_t_27, __pyx_n_s_int64); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      __pyx_t_29 = __Pyx_PyObject_GetAttrStr(__pyx_t_27, __pyx_n_s_int64); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_29);
       __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_29) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_29) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
-      __pyx_t_29 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      __pyx_t_29 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_GOTREF(__pyx_t_29);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_29);
-      if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1813; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
+      if (unlikely(!__pyx_t_5.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L29_except_error;}
       __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
       __PYX_XDEC_MEMVIEW(&__pyx_v_self->interacting_atomids, 0);
       __pyx_v_self->interacting_atomids = __pyx_t_5;
@@ -26595,7 +27003,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     goto __pyx_L29_except_error;
     __pyx_L29_except_error:;
 
-    /* "fatslimlib/core_base.pyx":1810
+    /* "fatslimlib/core_base.pyx":1825
  *         # Handle interacting group (if any)
  *         self.interacting_group_name = interacting_group.encode()
  *         try:             # <<<<<<<<<<<<<<
@@ -26615,50 +27023,50 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     __pyx_L34_try_end:;
   }
 
-  /* "fatslimlib/core_base.pyx":1816
+  /* "fatslimlib/core_base.pyx":1831
  * 
  *         # Sanity check the interacting atomids
  *         for i in range(self.interacting_atomids.shape[0]):             # <<<<<<<<<<<<<<
  *             if topology.fast_get_atom_internal_id(self.interacting_atomids[i]) < 0:
  *                 raise KeyError("Atomid not registered in topology: %i. Does group '%s' from '%s'"
  */
-  if (unlikely(!__pyx_v_self->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1816; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1831; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_33 = (__pyx_v_self->interacting_atomids.shape[0]);
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_33; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "fatslimlib/core_base.pyx":1817
+    /* "fatslimlib/core_base.pyx":1832
  *         # Sanity check the interacting atomids
  *         for i in range(self.interacting_atomids.shape[0]):
  *             if topology.fast_get_atom_internal_id(self.interacting_atomids[i]) < 0:             # <<<<<<<<<<<<<<
  *                 raise KeyError("Atomid not registered in topology: %i. Does group '%s' from '%s'"
  *                                " file contains H?" % (self.interacting_atomids[i],
  */
-    if (unlikely(!__pyx_v_self->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1817; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+    if (unlikely(!__pyx_v_self->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1832; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
     __pyx_t_34 = __pyx_v_i;
     __pyx_t_11 = ((((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_topology->__pyx_vtab)->fast_get_atom_internal_id(__pyx_v_topology, (*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->interacting_atomids.data + __pyx_t_34 * __pyx_v_self->interacting_atomids.strides[0]) )))) < 0) != 0);
     if (__pyx_t_11) {
 
-      /* "fatslimlib/core_base.pyx":1819
+      /* "fatslimlib/core_base.pyx":1834
  *             if topology.fast_get_atom_internal_id(self.interacting_atomids[i]) < 0:
  *                 raise KeyError("Atomid not registered in topology: %i. Does group '%s' from '%s'"
  *                                " file contains H?" % (self.interacting_atomids[i],             # <<<<<<<<<<<<<<
  *                                                       interacting_group,
  *                                                       self.index_reader.filename))
  */
-      if (unlikely(!__pyx_v_self->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1819; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+      if (unlikely(!__pyx_v_self->interacting_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1834; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
       __pyx_t_35 = __pyx_v_i;
-      __pyx_t_4 = __Pyx_PyInt_From_fsl_int((*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->interacting_atomids.data + __pyx_t_35 * __pyx_v_self->interacting_atomids.strides[0]) )))); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1819; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyInt_From_fsl_int((*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->interacting_atomids.data + __pyx_t_35 * __pyx_v_self->interacting_atomids.strides[0]) )))); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1834; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
 
-      /* "fatslimlib/core_base.pyx":1821
+      /* "fatslimlib/core_base.pyx":1836
  *                                " file contains H?" % (self.interacting_atomids[i],
  *                                                       interacting_group,
  *                                                       self.index_reader.filename))             # <<<<<<<<<<<<<<
  * 
  *         # Identify the forcefield type
  */
-      __pyx_t_26 = PyTuple_New(3); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1819; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_26 = PyTuple_New(3); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1834; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_26);
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_26, 0, __pyx_t_4);
@@ -26670,37 +27078,37 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
       PyTuple_SET_ITEM(__pyx_t_26, 2, __pyx_v_self->index_reader->filename);
       __pyx_t_4 = 0;
 
-      /* "fatslimlib/core_base.pyx":1819
+      /* "fatslimlib/core_base.pyx":1834
  *             if topology.fast_get_atom_internal_id(self.interacting_atomids[i]) < 0:
  *                 raise KeyError("Atomid not registered in topology: %i. Does group '%s' from '%s'"
  *                                " file contains H?" % (self.interacting_atomids[i],             # <<<<<<<<<<<<<<
  *                                                       interacting_group,
  *                                                       self.index_reader.filename))
  */
-      __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Atomid_not_registered_in_topolog, __pyx_t_26); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1819; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Atomid_not_registered_in_topolog, __pyx_t_26); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1834; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
 
-      /* "fatslimlib/core_base.pyx":1818
+      /* "fatslimlib/core_base.pyx":1833
  *         for i in range(self.interacting_atomids.shape[0]):
  *             if topology.fast_get_atom_internal_id(self.interacting_atomids[i]) < 0:
  *                 raise KeyError("Atomid not registered in topology: %i. Does group '%s' from '%s'"             # <<<<<<<<<<<<<<
  *                                " file contains H?" % (self.interacting_atomids[i],
  *                                                       interacting_group,
  */
-      __pyx_t_26 = PyTuple_New(1); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1818; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_26 = PyTuple_New(1); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1833; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_26);
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_26, 0, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_26, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1818; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_26, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1833; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
       __Pyx_Raise(__pyx_t_4, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1818; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1833; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "fatslimlib/core_base.pyx":1817
+      /* "fatslimlib/core_base.pyx":1832
  *         # Sanity check the interacting atomids
  *         for i in range(self.interacting_atomids.shape[0]):
  *             if topology.fast_get_atom_internal_id(self.interacting_atomids[i]) < 0:             # <<<<<<<<<<<<<<
@@ -26710,7 +27118,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     }
   }
 
-  /* "fatslimlib/core_base.pyx":1824
+  /* "fatslimlib/core_base.pyx":1839
  * 
  *         # Identify the forcefield type
  *         self.get_forcefield_type()             # <<<<<<<<<<<<<<
@@ -26719,7 +27127,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
  */
   ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory *)__pyx_v_self->__pyx_vtab)->get_forcefield_type(__pyx_v_self, 0);
 
-  /* "fatslimlib/core_base.pyx":1826
+  /* "fatslimlib/core_base.pyx":1841
  *         self.get_forcefield_type()
  * 
  *         self.initialized = True             # <<<<<<<<<<<<<<
@@ -26728,16 +27136,16 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
  */
   __pyx_v_self->initialized = 1;
 
-  /* "fatslimlib/core_base.pyx":1828
+  /* "fatslimlib/core_base.pyx":1843
  *         self.initialized = True
  * 
  *         verbose_print("Done in %s" % (pretty_delta(begin, time())),             # <<<<<<<<<<<<<<
  *                       self.be_verbose)
  *         sys.stdout.flush()
  */
-  __pyx_t_26 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = __Pyx_GetModuleGlobalName(__pyx_n_s_verbose_print); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
-  __pyx_t_29 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_29 = __Pyx_GetModuleGlobalName(__pyx_n_s_time); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_29);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_29))) {
@@ -26750,28 +27158,28 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_29, __pyx_t_3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_29, __pyx_t_3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_29); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_29); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
-  __pyx_t_29 = __pyx_f_10fatslimlib_9core_base_pretty_delta(__pyx_v_begin, __pyx_t_6, 0); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_29 = __pyx_f_10fatslimlib_9core_base_pretty_delta(__pyx_v_begin, __pyx_t_6, 0); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_29);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyString_Format(__pyx_kp_s_Done_in_s, __pyx_t_29); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyString_Format(__pyx_kp_s_Done_in_s, __pyx_t_29); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
 
-  /* "fatslimlib/core_base.pyx":1829
+  /* "fatslimlib/core_base.pyx":1844
  * 
  *         verbose_print("Done in %s" % (pretty_delta(begin, time())),
  *                       self.be_verbose)             # <<<<<<<<<<<<<<
  *         sys.stdout.flush()
  * 
  */
-  __pyx_t_29 = __Pyx_PyBool_FromLong(__pyx_v_self->be_verbose); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1829; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_29 = __Pyx_PyBool_FromLong(__pyx_v_self->be_verbose); if (unlikely(!__pyx_t_29)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1844; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_29);
   __pyx_t_3 = NULL;
   __pyx_t_33 = 0;
@@ -26785,7 +27193,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
       __pyx_t_33 = 1;
     }
   }
-  __pyx_t_1 = PyTuple_New(2+__pyx_t_33); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2+__pyx_t_33); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if (__pyx_t_3) {
     __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -26796,25 +27204,25 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
   PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_33, __pyx_t_29);
   __pyx_t_6 = 0;
   __pyx_t_29 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_26, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_26, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1843; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1830
+  /* "fatslimlib/core_base.pyx":1845
  *         verbose_print("Done in %s" % (pretty_delta(begin, time())),
  *                       self.be_verbose)
  *         sys.stdout.flush()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_26 = __Pyx_GetModuleGlobalName(__pyx_n_s_sys); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = __Pyx_GetModuleGlobalName(__pyx_n_s_sys); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_26, __pyx_n_s_stdout); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_26, __pyx_n_s_stdout); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_flush); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_flush); if (unlikely(!__pyx_t_26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_26);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -26828,16 +27236,16 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
     }
   }
   if (__pyx_t_1) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_26, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_26, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_26); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_26); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1724
+  /* "fatslimlib/core_base.pyx":1739
  * 
  * 
  *     def initialize(self, str hg_group="headgroups", str interacting_group="protein"):             # <<<<<<<<<<<<<<
@@ -26877,7 +27285,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_self->lipid_atomids_offsets, 0);
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1833
+/* "fatslimlib/core_base.pyx":1848
  * 
  * 
  *     cpdef fsl_int get_forcefield_type(self):             # <<<<<<<<<<<<<<
@@ -26904,7 +27312,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_forcefield_type); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1833; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_forcefield_type); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1848; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_10fatslimlib_9core_base_10Trajectory_5get_forcefield_type)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -26919,14 +27327,14 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1833; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1848; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1833; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1848; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __Pyx_PyInt_As_fsl_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1833; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyInt_As_fsl_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1848; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_r = __pyx_t_5;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -26935,7 +27343,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":1835
+  /* "fatslimlib/core_base.pyx":1850
  *     cpdef fsl_int get_forcefield_type(self):
  *         cdef real rvdw
  *         if self.forcefield_type != fft_notset: # Already done             # <<<<<<<<<<<<<<
@@ -26945,7 +27353,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
   __pyx_t_6 = ((__pyx_v_self->forcefield_type != __pyx_e_10fatslimlib_9core_base_fft_notset) != 0);
   if (__pyx_t_6) {
 
-    /* "fatslimlib/core_base.pyx":1836
+    /* "fatslimlib/core_base.pyx":1851
  *         cdef real rvdw
  *         if self.forcefield_type != fft_notset: # Already done
  *             return self.forcefield_type             # <<<<<<<<<<<<<<
@@ -26955,7 +27363,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
     __pyx_r = __pyx_v_self->forcefield_type;
     goto __pyx_L0;
 
-    /* "fatslimlib/core_base.pyx":1835
+    /* "fatslimlib/core_base.pyx":1850
  *     cpdef fsl_int get_forcefield_type(self):
  *         cdef real rvdw
  *         if self.forcefield_type != fft_notset: # Already done             # <<<<<<<<<<<<<<
@@ -26964,7 +27372,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1838
+  /* "fatslimlib/core_base.pyx":1853
  *             return self.forcefield_type
  * 
  *         rvdw = self.get_rvdw()             # <<<<<<<<<<<<<<
@@ -26973,7 +27381,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
  */
   __pyx_v_rvdw = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory *)__pyx_v_self->__pyx_vtab)->get_rvdw(__pyx_v_self, 0);
 
-  /* "fatslimlib/core_base.pyx":1840
+  /* "fatslimlib/core_base.pyx":1855
  *         rvdw = self.get_rvdw()
  * 
  *         if rvdw < FFT_ALLATOM_THRESHOLD:             # <<<<<<<<<<<<<<
@@ -26983,7 +27391,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
   __pyx_t_6 = ((__pyx_v_rvdw < 0.015) != 0);
   if (__pyx_t_6) {
 
-    /* "fatslimlib/core_base.pyx":1841
+    /* "fatslimlib/core_base.pyx":1856
  * 
  *         if rvdw < FFT_ALLATOM_THRESHOLD:
  *             self.forcefield_type = fft_allatom             # <<<<<<<<<<<<<<
@@ -26992,7 +27400,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
  */
     __pyx_v_self->forcefield_type = __pyx_e_10fatslimlib_9core_base_fft_allatom;
 
-    /* "fatslimlib/core_base.pyx":1840
+    /* "fatslimlib/core_base.pyx":1855
  *         rvdw = self.get_rvdw()
  * 
  *         if rvdw < FFT_ALLATOM_THRESHOLD:             # <<<<<<<<<<<<<<
@@ -27002,7 +27410,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
     goto __pyx_L4;
   }
 
-  /* "fatslimlib/core_base.pyx":1842
+  /* "fatslimlib/core_base.pyx":1857
  *         if rvdw < FFT_ALLATOM_THRESHOLD:
  *             self.forcefield_type = fft_allatom
  *         elif rvdw < FFT_UNIFIED_THRESHOLD:             # <<<<<<<<<<<<<<
@@ -27012,7 +27420,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
   __pyx_t_6 = ((__pyx_v_rvdw < 0.025) != 0);
   if (__pyx_t_6) {
 
-    /* "fatslimlib/core_base.pyx":1843
+    /* "fatslimlib/core_base.pyx":1858
  *             self.forcefield_type = fft_allatom
  *         elif rvdw < FFT_UNIFIED_THRESHOLD:
  *             self.forcefield_type = fft_unified             # <<<<<<<<<<<<<<
@@ -27021,7 +27429,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
  */
     __pyx_v_self->forcefield_type = __pyx_e_10fatslimlib_9core_base_fft_unified;
 
-    /* "fatslimlib/core_base.pyx":1842
+    /* "fatslimlib/core_base.pyx":1857
  *         if rvdw < FFT_ALLATOM_THRESHOLD:
  *             self.forcefield_type = fft_allatom
  *         elif rvdw < FFT_UNIFIED_THRESHOLD:             # <<<<<<<<<<<<<<
@@ -27031,7 +27439,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
     goto __pyx_L4;
   }
 
-  /* "fatslimlib/core_base.pyx":1844
+  /* "fatslimlib/core_base.pyx":1859
  *         elif rvdw < FFT_UNIFIED_THRESHOLD:
  *             self.forcefield_type = fft_unified
  *         elif rvdw < FFT_COARSE_THRESHOLD:             # <<<<<<<<<<<<<<
@@ -27041,7 +27449,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
   __pyx_t_6 = ((__pyx_v_rvdw < 0.25) != 0);
   if (__pyx_t_6) {
 
-    /* "fatslimlib/core_base.pyx":1845
+    /* "fatslimlib/core_base.pyx":1860
  *             self.forcefield_type = fft_unified
  *         elif rvdw < FFT_COARSE_THRESHOLD:
  *             self.forcefield_type = fft_coarse             # <<<<<<<<<<<<<<
@@ -27050,7 +27458,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
  */
     __pyx_v_self->forcefield_type = __pyx_e_10fatslimlib_9core_base_fft_coarse;
 
-    /* "fatslimlib/core_base.pyx":1844
+    /* "fatslimlib/core_base.pyx":1859
  *         elif rvdw < FFT_UNIFIED_THRESHOLD:
  *             self.forcefield_type = fft_unified
  *         elif rvdw < FFT_COARSE_THRESHOLD:             # <<<<<<<<<<<<<<
@@ -27060,7 +27468,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
     goto __pyx_L4;
   }
 
-  /* "fatslimlib/core_base.pyx":1847
+  /* "fatslimlib/core_base.pyx":1862
  *             self.forcefield_type = fft_coarse
  *         else:
  *             self.forcefield_type = fft_unknown             # <<<<<<<<<<<<<<
@@ -27072,7 +27480,7 @@ static fsl_int __pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(
   }
   __pyx_L4:;
 
-  /* "fatslimlib/core_base.pyx":1833
+  /* "fatslimlib/core_base.pyx":1848
  * 
  * 
  *     cpdef fsl_int get_forcefield_type(self):             # <<<<<<<<<<<<<<
@@ -27117,7 +27525,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_4get_forcefield_t
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_forcefield_type", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1833; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1848; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -27134,7 +27542,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_4get_forcefield_t
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1849
+/* "fatslimlib/core_base.pyx":1864
  *             self.forcefield_type = fft_unknown
  * 
  *     cpdef real get_rvdw(self):             # <<<<<<<<<<<<<<
@@ -27196,7 +27604,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_rvdw); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1849; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_rvdw); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_10fatslimlib_9core_base_10Trajectory_7get_rvdw)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -27211,14 +27619,14 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1849; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1849; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (real)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1849; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (real)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_r = __pyx_t_5;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -27227,7 +27635,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "fatslimlib/core_base.pyx":1852
+  /* "fatslimlib/core_base.pyx":1867
  *         cdef real[:, ::1] coords
  *         cdef fsl_int i
  *         cdef real dist, min_dist = 1.0e5             # <<<<<<<<<<<<<<
@@ -27236,31 +27644,31 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
  */
   __pyx_v_min_dist = 1.0e5;
 
-  /* "fatslimlib/core_base.pyx":1855
+  /* "fatslimlib/core_base.pyx":1870
  *         cdef fsl_int lastid
  * 
  *         if self.lipid_atomids is None:             # <<<<<<<<<<<<<<
  *             raise ValueError("Trajectory is not initialized correctly!")
  * 
  */
-  if (unlikely(!__pyx_v_self->lipid_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1855; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_atomids.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1870; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_6 = ((((PyObject *) __pyx_v_self->lipid_atomids.memview) == Py_None) != 0);
   if (__pyx_t_6) {
 
-    /* "fatslimlib/core_base.pyx":1856
+    /* "fatslimlib/core_base.pyx":1871
  * 
  *         if self.lipid_atomids is None:
  *             raise ValueError("Trajectory is not initialized correctly!")             # <<<<<<<<<<<<<<
  * 
  *         # Load the first lipid from the first frame
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1856; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1856; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1855
+    /* "fatslimlib/core_base.pyx":1870
  *         cdef fsl_int lastid
  * 
  *         if self.lipid_atomids is None:             # <<<<<<<<<<<<<<
@@ -27269,43 +27677,43 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1859
+  /* "fatslimlib/core_base.pyx":1874
  * 
  *         # Load the first lipid from the first frame
  *         coords = self.coords_reader.load_coords(0, np.arange(self.lipid_atomids_offsets[0]+1,             # <<<<<<<<<<<<<<
  *                                                              self.lipid_atomids_offsets[1]+1,
  *                                                              dtype=np.int64))
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1874; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_arange); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_arange); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1874; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1874; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_7 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_long(((*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->lipid_atomids_offsets.data + __pyx_t_7 * __pyx_v_self->lipid_atomids_offsets.strides[0]) ))) + 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_long(((*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->lipid_atomids_offsets.data + __pyx_t_7 * __pyx_v_self->lipid_atomids_offsets.strides[0]) ))) + 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1874; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "fatslimlib/core_base.pyx":1860
+  /* "fatslimlib/core_base.pyx":1875
  *         # Load the first lipid from the first frame
  *         coords = self.coords_reader.load_coords(0, np.arange(self.lipid_atomids_offsets[0]+1,
  *                                                              self.lipid_atomids_offsets[1]+1,             # <<<<<<<<<<<<<<
  *                                                              dtype=np.int64))
  * 
  */
-  if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->lipid_atomids_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1875; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_8 = 1;
-  __pyx_t_3 = __Pyx_PyInt_From_long(((*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->lipid_atomids_offsets.data + __pyx_t_8 * __pyx_v_self->lipid_atomids_offsets.strides[0]) ))) + 1)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_long(((*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->lipid_atomids_offsets.data + __pyx_t_8 * __pyx_v_self->lipid_atomids_offsets.strides[0]) ))) + 1)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1875; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "fatslimlib/core_base.pyx":1859
+  /* "fatslimlib/core_base.pyx":1874
  * 
  *         # Load the first lipid from the first frame
  *         coords = self.coords_reader.load_coords(0, np.arange(self.lipid_atomids_offsets[0]+1,             # <<<<<<<<<<<<<<
  *                                                              self.lipid_atomids_offsets[1]+1,
  *                                                              dtype=np.int64))
  */
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1874; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -27314,45 +27722,45 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_base.pyx":1861
+  /* "fatslimlib/core_base.pyx":1876
  *         coords = self.coords_reader.load_coords(0, np.arange(self.lipid_atomids_offsets[0]+1,
  *                                                              self.lipid_atomids_offsets[1]+1,
  *                                                              dtype=np.int64))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1876; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1876; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1876; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1876; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "fatslimlib/core_base.pyx":1859
+  /* "fatslimlib/core_base.pyx":1874
  * 
  *         # Load the first lipid from the first frame
  *         coords = self.coords_reader.load_coords(0, np.arange(self.lipid_atomids_offsets[0]+1,             # <<<<<<<<<<<<<<
  *                                                              self.lipid_atomids_offsets[1]+1,
  *                                                              dtype=np.int64))
  */
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1874; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_9);
-  if (unlikely(!__pyx_t_10.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_10.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1874; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_11 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_coords(__pyx_v_self->coords_reader, 0, __pyx_t_10); if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_11 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self->coords_reader->__pyx_vtab)->load_coords(__pyx_v_self->coords_reader, 0, __pyx_t_10); if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1874; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
   __pyx_v_coords = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "fatslimlib/core_base.pyx":1869
+  /* "fatslimlib/core_base.pyx":1884
  *         # corresponds to a C-H bond it means the FF is all-atom (because the H is non polar).
  *         # If the distance is C-C, wa have unified atom. If greater, it must be a coarse grained FF.
  *         lastid = coords.shape[0] - 1             # <<<<<<<<<<<<<<
@@ -27361,7 +27769,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
  */
   __pyx_v_lastid = ((__pyx_v_coords.shape[0]) - 1);
 
-  /* "fatslimlib/core_base.pyx":1870
+  /* "fatslimlib/core_base.pyx":1885
  *         # If the distance is C-C, wa have unified atom. If greater, it must be a coarse grained FF.
  *         lastid = coords.shape[0] - 1
  *         for i in range(lastid):             # <<<<<<<<<<<<<<
@@ -27372,7 +27780,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
   for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
     __pyx_v_i = __pyx_t_13;
 
-    /* "fatslimlib/core_base.pyx":1871
+    /* "fatslimlib/core_base.pyx":1886
  *         lastid = coords.shape[0] - 1
  *         for i in range(lastid):
  *             dist = (coords[i, XX] - coords[lastid, XX]) * (coords[i, XX] - coords[lastid, XX]) +\             # <<<<<<<<<<<<<<
@@ -27388,7 +27796,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
     __pyx_t_20 = __pyx_v_lastid;
     __pyx_t_21 = 0;
 
-    /* "fatslimlib/core_base.pyx":1872
+    /* "fatslimlib/core_base.pyx":1887
  *         for i in range(lastid):
  *             dist = (coords[i, XX] - coords[lastid, XX]) * (coords[i, XX] - coords[lastid, XX]) +\
  *                 (coords[i, YY] - coords[lastid, YY]) * (coords[i, YY] - coords[lastid, YY]) +\             # <<<<<<<<<<<<<<
@@ -27404,7 +27812,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
     __pyx_t_28 = __pyx_v_lastid;
     __pyx_t_29 = 1;
 
-    /* "fatslimlib/core_base.pyx":1873
+    /* "fatslimlib/core_base.pyx":1888
  *             dist = (coords[i, XX] - coords[lastid, XX]) * (coords[i, XX] - coords[lastid, XX]) +\
  *                 (coords[i, YY] - coords[lastid, YY]) * (coords[i, YY] - coords[lastid, YY]) +\
  *                 (coords[i, ZZ] - coords[lastid, ZZ]) * (coords[i, ZZ] - coords[lastid, ZZ])             # <<<<<<<<<<<<<<
@@ -27420,7 +27828,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
     __pyx_t_36 = __pyx_v_lastid;
     __pyx_t_37 = 2;
 
-    /* "fatslimlib/core_base.pyx":1872
+    /* "fatslimlib/core_base.pyx":1887
  *         for i in range(lastid):
  *             dist = (coords[i, XX] - coords[lastid, XX]) * (coords[i, XX] - coords[lastid, XX]) +\
  *                 (coords[i, YY] - coords[lastid, YY]) * (coords[i, YY] - coords[lastid, YY]) +\             # <<<<<<<<<<<<<<
@@ -27429,7 +27837,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
  */
     __pyx_v_dist = (((((*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_14 * __pyx_v_coords.strides[0]) )) + __pyx_t_15)) ))) - (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_16 * __pyx_v_coords.strides[0]) )) + __pyx_t_17)) )))) * ((*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_18 * __pyx_v_coords.strides[0]) )) + __pyx_t_19)) ))) - (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_20 * __pyx_v_coords.strides[0]) )) + __pyx_t_21)) ))))) + (((*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_22 * __pyx_v_coords.strides[0]) )) + __pyx_t_23)) ))) - (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_24 * __pyx_v_coords.strides[0]) )) + __pyx_t_25)) )))) * ((*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_26 * __pyx_v_coords.strides[0]) )) + __pyx_t_27)) ))) - (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_28 * __pyx_v_coords.strides[0]) )) + __pyx_t_29)) )))))) + (((*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_30 * __pyx_v_coords.strides[0]) )) + __pyx_t_31)) ))) - (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_32 * __pyx_v_coords.strides[0]) )) + __pyx_t_33)) )))) * ((*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_34 * __pyx_v_coords.strides[0]) )) + __pyx_t_35)) ))) - (*((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_36 * __pyx_v_coords.strides[0]) )) + __pyx_t_37)) ))))));
 
-    /* "fatslimlib/core_base.pyx":1875
+    /* "fatslimlib/core_base.pyx":1890
  *                 (coords[i, ZZ] - coords[lastid, ZZ]) * (coords[i, ZZ] - coords[lastid, ZZ])
  * 
  *             if dist < min_dist:             # <<<<<<<<<<<<<<
@@ -27439,7 +27847,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
     __pyx_t_6 = ((__pyx_v_dist < __pyx_v_min_dist) != 0);
     if (__pyx_t_6) {
 
-      /* "fatslimlib/core_base.pyx":1876
+      /* "fatslimlib/core_base.pyx":1891
  * 
  *             if dist < min_dist:
  *                 min_dist = dist             # <<<<<<<<<<<<<<
@@ -27448,7 +27856,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
  */
       __pyx_v_min_dist = __pyx_v_dist;
 
-      /* "fatslimlib/core_base.pyx":1875
+      /* "fatslimlib/core_base.pyx":1890
  *                 (coords[i, ZZ] - coords[lastid, ZZ]) * (coords[i, ZZ] - coords[lastid, ZZ])
  * 
  *             if dist < min_dist:             # <<<<<<<<<<<<<<
@@ -27458,7 +27866,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
     }
   }
 
-  /* "fatslimlib/core_base.pyx":1879
+  /* "fatslimlib/core_base.pyx":1894
  * 
  * 
  *         return min_dist             # <<<<<<<<<<<<<<
@@ -27468,7 +27876,7 @@ static real __pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(struct __pyx_o
   __pyx_r = __pyx_v_min_dist;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1849
+  /* "fatslimlib/core_base.pyx":1864
  *             self.forcefield_type = fft_unknown
  * 
  *     cpdef real get_rvdw(self):             # <<<<<<<<<<<<<<
@@ -27515,7 +27923,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_6get_rvdw(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_rvdw", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1849; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -27532,7 +27940,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_6get_rvdw(struct 
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1882
+/* "fatslimlib/core_base.pyx":1897
  * 
  * 
  *     cdef assert_initialization(self):             # <<<<<<<<<<<<<<
@@ -27550,7 +27958,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_10Trajectory_assert_initializat
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("assert_initialization", 0);
 
-  /* "fatslimlib/core_base.pyx":1883
+  /* "fatslimlib/core_base.pyx":1898
  * 
  *     cdef assert_initialization(self):
  *         if not self.initialized:             # <<<<<<<<<<<<<<
@@ -27560,20 +27968,20 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_10Trajectory_assert_initializat
   __pyx_t_1 = ((!(__pyx_v_self->initialized != 0)) != 0);
   if (__pyx_t_1) {
 
-    /* "fatslimlib/core_base.pyx":1884
+    /* "fatslimlib/core_base.pyx":1899
  *     cdef assert_initialization(self):
  *         if not self.initialized:
  *             raise ValueError("Trajectory not initialized")             # <<<<<<<<<<<<<<
  * 
  *     def __getitem__(self, fsl_int item):
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1884; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1899; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1884; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1899; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1883
+    /* "fatslimlib/core_base.pyx":1898
  * 
  *     cdef assert_initialization(self):
  *         if not self.initialized:             # <<<<<<<<<<<<<<
@@ -27582,7 +27990,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_10Trajectory_assert_initializat
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1882
+  /* "fatslimlib/core_base.pyx":1897
  * 
  * 
  *     cdef assert_initialization(self):             # <<<<<<<<<<<<<<
@@ -27603,7 +28011,7 @@ static PyObject *__pyx_f_10fatslimlib_9core_base_10Trajectory_assert_initializat
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1886
+/* "fatslimlib/core_base.pyx":1901
  *             raise ValueError("Trajectory not initialized")
  * 
  *     def __getitem__(self, fsl_int item):             # <<<<<<<<<<<<<<
@@ -27622,7 +28030,7 @@ static PyObject *__pyx_pw_10fatslimlib_9core_base_10Trajectory_9__getitem__(PyOb
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
   assert(__pyx_arg_item); {
-    __pyx_v_item = __Pyx_PyInt_As_fsl_int(__pyx_arg_item); if (unlikely((__pyx_v_item == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1886; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_item = __Pyx_PyInt_As_fsl_int(__pyx_arg_item); if (unlikely((__pyx_v_item == (fsl_int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1901; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -27652,18 +28060,18 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_8__getitem__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__getitem__", 0);
 
-  /* "fatslimlib/core_base.pyx":1887
+  /* "fatslimlib/core_base.pyx":1902
  * 
  *     def __getitem__(self, fsl_int item):
  *         self.assert_initialization()             # <<<<<<<<<<<<<<
  *         cdef real timestep
  *         item = int(item)
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory *)__pyx_v_self->__pyx_vtab)->assert_initialization(__pyx_v_self); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1887; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory *)__pyx_v_self->__pyx_vtab)->assert_initialization(__pyx_v_self); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1902; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_base.pyx":1889
+  /* "fatslimlib/core_base.pyx":1904
  *         self.assert_initialization()
  *         cdef real timestep
  *         item = int(item)             # <<<<<<<<<<<<<<
@@ -27672,7 +28080,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_8__getitem__(stru
  */
 
 
-  /* "fatslimlib/core_base.pyx":1890
+  /* "fatslimlib/core_base.pyx":1905
  *         cdef real timestep
  *         item = int(item)
  *         if not 0 <= item < self.coords_reader.nframes:             # <<<<<<<<<<<<<<
@@ -27686,39 +28094,39 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_8__getitem__(stru
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "fatslimlib/core_base.pyx":1892
+    /* "fatslimlib/core_base.pyx":1907
  *         if not 0 <= item < self.coords_reader.nframes:
  *             raise IndexError("Frame index out of range (%i frames in trajectory)" %
  *                              self.coords_reader.nframes)             # <<<<<<<<<<<<<<
  *         timestep = self.coords_reader.timesteps[item]
  *         return Frame(self, item, timestep)
  */
-    __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->coords_reader->nframes); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1892; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyInt_From_fsl_int(__pyx_v_self->coords_reader->nframes); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1907; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
 
-    /* "fatslimlib/core_base.pyx":1891
+    /* "fatslimlib/core_base.pyx":1906
  *         item = int(item)
  *         if not 0 <= item < self.coords_reader.nframes:
  *             raise IndexError("Frame index out of range (%i frames in trajectory)" %             # <<<<<<<<<<<<<<
  *                              self.coords_reader.nframes)
  *         timestep = self.coords_reader.timesteps[item]
  */
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Frame_index_out_of_range_i_frame, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1891; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Frame_index_out_of_range_i_frame, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1906; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1891; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1906; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1891; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1906; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1891; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1906; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "fatslimlib/core_base.pyx":1890
+    /* "fatslimlib/core_base.pyx":1905
  *         cdef real timestep
  *         item = int(item)
  *         if not 0 <= item < self.coords_reader.nframes:             # <<<<<<<<<<<<<<
@@ -27727,18 +28135,18 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_8__getitem__(stru
  */
   }
 
-  /* "fatslimlib/core_base.pyx":1893
+  /* "fatslimlib/core_base.pyx":1908
  *             raise IndexError("Frame index out of range (%i frames in trajectory)" %
  *                              self.coords_reader.nframes)
  *         timestep = self.coords_reader.timesteps[item]             # <<<<<<<<<<<<<<
  *         return Frame(self, item, timestep)
  * 
  */
-  if (unlikely(!__pyx_v_self->coords_reader->timesteps.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1893; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
+  if (unlikely(!__pyx_v_self->coords_reader->timesteps.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");{__pyx_filename = __pyx_f[0]; __pyx_lineno = 1908; __pyx_clineno = __LINE__; goto __pyx_L1_error;}}
   __pyx_t_5 = __pyx_v_item;
   __pyx_v_timestep = (*((real *) ( /* dim=0 */ (__pyx_v_self->coords_reader->timesteps.data + __pyx_t_5 * __pyx_v_self->coords_reader->timesteps.strides[0]) )));
 
-  /* "fatslimlib/core_base.pyx":1894
+  /* "fatslimlib/core_base.pyx":1909
  *                              self.coords_reader.nframes)
  *         timestep = self.coords_reader.timesteps[item]
  *         return Frame(self, item, timestep)             # <<<<<<<<<<<<<<
@@ -27746,11 +28154,11 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_8__getitem__(stru
  *     def __len__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyInt_From_fsl_int(__pyx_v_item); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1894; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_fsl_int(__pyx_v_item); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1909; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_timestep); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1894; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_timestep); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1909; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1894; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1909; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
@@ -27761,14 +28169,14 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_8__getitem__(stru
   PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_t_1);
   __pyx_t_4 = 0;
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_Frame), __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1894; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_Frame), __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1909; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1886
+  /* "fatslimlib/core_base.pyx":1901
  *             raise ValueError("Trajectory not initialized")
  * 
  *     def __getitem__(self, fsl_int item):             # <<<<<<<<<<<<<<
@@ -27789,7 +28197,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_8__getitem__(stru
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1896
+/* "fatslimlib/core_base.pyx":1911
  *         return Frame(self, item, timestep)
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -27815,7 +28223,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_10Trajectory_10__len__(struct
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "fatslimlib/core_base.pyx":1897
+  /* "fatslimlib/core_base.pyx":1912
  * 
  *     def __len__(self):
  *         return self.coords_reader.nframes             # <<<<<<<<<<<<<<
@@ -27825,7 +28233,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_10Trajectory_10__len__(struct
   __pyx_r = __pyx_v_self->coords_reader->nframes;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1896
+  /* "fatslimlib/core_base.pyx":1911
  *         return Frame(self, item, timestep)
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -27839,7 +28247,7 @@ static Py_ssize_t __pyx_pf_10fatslimlib_9core_base_10Trajectory_10__len__(struct
   return __pyx_r;
 }
 
-/* "fatslimlib/core_base.pyx":1900
+/* "fatslimlib/core_base.pyx":1915
  * 
  * 
  *     def get_topology(self):             # <<<<<<<<<<<<<<
@@ -27865,7 +28273,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_12get_topology(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_topology", 0);
 
-  /* "fatslimlib/core_base.pyx":1901
+  /* "fatslimlib/core_base.pyx":1916
  * 
  *     def get_topology(self):
  *         return self.topology             # <<<<<<<<<<<<<<
@@ -27877,7 +28285,7 @@ static PyObject *__pyx_pf_10fatslimlib_9core_base_10Trajectory_12get_topology(st
   __pyx_r = ((PyObject *)__pyx_v_self->topology);
   goto __pyx_L0;
 
-  /* "fatslimlib/core_base.pyx":1900
+  /* "fatslimlib/core_base.pyx":1915
  * 
  * 
  *     def get_topology(self):             # <<<<<<<<<<<<<<
@@ -39694,9 +40102,11 @@ static PyMethodDef __pyx_methods_10fatslimlib_9core_base_PBCBox[] = {
   {"dx_leaflet", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_11dx_leaflet, METH_VARARGS|METH_KEYWORDS, 0},
   {"distance2", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_13distance2, METH_VARARGS|METH_KEYWORDS, 0},
   {"distance", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_15distance, METH_VARARGS|METH_KEYWORDS, 0},
-  {"get_xcm", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_17get_xcm, METH_O, 0},
-  {"asarray", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_19asarray, METH_NOARGS, 0},
-  {"put_atoms_in_bbox", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_21put_atoms_in_bbox, METH_O, 0},
+  {"leaflet_distance2", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_17leaflet_distance2, METH_VARARGS|METH_KEYWORDS, 0},
+  {"leaflet_distance", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_19leaflet_distance, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_xcm", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_21get_xcm, METH_O, 0},
+  {"asarray", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_23asarray, METH_NOARGS, 0},
+  {"put_atoms_in_bbox", (PyCFunction)__pyx_pw_10fatslimlib_9core_base_6PBCBox_25put_atoms_in_bbox, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -41776,6 +42186,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_itemsize_0_for_cython_array, __pyx_k_itemsize_0_for_cython_array, sizeof(__pyx_k_itemsize_0_for_cython_array), 0, 0, 1, 0},
   {&__pyx_n_s_leaflet1, __pyx_k_leaflet1, sizeof(__pyx_k_leaflet1), 0, 0, 1, 1},
   {&__pyx_n_s_leaflet2, __pyx_k_leaflet2, sizeof(__pyx_k_leaflet2), 0, 0, 1, 1},
+  {&__pyx_n_s_leaflet_distance2, __pyx_k_leaflet_distance2, sizeof(__pyx_k_leaflet_distance2), 0, 0, 1, 1},
   {&__pyx_n_s_load, __pyx_k_load, sizeof(__pyx_k_load), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_memview, __pyx_k_memview, sizeof(__pyx_k_memview), 0, 0, 1, 1},
@@ -41853,9 +42264,9 @@ static int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 346; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 354; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 543; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1076; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1091; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_Ellipsis = __Pyx_GetBuiltinName(__pyx_n_s_Ellipsis); if (!__pyx_builtin_Ellipsis) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -41984,78 +42395,78 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "fatslimlib/core_base.pyx":660
+  /* "fatslimlib/core_base.pyx":675
  *         self.fast_pbc_xcm(coords, xcm)
  * 
  *         xcm_py = np.empty(DIM)             # <<<<<<<<<<<<<<
  *         rvec_to_memview(xcm, xcm_py)
  * 
  */
-  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_int_3); if (unlikely(!__pyx_tuple__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_int_3); if (unlikely(!__pyx_tuple__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "fatslimlib/core_base.pyx":667
+  /* "fatslimlib/core_base.pyx":682
  *     def asarray(self):
  *         cdef fsl_int i, j
  *         box = np.empty((DIM, DIM))             # <<<<<<<<<<<<<<
  * 
  *         for i in range(DIM):
  */
-  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_int_3, __pyx_int_3); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_int_3, __pyx_int_3); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_tuple__15); if (unlikely(!__pyx_tuple__16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_tuple__15); if (unlikely(!__pyx_tuple__16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
 
-  /* "fatslimlib/core_base.pyx":682
+  /* "fatslimlib/core_base.pyx":697
  *         with gil:
  *             if natoms == 0:
  *                 bbox_coords = np.empty((0, DIM))             # <<<<<<<<<<<<<<
  *             else:
  *                 bbox_coords = coords.copy()
  */
-  __pyx_tuple__17 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_3); if (unlikely(!__pyx_tuple__17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__17 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_3); if (unlikely(!__pyx_tuple__17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_tuple__17); if (unlikely(!__pyx_tuple__18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_tuple__17); if (unlikely(!__pyx_tuple__18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "fatslimlib/core_base.pyx":1424
+  /* "fatslimlib/core_base.pyx":1439
  *                         load_coords(self.index, self.trajectory.interacting_atomids)
  *                 else:
  *                     self.interacting_group_coords = np.empty((0, DIM))             # <<<<<<<<<<<<<<
  *         return self.interacting_group_coords
  * 
  */
-  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_3); if (unlikely(!__pyx_tuple__20)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_3); if (unlikely(!__pyx_tuple__20)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_tuple__20); if (unlikely(!__pyx_tuple__21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_tuple__20); if (unlikely(!__pyx_tuple__21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
 
-  /* "fatslimlib/core_base.pyx":1856
+  /* "fatslimlib/core_base.pyx":1871
  * 
  *         if self.lipid_atomids is None:
  *             raise ValueError("Trajectory is not initialized correctly!")             # <<<<<<<<<<<<<<
  * 
  *         # Load the first lipid from the first frame
  */
-  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Trajectory_is_not_initialized_co); if (unlikely(!__pyx_tuple__22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1856; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Trajectory_is_not_initialized_co); if (unlikely(!__pyx_tuple__22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "fatslimlib/core_base.pyx":1884
+  /* "fatslimlib/core_base.pyx":1899
  *     cdef assert_initialization(self):
  *         if not self.initialized:
  *             raise ValueError("Trajectory not initialized")             # <<<<<<<<<<<<<<
  * 
  *     def __getitem__(self, fsl_int item):
  */
-  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Trajectory_not_initialized); if (unlikely(!__pyx_tuple__23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1884; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Trajectory_not_initialized); if (unlikely(!__pyx_tuple__23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1899; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
 
@@ -42425,6 +42836,8 @@ PyMODINIT_FUNC PyInit_core_base(void)
   __pyx_vtable_10fatslimlib_9core_base_PBCBox.fast_pbc_dx_leaflet = (void (*)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *, real *))__pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_dx_leaflet;
   __pyx_vtable_10fatslimlib_9core_base_PBCBox.fast_distance2 = (real (*)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *))__pyx_f_10fatslimlib_9core_base_6PBCBox_fast_distance2;
   __pyx_vtable_10fatslimlib_9core_base_PBCBox.fast_distance = (real (*)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *))__pyx_f_10fatslimlib_9core_base_6PBCBox_fast_distance;
+  __pyx_vtable_10fatslimlib_9core_base_PBCBox.fast_leaflet_distance2 = (real (*)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *))__pyx_f_10fatslimlib_9core_base_6PBCBox_fast_leaflet_distance2;
+  __pyx_vtable_10fatslimlib_9core_base_PBCBox.fast_leaflet_distance = (real (*)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *))__pyx_f_10fatslimlib_9core_base_6PBCBox_fast_leaflet_distance;
   __pyx_vtable_10fatslimlib_9core_base_PBCBox.fast_pbc_xcm = (void (*)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice, real *, struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm *__pyx_optional_args))__pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm;
   __pyx_vtable_10fatslimlib_9core_base_PBCBox.fast_pbc_xcm_from_ref = (void (*)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice, real *, real *, struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref *__pyx_optional_args))__pyx_f_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref;
   __pyx_vtable_10fatslimlib_9core_base_PBCBox.fast_put_atoms_in_bbox = (__Pyx_memviewslice (*)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice))__pyx_f_10fatslimlib_9core_base_6PBCBox_fast_put_atoms_in_bbox;
@@ -42439,10 +42852,10 @@ PyMODINIT_FUNC PyInit_core_base(void)
   __pyx_vtable_10fatslimlib_9core_base_TopologyGroup.merge_other_group = (void (*)(struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *, struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *))__pyx_f_10fatslimlib_9core_base_13TopologyGroup_merge_other_group;
   __pyx_vtable_10fatslimlib_9core_base_TopologyGroup.fast_get_atomids = (__Pyx_memviewslice (*)(struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *))__pyx_f_10fatslimlib_9core_base_13TopologyGroup_fast_get_atomids;
   __pyx_vtable_10fatslimlib_9core_base_TopologyGroup.group_by_resid = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup *))__pyx_f_10fatslimlib_9core_base_13TopologyGroup_group_by_resid;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_TopologyGroup) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 700; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_TopologyGroup) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10fatslimlib_9core_base_TopologyGroup.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_TopologyGroup.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 700; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "TopologyGroup", (PyObject *)&__pyx_type_10fatslimlib_9core_base_TopologyGroup) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 700; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_TopologyGroup.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "TopologyGroup", (PyObject *)&__pyx_type_10fatslimlib_9core_base_TopologyGroup) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10fatslimlib_9core_base_TopologyGroup = &__pyx_type_10fatslimlib_9core_base_TopologyGroup;
   __pyx_vtabptr_10fatslimlib_9core_base_Topology = &__pyx_vtable_10fatslimlib_9core_base_Topology;
   __pyx_vtable_10fatslimlib_9core_base_Topology.set_residues_allocation = (void (*)(struct __pyx_obj_10fatslimlib_9core_base_Topology *, fsl_int))__pyx_f_10fatslimlib_9core_base_8Topology_set_residues_allocation;
@@ -42454,34 +42867,34 @@ PyMODINIT_FUNC PyInit_core_base(void)
   __pyx_vtable_10fatslimlib_9core_base_Topology.fast_get_residue_internal_id = (fsl_int (*)(struct __pyx_obj_10fatslimlib_9core_base_Topology *, fsl_int))__pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue_internal_id;
   __pyx_vtable_10fatslimlib_9core_base_Topology.fast_get_residue = (struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *(*)(struct __pyx_obj_10fatslimlib_9core_base_Topology *, fsl_int))__pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue;
   __pyx_vtable_10fatslimlib_9core_base_Topology.fast_get_residue_from_atomid = (struct __pyx_t_10fatslimlib_9core_base_topol_residue_t *(*)(struct __pyx_obj_10fatslimlib_9core_base_Topology *, fsl_int))__pyx_f_10fatslimlib_9core_base_8Topology_fast_get_residue_from_atomid;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_Topology) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 857; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_Topology) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 872; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10fatslimlib_9core_base_Topology.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_Topology.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_Topology) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 857; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "Topology", (PyObject *)&__pyx_type_10fatslimlib_9core_base_Topology) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 857; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_Topology.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_Topology) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 872; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Topology", (PyObject *)&__pyx_type_10fatslimlib_9core_base_Topology) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 872; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10fatslimlib_9core_base_Topology = &__pyx_type_10fatslimlib_9core_base_Topology;
   __pyx_vtabptr_10fatslimlib_9core_base_TopologyReader = &__pyx_vtable_10fatslimlib_9core_base_TopologyReader;
   __pyx_vtable_10fatslimlib_9core_base_TopologyReader.load = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_TopologyReader *))__pyx_f_10fatslimlib_9core_base_14TopologyReader_load;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_TopologyReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_TopologyReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10fatslimlib_9core_base_TopologyReader.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_TopologyReader.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_TopologyReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "TopologyReader", (PyObject *)&__pyx_type_10fatslimlib_9core_base_TopologyReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_TopologyReader.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_TopologyReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "TopologyReader", (PyObject *)&__pyx_type_10fatslimlib_9core_base_TopologyReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10fatslimlib_9core_base_TopologyReader = &__pyx_type_10fatslimlib_9core_base_TopologyReader;
   __pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader = &__pyx_vtable_10fatslimlib_9core_base_CoordinateReader;
   __pyx_vtable_10fatslimlib_9core_base_CoordinateReader.preload = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *))__pyx_f_10fatslimlib_9core_base_16CoordinateReader_preload;
   __pyx_vtable_10fatslimlib_9core_base_CoordinateReader.load_box = (struct __pyx_obj_10fatslimlib_9core_base_PBCBox *(*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int))__pyx_f_10fatslimlib_9core_base_16CoordinateReader_load_box;
   __pyx_vtable_10fatslimlib_9core_base_CoordinateReader.assert_frame_id = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int))__pyx_f_10fatslimlib_9core_base_16CoordinateReader_assert_frame_id;
   __pyx_vtable_10fatslimlib_9core_base_CoordinateReader.load_coords = (__Pyx_memviewslice (*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int, __Pyx_memviewslice))__pyx_f_10fatslimlib_9core_base_16CoordinateReader_load_coords;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_CoordinateReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1221; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_CoordinateReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10fatslimlib_9core_base_CoordinateReader.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_CoordinateReader.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1221; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "CoordinateReader", (PyObject *)&__pyx_type_10fatslimlib_9core_base_CoordinateReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1221; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_CoordinateReader.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "CoordinateReader", (PyObject *)&__pyx_type_10fatslimlib_9core_base_CoordinateReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10fatslimlib_9core_base_CoordinateReader = &__pyx_type_10fatslimlib_9core_base_CoordinateReader;
   __pyx_vtabptr_10fatslimlib_9core_base_IndexReader = &__pyx_vtable_10fatslimlib_9core_base_IndexReader;
   __pyx_vtable_10fatslimlib_9core_base_IndexReader.fast_load = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_IndexReader *))__pyx_f_10fatslimlib_9core_base_11IndexReader_fast_load;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_IndexReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1251; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_IndexReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10fatslimlib_9core_base_IndexReader.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_IndexReader.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_IndexReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1251; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "IndexReader", (PyObject *)&__pyx_type_10fatslimlib_9core_base_IndexReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1251; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_IndexReader.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_IndexReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "IndexReader", (PyObject *)&__pyx_type_10fatslimlib_9core_base_IndexReader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10fatslimlib_9core_base_IndexReader = &__pyx_type_10fatslimlib_9core_base_IndexReader;
   __pyx_vtabptr_10fatslimlib_9core_base_Frame = &__pyx_vtable_10fatslimlib_9core_base_Frame;
   __pyx_vtable_10fatslimlib_9core_base_Frame.get_forcefield_type = (fsl_int (*)(struct __pyx_obj_10fatslimlib_9core_base_Frame *, int __pyx_skip_dispatch))__pyx_f_10fatslimlib_9core_base_5Frame_get_forcefield_type;
@@ -42499,19 +42912,19 @@ PyMODINIT_FUNC PyInit_core_base(void)
   __pyx_vtable_10fatslimlib_9core_base_Frame.fast_get_normals = (__Pyx_memviewslice (*)(struct __pyx_obj_10fatslimlib_9core_base_Frame *, struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_fast_get_normals *__pyx_optional_args))__pyx_f_10fatslimlib_9core_base_5Frame_fast_get_normals;
   __pyx_vtable_10fatslimlib_9core_base_Frame.get_aggregates = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_Frame *, int __pyx_skip_dispatch, struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_get_aggregates *__pyx_optional_args))__pyx_f_10fatslimlib_9core_base_5Frame_get_aggregates;
   __pyx_vtable_10fatslimlib_9core_base_Frame.get_membranes = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_Frame *, int __pyx_skip_dispatch, struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_get_membranes *__pyx_optional_args))__pyx_f_10fatslimlib_9core_base_5Frame_get_membranes;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_Frame) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_Frame) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10fatslimlib_9core_base_Frame.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_Frame.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_Frame) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "Frame", (PyObject *)&__pyx_type_10fatslimlib_9core_base_Frame) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_Frame.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_Frame) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Frame", (PyObject *)&__pyx_type_10fatslimlib_9core_base_Frame) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10fatslimlib_9core_base_Frame = &__pyx_type_10fatslimlib_9core_base_Frame;
   __pyx_vtabptr_10fatslimlib_9core_base_Trajectory = &__pyx_vtable_10fatslimlib_9core_base_Trajectory;
   __pyx_vtable_10fatslimlib_9core_base_Trajectory.assert_initialization = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_Trajectory *))__pyx_f_10fatslimlib_9core_base_10Trajectory_assert_initialization;
   __pyx_vtable_10fatslimlib_9core_base_Trajectory.get_forcefield_type = (fsl_int (*)(struct __pyx_obj_10fatslimlib_9core_base_Trajectory *, int __pyx_skip_dispatch))__pyx_f_10fatslimlib_9core_base_10Trajectory_get_forcefield_type;
   __pyx_vtable_10fatslimlib_9core_base_Trajectory.get_rvdw = (real (*)(struct __pyx_obj_10fatslimlib_9core_base_Trajectory *, int __pyx_skip_dispatch))__pyx_f_10fatslimlib_9core_base_10Trajectory_get_rvdw;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_Trajectory) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10fatslimlib_9core_base_Trajectory) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1701; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10fatslimlib_9core_base_Trajectory.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_Trajectory.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_Trajectory) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "Trajectory", (PyObject *)&__pyx_type_10fatslimlib_9core_base_Trajectory) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1686; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_9core_base_Trajectory.tp_dict, __pyx_vtabptr_10fatslimlib_9core_base_Trajectory) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1701; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Trajectory", (PyObject *)&__pyx_type_10fatslimlib_9core_base_Trajectory) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1701; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10fatslimlib_9core_base_Trajectory = &__pyx_type_10fatslimlib_9core_base_Trajectory;
   if (PyType_Ready(&__pyx_type___pyx_array) < 0) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 101; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type___pyx_array.tp_print = 0;
@@ -42656,64 +43069,64 @@ PyMODINIT_FUNC PyInit_core_base(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_verbose_print, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 159; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1680
+  /* "fatslimlib/core_base.pyx":1695
  * 
  * 
  * FORCEFIELDTYPE_NOTSET = fft_notset             # <<<<<<<<<<<<<<
  * FORCEFIELDTYPE_ALLATOM = fft_allatom
  * FORCEFIELDTYPE_UNIFIED = fft_unified
  */
-  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_notset); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1680; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_notset); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1695; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_NOTSET, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1680; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_NOTSET, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1695; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1681
+  /* "fatslimlib/core_base.pyx":1696
  * 
  * FORCEFIELDTYPE_NOTSET = fft_notset
  * FORCEFIELDTYPE_ALLATOM = fft_allatom             # <<<<<<<<<<<<<<
  * FORCEFIELDTYPE_UNIFIED = fft_unified
  * FORCEFIELDTYPE_COARSE = fft_coarse
  */
-  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_allatom); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1681; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_allatom); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1696; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_ALLATOM, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1681; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_ALLATOM, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1696; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1682
+  /* "fatslimlib/core_base.pyx":1697
  * FORCEFIELDTYPE_NOTSET = fft_notset
  * FORCEFIELDTYPE_ALLATOM = fft_allatom
  * FORCEFIELDTYPE_UNIFIED = fft_unified             # <<<<<<<<<<<<<<
  * FORCEFIELDTYPE_COARSE = fft_coarse
  * FORCEFIELDTYPE_UNKNOWN = fft_unknown
  */
-  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_unified); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_unified); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_UNIFIED, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1682; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_UNIFIED, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1683
+  /* "fatslimlib/core_base.pyx":1698
  * FORCEFIELDTYPE_ALLATOM = fft_allatom
  * FORCEFIELDTYPE_UNIFIED = fft_unified
  * FORCEFIELDTYPE_COARSE = fft_coarse             # <<<<<<<<<<<<<<
  * FORCEFIELDTYPE_UNKNOWN = fft_unknown
  * 
  */
-  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_coarse); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1683; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_coarse); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1698; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_COARSE, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1683; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_COARSE, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1698; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fatslimlib/core_base.pyx":1684
+  /* "fatslimlib/core_base.pyx":1699
  * FORCEFIELDTYPE_UNIFIED = fft_unified
  * FORCEFIELDTYPE_COARSE = fft_coarse
  * FORCEFIELDTYPE_UNKNOWN = fft_unknown             # <<<<<<<<<<<<<<
  * 
  * cdef class Trajectory(object):
  */
-  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_unknown); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1684; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_enum____pyx_t_10fatslimlib_9core_base_ForcefieldType(__pyx_e_10fatslimlib_9core_base_fft_unknown); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1699; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_UNKNOWN, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1684; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORCEFIELDTYPE_UNKNOWN, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1699; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "fatslimlib/core_base.pyx":1

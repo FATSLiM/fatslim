@@ -266,7 +266,8 @@ cdef bint check_leaflet_compatibility(Frame frame, Aggregate leaflet1, Aggregate
             return False
 
         # And distance between the leaflets centers of mass must be small enough
-        if frame.box.fast_distance(leaflet1.xcm, leaflet2.xcm) > MAX_INTERLEAFLET_DISTANCE:
+        if frame.box.fast_leaflet_distance(leaflet1.xcm, leaflet2.xcm, leaflet1.avg_normal)\
+                > MAX_INTERLEAFLET_DISTANCE:
             return False
 
         # And average normal should be roughly antiparallel
@@ -574,7 +575,7 @@ cdef class Aggregate(object):
             rvec_copy(&normals[beadid, XX], &self_normals[i, XX])
             rvec_copy(&directions[beadid, XX], &self_directions[i, XX])
         rvec_smul(1.0/size, self.xcm, self.xcm)
-        rvec_sub(self.frame.box.center, self.xcm, self.xcm)
+        rvec_inc(self.xcm, self.frame.box.center)
 
         # Update the smoothed normals
         self.set_neighborhood_cutoff(NOTSET, force=True)
@@ -1071,6 +1072,10 @@ cdef class Aggregate(object):
         def __get__(self):
             return np.asarray(self.neighborhood_normals)
 
+    property directions:
+        def __get__(self):
+            return np.asarray(self.directions)
+
     property raw_normals:
         def __get__(self):
             return np.asarray(self.normals)
@@ -1083,7 +1088,9 @@ cdef class Aggregate(object):
             str_type = "Planar"
         else:
             str_type = "Non planar"
-        return "%s aggregate made of %i lipids" % (str_type, self.fast_size())
+        return "%s aggregate made of %i lipids (XCM: %.3f, %.3f, %.3f)" % \
+               (str_type, self.fast_size(),
+                self.xcm[XX], self.xcm[YY], self.xcm[ZZ])
 
 
 
@@ -1111,7 +1118,15 @@ cdef class Membrane(object):
         else:
             # Make sure that leaflet 1 always corresponds to the lower leaflet
 
-            if l1.xcm[ZZ] < l2.xcm[ZZ]:
+            ref_dir = XX
+            ref_val = real_abs(l1.avg_normal[ref_dir])
+            for direction in [YY, ZZ]:
+                val = real_abs(l1.avg_normal[direction])
+                if val > ref_val:
+                    ref_dir = direction
+                    ref_val = val
+
+            if l1.avg_normal[ref_dir] < 0:
                 self.leaflet1 = l1
                 self.leaflet2 = l2
             else:
@@ -1518,13 +1533,36 @@ cdef list retrieve_membranes(Frame frame, real cutoff):
 
     # Second, build the membranes
     membranes_py = list()
+
     while len(clean_aggregates_py) > 0:
         ref_leaflet = clean_aggregates_py.pop(0)
 
+        compatibles = []
         for leaflet in clean_aggregates_py:
             if check_leaflet_compatibility(frame, ref_leaflet, leaflet):
-                membranes_py.append(Membrane(frame, ref_leaflet, leaflet))
-                clean_aggregates_py.remove(leaflet)
-                break
+                compatibles.append(leaflet)
+
+        companion = None
+        ref_dist = -1
+        for leaflet in compatibles:
+            if companion is None:
+                companion = leaflet
+                ref_dist = frame.box.fast_leaflet_distance(ref_leaflet.xcm,
+                                                           leaflet.xcm,
+                                                           ref_leaflet.avg_normal)
+                continue
+
+            cur_dist = frame.box.fast_leaflet_distance(ref_leaflet.xcm,
+                                                       leaflet.xcm,
+                                                       ref_leaflet.avg_normal)
+
+            if cur_dist < ref_dist:
+                companion = leaflet
+                ref_dist = cur_dist
+
+        if companion is not None:
+            membranes_py.append(Membrane(frame, ref_leaflet, companion))
+            clean_aggregates_py.remove(companion)
+
 
     return membranes_py

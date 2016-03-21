@@ -717,7 +717,7 @@ class TestCommands(TestCase):
                 ref_leaflet.append(4 + (i*36+j) * 50)
                 ref_leaflet.append(8 + (i*36+j) * 50)
 
-            if i == 0:
+            if i == 1:
                 np.testing.assert_array_equal(leaflet1, ref_leaflet)
             else:
                 np.testing.assert_array_equal(leaflet2, ref_leaflet)
@@ -756,7 +756,7 @@ class TestCommands(TestCase):
         for i in range(2):
             ref_leaflet = np.arange(36*50) + 1 + i*(36*50)
 
-            if i == 0:
+            if i == 1:
                 np.testing.assert_array_equal(leaflet1, ref_leaflet)
             else:
                 np.testing.assert_array_equal(leaflet2, ref_leaflet)

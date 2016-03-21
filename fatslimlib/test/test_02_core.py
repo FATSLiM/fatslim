@@ -26,7 +26,7 @@ from numpy.testing import assert_almost_equal, assert_allclose
 # Local imports
 from . import frame_vesicle, frame_model_bilayer_prot, frame_model_bilayer, frame_model_vesicle, frame_bilayer, \
     frame_bilayer_prot, frame_big_prot, frame_bilayer_chol, frame_model_bilayer_vesicle, frame_model_multibilayer, \
-    traj_vesicle, frame_bilayer_allatom
+    traj_vesicle, frame_bilayer_allatom, frame_multibilayer
 
 
 def dprod(v1, v2):
@@ -299,7 +299,7 @@ def test_aggregate_model_bilayer(frame_model_bilayer):
 
     for i, aggregate in enumerate(aggregates):
         assert_almost_equal(aggregate.beadids, ref_aggregates[i])
-        assert_allclose(aggregate.xcm, (2.42,  2.4,  2.168 + i*5.664), 1e-2)
+        assert_allclose(aggregate.xcm, aggregate.coords.mean(axis=0), 1e-2)
 
     assert len(frame.get_aggregates(0.5)) == 72
 
@@ -318,6 +318,14 @@ def test_aggregate_bilayer(frame_bilayer):
 
 def test_aggregate_big_prot(frame_big_prot):
     ref_aggregates = [12152, 11861, 42, 1]
+    ref_xcm = [
+        [43.19, 43.06, 9.95],
+        [43.24, 43.20, 14.27]
+    ]
+    expected_normal = [
+        [0, 0, -1],
+        [0, 0, 1]
+    ]
 
     frame = frame_big_prot
     aggregates = frame.get_aggregates()
@@ -326,6 +334,13 @@ def test_aggregate_big_prot(frame_big_prot):
 
     for i, aggregate in enumerate(aggregates):
         assert len(aggregate) == ref_aggregates[i]
+
+        if i < len(ref_xcm):
+            assert_allclose(aggregate.xcm, ref_xcm[i], rtol=0.001)
+
+            dp_val = dprod(aggregate.avg_normal, expected_normal[i])
+
+            assert dp_val > 0.90
 
 
 def test_aggregate_chol(frame_bilayer_chol):
@@ -422,8 +437,8 @@ def test_membranes_model_bilayer(frame_model_bilayer):
     frame = frame_model_bilayer
     nlipids = frame.size
 
-    ref_membrane_beadids = [np.arange(36),
-                            np.arange(36, 72)]
+    ref_membrane_beadids = [np.arange(36, 72),
+                            np.arange(36)]
     membranes = frame.get_membranes()
 
     assert len(membranes) == 1
@@ -475,7 +490,7 @@ def test_membranes_bilayer_normals(frame_bilayer):
 
 
 def test_membranes_big_prot(frame_big_prot):
-    ref_leaflets = [11861, 12152]
+    ref_leaflets = [12152, 11861]
 
     frame = frame_big_prot
     membranes = frame.get_membranes()
@@ -492,7 +507,7 @@ def test_membranes_big_prot(frame_big_prot):
 
 def test_membranes_chol(frame_bilayer_chol):
 
-    ref_leaflets = [967, 977]
+    ref_leaflets = [977, 967]
 
     frame = frame_bilayer_chol
     membranes = frame.get_membranes()
@@ -522,6 +537,7 @@ def test_membranes_vesicle_model(frame_model_vesicle):
     for i, leaflet in enumerate(membrane):
         assert len(leaflet) == ref_leaflets[i]
 
+
 def test_membranes_vesicle_model_normals(frame_model_vesicle):
     frame = frame_model_vesicle
     membrane = frame.get_membranes()[0]
@@ -538,6 +554,7 @@ def test_membranes_vesicle_model_normals(frame_model_vesicle):
                 ref_direction *= -1.0
             assert dprod(normal, ref_direction) > 0.998  # less than 4° off
 
+
 def test_membranes_vesicle(frame_vesicle):
     ref_leaflets = [1851, 1179]
 
@@ -553,6 +570,7 @@ def test_membranes_vesicle(frame_vesicle):
     for i, leaflet in enumerate(membrane):
         assert len(leaflet) == ref_leaflets[i]
 
+
 def test_membranes_vesicle_traj(traj_vesicle):
     for frame in traj_vesicle:
         membranes = frame.get_membranes()
@@ -560,15 +578,15 @@ def test_membranes_vesicle_traj(traj_vesicle):
         assert membranes[0].is_vesicle
 
 
-def test_membranes_multibilayer(frame_model_multibilayer):
+def test_membranes_multibilayer_model(frame_model_multibilayer):
 
     frame = frame_model_multibilayer
     nlipids = 72
 
-    ref_membrane_beadids = [[np.arange(36),
-                            np.arange(36, 72)],
-                            [np.arange(108, 144),
-                                np.arange(72, 108)]]
+    ref_membrane_beadids = [[np.arange(36, 72),
+                            np.arange(36)],
+                            [np.arange(72, 108),
+                                np.arange(108, 144)]]
     membranes = frame.get_membranes()
 
     assert len(membranes) == 2
@@ -580,6 +598,35 @@ def test_membranes_multibilayer(frame_model_multibilayer):
 
         for i, beadids in enumerate(membrane.beadids):
             assert_almost_equal(beadids, ref_membrane_beadids[mid][i])
+
+
+def test_membranes_multibilayer(frame_multibilayer):
+
+    frame = frame_multibilayer
+    nlipids = 256
+
+    ref_membrane_beadids_firsts = [
+        [
+            [198, 240, 254, 366, 506],
+            [30, 44, 58, 86, 142]
+        ],
+        [
+            [2, 16, 72, 100, 114],
+            [688, 1682, 2022, 2036, 2050]
+        ]
+    ]
+
+    membranes = frame.get_membranes()
+
+    assert len(membranes) == 2
+
+    for mid, membrane in enumerate(membranes):
+        assert membrane.is_planar
+
+        assert sum([len(val) for val in membrane]) == nlipids
+
+        for i, leaflet in enumerate(membrane):
+            assert_almost_equal(leaflet.hg_atomids[:5], ref_membrane_beadids_firsts[mid][i])
 
 
 def test_membranes_bilayer_vesicle(frame_model_bilayer_vesicle):
