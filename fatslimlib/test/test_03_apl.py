@@ -158,7 +158,7 @@ def test_apl_bilayer(frame_bilayer):
     frame = frame_bilayer
     membrane = frame.get_membranes()[0]
 
-    ref_apl = (0.664, 0.663, 0.664)
+    ref_apl = (0.664, 0.664, 0.663)
 
     apl = membrane.get_apl(by_type=False)
 
@@ -176,8 +176,8 @@ def test_apl_bilayer_chol(frame_bilayer_chol):
     frame = frame_bilayer_chol
     membrane = frame.get_membranes()[0]
 
-    ref_apl = (0.490, 0.491, 0.489)
-    ref_area = (475.346, 478.215)
+    ref_apl = (0.490, 0.489, 0.491)
+    ref_area = (477.810, 475.138)
 
     apl = membrane.get_apl(by_type=False)
 
@@ -197,12 +197,12 @@ def test_apl_bilayer_chol_by_type(frame_bilayer_chol):
     frame = frame_bilayer_chol
     membrane = frame.get_membranes()[0]
 
-    ref_apl_chol = (0.387, 0.389)
-    ref_area_chol = (109.63, 114.109)
-    ref_apl_dppc = (0.471, 0.456)
-    ref_area_dppc = (196.033, 188.035)
-    ref_apl_dupc = (0.633, 0.647)
-    ref_area_dupc = (169.683, 176.071)
+    ref_apl_chol = (0.389, 0.387)
+    ref_area_chol = (114.109, 109.63)
+    ref_apl_dppc = (0.456, 0.471)
+    ref_area_dppc = (188.035, 196.033)
+    ref_apl_dupc = (0.647, 0.633)
+    ref_area_dupc = (176.071, 169.683)
 
     apl = membrane.get_apl()
     for lid in [1, 2]:
@@ -276,8 +276,8 @@ def test_apl_bilayer_peptide(frame_bilayer_peptide):
     frame = frame_bilayer_peptide
     membrane = frame.get_membranes()[0]
 
-    ref_apl = (0.614, 0.618, 0.609)
-    ref_area = (38.934, 38.397)
+    ref_apl = (0.614, 0.609, 0.618)
+    ref_area = (38.397, 38.934)
 
     apl = membrane.get_apl(by_type=False)
 
@@ -318,8 +318,8 @@ def test_apl_bilayer_prot(frame_bilayer_prot):
     frame = frame_bilayer_prot
     membrane = frame.get_membranes()[0]
 
-    ref_apl = (0.689, 0.707, 0.672)
-    ref_area = (39.564, 37.640)
+    ref_apl = (0.689, 0.672, 0.707)
+    ref_area = (37.640, 39.564)
 
     apl = membrane.get_apl(by_type=False)
 

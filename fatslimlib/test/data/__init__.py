@@ -53,11 +53,15 @@ MODEL_BILAYER_PROT_NDX = _fullpath_from_basename("model_bilayer_prot.ndx")
 BILAYER_PROT_GRO = _fullpath_from_basename("bilayer_prot.gro")
 BILAYER_PROT_NDX = _fullpath_from_basename("bilayer_prot.ndx")
 
-# 2 Bilayers
+# 2 Model bilayers
 MODEL_MULTIBILAYER_GRO = _fullpath_from_basename("model_multibilayer.gro")
 MODEL_MULTIBILAYER_NDX = _fullpath_from_basename("model_multibilayer.ndx")
 
 # 2 Bilayers
+MULTIBILAYER_GRO = _fullpath_from_basename("bilayer_multi.gro")
+MULTIBILAYER_NDX = _fullpath_from_basename("bilayer_multi.ndx")
+
+# Model vesicle
 MODEL_BILAYER_VESICLE_GRO = _fullpath_from_basename("model_bilayer_vesicle.gro")
 MODEL_BILAYER_VESICLE_NDX = _fullpath_from_basename("model_bilayer_vesicle.ndx")
 

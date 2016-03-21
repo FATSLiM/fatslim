@@ -722,9 +722,9 @@ struct __pyx_t_10fatslimlib_9core_base_cPBCBox_t {
   real tric_vec[12][3];
 };
 
-/* "core_base.pxd":102
- *     cdef real fast_distance2(self, rvec ref, rvec other) nogil
- *     cdef real fast_distance(self, rvec aref, rvec other) nogil
+/* "core_base.pxd":104
+ *     cdef real fast_leaflet_distance2(self, rvec a, rvec b, rvec normal) nogil
+ *     cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil
  *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=*) nogil             # <<<<<<<<<<<<<<
  *     cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref, rvec xcm, fsl_int limit=*) nogil
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil
@@ -734,8 +734,8 @@ struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm {
   fsl_int limit;
 };
 
-/* "core_base.pxd":103
- *     cdef real fast_distance(self, rvec aref, rvec other) nogil
+/* "core_base.pxd":105
+ *     cdef real fast_leaflet_distance(self, rvec a, rvec b, rvec normal) nogil
  *     cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int limit=*) nogil
  *     cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref, rvec xcm, fsl_int limit=*) nogil             # <<<<<<<<<<<<<<
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil
@@ -746,7 +746,7 @@ struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref {
   fsl_int limit;
 };
 
-/* "core_base.pxd":106
+/* "core_base.pxd":108
  *     cdef real[:, ::1]fast_put_atoms_in_bbox(self, real[:,::1] coords) nogil
  * 
  * cdef struct topol_atom_t:             # <<<<<<<<<<<<<<
@@ -761,7 +761,7 @@ struct __pyx_t_10fatslimlib_9core_base_topol_atom_t {
   fsl_int residue_internal_id;
 };
 
-/* "core_base.pxd":113
+/* "core_base.pxd":115
  *     fsl_int residue_internal_id
  * 
  * cdef struct topol_residue_t:             # <<<<<<<<<<<<<<
@@ -778,7 +778,7 @@ struct __pyx_t_10fatslimlib_9core_base_topol_residue_t {
   fsl_int *atomids;
 };
 
-/* "core_base.pxd":259
+/* "core_base.pxd":261
  *     cdef list get_lipid_coords_bbox_aslist(self)
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil             # <<<<<<<<<<<<<<
@@ -790,7 +790,7 @@ struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_fast_get_normals {
   real proximity_cutoff;
 };
 
-/* "core_base.pxd":260
+/* "core_base.pxd":262
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil
  *     cpdef list get_aggregates(self, real cutoff=*, bint update=*)             # <<<<<<<<<<<<<<
@@ -803,7 +803,7 @@ struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_get_aggregates {
   int update;
 };
 
-/* "core_base.pxd":261
+/* "core_base.pxd":263
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil
  *     cpdef list get_aggregates(self, real cutoff=*, bint update=*)
  *     cpdef list get_membranes(self, real cutoff=*, bint update=*)             # <<<<<<<<<<<<<<
@@ -872,7 +872,7 @@ struct __pyx_obj_10fatslimlib_9core_base_PBCBox {
 };
 
 
-/* "core_base.pxd":122
+/* "core_base.pxd":124
  *     fsl_int *atomids
  * 
  * cdef class TopologyGroup(object):             # <<<<<<<<<<<<<<
@@ -892,7 +892,7 @@ struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup {
 };
 
 
-/* "core_base.pxd":140
+/* "core_base.pxd":142
  * 
  * 
  * cdef class Topology(object):             # <<<<<<<<<<<<<<
@@ -923,7 +923,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Topology {
 };
 
 
-/* "core_base.pxd":178
+/* "core_base.pxd":180
  *     cdef topol_residue_t *fast_get_residue_from_atomid(self, fsl_int atomid) nogil
  * 
  * cdef class TopologyReader(object):             # <<<<<<<<<<<<<<
@@ -938,7 +938,7 @@ struct __pyx_obj_10fatslimlib_9core_base_TopologyReader {
 };
 
 
-/* "core_base.pxd":187
+/* "core_base.pxd":189
  * 
  * 
  * cdef class CoordinateReader(object):             # <<<<<<<<<<<<<<
@@ -956,7 +956,7 @@ struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader {
 };
 
 
-/* "core_base.pxd":202
+/* "core_base.pxd":204
  * 
  * 
  * cdef class IndexReader(object):             # <<<<<<<<<<<<<<
@@ -972,7 +972,7 @@ struct __pyx_obj_10fatslimlib_9core_base_IndexReader {
 };
 
 
-/* "core_base.pxd":211
+/* "core_base.pxd":213
  *     cdef fast_load(self)
  * 
  * cdef class Frame:             # <<<<<<<<<<<<<<
@@ -1013,7 +1013,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Frame {
 };
 
 
-/* "core_base.pxd":264
+/* "core_base.pxd":266
  * 
  * 
  * cdef class Trajectory(object):             # <<<<<<<<<<<<<<
@@ -1214,6 +1214,8 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox {
   void (*fast_pbc_dx_leaflet)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *, real *);
   real (*fast_distance2)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *);
   real (*fast_distance)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *);
+  real (*fast_leaflet_distance2)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *);
+  real (*fast_leaflet_distance)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, real *, real *, real *);
   void (*fast_pbc_xcm)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice, real *, struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm *__pyx_optional_args);
   void (*fast_pbc_xcm_from_ref)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice, real *, real *, struct __pyx_opt_args_10fatslimlib_9core_base_6PBCBox_fast_pbc_xcm_from_ref *__pyx_optional_args);
   __Pyx_memviewslice (*fast_put_atoms_in_bbox)(struct __pyx_obj_10fatslimlib_9core_base_PBCBox *, __Pyx_memviewslice);
@@ -1221,7 +1223,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox *__pyx_vtabptr_10fatslimlib_9core_base_PBCBox;
 
 
-/* "core_base.pxd":122
+/* "core_base.pxd":124
  *     fsl_int *atomids
  * 
  * cdef class TopologyGroup(object):             # <<<<<<<<<<<<<<
@@ -1239,7 +1241,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup *__pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup;
 
 
-/* "core_base.pxd":140
+/* "core_base.pxd":142
  * 
  * 
  * cdef class Topology(object):             # <<<<<<<<<<<<<<
@@ -1261,7 +1263,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *__pyx_vtabptr_10fatslimlib_9core_base_Topology;
 
 
-/* "core_base.pxd":178
+/* "core_base.pxd":180
  *     cdef topol_residue_t *fast_get_residue_from_atomid(self, fsl_int atomid) nogil
  * 
  * cdef class TopologyReader(object):             # <<<<<<<<<<<<<<
@@ -1275,7 +1277,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyReader *__pyx_vtabptr_10fatslimlib_9core_base_TopologyReader;
 
 
-/* "core_base.pxd":187
+/* "core_base.pxd":189
  * 
  * 
  * cdef class CoordinateReader(object):             # <<<<<<<<<<<<<<
@@ -1292,7 +1294,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *__pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader;
 
 
-/* "core_base.pxd":202
+/* "core_base.pxd":204
  * 
  * 
  * cdef class IndexReader(object):             # <<<<<<<<<<<<<<
@@ -1306,7 +1308,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_IndexReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_IndexReader *__pyx_vtabptr_10fatslimlib_9core_base_IndexReader;
 
 
-/* "core_base.pxd":211
+/* "core_base.pxd":213
  *     cdef fast_load(self)
  * 
  * cdef class Frame:             # <<<<<<<<<<<<<<
@@ -1334,7 +1336,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *__pyx_vtabptr_10fatslimlib_9core_base_Frame;
 
 
-/* "core_base.pxd":264
+/* "core_base.pxd":266
  * 
  * 
  * cdef class Trajectory(object):             # <<<<<<<<<<<<<<
@@ -4725,13 +4727,13 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         goto __pyx_L15_try_end;
         __pyx_L8_error:;
-        __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
+        __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
         /*except:*/ {
           __Pyx_AddTraceback("fatslimlib.core_datareading.GroReaderCoords.preload", __pyx_clineno, __pyx_lineno, __pyx_filename);
           if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 226; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
@@ -5940,7 +5942,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
             #define unlikely(x) (x)
         #endif
         #ifdef _OPENMP
-        #pragma omp parallel private(__pyx_v_coord_buffer) private(__pyx_t_13, __pyx_t_12, __pyx_t_22, __pyx_t_20, __pyx_t_21, __pyx_t_24, __pyx_t_25, __pyx_t_23, __pyx_t_18, __pyx_t_19) num_threads(__pyx_v_10fatslimlib_9core_base_OPENMP_NUM_THREADS)
+        #pragma omp parallel private(__pyx_v_coord_buffer) private(__pyx_t_18, __pyx_t_19, __pyx_t_13, __pyx_t_24, __pyx_t_12, __pyx_t_20, __pyx_t_22, __pyx_t_21, __pyx_t_23, __pyx_t_25) num_threads(__pyx_v_10fatslimlib_9core_base_OPENMP_NUM_THREADS)
         #endif /* _OPENMP */
         {
             /* Initialize private variables to invalid values */
@@ -23818,14 +23820,14 @@ PyMODINIT_FUNC PyInit_core_datareading(void)
   __pyx_vtabptr_10fatslimlib_9core_base_AtomGroup = (struct __pyx_vtabstruct_10fatslimlib_9core_base_AtomGroup*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_AtomGroup->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_AtomGroup)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 71; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10fatslimlib_9core_base_PBCBox = __Pyx_ImportType("fatslimlib.core_base", "PBCBox", sizeof(struct __pyx_obj_10fatslimlib_9core_base_PBCBox), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_PBCBox)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_vtabptr_10fatslimlib_9core_base_PBCBox = (struct __pyx_vtabstruct_10fatslimlib_9core_base_PBCBox*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_PBCBox->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_PBCBox)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_10fatslimlib_9core_base_TopologyGroup = __Pyx_ImportType("fatslimlib.core_base", "TopologyGroup", sizeof(struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_TopologyGroup)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup = (struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_TopologyGroup->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_10fatslimlib_9core_base_Topology = __Pyx_ImportType("fatslimlib.core_base", "Topology", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Topology), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Topology)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_vtabptr_10fatslimlib_9core_base_Topology = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Topology->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Topology)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_10fatslimlib_9core_base_Frame = __Pyx_ImportType("fatslimlib.core_base", "Frame", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Frame), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Frame)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_vtabptr_10fatslimlib_9core_base_Frame = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Frame->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Frame)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_10fatslimlib_9core_base_Trajectory = __Pyx_ImportType("fatslimlib.core_base", "Trajectory", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Trajectory), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Trajectory)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_vtabptr_10fatslimlib_9core_base_Trajectory = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Trajectory->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Trajectory)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_10fatslimlib_9core_base_TopologyGroup = __Pyx_ImportType("fatslimlib.core_base", "TopologyGroup", sizeof(struct __pyx_obj_10fatslimlib_9core_base_TopologyGroup), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_TopologyGroup)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup = (struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_TopologyGroup->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_10fatslimlib_9core_base_Topology = __Pyx_ImportType("fatslimlib.core_base", "Topology", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Topology), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Topology)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_vtabptr_10fatslimlib_9core_base_Topology = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Topology->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Topology)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_10fatslimlib_9core_base_Frame = __Pyx_ImportType("fatslimlib.core_base", "Frame", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Frame), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Frame)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_vtabptr_10fatslimlib_9core_base_Frame = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Frame->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Frame)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_10fatslimlib_9core_base_Trajectory = __Pyx_ImportType("fatslimlib.core_base", "Trajectory", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Trajectory), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Trajectory)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_vtabptr_10fatslimlib_9core_base_Trajectory = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Trajectory->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Trajectory)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   /*--- Variable import code ---*/
   __pyx_t_1 = __Pyx_ImportModule("fatslimlib.core_base"); if (!__pyx_t_1) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "OPENMP_MAX_THREADS", (void **)&__pyx_vp_10fatslimlib_9core_base_OPENMP_MAX_THREADS, "fsl_int") < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}

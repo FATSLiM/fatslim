@@ -30,7 +30,8 @@ from .data import VESICLE_GRO, VESICLE_NDX, VESICLE_XTC, MODEL_BILAYER_NDX, MODE
     BILAYER_ALLATOM_GRO, BILAYER_ALLATOM_NDX
 from .data import MODEL_BILAYER_THICKNESS_CSV, BILAYER_CHOL_APL_GROUPED, \
     BILAYER_CHOL_APL_NOGROUP, MODEL_BILAYER_APL_CSV, VESICLE_APL_XVG, \
-    MODEL_BILAYER_THICKNESS_XVG, VESICLE_THICKNESS_XVG, VESICLE_AREA_XVG
+    MODEL_BILAYER_THICKNESS_XVG, VESICLE_THICKNESS_XVG, VESICLE_AREA_XVG, MULTIBILAYER_GRO, \
+    MULTIBILAYER_NDX
 from ..datareading import load_trajectory
 
 
@@ -49,6 +50,12 @@ def frame_model_multibilayer():
     frame = traj[0]
     return frame
 
+@pytest.fixture(scope="session")
+def frame_multibilayer():
+    traj = load_trajectory(MULTIBILAYER_GRO, MULTIBILAYER_NDX)
+    traj.initialize()
+    frame = traj[0]
+    return frame
 
 @pytest.fixture(scope="session")
 def frame_big_prot():
