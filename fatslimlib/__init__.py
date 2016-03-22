@@ -35,7 +35,7 @@ focused on code optimization and simplification in order to maximize its efficie
 __licence__ = "GNU Public License 3"
 __url__ = "https://github.com/seb-buch/FATSLiM"
 
-version_tuple = (0, 1, 2, 'final', 0)
+version_tuple = (0, 1, 3, 'dev', 0)
 
 
 def _format_version_tuple(version_tup=version_tuple):
