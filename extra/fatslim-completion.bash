@@ -1,4 +1,8 @@
 #!/binbash
+# This file is intended to be use by Bash to provide autocompletion for FATSLiM commands.
+# Simply add the following line to your .bashrc to enable autocompletion:
+# source /path/to/fatslim-completion.bash
+# Don't forget to 1. remove the starting "#" and 2. correct the path to fatslim-completion.bash
 
 _fatslim_help_compl() {
 local IFS=$'\n'
