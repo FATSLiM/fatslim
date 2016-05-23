@@ -2,6 +2,10 @@
 All notable changes to FATSLiM are documented in this file.
 Version numbers comply with [Python recommandation](https://www.python.org/dev/peps/pep-0440/).
 
+## [0.1.3] - Unreleased
+### Added
+- Full documentation.
+
 ## [0.1.2] - 2016-03-21
 ### Added
 - Changelog file.

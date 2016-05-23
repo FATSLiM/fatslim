@@ -20,8 +20,8 @@
 from __future__ import print_function
 import sys
 
-__authors__ = "Sebastien Buchoux <sebastien.buchoux@gmail.com>"
-__copyright__ = "Copyright (c) 2013-2016 %s" % __authors__
+__authors__ = [u"Sébastien Buchoux"]
+__copyright__ = u"Copyright (c) 2013-2016 %s" % u", ". join(__authors__)
 __shortname__ = "FATSLiM"
 __cmdlinename__ = "fatslim"
 __description__ = "Fast Analysis Toolbox for Simulations of Lipid Membranes"
