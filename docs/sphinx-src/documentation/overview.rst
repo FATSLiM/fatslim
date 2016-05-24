@@ -1,7 +1,7 @@
 Overview
 ========
 
-FATSLiM stands for "**F**ast **A**nalysis **T**oolbox for **S**imulations of **Li**pid **M**embranes" and its goal is to
+FATSLiM stands for "**F**\ ast **A**\ nalysis **T**\ oolbox for **S**\ imulations of **Li**\ pid **M**\ embranes" and its goal is to
 provide an efficient, yet robust, tool to extract physical parameters from MD trajectories.
 
 The main objective of FATSLiM is to decrease as possible the amount of time needed to
