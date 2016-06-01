@@ -126,6 +126,8 @@ This distribution can be downloaded from `https://www.continuum.io/downloads`_.
 Once Anaconda is installed, you can access your Python environment via a dedicated command prompt
 called ``Anaconda prompt`` accessible from the Windows Start menu.
 
+.. _installation:
+
 Installation
 ------------
 
@@ -237,6 +239,8 @@ The repository contains two branches that you may use:
 You can use this local repository to run FATSLiM but you will need to run ``python setup.py build_ext -i`` every time you switch between branches or pull the code.
 You may then run FATSLiM by running ``fatslim`` (just besides ``setup.py``).
 
+
+.. _post-installation:
 
 Post-installation
 -----------------

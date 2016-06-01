@@ -29,11 +29,11 @@ Contents:
 
    ./documentation/overview.rst
    ./documentation/installation.rst
-   ./documentation/tutorials.rst
    ./documentation/common.rst
    ./documentation/leaflets.rst
    ./documentation/thickness.rst
    ./documentation/apl.rst
+   ./documentation/tutorials.rst
 
 
 
