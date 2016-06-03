@@ -185,7 +185,7 @@ Specify analysis window using timesteps
 
 .. seealso::
 
-    :ref:`--begin-frame and --end-frame <begin_end_frame_opt>`
+    :ref:`--begin-frame and --end-frame <begin_end_frame_opt>` options
 
 
 .. _begin_end_frame_opt:
@@ -202,7 +202,7 @@ Specify analysis window using timesteps
 
 .. seealso::
 
-    :ref:`--begin and --end <begin_end_frame_opt>`
+    :ref:`--begin and --end <begin_end_frame_opt>` options
 
 
 .. _cutoff_leaflet_opt:
@@ -213,6 +213,6 @@ Cutoff distance for leaflet identification
 - **Associated parameter:** ``--cutoff``
 
 - **Purpose:** This option allows user to specify the cutoff distance (in nm) to be used when leaflet identification is performed.
-  See :ref:`leaflets` for details.
+  See :doc:`leaflets` for details.
 
 - **Default value:** ``2.0``
