@@ -10,13 +10,12 @@ Step 1. Lipid simplification
 ============================
 
 A full description of the lipids is not essential to the calculation of most bilayer properties.
-This is why, when appropriate, FATSLiM uses a crude simplification of the lipids which are described by:
+This is why, when appropriate, FATSLiM describes each lipid by one *bead* for the head group and a *vector* for its direction:
 
-1. A *bead* corresponding to their head group
+.. figure:: images/lipid_simplification.png
+    :align: center
 
-2. A *vector* corresponding to their orientation
-
-This can be summarized by the following figure:
+This leads to a rather simplified description of the system:
 
 .. figure:: images/system_simplification.png
     :align: center
