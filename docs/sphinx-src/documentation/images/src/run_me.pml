@@ -47,7 +47,7 @@ disable positions_upper
 disable directions_upper
 render_to_file("03_NS_only_neighbors")
 enable NS_normal
-render_to_file("03_NS_only_neighbors_normal", top=False)
+render_to_file("03_NS_only_neighbors_normal")
 enable positions_upper
 enable directions_upper
 enable positions_lower
@@ -65,7 +65,7 @@ enable directions_lower
 enable normals_lower
 enable normals_upper
 zoom all, 5
-render_to_file("04_Normals", top=False)
+render_to_file("04_Normals")
 
 disable positions_lower
 disable positions_upper
@@ -73,6 +73,6 @@ disable normals_lower
 disable normals_upper
 enable leaflets_hg1
 enable leaflets_hg2
-render_to_file("05_Leaflets", top=False)
+render_to_file("05_Leaflets")
 
 
