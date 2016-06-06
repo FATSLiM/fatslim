@@ -41,11 +41,11 @@ In a nutshell, normal estimation is done in three steps:
 .. figure:: images/normal-calculation.png
     :align: center
 
-1. For each lipid, the point cloud considered is given by all the lipids contained within a user-tweakable cutoff distance (see :ref:`--cutoff <cutoff_leaflet_opt>`).
+1. For each lipid, the point cloud considered is consituted by all the *beads* within a user-tweakable cutoff distance (see :ref:`--cutoff <cutoff_leaflet_opt>`) from the reference lipid.
 
 2. A `principal component analysis <https://en.wikipedia.org/wiki/Principal_component_analysis>`_ is performed. The eigenvector related to the smallest eigenvalue is the normal.
 
-3. This is repeated for all the lipids, giving as many local normals as there are lipids.
+3. This process is repeated for all the lipids, giving as many local normals as there are lipids.
 
 .. seealso::
     If you want more details on normal estimation, you should take a look at the `Point Cloud Library <http://pointclouds.org/>`_
