@@ -71,10 +71,12 @@ version
 ``fatslim version`` is just an alias for :ref:`version_opt`.
 
 
+.. _analytical_parameters:
+
 Analytical commands and related options
 ***************************************
 
-Analysis-related paremeters / options
+Analysis-related parameters / options
 =====================================
 
 For consistency purpose, all analytical commands share a common set of parameters and options which will be described here.
