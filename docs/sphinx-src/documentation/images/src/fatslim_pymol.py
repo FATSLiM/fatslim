@@ -34,6 +34,7 @@ BILAYER = "bilayer"
 #BILAYER_REF = 54 - 1
 BILAYER_REF = 336 - 1
 NS_RADIUS = 2
+THICKNESS_RADIUS = 6.0
 XX = 0
 YY = 1
 ZZ = 2
@@ -268,7 +269,6 @@ def show_ref_ns(frame):
     
     print("Fatslim reference bead drawn")
     
-    
 def show_normals(frame):
     normals = frame.normals
     positions = frame.bead_coords*10.0
@@ -332,6 +332,18 @@ def show_leaflet_normals(frame, z_limit=1e9):
         if len(cgo_normals) > 0:
             cmd.load_cgo(cgo_normals, obj_name)
     print("Fatslim leaflet normals drawn")
+
+def show_thickness(frame):
+    beadid = BILAYER_REF
+    position = frame.bead_coords[beadid] * 10
+    x, y, z = position
+    
+    membrane = frame.get_membranes()[0]
+    neighbors = neighbor_search(frame.box, frame.bead_coords, cutoff=THICKNESS_RADIUS)
+    
+    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, THICKNESS_RADIUS*10.0], "THICKNESS_cutoff")
+    cmd.set("cgo_transparency", 0.6, "THICKNESS_cutoff")
+    
     
 def fatslim_bilayer():
     setup()
@@ -358,8 +370,8 @@ def fatslim_bilayer():
     cmd.show("surface", "water")
     cmd.color("skyblue", "water")
     cmd.set("transparency", 0.5, "water")
-    cmd.rebuild()
-    cmd.refresh()
+    #cmd.rebuild()
+    #cmd.refresh()
     
     # Show positions
     show_positions(frame)
@@ -380,6 +392,9 @@ def fatslim_bilayer():
     
     # Calculate and show normals
     show_leaflet_normals(frame)
+    
+    # Show stuff related to thickness
+    show_thickness(frame)
     
     # Zoom on leaflets
     cmd.zoom("all", 5)

@@ -1,8 +1,8 @@
 Leaflet and membrane identification
 ###################################
 
-How FATSLiM identifies leaflets and membranes?
-**********************************************
+How FATSLiM identifies leaflets and membranes
+*********************************************
 
 .. _concept_lipid_simplification:
 
