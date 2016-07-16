@@ -38,6 +38,7 @@ DEF EPSILON=1e-5
 DEF EPSILON2=1e-10
 
 DEF COS_45 = 0.70710678
+DEF MIN_COS = 0.98480775301 # Cosine 10 deg
 DEF PI = 3.14159265359
 
 DEF MAX_INTERLEAFLET_DISTANCE = 10 # nm
@@ -304,6 +305,9 @@ cdef real thickness_from_neighborhood(rvec ref, rvec ref_normal,
     cdef real dprod_normals
     cdef rvec other_normal, other_coord
 
+    cdef real avg_thickness = 0.0
+
+    total_weight = 0.0
     for i in range(neighborhood.size):
         rvec_copy(&other_coords[neighborhood.beadids[i], XX], other_coord)
         rvec_copy(&other_normals[neighborhood.beadids[i], XX], other_normal)
@@ -327,19 +331,16 @@ cdef real thickness_from_neighborhood(rvec ref, rvec ref_normal,
         dprod_val = real_abs(rvec_dprod(dx, ref_normal))
         cos_trial = dprod_val/dx_norm
 
-        if cos_trial > ref_max_cos:
-            ref_max_cos = cos_trial
+        weight = (cos_trial - MIN_COS) / (1.0 - MIN_COS)
+        if weight > 0:
+            total_weight += weight
+            avg_thickness += real_abs(rvec_dprod(dx, ref_normal)) * weight
 
-            ref_thickness = dprod_val
-
-        dprod_val = real_abs(rvec_dprod(dx, other_normal))
-        cos_trial = dprod_val/dx_norm
-        if cos_trial > other_max_cos:
-            other_max_cos = cos_trial
-
-            other_thickness = dprod_val
-
-    return 0.5 * (ref_thickness + other_thickness)
+    if total_weight > 0:
+        avg_thickness /= total_weight
+    else:
+        avg_thickness = NOTSET
+    return avg_thickness
 
 
 cdef void put_atoms_on_plane(rvec ref, rvec ref_normal,
