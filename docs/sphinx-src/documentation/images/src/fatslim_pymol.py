@@ -16,8 +16,8 @@ except ImportError:
     print ("Not inside PyMOL... Exiting!")
     sys.exit(1)
 
-FATSLIM_DIR =  os.path.expanduser("/home/sebastien/Hacking/fatslim-rewrite")
-sys.path += [FATSLIM_DIR, ]
+FATSLIM_DIR =  os.path.expanduser("~/Hacking/fatslim")
+sys.path.insert(0, FATSLIM_DIR)
 
 try:
     from fatslimlib.datareading import load_trajectory
@@ -25,6 +25,9 @@ try:
 except ImportError:
     print ("Could not find FATSLiM!")
     sys.exit(1)
+else:
+    import fatslimlib
+    print("Fatslim v.%s found here: %s" % (fatslimlib.__version__, os.path.dirname(fatslimlib.__file__)))
 
 
 
@@ -35,6 +38,7 @@ BILAYER = "bilayer"
 BILAYER_REF = 336 - 1
 NS_RADIUS = 2
 THICKNESS_RADIUS = 6.0
+MIN_COS = 0.98480775301 # Cosine 10 deg
 XX = 0
 YY = 1
 ZZ = 2
@@ -333,16 +337,118 @@ def show_leaflet_normals(frame, z_limit=1e9):
             cmd.load_cgo(cgo_normals, obj_name)
     print("Fatslim leaflet normals drawn")
 
+def ClosestPointOnLine(a, b, p):
+    ap = p-a
+    ab = b-a
+    result = a + np.dot(ap,ab)/np.dot(ab,ab) * ab
+    return result
+    
 def show_thickness(frame):
     beadid = BILAYER_REF
-    position = frame.bead_coords[beadid] * 10
-    x, y, z = position
+    position = frame.bead_coords[beadid] 
+    
+    x, y, z = position * 10
     
     membrane = frame.get_membranes()[0]
-    neighbors = neighbor_search(frame.box, frame.bead_coords, cutoff=THICKNESS_RADIUS)
     
     cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, THICKNESS_RADIUS*10.0], "THICKNESS_cutoff")
     cmd.set("cgo_transparency", 0.6, "THICKNESS_cutoff")
+    
+    if beadid in membrane.leaflet1.beadids:
+        other_leaflet = membrane.leaflet2
+        same_leaflet = membrane.leaflet1
+    else:
+        other_leaflet = membrane.leaflet1
+        same_leaflet = membrane.leaflet2
+    
+    normal = same_leaflet.normals[list(same_leaflet.beadids).index(beadid)]
+    neighbors = neighbor_search(frame.box,
+                                np.array([frame.bead_coords[beadid]]),
+                                neighbor_coords=other_leaflet.coords,
+                                cutoff=THICKNESS_RADIUS)
+    cgo_directions = []
+    cgo_neighbors = []
+    cgo_useful = []
+    directions = -other_leaflet.directions
+
+    proj_lines = []
+    for nid in neighbors[0]:
+        dx = frame.box.dx_leaflet(position,
+                                      other_leaflet.coords[nid],
+                                      normal)
+        dx_norm = np.sqrt(np.sum(dx**2))
+        
+        coords = position + dx
+        
+        x, y, z = coords * 10
+        cgo_neighbors.extend([COLOR, 0.18, 0.53, 0.18, SPHERE, x, y, z, 2.1])
+        
+        cgo_directions = draw_vector(coords * 10,
+                                      directions[nid],
+                                      cgo_obj=cgo_directions,
+                                      color=(1.0, 1.0, 0.22),
+                                      alpha=1.0)
+        
+        dprod_val = 0
+        for i in range(3):
+            dprod_val += dx[i] * normal[i]
+        cos_trial = dprod_val/dx_norm
+        
+        if cos_trial < 0:
+            cos_trial *= -1
+        
+        weight = (cos_trial - MIN_COS) / (1.0 - MIN_COS)
+        
+        print("cos: %f - weight: %f" % (cos_trial, weight))
+        
+        if weight > 0:
+            end = ClosestPointOnLine(position*10, (position+normal)*10, coords*10)
+            proj_lines.extend([
+            LINEWIDTH, 1.0,
+    
+            BEGIN, LINES,
+            COLOR, 0.5, 0.5, 0.5,
+    
+            VERTEX, x, y, z, #1
+            VERTEX, end[0], end[1], end[2], #2
+            END
+            ])
+            
+            cgo_useful.extend([COLOR, 0.90, 0.80, 0.18, SPHERE, x, y, z, 2.5])
+            
+            
+        
+    cmd.load_cgo(cgo_neighbors, "THICKNESS_neighbors")
+    cmd.load_cgo(cgo_useful, "THICKNESS_used")
+    cmd.load_cgo(cgo_directions, "THICKNESS_directions")
+    cmd.load_cgo(proj_lines, "THICKNESS_projections")
+    
+    
+    x, y, z = position*10
+    dx, dy, dz = 100 * normal
+    
+    ref_line = [
+    LINEWIDTH, 1.0,
+
+        BEGIN, LINES,
+        COLOR, 0.5, 0.5, 0.5,
+
+        VERTEX, x-dx, y-dy, z-dz, #1
+        VERTEX, x+dx, y+dy, z+dz, #2
+        END
+    ]
+    ref_line = draw_vector(position*10,
+                                      normal,
+                                      cgo_obj=ref_line,
+                                      color=(0.33, 0.67, 0.33),
+                                      alpha=1.0,
+                                      factor=0.9)
+    cmd.load_cgo(ref_line, "THICKNESS_normal")
+    
+    
+                                
+    print("Fatslim thickness OK")
+
     
     
 def fatslim_bilayer():
