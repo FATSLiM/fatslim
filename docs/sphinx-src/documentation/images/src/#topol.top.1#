@@ -1,0 +1,22 @@
+;
+;	File 'topol.top' was generated
+;	By user: sbuchoux (1000)
+;	On host: gec-mescaline
+;	At date: Mon Jul 18 10:43:24 2016
+
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	                 :-) GROMACS - gmx pdb2gmx, VERSION 5.1.2 (-:
+;	
+;	Executable:   /home/sbuchoux/Programs/gromacs-5.1.2/bin/gmx
+;	Data prefix:  /home/sbuchoux/Programs/gromacs-5.1.2
+;	Command line:
+;	  gmx pdb2gmx -f test.pdb
+;	Force field was read from the standard GROMACS share directory.
+;
+
+; Include forcefield parameters
+#include "amber99sb-ildn.ff/forcefield.itp"
+
