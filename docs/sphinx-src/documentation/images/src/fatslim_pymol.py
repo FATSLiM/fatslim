@@ -14,7 +14,7 @@ try:
     from pymol.cgo import CONE, CYLINDER, COLOR, SPHERE, VERTEX, BEGIN, LINEWIDTH, LINES, END, \
         ALPHA
 except ImportError:
-    print ("Not inside PyMOL... Exiting!")
+    print("Not inside PyMOL... Exiting!")
     sys.exit(1)
 
 FATSLIM_DIR = os.path.expanduser("~/Hacking/fatslim")
@@ -24,7 +24,7 @@ try:
     from fatslimlib.datareading import load_trajectory
     from fatslimlib.core_ns import neighbor_search
 except ImportError:
-    print ("Could not find FATSLiM!")
+    print("Could not find FATSLiM!")
     sys.exit(1)
 else:
     import fatslimlib
@@ -32,6 +32,7 @@ else:
     print("Fatslim v.%s found here: %s" %
           (fatslimlib.__version__, os.path.dirname(fatslimlib.__file__)))
 
+EPSILON = 1e-6
 BILAYER = "bilayer"
 VESICLE = "vesicle"
 # BILAYER_REF = 54 - 1
@@ -39,16 +40,19 @@ BILAYER_REF = 336 - 1
 VESICLE_REF = 1115 - 1
 REF_BEAD = 0
 NS_RADIUS = 2
-THICKNESS_RADIUS = 6.0
-MIN_COS = 0.99619469809174555  # Cosine 5 deg
+THICKNESS_DEFAULT_CUTOFF = 6.0
+THICKNESS_MAXIMUM_MINMAX_RATIO = 1.5
+THICKNESS_MIN_COS_DX = 0.93969262078590843 # Cosine 20 deg
+THICKNESS_MIN_COS_NORMAL = 0.93969262078590843 # Cosine 20 deg
+THICKNESS_DEBUG_BEADID = 160
 XX = 0
 YY = 1
 ZZ = 2
-
+COS_45 = 0.70710678
 
 def setup():
     cmd.delete("all")
-    print ("Everything removed!")
+    print("Everything removed!")
 
     cmd.set("bg_rgb", "white")
     cmd.set("ray_opaque_background", "off")
@@ -158,22 +162,33 @@ def draw_vector(x_begin, direction, cgo_obj=None, color=(0.7, 0.7, 0.2), alpha=1
     red, green, blue = color
 
     tail = ALPHA, alpha, \
-           CYLINDER, \
-           x_begin[XX], x_begin[YY], x_begin[ZZ], \
-           x_begin[XX] + length * direction[XX], x_begin[YY] + length * direction[YY], x_begin[
-               ZZ] + length * direction[ZZ], \
-           radius, red, green, blue, red, green, blue  # Radius and RGB for each cylinder tail
+        CYLINDER, \
+        x_begin[XX], x_begin[YY], x_begin[ZZ], \
+        x_begin[XX] + length * direction[XX], x_begin[YY] + length * direction[YY], x_begin[
+                                                                                        ZZ] + \
+                                                                                    length * \
+                                                                                              direction[
+                                                                                                  ZZ], \
+        radius, red, green, blue, red, green, blue  # Radius and RGB for each cylinder tail
     head = ALPHA, alpha, \
-           CONE, \
-           x_begin[XX] + length * direction[XX], x_begin[YY] + length * direction[YY], x_begin[
-               ZZ] + length * direction[ZZ], \
-           x_begin[XX] + (length + head_length) * direction[XX], x_begin[YY] + (
-           length + head_length) * direction[YY], x_begin[ZZ] + (length + head_length) * direction[
-               ZZ], \
-           head_radius, \
-           0.0, \
-           red, green, blue, red, green, blue, \
-           1.0, 1.0
+        CONE, \
+        x_begin[XX] + length * direction[XX], x_begin[YY] + length * direction[YY], x_begin[
+                                                                                        ZZ] + \
+                                                                                    length * \
+                                                                                              direction[
+                                                                                                  ZZ], \
+        x_begin[XX] + (length + head_length) * direction[XX], x_begin[YY] + (
+                                                                                length +
+                                                                                head_length) * \
+                                                                            direction[YY], x_begin[
+                                                                                               ZZ] + (
+                                                                                                     length + head_length) * \
+                                                                                                     direction[
+                                                                                                         ZZ], \
+        head_radius, \
+        0.0, \
+        red, green, blue, red, green, blue, \
+        1.0, 1.0
     cgo_obj.extend(tail)
     cgo_obj.extend(head)
 
@@ -362,14 +377,26 @@ def ClosestPointOnLine(a, b, p):
 
 
 def show_thickness(frame):
-    beadid = REF_BEAD
-    position = frame.bead_coords[beadid]
 
-    x, y, z = position * 10
+    def dprod(a, b):
+        val = 0
+        for i in range(3):
+            val += a[i] * b[i]
+        return val
+
+    def norm(a):
+        val = 0
+        for i in range(3):
+            val += a[i] * a[i]
+        return np.sqrt(val)
+
+    beadid = REF_BEAD
+    ref_position = frame.bead_coords[beadid]
+    x, y, z = ref_position * 10
 
     membrane = frame.get_membranes()[0]
 
-    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, THICKNESS_RADIUS * 10.0],
+    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, THICKNESS_DEFAULT_CUTOFF * 10.0],
                  "THICKNESS_cutoff")
     cmd.set("cgo_transparency", 0.6, "THICKNESS_cutoff")
 
@@ -380,11 +407,64 @@ def show_thickness(frame):
         other_leaflet = membrane.leaflet1
         same_leaflet = membrane.leaflet2
 
-    normal = same_leaflet.normals[list(same_leaflet.beadids).index(beadid)]
+    ref_leaflet_beadid = list(same_leaflet.beadids).index(beadid)
+    ref_normal = same_leaflet.normals[ref_leaflet_beadid]
+
+    # Step 1: get XCM
+    same_neighbors = neighbor_search(frame.box,
+                                     np.array([ref_position, ]),
+                                     neighbor_coords=same_leaflet.coords,
+                                     cutoff=NS_RADIUS
+                                     )
+
+    total_weight = 0.0
+    ref_xcm = np.zeros(3)
+    cgo_neighbors = []
+    cgo_useful = []
+    for nid in same_neighbors[0]:
+        dprod_normal = dprod(same_leaflet.normals[nid], ref_normal)
+
+        if dprod_normal < THICKNESS_MIN_COS_NORMAL:
+            continue
+
+        dx = frame.box.dx(ref_position,
+                          same_leaflet.coords[nid])
+
+        x, y, z = same_leaflet.coords[nid] * 10
+        cgo_neighbors.extend([COLOR, 0.18, 0.53, 0.18, SPHERE, x, y, z, 2.1])
+
+        dx_norm = norm(dx)
+
+        if dx_norm < EPSILON:
+            continue
+
+        weight = 1 - dx_norm / NS_RADIUS
+        weight = 1
+        total_weight += weight
+
+        dx *= weight
+
+        ref_xcm += dx
+        cgo_useful.extend([COLOR, 0.90, 0.80, 0.18, SPHERE, x, y, z, 2.5])
+
+    if total_weight > EPSILON:
+        ref_xcm /= total_weight
+
+    ref_xcm += ref_position
+
+    x, y, z = ref_xcm * 10.0
+    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, 2.5],
+                 "THICKNESS_REF_XCM")
+    cmd.load_cgo(cgo_neighbors, "THICKNESS_REF_neighbors")
+    cmd.load_cgo(cgo_useful, "THICKNESS_REF_used")
+
+
+
+
     neighbors = neighbor_search(frame.box,
-                                np.array([frame.bead_coords[beadid]]),
+                                np.array([ref_position, ]),
                                 neighbor_coords=other_leaflet.coords,
-                                cutoff=THICKNESS_RADIUS)
+                                cutoff=THICKNESS_DEFAULT_CUTOFF)
     cgo_directions = []
     cgo_normals = []
     cgo_neighbors = []
@@ -393,56 +473,71 @@ def show_thickness(frame):
     normals = other_leaflet.normals
 
     proj_lines = []
+    avg_dx = np.zeros(3)
+    total_weight = 0
     for nid in neighbors[0]:
-        dx = frame.box.dx_leaflet(position,
-                                  other_leaflet.coords[nid],
-                                  normal)
+        other_coord = other_leaflet.coords[nid]
+        other_normal = other_leaflet.normals[nid]
 
-        coords = position + dx
+        dprod_normal = dprod(other_normal, ref_normal)
 
-        x, y, z = coords * 10
+        x, y, z = other_coord * 10
         cgo_neighbors.extend([COLOR, 0.18, 0.53, 0.18, SPHERE, x, y, z, 2.1])
 
-        cgo_directions = draw_vector(coords * 10,
-                                     directions[nid],
-                                     cgo_obj=cgo_directions,
-                                     color=(1.0, 1.0, 0.22),
-                                     alpha=1.0)
+        cgo_normals = draw_vector(other_coord * 10,
+                                  other_normal,
+                                  cgo_obj=cgo_normals,
+                                  color=(1.0, 1.0, 0.22),
+                                  alpha=1.0)
+
+        # Make sure that both beads belong to different leaflet
+        if dprod_normal > -COS_45:
+            continue
+
+        # Get the distance (through the bilayer) between the ref bead and its twin
+        dx = frame.box.dx_leaflet(ref_xcm, other_coord, ref_normal)
+        dx_norm = norm(dx)
+
+        # we check dx because the image which is on the right side of the bilayer may not be a good twin (too far)
+        if dx_norm > THICKNESS_DEFAULT_CUTOFF:
+            continue
+
+        dprod_dx = np.abs(dprod(dx, ref_normal))
+        cos_trial = dprod_dx / dx_norm
+
+        if cos_trial < THICKNESS_MIN_COS_DX:
+            continue
+
+        weight = (np.abs(dprod_normal) - THICKNESS_MIN_COS_NORMAL) / \
+                 (1.0 - THICKNESS_MIN_COS_NORMAL)
+        # weight = 1
+        if weight > 0:
+            dx *= weight
+            total_weight += weight
+
+            avg_dx += dx
+
+            cgo_useful.extend([COLOR, 0.90, 0.80, 0.18, SPHERE, x, y, z, 2.5])
+
+
+        dx = frame.box.dx_leaflet(ref_position,
+                                  other_leaflet.coords[nid],
+                                  ref_normal)
+
+        coords = ref_position + dx
 
         cgo_normals = draw_vector(coords * 10,
                                   normals[nid],
                                   cgo_obj=cgo_normals,
                                   color=(1.0, 1.0, 0.22),
                                   alpha=1.0)
+    if total_weight > EPSILON:
+        avg_dx /= total_weight
 
-        dprod_val = 0
-        for i in range(3):
-            dprod_val += normals[nid][i] * normal[i]
-        cos_trial = dprod_val
-
-        if cos_trial < 0:
-            cos_trial *= -1
-
-        weight = (cos_trial - MIN_COS) / (1.0 - MIN_COS)
-
-        print("cos: %f (angle: %f) - weight: %f (Nnormal: %s, Refnormal: %s)" % (
-        cos_trial, np.arccos(cos_trial) / np.pi * 180.0, weight, other_leaflet.normals[nid],
-        normal))
-
-        if weight > 0:
-            end = ClosestPointOnLine(position * 10, (position + normal) * 10, coords * 10)
-            proj_lines.extend([
-                LINEWIDTH, 1.0,
-
-                BEGIN, LINES,
-                COLOR, 0.5, 0.5, 0.5,
-
-                VERTEX, x, y, z,  # 1
-                VERTEX, end[0], end[1], end[2],  # 2
-                END
-            ])
-
-            cgo_useful.extend([COLOR, 0.90, 0.80, 0.18, SPHERE, x, y, z, 2.5])
+    other_xcm = ref_xcm + avg_dx
+    x, y, z = other_xcm * 10
+    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, 2.6],
+                 "THICKNESS_OTHER_XCM")
 
     cmd.load_cgo(cgo_neighbors, "THICKNESS_neighbors")
     cmd.load_cgo(cgo_useful, "THICKNESS_used")
@@ -450,8 +545,8 @@ def show_thickness(frame):
     cmd.load_cgo(cgo_normals, "THICKNESS_normals")
     cmd.load_cgo(proj_lines, "THICKNESS_projections")
 
-    x, y, z = position * 10
-    dx, dy, dz = 100 * normal
+    x, y, z = ref_xcm * 10
+    dx, dy, dz = 100 * ref_normal
 
     ref_line = [
         LINEWIDTH, 1.0,
@@ -463,12 +558,6 @@ def show_thickness(frame):
         VERTEX, x + dx, y + dy, z + dz,  # 2
         END
     ]
-    ref_line = draw_vector(position * 10,
-                           normal,
-                           cgo_obj=ref_line,
-                           color=(0.33, 0.67, 0.33),
-                           alpha=1.0,
-                           factor=0.9)
     cmd.load_cgo(ref_line, "THICKNESS_normal")
 
     print("Fatslim thickness OK")
@@ -487,7 +576,7 @@ def fatslim_bilayer():
     traj.initialize()
     frame = traj[0]
     draw_pbc_box(main_obj)
-    print ("Bilayer Loaded!")
+    print("Bilayer Loaded!")
 
     # Show lipids
     cmd.create("lipids", "resname DMPC")
@@ -547,7 +636,7 @@ def fatslim_vesicle():
     traj.initialize()
     frame = traj[0]
     draw_pbc_box(main_obj)
-    print ("Vesicle Loaded!")
+    print("Vesicle Loaded!")
 
     # Show positions
     show_positions(frame)
