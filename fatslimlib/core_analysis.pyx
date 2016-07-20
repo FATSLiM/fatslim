@@ -56,8 +56,8 @@ DEF APL_INTERACTION_ADJUSTEMENT = 0.7 # This constant was roughly estimated from
 
 DEF THICKNESS_DEFAULT_CUTOFF = 6.0
 DEF THICKNESS_MAXIMUM_MINMAX_RATIO = 1.5
-DEF THICKNESS_MIN_COS_DX = 0.93969262078590843 # Cosine 20 deg 0.96592582628906831# Cos 15 deg 0.93969262078590843 # Cosine 20 deg
-DEF THICKNESS_MIN_COS_NORMAL = 0.93969262078590843 # Cosine 20 deg 0.96592582628906831# Cos 15 deg 0.98480775301 # Cosine 10 deg 0.9 #0.93969262078590843 # Cosine 20 deg 0.99619469809174555 # Cosine 5 deg 0.98480775301 # Cosine 10 deg
+DEF THICKNESS_MIN_COS_DX = 0.98480775301 # Cos 10 deg
+DEF THICKNESS_MIN_COS_NORMAL = 0.98480775301 # Cos 10 deg
 DEF THICKNESS_DEBUG_BEADID = 160
 
 DEF OUTPUT_RESOLUTION_DEFAULT = 600
@@ -441,14 +441,17 @@ cdef real thickness_from_neighborhood(rvec ref, rvec ref_normal,
         box.fast_pbc_dx(ref, &same_coords[neighborhood_same_leaflet.beadids[i], XX], dx)
         dx_norm = rvec_norm(dx)
 
-        weight = 1 - dx_norm / neighborhood_same_leaflet.cutoff
-        weight = 1
+        if dx_norm < EPSILON:
+            continue
+
+        weight = weight = (real_abs(dprod_normal) - THICKNESS_MIN_COS_NORMAL) / (1.0 - THICKNESS_MIN_COS_NORMAL)
         total_weight += weight
 
         rvec_smul(weight, dx, dx)
         rvec_inc(ref_xcm, dx)
 
-    rvec_smul(1.0/total_weight, ref_xcm, ref_xcm)
+    if total_weight > EPSILON:
+        rvec_smul(1.0/total_weight, ref_xcm, ref_xcm)
 
     rvec_inc(ref_xcm, ref)
 

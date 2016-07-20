@@ -18,6 +18,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with FATSLiM.  If not, see <http://www.gnu.org/licenses/>.
 from __future__ import print_function
+from numpy.testing import assert_allclose
+ATOL = 5e-3
 
 try:
     from StringIO import StringIO  # python 2, not cStringIO due to unicode strings
@@ -246,10 +248,19 @@ class TestCommands(TestCase):
                 if line.startswith("#"):
                     continue
                 else:
-                    assert line.strip() == ref_content[lino].strip(), "Reference value is %s " \
-                                                                      "but actual value is %s" % \
-                                                                      (repr(ref_content[lino]),
-                                                                       repr(line))
+                    if os.path.splitext(ref_output)[1] == ".xvg" and not line.startswith("@"):
+                        ref_values = np.array([float(val) for val in ref_content[lino].split()])
+                        actual_values = np.array([float(val) for val in line.split()])
+
+                        for i, ref_value in enumerate(ref_values):
+                            assert_allclose(actual_values[i], ref_value, atol=ATOL)
+
+                    else:
+                        assert line.strip() == ref_content[lino].strip(), "Reference value is %s " \
+                                                                          "but actual value is " \
+                                                                          "%s" % \
+                                                                          (repr(ref_content[lino]),
+                                                                          repr(line))
                     lino += 1
 
     def test_util_backup(self):
