@@ -396,6 +396,9 @@ def show_thickness(frame):
 
     membrane = frame.get_membranes()[0]
 
+    cmd.load_cgo([COLOR, 1.0, 0.2, 1.0, SPHERE, x, y, z, 2.5],
+                 "THICKNESS_ref")
+
     cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, THICKNESS_DEFAULT_CUTOFF * 10.0],
                  "THICKNESS_cutoff")
     cmd.set("cgo_transparency", 0.6, "THICKNESS_cutoff")
@@ -409,6 +412,14 @@ def show_thickness(frame):
 
     ref_leaflet_beadid = list(same_leaflet.beadids).index(beadid)
     ref_normal = same_leaflet.normals[ref_leaflet_beadid]
+
+    cgo_ref_normal = draw_vector(ref_position * 10,
+                                 ref_normal,
+                                 cgo_obj=[],
+                                 color=(1.0, 1.0, 0.22),
+                                 alpha=1.0)
+
+    cmd.load_cgo(cgo_ref_normal, "THICKNESS_ref_normal")
 
     # Step 1: get XCM
     same_neighbors = neighbor_search(frame.box,
@@ -453,12 +464,10 @@ def show_thickness(frame):
     ref_xcm += ref_position
 
     x, y, z = ref_xcm * 10.0
-    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, 2.5],
+    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, 3.0],
                  "THICKNESS_REF_XCM")
     cmd.load_cgo(cgo_neighbors, "THICKNESS_REF_neighbors")
     cmd.load_cgo(cgo_useful, "THICKNESS_REF_used")
-
-
 
 
     neighbors = neighbor_search(frame.box,
@@ -469,7 +478,6 @@ def show_thickness(frame):
     cgo_normals = []
     cgo_neighbors = []
     cgo_useful = []
-    directions = -other_leaflet.directions
     normals = other_leaflet.normals
 
     proj_lines = []
@@ -536,14 +544,12 @@ def show_thickness(frame):
 
     other_xcm = ref_xcm + avg_dx
     x, y, z = other_xcm * 10
-    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, 2.6],
+    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, 3.0],
                  "THICKNESS_OTHER_XCM")
 
     cmd.load_cgo(cgo_neighbors, "THICKNESS_neighbors")
     cmd.load_cgo(cgo_useful, "THICKNESS_used")
-    cmd.load_cgo(cgo_directions, "THICKNESS_directions")
     cmd.load_cgo(cgo_normals, "THICKNESS_normals")
-    cmd.load_cgo(proj_lines, "THICKNESS_projections")
 
     x, y, z = ref_xcm * 10
     dx, dy, dz = 100 * ref_normal
@@ -558,7 +564,12 @@ def show_thickness(frame):
         VERTEX, x + dx, y + dy, z + dz,  # 2
         END
     ]
-    cmd.load_cgo(ref_line, "THICKNESS_normal")
+    ref_line = draw_vector(ref_xcm * 10,
+                ref_normal,
+                cgo_obj=ref_line,
+                color=(1.0, 1.0, 0.22),
+                alpha=1.0)
+    cmd.load_cgo(ref_line, "THICKNESS_normal_xcm")
 
     print("Fatslim thickness OK")
 
@@ -665,19 +676,29 @@ def fatslim_vesicle():
 cmd.extend("fatslim_vesicle", fatslim_vesicle)
 
 
-def render_to_file(fname, top=True, side=True):
+def render_to_file(fname, top=True, side=True, vesicle=False):
     fname = os.path.splitext(fname)[0]
 
     cmd.reset()
+    if vesicle:
+        cmd.zoom("NS_ref", 120)
+        cmd.turn("z", -90)
+        cmd.move("y", -50)
     if top:
         cmd.ray("2048")
         cmd.png("%s_top.png" % fname)
 
     if side:
         cmd.turn("x", -90)
+        if vesicle:
+            cmd.move("y", 150)
         cmd.ray("2048")
         cmd.png("%s_side.png" % fname)
     cmd.reset()
+    if vesicle:
+        cmd.zoom("NS_ref", 120)
+        cmd.turn("z", -90)
+        cmd.move("y", -50)
 
 
 cmd.extend("render_to_file", render_to_file)
