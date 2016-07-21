@@ -1,3 +1,5 @@
+.. _chapter_leaflet_membrane:
+
 Leaflet and membrane identification
 ###################################
 
@@ -28,6 +30,8 @@ The lipid direction is simply inferred from the *vector* from the head group *be
 .. seealso::
     See :ref:`tuto_generate_ndx` for further details.
 
+
+.. _algo_local_normals:
 
 Step 2. Local normal calculation
 ================================
@@ -64,6 +68,8 @@ To be considered as part of the same leaflet, two lipids must fulfill the follow
 2. Their orientation must be compatible (i.e. roughly colinear and not anti-parallel)
 
 The leaflet is then identified from lipid to lipid.
+
+.. _algo_membrane_id:
 
 Membrane identification
 """""""""""""""""""""""

@@ -16,7 +16,10 @@
    id="svg4162"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="thickness_same.svg">
+   sodipodi:docname="thickness_same.svg"
+   inkscape:export-filename="../thickness_same.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4164">
     <clipPath
@@ -93,9 +96,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="340.678"
-     inkscape:cy="240.0326"
+     inkscape:zoom="1.4"
+     inkscape:cx="315.05796"
+     inkscape:cy="236.00285"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -113,7 +116,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -125,90 +128,90 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-915.12488"
+       x="-906.07758"
        y="34.912239"
        id="text4158"
        sodipodi:linespacing="125%"
        transform="matrix(0,-1,1,0,0,0)"><tspan
          sodipodi:role="line"
          id="tspan4160"
-         x="-915.12488"
+         x="-906.07758"
          y="34.912239"
          style="font-size:17.50000191px;fill:#333333">side view</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4162"
        y="34.912239"
-       x="-677.90601"
+       x="-676.67804"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"
        transform="matrix(0,-1,1,0,0,0)"><tspan
          style="font-size:17.50000191px;fill:#333333"
          y="34.912239"
-         x="-677.90601"
+         x="-676.67804"
          sodipodi:role="line"
          id="tspan4166">top view</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="146.25775"
+       x="165.54346"
        y="1030.9421"
        id="text5383"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5385"
-         x="146.25775"
+         x="165.54346"
          y="1030.9421"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'">1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text5391"
        y="1030.9421"
-       x="401.35031"
+       x="414.92172"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'"
          y="1030.9421"
-         x="401.35031"
+         x="414.92172"
          id="tspan5393"
          sodipodi:role="line">2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="656.54718"
+       x="661.54712"
        y="1030.9421"
        id="text5395"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5397"
-         x="656.54718"
+         x="661.54712"
          y="1030.9421"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'">3</tspan></text>
     <g
        id="g5443"
        clip-path="url(#clipPath5475)"
-       transform="matrix(1.1715379,0,0,1.1715379,-53.900636,-173.82079)">
+       transform="matrix(1.4644224,0,0,1.4644224,-84.518646,-440.65317)">
       <image
          sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/05_Leaflets_positions_side.png"
          xlink:href="05_Leaflets_positions_side.png"
-         y="769.50488"
-         x="-68.999992"
-         id="image5009"
-         preserveAspectRatio="none"
-         height="299.49997"
+         style="opacity:0.6"
          width="479.57468"
-         style="opacity:0.6" />
+         height="299.49997"
+         preserveAspectRatio="none"
+         id="image5009"
+         x="-68.999992"
+         y="769.50488" />
       <image
          sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_neighbors_only_side.png"
          xlink:href="06_Thickness_NS_same_neighbors_only_side.png"
-         y="769.50488"
-         x="-69.800621"
-         id="image5071"
-         preserveAspectRatio="none"
+         width="480.37531"
          height="300"
-         width="480.37531" />
+         preserveAspectRatio="none"
+         id="image5071"
+         x="-69.800621"
+         y="769.50488" />
       <circle
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.5979996;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.25098039;fill-rule:nonzero;stroke:#000000;stroke-width:1.20979679;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.5979996;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.25098039;fill-rule:nonzero;stroke:#000000;stroke-width:0.96783745;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="circle4666-9"
          cx="181.61496"
          cy="896.2041"
@@ -217,28 +220,28 @@
     <g
        id="g5439"
        clip-path="url(#clipPath5493)"
-       transform="matrix(1.1257847,0,0,1.1257847,-38.160763,-96.393173)">
+       transform="matrix(1.4072309,0,0,1.4072309,-64.843805,-291.17976)">
       <image
          sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/05_Leaflets_positions_top.png"
          xlink:href="05_Leaflets_positions_top.png"
-         y="537.72876"
-         x="-76.85714"
-         id="image4947"
-         preserveAspectRatio="none"
-         height="300"
+         style="opacity:0.65"
          width="480.37531"
-         style="opacity:0.65" />
+         height="300"
+         preserveAspectRatio="none"
+         id="image4947"
+         x="-76.85714"
+         y="537.72876" />
       <image
          sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_neighbors_only_top.png"
          xlink:href="06_Thickness_NS_same_neighbors_only_top.png"
-         y="537.72876"
-         x="-76.85714"
-         id="image5133"
-         preserveAspectRatio="none"
+         width="480.37531"
          height="300"
-         width="480.37531" />
+         preserveAspectRatio="none"
+         id="image5133"
+         x="-76.85714"
+         y="537.72876" />
       <circle
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.5979996;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.25098039;fill-rule:nonzero;stroke:#000000;stroke-width:1.2589643;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.5979996;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.25098039;fill-rule:nonzero;stroke:#000000;stroke-width:1.00717127;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="circle4666"
          cx="173.53375"
          cy="743.7041"
@@ -247,55 +250,7 @@
     <g
        id="g5447"
        clip-path="url(#clipPath5479)"
-       transform="matrix(1.1715379,0,0,1.1715379,-17.101003,-189.13466)">
-      <image
-         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/05_Leaflets_positions_side.png"
-         xlink:href="05_Leaflets_positions_side.png"
-         y="782.57648"
-         x="117.5149"
-         id="image5431"
-         preserveAspectRatio="none"
-         height="299.49997"
-         width="479.57468"
-         style="opacity:0.6" />
-      <image
-         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_used_side.png"
-         xlink:href="06_Thickness_NS_same_used_side.png"
-         y="782.57648"
-         x="116.71427"
-         id="image5270"
-         preserveAspectRatio="none"
-         height="300"
-         width="480.37531" />
-    </g>
-    <g
-       id="g5435"
-       clip-path="url(#clipPath5497)"
-       transform="matrix(1.1257847,0,0,1.1257847,-6.4005384,-79.334828)">
-      <image
-         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/05_Leaflets_positions_top.png"
-         xlink:href="05_Leaflets_positions_top.png"
-         style="opacity:0.65"
-         width="480.37531"
-         height="300"
-         preserveAspectRatio="none"
-         id="image5427"
-         x="121.7143"
-         y="522.57635" />
-      <image
-         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_used_top.png"
-         xlink:href="06_Thickness_NS_same_used_top.png"
-         y="522.57635"
-         x="121.7143"
-         id="image5281"
-         preserveAspectRatio="none"
-         height="300"
-         width="480.37531" />
-    </g>
-    <g
-       id="g5456"
-       transform="matrix(1.1715379,0,0,1.1715379,-155.12119,-254.32641)"
-       clip-path="url(#clipPath5483)">
+       transform="matrix(1.4644224,0,0,1.4644224,-108.06063,-459.79551)">
       <image
          sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/05_Leaflets_positions_side.png"
          xlink:href="05_Leaflets_positions_side.png"
@@ -303,62 +258,110 @@
          width="479.57468"
          height="299.49997"
          preserveAspectRatio="none"
-         id="image5429"
-         x="452.85193"
-         y="838.47284" />
+         id="image5431"
+         x="117.5149"
+         y="782.57648" />
       <image
-         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_xcm_side.png"
-         xlink:href="06_Thickness_NS_same_xcm_side.png"
-         y="838.22284"
-         x="452.45163"
-         id="image5303"
-         preserveAspectRatio="none"
-         height="300"
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_used_side.png"
+         xlink:href="06_Thickness_NS_same_used_side.png"
          width="480.37531"
-         style="opacity:0.85" />
-      <image
-         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_xcm_only_side.png"
-         xlink:href="06_Thickness_NS_same_xcm_only_side.png"
-         y="838.22284"
-         x="452.45163"
-         id="image5292"
-         preserveAspectRatio="none"
          height="300"
-         width="480.37531" />
+         preserveAspectRatio="none"
+         id="image5270"
+         x="116.71427"
+         y="782.57648" />
     </g>
     <g
-       id="g5451"
-       clip-path="url(#clipPath5501)"
-       transform="matrix(1.1257847,0,0,1.1257847,-163.22971,-83.355605)">
+       id="g5435"
+       clip-path="url(#clipPath5497)"
+       transform="matrix(1.4072309,0,0,1.4072309,-94.68505,-269.85683)">
       <image
          sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/05_Leaflets_positions_top.png"
          xlink:href="05_Leaflets_positions_top.png"
-         y="526.14789"
-         x="487.80386"
-         id="image5433"
+         y="522.57635"
+         x="121.7143"
+         id="image5427"
          preserveAspectRatio="none"
          height="300"
          width="480.37531"
          style="opacity:0.65" />
       <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_used_top.png"
+         xlink:href="06_Thickness_NS_same_used_top.png"
+         width="480.37531"
+         height="300"
+         preserveAspectRatio="none"
+         id="image5281"
+         x="121.7143"
+         y="522.57635" />
+    </g>
+    <g
+       id="g5456"
+       transform="matrix(1.4644224,0,0,1.4644224,-352.98455,-541.2852)"
+       clip-path="url(#clipPath5483)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/05_Leaflets_positions_side.png"
+         xlink:href="05_Leaflets_positions_side.png"
+         y="838.47284"
+         x="452.85193"
+         id="image5429"
+         preserveAspectRatio="none"
+         height="299.49997"
+         width="479.57468"
+         style="opacity:0.6" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_xcm_side.png"
+         xlink:href="06_Thickness_NS_same_xcm_side.png"
+         style="opacity:0.85"
+         width="480.37531"
+         height="300"
+         preserveAspectRatio="none"
+         id="image5303"
+         x="452.45163"
+         y="838.22284" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_xcm_only_side.png"
+         xlink:href="06_Thickness_NS_same_xcm_only_side.png"
+         width="480.37531"
+         height="300"
+         preserveAspectRatio="none"
+         id="image5292"
+         x="452.45163"
+         y="838.22284" />
+    </g>
+    <g
+       id="g5451"
+       clip-path="url(#clipPath5501)"
+       transform="matrix(1.4072309,0,0,1.4072309,-363.1202,-274.8828)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/05_Leaflets_positions_top.png"
+         xlink:href="05_Leaflets_positions_top.png"
+         style="opacity:0.65"
+         width="480.37531"
+         height="300"
+         preserveAspectRatio="none"
+         id="image5433"
+         x="487.80386"
+         y="526.14789" />
+      <image
          sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_xcm_top.png"
          xlink:href="06_Thickness_NS_same_xcm_top.png"
-         style="opacity:0.85"
-         y="526.14789"
-         x="487.80386"
-         id="image5314"
-         preserveAspectRatio="none"
+         width="480.37531"
          height="300"
-         width="480.37531" />
+         preserveAspectRatio="none"
+         id="image5314"
+         x="487.80386"
+         y="526.14789"
+         style="opacity:0.85" />
       <image
          sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/06_Thickness_NS_same_xcm_only_top.png"
          xlink:href="06_Thickness_NS_same_xcm_only_top.png"
-         y="526.14789"
-         x="487.80386"
-         id="image5424"
-         preserveAspectRatio="none"
+         width="480.37531"
          height="300"
-         width="480.37531" />
+         preserveAspectRatio="none"
+         id="image5424"
+         x="487.80386"
+         y="526.14789" />
     </g>
   </g>
 </svg>

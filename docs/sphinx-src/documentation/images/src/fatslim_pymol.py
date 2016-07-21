@@ -464,7 +464,7 @@ def show_thickness(frame):
     ref_xcm += ref_position
 
     x, y, z = ref_xcm * 10.0
-    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, 3.0],
+    cmd.load_cgo([COLOR, 0.0, 0.3, 1.0, SPHERE, x, y, z, 3.5],
                  "THICKNESS_REF_XCM")
     cmd.load_cgo(cgo_neighbors, "THICKNESS_REF_neighbors")
     cmd.load_cgo(cgo_useful, "THICKNESS_REF_used")
@@ -544,7 +544,7 @@ def show_thickness(frame):
 
     other_xcm = ref_xcm + avg_dx
     x, y, z = other_xcm * 10
-    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, 3.0],
+    cmd.load_cgo([COLOR, 0.0, 1.0, 0.2, SPHERE, x, y, z, 3.5],
                  "THICKNESS_OTHER_XCM")
 
     cmd.load_cgo(cgo_neighbors, "THICKNESS_neighbors")

@@ -9,19 +9,19 @@ turn x,-90
 
 enable leaflets_hg1
 enable leaflets_hg2
-render_to_file("05_Vesicle_leaflets", vesicle=True)
+#render_to_file("05_Vesicle_leaflets", vesicle=True)
 
 enable THICKNESS_ref
 enable THICKNESS_ref_normal
 enable THICKNESS_REF_neighbors
-render_to_file("06_Vesicle_NS_same", vesicle=True)
+#render_to_file("06_Vesicle_NS_same", vesicle=True)
 
 disable leaflets_hg1
 disable leaflets_hg2
-render_to_file("06_Vesicle_NS_same_neighbors_only", vesicle=True)
+#render_to_file("06_Vesicle_NS_same_neighbors_only", vesicle=True)
 
 enable THICKNESS_REF_used
-render_to_file("06_Vesicle_NS_same_used", vesicle=True)
+#render_to_file("06_Vesicle_NS_same_used", vesicle=True)
 
 disable THICKNESS_ref
 enable THICKNESS_REF_XCM

@@ -86,20 +86,20 @@ enable leaflets_hg2
 
 disable directions_upper
 disable directions_lower
-render_to_file("05_Leaflets_positions")
+#render_to_file("05_Leaflets_positions")
 
 
 enable THICKNESS_ref
 enable THICKNESS_ref_normal
 enable THICKNESS_REF_neighbors
-render_to_file("06_Thickness_NS_same")
+#render_to_file("06_Thickness_NS_same")
 
 disable leaflets_hg1
 disable leaflets_hg2
-render_to_file("06_Thickness_NS_same_neighbors_only")
+#render_to_file("06_Thickness_NS_same_neighbors_only")
 
 enable THICKNESS_REF_used
-render_to_file("06_Thickness_NS_same_used")
+#render_to_file("06_Thickness_NS_same_used")
 
 disable THICKNESS_ref
 enable THICKNESS_REF_XCM
