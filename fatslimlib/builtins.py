@@ -224,7 +224,8 @@ class CmdMembranes(AnalyticalCommand):
                                               help="Index group to store leaflets")
 
         self.parser_analysis_group.add_argument("--cutoff", default=2.0, type=float,
-                                                help="Cutoff distance for leaflet identification")
+                                                help="Cutoff distance (in nm) for leaflet "
+                                                     "identification")
 
     def prepare_results(self, num_frames):
         self.num_membranes = np.zeros(num_frames, dtype=int)
@@ -307,7 +308,7 @@ class PropertyThickness(MembraneProperty):
 
         parser_analysis.add_argument("--thickness-cutoff",
                                      dest="thickness_cutoff", default=6.0, type=float,
-                                     help="Cutoff distance used to identify inter-leaflet "
+                                     help="Cutoff distance (in nm) used to identify inter-leaflet "
                                           "neighbors")
 
     def get_values(self, membrane):
@@ -347,12 +348,13 @@ class PropertyAPL(MembraneProperty):
 
         parser_analysis.add_argument("--apl-cutoff",
                                      dest="apl_cutoff", default=3.0, type=float,
-                                     help="Cutoff distance used to approximate planar region")
+                                     help="Cutoff distance (in nm) used to approximate "
+                                          "planar region")
 
         parser_analysis.add_argument("--apl-limit",
                                      dest="apl_limit", default=10.0, type=float,
-                                     help="Upper limit considered when calculating individual APL "
-                                          "values")
+                                     help="Upper limit (in nm2) considered when calculating "
+                                          "individual APL values")
 
     def get_values(self, membrane):
         mem_val, l1_val_dict, l2_val_dict = membrane.get_apl(

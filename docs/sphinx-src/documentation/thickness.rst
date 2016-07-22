@@ -77,7 +77,7 @@ The inter-leaflet distance is estimated as the projection of the distance vector
 Calculation examples
 ====================
 
-Here are a few examples of membrane thickness calculation doe with FATSLiM and other software for comparison:
+Here are a few examples of membrane thickness calculation done with FATSLiM and other software for comparison:
 
 +------------+---------------+----------------------------------+--------------------------------------+--------------------------------------+-----------------------------------+---------------------------------+
 |                            | Flat membrane                                                                                                  | Vesicle                                                             |
