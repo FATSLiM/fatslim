@@ -74,6 +74,44 @@ The inter-leaflet distance is estimated as the projection of the distance vector
     :align: center
 
 
+Calculation examples
+====================
+
+Here are a few examples of membrane thickness calculation doe with FATSLiM and other software for comparison:
+
++------------+---------------+----------------------------------+--------------------------------------+--------------------------------------+-----------------------------------+---------------------------------+
+|                            | Flat membrane                                                                                                  | Vesicle                                                             |
++                            +----------------------------------+--------------------------------------+--------------------------------------+-----------------------------------+---------------------------------+
+|                            | :ref:`lipid <tuto_lipid_system>` | :ref:`protein <tuto_protein_system>` | :ref:`peptide <tuto_peptide_system>` | :ref:`model <tuto_model_vesicle>` | :ref:`real <tuto_real_vesicle>` |
++============+===============+==================================+======================================+======================================+===================================+=================================+
+|            | FATSLiM       | 4.08                             | 3.16                                 | 3.82                                 | 4.98                              | 3.95                            |
++            +---------------+----------------------------------+--------------------------------------+--------------------------------------+-----------------------------------+---------------------------------+
+|            | `APL@Voro`_   | 4.07                             | 3.15                                 | 3.99                                 | |---|                             | |---|                           |
++            +---------------+----------------------------------+--------------------------------------+--------------------------------------+-----------------------------------+---------------------------------+
+| Thickness  | `GridMAT-MD`_ | 4.06                             | 3.18                                 | 3.81                                 | |---|                             | |---|                           |
++   (nm)     +---------------+----------------------------------+--------------------------------------+--------------------------------------+-----------------------------------+---------------------------------+
+|            | `MEMBPLUGIN`_ | 4.28                             | 3.17                                 | 3.80                                 | |---|                             | |---|                           |
++            +---------------+----------------------------------+--------------------------------------+--------------------------------------+-----------------------------------+---------------------------------+
+|            | Manually      | 4.07                             | 3.15                                 | 3.79                                 | 5.00                              | 4.00                            |
++------------+---------------+----------------------------------+--------------------------------------+--------------------------------------+-----------------------------------+---------------------------------+
+
+.. _APL@Voro: http://www.aplvoro.org/
+.. _GridMAT-MD: http://www.bevanlab.biochem.vt.edu/GridMAT-MD/
+.. _MEMBPLUGIN: https://sourceforge.net/projects/membplugin/
+.. |---| unicode:: U+2014   .. em dash
+
+.. note::
+
+    No thickness value means that the software is not able to work with such system.
+
+.. seealso::
+
+    Detailed description of these example systems is available :ref:`here <tuto_example_systems>`.
+
+    Check :ref:`tutorial <tutorials>` section to learn how to make these calculation with FATSLiM.
+
+
+
 Associated command and parameters
 *********************************
 
@@ -107,3 +145,41 @@ Cutoff distance for inter-leaflet neighbor search
 
 - **Default value:** ``6.0``
 
+Output files
+""""""""""""
+
+Plotting thickness
+~~~~~~~~~~~~~~~~~~
+
+- **Associated parameter:** ``--plot-thickness``
+
+- **Purpose:** This option specifies the filename where FATSLiM should save the thickness average values (for membrane and both leaflets) found over time (as a XY plot).
+
+- **Accepted file extensions:** `.xvg`_
+
+- **Default value:** None (no output file)
+
+.. _.xvg: http://manual.gromacs.org/current/online/xvg.html
+
+
+Raw thickness values
+~~~~~~~~~~~~~~~~~~~~
+
+- **Associated parameter:** ``--export-thickness-raw``
+
+- **Purpose:** This option specifies the filename where FATSLiM should save the raw thicknesses (as calculated by the algorithm |--| one value per lipid).
+  These values are saved in a `comma separated values <.csv>`_ file.
+  To ease further processing the file contains the following columns:
+
+    * residue number (resid)
+    * leaflet identifier (e.g. "lower leaflet")
+    * lipid coordinates (three columns for x, y and z)
+    * thickness value (in nm).
+
+- **Accepted file extensions:** `.csv`_
+
+- **Default value:** None (no output file)
+
+.. _.csv: https://en.wikipedia.org/wiki/Comma-separated_values
+
+.. |--| unicode:: U+2013   .. en dash
