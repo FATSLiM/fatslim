@@ -530,3 +530,26 @@ def get_zoi(real[:] ref_pt, real[:,::1] pts):
     polygon_destroy(zoi)
 
     return zoi_py
+
+def clip_zoi(real[:, ::1] zoi, real[:] ref_pt, real[:] clipping_pt):
+    cdef real_point ref_pt_c
+    cdef real_point clipping_pt_c
+    cdef Polygon *zoi_polygon = NULL
+
+    with nogil:
+        # Convert Python to C
+        ref_pt_c[XX] = ref_pt[XX]
+        ref_pt_c[YY] = ref_pt[YY]
+
+        clipping_pt_c[XX] = clipping_pt[XX]
+        clipping_pt_c[YY] = clipping_pt[YY]
+
+        zoi_polygon = polygon_new_from_memview(zoi)
+
+        fast_clip_zoi(zoi_polygon, ref_pt_c, clipping_pt_c, NULL)
+
+    zoi_py = polygon_as_array(zoi_polygon)
+
+    polygon_destroy(zoi_polygon)
+
+    return zoi_py

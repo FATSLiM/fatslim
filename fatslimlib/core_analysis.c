@@ -6949,12 +6949,12 @@ static int __pyx_pf_10fatslimlib_13core_analysis_9Aggregate___init__(struct __py
       __pyx_L13_error:;
       __Pyx_PyThreadState_assign
       __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
-      __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
 
       /* "fatslimlib/core_analysis.pyx":674
  *             try:
@@ -18569,8 +18569,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) __
               goto __pyx_L44_try_end;
               __pyx_L37_error:;
               __Pyx_PyThreadState_assign
-              __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
-              __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
+              __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
               __Pyx_XDECREF(__pyx_t_51); __pyx_t_51 = 0;
               __Pyx_XDECREF(__pyx_t_52); __pyx_t_52 = 0;
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -18579,7 +18578,8 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) __
               __Pyx_XDECREF(__pyx_t_48); __pyx_t_48 = 0;
               __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
               __PYX_XDEC_MEMVIEW(&__pyx_t_30, 1);
-              __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
+              __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
+              __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
 
               /* "fatslimlib/core_analysis.pyx":1636
  *                             local_xcms[aggid].append(np.asarray(coords[nid]))
@@ -18929,8 +18929,7 @@ __pyx_t_52 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) _
           goto __pyx_L55_try_end;
           __pyx_L48_error:;
           __Pyx_PyThreadState_assign
-          __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
-          __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_XDECREF(__pyx_t_51); __pyx_t_51 = 0;
           __Pyx_XDECREF(__pyx_t_58); __pyx_t_58 = 0;
@@ -18940,7 +18939,8 @@ __pyx_t_52 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) _
           __Pyx_XDECREF(__pyx_t_52); __pyx_t_52 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __PYX_XDEC_MEMVIEW(&__pyx_t_30, 1);
-          __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
 
           /* "fatslimlib/core_analysis.pyx":1647
  *                 try:
@@ -19778,9 +19778,7 @@ __pyx_t_52 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) _
           goto __pyx_L77_try_end;
           __pyx_L70_error:;
           __Pyx_PyThreadState_assign
-          __PYX_XDEC_MEMVIEW(&__pyx_t_61, 1);
-          __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
-          __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
           __Pyx_XDECREF(__pyx_t_51); __pyx_t_51 = 0;
           __Pyx_XDECREF(__pyx_t_58); __pyx_t_58 = 0;
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -19790,7 +19788,9 @@ __pyx_t_52 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) _
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __PYX_XDEC_MEMVIEW(&__pyx_t_30, 1);
-          __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_61, 1);
 
           /* "fatslimlib/core_analysis.pyx":1684
  *                 try:

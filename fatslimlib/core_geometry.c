@@ -1385,6 +1385,7 @@ static const char __pyx_k_memview[] = "memview";
 static const char __pyx_k_polygon[] = "polygon";
 static const char __pyx_k_subject[] = "subject";
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
+static const char __pyx_k_clip_zoi[] = "clip_zoi";
 static const char __pyx_k_itemsize[] = "itemsize";
 static const char __pyx_k_ref_pt_c[] = "ref_pt_c";
 static const char __pyx_k_TypeError[] = "TypeError";
@@ -1396,6 +1397,9 @@ static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_clipped_py[] = "clipped_py";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_MemoryError[] = "MemoryError";
+static const char __pyx_k_clipping_pt[] = "clipping_pt";
+static const char __pyx_k_zoi_polygon[] = "zoi_polygon";
+static const char __pyx_k_clipping_pt_c[] = "clipping_pt_c";
 static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
 static const char __pyx_k_clipper_points[] = "clipper_points";
 static const char __pyx_k_subject_points[] = "subject_points";
@@ -1452,10 +1456,13 @@ static PyObject *__pyx_n_s_base;
 static PyObject *__pyx_n_s_c;
 static PyObject *__pyx_n_u_c;
 static PyObject *__pyx_n_s_class;
+static PyObject *__pyx_n_s_clip_zoi;
 static PyObject *__pyx_n_s_clipped;
 static PyObject *__pyx_n_s_clipped_py;
 static PyObject *__pyx_n_s_clipper;
 static PyObject *__pyx_n_s_clipper_points;
+static PyObject *__pyx_n_s_clipping_pt;
+static PyObject *__pyx_n_s_clipping_pt_c;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
 static PyObject *__pyx_n_s_dtype_is_object;
@@ -1519,12 +1526,14 @@ static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
 static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_zoi;
+static PyObject *__pyx_n_s_zoi_polygon;
 static PyObject *__pyx_n_s_zoi_py;
 static PyObject *__pyx_pf_10fatslimlib_13core_geometry_get_polygon_area(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_points); /* proto */
 static PyObject *__pyx_pf_10fatslimlib_13core_geometry_2get_polygon_perimeter(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_points); /* proto */
 static PyObject *__pyx_pf_10fatslimlib_13core_geometry_4get_clipped_polygon(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_subject_points, __Pyx_memviewslice __pyx_v_clipper_points); /* proto */
 static PyObject *__pyx_pf_10fatslimlib_13core_geometry_6is_inside_polygon(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_points, __Pyx_memviewslice __pyx_v_point); /* proto */
 static PyObject *__pyx_pf_10fatslimlib_13core_geometry_8get_zoi(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_ref_pt, __Pyx_memviewslice __pyx_v_pts); /* proto */
+static PyObject *__pyx_pf_10fatslimlib_13core_geometry_10clip_zoi(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_zoi, __Pyx_memviewslice __pyx_v_ref_pt, __Pyx_memviewslice __pyx_v_clipping_pt); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -1584,15 +1593,17 @@ static PyObject *__pyx_tuple__18;
 static PyObject *__pyx_tuple__20;
 static PyObject *__pyx_tuple__22;
 static PyObject *__pyx_tuple__24;
-static PyObject *__pyx_tuple__25;
 static PyObject *__pyx_tuple__26;
 static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_tuple__28;
+static PyObject *__pyx_tuple__29;
+static PyObject *__pyx_tuple__30;
 static PyObject *__pyx_codeobj__15;
 static PyObject *__pyx_codeobj__17;
 static PyObject *__pyx_codeobj__19;
 static PyObject *__pyx_codeobj__21;
 static PyObject *__pyx_codeobj__23;
+static PyObject *__pyx_codeobj__25;
 
 /* "fatslimlib/core_geometry.pyx":36
  * 
@@ -5661,6 +5672,8 @@ static PyObject *__pyx_pf_10fatslimlib_13core_geometry_8get_zoi(CYTHON_UNUSED Py
  *     polygon_destroy(zoi)
  * 
  *     return zoi_py             # <<<<<<<<<<<<<<
+ * 
+ * def clip_zoi(real[:, ::1] zoi, real[:] ref_pt, real[:] clipping_pt):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_zoi_py);
@@ -5684,6 +5697,254 @@ static PyObject *__pyx_pf_10fatslimlib_13core_geometry_8get_zoi(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_v_zoi_py);
   __PYX_XDEC_MEMVIEW(&__pyx_v_ref_pt, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_pts, 1);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fatslimlib/core_geometry.pyx":534
+ *     return zoi_py
+ * 
+ * def clip_zoi(real[:, ::1] zoi, real[:] ref_pt, real[:] clipping_pt):             # <<<<<<<<<<<<<<
+ *     cdef real_point ref_pt_c
+ *     cdef real_point clipping_pt_c
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10fatslimlib_13core_geometry_11clip_zoi(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_10fatslimlib_13core_geometry_11clip_zoi = {"clip_zoi", (PyCFunction)__pyx_pw_10fatslimlib_13core_geometry_11clip_zoi, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10fatslimlib_13core_geometry_11clip_zoi(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  __Pyx_memviewslice __pyx_v_zoi = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_ref_pt = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_clipping_pt = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("clip_zoi (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_zoi,&__pyx_n_s_ref_pt,&__pyx_n_s_clipping_pt,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_zoi)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        case  1:
+        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_ref_pt)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("clip_zoi", 1, 3, 3, 1); __PYX_ERR(0, 534, __pyx_L3_error)
+        }
+        case  2:
+        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_clipping_pt)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("clip_zoi", 1, 3, 3, 2); __PYX_ERR(0, 534, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "clip_zoi") < 0)) __PYX_ERR(0, 534, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_zoi = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(values[0]); if (unlikely(!__pyx_v_zoi.memview)) __PYX_ERR(0, 534, __pyx_L3_error)
+    __pyx_v_ref_pt = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[1]); if (unlikely(!__pyx_v_ref_pt.memview)) __PYX_ERR(0, 534, __pyx_L3_error)
+    __pyx_v_clipping_pt = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(values[2]); if (unlikely(!__pyx_v_clipping_pt.memview)) __PYX_ERR(0, 534, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("clip_zoi", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 534, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("fatslimlib.core_geometry.clip_zoi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_10fatslimlib_13core_geometry_10clip_zoi(__pyx_self, __pyx_v_zoi, __pyx_v_ref_pt, __pyx_v_clipping_pt);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10fatslimlib_13core_geometry_10clip_zoi(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_zoi, __Pyx_memviewslice __pyx_v_ref_pt, __Pyx_memviewslice __pyx_v_clipping_pt) {
+  __pyx_t_10fatslimlib_13core_geometry_real_point __pyx_v_ref_pt_c;
+  __pyx_t_10fatslimlib_13core_geometry_real_point __pyx_v_clipping_pt_c;
+  struct __pyx_t_10fatslimlib_13core_geometry_Polygon *__pyx_v_zoi_polygon;
+  PyObject *__pyx_v_zoi_py = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  Py_ssize_t __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
+  __Pyx_RefNannySetupContext("clip_zoi", 0);
+
+  /* "fatslimlib/core_geometry.pyx":537
+ *     cdef real_point ref_pt_c
+ *     cdef real_point clipping_pt_c
+ *     cdef Polygon *zoi_polygon = NULL             # <<<<<<<<<<<<<<
+ * 
+ *     with nogil:
+ */
+  __pyx_v_zoi_polygon = NULL;
+
+  /* "fatslimlib/core_geometry.pyx":539
+ *     cdef Polygon *zoi_polygon = NULL
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         # Convert Python to C
+ *         ref_pt_c[XX] = ref_pt[XX]
+ */
+  {
+      #ifdef WITH_THREAD
+      PyThreadState *_save;
+      Py_UNBLOCK_THREADS
+      #endif
+      /*try:*/ {
+
+        /* "fatslimlib/core_geometry.pyx":541
+ *     with nogil:
+ *         # Convert Python to C
+ *         ref_pt_c[XX] = ref_pt[XX]             # <<<<<<<<<<<<<<
+ *         ref_pt_c[YY] = ref_pt[YY]
+ * 
+ */
+        __pyx_t_1 = 0;
+        if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_ref_pt.shape[0];
+        (__pyx_v_ref_pt_c[0]) = (*((real *) ( /* dim=0 */ (__pyx_v_ref_pt.data + __pyx_t_1 * __pyx_v_ref_pt.strides[0]) )));
+
+        /* "fatslimlib/core_geometry.pyx":542
+ *         # Convert Python to C
+ *         ref_pt_c[XX] = ref_pt[XX]
+ *         ref_pt_c[YY] = ref_pt[YY]             # <<<<<<<<<<<<<<
+ * 
+ *         clipping_pt_c[XX] = clipping_pt[XX]
+ */
+        __pyx_t_2 = 1;
+        if (__pyx_t_2 < 0) __pyx_t_2 += __pyx_v_ref_pt.shape[0];
+        (__pyx_v_ref_pt_c[1]) = (*((real *) ( /* dim=0 */ (__pyx_v_ref_pt.data + __pyx_t_2 * __pyx_v_ref_pt.strides[0]) )));
+
+        /* "fatslimlib/core_geometry.pyx":544
+ *         ref_pt_c[YY] = ref_pt[YY]
+ * 
+ *         clipping_pt_c[XX] = clipping_pt[XX]             # <<<<<<<<<<<<<<
+ *         clipping_pt_c[YY] = clipping_pt[YY]
+ * 
+ */
+        __pyx_t_3 = 0;
+        if (__pyx_t_3 < 0) __pyx_t_3 += __pyx_v_clipping_pt.shape[0];
+        (__pyx_v_clipping_pt_c[0]) = (*((real *) ( /* dim=0 */ (__pyx_v_clipping_pt.data + __pyx_t_3 * __pyx_v_clipping_pt.strides[0]) )));
+
+        /* "fatslimlib/core_geometry.pyx":545
+ * 
+ *         clipping_pt_c[XX] = clipping_pt[XX]
+ *         clipping_pt_c[YY] = clipping_pt[YY]             # <<<<<<<<<<<<<<
+ * 
+ *         zoi_polygon = polygon_new_from_memview(zoi)
+ */
+        __pyx_t_4 = 1;
+        if (__pyx_t_4 < 0) __pyx_t_4 += __pyx_v_clipping_pt.shape[0];
+        (__pyx_v_clipping_pt_c[1]) = (*((real *) ( /* dim=0 */ (__pyx_v_clipping_pt.data + __pyx_t_4 * __pyx_v_clipping_pt.strides[0]) )));
+
+        /* "fatslimlib/core_geometry.pyx":547
+ *         clipping_pt_c[YY] = clipping_pt[YY]
+ * 
+ *         zoi_polygon = polygon_new_from_memview(zoi)             # <<<<<<<<<<<<<<
+ * 
+ *         fast_clip_zoi(zoi_polygon, ref_pt_c, clipping_pt_c, NULL)
+ */
+        __pyx_v_zoi_polygon = __pyx_f_10fatslimlib_13core_geometry_polygon_new_from_memview(__pyx_v_zoi);
+
+        /* "fatslimlib/core_geometry.pyx":549
+ *         zoi_polygon = polygon_new_from_memview(zoi)
+ * 
+ *         fast_clip_zoi(zoi_polygon, ref_pt_c, clipping_pt_c, NULL)             # <<<<<<<<<<<<<<
+ * 
+ *     zoi_py = polygon_as_array(zoi_polygon)
+ */
+        __pyx_f_10fatslimlib_13core_geometry_fast_clip_zoi(__pyx_v_zoi_polygon, __pyx_v_ref_pt_c, __pyx_v_clipping_pt_c, NULL);
+      }
+
+      /* "fatslimlib/core_geometry.pyx":539
+ *     cdef Polygon *zoi_polygon = NULL
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         # Convert Python to C
+ *         ref_pt_c[XX] = ref_pt[XX]
+ */
+      /*finally:*/ {
+        /*normal exit:*/{
+          #ifdef WITH_THREAD
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
+  }
+
+  /* "fatslimlib/core_geometry.pyx":551
+ *         fast_clip_zoi(zoi_polygon, ref_pt_c, clipping_pt_c, NULL)
+ * 
+ *     zoi_py = polygon_as_array(zoi_polygon)             # <<<<<<<<<<<<<<
+ * 
+ *     polygon_destroy(zoi_polygon)
+ */
+  __pyx_t_5 = __pyx_f_10fatslimlib_13core_geometry_polygon_as_array(__pyx_v_zoi_polygon); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_v_zoi_py = __pyx_t_5;
+  __pyx_t_5 = 0;
+
+  /* "fatslimlib/core_geometry.pyx":553
+ *     zoi_py = polygon_as_array(zoi_polygon)
+ * 
+ *     polygon_destroy(zoi_polygon)             # <<<<<<<<<<<<<<
+ * 
+ *     return zoi_py
+ */
+  __pyx_f_10fatslimlib_13core_geometry_polygon_destroy(__pyx_v_zoi_polygon);
+
+  /* "fatslimlib/core_geometry.pyx":555
+ *     polygon_destroy(zoi_polygon)
+ * 
+ *     return zoi_py             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_zoi_py);
+  __pyx_r = __pyx_v_zoi_py;
+  goto __pyx_L0;
+
+  /* "fatslimlib/core_geometry.pyx":534
+ *     return zoi_py
+ * 
+ * def clip_zoi(real[:, ::1] zoi, real[:] ref_pt, real[:] clipping_pt):             # <<<<<<<<<<<<<<
+ *     cdef real_point ref_pt_c
+ *     cdef real_point clipping_pt_c
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("fatslimlib.core_geometry.clip_zoi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_zoi_py);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_zoi, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_ref_pt, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_clipping_pt, 1);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -17974,10 +18235,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
   {&__pyx_n_u_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 1, 0, 1},
   {&__pyx_n_s_class, __pyx_k_class, sizeof(__pyx_k_class), 0, 0, 1, 1},
+  {&__pyx_n_s_clip_zoi, __pyx_k_clip_zoi, sizeof(__pyx_k_clip_zoi), 0, 0, 1, 1},
   {&__pyx_n_s_clipped, __pyx_k_clipped, sizeof(__pyx_k_clipped), 0, 0, 1, 1},
   {&__pyx_n_s_clipped_py, __pyx_k_clipped_py, sizeof(__pyx_k_clipped_py), 0, 0, 1, 1},
   {&__pyx_n_s_clipper, __pyx_k_clipper, sizeof(__pyx_k_clipper), 0, 0, 1, 1},
   {&__pyx_n_s_clipper_points, __pyx_k_clipper_points, sizeof(__pyx_k_clipper_points), 0, 0, 1, 1},
+  {&__pyx_n_s_clipping_pt, __pyx_k_clipping_pt, sizeof(__pyx_k_clipping_pt), 0, 0, 1, 1},
+  {&__pyx_n_s_clipping_pt_c, __pyx_k_clipping_pt_c, sizeof(__pyx_k_clipping_pt_c), 0, 0, 1, 1},
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
   {&__pyx_n_s_dtype_is_object, __pyx_k_dtype_is_object, sizeof(__pyx_k_dtype_is_object), 0, 0, 1, 1},
@@ -18041,6 +18305,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_unable_to_allocate_shape_and_str, __pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 0, 1, 0},
   {&__pyx_n_s_unpack, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
   {&__pyx_n_s_zoi, __pyx_k_zoi, sizeof(__pyx_k_zoi), 0, 0, 1, 1},
+  {&__pyx_n_s_zoi_polygon, __pyx_k_zoi_polygon, sizeof(__pyx_k_zoi_polygon), 0, 0, 1, 1},
   {&__pyx_n_s_zoi_py, __pyx_k_zoi_py, sizeof(__pyx_k_zoi_py), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
@@ -18268,6 +18533,18 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__22);
   __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_get_zoi, 502, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 502, __pyx_L1_error)
 
+  /* "fatslimlib/core_geometry.pyx":534
+ *     return zoi_py
+ * 
+ * def clip_zoi(real[:, ::1] zoi, real[:] ref_pt, real[:] clipping_pt):             # <<<<<<<<<<<<<<
+ *     cdef real_point ref_pt_c
+ *     cdef real_point clipping_pt_c
+ */
+  __pyx_tuple__24 = PyTuple_Pack(7, __pyx_n_s_zoi, __pyx_n_s_ref_pt, __pyx_n_s_clipping_pt, __pyx_n_s_ref_pt_c, __pyx_n_s_clipping_pt_c, __pyx_n_s_zoi_polygon, __pyx_n_s_zoi_py); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 534, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_clip_zoi, 534, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 534, __pyx_L1_error)
+
   /* "View.MemoryView":282
  *         return self.name
  * 
@@ -18275,9 +18552,9 @@ static int __Pyx_InitCachedConstants(void) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(1, 282, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__24);
-  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(1, 282, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_GIVEREF(__pyx_tuple__26);
 
   /* "View.MemoryView":283
  * 
@@ -18286,9 +18563,9 @@ static int __Pyx_InitCachedConstants(void) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(1, 283, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__25);
-  __Pyx_GIVEREF(__pyx_tuple__25);
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(1, 283, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
 
   /* "View.MemoryView":284
  * cdef generic = Enum("<strided and direct or indirect>")
@@ -18297,9 +18574,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(1, 284, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__26);
-  __Pyx_GIVEREF(__pyx_tuple__26);
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(1, 284, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
 
   /* "View.MemoryView":287
  * 
@@ -18308,9 +18585,9 @@ static int __Pyx_InitCachedConstants(void) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(1, 287, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__27);
-  __Pyx_GIVEREF(__pyx_tuple__27);
+  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(1, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
 
   /* "View.MemoryView":288
  * 
@@ -18319,9 +18596,9 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(1, 288, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(1, 288, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -18555,6 +18832,18 @@ PyMODINIT_FUNC PyInit_core_geometry(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_zoi, __pyx_t_1) < 0) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
+  /* "fatslimlib/core_geometry.pyx":534
+ *     return zoi_py
+ * 
+ * def clip_zoi(real[:, ::1] zoi, real[:] ref_pt, real[:] clipping_pt):             # <<<<<<<<<<<<<<
+ *     cdef real_point ref_pt_c
+ *     cdef real_point clipping_pt_c
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_10fatslimlib_13core_geometry_11clip_zoi, NULL, __pyx_n_s_fatslimlib_core_geometry); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 534, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_clip_zoi, __pyx_t_1) < 0) __PYX_ERR(0, 534, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
   /* "fatslimlib/core_geometry.pyx":1
  * # -*- coding: utf-8; Mode: python; tab-width: 4; indent-tabs-mode:nil; -*-             # <<<<<<<<<<<<<<
  * # vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
@@ -18585,7 +18874,7 @@ PyMODINIT_FUNC PyInit_core_geometry(void)
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 282, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(generic);
   __Pyx_DECREF_SET(generic, __pyx_t_1);
@@ -18599,7 +18888,7 @@ PyMODINIT_FUNC PyInit_core_geometry(void)
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 283, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(strided);
   __Pyx_DECREF_SET(strided, __pyx_t_1);
@@ -18613,7 +18902,7 @@ PyMODINIT_FUNC PyInit_core_geometry(void)
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 284, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(indirect);
   __Pyx_DECREF_SET(indirect, __pyx_t_1);
@@ -18627,7 +18916,7 @@ PyMODINIT_FUNC PyInit_core_geometry(void)
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 287, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(contiguous);
   __Pyx_DECREF_SET(contiguous, __pyx_t_1);
@@ -18641,7 +18930,7 @@ PyMODINIT_FUNC PyInit_core_geometry(void)
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 288, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(indirect_contiguous);
   __Pyx_DECREF_SET(indirect_contiguous, __pyx_t_1);
