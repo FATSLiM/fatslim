@@ -35,9 +35,11 @@ else:
 EPSILON = 1e-6
 BILAYER = "bilayer"
 VESICLE = "vesicle"
+BILAYER_PROT = "bilayer_prot"
 # BILAYER_REF = 54 - 1
 BILAYER_REF = 336 - 1
 VESICLE_REF = 1115 - 1
+BILAYER_PROT_REF = 205 - 161
 REF_BEAD = 0
 NS_RADIUS = 2
 THICKNESS_DEFAULT_CUTOFF = 6.0
@@ -49,6 +51,8 @@ XX = 0
 YY = 1
 ZZ = 2
 COS_45 = 0.70710678
+APL_DEFAULT_CUTOFF = 3.0
+
 
 def setup():
     cmd.delete("all")
@@ -195,7 +199,81 @@ def draw_vector(x_begin, direction, cgo_obj=None, color=(0.7, 0.7, 0.2), alpha=1
     return cgo_obj
 
 
-def show_positions(frame, z_limit=1e9):
+def dprod(a, b):
+    val = 0
+    for i in range(3):
+        val += a[i] * b[i]
+    return val
+
+
+def norm(a):
+    val = 0
+    for i in range(3):
+        val += a[i] * a[i]
+    return np.sqrt(val)
+
+def complete_basis(z_axis):
+    z_axis = z_axis / norm(z_axis)
+    x_axis = np.zeros(3)
+    y_axis = np.zeros(3)
+
+    if z_axis[ZZ] < -0.9999999:
+        x_axis[XX] = 0.0
+        x_axis[YY] = -1.0
+        x_axis[ZZ] = 0.0
+
+        y_axis[XX] = -1.0
+        y_axis[YY] = 0.0
+        y_axis[ZZ] = 0.0
+
+    else:
+        a = 1.0  / (1.0 + z_axis[ZZ])
+        b = -z_axis[XX] * z_axis[YY] * a
+
+        x_axis[XX] = 1.0 - z_axis[XX] * z_axis[XX] * a
+        x_axis[YY] = b
+        x_axis[ZZ] = -z_axis[XX]
+
+        y_axis[XX] = b
+        y_axis[YY] = 1.0 - z_axis[YY] * z_axis[YY] * a
+        y_axis[ZZ] = -z_axis[YY]
+
+    return x_axis, y_axis, z_axis
+
+
+def to_basis(v, conv_mat):
+    v1 = conv_mat[XX][XX] * v[XX] + conv_mat[XX][YY] * v[YY] + conv_mat[XX][ZZ] * v[ZZ]
+    v2 = conv_mat[YY][XX] * v[XX] + conv_mat[YY][YY] * v[YY] + conv_mat[YY][ZZ] * v[ZZ]
+    v3 = conv_mat[ZZ][XX] * v[XX] + conv_mat[ZZ][YY] * v[YY] + conv_mat[ZZ][ZZ] * v[ZZ]
+
+    return np.array([v1, v2, v3])
+
+
+def put_atoms_on_plane(ref_position, ref_normal,  neighbors, coords, box):
+
+    # Build plane basis
+    plane_x, plane_y, plane_z = complete_basis(ref_normal)
+
+    # Get conversion matrix
+    conv_mat = np.linalg.inv(np.stack((plane_x, plane_y, plane_z)))
+
+    coords_2d = np.zeros((len(neighbors), 2))
+    for i, nid in enumerate(neighbors):
+        # Get the closest image of the neighbor
+        dx = box.dx(ref_position,
+                    coords[nid])
+
+        # Get the coordinates into the new basis (plane_x, plane_y, plane_z)
+        proj = to_basis(dx, conv_mat)
+
+        # Store the projection onto the (plane_x, plane_y) plane
+        coords_2d[i][XX] = proj[XX]
+        coords_2d[i][YY] = proj[YY]
+
+    return np.array(coords_2d)
+
+
+def show_positions(frame):
     positions = frame.bead_coords * 10.0
     pivot = positions.mean(axis=0)[2]
     obj_name = "positions"
@@ -377,18 +455,6 @@ def ClosestPointOnLine(a, b, p):
 
 
 def show_thickness(frame):
-
-    def dprod(a, b):
-        val = 0
-        for i in range(3):
-            val += a[i] * b[i]
-        return val
-
-    def norm(a):
-        val = 0
-        for i in range(3):
-            val += a[i] * a[i]
-        return np.sqrt(val)
 
     beadid = REF_BEAD
     ref_position = frame.bead_coords[beadid]
@@ -574,6 +640,264 @@ def show_thickness(frame):
     print("Fatslim thickness OK")
 
 
+def show_apl(frame):
+    from fatslimlib.core_geometry import get_zoi, is_inside_polygon, clip_zoi
+    from scipy.spatial import Voronoi
+
+    beadid = REF_BEAD
+    ref_position = frame.bead_coords[beadid]
+    x, y, z = ref_position * 10
+
+    membrane = frame.get_membranes()[0]
+
+    cmd.load_cgo([COLOR, 0.8, 0.2, 1.0, SPHERE, x, y, z, 2.5],
+                 "APL_ref")
+    cmd.load_cgo([COLOR, 0.8, 0.2, 1.0, SPHERE, 0, 0, 0, 2.5],
+                 "APL_ref_2D")
+
+    cmd.load_cgo([COLOR, 0.8, 1.0, 0.8, SPHERE, x, y, z, APL_DEFAULT_CUTOFF * 10.0],
+                 "APL_cutoff")
+
+    cmd.set("cgo_transparency", 0.6, "APL_cutoff")
+
+    if beadid in membrane.leaflet1.beadids:
+        same_leaflet = membrane.leaflet1
+    else:
+        same_leaflet = membrane.leaflet2
+
+    ref_leaflet_beadid = list(same_leaflet.beadids).index(beadid)
+    ref_normal = same_leaflet.normals[ref_leaflet_beadid]
+
+    cgo_ref_normal = draw_vector(ref_position * 10,
+                                 ref_normal,
+                                 cgo_obj=[],
+                                 color=(1.0, 1.0, 0.22),
+                                 alpha=1.0)
+
+    cmd.load_cgo(cgo_ref_normal, "APL_ref_normal")
+
+    lipid_neighbors = neighbor_search(frame.box,
+                                      np.array([ref_position, ]),
+                                      neighbor_coords=same_leaflet.coords,
+                                      cutoff=APL_DEFAULT_CUTOFF
+                                      )
+    lipid_coords_2d = put_atoms_on_plane(ref_position,
+                                         ref_normal,
+                                         lipid_neighbors[0],
+                                         same_leaflet.coords,
+                                         frame.box)
+
+    cgo_2d_plane_axes = []
+    cgo_plane_axes = []
+    for axis in complete_basis(ref_normal):
+        cgo_plane_axes = draw_vector(ref_position * 10,
+                                 axis,
+                                 cgo_obj=cgo_plane_axes,
+                                 color=(0.22, 1.0, 0.5),
+                                 alpha=1.0,
+                                        factor=0.5)
+    for i in range(2):
+        axis = np.zeros(3)
+        axis[i] = 1.0
+        cgo_2d_plane_axes = draw_vector([0.0, 0.0, 0.0],
+                                        axis,
+                                        cgo_obj=cgo_2d_plane_axes,
+                                        color=(0.22, 1.0, 0.5),
+                                        alpha=1.0,
+                                        factor=0.5)
+
+    cmd.load_cgo(cgo_2d_plane_axes, "APL_2d_plane")
+    cmd.load_cgo(cgo_plane_axes, "APL_plane")
+
+    cgo_lipid_neighbors = []
+    cgo_lipid_neighbors_2d = []
+    cgo_lipid_projection_lines = []
+    cgo_lipid_neighbors_proj = []
+    for i, nid in enumerate(lipid_neighbors[0]):
+        cur_coords = same_leaflet.coords[nid]
+        x, y, z = cur_coords * 10
+        cgo_lipid_neighbors.extend([COLOR, 0.18, 0.53, 0.18, SPHERE, x, y, z, 2.1])
+
+        x2d, y2d = lipid_coords_2d[i] * 10
+        cgo_lipid_neighbors_2d.extend([COLOR, 0.4, 0.6, 1.0, SPHERE, x2d, y2d, 0.0, 1.9])
+
+        dx_vector = frame.box.dx(ref_position, cur_coords)
+
+        proj = cur_coords - np.dot(dx_vector, ref_normal) * ref_normal
+        proj *= 10
+
+        cgo_lipid_projection_lines.extend([
+            LINEWIDTH, 1.0,
+
+            BEGIN, LINES,
+            COLOR, 0.5, 0.5, 0.5,
+
+            VERTEX, x, y, z,  # 1
+            VERTEX, proj[XX], proj[YY], proj[ZZ],  # 2
+            END
+        ])
+        cgo_lipid_neighbors_proj.extend([COLOR, 0.4, 0.6, 1.0, SPHERE, proj[XX], proj[YY], proj[ZZ], 1.9])
+
+    cmd.load_cgo(cgo_lipid_neighbors, "APL_lipid_neighbors")
+    cmd.load_cgo(cgo_lipid_neighbors_2d, "APL_2D_lipid_neighbors")
+    cmd.load_cgo(cgo_lipid_neighbors_proj, "APL_proj_lipid_neighbors")
+    cmd.load_cgo(cgo_lipid_projection_lines, "APL_lipid_projection_lines")
+
+    zoi = get_zoi(np.zeros(2), lipid_coords_2d) * 10
+    if len(zoi) == 0:
+        print("APL: Error no ZOI!")
+    else:
+        print("APL: ZOI polygon has %i vertices" % len(zoi))
+
+    cgo_zoi = []
+    for i in range(len(zoi)):
+        start = zoi[i]
+        end = zoi[(i + 1) % len(zoi)]
+
+        cgo_zoi.extend([
+            LINEWIDTH, 1.0,
+
+            BEGIN, LINES,
+            COLOR, 0.5, 0.5, 0.5,
+
+            VERTEX, start[XX], start[YY], 0,  # 1
+            VERTEX, end[XX], end[YY], 0,  # 2
+            END
+        ])
+    cmd.load_cgo(cgo_zoi, "APL_ZOI")
+
+    voro_pts = lipid_coords_2d.tolist()
+    voro_pts.append([0.0, 0.0])
+    voro_pts = np.array(voro_pts)
+    voro_diagram = Voronoi(voro_pts)
+    vor_vertices = voro_diagram.vertices * 10
+
+    cgo_voro = []
+    for region in voro_diagram.regions:
+        if len(region) == 0 or -1 in region:
+            continue
+
+        for i in range(len(region)):
+            start = vor_vertices[region[i]]
+            end = vor_vertices[region[(i + 1) % len(region)]]
+
+            cgo_voro.extend([
+                LINEWIDTH, 1.0,
+
+                BEGIN, LINES,
+                COLOR, 0.5, 0.5, 0.5,
+
+                VERTEX, start[XX], start[YY], 0,  # 1
+                VERTEX, end[XX], end[YY], 0,  # 2
+                END
+            ])
+    cmd.load_cgo(cgo_voro, "APL_VORO")
+
+    if len(frame.interacting_group_coords) != 0:
+        print("APL: %i interacting coords to take into account. " %
+              len(frame.interacting_group_coords))
+
+        interacting_neighbors = neighbor_search(frame.box,
+                                          np.array([ref_position, ]),
+                                          neighbor_coords=frame.interacting_group_coords,
+                                          cutoff=APL_DEFAULT_CUTOFF
+                                          )
+        interacting_coords_2d = put_atoms_on_plane(ref_position,
+                                             ref_normal,
+                                                   interacting_neighbors[0],
+                                                   frame.interacting_group_coords,
+                                             frame.box)
+
+        cgo_interacting_neighbors = []
+        cgo_interacting_neighbors_2d = []
+        cgo_interacting_projection_lines = []
+        cgo_interacting_neighbors_proj = []
+        cgo_interacting_xcm_used = []
+
+        total_weight = 0
+        xcm_interacting = np.zeros(2)
+
+        zoi /= 10
+        for i, nid in enumerate(interacting_neighbors[0]):
+            cur_coords = frame.interacting_group_coords[nid]
+            x, y, z = cur_coords * 10
+            cgo_interacting_neighbors.extend([COLOR, 1.0, 1.0, 0.18, SPHERE, x, y, z, 1.0])
+
+            x2d, y2d = interacting_coords_2d[i] * 10
+            cgo_interacting_neighbors_2d.extend([COLOR, 1.0, 0.7, 0.2, SPHERE, x2d, y2d, 0.0, 0.9])
+
+            dx_vector = frame.box.dx(ref_position, cur_coords)
+            interacting_weight = np.abs(dprod(dx_vector, ref_normal)) / APL_DEFAULT_CUTOFF
+
+            proj = cur_coords - np.dot(dx_vector, ref_normal) * ref_normal
+            proj *= 10
+
+            cgo_interacting_projection_lines.extend([
+                LINEWIDTH, 1.0,
+
+                BEGIN, LINES,
+                COLOR, 0.5, 0.5, 0.5,
+
+                VERTEX, x, y, z,  # 1
+                VERTEX, proj[XX], proj[YY], proj[ZZ],  # 2
+                END
+            ])
+            cgo_interacting_neighbors_proj.extend(
+                [COLOR, 0.4, 0.6, 1.0, SPHERE, proj[XX], proj[YY], proj[ZZ], 1.9])
+
+            if is_inside_polygon(zoi, interacting_coords_2d[i]):
+                total_weight += interacting_weight
+
+                xcm_interacting[XX] += interacting_weight * interacting_coords_2d[i][XX]
+                xcm_interacting[YY] += interacting_weight * interacting_coords_2d[i][YY]
+
+                cgo_interacting_xcm_used.extend(
+                    [COLOR, 1.0, 0.2, 0.2, SPHERE,
+                        interacting_coords_2d[i][XX] * 10,
+                        interacting_coords_2d[i][YY] * 10, 0, 1.0])
+
+        if total_weight > 0:
+            xcm_interacting[XX] /= total_weight
+            xcm_interacting[YY] /= total_weight
+
+            clipped_zoi = clip_zoi(zoi, np.zeros(2), xcm_interacting) * 10
+
+            print("DEBUG: %i" % len(clipped_zoi))
+
+            cmd.load_cgo([COLOR, 0.8, 0.2, 1.0, SPHERE,
+                             xcm_interacting[XX] * 10,
+                             xcm_interacting[YY] * 10,
+                             np.zeros(2), 2.5],
+                         "APL_intera_XCM_2D")
+
+            cgo_clipped_zoi = []
+            for j, start in enumerate(clipped_zoi):
+                end = clipped_zoi[(j + 1) % len(clipped_zoi)]
+
+                cgo_clipped_zoi.extend([
+                    LINEWIDTH, 1.0,
+
+                    BEGIN, LINES,
+                    COLOR, 0.5, 0.5, 0.5,
+
+                    VERTEX, start[XX], start[YY], 0,  # 1
+                    VERTEX, end[XX], end[YY], 0,  # 2
+                    END
+                ])
+            cmd.load_cgo(cgo_clipped_zoi, "APL_CLIPPED_ZOI")
+
+        cmd.load_cgo(cgo_interacting_neighbors, "APL_interacting_neighbors")
+        cmd.load_cgo(cgo_interacting_neighbors_2d, "APL_2D_interacting_neighbors")
+        cmd.load_cgo(cgo_interacting_neighbors_proj, "APL_proj_interacting_neighbors")
+        cmd.load_cgo(cgo_interacting_projection_lines, "APL_interacting_projection_lines")
+        cmd.load_cgo(cgo_interacting_xcm_used, "APL_interacting_xcm_used")
+
+
+
+
+    print("FATSLiM APL OK")
+
+
 def fatslim_bilayer():
     global REF_BEAD
     REF_BEAD = BILAYER_REF
@@ -627,6 +951,9 @@ def fatslim_bilayer():
     # Show stuff related to thickness
     show_thickness(frame)
 
+    # Show stuff related to APL
+    show_apl(frame)
+
     # Zoom on leaflets
     cmd.zoom("all", 5)
 
@@ -672,8 +999,44 @@ def fatslim_vesicle():
     # Show stuff related to thickness
     show_thickness(frame)
 
+    # Show stuff related to APL
+    show_apl(frame)
+
 
 cmd.extend("fatslim_vesicle", fatslim_vesicle)
+
+
+def fatslim_apl_prot():
+    global REF_BEAD
+    setup()
+
+    FILENAME = BILAYER_PROT
+    REF_BEAD = BILAYER_PROT_REF
+
+    # Load file
+    cmd.load("%s.pdb" % FILENAME)
+    main_obj = "%s" % FILENAME
+    cmd.disable(main_obj)
+    traj = load_trajectory("%s.gro" % FILENAME, "%s.ndx" % FILENAME)
+    traj.initialize()
+    frame = traj[0]
+    draw_pbc_box(main_obj)
+
+    cmd.create("protein", "resi 1-160")
+    cmd.hide("lines", "protein")
+    cmd.color("yellow", "protein")
+    cmd.show("cartoon", "protein")
+    cmd.show("surface", "protein")
+    cmd.set("transparency", 0.5, "protein")
+    cmd.set("surface_color", "yelloworange", "protein")
+
+    # Show stuff related to APL
+    show_apl(frame)
+
+    print("Bilayer with protein loaded!")
+
+cmd.extend("fatslim_apl_prot", fatslim_apl_prot)
+
 
 
 def render_to_file(fname, top=True, side=True, vesicle=False):
