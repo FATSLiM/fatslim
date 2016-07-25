@@ -437,6 +437,10 @@ class AnalyticalCommand(Command):
                                                 help="Index group name used to define lipid "
                                                      "headgroups")
 
+        self.parser_analysis_group.add_argument("--interacting-group", default="protein",
+                                                help="Index group name used to define interacting "
+                                                     "atoms (e.g. protein).")
+
         self.parser_analysis_group.add_argument("--nthreads", default=-1, type=int,
                                                 help="Number of threads to use")
 
@@ -474,7 +478,8 @@ class AnalyticalCommand(Command):
             self.print_verbose(output)
 
     def initialize_trajetory(self, traj):
-        traj.initialize(hg_group=self.namespace.hg_group)
+        traj.initialize(hg_group=self.namespace.hg_group,
+                        interacting_group=self.namespace.interacting_group)
 
     def prepare_results(self, num_frames):
         """Initializes the numpy.ndarray used to store the results.

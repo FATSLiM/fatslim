@@ -52,6 +52,7 @@ MODEL_BILAYER_PROT_GRO = _fullpath_from_basename("model_bilayer_prot.gro")
 MODEL_BILAYER_PROT_NDX = _fullpath_from_basename("model_bilayer_prot.ndx")
 BILAYER_PROT_GRO = _fullpath_from_basename("bilayer_prot.gro")
 BILAYER_PROT_NDX = _fullpath_from_basename("bilayer_prot.ndx")
+BILAYER_PROT_AREA_XVG = _fullpath_from_basename("bilayer_prot_area.xvg")
 
 # 2 Model bilayers
 MODEL_MULTIBILAYER_GRO = _fullpath_from_basename("model_multibilayer.gro")

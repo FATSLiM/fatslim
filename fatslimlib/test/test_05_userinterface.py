@@ -948,3 +948,17 @@ class TestCommands(TestCase):
         self.assert_filecmp(output_file, data.VESICLE_AREA_XVG)
 
         os.unlink(output_file)
+
+    def test_area_protein(self):
+        output_file = os.path.join(self.tempdir, "test_area.xvg")
+        output = self.run_command(["apl",
+                                   "-c", data.BILAYER_PROT_GRO,
+                                   "-n", data.BILAYER_PROT_NDX,
+                                   "--plot-area", output_file,
+                                   ], )
+
+        assert "'apl' command executed" in output
+
+        self.assert_filecmp(output_file, data.BILAYER_PROT_AREA_XVG)
+
+        os.unlink(output_file)
