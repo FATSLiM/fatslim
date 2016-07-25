@@ -852,7 +852,7 @@ def show_apl(frame):
                 xcm_interacting[YY] += interacting_weight * interacting_coords_2d[i][YY]
 
                 cgo_interacting_xcm_used.extend(
-                    [COLOR, 1.0, 0.2, 0.2, SPHERE,
+                    [COLOR, 1.0, 0.5, 0.2, SPHERE,
                         interacting_coords_2d[i][XX] * 10,
                         interacting_coords_2d[i][YY] * 10, 0, 1.0])
 
@@ -862,9 +862,7 @@ def show_apl(frame):
 
             clipped_zoi = clip_zoi(zoi, np.zeros(2), xcm_interacting) * 10
 
-            print("DEBUG: %i" % len(clipped_zoi))
-
-            cmd.load_cgo([COLOR, 0.8, 0.2, 1.0, SPHERE,
+            cmd.load_cgo([COLOR, 1.0, 0.5, 0.2, SPHERE,
                              xcm_interacting[XX] * 10,
                              xcm_interacting[YY] * 10,
                              np.zeros(2), 2.5],
@@ -891,9 +889,6 @@ def show_apl(frame):
         cmd.load_cgo(cgo_interacting_neighbors_proj, "APL_proj_interacting_neighbors")
         cmd.load_cgo(cgo_interacting_projection_lines, "APL_interacting_projection_lines")
         cmd.load_cgo(cgo_interacting_xcm_used, "APL_interacting_xcm_used")
-
-
-
 
     print("FATSLiM APL OK")
 
@@ -1030,6 +1025,9 @@ def fatslim_apl_prot():
     cmd.set("transparency", 0.5, "protein")
     cmd.set("surface_color", "yelloworange", "protein")
 
+    # Show leaflets
+    show_leaflets(frame)
+
     # Show stuff related to APL
     show_apl(frame)
 
@@ -1038,13 +1036,14 @@ def fatslim_apl_prot():
 cmd.extend("fatslim_apl_prot", fatslim_apl_prot)
 
 
-
-def render_to_file(fname, top=True, side=True, vesicle=False):
+def render_to_file(fname, top=True, side=True, vesicle=False,
+                   zoom_obj="pbcbox",
+                   zoom_distance=10):
     fname = os.path.splitext(fname)[0]
 
     cmd.reset()
+    cmd.zoom(zoom_obj, zoom_distance)
     if vesicle:
-        cmd.zoom("NS_ref", 120)
         cmd.turn("z", -90)
         cmd.move("y", -50)
     if top:
@@ -1058,8 +1057,8 @@ def render_to_file(fname, top=True, side=True, vesicle=False):
         cmd.ray("2048")
         cmd.png("%s_side.png" % fname)
     cmd.reset()
+    cmd.zoom(zoom_obj, zoom_distance)
     if vesicle:
-        cmd.zoom("NS_ref", 120)
         cmd.turn("z", -90)
         cmd.move("y", -50)
 

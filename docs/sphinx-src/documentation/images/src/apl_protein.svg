@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="500"
+   viewBox="0 0 800.00001 500.00001"
+   id="svg5733"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="apl_protein.svg"
+   inkscape:export-filename="../apl_protein.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs5735">
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutS"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6790"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker6944"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path6946"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path6657"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path6651"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6556">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect6558"
+         width="1154.2858"
+         height="1105.7142"
+         x="-4034.2864"
+         y="-197.63762" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6560">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect6562"
+         width="250"
+         height="239.48018"
+         x="-2151.3616"
+         y="1339.3375" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6594">
+      <rect
+         y="585.94214"
+         x="1159.412"
+         height="239.48018"
+         width="250"
+         id="rect6596"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6598">
+      <rect
+         y="-197.63765"
+         x="-4034.2866"
+         height="1105.7142"
+         width="1154.2858"
+         id="rect6600"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6602">
+      <rect
+         y="1339.3375"
+         x="-2151.3616"
+         height="239.48018"
+         width="250"
+         id="rect6604"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6612">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect6614"
+         width="249"
+         height="238.48927"
+         x="261.87137"
+         y="1167.3639" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5169">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.5979996;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.25098039;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect5171"
+         width="1104.2212"
+         height="1103.1659"
+         x="238.51855"
+         y="73.228325" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5374">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.6;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect5376"
+         width="216.96428"
+         height="217.32147"
+         x="53.92857"
+         y="583.61212" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5378">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.6;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect5380"
+         width="216.96428"
+         height="217.32147"
+         x="53.92857"
+         y="583.61212" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5397">
+      <rect
+         y="567.52795"
+         x="38.593174"
+         height="254.83424"
+         width="250"
+         id="rect5399"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="85.559539"
+     inkscape:cy="321.24815"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5738">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-552.36216)">
+    <text
+       sodipodi:linespacing="125%"
+       id="text5688"
+       y="1047.4189"
+       x="244.86528"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'"
+         y="1047.4189"
+         x="244.86528"
+         id="tspan5690"
+         sodipodi:role="line">4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="557.15009"
+       y="1047.4189"
+       id="text5692"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5694"
+         x="557.15009"
+         y="1047.4189"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'">5</tspan></text>
+    <g
+       id="g6564"
+       transform="translate(2649.7547,-764.13251)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/07_APLProt_03-2D_interacting_neighbors_top.png"
+         xlink:href="07_APLProt_03-2D_interacting_neighbors_top.png"
+         clip-path="url(#clipPath6560)"
+         style="opacity:0.75"
+         width="443.564"
+         height="277.01093"
+         preserveAspectRatio="none"
+         id="image6426"
+         x="-2248.1436"
+         y="1320.5721" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path6546"
+         d="m -2094.4643,1455.0407 47.7679,-7.6785 20.7143,13.2143 -13.3036,26.6964 -13.8393,-3.0357 z"
+         style="fill:#ffcc00;fill-opacity:0.50196078;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/07_APLProt_02-zoi_lipid_top.png"
+         xlink:href="07_APLProt_02-zoi_lipid_top.png"
+         transform="matrix(0.21658415,0,0,0.21658415,-1277.5991,1382.1427)"
+         clip-path="url(#clipPath6556)"
+         width="2048"
+         height="1279"
+         preserveAspectRatio="none"
+         id="image6415"
+         x="-4481.1431"
+         y="-284.28073" />
+    </g>
+    <g
+       id="g6606"
+       transform="translate(-1040,220.57143)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/07_APLProt_03-2D_interacting_neighbors_top.png"
+         xlink:href="07_APLProt_03-2D_interacting_neighbors_top.png"
+         transform="translate(3310.7736,-753.39538)"
+         y="1320.5721"
+         x="-2248.1436"
+         id="image6571"
+         preserveAspectRatio="none"
+         height="277.01093"
+         width="443.564"
+         style="opacity:0.75"
+         clip-path="url(#clipPath6602)" />
+      <path
+         style="fill:#ffcc00;fill-opacity:0.50196078;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+         d="m 1216.3093,701.64532 47.7679,-7.6785 20.7143,13.2143 -13.3036,26.6964 -13.8393,-3.0357 z"
+         id="path6573"
+         inkscape:connector-curvature="0" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/07_APLProt_02-zoi_lipid_top.png"
+         xlink:href="07_APLProt_02-zoi_lipid_top.png"
+         y="-284.28073"
+         x="-4481.1431"
+         id="image6575"
+         preserveAspectRatio="none"
+         height="1279"
+         width="2048"
+         clip-path="url(#clipPath6598)"
+         transform="matrix(0.21658415,0,0,0.21658415,2033.1745,628.74732)" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/07_APLProt_04-interacting_used_top.png"
+         xlink:href="07_APLProt_04-interacting_used_top.png"
+         clip-path="url(#clipPath6594)"
+         width="443.564"
+         height="277.01093"
+         preserveAspectRatio="none"
+         id="image6437"
+         x="1062.63"
+         y="567.17676" />
+    </g>
+    <g
+       id="g6632"
+       transform="translate(0,3.2165723)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6616"
+         d="m 524.64798,913.21365 11.99556,-1.89404 20.70813,13.13198 -13.19512,26.64278 -13.57392,-2.71479 -6.7554,-4.60882 z"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffcc00;fill-opacity:0.50196078;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/07_APLProt_06-clipped_zoi_top.png"
+         xlink:href="07_APLProt_06-clipped_zoi_top.png"
+         transform="translate(170.71429,-363.57144)"
+         clip-path="url(#clipPath6612)"
+         width="443.564"
+         height="277.01093"
+         preserveAspectRatio="none"
+         id="image6459"
+         x="164.58937"
+         y="1148.103" />
+    </g>
+    <g
+       id="g7022"
+       transform="translate(25.354926,13.498069)">
+      <text
+         sodipodi:linespacing="125%"
+         id="text5383"
+         y="679.30988"
+         x="365.1835"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'"
+           y="679.30988"
+           x="365.1835"
+           id="tspan5385"
+           sodipodi:role="line">1, 2, 3</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path6636"
+         d="m 301.02546,692.74785 125.25891,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutS)" />
+    </g>
+    <g
+       id="g5382"
+       clip-path="url(#clipPath5397)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/07_APLProt_01-system_start_top.png"
+         xlink:href="07_APLProt_01-system_start_top.png"
+         transform="matrix(0.24171269,0,0,0.24171269,368.01305,524.48464)"
+         clip-path="none"
+         width="2048"
+         height="1279"
+         preserveAspectRatio="none"
+         id="image6404"
+         x="-1875.4286"
+         y="55.719273" />
+      <circle
+         clip-path="url(#clipPath5378)"
+         r="97.5"
+         cy="682.7193"
+         cx="199.64291"
+         id="path4650"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.6;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <circle
+         clip-path="url(#clipPath5374)"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.6;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.50196078;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="circle5370"
+         cx="-19.642799"
+         cy="682.7193"
+         r="97.5" />
+    </g>
+  </g>
+</svg>

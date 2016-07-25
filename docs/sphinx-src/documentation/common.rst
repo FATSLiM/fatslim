@@ -154,10 +154,21 @@ Headgroup group
 
 - **Associated parameter:** ``--hg-group``
 
-- **Purpose:** ``--hg-group`` specifies the name of the group (from the :ref:` index file <index_file_input>`) which defines the atoms used to describe the lipid head groups.
+- **Purpose:** ``--hg-group`` specifies the name of the group (from the :ref:`index file <index_file_input>`) which defines the atoms used to describe the lipid head groups.
 
 - **Default value:** ``headgroups``
 
+
+.. _parameter_interacting_group:
+
+Interacting group
+~~~~~~~~~~~~~~~~~
+
+- **Associated parameter:** ``--interacting-group``
+
+- **Purpose:** ``--interacting-group`` specifies the name of the group (from the :ref:`index file <index_file_input>`) which specifies the atoms interacting with membrane (e.g. protein).
+
+- **Default value:** ``protein``
 
 Number of threads
 ~~~~~~~~~~~~~~~~~

@@ -47,6 +47,11 @@ In a nutshell, normal estimation is done in three steps:
 
 1. For each lipid, the point cloud considered is consituted by all the *beads* within a user-tweakable cutoff distance (see :ref:`--cutoff <cutoff_leaflet_opt>`) from the reference lipid.
 
+.. important::
+    FATSLiM is `PBC-aware <https://en.wikipedia.org/wiki/Periodic_boundary_conditions>`_, so
+    the neighbor search performed here, as well as *all* the later ones, satisfy the
+    `minimum image convention <https://en.wikipedia.org/wiki/Periodic_boundary_conditions#Practical_implementation:_continuity_and_the_minimum_image_convention>`_.
+
 2. A `principal component analysis <https://en.wikipedia.org/wiki/Principal_component_analysis>`_ is performed. The eigenvector related to the smallest eigenvalue is the normal.
 
 3. This process is repeated for all the lipids, giving as many local normals as there are lipids.
