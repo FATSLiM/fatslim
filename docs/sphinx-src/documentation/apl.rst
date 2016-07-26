@@ -78,9 +78,11 @@ Here are a few examples of membrane area and area per lipid done with FATSLiM an
 
 .. seealso::
 
-    Detailed description of these example systems is available :ref:`here <tuto_example_systems>`.
+    Detailed description of these example systems is available :ref:`here <tuto_test_systems>`.
 
     Check :ref:`tutorial <tutorials>` section to learn how to make these calculation with FATSLiM.
+
+.. _apl_accuracy:
 
 Area per lipid
 """"""""""""""
