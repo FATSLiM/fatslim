@@ -85,6 +85,7 @@ For consistency purpose, all analytical commands share a common set of parameter
 
     Similarly to GROMACS philosophy, you may omit any parameter or option when its value equals the default one.
 
+.. _common_input_files:
 
 Input files
 """""""""""
