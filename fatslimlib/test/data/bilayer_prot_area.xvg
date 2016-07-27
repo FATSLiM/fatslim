@@ -1,0 +1,13 @@
+@TYPE xy
+@ title "Area"
+@ xaxis  label "Time (ps)"
+@ yaxis  label "Area (nm^2)"
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Membrane"
+@ s1 legend "Lower leaflet"
+@ s2 legend "Upper leaflet"
+   0.000   38.565   37.621   39.509 

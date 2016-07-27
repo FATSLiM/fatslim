@@ -20,8 +20,8 @@
 from __future__ import print_function
 import sys
 
-__authors__ = "Sebastien Buchoux <sebastien.buchoux@gmail.com>"
-__copyright__ = "Copyright (c) 2013-2016 %s" % __authors__
+__authors__ = [u"Sébastien Buchoux"]
+__copyright__ = u"Copyright (c) 2013-2016 %s" % u", ". join(__authors__)
 __shortname__ = "FATSLiM"
 __cmdlinename__ = "fatslim"
 __description__ = "Fast Analysis Toolbox for Simulations of Lipid Membranes"
@@ -35,7 +35,7 @@ focused on code optimization and simplification in order to maximize its efficie
 __licence__ = "GNU Public License 3"
 __url__ = "https://github.com/seb-buch/FATSLiM"
 
-version_tuple = (0, 1, 2, 'final', 0)
+version_tuple = (0, 2, 0, 'final', 0)
 
 
 def _format_version_tuple(version_tup=version_tuple):

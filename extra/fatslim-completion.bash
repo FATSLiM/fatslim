@@ -1,4 +1,8 @@
 #!/binbash
+# This file is intended to be use by Bash to provide autocompletion for FATSLiM commands.
+# Simply add the following line to your .bashrc to enable autocompletion:
+# source /path/to/fatslim-completion.bash
+# Don't forget to 1. remove the starting "#" and 2. correct the path to fatslim-completion.bash
 
 _fatslim_help_compl() {
 local IFS=$'\n'
@@ -37,7 +41,7 @@ local n
 for ((n=1;n<COMP_CWORD;++n)) ; do [[ "${COMP_WORDS[COMP_CWORD-n]}" == -* ]] && break ; done
 local p=${COMP_WORDS[COMP_CWORD-n]}
 COMPREPLY=()
-if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--nthreads\n--begin\n-b\n--end\n-e' -- $c)); return 0; fi
+if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--interacting-group\n--nthreads\n--begin-frame\n--begin\n-b\n--end-frame\n--end\n-e' -- $c)); return 0; fi
 case "$p" in
 --conf|-c) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*.gro' -f -- $c ; compgen -S '/' -d $c)) ;;
 --trajectory|-t) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*@(.xtc|.trr)' -f -- $c ; compgen -S '/' -d $c)) ;;
@@ -52,7 +56,7 @@ local n
 for ((n=1;n<COMP_CWORD;++n)) ; do [[ "${COMP_WORDS[COMP_CWORD-n]}" == -* ]] && break ; done
 local p=${COMP_WORDS[COMP_CWORD-n]}
 COMPREPLY=()
-if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--nthreads\n--begin\n-b\n--end\n-e\n--cutoff\n--output\n-o\n--output-index\n--output-index-hg' -- $c)); return 0; fi
+if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--interacting-group\n--nthreads\n--begin-frame\n--begin\n-b\n--end-frame\n--end\n-e\n--cutoff\n--output\n-o\n--output-index\n--output-index-hg' -- $c)); return 0; fi
 case "$p" in
 --conf|-c) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*.gro' -f -- $c ; compgen -S '/' -d $c)) ;;
 --trajectory|-t) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*@(.xtc|.trr)' -f -- $c ; compgen -S '/' -d $c)) ;;
@@ -70,7 +74,7 @@ local n
 for ((n=1;n<COMP_CWORD;++n)) ; do [[ "${COMP_WORDS[COMP_CWORD-n]}" == -* ]] && break ; done
 local p=${COMP_WORDS[COMP_CWORD-n]}
 COMPREPLY=()
-if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--nthreads\n--begin\n-b\n--end\n-e\n--cutoff\n--output\n-o\n--output-index\n--output-index-hg' -- $c)); return 0; fi
+if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--interacting-group\n--nthreads\n--begin-frame\n--begin\n-b\n--end-frame\n--end\n-e\n--cutoff\n--output\n-o\n--output-index\n--output-index-hg' -- $c)); return 0; fi
 case "$p" in
 --conf|-c) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*.gro' -f -- $c ; compgen -S '/' -d $c)) ;;
 --trajectory|-t) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*@(.xtc|.trr)' -f -- $c ; compgen -S '/' -d $c)) ;;
@@ -88,7 +92,7 @@ local n
 for ((n=1;n<COMP_CWORD;++n)) ; do [[ "${COMP_WORDS[COMP_CWORD-n]}" == -* ]] && break ; done
 local p=${COMP_WORDS[COMP_CWORD-n]}
 COMPREPLY=()
-if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--nthreads\n--begin\n-b\n--end\n-e\n--cutoff\n--idfreq\n--thickness-cutoff\n--plot-thickness\n--export-thickness-raw\n' -- $c)); return 0; fi
+if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--interacting-group\n--nthreads\n--begin-frame\n--begin\n-b\n--end-frame\n--end\n-e\n--cutoff\n--idfreq\n--thickness-cutoff\n--plot-thickness\n--export-thickness-raw\n' -- $c)); return 0; fi
 case "$p" in
 --conf|-c) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*.gro' -f -- $c ; compgen -S '/' -d $c)) ;;
 --trajectory|-t) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*@(.xtc|.trr)' -f -- $c ; compgen -S '/' -d $c)) ;;
@@ -105,7 +109,7 @@ local n
 for ((n=1;n<COMP_CWORD;++n)) ; do [[ "${COMP_WORDS[COMP_CWORD-n]}" == -* ]] && break ; done
 local p=${COMP_WORDS[COMP_CWORD-n]}
 COMPREPLY=()
-if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--nthreads\n--begin\n-b\n--end\n-e\n--cutoff\n--idfreq\n--plot-apl\n--export-apl-raw\n--apl-by-type\n--apl-limit\n--apl-cutoff\n--plot-area' -- $c)); return 0; fi
+if (( $COMP_CWORD <= 1 )) || [[ $c == -* ]]; then COMPREPLY=( $(compgen -S ' '  -W $'-h\n--help\n--debug\n-v\n--verbose\n-c\n--conf\n--trajectory\n-t\n--index\n-n\n--hg-group\n--interacting-group\n--nthreads\n--begin-frame\n--begin\n-b\n--end-frame\n--end\n-e\n--cutoff\n--idfreq\n--plot-apl\n--export-apl-raw\n--apl-by-type\n--apl-limit\n--apl-cutoff\n--plot-area' -- $c)); return 0; fi
 case "$p" in
 --conf|-c) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*.gro' -f -- $c ; compgen -S '/' -d $c)) ;;
 --trajectory|-t) (( $n <= 1 )) && COMPREPLY=( $(compgen -S ' ' -X '!*@(.xtc|.trr)' -f -- $c ; compgen -S '/' -d $c)) ;;

@@ -63,6 +63,13 @@ Finally, it is always a good idea to run the ``self-test`` command to make sure 
     fatslim self-test
 
 
+-------------
+Documentation
+-------------
+
+A full documentation is available at: `http://pythonhosted.org/fatslim`_
+
+
 .. _FATSLiM: http://fatslim.github.io/
 .. _license: https://github.com/FATSLiM/fatslim/blob/master/LICENSE
 .. _`develop branch`: https://github.com/FATSLiM/fatslim/tree/develop

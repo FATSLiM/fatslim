@@ -18,6 +18,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with FATSLiM.  If not, see <http://www.gnu.org/licenses/>.
 from __future__ import print_function
+from numpy.testing import assert_allclose
+ATOL = 5e-3
 
 try:
     from StringIO import StringIO  # python 2, not cStringIO due to unicode strings
@@ -246,10 +248,19 @@ class TestCommands(TestCase):
                 if line.startswith("#"):
                     continue
                 else:
-                    assert line.strip() == ref_content[lino].strip(), "Reference value is %s " \
-                                                                      "but actual value is %s" % \
-                                                                      (repr(ref_content[lino]),
-                                                                       repr(line))
+                    if os.path.splitext(ref_output)[1] == ".xvg" and not line.startswith("@"):
+                        ref_values = np.array([float(val) for val in ref_content[lino].split()])
+                        actual_values = np.array([float(val) for val in line.split()])
+
+                        for i, ref_value in enumerate(ref_values):
+                            assert_allclose(actual_values[i], ref_value, atol=ATOL)
+
+                    else:
+                        assert line.strip() == ref_content[lino].strip(), "Reference value is %s " \
+                                                                          "but actual value is " \
+                                                                          "%s" % \
+                                                                          (repr(ref_content[lino]),
+                                                                          repr(line))
                     lino += 1
 
     def test_util_backup(self):
@@ -660,6 +671,8 @@ class TestCommands(TestCase):
                                    "-b", "1000000"
                                    ],)
 
+        print (output)
+
         assert "WARNING: No frames are selected for analysis!" in output
 
     def test_membrane_command_ok(self):
@@ -937,3 +950,51 @@ class TestCommands(TestCase):
         self.assert_filecmp(output_file, data.VESICLE_AREA_XVG)
 
         os.unlink(output_file)
+
+    def test_area_protein(self):
+        output_file = os.path.join(self.tempdir, "test_area.xvg")
+        output = self.run_command(["apl",
+                                   "-c", data.BILAYER_PROT_GRO,
+                                   "-n", data.BILAYER_PROT_NDX,
+                                   "--plot-area", output_file,
+                                   ], )
+
+        assert "'apl' command executed" in output
+
+        self.assert_filecmp(output_file, data.BILAYER_PROT_AREA_XVG)
+
+        os.unlink(output_file)
+
+    def test_begin_frame_wrong(self):
+        output = self.run_command(["thickness",
+                                   "-c", data.VESICLE_GRO,
+                                   "-n", data.VESICLE_NDX,
+                                   "-t", data.VESICLE_XTC,
+                                   "--begin-frame", "2000",
+                                   ])
+
+        assert "'thickness' command executed" in output
+
+        assert "WARNING: No frames are selected for analysis" in output
+
+    def test_begin_good(self):
+        output = self.run_command(["thickness",
+                                   "-c", data.VESICLE_GRO,
+                                   "-n", data.VESICLE_NDX,
+                                   "-t", data.VESICLE_XTC,
+                                   "--begin", "2000",
+                                   ])
+
+        assert "'thickness' command executed" in output
+        assert "7 processed frames" in output
+
+    def test_end(self):
+        output = self.run_command(["thickness",
+                                   "-c", data.VESICLE_GRO,
+                                   "-n", data.VESICLE_NDX,
+                                   "-t", data.VESICLE_XTC,
+                                   "--end", "2000",
+                                   ])
+
+        assert "'thickness' command executed" in output
+        assert "5 processed frames" in output

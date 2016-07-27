@@ -28,6 +28,8 @@ from . import frame_model_bilayer, frame_bilayer, frame_model_vesicle, frame_ves
     traj_vesicle
 
 RTOL = 1e-2
+RTOL_MAX = 5e-2
+RTOL_LOW = 1e-3
 
 
 def test_thickness_model_bilayer(frame_model_bilayer):
@@ -41,9 +43,11 @@ def test_thickness_model_bilayer(frame_model_bilayer):
         thickness[1].mean(), thickness[1].min(), thickness[1].max(),
         thickness[2].mean(), thickness[2].min(), thickness[2].max(),))
 
-    assert_allclose(thickness[0], 5.664, rtol=RTOL)
-    assert_allclose(thickness[1], np.array([5.664] * 36), rtol=RTOL)
-    assert_allclose(thickness[1], thickness[2], rtol=RTOL)
+    assert_allclose(thickness[0], 5.664, rtol=RTOL_LOW)
+    assert_allclose(thickness[1], np.array([5.664] * 36), rtol=RTOL_LOW)
+    assert_allclose(thickness[1], thickness[2], rtol=RTOL_LOW)
+    assert thickness[1][1] > 0
+    assert thickness[2][1] > 0
 
 
 def test_thickness_bilayer(frame_bilayer):
@@ -57,8 +61,10 @@ def test_thickness_bilayer(frame_bilayer):
         thickness[1][0], thickness[1][1], thickness[1][2],
         thickness[2][0], thickness[2][1], thickness[2][2]))
 
-    assert_allclose(thickness[0], 3.94, rtol=RTOL)
+    assert_allclose(thickness[0], 3.948, rtol=RTOL)
     assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL)
+    assert thickness[1][1] > 0
+    assert thickness[2][1] > 0
 
 
 def test_thickness_bilayer_chol(frame_bilayer_chol):
@@ -72,8 +78,10 @@ def test_thickness_bilayer_chol(frame_bilayer_chol):
         thickness[1][0], thickness[1][1], thickness[1][2],
         thickness[2][0], thickness[2][1], thickness[2][2]))
 
-    assert_allclose(thickness[0], 4.089, rtol=RTOL)
+    assert_allclose(thickness[0], 4.077, rtol=RTOL)
     assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL)
+    assert thickness[1][1] > 0
+    assert thickness[2][1] > 0
 
 
 def test_thickness_model_bilayer_prot(frame_model_bilayer_prot):
@@ -87,9 +95,11 @@ def test_thickness_model_bilayer_prot(frame_model_bilayer_prot):
         thickness[1].mean(), thickness[1].min(), thickness[1].max(),
         thickness[2].mean(), thickness[2].min(), thickness[2].max(),))
 
-    assert_allclose(thickness[0], 5.664, rtol=RTOL)
-    assert_allclose(thickness[1], np.array([5.664] * 240), rtol=RTOL)
-    assert_allclose(thickness[1], thickness[2], rtol=RTOL)
+    assert_allclose(thickness[0], 5.664, rtol=RTOL_LOW)
+    assert_allclose(thickness[1], np.array([5.664] * 240), rtol=RTOL_LOW)
+    assert_allclose(thickness[1], thickness[2], rtol=RTOL_LOW)
+    assert thickness[1][1] > 0
+    assert thickness[2][1] > 0
 
 
 def test_thickness_bilayer_prot(frame_bilayer_prot):
@@ -103,8 +113,10 @@ def test_thickness_bilayer_prot(frame_bilayer_prot):
         thickness[1][0], thickness[1][1], thickness[1][2],
         thickness[2][0], thickness[2][1], thickness[2][2]))
 
-    assert_allclose(thickness[0], 3.151, rtol=RTOL)
+    assert_allclose(thickness[0], 3.157, rtol=RTOL)
     assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL)
+    assert thickness[1][1] > 0
+    assert thickness[2][1] > 0
 
 
 def test_thickness_bilayer_peptide(frame_bilayer_peptide):
@@ -118,8 +130,10 @@ def test_thickness_bilayer_peptide(frame_bilayer_peptide):
         thickness[1][0], thickness[1][1], thickness[1][2],
         thickness[2][0], thickness[2][1], thickness[2][2]))
 
-    assert_allclose(thickness[0], 3.768, rtol=RTOL)
+    assert_allclose(thickness[0], 3.819, rtol=RTOL)
     assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL)
+    assert thickness[1][1] > 0
+    assert thickness[2][1] > 0
 
 
 def test_thickness_vesicle_model(frame_model_vesicle):
@@ -133,8 +147,10 @@ def test_thickness_vesicle_model(frame_model_vesicle):
         thickness[1][0], thickness[1][1], thickness[1][2],
         thickness[2][0], thickness[2][1], thickness[2][2]))
 
-    assert_allclose(thickness[0], 4.998, rtol=RTOL)
-    assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL)
+    assert_allclose(thickness[0], 5.0, rtol=RTOL)
+    assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL_MAX)
+    assert thickness[1][1] > 0
+    assert thickness[2][1] > 0
 
 
 def test_thickness_vesicle(frame_vesicle):
@@ -148,12 +164,14 @@ def test_thickness_vesicle(frame_vesicle):
         thickness[1][0], thickness[1][1], thickness[1][2],
         thickness[2][0], thickness[2][1], thickness[2][2]))
 
-    assert_allclose(thickness[0], 3.980, rtol=RTOL)
-    assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL)
+    assert_allclose(thickness[0], 3.966, rtol=RTOL)
+    assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL_MAX)
+    assert thickness[1][1] > 0
+    assert thickness[2][1] > 0
 
 
 def test_thickness_vesicle_traj(traj_vesicle):
-    avg_thicknesses = [3.958, 3.963, 3.966, 3.954, 3.963, 3.971, 3.977, 3.980, 3.987, 3.978, 3.973]
+    avg_thicknesses = [3.967, 3.971, 3.972, 3.963, 3.966, 3.977, 3.984, 3.989, 3.992, 3.988, 3.979]
     for i, frame in enumerate(traj_vesicle):
         membrane = frame.get_membranes()[0]
 
@@ -166,4 +184,6 @@ def test_thickness_vesicle_traj(traj_vesicle):
                   thickness[2][0], thickness[2][1], thickness[2][2]))
 
         assert_allclose(thickness[0], avg_thicknesses[i], rtol=RTOL)
-        assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL)
+        assert_allclose(thickness[1][0], thickness[2][0], rtol=RTOL_MAX)
+        assert thickness[1][1] > 0
+        assert thickness[2][1] > 0

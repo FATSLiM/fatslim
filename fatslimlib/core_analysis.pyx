@@ -23,6 +23,8 @@
 from __future__ import print_function
 
 # Cython processors DEFs
+from email.mime.application import MIMEApplication
+
 DEF DIM = 3
 DEF XX = 0
 DEF YY = 1
@@ -53,6 +55,10 @@ DEF APL_DEFAULT_AREA_LIMIT = 10
 DEF APL_INTERACTION_ADJUSTEMENT = 0.7 # This constant was roughly estimated from lipid-only bilayer
 
 DEF THICKNESS_DEFAULT_CUTOFF = 6.0
+DEF THICKNESS_MAXIMUM_MINMAX_RATIO = 1.5
+DEF THICKNESS_MIN_COS_DX = 0.98480775301 # Cos 10 deg
+DEF THICKNESS_MIN_COS_NORMAL = 0.98480775301 # Cos 10 deg
+DEF THICKNESS_DEBUG_BEADID = 160
 
 DEF OUTPUT_RESOLUTION_DEFAULT = 600
 DEF OUTPUT_DPI_DEFAULT = 96
@@ -287,16 +293,123 @@ cdef bint check_leaflet_compatibility(Frame frame, Aggregate leaflet1, Aggregate
     return True
 
 
+cdef void qsort(real *a, fsl_int start, fsl_int end) nogil:
+    if (end - start) < 17:
+        insertion_sort(a, start, end)
+        return
+    cdef fsl_int boundary = partition(a, start, end)
+    qsort(a, start, boundary)
+    qsort(a, boundary+1, end)
+
+cdef fsl_int partition(real *a, fsl_int start, fsl_int end) nogil:
+    cdef fsl_int i = start, j = end-1
+    cdef real pivot = a[j]
+    while True:
+        # assert all(x < pivot for x in a[start:i])
+        # assert all(x >= pivot for x in a[j:end])
+
+        while a[i] < pivot:
+            i += 1
+        while i < j and pivot <= a[j]:
+            j -= 1
+        if i >= j:
+            break
+        #assert a[j] < pivot <= a[i]
+        swap(a, i, j)
+        #assert a[i] < pivot <= a[j]
+    #assert i >= j and i < end
+    swap(a, i, end-1)
+    #assert a[i] == pivot
+    # assert all(x < pivot for x in a[start:i])
+    # assert all(x >= pivot for x in a[i:end])
+    return i
+
+cdef inline void swap(real *a, fsl_int i, fsl_int j) nogil:
+    a[i], a[j] = a[j], a[i]
+
+cdef void insertion_sort(real *a, fsl_int start, fsl_int end) nogil:
+    cdef fsl_int i, j
+    cdef real v
+    for i in range(start, end):
+        #invariant: [start:i) is sorted
+        v = a[i]; j = i-1
+        while j >= start:
+            if a[j] <= v: break
+            a[j+1] = a[j]
+            j -= 1
+        a[j+1] = v
+
+cdef void xcm_from_neighborhood(rvec ref,
+                                rvec ref_normal,
+                                real[:, ::1]coords,
+
+                                ns_neighborhood *neighborhood,
+                                PBCBox box,
+                                rvec xcm) nogil:
+    cdef fsl_int i, d
+    cdef rvec dx
+    cdef real total_weight=0.0
+    cdef real dx_norm, weight
+
+    # Initialize xcm
+    rvec_clear(xcm)
+    #rvec_smul(neighborhood.size, xcm, xcm)
+
+    # fprintf(stderr,
+    #         "DEBUG XCM neighborhood: ref(%.3f, %.3f, %.3f) -> %i neighbors\n",
+    #         ref[XX], ref[YY], ref[ZZ],
+    #         <int> neighborhood.size)
+
+    # Step 1: Get XCM
+    for i in range(neighborhood.size):
+        box.fast_pbc_dx(ref, &coords[neighborhood.beadids[i], XX], dx)
+
+        dx_norm = rvec_norm(dx)
+
+        weight = 1 - dx_norm / neighborhood.cutoff
+        weight = 1
+        total_weight += weight
+
+        # fprintf(stderr,
+        #     "    -> #%i coords(%.3f, %.3f, %.3f) -> dx: (%.3f, %.3f, %.3f) -> norm: %.3f\n",
+        #     <int> i +1,
+        #     coords[neighborhood.beadids[i], XX], coords[neighborhood.beadids[i], YY], coords[neighborhood.beadids[i], ZZ],
+        #     dx[XX], dx[YY], dx[ZZ],
+        #         dx_norm)
+
+        rvec_smul(weight, dx, dx)
+        rvec_inc(xcm, dx)
+
+    rvec_smul(1.0/total_weight, xcm, xcm)
+
+    # fprintf(stderr,
+    #         "DEBUG XCM neighborhood: ref(%.3f, %.3f, %.3f) -> avg_dx: (%.3f, %.3f, %.3f)\n",
+    #         ref[XX], ref[YY], ref[ZZ],
+    #         xcm[XX], xcm[YY], xcm[ZZ])
+    rvec_inc(xcm, ref)
+
+    # Step 2: Make sure it is inside the brick-shaped box
+    for i in range(DIM - 1, -1, -1):
+        while xcm[i] < 0:
+            for d in range(i+1):
+                xcm[d] += box.c_pbcbox.box[i][d]
+        while xcm[i] >= box.c_pbcbox.box[i][i]:
+            for d in range(i+1):
+                xcm[d] -= box.c_pbcbox.box[i][d]
+
 cdef real thickness_from_neighborhood(rvec ref, rvec ref_normal,
                                       real[:, ::1]other_coords,
+                                      real[:, ::1]same_coords,
                                       real[:, ::1]other_normals,
-                                      ns_neighborhood *neighborhood,
+                                      real[:, ::1]same_normals,
+                                      ns_neighborhood *neighborhood_other_leaflet,
+                                      ns_neighborhood *neighborhood_same_leaflet,
                                       PBCBox box) nogil:
     cdef real ref_thickness = NOTSET, other_thickness = NOTSET
     cdef rvec dx
     cdef real ref_max_cos = NOTSET, cos_trial
     cdef real other_max_cos = NOTSET
-    cdef real dprod_val, dx_norm
+    cdef real dprod_normal, dprod_dx, dx_norm
     cdef real total_weight, weight
     cdef fsl_int i
 
@@ -304,42 +417,107 @@ cdef real thickness_from_neighborhood(rvec ref, rvec ref_normal,
     cdef real dprod_normals
     cdef rvec other_normal, other_coord
 
-    for i in range(neighborhood.size):
-        rvec_copy(&other_coords[neighborhood.beadids[i], XX], other_coord)
-        rvec_copy(&other_normals[neighborhood.beadids[i], XX], other_normal)
+    cdef real avg_thickness = 0.0
+    cdef real thickness
+    cdef real min_thickness = 1e3
+    cdef real max_thickness = -1
+
+    cdef rvec ref_xcm
+    cdef rvec avg_dx
+    cdef int n_used = 0
+
+
+    # First: get neighborhood xcm
+    rvec_clear(ref_xcm)
+
+    # Step 1: Get XCM
+    for i in range(neighborhood_same_leaflet.size):
+        dprod_normal = rvec_dprod(&same_normals[neighborhood_same_leaflet.beadids[i], XX],
+                                  ref_normal)
+
+        if dprod_normal < THICKNESS_MIN_COS_NORMAL:
+            continue
+
+        box.fast_pbc_dx(ref, &same_coords[neighborhood_same_leaflet.beadids[i], XX], dx)
+        dx_norm = rvec_norm(dx)
+
+        if dx_norm < EPSILON:
+            continue
+
+        weight = weight = (real_abs(dprod_normal) - THICKNESS_MIN_COS_NORMAL) / (1.0 - THICKNESS_MIN_COS_NORMAL)
+        total_weight += weight
+
+        rvec_smul(weight, dx, dx)
+        rvec_inc(ref_xcm, dx)
+
+    if total_weight > EPSILON:
+        rvec_smul(1.0/total_weight, ref_xcm, ref_xcm)
+
+    rvec_inc(ref_xcm, ref)
+
+    # Step 2: Make sure it is inside the brick-shaped box
+    for i in range(DIM - 1, -1, -1):
+        while ref_xcm[i] < 0:
+            for d in range(i+1):
+                ref_xcm[d] += box.c_pbcbox.box[i][d]
+        while ref_xcm[i] >= box.c_pbcbox.box[i][i]:
+            for d in range(i+1):
+                ref_xcm[d] -= box.c_pbcbox.box[i][d]
+
+
+    box.fast_pbc_dx(ref_xcm, ref,dx)
+    rvec_clear(avg_dx)
+
+    total_weight = 0.0
+    for i in range(neighborhood_other_leaflet.size):
+        rvec_copy(&other_coords[neighborhood_other_leaflet.beadids[i], XX], other_coord)
+        rvec_copy(&other_normals[neighborhood_other_leaflet.beadids[i], XX], other_normal)
+
+        dprod_normal = rvec_dprod(other_normal, ref_normal)
 
         # Make sure that both beads belong to different leaflet
-        if rvec_dprod(ref_normal, other_normal) > -COS_45:
+        if dprod_normal > -COS_45:
             continue
 
         # Get the distance (through the bilayer) between the ref bead and its twin
-        box.fast_pbc_dx_leaflet(ref, other_coord,
+        box.fast_pbc_dx_leaflet(ref_xcm, other_coord,
                                 dx,
                                 ref_normal)
-
         dx_norm = rvec_norm(dx)
 
         # we check dx because the image which is on the right side of the bilayer may not be a good twin (too far)
-        if dx_norm > neighborhood.cutoff:
-           continue
+        if dx_norm > neighborhood_other_leaflet.cutoff:
+            continue
 
-        # Take the projection of the distance vector on both normals and take the best
-        dprod_val = real_abs(rvec_dprod(dx, ref_normal))
-        cos_trial = dprod_val/dx_norm
+        dprod_dx = real_abs(rvec_dprod(dx, ref_normal))
+        cos_trial = dprod_dx / dx_norm
 
-        if cos_trial > ref_max_cos:
-            ref_max_cos = cos_trial
+        if cos_trial < THICKNESS_MIN_COS_DX:
+            continue
 
-            ref_thickness = dprod_val
+        weight = 1 - dx_norm / neighborhood_other_leaflet.cutoff
+        weight = (real_abs(dprod_normal) - THICKNESS_MIN_COS_NORMAL) / (1.0 - THICKNESS_MIN_COS_NORMAL)
+        #weight = 1
+        if weight > 0:
+            rvec_smul(weight, dx, dx)
+            total_weight += weight
 
-        dprod_val = real_abs(rvec_dprod(dx, other_normal))
-        cos_trial = dprod_val/dx_norm
-        if cos_trial > other_max_cos:
-            other_max_cos = cos_trial
+            rvec_inc(avg_dx, dx)
+            n_used += 1
 
-            other_thickness = dprod_val
+    if total_weight < EPSILON:
+        avg_thickness = NOTSET
+    else:
+        rvec_smul(1.0/total_weight, avg_dx, avg_dx)
 
-    return 0.5 * (ref_thickness + other_thickness)
+        dprod_dx = real_abs(rvec_dprod(avg_dx, ref_normal))
+        dx_norm = rvec_norm(avg_dx)
+
+        cos_trial = dprod_dx / dx_norm
+
+        avg_thickness = dprod_dx
+
+    return avg_thickness
 
 
 cdef void put_atoms_on_plane(rvec ref, rvec ref_normal,
@@ -746,7 +924,7 @@ cdef class Aggregate(object):
     cdef real fix_thickness(self,
                       fsl_int refid,
                       real *tmp_thickness,
-                      bint onlyfix=False) nogil:
+                      bint onlyfix=True) nogil:
         cdef real fixed_thickness, cur_thickness
         cdef real total_weight, weight
         cdef real distance2
@@ -782,11 +960,13 @@ cdef class Aggregate(object):
             total_weight += weight
 
 
-        if total_weight > 0:
+        if total_weight > EPSILON:
             return fixed_thickness / total_weight
         else:
-            fprintf(stderr, "WARNING: Could not fix thickness for lipid #%i! (%i neighbors - total weight: %.3f)\n",
-                    refid, neighborhood.size, total_weight)
+            fprintf(stderr,
+                    "WARNING: Could not fix thickness for lipid #%i! "
+                    "(%i neighbors - total weight: %.3f)\n",
+                    <int> refid, <int> neighborhood.size, total_weight)
             return -1.0
 
 
@@ -962,7 +1142,7 @@ cdef class Aggregate(object):
                                 Aggregate other,
                                 real interleaflet_cutoff=THICKNESS_DEFAULT_CUTOFF,
                                 bint force=False) nogil except*:
-        cdef ns_neighborhood_holder *holder
+        cdef ns_neighborhood_holder *holder_other_leaflet
         cdef fsl_int size = self.fast_size()
         cdef real *tmp_thickness
         cdef fsl_int i
@@ -984,7 +1164,7 @@ cdef class Aggregate(object):
             return
 
         # Retrieve potential twins
-        holder = fast_neighbor_search(self_coords,
+        holder_other_leaflet = fast_neighbor_search(self_coords,
                                       other_coords,
                                       self.frame.box,
                                       interleaflet_cutoff)
@@ -998,8 +1178,11 @@ cdef class Aggregate(object):
             tmp_thickness[i] = thickness_from_neighborhood(&self_coords[i, XX],
                                                            &self_neighborhood_normals[i, XX],
                                                            other_coords,
+                                                           self_coords,
                                                            other_neighborhood_normals,
-                                                           holder.neighborhoods[i],
+                                                           self_neighborhood_normals,
+                                                           holder_other_leaflet.neighborhoods[i],
+                                                           self.neighborhoods.neighborhoods[i],
                                                            self.frame.box)
 
 
@@ -1009,7 +1192,7 @@ cdef class Aggregate(object):
             self.thickness_values[i] = self.fix_thickness(i, tmp_thickness)
 
         # Free memory
-        free_neighborhood_holder(holder)
+        free_neighborhood_holder(holder_other_leaflet)
         free(tmp_thickness)
 
         # Compute average thickness

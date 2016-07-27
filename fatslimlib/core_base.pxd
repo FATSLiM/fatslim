@@ -276,6 +276,8 @@ cdef class Trajectory(object):
     cdef fsl_int cur_frame
     cdef bint initialized
 
+    cdef readonly list timesteps
+
     cdef fsl_int[:] hg_group_atomids, interacting_atomids, lipid_atomids, hg_bead_atomids
     cdef fsl_int[:] lipid_atomids_offsets, hg_bead_atomids_offsets
     cdef fsl_int[:] lipid_hg_indices

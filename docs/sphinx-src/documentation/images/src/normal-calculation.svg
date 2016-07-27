@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="500"
+   viewBox="0 0 799.99999 500.00002"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="normal-calculation.svg"
+   inkscape:export-filename="../normal-calculation.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="326.03362"
+     inkscape:cy="228.53685"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1006"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-552.36203)">
+    <image
+       sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/04_Normals_side.png"
+       xlink:href="04_Normals_side.png"
+       width="518.57147"
+       height="323.85394"
+       preserveAspectRatio="none"
+       id="image4459"
+       x="393.85706"
+       y="633.29382" />
+    <g
+       id="g4792"
+       transform="translate(-56.285684,28.909729)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_nocutoff_top.png"
+         xlink:href="03_NS_nocutoff_top.png"
+         y="519.91443"
+         x="-4.7143922"
+         id="image4663"
+         preserveAspectRatio="none"
+         height="249.8047"
+         width="400.00003"
+         style="opacity:0.33000004" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_no_lower_top.png"
+         xlink:href="03_NS_no_lower_top.png"
+         y="519.91443"
+         x="-4.7143922"
+         id="image4727"
+         preserveAspectRatio="none"
+         height="249.8047"
+         width="400.00003"
+         style="opacity:0.6" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_only_neighbors_top.png"
+         xlink:href="03_NS_only_neighbors_top.png"
+         y="519.91443"
+         x="-4.7143922"
+         id="image4789"
+         preserveAspectRatio="none"
+         height="249.8047"
+         width="400.00003" />
+      <circle
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.5979996;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#257522;fill-opacity:0.25098039;fill-rule:nonzero;stroke:#000000;stroke-width:1.41732275;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="circle4666"
+         cx="209.11777"
+         cy="720.18805"
+         r="33.29134" />
+    </g>
+    <g
+       id="g5356"
+       transform="translate(-28.000001,0)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_only_neighbors_normal_side.png"
+         xlink:href="03_NS_only_neighbors_normal_side.png"
+         y="784.62885"
+         x="208.85706"
+         id="image4601"
+         preserveAspectRatio="none"
+         height="249.8047"
+         width="400.00003" />
+      <g
+         transform="translate(0,-14.000001)"
+         id="g5301">
+        <image
+           sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_normal_side.png"
+           xlink:href="03_NS_normal_side.png"
+           style="opacity:0.66000001"
+           width="400.00003"
+           height="249.8047"
+           preserveAspectRatio="none"
+           id="image4397"
+           x="208.85706"
+           y="798.62885" />
+        <image
+           sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_only_neighbors_normal_side.png"
+           xlink:href="03_NS_only_neighbors_normal_side.png"
+           width="400.00003"
+           height="249.8047"
+           preserveAspectRatio="none"
+           id="image4919"
+           x="208.85706"
+           y="798.62885" />
+      </g>
+    </g>
+    <g
+       id="g5296"
+       transform="translate(-28.000001,0)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_nocutoff_top.png"
+         xlink:href="03_NS_nocutoff_top.png"
+         y="548.82416"
+         x="208.85706"
+         id="image5293"
+         preserveAspectRatio="none"
+         height="249.8047"
+         width="400.00003"
+         style="opacity:0.33000004" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_no_lower_top.png"
+         xlink:href="03_NS_no_lower_top.png"
+         y="548.82416"
+         x="208.85706"
+         id="image5169"
+         preserveAspectRatio="none"
+         height="249.8047"
+         width="400.00003"
+         style="opacity:0.66000001" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_only_neighbors_normal_top.png"
+         xlink:href="03_NS_only_neighbors_normal_top.png"
+         y="548.82416"
+         x="208.85706"
+         id="image4983"
+         preserveAspectRatio="none"
+         height="249.8047"
+         width="400.00003" />
+    </g>
+    <g
+       id="g5305"
+       transform="translate(16.000001,-14.000001)">
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_all_side.png"
+         xlink:href="03_NS_all_side.png"
+         y="798.62885"
+         x="-77.000076"
+         id="image4335"
+         preserveAspectRatio="none"
+         height="249.80467"
+         width="400.00003"
+         style="opacity:0.66000001" />
+      <image
+         sodipodi:absref="/home/sbuchoux/Hacking/fatslim/docs/sphinx-src/documentation/images/src/03_NS_only_neighbors_side.png"
+         xlink:href="03_NS_only_neighbors_side.png"
+         y="798.62885"
+         x="-77.000076"
+         id="image4537"
+         preserveAspectRatio="none"
+         height="249.8047"
+         width="400.00003" />
+      <circle
+         r="33.29134"
+         cy="890.10632"
+         cx="136.89845"
+         id="path4540"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.5979996;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.41732275;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="139.54346"
+       y="1028.4333"
+       id="text5383"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5385"
+         x="139.54346"
+         y="1028.4333"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'">1</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text5391"
+       y="1028.1333"
+       x="381.18427"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'"
+         y="1028.1333"
+         x="381.18427"
+         id="tspan5393"
+         sodipodi:role="line">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="653.35797"
+       y="940.00476"
+       id="text5395"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5397"
+         x="653.35797"
+         y="940.00476"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:CabinSketch;-inkscape-font-specification:'CabinSketch Bold'">3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       x="-909.71838"
+       y="18.697317"
+       id="text4158"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4160"
+         x="-909.71838"
+         y="18.697317"
+         style="font-size:17.50000191px;fill:#333333;">side view</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4162"
+       y="17.822317"
+       x="-673.7912"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:Cabin;-inkscape-font-specification:'Cabin, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#333333;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       xml:space="preserve"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         style="font-size:17.50000191px;fill:#333333;"
+         y="17.822317"
+         x="-673.7912"
+         sodipodi:role="line"
+         id="tspan4166">top view</tspan></text>
+  </g>
+</svg>
