@@ -2,9 +2,17 @@
 All notable changes to FATSLiM are documented in this file.
 Version numbers comply with [Python recommandation](https://www.python.org/dev/peps/pep-0440/).
 
-## [0.1.3] - Unreleased
+## [0.2.0] - Unreleased
 ### Added
 - Full documentation.
+- Updated thickness calculation algorithm
+- --begin-frame/--end-frame options to select begining/ending frame index
+
+### Changed
+- --begin and --end options new refers to timesteps (same as GROMACS) rather than frame index
+
+### Fixed
+- Missing "--interacting-group"
 
 ## [0.1.2] - 2016-03-21
 ### Added

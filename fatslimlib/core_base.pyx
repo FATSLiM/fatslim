@@ -1734,6 +1734,7 @@ cdef class Trajectory(object):
 
         self.topology = None
         self.initialized = False
+        self.timesteps = []
 
 
     def initialize(self, str hg_group="headgroups", str interacting_group="protein"):
@@ -1839,6 +1840,8 @@ cdef class Trajectory(object):
         self.get_forcefield_type()
 
         self.initialized = True
+
+        self.timesteps = np.asarray(self.coords_reader.timesteps).tolist()
 
         verbose_print("Done in %s" % (pretty_delta(begin, time())),
                       self.be_verbose)

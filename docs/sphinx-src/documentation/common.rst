@@ -193,9 +193,9 @@ Specify analysis window using timesteps
 
 - **Default values:** ``-1`` for both parameters
 
-.. versionchanged:: 0.1.3
+.. versionchanged:: 0.2
 
-    Prior to version 0.1.3, ``--begin`` and ``--end`` was used to specify frame indices and not timesteps.
+    Prior to version 0.2, ``--begin`` and ``--end`` was used to specify frame indices and not timesteps.
 
 .. seealso::
 
@@ -206,6 +206,8 @@ Specify analysis window using timesteps
 
 Specify analysis window using timesteps
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 0.2
 
 - **Associated parameters:** ``--begin-frame`` and ``--end-frame``
 

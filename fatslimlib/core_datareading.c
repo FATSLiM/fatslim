@@ -19,7 +19,7 @@
             "-fopenmp"
         ], 
         "include_dirs": [
-            "/home/sebastien/Hacking/.virtualenvs/FATSLiM-Python2/lib/python2.7/site-packages/numpy/core/include", 
+            "/home/sbuchoux/Hacking/.virtualenvs/FATSLiM-Python2/lib/python2.7/site-packages/numpy/core/include", 
             "./include", 
             "./src", 
             ".", 
@@ -1075,6 +1075,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Trajectory {
   int be_verbose;
   fsl_int cur_frame;
   int initialized;
+  PyObject *timesteps;
   __Pyx_memviewslice hg_group_atomids;
   __Pyx_memviewslice interacting_atomids;
   __Pyx_memviewslice lipid_atomids;
@@ -4891,12 +4892,12 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
         __pyx_L8_error:;
         __Pyx_PyThreadState_assign
         __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
-        __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
         /*except:*/ {
           __Pyx_AddTraceback("fatslimlib.core_datareading.GroReaderCoords.preload", __pyx_clineno, __pyx_lineno, __pyx_filename);
           if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_4) < 0) __PYX_ERR(0, 226, __pyx_L10_except_error)

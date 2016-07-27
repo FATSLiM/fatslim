@@ -19,7 +19,7 @@
             "-fopenmp"
         ], 
         "include_dirs": [
-            "/home/sebastien/Hacking/.virtualenvs/FATSLiM-Python2/lib/python2.7/site-packages/numpy/core/include", 
+            "/home/sbuchoux/Hacking/.virtualenvs/FATSLiM-Python2/lib/python2.7/site-packages/numpy/core/include", 
             "./include", 
             "./src", 
             ".", 
@@ -1198,6 +1198,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Trajectory {
   int be_verbose;
   fsl_int cur_frame;
   int initialized;
+  PyObject *timesteps;
   __Pyx_memviewslice hg_group_atomids;
   __Pyx_memviewslice interacting_atomids;
   __Pyx_memviewslice lipid_atomids;
@@ -2508,8 +2509,8 @@ static const char __pyx_k_fatslimlib_core_analysis[] = "fatslimlib.core_analysis
 static const char __pyx_k_Invalid_shape_in_axis_d_d[] = "Invalid shape in axis %d: %d.";
 static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
 static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
-static const char __pyx_k_home_sebastien_Hacking_fatslim[] = "/home/sebastien/Hacking/fatslim/fatslimlib/core_analysis.pyx";
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
+static const char __pyx_k_home_sbuchoux_Hacking_fatslim_f[] = "/home/sbuchoux/Hacking/fatslim/fatslimlib/core_analysis.pyx";
 static const char __pyx_k_s_aggregate_made_of_i_lipids_XC[] = "%s aggregate made of %i lipids (XCM: %.3f, %.3f, %.3f)";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
 static const char __pyx_k_Can_only_create_a_buffer_that_is[] = "Can only create a buffer that is contiguous in memory.";
@@ -2589,7 +2590,7 @@ static PyObject *__pyx_n_s_get_residue_from_atomid;
 static PyObject *__pyx_n_s_get_resname;
 static PyObject *__pyx_kp_s_got_differing_extents_in_dimensi;
 static PyObject *__pyx_n_s_holder;
-static PyObject *__pyx_kp_s_home_sebastien_Hacking_fatslim;
+static PyObject *__pyx_kp_s_home_sbuchoux_Hacking_fatslim_f;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_import;
@@ -6948,12 +6949,12 @@ static int __pyx_pf_10fatslimlib_13core_analysis_9Aggregate___init__(struct __py
       goto __pyx_L20_try_end;
       __pyx_L13_error:;
       __Pyx_PyThreadState_assign
-      __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
 
       /* "fatslimlib/core_analysis.pyx":674
@@ -18569,7 +18570,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) __
               goto __pyx_L44_try_end;
               __pyx_L37_error:;
               __Pyx_PyThreadState_assign
-              __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
+              __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
               __Pyx_XDECREF(__pyx_t_51); __pyx_t_51 = 0;
               __Pyx_XDECREF(__pyx_t_52); __pyx_t_52 = 0;
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -18578,8 +18579,8 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) __
               __Pyx_XDECREF(__pyx_t_48); __pyx_t_48 = 0;
               __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
               __PYX_XDEC_MEMVIEW(&__pyx_t_30, 1);
-              __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
               __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
+              __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
 
               /* "fatslimlib/core_analysis.pyx":1636
  *                             local_xcms[aggid].append(np.asarray(coords[nid]))
@@ -18929,7 +18930,7 @@ __pyx_t_52 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) _
           goto __pyx_L55_try_end;
           __pyx_L48_error:;
           __Pyx_PyThreadState_assign
-          __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_XDECREF(__pyx_t_51); __pyx_t_51 = 0;
           __Pyx_XDECREF(__pyx_t_58); __pyx_t_58 = 0;
@@ -18939,8 +18940,8 @@ __pyx_t_52 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) _
           __Pyx_XDECREF(__pyx_t_52); __pyx_t_52 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __PYX_XDEC_MEMVIEW(&__pyx_t_30, 1);
-          __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
           __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
 
           /* "fatslimlib/core_analysis.pyx":1647
  *                 try:
@@ -19778,7 +19779,7 @@ __pyx_t_52 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) _
           goto __pyx_L77_try_end;
           __pyx_L70_error:;
           __Pyx_PyThreadState_assign
-          __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
           __Pyx_XDECREF(__pyx_t_51); __pyx_t_51 = 0;
           __Pyx_XDECREF(__pyx_t_58); __pyx_t_58 = 0;
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -19788,9 +19789,9 @@ __pyx_t_52 = __pyx_memoryview_fromslice(__pyx_t_50, 1, (PyObject *(*)(char *)) _
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __PYX_XDEC_MEMVIEW(&__pyx_t_30, 1);
-          __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
           __PYX_XDEC_MEMVIEW(&__pyx_t_50, 1);
           __PYX_XDEC_MEMVIEW(&__pyx_t_61, 1);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_3, 1);
 
           /* "fatslimlib/core_analysis.pyx":1684
  *                 try:
@@ -33415,7 +33416,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_get_resname, __pyx_k_get_resname, sizeof(__pyx_k_get_resname), 0, 0, 1, 1},
   {&__pyx_kp_s_got_differing_extents_in_dimensi, __pyx_k_got_differing_extents_in_dimensi, sizeof(__pyx_k_got_differing_extents_in_dimensi), 0, 0, 1, 0},
   {&__pyx_n_s_holder, __pyx_k_holder, sizeof(__pyx_k_holder), 0, 0, 1, 1},
-  {&__pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_k_home_sebastien_Hacking_fatslim, sizeof(__pyx_k_home_sebastien_Hacking_fatslim), 0, 0, 1, 0},
+  {&__pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_k_home_sbuchoux_Hacking_fatslim_f, sizeof(__pyx_k_home_sbuchoux_Hacking_fatslim_f), 0, 0, 1, 0},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
@@ -33701,7 +33702,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__19 = PyTuple_Pack(2, __pyx_n_s_sum, __pyx_n_s_i); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_test_parallelism, 108, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_n_s_test_parallelism, 108, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 108, __pyx_L1_error)
 
   /* "fatslimlib/core_analysis.pyx":122
  *         return False
@@ -33713,7 +33714,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__21 = PyTuple_Pack(12, __pyx_n_s_leaflet, __pyx_n_s_cutoff, __pyx_n_s_holder, __pyx_n_s_size, __pyx_n_s_coords, __pyx_n_s_normals, __pyx_n_s_coords_2d, __pyx_n_s_neighborhood_size, __pyx_n_s_py_2d_coords, __pyx_n_s_i, __pyx_n_s_tmp_2d_coords, __pyx_n_s_j); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 12, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_test_put_atoms_on_plane, 122, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 12, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_n_s_test_put_atoms_on_plane, 122, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 122, __pyx_L1_error)
 
   /* "View.MemoryView":282
  *         return self.name

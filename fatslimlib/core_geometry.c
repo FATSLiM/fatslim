@@ -18,7 +18,7 @@
             "-fopenmp"
         ], 
         "include_dirs": [
-            "/home/sebastien/Hacking/.virtualenvs/FATSLiM-Python2/lib/python2.7/site-packages/numpy/core/include", 
+            "/home/sbuchoux/Hacking/.virtualenvs/FATSLiM-Python2/lib/python2.7/site-packages/numpy/core/include", 
             "./include", 
             "./src", 
             ".", 
@@ -1420,8 +1420,8 @@ static const char __pyx_k_fatslimlib_core_geometry[] = "fatslimlib.core_geometry
 static const char __pyx_k_Invalid_shape_in_axis_d_d[] = "Invalid shape in axis %d: %d.";
 static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
 static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
-static const char __pyx_k_home_sebastien_Hacking_fatslim[] = "/home/sebastien/Hacking/fatslim/fatslimlib/core_geometry.pyx";
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
+static const char __pyx_k_home_sbuchoux_Hacking_fatslim_f[] = "/home/sbuchoux/Hacking/fatslim/fatslimlib/core_geometry.pyx";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
 static const char __pyx_k_Can_only_create_a_buffer_that_is[] = "Can only create a buffer that is contiguous in memory.";
 static const char __pyx_k_Empty_shape_tuple_for_cython_arr[] = "Empty shape tuple for cython.array";
@@ -1480,7 +1480,7 @@ static PyObject *__pyx_n_s_get_polygon_area;
 static PyObject *__pyx_n_s_get_polygon_perimeter;
 static PyObject *__pyx_n_s_get_zoi;
 static PyObject *__pyx_kp_s_got_differing_extents_in_dimensi;
-static PyObject *__pyx_kp_s_home_sebastien_Hacking_fatslim;
+static PyObject *__pyx_kp_s_home_sbuchoux_Hacking_fatslim_f;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_import;
@@ -18259,7 +18259,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_get_polygon_perimeter, __pyx_k_get_polygon_perimeter, sizeof(__pyx_k_get_polygon_perimeter), 0, 0, 1, 1},
   {&__pyx_n_s_get_zoi, __pyx_k_get_zoi, sizeof(__pyx_k_get_zoi), 0, 0, 1, 1},
   {&__pyx_kp_s_got_differing_extents_in_dimensi, __pyx_k_got_differing_extents_in_dimensi, sizeof(__pyx_k_got_differing_extents_in_dimensi), 0, 0, 1, 0},
-  {&__pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_k_home_sebastien_Hacking_fatslim, sizeof(__pyx_k_home_sebastien_Hacking_fatslim), 0, 0, 1, 0},
+  {&__pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_k_home_sbuchoux_Hacking_fatslim_f, sizeof(__pyx_k_home_sbuchoux_Hacking_fatslim_f), 0, 0, 1, 0},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
@@ -18483,7 +18483,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__14 = PyTuple_Pack(4, __pyx_n_s_points, __pyx_n_s_points, __pyx_n_s_polygon, __pyx_n_s_area); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_get_polygon_area, 327, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_n_s_get_polygon_area, 327, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 327, __pyx_L1_error)
 
   /* "fatslimlib/core_geometry.pyx":340
  *     return area
@@ -18495,7 +18495,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__16 = PyTuple_Pack(4, __pyx_n_s_points, __pyx_n_s_points, __pyx_n_s_polygon, __pyx_n_s_perimeter); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 340, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_get_polygon_perimeter, 340, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 340, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_n_s_get_polygon_perimeter, 340, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 340, __pyx_L1_error)
 
   /* "fatslimlib/core_geometry.pyx":353
  *     return perimeter
@@ -18507,7 +18507,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__18 = PyTuple_Pack(6, __pyx_n_s_subject_points, __pyx_n_s_clipper_points, __pyx_n_s_subject, __pyx_n_s_clipper, __pyx_n_s_clipped, __pyx_n_s_clipped_py); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_get_clipped_polygon, 353, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 353, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_n_s_get_clipped_polygon, 353, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 353, __pyx_L1_error)
 
   /* "fatslimlib/core_geometry.pyx":368
  * 
@@ -18519,7 +18519,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__20 = PyTuple_Pack(5, __pyx_n_s_points, __pyx_n_s_point, __pyx_n_s_polygon, __pyx_n_s_p, __pyx_n_s_is_inside); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 368, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_is_inside_polygon, 368, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_n_s_is_inside_polygon, 368, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 368, __pyx_L1_error)
 
   /* "fatslimlib/core_geometry.pyx":502
  * ###################################################################################################
@@ -18531,7 +18531,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__22 = PyTuple_Pack(8, __pyx_n_s_ref_pt, __pyx_n_s_pts, __pyx_n_s_ref_pt_c, __pyx_n_s_pts_c, __pyx_n_s_size, __pyx_n_s_i, __pyx_n_s_zoi, __pyx_n_s_zoi_py); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_get_zoi, 502, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 502, __pyx_L1_error)
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_n_s_get_zoi, 502, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 502, __pyx_L1_error)
 
   /* "fatslimlib/core_geometry.pyx":534
  *     return zoi_py
@@ -18543,7 +18543,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__24 = PyTuple_Pack(7, __pyx_n_s_zoi, __pyx_n_s_ref_pt, __pyx_n_s_clipping_pt, __pyx_n_s_ref_pt_c, __pyx_n_s_clipping_pt_c, __pyx_n_s_zoi_polygon, __pyx_n_s_zoi_py); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 534, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sebastien_Hacking_fatslim, __pyx_n_s_clip_zoi, 534, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 534, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_sbuchoux_Hacking_fatslim_f, __pyx_n_s_clip_zoi, 534, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 534, __pyx_L1_error)
 
   /* "View.MemoryView":282
  *         return self.name

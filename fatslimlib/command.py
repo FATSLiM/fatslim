@@ -445,8 +445,15 @@ class AnalyticalCommand(Command):
                                                 help="Number of threads to use")
 
         self.parser_analysis_group.add_argument("--begin", "-b", default=-1, type=int,
+                                                help="First timestep (ps) to use for analysis")
+
+        self.parser_analysis_group.add_argument("--begin-frame", default=-1, type=int,
                                                 help="First frame (index) to use for analysis")
-        self.parser_analysis_group.add_argument("--end", "-e", default=-1, type=int,
+
+        self.parser_analysis_group.add_argument("--end", "-e", default=-1, type=float,
+                                                help="Last timestep (ps) to use for analysis")
+
+        self.parser_analysis_group.add_argument("--end-frame", default=-1, type=float,
                                                 help="Last frame (index) to use for analysis")
 
     def get_xvg_header(self):
@@ -520,11 +527,26 @@ class AnalyticalCommand(Command):
         self.initialize_trajetory(traj)
         size = len(traj)
 
-        first_frame = max(0, self.namespace.begin)
-        last_frame = min(size, self.namespace.end)
+        first_frame = max(0, self.namespace.begin_frame)
+        last_frame = min(size, self.namespace.end_frame)
         if last_frame < 0:
             last_frame = size
+
+        if self.namespace.begin >= 0:
+            first_frame = size
+            for i, timestep in enumerate(traj.timesteps):
+                if timestep >= self.namespace.begin:
+                    first_frame = i
+                    break
+
+        if self.namespace.end >= 0:
+            for i, timestep in enumerate(traj.timesteps):
+                if timestep > self.namespace.end:
+                    last_frame = i
+                    break
+
         num_frames = last_frame - first_frame
+
         if num_frames <= 0:
             self.print_warning("No frames are selected for analysis!")
             return
@@ -687,6 +709,9 @@ class MembraneProperty(object):
                   mean value for leaflet #2, standard deviation for leaflet #2 value
         :rtype: tuple
         """
+        if self.membrane_avg_values is None:
+            return 0, 0, 0, 0, 0, 0
+
         if limit > 0:
             membrane_values = self.membrane_avg_values[:limit]
             leaflet1_values = self.leaflet1_avg_values[:limit]

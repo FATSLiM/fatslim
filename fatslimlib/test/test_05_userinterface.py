@@ -671,6 +671,8 @@ class TestCommands(TestCase):
                                    "-b", "1000000"
                                    ],)
 
+        print (output)
+
         assert "WARNING: No frames are selected for analysis!" in output
 
     def test_membrane_command_ok(self):
@@ -962,3 +964,37 @@ class TestCommands(TestCase):
         self.assert_filecmp(output_file, data.BILAYER_PROT_AREA_XVG)
 
         os.unlink(output_file)
+
+    def test_begin_frame_wrong(self):
+        output = self.run_command(["thickness",
+                                   "-c", data.VESICLE_GRO,
+                                   "-n", data.VESICLE_NDX,
+                                   "-t", data.VESICLE_XTC,
+                                   "--begin-frame", "2000",
+                                   ])
+
+        assert "'thickness' command executed" in output
+
+        assert "WARNING: No frames are selected for analysis" in output
+
+    def test_begin_good(self):
+        output = self.run_command(["thickness",
+                                   "-c", data.VESICLE_GRO,
+                                   "-n", data.VESICLE_NDX,
+                                   "-t", data.VESICLE_XTC,
+                                   "--begin", "2000",
+                                   ])
+
+        assert "'thickness' command executed" in output
+        assert "7 processed frames" in output
+
+    def test_end(self):
+        output = self.run_command(["thickness",
+                                   "-c", data.VESICLE_GRO,
+                                   "-n", data.VESICLE_NDX,
+                                   "-t", data.VESICLE_XTC,
+                                   "--end", "2000",
+                                   ])
+
+        assert "'thickness' command executed" in output
+        assert "5 processed frames" in output
