@@ -67,11 +67,11 @@ Finally, it is always a good idea to run the ``self-test`` command to make sure 
 Documentation
 -------------
 
-A full documentation is available at: `documentation`_
+A full documentation is available at: `http://pythonhosted.org/fatslim`_
 
 
 .. _FATSLiM: http://fatslim.github.io/
 .. _license: https://github.com/FATSLiM/fatslim/blob/master/LICENSE
 .. _`develop branch`: https://github.com/FATSLiM/fatslim/tree/develop
 .. _`master branch`: https://github.com/FATSLiM/fatslim/tree/master
-.. _`documentation`: http://pythonhosted.org/fatslim
+.. _`http://pythonhosted.org/fatslim`: http://pythonhosted.org/fatslim
