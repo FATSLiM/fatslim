@@ -1,0 +1,26 @@
+# This file was created on Wed Jul 27 10:14:51 2016
+# Created by: FATSLiM v.0.1.3.dev0
+# Command line: fatslim apl -c dppc_vesicle.gro -n dppc_vesicle.ndx -t dppc_vesicle.xtc --plot-apl dppc_vesicle_apl.xvg --plot-area dppc_vesicle_area.xvg --nthreads 8
+@TYPE xy
+@ title "Area"
+@ xaxis  label "Time (ps)"
+@ yaxis  label "Area (nm^2)"
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Membrane"
+@ s1 legend "Outer leaflet"
+@ s2 legend "Inner leaflet"
+   0.000 1030.133 1472.638  587.627 
+ 500.000 1028.912 1470.075  587.748 
+1000.000 1027.567 1468.900  586.234 
+1500.000 1029.715 1470.925  588.505 
+2000.000 1029.574 1472.798  586.349 
+2500.000 1027.781 1470.020  585.542 
+3000.000 1023.345 1464.141  582.548 
+3500.000 1023.820 1466.237  581.402 
+4000.000 1020.949 1462.342  579.555 
+4500.000 1022.672 1464.156  581.188 
+5000.000 1024.180 1465.947  582.414 

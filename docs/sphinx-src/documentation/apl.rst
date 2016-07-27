@@ -57,7 +57,7 @@ If, for instance, a protein is embedded inside the membrane, it must be taken in
    are considered as they will likely alter the cell area.
 
 .. seealso::
-    See :ref:`--interacting-group <parameter_interacting_group>` parameter and the :ref:`APL tutorial <tuto_apl>` on how to select protein atoms.
+    See :ref:`--interacting-group <parameter_interacting_group>` parameter and the :ref:`tutorial #4 <tuto_apl_protein>` on how to select protein atoms.
 
 5. The center of geometry corresponding to all these atoms is calculated (orange) and is added to the Voronoi points,
    leading to an updated cell (yellow polygon) for the reference lipid. The area of this modified cell will be used as an approximation of the lipid's accessible area.

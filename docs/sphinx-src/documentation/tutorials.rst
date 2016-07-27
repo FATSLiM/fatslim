@@ -1,14 +1,18 @@
 .. _tutorials:
 
+********************
 Tutorials & Examples
-####################
+********************
 
 This chapter contains a few information and examples to get familiarized with FATSLiM.
+
+Introduction
+============
 
 .. _tuto_test_systems:
 
 Test systems
-************
+------------
 
 The following MD systems are used both in the tutorials and as tests to check FATSLiM accuracy (see
 :ref:`thickness <thickness_accuracy>` and :ref:`area per lipid <apl_accuracy>` chapters)
@@ -16,7 +20,7 @@ The following MD systems are used both in the tutorials and as tests to check FA
 .. _tuto_lipid_system:
 
 Lipid-only system
-=================
+"""""""""""""""""
 
 .. figure:: images/bilayer_chol_nobox.png
     :align: center
@@ -36,7 +40,7 @@ the APL@Voro `website <aplvoro_downloads>`_.
 .. _tuto_protein_system:
 
 Protein system
-==============
+""""""""""""""
 
 .. figure:: images/bilayer_prot_nowater.png
     :align: center
@@ -55,7 +59,7 @@ files are freely available from the APL@Voro `website <aplvoro_downloads>`_.
 .. _tuto_peptide_system:
 
 Peptide system
-==============
+""""""""""""""
 
 .. figure:: images/bilayer_kalp.png
     :align: center
@@ -72,7 +76,7 @@ a bilayer made of 126 DPPC.
 .. _tuto_model_vesicle:
 
 Model vesicle
-=============
+"""""""""""""
 
 .. figure:: images/model_vesicle.png
     :align: center
@@ -91,7 +95,7 @@ set to 5 nm and the area per lipid for both leaflets are set to 40 |ang|:sup:`2`
 .. _tuto_real_vesicle:
 
 Real vesicle
-============
+""""""""""""
 
 .. figure:: images/dppc_vesicle.png
     :align: center
@@ -106,7 +110,7 @@ This vesicle (3030 DPPC) was obtained from the self-aggregation of MARTINI lipid
 .. _tuto_generate_ndx:
 
 Generating the index file
-*************************
+-------------------------
 
 FATSLiM uses a `GROMACS index file <.ndx>`_ to identify the atoms corresponding to lipid headgroup so
 every GROMACS users should be at ease and already know how to use the ``gmx make_ndx`` `utility <make_ndx>`_
@@ -118,12 +122,6 @@ provided by GROMACS.
 In the following examples, the atom selection along with the index file will be provided to make things
 as clear as possible. See :ref:`below <tuto_make_ndx>` for a complete and comprehensive example.
 
-
-Analysis tutorials
-******************
-
-This section presents several examples of analysis you can do with FATSLiM.
-All the following tutorials refer to the MD systems presented above.
 
 .. _tuto_membrane_identification:
 
@@ -137,7 +135,7 @@ Tutorial #1: Simple membrane identification
 .. _tuto_make_ndx:
 
 Index file
-""""""""""
+----------
 
 - **Atoms selected as headgroups**: *PO4* for DUPC and DPPC residues  and *ROH* for CHOL residue.
 
@@ -202,7 +200,7 @@ This will create a new group:
 Voilà, you are now ready to use FATSLiM!
 
 Analysis
-""""""""
+--------
 
 As, previously described, FATSLiM needs at least :ref:`two files <common_input_files>` to perform analysis. Here will be used:
 
@@ -271,7 +269,7 @@ It should give an output similar to this one:
     Results:
     Average values over 91 processed frames:
     Thickness: Membrane=3.916±0.061nm - Lower leaflet=3.907±0.060nm - Upper leaflet=3.926±0.066nm
-    'bilayer_peptide_thickness.xvg' backed up to 'bilayer_peptide_thickness.xvg.01.old'
+    'bilayer_peptide_thickness.xvg' backed up to 'bilayer_peptide_thickness.xvg'
     Thickness values saved to 'bilayer_peptide_thickness.xvg'
 
     'thickness' command executed in 574.271 ms (CPU)
@@ -284,10 +282,185 @@ This is a plain text XY plot that can be plot with a vast variety of tool such a
     :align: center
 
 
-.. _tuto_apl:
+.. _tuto_apl_lipids:
 
-Membrane area and Area per lipid calculation
-============================================
+Tutorial #3: Vesicle membrane area and area per lipid
+=====================================================
+
+- **Goal:** Plotting the membrane area and area per lipid of a vesicle over a trajectory
+- **Configuration file:** :download:`dppc_vesicle.gro <tutorials/dppc_vesicle.gro>`
+- **Trajectory file:** :download:`dppc_vesicle.xtc <tutorials/dppc_vesicle.xtc>`
+- **Atoms selected as headgroups**: *PO4* (Phosphate bead)
+- **Index file:** :download:`dppc_vesicle.ndx <tutorials/dppc_vesicle.ndx>`
+
+.. note::
+
+    Generating the (provided) index file using the atom selection is left as an exercise.
+
+    Check the :ref:`above tutorial <tuto_make_ndx>` if needed.
+
+Rather than running FATSLiM twice (once for membrane area, once for area per lipid), it is possible to
+run the analysis once and store both results at the same time. Simply run the following command:
+
+.. code-block:: bash
+
+    fatslim apl -c dppc_vesicle.gro -n dppc_vesicle.ndx -t dppc_vesicle.xtc --plot-apl dppc_vesicle_apl.xvg --plot-area dppc_vesicle_area.xvg
+
+This should give you an output similar to:
+
+.. code-block:: bash
+
+    FATSLiM - Fast Analysis Toolbox for Simulations of Lipid Membranes
+    version 0.2.0
+    Copyright (c) 2013-2016 Sébastien Buchoux
+
+    Running command: 'apl'... This may take some time, be patient!
+    Analysis will be performed using 8 threads.
+    Analysing frame    11/   11 (time: 5000 ps)... done in 34 ms (Remaining: 0 s)
+    Results:
+    Average values over 11 processed frames:
+    Area per lipid: Membrane=0.677±0.002nm^2 - Outer leaflet=0.793±0.002nm^2 - Inner leaflet=0.496±0.003nm^2
+    'dppc_vesicle_apl.xvg' backed up to 'dppc_vesicle_apl.xvg'
+    Area per lipid values saved to 'dppc_vesicle_apl.xvg'
+
+    Area: Membrane=1026.241±3.145nm^2 - Outer leaflet=1468.016±3.455nm^2 - Inner leaflet=584.465±2.970nm^2
+    'dppc_vesicle_area.xvg' backed up to 'dppc_vesicle_area.xvg'
+    Area values saved to 'dppc_vesicle_area.xvg'
+
+    'apl' command executed in 503.603 ms (CPU)
+    Goodbye!
+
+Two files, :download:`dppc_vesicle_apl.xvg <tutorials/dppc_vesicle_apl.xvg>` and
+:download:`dppc_vesicle_area.xvg <tutorials/dppc_vesicle_area.xvg>` was created as a result.
+
+.. _tuto_apl_protein:
+
+Tutorial #4: Extracting raw APL data for further processing
+===========================================================
+
+- **Goal:** Map the area per lipid from a membrane with a protein
+- **Configuration file:** :download:`bilayer_prot.gro <tutorials/bilayer_prot.gro>`
+- **Atoms selected as headgroups**: *P8* (Phosphorus atom)
+- **Protein atoms selected**: All but hydrogen atoms (*Protein-H* default group from ``gmx make_ndx``)
+- **Index file:** :download:`bilayer_prot.ndx <tutorials/bilayer_prot.ndx>`
+
+Index file
+----------
+
+In this tutorial, we need to take into account protein atoms for area per lipid calculation.
+As for lipid headgroups, this involves ``gmx make_ndx``:
+
+1. Launch ``gmx make_ndx`` using :download:`bilayer_prot.gro <tutorials/bilayer_prot.gro>` as input file:
+
+.. code-block:: bash
+
+    gmx make_ndx -f bilayer_prot.gro -o bilayer_prot.ndx
+
+You should see the default groups GROMACS creates:
+
+.. code-block:: bash
+
+      0 System              : 26703 atoms
+      1 Protein             :  1520 atoms
+      2 Protein-H           :  1250 atoms
+      3 C-alpha             :   160 atoms
+      4 Backbone            :   480 atoms
+      5 MainChain           :   645 atoms
+      6 MainChain+Cb        :   805 atoms
+      7 MainChain+H         :   805 atoms
+      8 SideChain           :   715 atoms
+      9 SideChain-H         :   605 atoms
+     10 Prot-Masses         :  1520 atoms
+     11 non-Protein         : 25183 atoms
+     12 Other               :  5824 atoms
+     13 POPC                :  5824 atoms
+     14 Water               : 19359 atoms
+     15 SOL                 : 19359 atoms
+     16 non-Water           :  7344 atoms
+
+Note that, as a protein is present, the number of groups is greater than :ref:`previously <tuto_make_ndx>`.
+
+2. First, we will handle the lipid headgroups:
+
+.. code-block:: bash
+
+    r POPC & a P8
+
+and renamed the newly created group to the default name so we do not need to specify if with :ref:`--hg-group <hg_group>`:
+
+.. code-block:: bash
+
+    name 17 headgroups
+
+3. Then, we need to select the protein atoms we need to take into account we calculating area per lipid.
+   In this tutorial, we will use only the heavy atoms but it is a good exercice to test other possibilities (all atoms, only the backbone, etc)
+   to see how the selection affects the area per lipid calculation. In our case, the group of atoms is already defined (group 2)
+   so we just need to rename it (once again this is just to avoid specifying :ref:`--interacting-group <parameter_interacting_group>`:
+
+.. code-block:: bash
+
+    name 2 protein
+
+4. Optionally, it is also possible to "clean" our index file by deleting the groups we do not need before quitting ``gmx make_ndx``:
+
+.. code-block:: bash
+
+    del 0-1
+    del 1-14
+
+When done, we now have :download:`bilayer_prot.ndx <tutorials/bilayer_prot.ndx>` that contains only the two groups needed by FATSLiM.
+
+
+Analysis
+--------
+
+Because, we use the default names (*headgroups* and *protein*) for the atom groups,
+we do not need to specify them for FATSLiM to use the correct atom selection and
+the following command will suffise:
+
+.. code-block:: bash
+
+    fatslim apl -c bilayer_prot.gro -n bilayer_prot.ndx --export-apl-raw bilayer_prot_apl.csv
+
+This will create a file name :download:`bilayer_prot_apl_frame_00000.csv <tutorials/bilayer_prot_apl_frame_00000.csv>`.
+
+.. note::
+
+    As previously, the frame index (starting from 0) is appended to the filename as one csv file is created per frame.
+    Hence *bilayer_prot_apl_0000.csv* instead of *bilayer_prot_apl.csv*
+
+For illustration, here are the first lines of the file:
+
+.. literalinclude:: tutorials/bilayer_prot_apl_frame_00000.csv
+    :lines: 1-10
+
+Further analysis
+----------------
+
+As you can see, :download:`bilayer_prot_apl_frame_00000.csv <tutorials/bilayer_prot_apl_frame_00000.csv>` contains
+all the information we need to create a map with all the area per lipid values.
+To actually create this map, we will use a Python script based on `Matplotlib <http://matplotlib.org/>`_.
+
+Writing this script is not directly related to FATSLim and is thus beyond the scope of this tutorial,
+this is why it will not be discussed here. Nonetheless, it is an example of post-processing that can be achieved
+using FATSLiM raw results.
+
+You download the script :download:`here <tutorials/show_apl_map.py>` or just take a look at its content:
+
+.. literalinclude:: tutorials/show_apl_map.py
+    :language: python
+    :linenos:
+    :caption: show_apl_map.py
+
+and the generated figure:
+
+.. figure:: images/bilayer_prot_apl.png
+    :align: center
+
+with the protein added:
+
+.. figure:: images/bilayer_prot_apl2.png
+    :align: center
 
 .. |ang| unicode:: U+212B .. angstrom symbol
 .. |--| unicode:: U+2013   .. en dash
