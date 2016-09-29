@@ -805,6 +805,26 @@ class TestCommands(TestCase):
 
         assert os.listdir(self.tempdir) == []
 
+    def test_id_freq(self):
+        output = self.run_command(["thickness",
+                                   "-c", data.VESICLE_GRO,
+                                   "-n", data.VESICLE_NDX,
+                                   "-t", data.VESICLE_XTC,
+                                   "--verbose",
+                                   "--idfreq", "0"])
+
+        assert output.count("1 membrane identified!") == 1
+        assert output.count("identification skipped!") == 10
+
+        output = self.run_command(["thickness",
+                                   "-c", data.VESICLE_GRO,
+                                   "-n", data.VESICLE_NDX,
+                                   "-t", data.VESICLE_XTC,
+                                   "--verbose",
+                                   "--idfreq", "5"])
+        assert output.count("1 membrane identified!") == 3
+        assert output.count("identification skipped!") == 8
+
     def test_thickness_command_planar(self):
         output_file = os.path.join(self.tempdir, "test_thickness.xvg")
 

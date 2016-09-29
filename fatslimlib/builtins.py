@@ -232,11 +232,17 @@ class CmdMembranes(AnalyticalCommand):
         self.timesteps = np.zeros(num_frames, dtype=int)
 
     def process_frame(self, frame):
-        membranes = frame.get_membranes(self.namespace.cutoff)
+        output = super(CmdMembranes, self).process_frame(frame)
 
-        self.timesteps[self.processing_index] = frame.timestep
+        try:
+            membranes = frame.get_membranes(self.namespace.cutoff, update=True)
+        except (ValueError, IndexError):  # pragma: no cover
+            output += "->No membrane found!"
+        else:
+            n_membranes = len(membranes)
+            output = "->%i membrane%s found!\n" % (n_membranes, "s"[n_membranes == 1:])
 
-        self.num_membranes[self.processing_index] = len(membranes)
+        self.num_membranes[self.processing_index] = n_membranes
 
         if self.namespace.output_index is not None:
             fname, ext = os.path.splitext(self.namespace.output_index)
@@ -257,6 +263,7 @@ class CmdMembranes(AnalyticalCommand):
                             atomids = leaf.lipid_atomids[slice_i:slice_i + 15]
 
                         fp.write("\n")
+            output += "leaflets saved to '%s'\n" % fname
 
         if self.namespace.output_index_hg is not None:
             fname, ext = os.path.splitext(self.namespace.output_index_hg)
@@ -277,6 +284,8 @@ class CmdMembranes(AnalyticalCommand):
                             atomids = leaf.hg_atomids[slice_i:slice_i + 15]
 
                         fp.write("\n")
+            output += "headgroup atoms saved to '%s'\n" % fname
+        return output
 
     def process_results(self):
         filepath = self.namespace.output

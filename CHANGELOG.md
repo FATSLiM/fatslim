@@ -3,8 +3,13 @@ All notable changes to FATSLiM are documented in this file.
 Version numbers comply with [Python recommandation](https://www.python.org/dev/peps/pep-0440/).
 
 ## [0.2.1] - Unreleased
+### Changed
+- Default frequence for membrane identification is now 1 (every frame)
+
 ### Fixed
 - Bug in lipid direction calculation
+- Lack of verbose output for "membranes" command
+- Ignored "--idfreq" option leading to membrane identified only once per trajectory
 
 ## [0.2.0] - 2016-07-27
 ### Added

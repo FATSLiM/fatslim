@@ -518,6 +518,7 @@ class AnalyticalCommand(Command):
         if output is not None and len(output) > 0:
             print("Results:")
             print(output)
+            print("DEBUG!")
 
     def run(self):
         traj = load_trajectory(self.namespace.conf,
@@ -874,9 +875,9 @@ class MembraneAnalysisCommand(AnalyticalCommand):
     def fill_parser(self):
         super(MembraneAnalysisCommand, self).fill_parser()
 
-        self.parser_analysis_group.add_argument("--idfreq", default=0, type=int,
+        self.parser_analysis_group.add_argument("--idfreq", default=1, type=int,
                                                 help="Frequency used to update membrane "
-                                                     "identification")
+                                                     "identification (Note: membrane identification is always done for the first frame)")
 
         self.parser_analysis_group.add_argument("--cutoff", default=2, type=float,
                                                 help="Cutoff distance for leaflets identification")
@@ -930,17 +931,34 @@ class MembraneAnalysisCommand(AnalyticalCommand):
 
     def process_frame(self, frame):
         output = super(MembraneAnalysisCommand, self).process_frame(frame)
+
+        # Check if we need to update the identified membrane
+        idfreq = self.namespace.idfreq
+
+        if idfreq < 1:
+            needs_update = False
+        elif self.processing_index % idfreq == 0:
+            needs_update = True
+        else:
+            needs_update = False
+
+        if self.processing_index == 0:
+            needs_update = True
+
         try:
-            membranes = frame.get_membranes(self.namespace.cutoff)
+            membranes = frame.get_membranes(self.namespace.cutoff, update=needs_update)
         except (ValueError, IndexError):  # pragma: no cover
             output += "->No membrane found!"
         else:
             n_membranes = len(membranes)
-            output = "->%i membrane%s found!\n" % (n_membranes, "s"[n_membranes == 1:])
+            if needs_update:
+                output += "->%i membrane%s identified!\n" % (n_membranes, "s"[n_membranes == 1:])
 
-            if len(membranes) > 1:
-                self.print_warning("%i membranes found but only the first one will "
-                                   "be analyzed!" % len(membranes))
+                if len(membranes) > 1:
+                    self.print_warning("%i membranes found but only the first one will "
+                                       "be analyzed!" % len(membranes))
+            else:
+                output += "->using previously identified membrane (identification skipped!)\n"
 
             membrane = membranes[0]
 
