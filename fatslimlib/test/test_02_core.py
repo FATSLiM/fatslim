@@ -26,7 +26,7 @@ from numpy.testing import assert_almost_equal, assert_allclose
 # Local imports
 from . import frame_vesicle, frame_model_bilayer_prot, frame_model_bilayer, frame_model_vesicle, frame_bilayer, \
     frame_bilayer_prot, frame_big_prot, frame_bilayer_chol, frame_model_bilayer_vesicle, frame_model_multibilayer, \
-    traj_vesicle, frame_bilayer_allatom, frame_multibilayer
+    traj_vesicle, frame_bilayer_allatom, frame_multibilayer, frame_bilayer_ganglio
 
 
 def dprod(v1, v2):
@@ -88,11 +88,11 @@ def test_core_base_directions(frame_model_bilayer):
 
     directions = frame.directions
 
-    ref_direction_first = np.array([-0.02164856, 0.00111435, 0.99976502])
-    ref_direction_last = np.array([-0.02164875, -0.00111435, -0.99976502])
+    ref_direction_first = np.array([0, 0, 1.0])
+    ref_direction_last = np.array([0, 0, -1.0])
 
-    assert_almost_equal(directions[0], ref_direction_first, 3)
-    assert_almost_equal(directions[-1], ref_direction_last, 3)
+    assert_almost_equal(directions[0], ref_direction_first, 1)
+    assert_almost_equal(directions[-1], ref_direction_last, 1)
 
 
 def test_core_ns_bilayer(frame_model_bilayer):
@@ -154,12 +154,23 @@ def test_directions_bilayer(frame_model_bilayer):
 
     directions = frame.directions
 
-    ref_direction_first = np.array((-0.02164852,  0.00111438,  0.99976502))
-    ref_direction_last = np.array((-0.02164852,  -0.00111438,  -0.99976502))
+    ref_direction_first = np.array([0, 0, 1.0])
+    ref_direction_last = np.array([0, 0, -1.0])
 
     for i in range(36):
-        assert_almost_equal(directions[i], ref_direction_first)
-        assert_almost_equal(directions[i + 36], ref_direction_last)
+        assert_almost_equal(directions[i], ref_direction_first, 1)
+        assert_almost_equal(directions[i + 36], ref_direction_last, 1)
+
+
+def test_direction_ganglio(frame_bilayer_ganglio):
+    frame = frame_bilayer_ganglio
+
+    ref_ganglio = 812
+    ref_chol = 27
+
+    assert dprod(frame.directions[ref_chol], [0.0, 0.0, 1.0]) > 0
+    assert dprod(frame.directions[ref_ganglio], [0.0, 0.0, 1.0]) > 0
+    assert dprod(frame.directions[ref_ganglio], frame.directions[ref_ganglio]) > 0
 
 
 def test_directions_vesicle(frame_model_vesicle):
@@ -630,7 +641,6 @@ def test_membranes_multibilayer(frame_multibilayer):
 
 
 def test_membranes_bilayer_vesicle(frame_model_bilayer_vesicle):
-
     frame = frame_model_bilayer_vesicle
 
     ref_leaflets = [[1963, 785], [1296, 1296]]
@@ -648,3 +658,11 @@ def test_membranes_bilayer_vesicle(frame_model_bilayer_vesicle):
 
         for i, leaflet in enumerate(membrane):
             assert len(leaflet) == ref_leaflets[mid][i]
+
+
+def test_membranes_bilayer_ganglio(frame_bilayer_ganglio):
+    frame = frame_bilayer_ganglio
+
+    membrane = frame.get_membranes()[0]
+
+    assert len(membrane) == len(frame.bead_coords)

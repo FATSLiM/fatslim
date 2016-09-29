@@ -72,7 +72,6 @@ BILAYER_CHOL_NDX = _fullpath_from_basename("bilayer_chol.ndx")
 BILAYER_CHOL_APL_GROUPED = _fullpath_from_basename("bilayer_chol_apl_group.xvg")
 BILAYER_CHOL_APL_NOGROUP = _fullpath_from_basename("bilayer_chol_apl_nogroup.xvg")
 
-
 # Big Bilayer-related variables
 MODEL_BIG_GRO = _fullpath_from_basename("model_big.gro")
 MODEL_BIG_NDX = _fullpath_from_basename("model_big.ndx")
@@ -91,6 +90,10 @@ VESICLE_TRR = _fullpath_from_basename("dppc_vesicle.trr")
 VESICLE_APL_XVG = _fullpath_from_basename("dppc_vesicle_apl.xvg")
 VESICLE_AREA_XVG = _fullpath_from_basename("dppc_vesicle_area.xvg")
 VESICLE_THICKNESS_XVG = _fullpath_from_basename("dppc_vesicle_thickness.xvg")
+
+# Bilayer with ganglioside (i.e. big head groups)
+BILAYER_GANGLIO_GRO = _fullpath_from_basename("bilayer_ganglio.gro")
+BILAYER_GANGLIO_NDX = _fullpath_from_basename("bilayer_ganglio.ndx")
 
 
 

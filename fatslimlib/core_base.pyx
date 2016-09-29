@@ -1522,9 +1522,13 @@ cdef class Frame(object):
         cdef real[:,::1] bead_coords
         cdef fsl_int beads
         cdef real[:,::1] lipid_coords, all_lipid_coords
-        cdef fsl_int[:] offsets = self.lipid_atomids_offsets
+        cdef fsl_int[:] lipid_offsets = self.lipid_atomids_offsets
+        cdef fsl_int[:] lipid_atomids = self.trajectory.lipid_atomids
+        cdef fsl_int[:] hg_offsets = self.trajectory.hg_bead_atomids_offsets
+        cdef fsl_int[:] hg_atomids = self.trajectory.hg_bead_atomids
         cdef cPBCBox_t box = self.box.c_pbcbox
         cdef real[:, ::1] directions
+        cdef fsl_int start_offset, first_lipid_atomid, lipid_offset, hg_offset, last_hg_atomid
 
         # Loads coordinates
         all_lipid_coords = self.fast_get_lipid_coords_bbox()
@@ -1536,11 +1540,17 @@ cdef class Frame(object):
 
         #for i in range(nbeads):
         for i in prange(nbeads, schedule='dynamic', num_threads=OPENMP_NUM_THREADS):
+            lipid_offset = lipid_offsets[i]
+            first_lipid_atomid = lipid_atomids[lipid_offset]
+            hg_offset = hg_offsets[i+1]
+            last_hg_atomid = hg_atomids[hg_offset -1]
+            start_offset = lipid_offset + (last_hg_atomid - first_lipid_atomid)
+
             calculate_lipid_direction(&bead_coords[i, XX],
                                       box,
                                       all_lipid_coords,
-                                      offsets[i],
-                                      offsets[i+1],
+                                      start_offset,
+                                      lipid_offsets[i+1],
                                       &directions[i, XX])
 
         with gil:
