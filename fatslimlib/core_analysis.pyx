@@ -431,6 +431,7 @@ cdef real thickness_from_neighborhood(rvec ref, rvec ref_normal,
     rvec_clear(ref_xcm)
 
     # Step 1: Get XCM
+    total_weight = 0
     for i in range(neighborhood_same_leaflet.size):
         dprod_normal = rvec_dprod(&same_normals[neighborhood_same_leaflet.beadids[i], XX],
                                   ref_normal)
@@ -1175,6 +1176,7 @@ cdef class Aggregate(object):
             abort()
 
         for i in prange(size, schedule="dynamic", num_threads=OPENMP_NUM_THREADS):
+        #for i in range(size):
             tmp_thickness[i] = thickness_from_neighborhood(&self_coords[i, XX],
                                                            &self_neighborhood_normals[i, XX],
                                                            other_coords,
