@@ -444,7 +444,7 @@ class AnalyticalCommand(Command):
         self.parser_analysis_group.add_argument("--nthreads", default=-1, type=int,
                                                 help="Number of threads to use")
 
-        self.parser_analysis_group.add_argument("--begin", "-b", default=-1, type=int,
+        self.parser_analysis_group.add_argument("--begin", "-b", default=-1, type=float,
                                                 help="First timestep (ps) to use for analysis")
 
         self.parser_analysis_group.add_argument("--begin-frame", default=-1, type=int,
@@ -453,7 +453,7 @@ class AnalyticalCommand(Command):
         self.parser_analysis_group.add_argument("--end", "-e", default=-1, type=float,
                                                 help="Last timestep (ps) to use for analysis")
 
-        self.parser_analysis_group.add_argument("--end-frame", default=-1, type=float,
+        self.parser_analysis_group.add_argument("--end-frame", default=-1, type=int,
                                                 help="Last frame (index) to use for analysis")
 
     def get_xvg_header(self):

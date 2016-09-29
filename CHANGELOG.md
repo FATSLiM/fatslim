@@ -11,6 +11,7 @@ Version numbers comply with [Python recommandation](https://www.python.org/dev/p
 - Lack of verbose output for "membranes" command
 - Ignored "--idfreq" option leading to membrane identified only once per trajectory
 - Bad test file for thickness command xvg export
+- --end-frame option interpreted as float an raising error when used
 
 ## [0.2.0] - 2016-07-27
 ### Added
