@@ -232,3 +232,17 @@ Cutoff distance for leaflet identification
   See :doc:`leaflets` for details.
 
 - **Default value:** ``2.0``
+
+Frequency of membrane identification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Associated parameter:** ``--idfreq``
+
+- **Purpose:** This option allows user to specify the frequency of membrane identification.
+  A proper membrane identification is vital for accurate analysis, this is why, by default, it is performed for each trajectory frame.
+  For many membranes, where lipids do not exchange between leaflets, this is an overkill; this is why users can choose to reduce the frequency used.
+  For instance, a value of 2 means that membranes will be identified every two frames.
+
+  .. note:: Even with a value of 0, membrane identification will be performed for the first frame.
+
+- **Default value:** ``1``

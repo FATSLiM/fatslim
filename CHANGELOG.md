@@ -3,6 +3,9 @@ All notable changes to FATSLiM are documented in this file.
 Version numbers comply with [Python recommandation](https://www.python.org/dev/peps/pep-0440/).
 
 ## [0.2.1] - Unreleased
+### Added
+- Description of the "--idfreq" option in the documentation
+
 ### Changed
 - Default frequence for membrane identification is now 1 (every frame)
 
