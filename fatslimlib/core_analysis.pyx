@@ -1719,8 +1719,13 @@ cdef list retrieve_membranes(Frame frame, real cutoff):
     # Second, build the membranes
     membranes_py = list()
 
+
+    print("")
+    print("Number of lipids: %i" % len(frame.lipid_coords))
+
     while len(clean_aggregates_py) > 0:
         ref_leaflet = clean_aggregates_py.pop(0)
+        print("Potential leaflet: %s" % ref_leaflet)
 
         compatibles = []
         for leaflet in clean_aggregates_py:
