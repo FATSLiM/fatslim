@@ -888,6 +888,7 @@ cdef class Topology(object):
 
         self.atoms = NULL
         self.atoms_size = 0
+        self.natoms = 0
         self.atoms_allocated_size = 0
         self.set_atoms_allocation(ATOMS_ALLOCATION_INCREMENT)
 
@@ -1244,6 +1245,8 @@ cdef class CoordinateReader(object):
                       verbose,
                       end="")
         begin = time()
+        self.natoms = 0
+        self.nframes = 0
         self.preload()
         verbose_print("%i frames preloaded in %s" % (self.nframes, pretty_delta(begin, time())),
                       verbose)
@@ -1726,6 +1729,11 @@ cdef class Trajectory(object):
 
         assert isinstance(coords_reader, CoordinateReader)
         self.coords_reader = coords_reader
+
+        if self.topol_reader.topology.natoms != self.coords_reader.natoms:
+            raise IndexError("Incoherent number of atoms between topology and trajectory (%i vs %i)" % (
+            self.topol_reader.topology.natoms,
+            self.coords_reader.natoms))
 
         # Load atomids & group
         self.hg_group_atomids = None

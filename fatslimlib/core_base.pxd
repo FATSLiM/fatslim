@@ -151,6 +151,7 @@ cdef class Topology(object):
 
     cdef topol_atom_t *atoms
     cdef fsl_int atoms_size
+    cdef fsl_int natoms
     cdef fsl_int atoms_allocated_size
 
     cdef fsl_int *atomids_to_internalids
@@ -190,6 +191,7 @@ cdef class CoordinateReader(object):
     # Attributes
     cdef bytes filename
     cdef readonly fsl_int nframes
+    cdef readonly fsl_int natoms
     cdef fsl_int[:] coordinate_offsets
     cdef fsl_int[:] box_offsets
     cdef readonly real[:] timesteps

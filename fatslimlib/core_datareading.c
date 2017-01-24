@@ -821,7 +821,7 @@ struct __pyx_t_10fatslimlib_9core_base_topol_residue_t {
   fsl_int *atomids;
 };
 
-/* "core_base.pxd":261
+/* "core_base.pxd":263
  *     cdef list get_lipid_coords_bbox_aslist(self)
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil             # <<<<<<<<<<<<<<
@@ -833,7 +833,7 @@ struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_fast_get_normals {
   real proximity_cutoff;
 };
 
-/* "core_base.pxd":262
+/* "core_base.pxd":264
  *     cdef real[:, ::1] fast_get_directions(self) nogil except *
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil
  *     cpdef list get_aggregates(self, real cutoff=*, bint update=*)             # <<<<<<<<<<<<<<
@@ -846,7 +846,7 @@ struct __pyx_opt_args_10fatslimlib_9core_base_5Frame_get_aggregates {
   int update;
 };
 
-/* "core_base.pxd":263
+/* "core_base.pxd":265
  *     cdef real[:, ::1] fast_get_normals(self, real proximity_cutoff=*) nogil
  *     cpdef list get_aggregates(self, real cutoff=*, bint update=*)
  *     cpdef list get_membranes(self, real cutoff=*, bint update=*)             # <<<<<<<<<<<<<<
@@ -953,6 +953,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Topology {
   fsl_int resnames_allocated_size;
   struct __pyx_t_10fatslimlib_9core_base_topol_atom_t *atoms;
   fsl_int atoms_size;
+  fsl_int natoms;
   fsl_int atoms_allocated_size;
   fsl_int *atomids_to_internalids;
   fsl_int atomids_to_internalids_size;
@@ -966,7 +967,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Topology {
 };
 
 
-/* "core_base.pxd":180
+/* "core_base.pxd":181
  *     cdef topol_residue_t *fast_get_residue_from_atomid(self, fsl_int atomid) nogil
  * 
  * cdef class TopologyReader(object):             # <<<<<<<<<<<<<<
@@ -981,7 +982,7 @@ struct __pyx_obj_10fatslimlib_9core_base_TopologyReader {
 };
 
 
-/* "core_base.pxd":189
+/* "core_base.pxd":190
  * 
  * 
  * cdef class CoordinateReader(object):             # <<<<<<<<<<<<<<
@@ -993,13 +994,14 @@ struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader {
   struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *__pyx_vtab;
   PyObject *filename;
   fsl_int nframes;
+  fsl_int natoms;
   __Pyx_memviewslice coordinate_offsets;
   __Pyx_memviewslice box_offsets;
   __Pyx_memviewslice timesteps;
 };
 
 
-/* "core_base.pxd":204
+/* "core_base.pxd":206
  * 
  * 
  * cdef class IndexReader(object):             # <<<<<<<<<<<<<<
@@ -1015,7 +1017,7 @@ struct __pyx_obj_10fatslimlib_9core_base_IndexReader {
 };
 
 
-/* "core_base.pxd":213
+/* "core_base.pxd":215
  *     cdef fast_load(self)
  * 
  * cdef class Frame:             # <<<<<<<<<<<<<<
@@ -1056,7 +1058,7 @@ struct __pyx_obj_10fatslimlib_9core_base_Frame {
 };
 
 
-/* "core_base.pxd":266
+/* "core_base.pxd":268
  * 
  * 
  * cdef class Trajectory(object):             # <<<<<<<<<<<<<<
@@ -1102,7 +1104,7 @@ struct __pyx_obj_10fatslimlib_16core_datareading_GroReaderTopol {
 };
 
 
-/* "fatslimlib/core_datareading.pyx":185
+/* "fatslimlib/core_datareading.pyx":186
  * _Topology_readers = {".gro": GroReaderTopol}
  * 
  * cdef class NdxReader(core_base.IndexReader):             # <<<<<<<<<<<<<<
@@ -1114,7 +1116,7 @@ struct __pyx_obj_10fatslimlib_16core_datareading_NdxReader {
 };
 
 
-/* "fatslimlib/core_datareading.pyx":213
+/* "fatslimlib/core_datareading.pyx":214
  * 
  * 
  * cdef class GroReaderCoords(core_base.CoordinateReader):             # <<<<<<<<<<<<<<
@@ -1127,7 +1129,7 @@ struct __pyx_obj_10fatslimlib_16core_datareading_GroReaderCoords {
 };
 
 
-/* "fatslimlib/core_datareading.pyx":351
+/* "fatslimlib/core_datareading.pyx":352
  * 
  * 
  * cdef class XtcReaderCoords(core_base.CoordinateReader):             # <<<<<<<<<<<<<<
@@ -1139,17 +1141,16 @@ struct __pyx_obj_10fatslimlib_16core_datareading_XtcReaderCoords {
 };
 
 
-/* "fatslimlib/core_datareading.pyx":516
+/* "fatslimlib/core_datareading.pyx":526
  *         return coords
  * 
  * cdef class TrrReaderCoords(core_base.CoordinateReader):             # <<<<<<<<<<<<<<
  *     cdef bint use_double
- *     cdef int natoms
+ *     cdef preload(self):
  */
 struct __pyx_obj_10fatslimlib_16core_datareading_TrrReaderCoords {
   struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader __pyx_base;
   int use_double;
-  int natoms;
 };
 
 
@@ -1308,7 +1309,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *__pyx_vtabptr_10fatslimlib_9core_base_Topology;
 
 
-/* "core_base.pxd":180
+/* "core_base.pxd":181
  *     cdef topol_residue_t *fast_get_residue_from_atomid(self, fsl_int atomid) nogil
  * 
  * cdef class TopologyReader(object):             # <<<<<<<<<<<<<<
@@ -1322,7 +1323,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyReader *__pyx_vtabptr_10fatslimlib_9core_base_TopologyReader;
 
 
-/* "core_base.pxd":189
+/* "core_base.pxd":190
  * 
  * 
  * cdef class CoordinateReader(object):             # <<<<<<<<<<<<<<
@@ -1339,7 +1340,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader *__pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader;
 
 
-/* "core_base.pxd":204
+/* "core_base.pxd":206
  * 
  * 
  * cdef class IndexReader(object):             # <<<<<<<<<<<<<<
@@ -1353,7 +1354,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_IndexReader {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_IndexReader *__pyx_vtabptr_10fatslimlib_9core_base_IndexReader;
 
 
-/* "core_base.pxd":213
+/* "core_base.pxd":215
  *     cdef fast_load(self)
  * 
  * cdef class Frame:             # <<<<<<<<<<<<<<
@@ -1381,7 +1382,7 @@ struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame {
 static struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame *__pyx_vtabptr_10fatslimlib_9core_base_Frame;
 
 
-/* "core_base.pxd":266
+/* "core_base.pxd":268
  * 
  * 
  * cdef class Trajectory(object):             # <<<<<<<<<<<<<<
@@ -1411,7 +1412,7 @@ struct __pyx_vtabstruct_10fatslimlib_16core_datareading_GroReaderTopol {
 static struct __pyx_vtabstruct_10fatslimlib_16core_datareading_GroReaderTopol *__pyx_vtabptr_10fatslimlib_16core_datareading_GroReaderTopol;
 
 
-/* "fatslimlib/core_datareading.pyx":185
+/* "fatslimlib/core_datareading.pyx":186
  * _Topology_readers = {".gro": GroReaderTopol}
  * 
  * cdef class NdxReader(core_base.IndexReader):             # <<<<<<<<<<<<<<
@@ -1425,7 +1426,7 @@ struct __pyx_vtabstruct_10fatslimlib_16core_datareading_NdxReader {
 static struct __pyx_vtabstruct_10fatslimlib_16core_datareading_NdxReader *__pyx_vtabptr_10fatslimlib_16core_datareading_NdxReader;
 
 
-/* "fatslimlib/core_datareading.pyx":213
+/* "fatslimlib/core_datareading.pyx":214
  * 
  * 
  * cdef class GroReaderCoords(core_base.CoordinateReader):             # <<<<<<<<<<<<<<
@@ -1439,7 +1440,7 @@ struct __pyx_vtabstruct_10fatslimlib_16core_datareading_GroReaderCoords {
 static struct __pyx_vtabstruct_10fatslimlib_16core_datareading_GroReaderCoords *__pyx_vtabptr_10fatslimlib_16core_datareading_GroReaderCoords;
 
 
-/* "fatslimlib/core_datareading.pyx":351
+/* "fatslimlib/core_datareading.pyx":352
  * 
  * 
  * cdef class XtcReaderCoords(core_base.CoordinateReader):             # <<<<<<<<<<<<<<
@@ -1453,12 +1454,12 @@ struct __pyx_vtabstruct_10fatslimlib_16core_datareading_XtcReaderCoords {
 static struct __pyx_vtabstruct_10fatslimlib_16core_datareading_XtcReaderCoords *__pyx_vtabptr_10fatslimlib_16core_datareading_XtcReaderCoords;
 
 
-/* "fatslimlib/core_datareading.pyx":516
+/* "fatslimlib/core_datareading.pyx":526
  *         return coords
  * 
  * cdef class TrrReaderCoords(core_base.CoordinateReader):             # <<<<<<<<<<<<<<
  *     cdef bint use_double
- *     cdef int natoms
+ *     cdef preload(self):
  */
 
 struct __pyx_vtabstruct_10fatslimlib_16core_datareading_TrrReaderCoords {
@@ -2223,12 +2224,12 @@ static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_IOError;
 static PyObject *__pyx_builtin_RuntimeError;
+static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_MemoryError;
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_Ellipsis;
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_id;
-static PyObject *__pyx_builtin_IndexError;
 static const char __pyx_k_H[] = "H";
 static const char __pyx_k_O[] = "O";
 static const char __pyx_k_W[] = "W";
@@ -2351,6 +2352,7 @@ static const char __pyx_k_Could_not_decompress_coordinates[] = "Could not decomp
 static const char __pyx_k_Could_not_set_position_in_file_s[] = "Could not set position in file: %s";
 static const char __pyx_k_Empty_shape_tuple_for_cython_arr[] = "Empty shape tuple for cython.array";
 static const char __pyx_k_Frames_without_coordinates_are_n[] = "Frames without coordinates are not supported. Please correct your trajectory";
+static const char __pyx_k_Incoherent_number_of_atoms_in_fr[] = "Incoherent number of atoms in frame #%i (%i but expecting %i)";
 static const char __pyx_k_Indirect_dimensions_not_supporte[] = "Indirect dimensions not supported";
 static const char __pyx_k_Invalid_mode_expected_c_or_fortr[] = "Invalid mode, expected 'c' or 'fortran', got %s";
 static const char __pyx_k_Only_trajectory_with_homogeneous[] = "Only trajectory with homogeneous float size is supported.";
@@ -2379,6 +2381,7 @@ static PyObject *__pyx_kp_s_Frames_without_coordinates_are_n;
 static PyObject *__pyx_n_s_H;
 static PyObject *__pyx_n_b_HOH;
 static PyObject *__pyx_n_s_IOError;
+static PyObject *__pyx_kp_s_Incoherent_number_of_atoms_in_fr;
 static PyObject *__pyx_n_s_IndexError;
 static PyObject *__pyx_n_s_Index_loaders;
 static PyObject *__pyx_kp_s_Indirect_dimensions_not_supporte;
@@ -3203,7 +3206,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  *                     continue
  *                 elif lino == 1:             # <<<<<<<<<<<<<<
  *                     natoms = int(line)
- *                 else:
+ *                     self.topology.natoms = natoms
  */
               case 1:
 
@@ -3211,8 +3214,8 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  *                     continue
  *                 elif lino == 1:
  *                     natoms = int(line)             # <<<<<<<<<<<<<<
+ *                     self.topology.natoms = natoms
  *                 else:
- *                     if lino < natoms + 2:
  */
               __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_2);
@@ -3220,18 +3223,27 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               __pyx_v_natoms = __pyx_t_11;
 
+              /* "fatslimlib/core_datareading.pyx":141
+ *                 elif lino == 1:
+ *                     natoms = int(line)
+ *                     self.topology.natoms = natoms             # <<<<<<<<<<<<<<
+ *                 else:
+ *                     if lino < natoms + 2:
+ */
+              __pyx_v_self->__pyx_base.topology->natoms = __pyx_v_natoms;
+
               /* "fatslimlib/core_datareading.pyx":139
  *                 if lino == 0:
  *                     continue
  *                 elif lino == 1:             # <<<<<<<<<<<<<<
  *                     natoms = int(line)
- *                 else:
+ *                     self.topology.natoms = natoms
  */
               break;
               default:
 
-              /* "fatslimlib/core_datareading.pyx":142
- *                     natoms = int(line)
+              /* "fatslimlib/core_datareading.pyx":143
+ *                     self.topology.natoms = natoms
  *                 else:
  *                     if lino < natoms + 2:             # <<<<<<<<<<<<<<
  *                         resid = atoi(line[:5].encode())
@@ -3240,16 +3252,16 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
               __pyx_t_12 = ((__pyx_v_lino < (__pyx_v_natoms + 2)) != 0);
               if (__pyx_t_12) {
 
-                /* "fatslimlib/core_datareading.pyx":143
+                /* "fatslimlib/core_datareading.pyx":144
  *                 else:
  *                     if lino < natoms + 2:
  *                         resid = atoi(line[:5].encode())             # <<<<<<<<<<<<<<
  * 
  *                         # Correct the resid if necessary because resids are modulo 10000 in .gro
  */
-                __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_line, 0, 5, NULL, NULL, &__pyx_slice_, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L7_error)
+                __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_line, 0, 5, NULL, NULL, &__pyx_slice_, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L7_error)
                 __Pyx_GOTREF(__pyx_t_1);
-                __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_encode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 143, __pyx_L7_error)
+                __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_encode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L7_error)
                 __Pyx_GOTREF(__pyx_t_5);
                 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __pyx_t_1 = NULL;
@@ -3263,18 +3275,18 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                   }
                 }
                 if (__pyx_t_1) {
-                  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L7_error)
+                  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L7_error)
                   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                 } else {
-                  __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L7_error)
+                  __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L7_error)
                 }
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-                __pyx_t_13 = __Pyx_PyObject_AsString(__pyx_t_2); if (unlikely((!__pyx_t_13) && PyErr_Occurred())) __PYX_ERR(0, 143, __pyx_L7_error)
+                __pyx_t_13 = __Pyx_PyObject_AsString(__pyx_t_2); if (unlikely((!__pyx_t_13) && PyErr_Occurred())) __PYX_ERR(0, 144, __pyx_L7_error)
                 __pyx_v_resid = atoi(__pyx_t_13);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-                /* "fatslimlib/core_datareading.pyx":146
+                /* "fatslimlib/core_datareading.pyx":147
  * 
  *                         # Correct the resid if necessary because resids are modulo 10000 in .gro
  *                         if (resid+resid_offset * 10000) < last_resid:             # <<<<<<<<<<<<<<
@@ -3284,7 +3296,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                 __pyx_t_12 = (((__pyx_v_resid + (__pyx_v_resid_offset * 0x2710)) < __pyx_v_last_resid) != 0);
                 if (__pyx_t_12) {
 
-                  /* "fatslimlib/core_datareading.pyx":147
+                  /* "fatslimlib/core_datareading.pyx":148
  *                         # Correct the resid if necessary because resids are modulo 10000 in .gro
  *                         if (resid+resid_offset * 10000) < last_resid:
  *                             resid_offset += 1             # <<<<<<<<<<<<<<
@@ -3293,7 +3305,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                   __pyx_v_resid_offset = (__pyx_v_resid_offset + 1);
 
-                  /* "fatslimlib/core_datareading.pyx":146
+                  /* "fatslimlib/core_datareading.pyx":147
  * 
  *                         # Correct the resid if necessary because resids are modulo 10000 in .gro
  *                         if (resid+resid_offset * 10000) < last_resid:             # <<<<<<<<<<<<<<
@@ -3302,7 +3314,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                 }
 
-                /* "fatslimlib/core_datareading.pyx":148
+                /* "fatslimlib/core_datareading.pyx":149
  *                         if (resid+resid_offset * 10000) < last_resid:
  *                             resid_offset += 1
  *                         resid += resid_offset * 10000             # <<<<<<<<<<<<<<
@@ -3311,7 +3323,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                 __pyx_v_resid = (__pyx_v_resid + (__pyx_v_resid_offset * 0x2710));
 
-                /* "fatslimlib/core_datareading.pyx":150
+                /* "fatslimlib/core_datareading.pyx":151
  *                         resid += resid_offset * 10000
  * 
  *                         if resid == last_resid and skip:             # <<<<<<<<<<<<<<
@@ -3329,7 +3341,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                 __pyx_L20_bool_binop_done:;
                 if (__pyx_t_12) {
 
-                  /* "fatslimlib/core_datareading.pyx":151
+                  /* "fatslimlib/core_datareading.pyx":152
  * 
  *                         if resid == last_resid and skip:
  *                             if skip: # Already selected to be skipped             # <<<<<<<<<<<<<<
@@ -3339,7 +3351,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                   __pyx_t_12 = (__pyx_v_skip != 0);
                   if (__pyx_t_12) {
 
-                    /* "fatslimlib/core_datareading.pyx":152
+                    /* "fatslimlib/core_datareading.pyx":153
  *                         if resid == last_resid and skip:
  *                             if skip: # Already selected to be skipped
  *                                 continue             # <<<<<<<<<<<<<<
@@ -3348,7 +3360,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                     goto __pyx_L15_continue;
 
-                    /* "fatslimlib/core_datareading.pyx":151
+                    /* "fatslimlib/core_datareading.pyx":152
  * 
  *                         if resid == last_resid and skip:
  *                             if skip: # Already selected to be skipped             # <<<<<<<<<<<<<<
@@ -3357,7 +3369,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                   }
 
-                  /* "fatslimlib/core_datareading.pyx":150
+                  /* "fatslimlib/core_datareading.pyx":151
  *                         resid += resid_offset * 10000
  * 
  *                         if resid == last_resid and skip:             # <<<<<<<<<<<<<<
@@ -3367,7 +3379,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                   goto __pyx_L19;
                 }
 
-                /* "fatslimlib/core_datareading.pyx":154
+                /* "fatslimlib/core_datareading.pyx":155
  *                                 continue
  *                         else:
  *                             if resid != last_resid:             # <<<<<<<<<<<<<<
@@ -3378,7 +3390,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                   __pyx_t_12 = ((__pyx_v_resid != __pyx_v_last_resid) != 0);
                   if (__pyx_t_12) {
 
-                    /* "fatslimlib/core_datareading.pyx":155
+                    /* "fatslimlib/core_datareading.pyx":156
  *                         else:
  *                             if resid != last_resid:
  *                                 skip = False             # <<<<<<<<<<<<<<
@@ -3387,7 +3399,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                     __pyx_v_skip = 0;
 
-                    /* "fatslimlib/core_datareading.pyx":154
+                    /* "fatslimlib/core_datareading.pyx":155
  *                                 continue
  *                         else:
  *                             if resid != last_resid:             # <<<<<<<<<<<<<<
@@ -3396,7 +3408,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                   }
 
-                  /* "fatslimlib/core_datareading.pyx":158
+                  /* "fatslimlib/core_datareading.pyx":159
  * 
  *                             # Update the last_resid counter
  *                             last_resid = resid             # <<<<<<<<<<<<<<
@@ -3405,16 +3417,16 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                   __pyx_v_last_resid = __pyx_v_resid;
 
-                  /* "fatslimlib/core_datareading.pyx":161
+                  /* "fatslimlib/core_datareading.pyx":162
  * 
  *                             # Read residue name
  *                             resname = line[5:10].strip().encode()             # <<<<<<<<<<<<<<
  * 
  *                             if is_solvent(resname): # Classified as solvent, we skip it
  */
-                  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_line, 5, 10, NULL, NULL, &__pyx_slice__2, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L7_error)
+                  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_line, 5, 10, NULL, NULL, &__pyx_slice__2, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_1);
-                  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_strip); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 161, __pyx_L7_error)
+                  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_strip); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 162, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_15);
                   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                   __pyx_t_1 = NULL;
@@ -3428,14 +3440,14 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                     }
                   }
                   if (__pyx_t_1) {
-                    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L7_error)
+                    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L7_error)
                     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                   } else {
-                    __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_15); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L7_error)
+                    __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_15); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L7_error)
                   }
                   __Pyx_GOTREF(__pyx_t_5);
                   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-                  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_encode); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 161, __pyx_L7_error)
+                  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_encode); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 162, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_15);
                   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
                   __pyx_t_5 = NULL;
@@ -3449,18 +3461,18 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                     }
                   }
                   if (__pyx_t_5) {
-                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L7_error)
+                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L7_error)
                     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
                   } else {
-                    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L7_error)
+                    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L7_error)
                   }
                   __Pyx_GOTREF(__pyx_t_2);
                   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-                  if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 161, __pyx_L7_error)
+                  if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 162, __pyx_L7_error)
                   __Pyx_XDECREF_SET(__pyx_v_resname, ((PyObject*)__pyx_t_2));
                   __pyx_t_2 = 0;
 
-                  /* "fatslimlib/core_datareading.pyx":163
+                  /* "fatslimlib/core_datareading.pyx":164
  *                             resname = line[5:10].strip().encode()
  * 
  *                             if is_solvent(resname): # Classified as solvent, we skip it             # <<<<<<<<<<<<<<
@@ -3470,7 +3482,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                   __pyx_t_12 = (__pyx_f_10fatslimlib_16core_datareading_is_solvent(__pyx_v_resname) != 0);
                   if (__pyx_t_12) {
 
-                    /* "fatslimlib/core_datareading.pyx":164
+                    /* "fatslimlib/core_datareading.pyx":165
  * 
  *                             if is_solvent(resname): # Classified as solvent, we skip it
  *                                 residue = None             # <<<<<<<<<<<<<<
@@ -3480,7 +3492,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                     __Pyx_INCREF(Py_None);
                     __Pyx_XDECREF_SET(__pyx_v_residue, Py_None);
 
-                    /* "fatslimlib/core_datareading.pyx":165
+                    /* "fatslimlib/core_datareading.pyx":166
  *                             if is_solvent(resname): # Classified as solvent, we skip it
  *                                 residue = None
  *                                 skip = True             # <<<<<<<<<<<<<<
@@ -3489,7 +3501,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                     __pyx_v_skip = 1;
 
-                    /* "fatslimlib/core_datareading.pyx":167
+                    /* "fatslimlib/core_datareading.pyx":168
  *                                 skip = True
  *                                 #print("Skipping %s - resid:%i" % (resname, resid))
  *                                 continue             # <<<<<<<<<<<<<<
@@ -3498,7 +3510,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                     goto __pyx_L15_continue;
 
-                    /* "fatslimlib/core_datareading.pyx":163
+                    /* "fatslimlib/core_datareading.pyx":164
  *                             resname = line[5:10].strip().encode()
  * 
  *                             if is_solvent(resname): # Classified as solvent, we skip it             # <<<<<<<<<<<<<<
@@ -3507,16 +3519,16 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                   }
 
-                  /* "fatslimlib/core_datareading.pyx":170
+                  /* "fatslimlib/core_datareading.pyx":171
  * 
  *                             # Read atom information
  *                             atomname = line[10:15].strip()             # <<<<<<<<<<<<<<
  *                             #atomname = strip_name(line[10:15])
  * 
  */
-                  __pyx_t_15 = __Pyx_PyObject_GetSlice(__pyx_v_line, 10, 15, NULL, NULL, &__pyx_slice__3, 1, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 170, __pyx_L7_error)
+                  __pyx_t_15 = __Pyx_PyObject_GetSlice(__pyx_v_line, 10, 15, NULL, NULL, &__pyx_slice__3, 1, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 171, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_15);
-                  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_strip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L7_error)
+                  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_strip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_5);
                   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
                   __pyx_t_15 = NULL;
@@ -3530,18 +3542,18 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                     }
                   }
                   if (__pyx_t_15) {
-                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L7_error)
+                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L7_error)
                     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
                   } else {
-                    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L7_error)
+                    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L7_error)
                   }
                   __Pyx_GOTREF(__pyx_t_2);
                   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-                  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 170, __pyx_L7_error)
+                  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 171, __pyx_L7_error)
                   __Pyx_XDECREF_SET(__pyx_v_atomname, ((PyObject*)__pyx_t_2));
                   __pyx_t_2 = 0;
 
-                  /* "fatslimlib/core_datareading.pyx":173
+                  /* "fatslimlib/core_datareading.pyx":174
  *                             #atomname = strip_name(line[10:15])
  * 
  *                             if atomname[0:1] == "H": # Labelled as hydrogen -> skipped             # <<<<<<<<<<<<<<
@@ -3550,16 +3562,16 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                   if (unlikely(__pyx_v_atomname == Py_None)) {
                     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                    __PYX_ERR(0, 173, __pyx_L7_error)
+                    __PYX_ERR(0, 174, __pyx_L7_error)
                   }
-                  __pyx_t_2 = PySequence_GetSlice(__pyx_v_atomname, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L7_error)
+                  __pyx_t_2 = PySequence_GetSlice(__pyx_v_atomname, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_2);
-                  __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_H, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 173, __pyx_L7_error)
+                  __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_H, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 174, __pyx_L7_error)
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                   __pyx_t_14 = (__pyx_t_12 != 0);
                   if (__pyx_t_14) {
 
-                    /* "fatslimlib/core_datareading.pyx":174
+                    /* "fatslimlib/core_datareading.pyx":175
  * 
  *                             if atomname[0:1] == "H": # Labelled as hydrogen -> skipped
  *                                 continue             # <<<<<<<<<<<<<<
@@ -3568,7 +3580,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                     goto __pyx_L15_continue;
 
-                    /* "fatslimlib/core_datareading.pyx":173
+                    /* "fatslimlib/core_datareading.pyx":174
  *                             #atomname = strip_name(line[10:15])
  * 
  *                             if atomname[0:1] == "H": # Labelled as hydrogen -> skipped             # <<<<<<<<<<<<<<
@@ -3577,16 +3589,16 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
  */
                   }
 
-                  /* "fatslimlib/core_datareading.pyx":176
+                  /* "fatslimlib/core_datareading.pyx":177
  *                                 continue
  * 
  *                             atomid = atoi(line[15:20].encode()) + ((lino - 1)// 100000) * 100000             # <<<<<<<<<<<<<<
  * 
  *                             topol.internal_append(resid, resname, atomname.encode(), atomid)
  */
-                  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_line, 15, 20, NULL, NULL, &__pyx_slice__4, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L7_error)
+                  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_line, 15, 20, NULL, NULL, &__pyx_slice__4, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_5);
-                  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_encode); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 176, __pyx_L7_error)
+                  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_encode); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 177, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_15);
                   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
                   __pyx_t_5 = NULL;
@@ -3600,25 +3612,25 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                     }
                   }
                   if (__pyx_t_5) {
-                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L7_error)
+                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L7_error)
                     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
                   } else {
-                    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L7_error)
+                    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L7_error)
                   }
                   __Pyx_GOTREF(__pyx_t_2);
                   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-                  __pyx_t_13 = __Pyx_PyObject_AsString(__pyx_t_2); if (unlikely((!__pyx_t_13) && PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L7_error)
+                  __pyx_t_13 = __Pyx_PyObject_AsString(__pyx_t_2); if (unlikely((!__pyx_t_13) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L7_error)
                   __pyx_v_atomid = (atoi(__pyx_t_13) + (((__pyx_v_lino - 1) / 0x186A0) * 0x186A0));
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-                  /* "fatslimlib/core_datareading.pyx":178
+                  /* "fatslimlib/core_datareading.pyx":179
  *                             atomid = atoi(line[15:20].encode()) + ((lino - 1)// 100000) * 100000
  * 
  *                             topol.internal_append(resid, resname, atomname.encode(), atomid)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-                  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_v_atomname, __pyx_n_s_encode); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 178, __pyx_L7_error)
+                  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_v_atomname, __pyx_n_s_encode); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 179, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_15);
                   __pyx_t_5 = NULL;
                   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_15))) {
@@ -3631,21 +3643,21 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
                     }
                   }
                   if (__pyx_t_5) {
-                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L7_error)
+                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L7_error)
                     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
                   } else {
-                    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L7_error)
+                    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L7_error)
                   }
                   __Pyx_GOTREF(__pyx_t_2);
                   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-                  if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 178, __pyx_L7_error)
+                  if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 179, __pyx_L7_error)
                   ((struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology *)__pyx_v_topol->__pyx_vtab)->internal_append(__pyx_v_topol, __pyx_v_resid, __pyx_v_resname, ((PyObject*)__pyx_t_2), __pyx_v_atomid);
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 }
                 __pyx_L19:;
 
-                /* "fatslimlib/core_datareading.pyx":142
- *                     natoms = int(line)
+                /* "fatslimlib/core_datareading.pyx":143
+ *                     self.topology.natoms = natoms
  *                 else:
  *                     if lino < natoms + 2:             # <<<<<<<<<<<<<<
  *                         resid = atoi(line[:5].encode())
@@ -3782,7 +3794,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_14GroReaderTopol_load(s
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":186
+/* "fatslimlib/core_datareading.pyx":187
  * 
  * cdef class NdxReader(core_base.IndexReader):
  *     cdef fast_load(self):             # <<<<<<<<<<<<<<
@@ -3815,7 +3827,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
   PyObject *__pyx_t_16 = NULL;
   __Pyx_RefNannySetupContext("fast_load", 0);
 
-  /* "fatslimlib/core_datareading.pyx":188
+  /* "fatslimlib/core_datareading.pyx":189
  *     cdef fast_load(self):
  *         cdef str line
  *         cdef bytes last_group = b""             # <<<<<<<<<<<<<<
@@ -3825,47 +3837,47 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
   __Pyx_INCREF(__pyx_kp_b__6);
   __pyx_v_last_group = __pyx_kp_b__6;
 
-  /* "fatslimlib/core_datareading.pyx":190
+  /* "fatslimlib/core_datareading.pyx":191
  *         cdef bytes last_group = b""
  * 
  *         if self.filename.split(b".")[-1] != b"ndx":             # <<<<<<<<<<<<<<
  *             raise ValueError("%s is not a supported index file. supported: .ndx" % self.filename)
  *         groups = {}
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->__pyx_base.filename, __pyx_n_s_split); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->__pyx_base.filename, __pyx_n_s_split); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_t_1, __pyx_n_b_ndx, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_t_1, __pyx_n_b_ndx, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_3) {
 
-    /* "fatslimlib/core_datareading.pyx":191
+    /* "fatslimlib/core_datareading.pyx":192
  * 
  *         if self.filename.split(b".")[-1] != b"ndx":
  *             raise ValueError("%s is not a supported index file. supported: .ndx" % self.filename)             # <<<<<<<<<<<<<<
  *         groups = {}
  * 
  */
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_s_is_not_a_supported_index_file, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_s_is_not_a_supported_index_file, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 191, __pyx_L1_error)
+    __PYX_ERR(0, 192, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":190
+    /* "fatslimlib/core_datareading.pyx":191
  *         cdef bytes last_group = b""
  * 
  *         if self.filename.split(b".")[-1] != b"ndx":             # <<<<<<<<<<<<<<
@@ -3874,19 +3886,19 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":192
+  /* "fatslimlib/core_datareading.pyx":193
  *         if self.filename.split(b".")[-1] != b"ndx":
  *             raise ValueError("%s is not a supported index file. supported: .ndx" % self.filename)
  *         groups = {}             # <<<<<<<<<<<<<<
  * 
  *         with open(self.filename, "r") as fp:
  */
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_groups = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":194
+  /* "fatslimlib/core_datareading.pyx":195
  *         groups = {}
  * 
  *         with open(self.filename, "r") as fp:             # <<<<<<<<<<<<<<
@@ -3894,7 +3906,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
  *             # Use Python object to parse line... Much more easier!
  */
   /*with:*/ {
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_self->__pyx_base.filename);
     __Pyx_GIVEREF(__pyx_v_self->__pyx_base.filename);
@@ -3902,12 +3914,12 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
     __Pyx_INCREF(__pyx_n_s_r);
     __Pyx_GIVEREF(__pyx_n_s_r);
     PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_r);
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_4 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_enter); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L4_error)
+    __pyx_t_5 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_enter); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 195, __pyx_L4_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -3920,10 +3932,10 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
       }
     }
     if (__pyx_t_6) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L4_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else {
-      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L4_error)
+      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L4_error)
     }
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -3942,7 +3954,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
           __pyx_v_fp = __pyx_t_5;
           __pyx_t_5 = 0;
 
-          /* "fatslimlib/core_datareading.pyx":197
+          /* "fatslimlib/core_datareading.pyx":198
  * 
  *             # Use Python object to parse line... Much more easier!
  *             for line in fp:             # <<<<<<<<<<<<<<
@@ -3953,26 +3965,26 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
             __pyx_t_5 = __pyx_v_fp; __Pyx_INCREF(__pyx_t_5); __pyx_t_10 = 0;
             __pyx_t_11 = NULL;
           } else {
-            __pyx_t_10 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_fp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 197, __pyx_L8_error)
+            __pyx_t_10 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_fp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 198, __pyx_L8_error)
             __Pyx_GOTREF(__pyx_t_5);
-            __pyx_t_11 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 197, __pyx_L8_error)
+            __pyx_t_11 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 198, __pyx_L8_error)
           }
           for (;;) {
             if (likely(!__pyx_t_11)) {
               if (likely(PyList_CheckExact(__pyx_t_5))) {
                 if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_5)) break;
                 #if CYTHON_COMPILING_IN_CPYTHON
-                __pyx_t_2 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 197, __pyx_L8_error)
+                __pyx_t_2 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 198, __pyx_L8_error)
                 #else
-                __pyx_t_2 = PySequence_ITEM(__pyx_t_5, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L8_error)
+                __pyx_t_2 = PySequence_ITEM(__pyx_t_5, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 #endif
               } else {
                 if (__pyx_t_10 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
                 #if CYTHON_COMPILING_IN_CPYTHON
-                __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 197, __pyx_L8_error)
+                __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 198, __pyx_L8_error)
                 #else
-                __pyx_t_2 = PySequence_ITEM(__pyx_t_5, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L8_error)
+                __pyx_t_2 = PySequence_ITEM(__pyx_t_5, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 #endif
               }
@@ -3982,78 +3994,78 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 197, __pyx_L8_error)
+                  else __PYX_ERR(0, 198, __pyx_L8_error)
                 }
                 break;
               }
               __Pyx_GOTREF(__pyx_t_2);
             }
-            if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 197, __pyx_L8_error)
+            if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 198, __pyx_L8_error)
             __Pyx_XDECREF_SET(__pyx_v_line, ((PyObject*)__pyx_t_2));
             __pyx_t_2 = 0;
 
-            /* "fatslimlib/core_datareading.pyx":198
+            /* "fatslimlib/core_datareading.pyx":199
  *             # Use Python object to parse line... Much more easier!
  *             for line in fp:
  *                 if line[0] == '[':             # <<<<<<<<<<<<<<
  *                     if last_group != b"":
  *                         groups[last_group] = numpy.fromstring(groups[last_group], dtype=np.int64, sep=" ")
  */
-            __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_line, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L8_error)
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_line, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L8_error)
             __Pyx_GOTREF(__pyx_t_2);
-            __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__9, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 198, __pyx_L8_error)
+            __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__9, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 199, __pyx_L8_error)
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             if (__pyx_t_3) {
 
-              /* "fatslimlib/core_datareading.pyx":199
+              /* "fatslimlib/core_datareading.pyx":200
  *             for line in fp:
  *                 if line[0] == '[':
  *                     if last_group != b"":             # <<<<<<<<<<<<<<
  *                         groups[last_group] = numpy.fromstring(groups[last_group], dtype=np.int64, sep=" ")
  *                     last_group = line.strip(" []\n").encode()
  */
-              __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_last_group, __pyx_kp_b__6, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 199, __pyx_L8_error)
+              __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_last_group, __pyx_kp_b__6, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 200, __pyx_L8_error)
               __pyx_t_12 = (__pyx_t_3 != 0);
               if (__pyx_t_12) {
 
-                /* "fatslimlib/core_datareading.pyx":200
+                /* "fatslimlib/core_datareading.pyx":201
  *                 if line[0] == '[':
  *                     if last_group != b"":
  *                         groups[last_group] = numpy.fromstring(groups[last_group], dtype=np.int64, sep=" ")             # <<<<<<<<<<<<<<
  *                     last_group = line.strip(" []\n").encode()
  *                     groups[last_group] = b""
  */
-                __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L8_error)
+                __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fromstring); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L8_error)
+                __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fromstring); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_groups, __pyx_v_last_group); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L8_error)
+                __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_groups, __pyx_v_last_group); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 200, __pyx_L8_error)
+                __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_6);
                 __Pyx_GIVEREF(__pyx_t_2);
                 PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2);
                 __pyx_t_2 = 0;
-                __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L8_error)
+                __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_13 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 200, __pyx_L8_error)
+                __pyx_t_13 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_13);
-                __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_int64); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 200, __pyx_L8_error)
+                __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_int64); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_14);
                 __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-                if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_14) < 0) __PYX_ERR(0, 200, __pyx_L8_error)
+                if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_14) < 0) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-                if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_sep, __pyx_kp_s__10) < 0) __PYX_ERR(0, 200, __pyx_L8_error)
-                __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 200, __pyx_L8_error)
+                if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_sep, __pyx_kp_s__10) < 0) __PYX_ERR(0, 201, __pyx_L8_error)
+                __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_14);
                 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                if (unlikely(PyDict_SetItem(__pyx_v_groups, __pyx_v_last_group, __pyx_t_14) < 0)) __PYX_ERR(0, 200, __pyx_L8_error)
+                if (unlikely(PyDict_SetItem(__pyx_v_groups, __pyx_v_last_group, __pyx_t_14) < 0)) __PYX_ERR(0, 201, __pyx_L8_error)
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-                /* "fatslimlib/core_datareading.pyx":199
+                /* "fatslimlib/core_datareading.pyx":200
  *             for line in fp:
  *                 if line[0] == '[':
  *                     if last_group != b"":             # <<<<<<<<<<<<<<
@@ -4062,19 +4074,19 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
  */
               }
 
-              /* "fatslimlib/core_datareading.pyx":201
+              /* "fatslimlib/core_datareading.pyx":202
  *                     if last_group != b"":
  *                         groups[last_group] = numpy.fromstring(groups[last_group], dtype=np.int64, sep=" ")
  *                     last_group = line.strip(" []\n").encode()             # <<<<<<<<<<<<<<
  *                     groups[last_group] = b""
  *                 else:
  */
-              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L8_error)
+              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_2);
-              __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 201, __pyx_L8_error)
+              __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 202, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_6);
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L8_error)
+              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
               __pyx_t_6 = NULL;
@@ -4088,27 +4100,27 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
                 }
               }
               if (__pyx_t_6) {
-                __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 201, __pyx_L8_error)
+                __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 202, __pyx_L8_error)
                 __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
               } else {
-                __pyx_t_14 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 201, __pyx_L8_error)
+                __pyx_t_14 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 202, __pyx_L8_error)
               }
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-              if (!(likely(PyBytes_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 201, __pyx_L8_error)
+              if (!(likely(PyBytes_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 202, __pyx_L8_error)
               __Pyx_DECREF_SET(__pyx_v_last_group, ((PyObject*)__pyx_t_14));
               __pyx_t_14 = 0;
 
-              /* "fatslimlib/core_datareading.pyx":202
+              /* "fatslimlib/core_datareading.pyx":203
  *                         groups[last_group] = numpy.fromstring(groups[last_group], dtype=np.int64, sep=" ")
  *                     last_group = line.strip(" []\n").encode()
  *                     groups[last_group] = b""             # <<<<<<<<<<<<<<
  *                 else:
  *                     groups[last_group] += line.strip().encode() + b" "
  */
-              if (unlikely(PyDict_SetItem(__pyx_v_groups, __pyx_v_last_group, __pyx_kp_b__6) < 0)) __PYX_ERR(0, 202, __pyx_L8_error)
+              if (unlikely(PyDict_SetItem(__pyx_v_groups, __pyx_v_last_group, __pyx_kp_b__6) < 0)) __PYX_ERR(0, 203, __pyx_L8_error)
 
-              /* "fatslimlib/core_datareading.pyx":198
+              /* "fatslimlib/core_datareading.pyx":199
  *             # Use Python object to parse line... Much more easier!
  *             for line in fp:
  *                 if line[0] == '[':             # <<<<<<<<<<<<<<
@@ -4118,7 +4130,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
               goto __pyx_L18;
             }
 
-            /* "fatslimlib/core_datareading.pyx":204
+            /* "fatslimlib/core_datareading.pyx":205
  *                     groups[last_group] = b""
  *                 else:
  *                     groups[last_group] += line.strip().encode() + b" "             # <<<<<<<<<<<<<<
@@ -4128,9 +4140,9 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
             /*else*/ {
               __Pyx_INCREF(__pyx_v_last_group);
               __pyx_t_15 = __pyx_v_last_group;
-              __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_groups, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 204, __pyx_L8_error)
+              __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_groups, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 205, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_14);
-              __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_strip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L8_error)
+              __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_strip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_1);
               __pyx_t_13 = NULL;
               if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_1))) {
@@ -4143,14 +4155,14 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
                 }
               }
               if (__pyx_t_13) {
-                __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_13); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 204, __pyx_L8_error)
+                __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_13); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L8_error)
                 __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
               } else {
-                __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 204, __pyx_L8_error)
+                __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L8_error)
               }
               __Pyx_GOTREF(__pyx_t_6);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-              __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L8_error)
+              __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
               __pyx_t_6 = NULL;
@@ -4164,27 +4176,27 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
                 }
               }
               if (__pyx_t_6) {
-                __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L8_error)
+                __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L8_error)
                 __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
               } else {
-                __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L8_error)
+                __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L8_error)
               }
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-              __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_kp_b__10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L8_error)
+              __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_kp_b__10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-              __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_t_14, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L8_error)
+              __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_t_14, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-              if (unlikely(PyDict_SetItem(__pyx_v_groups, __pyx_t_15, __pyx_t_2) < 0)) __PYX_ERR(0, 204, __pyx_L8_error)
+              if (unlikely(PyDict_SetItem(__pyx_v_groups, __pyx_t_15, __pyx_t_2) < 0)) __PYX_ERR(0, 205, __pyx_L8_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             }
             __pyx_L18:;
 
-            /* "fatslimlib/core_datareading.pyx":197
+            /* "fatslimlib/core_datareading.pyx":198
  * 
  *             # Use Python object to parse line... Much more easier!
  *             for line in fp:             # <<<<<<<<<<<<<<
@@ -4194,7 +4206,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
           }
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "fatslimlib/core_datareading.pyx":194
+          /* "fatslimlib/core_datareading.pyx":195
  *         groups = {}
  * 
  *         with open(self.filename, "r") as fp:             # <<<<<<<<<<<<<<
@@ -4208,29 +4220,29 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
         goto __pyx_L15_try_end;
         __pyx_L8_error:;
         __Pyx_PyThreadState_assign
+        __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("fatslimlib.core_datareading.NdxReader.fast_load", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 194, __pyx_L10_except_error)
+          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 195, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_14 = PyTuple_Pack(3, __pyx_t_5, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 194, __pyx_L10_except_error)
+          __pyx_t_14 = PyTuple_Pack(3, __pyx_t_5, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 195, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_16 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 194, __pyx_L10_except_error)
+          if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 195, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_16);
           __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_16);
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-          if (__pyx_t_12 < 0) __PYX_ERR(0, 194, __pyx_L10_except_error)
+          if (__pyx_t_12 < 0) __PYX_ERR(0, 195, __pyx_L10_except_error)
           __pyx_t_3 = ((!(__pyx_t_12 != 0)) != 0);
           if (__pyx_t_3) {
             __Pyx_GIVEREF(__pyx_t_5);
@@ -4238,7 +4250,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
             __Pyx_XGIVEREF(__pyx_t_1);
             __Pyx_ErrRestoreWithState(__pyx_t_5, __pyx_t_2, __pyx_t_1);
             __pyx_t_5 = 0; __pyx_t_2 = 0; __pyx_t_1 = 0; 
-            __PYX_ERR(0, 194, __pyx_L10_except_error)
+            __PYX_ERR(0, 195, __pyx_L10_except_error)
           }
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4266,7 +4278,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
         if (__pyx_t_4) {
           __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__13, NULL);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 194, __pyx_L1_error)
+          if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 195, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         }
@@ -4281,44 +4293,44 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
     __pyx_L23:;
   }
 
-  /* "fatslimlib/core_datareading.pyx":206
+  /* "fatslimlib/core_datareading.pyx":207
  *                     groups[last_group] += line.strip().encode() + b" "
  * 
  *         groups[last_group] = numpy.fromstring(groups[last_group], dtype=np.int64, sep=" ")             # <<<<<<<<<<<<<<
  * 
  *         self.groups = groups
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fromstring); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fromstring); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_groups, __pyx_v_last_group); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_groups, __pyx_v_last_group); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_sep, __pyx_kp_s__10) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_sep, __pyx_kp_s__10) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_groups, __pyx_v_last_group, __pyx_t_6) < 0)) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_groups, __pyx_v_last_group, __pyx_t_6) < 0)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":208
+  /* "fatslimlib/core_datareading.pyx":209
  *         groups[last_group] = numpy.fromstring(groups[last_group], dtype=np.int64, sep=" ")
  * 
  *         self.groups = groups             # <<<<<<<<<<<<<<
@@ -4331,7 +4343,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
   __Pyx_DECREF(__pyx_v_self->__pyx_base.groups);
   __pyx_v_self->__pyx_base.groups = __pyx_v_groups;
 
-  /* "fatslimlib/core_datareading.pyx":186
+  /* "fatslimlib/core_datareading.pyx":187
  * 
  * cdef class NdxReader(core_base.IndexReader):
  *     cdef fast_load(self):             # <<<<<<<<<<<<<<
@@ -4362,7 +4374,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load(st
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":216
+/* "fatslimlib/core_datareading.pyx":217
  *     cdef fsl_int coordline_length
  * 
  *     cdef preload(self):             # <<<<<<<<<<<<<<
@@ -4396,7 +4408,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
   int __pyx_t_16;
   __Pyx_RefNannySetupContext("preload", 0);
 
-  /* "fatslimlib/core_datareading.pyx":217
+  /* "fatslimlib/core_datareading.pyx":218
  * 
  *     cdef preload(self):
  *         cdef int lino = -1, natoms = -1             # <<<<<<<<<<<<<<
@@ -4406,7 +4418,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
   __pyx_v_lino = -1;
   __pyx_v_natoms = -1;
 
-  /* "fatslimlib/core_datareading.pyx":218
+  /* "fatslimlib/core_datareading.pyx":219
  *     cdef preload(self):
  *         cdef int lino = -1, natoms = -1
  *         cdef bint need_read = True             # <<<<<<<<<<<<<<
@@ -4415,7 +4427,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
  */
   __pyx_v_need_read = 1;
 
-  /* "fatslimlib/core_datareading.pyx":220
+  /* "fatslimlib/core_datareading.pyx":221
  *         cdef bint need_read = True
  * 
  *         self.nframes = 1             # <<<<<<<<<<<<<<
@@ -4424,51 +4436,51 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
  */
   __pyx_v_self->__pyx_base.nframes = 1;
 
-  /* "fatslimlib/core_datareading.pyx":221
+  /* "fatslimlib/core_datareading.pyx":222
  * 
  *         self.nframes = 1
  *         self.timesteps = numpy.array([0], dtype=np.float64)             # <<<<<<<<<<<<<<
  * 
  *         if self.filename.decode().split(".")[-1] != "gro":
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_int_0);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(__pyx_t_5);
-  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.timesteps, 0);
   __pyx_v_self->__pyx_base.timesteps = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":223
+  /* "fatslimlib/core_datareading.pyx":224
  *         self.timesteps = numpy.array([0], dtype=np.float64)
  * 
  *         if self.filename.decode().split(".")[-1] != "gro":             # <<<<<<<<<<<<<<
@@ -4477,42 +4489,42 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
  */
   if (unlikely(__pyx_v_self->__pyx_base.filename == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-    __PYX_ERR(0, 223, __pyx_L1_error)
+    __PYX_ERR(0, 224, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_decode_bytes(__pyx_v_self->__pyx_base.filename, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_decode_bytes(__pyx_v_self->__pyx_base.filename, 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = PyUnicode_Split(((PyObject*)__pyx_t_5), __pyx_kp_s__7, -1L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_Split(((PyObject*)__pyx_t_5), __pyx_kp_s__7, -1L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_t_1, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_t_1, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_gro, Py_NE)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_gro, Py_NE)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (__pyx_t_7) {
 
-    /* "fatslimlib/core_datareading.pyx":224
+    /* "fatslimlib/core_datareading.pyx":225
  * 
  *         if self.filename.decode().split(".")[-1] != "gro":
  *             raise ValueError("%s is not a supported gro file. supported: .gro" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *         with open(self.filename, "r") as fp:
  */
-    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_s_is_not_a_supported_gro_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_s_is_not_a_supported_gro_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 224, __pyx_L1_error)
+    __PYX_ERR(0, 225, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":223
+    /* "fatslimlib/core_datareading.pyx":224
  *         self.timesteps = numpy.array([0], dtype=np.float64)
  * 
  *         if self.filename.decode().split(".")[-1] != "gro":             # <<<<<<<<<<<<<<
@@ -4521,7 +4533,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":226
+  /* "fatslimlib/core_datareading.pyx":227
  *             raise ValueError("%s is not a supported gro file. supported: .gro" % self.filename)
  * 
  *         with open(self.filename, "r") as fp:             # <<<<<<<<<<<<<<
@@ -4529,7 +4541,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
  *                 lino += 1
  */
   /*with:*/ {
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_self->__pyx_base.filename);
     __Pyx_GIVEREF(__pyx_v_self->__pyx_base.filename);
@@ -4537,12 +4549,12 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
     __Pyx_INCREF(__pyx_n_s_r);
     __Pyx_GIVEREF(__pyx_n_s_r);
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_n_s_r);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_3 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L4_error)
+    __pyx_t_3 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L4_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_2 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4555,10 +4567,10 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
       }
     }
     if (__pyx_t_2) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L4_error)
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else {
-      __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L4_error)
+      __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L4_error)
     }
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4577,7 +4589,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
           __pyx_v_fp = __pyx_t_3;
           __pyx_t_3 = 0;
 
-          /* "fatslimlib/core_datareading.pyx":227
+          /* "fatslimlib/core_datareading.pyx":228
  * 
  *         with open(self.filename, "r") as fp:
  *             while need_read:             # <<<<<<<<<<<<<<
@@ -4588,7 +4600,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
             __pyx_t_7 = (__pyx_v_need_read != 0);
             if (!__pyx_t_7) break;
 
-            /* "fatslimlib/core_datareading.pyx":228
+            /* "fatslimlib/core_datareading.pyx":229
  *         with open(self.filename, "r") as fp:
  *             while need_read:
  *                 lino += 1             # <<<<<<<<<<<<<<
@@ -4597,14 +4609,14 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
  */
             __pyx_v_lino = (__pyx_v_lino + 1);
 
-            /* "fatslimlib/core_datareading.pyx":229
+            /* "fatslimlib/core_datareading.pyx":230
  *             while need_read:
  *                 lino += 1
  *                 line = fp.readline()             # <<<<<<<<<<<<<<
  *                 if lino == 0:
  *                     continue
  */
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_readline); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L8_error)
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_readline); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L8_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_5 = NULL;
             if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_1))) {
@@ -4617,17 +4629,17 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
               }
             }
             if (__pyx_t_5) {
-              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L8_error)
+              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 230, __pyx_L8_error)
               __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             } else {
-              __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L8_error)
+              __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 230, __pyx_L8_error)
             }
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "fatslimlib/core_datareading.pyx":230
+            /* "fatslimlib/core_datareading.pyx":231
  *                 lino += 1
  *                 line = fp.readline()
  *                 if lino == 0:             # <<<<<<<<<<<<<<
@@ -4637,7 +4649,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
             __pyx_t_7 = ((__pyx_v_lino == 0) != 0);
             if (__pyx_t_7) {
 
-              /* "fatslimlib/core_datareading.pyx":231
+              /* "fatslimlib/core_datareading.pyx":232
  *                 line = fp.readline()
  *                 if lino == 0:
  *                     continue             # <<<<<<<<<<<<<<
@@ -4646,7 +4658,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
  */
               goto __pyx_L16_continue;
 
-              /* "fatslimlib/core_datareading.pyx":230
+              /* "fatslimlib/core_datareading.pyx":231
  *                 lino += 1
  *                 line = fp.readline()
  *                 if lino == 0:             # <<<<<<<<<<<<<<
@@ -4655,7 +4667,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
  */
             }
 
-            /* "fatslimlib/core_datareading.pyx":232
+            /* "fatslimlib/core_datareading.pyx":233
  *                 if lino == 0:
  *                     continue
  *                 elif lino == 1:             # <<<<<<<<<<<<<<
@@ -4665,32 +4677,32 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
             __pyx_t_7 = ((__pyx_v_lino == 1) != 0);
             if (__pyx_t_7) {
 
-              /* "fatslimlib/core_datareading.pyx":233
+              /* "fatslimlib/core_datareading.pyx":234
  *                     continue
  *                 elif lino == 1:
  *                     natoms = int(line)             # <<<<<<<<<<<<<<
  *                     self.coordinate_offsets = numpy.array((fp.tell(),), dtype=np.int64)
  *                 elif lino == 2:
  */
-              __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L8_error)
+              __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L8_error)
+              __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L8_error)
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               __pyx_v_natoms = __pyx_t_12;
 
-              /* "fatslimlib/core_datareading.pyx":234
+              /* "fatslimlib/core_datareading.pyx":235
  *                 elif lino == 1:
  *                     natoms = int(line)
  *                     self.coordinate_offsets = numpy.array((fp.tell(),), dtype=np.int64)             # <<<<<<<<<<<<<<
  *                 elif lino == 2:
  *                     self.coordline_length = len(line)
  */
-              __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-              __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_tell); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_tell); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_5);
               __pyx_t_2 = NULL;
               if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -4703,46 +4715,46 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
                 }
               }
               if (__pyx_t_2) {
-                __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L8_error)
+                __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L8_error)
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               } else {
-                __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L8_error)
+                __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L8_error)
               }
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-              __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_5);
               __Pyx_GIVEREF(__pyx_t_3);
               PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
               __pyx_t_3 = 0;
-              __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_GIVEREF(__pyx_t_5);
               PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
               __pyx_t_5 = 0;
-              __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_5);
-              __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_2);
-              __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-              if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 234, __pyx_L8_error)
+              if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-              __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 234, __pyx_L8_error)
+              __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
               __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_4);
-              if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 234, __pyx_L8_error)
+              if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 235, __pyx_L8_error)
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.coordinate_offsets, 0);
               __pyx_v_self->__pyx_base.coordinate_offsets = __pyx_t_13;
               __pyx_t_13.memview = NULL;
               __pyx_t_13.data = NULL;
 
-              /* "fatslimlib/core_datareading.pyx":232
+              /* "fatslimlib/core_datareading.pyx":233
  *                 if lino == 0:
  *                     continue
  *                 elif lino == 1:             # <<<<<<<<<<<<<<
@@ -4752,7 +4764,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
               goto __pyx_L18;
             }
 
-            /* "fatslimlib/core_datareading.pyx":235
+            /* "fatslimlib/core_datareading.pyx":236
  *                     natoms = int(line)
  *                     self.coordinate_offsets = numpy.array((fp.tell(),), dtype=np.int64)
  *                 elif lino == 2:             # <<<<<<<<<<<<<<
@@ -4762,17 +4774,17 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
             __pyx_t_7 = ((__pyx_v_lino == 2) != 0);
             if (__pyx_t_7) {
 
-              /* "fatslimlib/core_datareading.pyx":236
+              /* "fatslimlib/core_datareading.pyx":237
  *                     self.coordinate_offsets = numpy.array((fp.tell(),), dtype=np.int64)
  *                 elif lino == 2:
  *                     self.coordline_length = len(line)             # <<<<<<<<<<<<<<
  *                 elif lino == (natoms + 1):
  *                     self.box_offsets = numpy.array((fp.tell(),), dtype=np.int64)
  */
-              __pyx_t_14 = PyObject_Length(__pyx_v_line); if (unlikely(__pyx_t_14 == -1)) __PYX_ERR(0, 236, __pyx_L8_error)
+              __pyx_t_14 = PyObject_Length(__pyx_v_line); if (unlikely(__pyx_t_14 == -1)) __PYX_ERR(0, 237, __pyx_L8_error)
               __pyx_v_self->coordline_length = __pyx_t_14;
 
-              /* "fatslimlib/core_datareading.pyx":235
+              /* "fatslimlib/core_datareading.pyx":236
  *                     natoms = int(line)
  *                     self.coordinate_offsets = numpy.array((fp.tell(),), dtype=np.int64)
  *                 elif lino == 2:             # <<<<<<<<<<<<<<
@@ -4782,7 +4794,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
               goto __pyx_L18;
             }
 
-            /* "fatslimlib/core_datareading.pyx":237
+            /* "fatslimlib/core_datareading.pyx":238
  *                 elif lino == 2:
  *                     self.coordline_length = len(line)
  *                 elif lino == (natoms + 1):             # <<<<<<<<<<<<<<
@@ -4792,19 +4804,19 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
             __pyx_t_7 = ((__pyx_v_lino == (__pyx_v_natoms + 1)) != 0);
             if (__pyx_t_7) {
 
-              /* "fatslimlib/core_datareading.pyx":238
+              /* "fatslimlib/core_datareading.pyx":239
  *                     self.coordline_length = len(line)
  *                 elif lino == (natoms + 1):
  *                     self.box_offsets = numpy.array((fp.tell(),), dtype=np.int64)             # <<<<<<<<<<<<<<
  *                     need_read = False
- * 
+ *         self.natoms = natoms
  */
-              __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_4);
-              __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_5);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-              __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_tell); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_tell); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_3);
               __pyx_t_1 = NULL;
               if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4817,55 +4829,55 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
                 }
               }
               if (__pyx_t_1) {
-                __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L8_error)
+                __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L8_error)
                 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
               } else {
-                __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L8_error)
+                __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L8_error)
               }
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-              __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_GIVEREF(__pyx_t_4);
               PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
               __pyx_t_4 = 0;
-              __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_GIVEREF(__pyx_t_3);
               PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
               __pyx_t_3 = 0;
-              __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_1);
-              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_2) < 0) __PYX_ERR(0, 238, __pyx_L8_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_2) < 0) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 238, __pyx_L8_error)
+              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_2);
-              if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 238, __pyx_L8_error)
+              if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 239, __pyx_L8_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.box_offsets, 0);
               __pyx_v_self->__pyx_base.box_offsets = __pyx_t_13;
               __pyx_t_13.memview = NULL;
               __pyx_t_13.data = NULL;
 
-              /* "fatslimlib/core_datareading.pyx":239
+              /* "fatslimlib/core_datareading.pyx":240
  *                 elif lino == (natoms + 1):
  *                     self.box_offsets = numpy.array((fp.tell(),), dtype=np.int64)
  *                     need_read = False             # <<<<<<<<<<<<<<
- * 
+ *         self.natoms = natoms
  * 
  */
               __pyx_v_need_read = 0;
 
-              /* "fatslimlib/core_datareading.pyx":237
+              /* "fatslimlib/core_datareading.pyx":238
  *                 elif lino == 2:
  *                     self.coordline_length = len(line)
  *                 elif lino == (natoms + 1):             # <<<<<<<<<<<<<<
@@ -4877,7 +4889,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
             __pyx_L16_continue:;
           }
 
-          /* "fatslimlib/core_datareading.pyx":226
+          /* "fatslimlib/core_datareading.pyx":227
  *             raise ValueError("%s is not a supported gro file. supported: .gro" % self.filename)
  * 
  *         with open(self.filename, "r") as fp:             # <<<<<<<<<<<<<<
@@ -4892,28 +4904,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
         __pyx_L8_error:;
         __Pyx_PyThreadState_assign
         __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
+        __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
         /*except:*/ {
           __Pyx_AddTraceback("fatslimlib.core_datareading.GroReaderCoords.preload", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_4) < 0) __PYX_ERR(0, 226, __pyx_L10_except_error)
+          if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_4) < 0) __PYX_ERR(0, 227, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L10_except_error)
+          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_5);
           __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_5, NULL);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 226, __pyx_L10_except_error)
+          if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 227, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_15);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          if (__pyx_t_7 < 0) __PYX_ERR(0, 226, __pyx_L10_except_error)
+          if (__pyx_t_7 < 0) __PYX_ERR(0, 227, __pyx_L10_except_error)
           __pyx_t_16 = ((!(__pyx_t_7 != 0)) != 0);
           if (__pyx_t_16) {
             __Pyx_GIVEREF(__pyx_t_2);
@@ -4921,7 +4933,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
             __Pyx_XGIVEREF(__pyx_t_4);
             __Pyx_ErrRestoreWithState(__pyx_t_2, __pyx_t_3, __pyx_t_4);
             __pyx_t_2 = 0; __pyx_t_3 = 0; __pyx_t_4 = 0; 
-            __PYX_ERR(0, 226, __pyx_L10_except_error)
+            __PYX_ERR(0, 227, __pyx_L10_except_error)
           }
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4949,7 +4961,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
         if (__pyx_t_8) {
           __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_tuple__14, NULL);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 226, __pyx_L1_error)
+          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 227, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
@@ -4964,7 +4976,16 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
     __pyx_L22:;
   }
 
-  /* "fatslimlib/core_datareading.pyx":216
+  /* "fatslimlib/core_datareading.pyx":241
+ *                     self.box_offsets = numpy.array((fp.tell(),), dtype=np.int64)
+ *                     need_read = False
+ *         self.natoms = natoms             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_v_self->__pyx_base.natoms = __pyx_v_natoms;
+
+  /* "fatslimlib/core_datareading.pyx":217
  *     cdef fsl_int coordline_length
  * 
  *     cdef preload(self):             # <<<<<<<<<<<<<<
@@ -4993,7 +5014,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_prelo
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":243
+/* "fatslimlib/core_datareading.pyx":244
  * 
  * 
  *     cdef core_base.PBCBox load_box(self, int frame_id):             # <<<<<<<<<<<<<<
@@ -5025,32 +5046,32 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   int __pyx_t_15;
   __Pyx_RefNannySetupContext("load_box", 0);
 
-  /* "fatslimlib/core_datareading.pyx":245
+  /* "fatslimlib/core_datareading.pyx":246
  *     cdef core_base.PBCBox load_box(self, int frame_id):
  *         cdef int n_coords, i, j
  *         self.assert_frame_id(frame_id)             # <<<<<<<<<<<<<<
  * 
  *         box = numpy.zeros((3,3), np.float64)
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_16core_datareading_GroReaderCoords *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.assert_frame_id(((struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self), __pyx_v_frame_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10fatslimlib_16core_datareading_GroReaderCoords *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.assert_frame_id(((struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *)__pyx_v_self), __pyx_v_frame_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":247
+  /* "fatslimlib/core_datareading.pyx":248
  *         self.assert_frame_id(frame_id)
  * 
  *         box = numpy.zeros((3,3), np.float64)             # <<<<<<<<<<<<<<
  * 
  *         with open(self.filename, "rb") as fp:
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -5065,7 +5086,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
       __pyx_t_5 = 1;
     }
   }
-  __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   if (__pyx_t_2) {
     __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -5076,14 +5097,14 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_box = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":249
+  /* "fatslimlib/core_datareading.pyx":250
  *         box = numpy.zeros((3,3), np.float64)
  * 
  *         with open(self.filename, "rb") as fp:             # <<<<<<<<<<<<<<
@@ -5091,7 +5112,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  *                 fp.seek(self.box_offsets[frame_id])
  */
   /*with:*/ {
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_self->__pyx_base.filename);
     __Pyx_GIVEREF(__pyx_v_self->__pyx_base.filename);
@@ -5099,12 +5120,12 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     __Pyx_INCREF(__pyx_n_s_rb);
     __Pyx_GIVEREF(__pyx_n_s_rb);
     PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_rb);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_7 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_exit); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_exit); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_6 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_enter); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 249, __pyx_L3_error)
+    __pyx_t_6 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_enter); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L3_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_4 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_6))) {
@@ -5117,10 +5138,10 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
       }
     }
     if (__pyx_t_4) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L3_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else {
-      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L3_error)
+      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L3_error)
     }
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5139,16 +5160,16 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
           __pyx_v_fp = __pyx_t_6;
           __pyx_t_6 = 0;
 
-          /* "fatslimlib/core_datareading.pyx":251
+          /* "fatslimlib/core_datareading.pyx":252
  *         with open(self.filename, "rb") as fp:
  *             with cython.boundscheck(True):
  *                 fp.seek(self.box_offsets[frame_id])             # <<<<<<<<<<<<<<
  *             box_str = fp.read().strip(b'\n\r').split()
  * 
  */
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_seek); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 251, __pyx_L7_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_seek); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 252, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_3);
-          if (unlikely(!__pyx_v_self->__pyx_base.box_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 251, __pyx_L7_error)}
+          if (unlikely(!__pyx_v_self->__pyx_base.box_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 252, __pyx_L7_error)}
           __pyx_t_11 = __pyx_v_frame_id;
           __pyx_t_12 = -1;
           if (__pyx_t_11 < 0) {
@@ -5157,9 +5178,9 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
           } else if (unlikely(__pyx_t_11 >= __pyx_v_self->__pyx_base.box_offsets.shape[0])) __pyx_t_12 = 0;
           if (unlikely(__pyx_t_12 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_12);
-            __PYX_ERR(0, 251, __pyx_L7_error)
+            __PYX_ERR(0, 252, __pyx_L7_error)
           }
-          __pyx_t_1 = __Pyx_PyInt_From_fsl_int((*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->__pyx_base.box_offsets.data + __pyx_t_11 * __pyx_v_self->__pyx_base.box_offsets.strides[0]) )))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L7_error)
+          __pyx_t_1 = __Pyx_PyInt_From_fsl_int((*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->__pyx_base.box_offsets.data + __pyx_t_11 * __pyx_v_self->__pyx_base.box_offsets.strides[0]) )))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_1);
           __pyx_t_4 = NULL;
           if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -5172,31 +5193,31 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
             }
           }
           if (!__pyx_t_4) {
-            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 251, __pyx_L7_error)
+            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 252, __pyx_L7_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_GOTREF(__pyx_t_6);
           } else {
-            __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L7_error)
+            __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4); __pyx_t_4 = NULL;
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 251, __pyx_L7_error)
+            __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 252, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_6);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fatslimlib/core_datareading.pyx":252
+          /* "fatslimlib/core_datareading.pyx":253
  *             with cython.boundscheck(True):
  *                 fp.seek(self.box_offsets[frame_id])
  *             box_str = fp.read().strip(b'\n\r').split()             # <<<<<<<<<<<<<<
  * 
  *         n_coords = len(box_str)
  */
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_read); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L7_error)
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_read); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_1 = NULL;
           if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5209,20 +5230,20 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
             }
           }
           if (__pyx_t_1) {
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 252, __pyx_L7_error)
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 253, __pyx_L7_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           } else {
-            __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 252, __pyx_L7_error)
+            __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 253, __pyx_L7_error)
           }
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L7_error)
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 252, __pyx_L7_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 253, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L7_error)
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_3 = NULL;
@@ -5236,17 +5257,17 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
             }
           }
           if (__pyx_t_3) {
-            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 252, __pyx_L7_error)
+            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 253, __pyx_L7_error)
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           } else {
-            __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 252, __pyx_L7_error)
+            __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 253, __pyx_L7_error)
           }
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __pyx_v_box_str = __pyx_t_6;
           __pyx_t_6 = 0;
 
-          /* "fatslimlib/core_datareading.pyx":249
+          /* "fatslimlib/core_datareading.pyx":250
  *         box = numpy.zeros((3,3), np.float64)
  * 
  *         with open(self.filename, "rb") as fp:             # <<<<<<<<<<<<<<
@@ -5267,20 +5288,20 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("fatslimlib.core_datareading.GroReaderCoords.load_box", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_2, &__pyx_t_3) < 0) __PYX_ERR(0, 249, __pyx_L9_except_error)
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_2, &__pyx_t_3) < 0) __PYX_ERR(0, 250, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_1 = PyTuple_Pack(3, __pyx_t_6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L9_except_error)
+          __pyx_t_1 = PyTuple_Pack(3, __pyx_t_6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_1);
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_1, NULL);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 249, __pyx_L9_except_error)
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 250, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_13);
           __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_14 < 0) __PYX_ERR(0, 249, __pyx_L9_except_error)
+          if (__pyx_t_14 < 0) __PYX_ERR(0, 250, __pyx_L9_except_error)
           __pyx_t_15 = ((!(__pyx_t_14 != 0)) != 0);
           if (__pyx_t_15) {
             __Pyx_GIVEREF(__pyx_t_6);
@@ -5288,7 +5309,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
             __Pyx_XGIVEREF(__pyx_t_3);
             __Pyx_ErrRestoreWithState(__pyx_t_6, __pyx_t_2, __pyx_t_3);
             __pyx_t_6 = 0; __pyx_t_2 = 0; __pyx_t_3 = 0; 
-            __PYX_ERR(0, 249, __pyx_L9_except_error)
+            __PYX_ERR(0, 250, __pyx_L9_except_error)
           }
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5316,7 +5337,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
         if (__pyx_t_7) {
           __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple__18, NULL);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 249, __pyx_L1_error)
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 250, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
@@ -5331,66 +5352,66 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     __pyx_L18:;
   }
 
-  /* "fatslimlib/core_datareading.pyx":254
+  /* "fatslimlib/core_datareading.pyx":255
  *             box_str = fp.read().strip(b'\n\r').split()
  * 
  *         n_coords = len(box_str)             # <<<<<<<<<<<<<<
  * 
  *         box[0, 0] = float(box_str[0])
  */
-  if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 254, __pyx_L1_error) }
-  __pyx_t_5 = PyObject_Length(__pyx_v_box_str); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 254, __pyx_L1_error)
+  if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 255, __pyx_L1_error) }
+  __pyx_t_5 = PyObject_Length(__pyx_v_box_str); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 255, __pyx_L1_error)
   __pyx_v_n_coords = __pyx_t_5;
 
-  /* "fatslimlib/core_datareading.pyx":256
+  /* "fatslimlib/core_datareading.pyx":257
  *         n_coords = len(box_str)
  * 
  *         box[0, 0] = float(box_str[0])             # <<<<<<<<<<<<<<
  *         box[1, 1] = float(box_str[1])
  *         box[2, 2] = float(box_str[2])
  */
-  if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 256, __pyx_L1_error) }
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 257, __pyx_L1_error) }
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__19, __pyx_t_2) < 0)) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__19, __pyx_t_2) < 0)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":257
+  /* "fatslimlib/core_datareading.pyx":258
  * 
  *         box[0, 0] = float(box_str[0])
  *         box[1, 1] = float(box_str[1])             # <<<<<<<<<<<<<<
  *         box[2, 2] = float(box_str[2])
  * 
  */
-  if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 257, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box_str, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
+  if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 258, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box_str, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__20, __pyx_t_3) < 0)) __PYX_ERR(0, 257, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__20, __pyx_t_3) < 0)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":258
+  /* "fatslimlib/core_datareading.pyx":259
  *         box[0, 0] = float(box_str[0])
  *         box[1, 1] = float(box_str[1])
  *         box[2, 2] = float(box_str[2])             # <<<<<<<<<<<<<<
  * 
  *         if n_coords == 9:
  */
-  if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 258, __pyx_L1_error) }
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 259, __pyx_L1_error) }
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__21, __pyx_t_2) < 0)) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__21, __pyx_t_2) < 0)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":260
+  /* "fatslimlib/core_datareading.pyx":261
  *         box[2, 2] = float(box_str[2])
  * 
  *         if n_coords == 9:             # <<<<<<<<<<<<<<
@@ -5400,103 +5421,103 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   __pyx_t_15 = ((__pyx_v_n_coords == 9) != 0);
   if (__pyx_t_15) {
 
-    /* "fatslimlib/core_datareading.pyx":261
+    /* "fatslimlib/core_datareading.pyx":262
  * 
  *         if n_coords == 9:
  *             box[0, 1] = float(box_str[3])             # <<<<<<<<<<<<<<
  *             box[0, 2] = float(box_str[4])
  *             box[1, 0] = float(box_str[5])
  */
-    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 261, __pyx_L1_error) }
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box_str, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
+    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 262, __pyx_L1_error) }
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box_str, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 262, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__22, __pyx_t_3) < 0)) __PYX_ERR(0, 261, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__22, __pyx_t_3) < 0)) __PYX_ERR(0, 262, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":262
+    /* "fatslimlib/core_datareading.pyx":263
  *         if n_coords == 9:
  *             box[0, 1] = float(box_str[3])
  *             box[0, 2] = float(box_str[4])             # <<<<<<<<<<<<<<
  *             box[1, 0] = float(box_str[5])
  *             box[1, 2] = float(box_str[6])
  */
-    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 262, __pyx_L1_error) }
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 262, __pyx_L1_error)
+    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 263, __pyx_L1_error) }
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__23, __pyx_t_2) < 0)) __PYX_ERR(0, 262, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__23, __pyx_t_2) < 0)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":263
+    /* "fatslimlib/core_datareading.pyx":264
  *             box[0, 1] = float(box_str[3])
  *             box[0, 2] = float(box_str[4])
  *             box[1, 0] = float(box_str[5])             # <<<<<<<<<<<<<<
  *             box[1, 2] = float(box_str[6])
  *             box[2, 0] = float(box_str[7])
  */
-    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 263, __pyx_L1_error) }
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box_str, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 264, __pyx_L1_error) }
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box_str, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 264, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__24, __pyx_t_3) < 0)) __PYX_ERR(0, 263, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__24, __pyx_t_3) < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":264
+    /* "fatslimlib/core_datareading.pyx":265
  *             box[0, 2] = float(box_str[4])
  *             box[1, 0] = float(box_str[5])
  *             box[1, 2] = float(box_str[6])             # <<<<<<<<<<<<<<
  *             box[2, 0] = float(box_str[7])
  *             box[2, 1] = float(box_str[8])
  */
-    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 264, __pyx_L1_error) }
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 264, __pyx_L1_error)
+    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 265, __pyx_L1_error) }
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__25, __pyx_t_2) < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__25, __pyx_t_2) < 0)) __PYX_ERR(0, 265, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":265
+    /* "fatslimlib/core_datareading.pyx":266
  *             box[1, 0] = float(box_str[5])
  *             box[1, 2] = float(box_str[6])
  *             box[2, 0] = float(box_str[7])             # <<<<<<<<<<<<<<
  *             box[2, 1] = float(box_str[8])
  * 
  */
-    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 265, __pyx_L1_error) }
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box_str, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
+    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 266, __pyx_L1_error) }
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_box_str, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__26, __pyx_t_3) < 0)) __PYX_ERR(0, 265, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__26, __pyx_t_3) < 0)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":266
+    /* "fatslimlib/core_datareading.pyx":267
  *             box[1, 2] = float(box_str[6])
  *             box[2, 0] = float(box_str[7])
  *             box[2, 1] = float(box_str[8])             # <<<<<<<<<<<<<<
  * 
  *         return core_base.PBCBox(box)
  */
-    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 266, __pyx_L1_error) }
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
+    if (unlikely(!__pyx_v_box_str)) { __Pyx_RaiseUnboundLocalError("box_str"); __PYX_ERR(0, 267, __pyx_L1_error) }
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_box_str, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__27, __pyx_t_2) < 0)) __PYX_ERR(0, 266, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_box, __pyx_tuple__27, __pyx_t_2) < 0)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":260
+    /* "fatslimlib/core_datareading.pyx":261
  *         box[2, 2] = float(box_str[2])
  * 
  *         if n_coords == 9:             # <<<<<<<<<<<<<<
@@ -5505,7 +5526,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":268
+  /* "fatslimlib/core_datareading.pyx":269
  *             box[2, 1] = float(box_str[8])
  * 
  *         return core_base.PBCBox(box)             # <<<<<<<<<<<<<<
@@ -5513,19 +5534,19 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  *     cdef real[:,::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_box);
   __Pyx_GIVEREF(__pyx_v_box);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_box);
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_PBCBox), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_PBCBox), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = ((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_datareading.pyx":243
+  /* "fatslimlib/core_datareading.pyx":244
  * 
  * 
  *     cdef core_base.PBCBox load_box(self, int frame_id):             # <<<<<<<<<<<<<<
@@ -5551,7 +5572,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":270
+/* "fatslimlib/core_datareading.pyx":271
  *         return core_base.PBCBox(box)
  * 
  *     cdef real[:,::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:             # <<<<<<<<<<<<<<
@@ -5607,7 +5628,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_datareading.pyx":271
+  /* "fatslimlib/core_datareading.pyx":272
  * 
  *     cdef real[:,::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:
  *         cdef int natoms = atomids.shape[0]             # <<<<<<<<<<<<<<
@@ -5617,7 +5638,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
   /*try:*/ {
     __pyx_v_natoms = (__pyx_v_atomids.shape[0]);
 
-    /* "fatslimlib/core_datareading.pyx":285
+    /* "fatslimlib/core_datareading.pyx":286
  *         cdef double val
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -5630,21 +5651,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_datareading.pyx":286
+          /* "fatslimlib/core_datareading.pyx":287
  * 
  *         with gil:
  *             coords_memview = numpy.empty((natoms, 3))             # <<<<<<<<<<<<<<
  *             cfilename = self.filename
  *             coords_offset = self.coordinate_offsets[frame_id]
  */
-          __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L7_error)
+          __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 286, __pyx_L7_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_natoms); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L7_error)
+          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_natoms); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 286, __pyx_L7_error)
+          __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 287, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_GIVEREF(__pyx_t_2);
           PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -5663,52 +5684,52 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
             }
           }
           if (!__pyx_t_2) {
-            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L7_error)
+            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L7_error)
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_GOTREF(__pyx_t_1);
           } else {
-            __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 286, __pyx_L7_error)
+            __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
             __Pyx_GIVEREF(__pyx_t_4);
             PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_4);
             __pyx_t_4 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L7_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_1);
-          if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 286, __pyx_L7_error)
+          if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 287, __pyx_L7_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_v_coords_memview = __pyx_t_6;
           __pyx_t_6.memview = NULL;
           __pyx_t_6.data = NULL;
 
-          /* "fatslimlib/core_datareading.pyx":287
+          /* "fatslimlib/core_datareading.pyx":288
  *         with gil:
  *             coords_memview = numpy.empty((natoms, 3))
  *             cfilename = self.filename             # <<<<<<<<<<<<<<
  *             coords_offset = self.coordinate_offsets[frame_id]
  * 
  */
-          __pyx_t_7 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L7_error)
+          __pyx_t_7 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 288, __pyx_L7_error)
           __pyx_v_cfilename = __pyx_t_7;
 
-          /* "fatslimlib/core_datareading.pyx":288
+          /* "fatslimlib/core_datareading.pyx":289
  *             coords_memview = numpy.empty((natoms, 3))
  *             cfilename = self.filename
  *             coords_offset = self.coordinate_offsets[frame_id]             # <<<<<<<<<<<<<<
  * 
  *         # Do nothing if there is no atom to read!
  */
-          if (unlikely(!__pyx_v_self->__pyx_base.coordinate_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 288, __pyx_L7_error)}
+          if (unlikely(!__pyx_v_self->__pyx_base.coordinate_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 289, __pyx_L7_error)}
           __pyx_t_8 = __pyx_v_frame_id;
           if (__pyx_t_8 < 0) __pyx_t_8 += __pyx_v_self->__pyx_base.coordinate_offsets.shape[0];
           __pyx_v_coords_offset = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->__pyx_base.coordinate_offsets.data + __pyx_t_8 * __pyx_v_self->__pyx_base.coordinate_offsets.strides[0]) )));
         }
 
-        /* "fatslimlib/core_datareading.pyx":285
+        /* "fatslimlib/core_datareading.pyx":286
  *         cdef double val
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -5732,7 +5753,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         }
     }
 
-    /* "fatslimlib/core_datareading.pyx":291
+    /* "fatslimlib/core_datareading.pyx":292
  * 
  *         # Do nothing if there is no atom to read!
  *         if natoms == 0:             # <<<<<<<<<<<<<<
@@ -5742,7 +5763,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
     __pyx_t_9 = ((__pyx_v_natoms == 0) != 0);
     if (__pyx_t_9) {
 
-      /* "fatslimlib/core_datareading.pyx":292
+      /* "fatslimlib/core_datareading.pyx":293
  *         # Do nothing if there is no atom to read!
  *         if natoms == 0:
  *              return coords_memview             # <<<<<<<<<<<<<<
@@ -5753,7 +5774,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
       __pyx_r = __pyx_v_coords_memview;
       goto __pyx_L3_return;
 
-      /* "fatslimlib/core_datareading.pyx":291
+      /* "fatslimlib/core_datareading.pyx":292
  * 
  *         # Do nothing if there is no atom to read!
  *         if natoms == 0:             # <<<<<<<<<<<<<<
@@ -5762,7 +5783,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":295
+    /* "fatslimlib/core_datareading.pyx":296
  * 
  * 
  *         min_offset = atomids[0]             # <<<<<<<<<<<<<<
@@ -5773,7 +5794,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
     if (__pyx_t_10 < 0) __pyx_t_10 += __pyx_v_atomids.shape[0];
     __pyx_v_min_offset = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_10 * __pyx_v_atomids.strides[0]) )));
 
-    /* "fatslimlib/core_datareading.pyx":296
+    /* "fatslimlib/core_datareading.pyx":297
  * 
  *         min_offset = atomids[0]
  *         max_offset = atomids[0]             # <<<<<<<<<<<<<<
@@ -5784,7 +5805,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
     if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_atomids.shape[0];
     __pyx_v_max_offset = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_11 * __pyx_v_atomids.strides[0]) )));
 
-    /* "fatslimlib/core_datareading.pyx":297
+    /* "fatslimlib/core_datareading.pyx":298
  *         min_offset = atomids[0]
  *         max_offset = atomids[0]
  *         for i in range(natoms):             # <<<<<<<<<<<<<<
@@ -5795,7 +5816,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_i = __pyx_t_13;
 
-      /* "fatslimlib/core_datareading.pyx":298
+      /* "fatslimlib/core_datareading.pyx":299
  *         max_offset = atomids[0]
  *         for i in range(natoms):
  *             if atomids[i] < min_offset:             # <<<<<<<<<<<<<<
@@ -5807,7 +5828,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
       __pyx_t_9 = (((*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_14 * __pyx_v_atomids.strides[0]) ))) < __pyx_v_min_offset) != 0);
       if (__pyx_t_9) {
 
-        /* "fatslimlib/core_datareading.pyx":299
+        /* "fatslimlib/core_datareading.pyx":300
  *         for i in range(natoms):
  *             if atomids[i] < min_offset:
  *                 min_offset = atomids[i]             # <<<<<<<<<<<<<<
@@ -5818,7 +5839,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         if (__pyx_t_15 < 0) __pyx_t_15 += __pyx_v_atomids.shape[0];
         __pyx_v_min_offset = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_15 * __pyx_v_atomids.strides[0]) )));
 
-        /* "fatslimlib/core_datareading.pyx":298
+        /* "fatslimlib/core_datareading.pyx":299
  *         max_offset = atomids[0]
  *         for i in range(natoms):
  *             if atomids[i] < min_offset:             # <<<<<<<<<<<<<<
@@ -5828,7 +5849,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         goto __pyx_L12;
       }
 
-      /* "fatslimlib/core_datareading.pyx":300
+      /* "fatslimlib/core_datareading.pyx":301
  *             if atomids[i] < min_offset:
  *                 min_offset = atomids[i]
  *             elif atomids[i] > max_offset:             # <<<<<<<<<<<<<<
@@ -5840,7 +5861,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
       __pyx_t_9 = (((*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_16 * __pyx_v_atomids.strides[0]) ))) > __pyx_v_max_offset) != 0);
       if (__pyx_t_9) {
 
-        /* "fatslimlib/core_datareading.pyx":301
+        /* "fatslimlib/core_datareading.pyx":302
  *                 min_offset = atomids[i]
  *             elif atomids[i] > max_offset:
  *                 max_offset = atomids[i]             # <<<<<<<<<<<<<<
@@ -5851,7 +5872,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         if (__pyx_t_17 < 0) __pyx_t_17 += __pyx_v_atomids.shape[0];
         __pyx_v_max_offset = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_17 * __pyx_v_atomids.strides[0]) )));
 
-        /* "fatslimlib/core_datareading.pyx":300
+        /* "fatslimlib/core_datareading.pyx":301
  *             if atomids[i] < min_offset:
  *                 min_offset = atomids[i]
  *             elif atomids[i] > max_offset:             # <<<<<<<<<<<<<<
@@ -5862,7 +5883,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
       __pyx_L12:;
     }
 
-    /* "fatslimlib/core_datareading.pyx":303
+    /* "fatslimlib/core_datareading.pyx":304
  *                 max_offset = atomids[i]
  * 
  *         offset_range = (max_offset - min_offset + 1) * self.coordline_length # +1 is because we also the last line!             # <<<<<<<<<<<<<<
@@ -5871,7 +5892,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
     __pyx_v_offset_range = (((__pyx_v_max_offset - __pyx_v_min_offset) + 1) * __pyx_v_self->coordline_length);
 
-    /* "fatslimlib/core_datareading.pyx":306
+    /* "fatslimlib/core_datareading.pyx":307
  * 
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -5884,7 +5905,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_datareading.pyx":307
+          /* "fatslimlib/core_datareading.pyx":308
  * 
  *         with gil:
  *             coords_buffer = <char *> PyMem_Malloc(offset_range * sizeof(char))             # <<<<<<<<<<<<<<
@@ -5894,7 +5915,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
           __pyx_v_coords_buffer = ((char *)PyMem_Malloc((__pyx_v_offset_range * (sizeof(char)))));
         }
 
-        /* "fatslimlib/core_datareading.pyx":306
+        /* "fatslimlib/core_datareading.pyx":307
  * 
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -5912,7 +5933,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         }
     }
 
-    /* "fatslimlib/core_datareading.pyx":310
+    /* "fatslimlib/core_datareading.pyx":311
  * 
  *         # Open coords file
  *         cfile = fopen(cfilename, "rb")             # <<<<<<<<<<<<<<
@@ -5921,7 +5942,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
     __pyx_v_cfile = fopen(__pyx_v_cfilename, ((char const *)"rb"));
 
-    /* "fatslimlib/core_datareading.pyx":311
+    /* "fatslimlib/core_datareading.pyx":312
  *         # Open coords file
  *         cfile = fopen(cfilename, "rb")
  *         if cfile == NULL:             # <<<<<<<<<<<<<<
@@ -5931,7 +5952,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
     __pyx_t_9 = ((__pyx_v_cfile == NULL) != 0);
     if (__pyx_t_9) {
 
-      /* "fatslimlib/core_datareading.pyx":312
+      /* "fatslimlib/core_datareading.pyx":313
  *         cfile = fopen(cfilename, "rb")
  *         if cfile == NULL:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -5944,29 +5965,29 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_datareading.pyx":313
+            /* "fatslimlib/core_datareading.pyx":314
  *         if cfile == NULL:
  *             with gil:
  *                 raise IOError("No such file or directory: '%s'" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *         # Seek the proper position
  */
-            __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_No_such_file_or_directory_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L18_error)
+            __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_No_such_file_or_directory_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L18_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L18_error)
+            __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L18_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L18_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L18_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_Raise(__pyx_t_1, 0, 0, 0);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __PYX_ERR(0, 313, __pyx_L18_error)
+            __PYX_ERR(0, 314, __pyx_L18_error)
           }
 
-          /* "fatslimlib/core_datareading.pyx":312
+          /* "fatslimlib/core_datareading.pyx":313
  *         cfile = fopen(cfilename, "rb")
  *         if cfile == NULL:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -5983,7 +6004,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
           }
       }
 
-      /* "fatslimlib/core_datareading.pyx":311
+      /* "fatslimlib/core_datareading.pyx":312
  *         # Open coords file
  *         cfile = fopen(cfilename, "rb")
  *         if cfile == NULL:             # <<<<<<<<<<<<<<
@@ -5992,7 +6013,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":316
+    /* "fatslimlib/core_datareading.pyx":317
  * 
  *         # Seek the proper position
  *         fseek(cfile, coords_offset + (min_offset - 1) * self.coordline_length, SEEK_SET) # NOTE: atomid starts @ 1             # <<<<<<<<<<<<<<
@@ -6001,7 +6022,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
     fseek(__pyx_v_cfile, (__pyx_v_coords_offset + ((__pyx_v_min_offset - 1) * __pyx_v_self->coordline_length)), SEEK_SET);
 
-    /* "fatslimlib/core_datareading.pyx":319
+    /* "fatslimlib/core_datareading.pyx":320
  * 
  *         # Read buffer & close the file
  *         if fread(coords_buffer, offset_range, 1, cfile) != 1:             # <<<<<<<<<<<<<<
@@ -6011,7 +6032,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
     __pyx_t_9 = ((fread(__pyx_v_coords_buffer, __pyx_v_offset_range, 1, __pyx_v_cfile) != 1) != 0);
     if (__pyx_t_9) {
 
-      /* "fatslimlib/core_datareading.pyx":320
+      /* "fatslimlib/core_datareading.pyx":321
  *         # Read buffer & close the file
  *         if fread(coords_buffer, offset_range, 1, cfile) != 1:
  *             fclose(cfile)             # <<<<<<<<<<<<<<
@@ -6020,7 +6041,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
       fclose(__pyx_v_cfile);
 
-      /* "fatslimlib/core_datareading.pyx":321
+      /* "fatslimlib/core_datareading.pyx":322
  *         if fread(coords_buffer, offset_range, 1, cfile) != 1:
  *             fclose(cfile)
  *             with gil:             # <<<<<<<<<<<<<<
@@ -6033,21 +6054,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_datareading.pyx":322
+            /* "fatslimlib/core_datareading.pyx":323
  *             fclose(cfile)
  *             with gil:
  *                 raise RuntimeError("EOF reached!")             # <<<<<<<<<<<<<<
  *         fclose(cfile)
  * 
  */
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L22_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L22_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_Raise(__pyx_t_1, 0, 0, 0);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __PYX_ERR(0, 322, __pyx_L22_error)
+            __PYX_ERR(0, 323, __pyx_L22_error)
           }
 
-          /* "fatslimlib/core_datareading.pyx":321
+          /* "fatslimlib/core_datareading.pyx":322
  *         if fread(coords_buffer, offset_range, 1, cfile) != 1:
  *             fclose(cfile)
  *             with gil:             # <<<<<<<<<<<<<<
@@ -6064,7 +6085,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
           }
       }
 
-      /* "fatslimlib/core_datareading.pyx":319
+      /* "fatslimlib/core_datareading.pyx":320
  * 
  *         # Read buffer & close the file
  *         if fread(coords_buffer, offset_range, 1, cfile) != 1:             # <<<<<<<<<<<<<<
@@ -6073,7 +6094,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":323
+    /* "fatslimlib/core_datareading.pyx":324
  *             with gil:
  *                 raise RuntimeError("EOF reached!")
  *         fclose(cfile)             # <<<<<<<<<<<<<<
@@ -6082,7 +6103,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
     fclose(__pyx_v_cfile);
 
-    /* "fatslimlib/core_datareading.pyx":325
+    /* "fatslimlib/core_datareading.pyx":326
  *         fclose(cfile)
  * 
  *         with parallel(num_threads=OPENMP_NUM_THREADS):             # <<<<<<<<<<<<<<
@@ -6103,7 +6124,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
             /* Initialize private variables to invalid values */
             __pyx_v_coord_buffer = ((char *)1);
 
-            /* "fatslimlib/core_datareading.pyx":326
+            /* "fatslimlib/core_datareading.pyx":327
  * 
  *         with parallel(num_threads=OPENMP_NUM_THREADS):
  *             coord_buffer = <char *> malloc(9 * sizeof(char))             # <<<<<<<<<<<<<<
@@ -6112,7 +6133,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
             __pyx_v_coord_buffer = ((char *)malloc((9 * (sizeof(char)))));
 
-            /* "fatslimlib/core_datareading.pyx":328
+            /* "fatslimlib/core_datareading.pyx":329
  *             coord_buffer = <char *> malloc(9 * sizeof(char))
  *             # Initialize buffer end!
  *             coord_buffer[8] = b'\0'             # <<<<<<<<<<<<<<
@@ -6121,7 +6142,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
             (__pyx_v_coord_buffer[8]) = '\x00';
 
-            /* "fatslimlib/core_datareading.pyx":330
+            /* "fatslimlib/core_datareading.pyx":331
  *             coord_buffer[8] = b'\0'
  * 
  *             for i in prange(natoms, schedule='static'):             # <<<<<<<<<<<<<<
@@ -6143,7 +6164,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
                             /* Initialize private variables to invalid values */
                             __pyx_v_coord_offset = ((fsl_int)0xbad0bad0);
 
-                            /* "fatslimlib/core_datareading.pyx":331
+                            /* "fatslimlib/core_datareading.pyx":332
  * 
  *             for i in prange(natoms, schedule='static'):
  *                 coord_offset = (atomids[i] - min_offset) * self.coordline_length             # <<<<<<<<<<<<<<
@@ -6154,7 +6175,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
                             if (__pyx_t_19 < 0) __pyx_t_19 += __pyx_v_atomids.shape[0];
                             __pyx_v_coord_offset = (((*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_19 * __pyx_v_atomids.strides[0]) ))) - __pyx_v_min_offset) * __pyx_v_self->coordline_length);
 
-                            /* "fatslimlib/core_datareading.pyx":334
+                            /* "fatslimlib/core_datareading.pyx":335
  * 
  *                 # Extract coordinates from buffer
  *                 strncpy(coord_buffer, coords_buffer+coord_offset+20, 8)             # <<<<<<<<<<<<<<
@@ -6163,7 +6184,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
                             strncpy(__pyx_v_coord_buffer, ((__pyx_v_coords_buffer + __pyx_v_coord_offset) + 20), 8);
 
-                            /* "fatslimlib/core_datareading.pyx":335
+                            /* "fatslimlib/core_datareading.pyx":336
  *                 # Extract coordinates from buffer
  *                 strncpy(coord_buffer, coords_buffer+coord_offset+20, 8)
  *                 coords_memview[i, XX] = atof(coord_buffer)             # <<<<<<<<<<<<<<
@@ -6176,7 +6197,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
                             if (__pyx_t_21 < 0) __pyx_t_21 += __pyx_v_coords_memview.shape[1];
                             *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords_memview.data + __pyx_t_20 * __pyx_v_coords_memview.strides[0]) )) + __pyx_t_21)) )) = atof(__pyx_v_coord_buffer);
 
-                            /* "fatslimlib/core_datareading.pyx":337
+                            /* "fatslimlib/core_datareading.pyx":338
  *                 coords_memview[i, XX] = atof(coord_buffer)
  * 
  *                 strncpy(coord_buffer, coords_buffer+coord_offset+28, 8)             # <<<<<<<<<<<<<<
@@ -6185,7 +6206,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
                             strncpy(__pyx_v_coord_buffer, ((__pyx_v_coords_buffer + __pyx_v_coord_offset) + 28), 8);
 
-                            /* "fatslimlib/core_datareading.pyx":338
+                            /* "fatslimlib/core_datareading.pyx":339
  * 
  *                 strncpy(coord_buffer, coords_buffer+coord_offset+28, 8)
  *                 coords_memview[i, YY] = atof(coord_buffer)             # <<<<<<<<<<<<<<
@@ -6198,7 +6219,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
                             if (__pyx_t_23 < 0) __pyx_t_23 += __pyx_v_coords_memview.shape[1];
                             *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords_memview.data + __pyx_t_22 * __pyx_v_coords_memview.strides[0]) )) + __pyx_t_23)) )) = atof(__pyx_v_coord_buffer);
 
-                            /* "fatslimlib/core_datareading.pyx":340
+                            /* "fatslimlib/core_datareading.pyx":341
  *                 coords_memview[i, YY] = atof(coord_buffer)
  * 
  *                 strncpy(coord_buffer, coords_buffer+coord_offset+36, 8)             # <<<<<<<<<<<<<<
@@ -6207,7 +6228,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
  */
                             strncpy(__pyx_v_coord_buffer, ((__pyx_v_coords_buffer + __pyx_v_coord_offset) + 36), 8);
 
-                            /* "fatslimlib/core_datareading.pyx":341
+                            /* "fatslimlib/core_datareading.pyx":342
  * 
  *                 strncpy(coord_buffer, coords_buffer+coord_offset+36, 8)
  *                 coords_memview[i, ZZ] = atof(coord_buffer)             # <<<<<<<<<<<<<<
@@ -6224,7 +6245,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
                 }
             }
 
-            /* "fatslimlib/core_datareading.pyx":343
+            /* "fatslimlib/core_datareading.pyx":344
  *                 coords_memview[i, ZZ] = atof(coord_buffer)
  * 
  *             free(coord_buffer)             # <<<<<<<<<<<<<<
@@ -6241,7 +6262,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         #define unlikely(x) __builtin_expect(!!(x), 0)
     #endif
 
-    /* "fatslimlib/core_datareading.pyx":345
+    /* "fatslimlib/core_datareading.pyx":346
  *             free(coord_buffer)
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -6254,7 +6275,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_datareading.pyx":346
+          /* "fatslimlib/core_datareading.pyx":347
  * 
  *         with gil:
  *             PyMem_Free(coords_buffer)             # <<<<<<<<<<<<<<
@@ -6264,7 +6285,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
           PyMem_Free(__pyx_v_coords_buffer);
         }
 
-        /* "fatslimlib/core_datareading.pyx":345
+        /* "fatslimlib/core_datareading.pyx":346
  *             free(coord_buffer)
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -6282,7 +6303,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
         }
     }
 
-    /* "fatslimlib/core_datareading.pyx":348
+    /* "fatslimlib/core_datareading.pyx":349
  *             PyMem_Free(coords_buffer)
  * 
  *         return coords_memview             # <<<<<<<<<<<<<<
@@ -6294,7 +6315,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_datareading.pyx":271
+  /* "fatslimlib/core_datareading.pyx":272
  * 
  *     cdef real[:,::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:
  *         cdef int natoms = atomids.shape[0]             # <<<<<<<<<<<<<<
@@ -6316,7 +6337,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
     }
   }
 
-  /* "fatslimlib/core_datareading.pyx":270
+  /* "fatslimlib/core_datareading.pyx":271
  *         return core_base.PBCBox(box)
  * 
  *     cdef real[:,::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:             # <<<<<<<<<<<<<<
@@ -6350,7 +6371,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15GroReaderCoo
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":352
+/* "fatslimlib/core_datareading.pyx":353
  * 
  * cdef class XtcReaderCoords(core_base.CoordinateReader):
  *     cdef preload(self):             # <<<<<<<<<<<<<<
@@ -6366,6 +6387,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
   int __pyx_v_frame_size;
   int __pyx_v_num_coords_bytes;
   int __pyx_v_nframes;
+  int __pyx_v_natoms;
   float __pyx_v_timestep_float;
   XDRFILE *__pyx_v_xfp;
   PyObject *__pyx_v_frame_offsets = NULL;
@@ -6385,7 +6407,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
   __Pyx_memviewslice __pyx_t_11 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_RefNannySetupContext("preload", 0);
 
-  /* "fatslimlib/core_datareading.pyx":353
+  /* "fatslimlib/core_datareading.pyx":354
  * cdef class XtcReaderCoords(core_base.CoordinateReader):
  *     cdef preload(self):
  *         cdef fsl_uint offset=0             # <<<<<<<<<<<<<<
@@ -6394,19 +6416,19 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
   __pyx_v_offset = 0;
 
-  /* "fatslimlib/core_datareading.pyx":354
+  /* "fatslimlib/core_datareading.pyx":355
  *     cdef preload(self):
  *         cdef fsl_uint offset=0
  *         cdef fsl_uint max_offset = os.path.getsize(self.filename)             # <<<<<<<<<<<<<<
  *         cdef int magic=-1, num_atoms_frame, frame_size, num_coords_bytes, nframes = 0
- *         cdef float timestep_float
+ *         cdef int natoms = -1
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 355, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 355, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_getsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_getsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 355, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -6420,69 +6442,78 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 354, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
     __Pyx_INCREF(__pyx_v_self->__pyx_base.filename);
     __Pyx_GIVEREF(__pyx_v_self->__pyx_base.filename);
     PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_self->__pyx_base.filename);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyInt_As_fsl_uint(__pyx_t_1); if (unlikely((__pyx_t_5 == (fsl_uint)-1) && PyErr_Occurred())) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_fsl_uint(__pyx_t_1); if (unlikely((__pyx_t_5 == (fsl_uint)-1) && PyErr_Occurred())) __PYX_ERR(0, 355, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_max_offset = __pyx_t_5;
 
-  /* "fatslimlib/core_datareading.pyx":355
+  /* "fatslimlib/core_datareading.pyx":356
  *         cdef fsl_uint offset=0
  *         cdef fsl_uint max_offset = os.path.getsize(self.filename)
  *         cdef int magic=-1, num_atoms_frame, frame_size, num_coords_bytes, nframes = 0             # <<<<<<<<<<<<<<
+ *         cdef int natoms = -1
  *         cdef float timestep_float
- *         cdef XDRFILE *xfp
  */
   __pyx_v_magic = -1;
   __pyx_v_nframes = 0;
 
-  /* "fatslimlib/core_datareading.pyx":359
+  /* "fatslimlib/core_datareading.pyx":357
+ *         cdef fsl_uint max_offset = os.path.getsize(self.filename)
+ *         cdef int magic=-1, num_atoms_frame, frame_size, num_coords_bytes, nframes = 0
+ *         cdef int natoms = -1             # <<<<<<<<<<<<<<
+ *         cdef float timestep_float
+ *         cdef XDRFILE *xfp
+ */
+  __pyx_v_natoms = -1;
+
+  /* "fatslimlib/core_datareading.pyx":361
  *         cdef XDRFILE *xfp
  * 
  *         frame_offsets = []             # <<<<<<<<<<<<<<
  *         timesteps = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_frame_offsets = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":360
+  /* "fatslimlib/core_datareading.pyx":362
  * 
  *         frame_offsets = []
  *         timesteps = []             # <<<<<<<<<<<<<<
  * 
  *         # Open trajectory
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_timesteps = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":363
+  /* "fatslimlib/core_datareading.pyx":365
  * 
  *         # Open trajectory
  *         xfp = xdrfile_open(self.filename, "rb")             # <<<<<<<<<<<<<<
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)
  */
-  __pyx_t_6 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 363, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 365, __pyx_L1_error)
   __pyx_v_xfp = xdrfile_open(__pyx_t_6, ((char const *)"rb"));
 
-  /* "fatslimlib/core_datareading.pyx":364
+  /* "fatslimlib/core_datareading.pyx":366
  *         # Open trajectory
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -6492,28 +6523,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
   __pyx_t_7 = ((__pyx_v_xfp == NULL) != 0);
   if (__pyx_t_7) {
 
-    /* "fatslimlib/core_datareading.pyx":365
+    /* "fatslimlib/core_datareading.pyx":367
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *         # Loop over all available frames
  */
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 365, __pyx_L1_error)
+    __PYX_ERR(0, 367, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":364
+    /* "fatslimlib/core_datareading.pyx":366
  *         # Open trajectory
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -6522,7 +6553,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":368
+  /* "fatslimlib/core_datareading.pyx":370
  * 
  *         # Loop over all available frames
  *         while offset < max_offset:             # <<<<<<<<<<<<<<
@@ -6533,7 +6564,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_offset < __pyx_v_max_offset) != 0);
     if (!__pyx_t_7) break;
 
-    /* "fatslimlib/core_datareading.pyx":370
+    /* "fatslimlib/core_datareading.pyx":372
  *         while offset < max_offset:
  *             # Get to the proper offset
  *             if xdrfile_setpos(xfp, offset) == 0:             # <<<<<<<<<<<<<<
@@ -6543,28 +6574,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
     __pyx_t_7 = ((xdrfile_setpos(__pyx_v_xfp, __pyx_v_offset) == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":371
+      /* "fatslimlib/core_datareading.pyx":373
  *             # Get to the proper offset
  *             if xdrfile_setpos(xfp, offset) == 0:
  *                 raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *             # Initialize the frame length
  */
-      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 373, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 373, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 373, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 371, __pyx_L1_error)
+      __PYX_ERR(0, 373, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":370
+      /* "fatslimlib/core_datareading.pyx":372
  *         while offset < max_offset:
  *             # Get to the proper offset
  *             if xdrfile_setpos(xfp, offset) == 0:             # <<<<<<<<<<<<<<
@@ -6573,7 +6604,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":374
+    /* "fatslimlib/core_datareading.pyx":376
  * 
  *             # Initialize the frame length
  *             frame_size = XTC_HEADER_SIZE             # <<<<<<<<<<<<<<
@@ -6582,7 +6613,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
     __pyx_v_frame_size = 56;
 
-    /* "fatslimlib/core_datareading.pyx":377
+    /* "fatslimlib/core_datareading.pyx":379
  * 
  *             # Check the magic number
  *             xdrfile_read_int(&magic, 1, xfp)             # <<<<<<<<<<<<<<
@@ -6591,7 +6622,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_magic), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":378
+    /* "fatslimlib/core_datareading.pyx":380
  *             # Check the magic number
  *             xdrfile_read_int(&magic, 1, xfp)
  *             if magic != XTC_MAGIC:             # <<<<<<<<<<<<<<
@@ -6601,28 +6632,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_magic != 0x7CB) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":379
+      /* "fatslimlib/core_datareading.pyx":381
  *             xdrfile_read_int(&magic, 1, xfp)
  *             if magic != XTC_MAGIC:
  *                 raise IOError("Corrupted XTC file: '%s'" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *             # Read timestep
  */
-      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Corrupted_XTC_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 379, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Corrupted_XTC_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 379, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 379, __pyx_L1_error)
+      __PYX_ERR(0, 381, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":378
+      /* "fatslimlib/core_datareading.pyx":380
  *             # Check the magic number
  *             xdrfile_read_int(&magic, 1, xfp)
  *             if magic != XTC_MAGIC:             # <<<<<<<<<<<<<<
@@ -6631,7 +6662,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":382
+    /* "fatslimlib/core_datareading.pyx":384
  * 
  *             # Read timestep
  *             if xdrfile_setpos(xfp, offset + 12) == 0:             # <<<<<<<<<<<<<<
@@ -6641,28 +6672,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
     __pyx_t_7 = ((xdrfile_setpos(__pyx_v_xfp, (__pyx_v_offset + 12)) == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":383
+      /* "fatslimlib/core_datareading.pyx":385
  *             # Read timestep
  *             if xdrfile_setpos(xfp, offset + 12) == 0:
  *                 raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *             xdrfile_read_float(&timestep_float, 1, xfp)
  * 
  */
-      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 383, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 383, __pyx_L1_error)
+      __PYX_ERR(0, 385, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":382
+      /* "fatslimlib/core_datareading.pyx":384
  * 
  *             # Read timestep
  *             if xdrfile_setpos(xfp, offset + 12) == 0:             # <<<<<<<<<<<<<<
@@ -6671,7 +6702,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":384
+    /* "fatslimlib/core_datareading.pyx":386
  *             if xdrfile_setpos(xfp, offset + 12) == 0:
  *                 raise IOError("Could not set position in file: %s" % self.filename)
  *             xdrfile_read_float(&timestep_float, 1, xfp)             # <<<<<<<<<<<<<<
@@ -6680,7 +6711,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
     xdrfile_read_float((&__pyx_v_timestep_float), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":387
+    /* "fatslimlib/core_datareading.pyx":389
  * 
  *             # Read number of atoms
  *             if xdrfile_setpos(xfp, offset + 52) == 0:             # <<<<<<<<<<<<<<
@@ -6690,28 +6721,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
     __pyx_t_7 = ((xdrfile_setpos(__pyx_v_xfp, (__pyx_v_offset + 52)) == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":388
+      /* "fatslimlib/core_datareading.pyx":390
  *             # Read number of atoms
  *             if xdrfile_setpos(xfp, offset + 52) == 0:
  *                 raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *             xdrfile_read_int(&num_atoms_frame, 1, xfp)
  * 
  */
-      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 388, __pyx_L1_error)
+      __PYX_ERR(0, 390, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":387
+      /* "fatslimlib/core_datareading.pyx":389
  * 
  *             # Read number of atoms
  *             if xdrfile_setpos(xfp, offset + 52) == 0:             # <<<<<<<<<<<<<<
@@ -6720,17 +6751,129 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":389
+    /* "fatslimlib/core_datareading.pyx":391
  *             if xdrfile_setpos(xfp, offset + 52) == 0:
  *                 raise IOError("Could not set position in file: %s" % self.filename)
  *             xdrfile_read_int(&num_atoms_frame, 1, xfp)             # <<<<<<<<<<<<<<
  * 
- *             if num_atoms_frame <= 9: # No compression used
+ *             if natoms < 0:
  */
     xdrfile_read_int((&__pyx_v_num_atoms_frame), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":391
+    /* "fatslimlib/core_datareading.pyx":393
  *             xdrfile_read_int(&num_atoms_frame, 1, xfp)
+ * 
+ *             if natoms < 0:             # <<<<<<<<<<<<<<
+ *                 natoms = num_atoms_frame
+ *             elif natoms != num_atoms_frame:
+ */
+    __pyx_t_7 = ((__pyx_v_natoms < 0) != 0);
+    if (__pyx_t_7) {
+
+      /* "fatslimlib/core_datareading.pyx":394
+ * 
+ *             if natoms < 0:
+ *                 natoms = num_atoms_frame             # <<<<<<<<<<<<<<
+ *             elif natoms != num_atoms_frame:
+ *                 raise IndexError("Incoherent number of atoms in frame #%i (%i but expecting %i)" % (nframes+1,
+ */
+      __pyx_v_natoms = __pyx_v_num_atoms_frame;
+
+      /* "fatslimlib/core_datareading.pyx":393
+ *             xdrfile_read_int(&num_atoms_frame, 1, xfp)
+ * 
+ *             if natoms < 0:             # <<<<<<<<<<<<<<
+ *                 natoms = num_atoms_frame
+ *             elif natoms != num_atoms_frame:
+ */
+      goto __pyx_L10;
+    }
+
+    /* "fatslimlib/core_datareading.pyx":395
+ *             if natoms < 0:
+ *                 natoms = num_atoms_frame
+ *             elif natoms != num_atoms_frame:             # <<<<<<<<<<<<<<
+ *                 raise IndexError("Incoherent number of atoms in frame #%i (%i but expecting %i)" % (nframes+1,
+ *                                                                                                     num_atoms_frame,
+ */
+    __pyx_t_7 = ((__pyx_v_natoms != __pyx_v_num_atoms_frame) != 0);
+    if (__pyx_t_7) {
+
+      /* "fatslimlib/core_datareading.pyx":396
+ *                 natoms = num_atoms_frame
+ *             elif natoms != num_atoms_frame:
+ *                 raise IndexError("Incoherent number of atoms in frame #%i (%i but expecting %i)" % (nframes+1,             # <<<<<<<<<<<<<<
+ *                                                                                                     num_atoms_frame,
+ *                                                                                                     natoms))
+ */
+      __pyx_t_1 = __Pyx_PyInt_From_long((__pyx_v_nframes + 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+
+      /* "fatslimlib/core_datareading.pyx":397
+ *             elif natoms != num_atoms_frame:
+ *                 raise IndexError("Incoherent number of atoms in frame #%i (%i but expecting %i)" % (nframes+1,
+ *                                                                                                     num_atoms_frame,             # <<<<<<<<<<<<<<
+ *                                                                                                     natoms))
+ * 
+ */
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_num_atoms_frame); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+
+      /* "fatslimlib/core_datareading.pyx":398
+ *                 raise IndexError("Incoherent number of atoms in frame #%i (%i but expecting %i)" % (nframes+1,
+ *                                                                                                     num_atoms_frame,
+ *                                                                                                     natoms))             # <<<<<<<<<<<<<<
+ * 
+ *             if num_atoms_frame <= 9: # No compression used
+ */
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_natoms); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+
+      /* "fatslimlib/core_datareading.pyx":396
+ *                 natoms = num_atoms_frame
+ *             elif natoms != num_atoms_frame:
+ *                 raise IndexError("Incoherent number of atoms in frame #%i (%i but expecting %i)" % (nframes+1,             # <<<<<<<<<<<<<<
+ *                                                                                                     num_atoms_frame,
+ *                                                                                                     natoms))
+ */
+      __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_GIVEREF(__pyx_t_1);
+      PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
+      __Pyx_GIVEREF(__pyx_t_2);
+      PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_t_4);
+      __pyx_t_1 = 0;
+      __pyx_t_2 = 0;
+      __pyx_t_4 = 0;
+      __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incoherent_number_of_atoms_in_fr, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+      __pyx_t_4 = 0;
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __PYX_ERR(0, 396, __pyx_L1_error)
+
+      /* "fatslimlib/core_datareading.pyx":395
+ *             if natoms < 0:
+ *                 natoms = num_atoms_frame
+ *             elif natoms != num_atoms_frame:             # <<<<<<<<<<<<<<
+ *                 raise IndexError("Incoherent number of atoms in frame #%i (%i but expecting %i)" % (nframes+1,
+ *                                                                                                     num_atoms_frame,
+ */
+    }
+    __pyx_L10:;
+
+    /* "fatslimlib/core_datareading.pyx":400
+ *                                                                                                     natoms))
  * 
  *             if num_atoms_frame <= 9: # No compression used             # <<<<<<<<<<<<<<
  *                 frame_size += num_atoms_frame * 3 * 4
@@ -6739,7 +6882,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_num_atoms_frame <= 9) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":392
+      /* "fatslimlib/core_datareading.pyx":401
  * 
  *             if num_atoms_frame <= 9: # No compression used
  *                 frame_size += num_atoms_frame * 3 * 4             # <<<<<<<<<<<<<<
@@ -6748,17 +6891,17 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
       __pyx_v_frame_size = (__pyx_v_frame_size + ((__pyx_v_num_atoms_frame * 3) * 4));
 
-      /* "fatslimlib/core_datareading.pyx":391
- *             xdrfile_read_int(&num_atoms_frame, 1, xfp)
+      /* "fatslimlib/core_datareading.pyx":400
+ *                                                                                                     natoms))
  * 
  *             if num_atoms_frame <= 9: # No compression used             # <<<<<<<<<<<<<<
  *                 frame_size += num_atoms_frame * 3 * 4
  *             else:
  */
-      goto __pyx_L10;
+      goto __pyx_L11;
     }
 
-    /* "fatslimlib/core_datareading.pyx":395
+    /* "fatslimlib/core_datareading.pyx":404
  *             else:
  *                 # Read number of bytes used to store coordinates
  *                 if xdrfile_setpos(xfp, offset + 88) == 0:             # <<<<<<<<<<<<<<
@@ -6769,28 +6912,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
       __pyx_t_7 = ((xdrfile_setpos(__pyx_v_xfp, (__pyx_v_offset + 88)) == 0) != 0);
       if (__pyx_t_7) {
 
-        /* "fatslimlib/core_datareading.pyx":396
+        /* "fatslimlib/core_datareading.pyx":405
  *                 # Read number of bytes used to store coordinates
  *                 if xdrfile_setpos(xfp, offset + 88) == 0:
  *                     raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *                 xdrfile_read_int(&num_coords_bytes, 1, xfp)
  * 
  */
-        __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 396, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 396, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_GIVEREF(__pyx_t_1);
-        PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
-        __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 396, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __Pyx_Raise(__pyx_t_1, 0, 0, 0);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __PYX_ERR(0, 396, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 405, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+        __pyx_t_4 = 0;
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 405, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __PYX_ERR(0, 405, __pyx_L1_error)
 
-        /* "fatslimlib/core_datareading.pyx":395
+        /* "fatslimlib/core_datareading.pyx":404
  *             else:
  *                 # Read number of bytes used to store coordinates
  *                 if xdrfile_setpos(xfp, offset + 88) == 0:             # <<<<<<<<<<<<<<
@@ -6799,7 +6942,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
       }
 
-      /* "fatslimlib/core_datareading.pyx":397
+      /* "fatslimlib/core_datareading.pyx":406
  *                 if xdrfile_setpos(xfp, offset + 88) == 0:
  *                     raise IOError("Could not set position in file: %s" % self.filename)
  *                 xdrfile_read_int(&num_coords_bytes, 1, xfp)             # <<<<<<<<<<<<<<
@@ -6808,7 +6951,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
       xdrfile_read_int((&__pyx_v_num_coords_bytes), 1, __pyx_v_xfp);
 
-      /* "fatslimlib/core_datareading.pyx":401
+      /* "fatslimlib/core_datareading.pyx":410
  *                 # As coords bytes might not a factor of 4, we need to make sure of that.
  *                 # NOTE: this is due to xdr file spec, not related to gmx stuff.
  *                 if num_coords_bytes % 4 != 0:             # <<<<<<<<<<<<<<
@@ -6818,7 +6961,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
       __pyx_t_7 = (((__pyx_v_num_coords_bytes % 4) != 0) != 0);
       if (__pyx_t_7) {
 
-        /* "fatslimlib/core_datareading.pyx":402
+        /* "fatslimlib/core_datareading.pyx":411
  *                 # NOTE: this is due to xdr file spec, not related to gmx stuff.
  *                 if num_coords_bytes % 4 != 0:
  *                     num_coords_bytes = 4 * (num_coords_bytes // 4 + 1)             # <<<<<<<<<<<<<<
@@ -6827,7 +6970,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
         __pyx_v_num_coords_bytes = (4 * ((__pyx_v_num_coords_bytes / 4) + 1));
 
-        /* "fatslimlib/core_datareading.pyx":401
+        /* "fatslimlib/core_datareading.pyx":410
  *                 # As coords bytes might not a factor of 4, we need to make sure of that.
  *                 # NOTE: this is due to xdr file spec, not related to gmx stuff.
  *                 if num_coords_bytes % 4 != 0:             # <<<<<<<<<<<<<<
@@ -6836,7 +6979,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
       }
 
-      /* "fatslimlib/core_datareading.pyx":404
+      /* "fatslimlib/core_datareading.pyx":413
  *                     num_coords_bytes = 4 * (num_coords_bytes // 4 + 1)
  * 
  *                 frame_size += 36 + num_coords_bytes             # <<<<<<<<<<<<<<
@@ -6845,33 +6988,33 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
       __pyx_v_frame_size = (__pyx_v_frame_size + (36 + __pyx_v_num_coords_bytes));
     }
-    __pyx_L10:;
+    __pyx_L11:;
 
-    /* "fatslimlib/core_datareading.pyx":407
+    /* "fatslimlib/core_datareading.pyx":416
  * 
  *             # Store data
  *             frame_offsets.append(offset)             # <<<<<<<<<<<<<<
  *             timesteps.append(timestep_float)
  * 
  */
-    __pyx_t_1 = __Pyx_PyInt_From_fsl_uint(__pyx_v_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyObject_Append(__pyx_v_frame_offsets, __pyx_t_1); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 407, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_4 = __Pyx_PyInt_From_fsl_uint(__pyx_v_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_8 = __Pyx_PyObject_Append(__pyx_v_frame_offsets, __pyx_t_4); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 416, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":408
+    /* "fatslimlib/core_datareading.pyx":417
  *             # Store data
  *             frame_offsets.append(offset)
  *             timesteps.append(timestep_float)             # <<<<<<<<<<<<<<
  * 
  *             # Update frame counter and offset
  */
-    __pyx_t_1 = PyFloat_FromDouble(__pyx_v_timestep_float); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 408, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyObject_Append(__pyx_v_timesteps, __pyx_t_1); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 408, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_timestep_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 417, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_8 = __Pyx_PyObject_Append(__pyx_v_timesteps, __pyx_t_4); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 417, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":411
+    /* "fatslimlib/core_datareading.pyx":420
  * 
  *             # Update frame counter and offset
  *             nframes += 1             # <<<<<<<<<<<<<<
@@ -6880,7 +7023,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
     __pyx_v_nframes = (__pyx_v_nframes + 1);
 
-    /* "fatslimlib/core_datareading.pyx":412
+    /* "fatslimlib/core_datareading.pyx":421
  *             # Update frame counter and offset
  *             nframes += 1
  *             offset += frame_size             # <<<<<<<<<<<<<<
@@ -6890,7 +7033,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
     __pyx_v_offset = (__pyx_v_offset + __pyx_v_frame_size);
   }
 
-  /* "fatslimlib/core_datareading.pyx":415
+  /* "fatslimlib/core_datareading.pyx":424
  * 
  *         # Close file and release memory
  *         xdrfile_close(xfp)             # <<<<<<<<<<<<<<
@@ -6899,75 +7042,75 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  */
   xdrfile_close(__pyx_v_xfp);
 
-  /* "fatslimlib/core_datareading.pyx":417
+  /* "fatslimlib/core_datareading.pyx":426
  *         xdrfile_close(xfp)
  * 
  *         frame_offsets = numpy.array(frame_offsets, dtype=np.int64)             # <<<<<<<<<<<<<<
  *         timesteps = numpy.array(timesteps, dtype=np.float64)
  *         self.timesteps = timesteps
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_frame_offsets);
   __Pyx_GIVEREF(__pyx_v_frame_offsets);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_frame_offsets);
-  __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 417, __pyx_L1_error)
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_frame_offsets);
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_9) < 0) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 426, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_9) < 0) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 417, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_frame_offsets, __pyx_t_9);
   __pyx_t_9 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":418
+  /* "fatslimlib/core_datareading.pyx":427
  * 
  *         frame_offsets = numpy.array(frame_offsets, dtype=np.int64)
  *         timesteps = numpy.array(timesteps, dtype=np.float64)             # <<<<<<<<<<<<<<
  *         self.timesteps = timesteps
  *         self.coordinate_offsets = frame_offsets + 52
  */
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 418, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 427, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 418, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 418, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 427, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_INCREF(__pyx_v_timesteps);
   __Pyx_GIVEREF(__pyx_v_timesteps);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_timesteps);
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
+  __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_float64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 418, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 427, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF_SET(__pyx_v_timesteps, __pyx_t_3);
-  __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF_SET(__pyx_v_timesteps, __pyx_t_1);
+  __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":419
+  /* "fatslimlib/core_datareading.pyx":428
  *         frame_offsets = numpy.array(frame_offsets, dtype=np.int64)
  *         timesteps = numpy.array(timesteps, dtype=np.float64)
  *         self.timesteps = timesteps             # <<<<<<<<<<<<<<
@@ -6975,56 +7118,65 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
  *         self.box_offsets = frame_offsets + 16
  */
   __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(__pyx_v_timesteps);
-  if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 419, __pyx_L1_error)
+  if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 428, __pyx_L1_error)
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.timesteps, 0);
   __pyx_v_self->__pyx_base.timesteps = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":420
+  /* "fatslimlib/core_datareading.pyx":429
  *         timesteps = numpy.array(timesteps, dtype=np.float64)
  *         self.timesteps = timesteps
  *         self.coordinate_offsets = frame_offsets + 52             # <<<<<<<<<<<<<<
  *         self.box_offsets = frame_offsets + 16
  *         self.nframes = nframes
  */
-  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_frame_offsets, __pyx_int_52, 52, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 420, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_3);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 420, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_frame_offsets, __pyx_int_52, 52, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 429, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_1);
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 429, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.coordinate_offsets, 0);
   __pyx_v_self->__pyx_base.coordinate_offsets = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":421
+  /* "fatslimlib/core_datareading.pyx":430
  *         self.timesteps = timesteps
  *         self.coordinate_offsets = frame_offsets + 52
  *         self.box_offsets = frame_offsets + 16             # <<<<<<<<<<<<<<
  *         self.nframes = nframes
- * 
+ *         self.natoms = natoms
  */
-  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_frame_offsets, __pyx_int_16, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_3);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 421, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_frame_offsets, __pyx_int_16, 16, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_1);
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.box_offsets, 0);
   __pyx_v_self->__pyx_base.box_offsets = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":422
+  /* "fatslimlib/core_datareading.pyx":431
  *         self.coordinate_offsets = frame_offsets + 52
  *         self.box_offsets = frame_offsets + 16
  *         self.nframes = nframes             # <<<<<<<<<<<<<<
+ *         self.natoms = natoms
  * 
- *     cdef core_base.PBCBox load_box(self, int frame_id):
  */
   __pyx_v_self->__pyx_base.nframes = __pyx_v_nframes;
 
-  /* "fatslimlib/core_datareading.pyx":352
+  /* "fatslimlib/core_datareading.pyx":432
+ *         self.box_offsets = frame_offsets + 16
+ *         self.nframes = nframes
+ *         self.natoms = natoms             # <<<<<<<<<<<<<<
+ * 
+ *     cdef core_base.PBCBox load_box(self, int frame_id):
+ */
+  __pyx_v_self->__pyx_base.natoms = __pyx_v_natoms;
+
+  /* "fatslimlib/core_datareading.pyx":353
  * 
  * cdef class XtcReaderCoords(core_base.CoordinateReader):
  *     cdef preload(self):             # <<<<<<<<<<<<<<
@@ -7053,8 +7205,8 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_prelo
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":424
- *         self.nframes = nframes
+/* "fatslimlib/core_datareading.pyx":434
+ *         self.natoms = natoms
  * 
  *     cdef core_base.PBCBox load_box(self, int frame_id):             # <<<<<<<<<<<<<<
  *         cdef XDRFILE *xfp
@@ -7084,61 +7236,61 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   Py_ssize_t __pyx_t_12;
   __Pyx_RefNannySetupContext("load_box", 0);
 
-  /* "fatslimlib/core_datareading.pyx":426
+  /* "fatslimlib/core_datareading.pyx":436
  *     cdef core_base.PBCBox load_box(self, int frame_id):
  *         cdef XDRFILE *xfp
  *         cdef fsl_uint pos = self.box_offsets[frame_id]             # <<<<<<<<<<<<<<
  *         cdef real[:,::1] box = numpy.empty((DIM, DIM), dtype=np.float64)
  *         cdef float float_box[DIM][DIM]
  */
-  if (unlikely(!__pyx_v_self->__pyx_base.box_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 426, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_self->__pyx_base.box_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 436, __pyx_L1_error)}
   __pyx_t_1 = __pyx_v_frame_id;
   if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_self->__pyx_base.box_offsets.shape[0];
   __pyx_v_pos = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->__pyx_base.box_offsets.data + __pyx_t_1 * __pyx_v_self->__pyx_base.box_offsets.strides[0]) )));
 
-  /* "fatslimlib/core_datareading.pyx":427
+  /* "fatslimlib/core_datareading.pyx":437
  *         cdef XDRFILE *xfp
  *         cdef fsl_uint pos = self.box_offsets[frame_id]
  *         cdef real[:,::1] box = numpy.empty((DIM, DIM), dtype=np.float64)             # <<<<<<<<<<<<<<
  *         cdef float float_box[DIM][DIM]
  *         cdef int i,j
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 427, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__30, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__30, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_5);
-  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 427, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_box = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":431
+  /* "fatslimlib/core_datareading.pyx":441
  *         cdef int i,j
  * 
  *         xfp = xdrfile_open(self.filename, "rb")             # <<<<<<<<<<<<<<
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)
  */
-  __pyx_t_7 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 431, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 441, __pyx_L1_error)
   __pyx_v_xfp = xdrfile_open(__pyx_t_7, ((char const *)"rb"));
 
-  /* "fatslimlib/core_datareading.pyx":432
+  /* "fatslimlib/core_datareading.pyx":442
  * 
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -7148,28 +7300,28 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   __pyx_t_8 = ((__pyx_v_xfp == NULL) != 0);
   if (__pyx_t_8) {
 
-    /* "fatslimlib/core_datareading.pyx":433
+    /* "fatslimlib/core_datareading.pyx":443
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             raise IOError("Could not set position in file: %s" % self.filename)
  */
-    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 433, __pyx_L1_error)
+    __PYX_ERR(0, 443, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":432
+    /* "fatslimlib/core_datareading.pyx":442
  * 
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -7178,7 +7330,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":434
+  /* "fatslimlib/core_datareading.pyx":444
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:             # <<<<<<<<<<<<<<
@@ -7188,28 +7340,28 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   __pyx_t_8 = ((xdrfile_setpos(__pyx_v_xfp, __pyx_v_pos) == 0) != 0);
   if (__pyx_t_8) {
 
-    /* "fatslimlib/core_datareading.pyx":435
+    /* "fatslimlib/core_datareading.pyx":445
  *             raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *         if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:
  *             raise IOError("Could not read matrix")
  */
-    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 445, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 445, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 445, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 435, __pyx_L1_error)
+    __PYX_ERR(0, 445, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":434
+    /* "fatslimlib/core_datareading.pyx":444
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:             # <<<<<<<<<<<<<<
@@ -7218,7 +7370,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":436
+  /* "fatslimlib/core_datareading.pyx":446
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             raise IOError("Could not set position in file: %s" % self.filename)
  *         if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:             # <<<<<<<<<<<<<<
@@ -7228,20 +7380,20 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   __pyx_t_8 = ((xdrfile_read_float((__pyx_v_float_box[0]), 9, __pyx_v_xfp) != 9) != 0);
   if (__pyx_t_8) {
 
-    /* "fatslimlib/core_datareading.pyx":437
+    /* "fatslimlib/core_datareading.pyx":447
  *             raise IOError("Could not set position in file: %s" % self.filename)
  *         if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:
  *             raise IOError("Could not read matrix")             # <<<<<<<<<<<<<<
  *         # Convert float to real
  *         for i in range(DIM):
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 447, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 437, __pyx_L1_error)
+    __PYX_ERR(0, 447, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":436
+    /* "fatslimlib/core_datareading.pyx":446
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             raise IOError("Could not set position in file: %s" % self.filename)
  *         if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:             # <<<<<<<<<<<<<<
@@ -7250,7 +7402,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":439
+  /* "fatslimlib/core_datareading.pyx":449
  *             raise IOError("Could not read matrix")
  *         # Convert float to real
  *         for i in range(DIM):             # <<<<<<<<<<<<<<
@@ -7260,7 +7412,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   for (__pyx_t_9 = 0; __pyx_t_9 < 3; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "fatslimlib/core_datareading.pyx":440
+    /* "fatslimlib/core_datareading.pyx":450
  *         # Convert float to real
  *         for i in range(DIM):
  *             for j in range(DIM):             # <<<<<<<<<<<<<<
@@ -7270,7 +7422,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     for (__pyx_t_10 = 0; __pyx_t_10 < 3; __pyx_t_10+=1) {
       __pyx_v_j = __pyx_t_10;
 
-      /* "fatslimlib/core_datareading.pyx":441
+      /* "fatslimlib/core_datareading.pyx":451
  *         for i in range(DIM):
  *             for j in range(DIM):
  *                 box[i, j] = <real> float_box[i][j]             # <<<<<<<<<<<<<<
@@ -7285,7 +7437,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     }
   }
 
-  /* "fatslimlib/core_datareading.pyx":443
+  /* "fatslimlib/core_datareading.pyx":453
  *                 box[i, j] = <real> float_box[i][j]
  *         # Close file and release memory
  *         xdrfile_close(xfp)             # <<<<<<<<<<<<<<
@@ -7294,7 +7446,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
   xdrfile_close(__pyx_v_xfp);
 
-  /* "fatslimlib/core_datareading.pyx":445
+  /* "fatslimlib/core_datareading.pyx":455
  *         xdrfile_close(xfp)
  * 
  *         return core_base.PBCBox(box)             # <<<<<<<<<<<<<<
@@ -7302,22 +7454,22 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  * 
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_box, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_box, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_PBCBox), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_PBCBox), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = ((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_t_5);
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_datareading.pyx":424
- *         self.nframes = nframes
+  /* "fatslimlib/core_datareading.pyx":434
+ *         self.natoms = natoms
  * 
  *     cdef core_base.PBCBox load_box(self, int frame_id):             # <<<<<<<<<<<<<<
  *         cdef XDRFILE *xfp
@@ -7340,7 +7492,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":449
+/* "fatslimlib/core_datareading.pyx":459
  * 
  * 
  *     cdef real[:, ::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:             # <<<<<<<<<<<<<<
@@ -7390,7 +7542,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_datareading.pyx":450
+  /* "fatslimlib/core_datareading.pyx":460
  * 
  *     cdef real[:, ::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:
  *         cdef XDRFILE *xfp             # <<<<<<<<<<<<<<
@@ -7399,7 +7551,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
   /*try:*/ {
 
-    /* "fatslimlib/core_datareading.pyx":452
+    /* "fatslimlib/core_datareading.pyx":462
  *         cdef XDRFILE *xfp
  *         cdef fsl_uint pos
  *         cdef int size = atomids.shape[0], total_size             # <<<<<<<<<<<<<<
@@ -7408,7 +7560,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     __pyx_v_size = (__pyx_v_atomids.shape[0]);
 
-    /* "fatslimlib/core_datareading.pyx":454
+    /* "fatslimlib/core_datareading.pyx":464
  *         cdef int size = atomids.shape[0], total_size
  *         cdef int i
  *         cdef fsl_int tmpid, maxid = -1             # <<<<<<<<<<<<<<
@@ -7417,7 +7569,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     __pyx_v_maxid = -1;
 
-    /* "fatslimlib/core_datareading.pyx":458
+    /* "fatslimlib/core_datareading.pyx":468
  *         cdef real[:, ::1] coords
  *         cdef rvec *real_coords
  *         cdef real prec = 0.0             # <<<<<<<<<<<<<<
@@ -7426,7 +7578,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     __pyx_v_prec = 0.0;
 
-    /* "fatslimlib/core_datareading.pyx":461
+    /* "fatslimlib/core_datareading.pyx":471
  *         cdef char *filename
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -7439,21 +7591,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_datareading.pyx":462
+          /* "fatslimlib/core_datareading.pyx":472
  * 
  *         with gil:
  *             coords = numpy.empty((size, DIM))             # <<<<<<<<<<<<<<
  *             pos = self.coordinate_offsets[frame_id]
  *             filename = self.filename
  */
-          __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 462, __pyx_L7_error)
+          __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 462, __pyx_L7_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 472, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 462, __pyx_L7_error)
+          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 462, __pyx_L7_error)
+          __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 472, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_GIVEREF(__pyx_t_2);
           PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -7472,52 +7624,52 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
             }
           }
           if (!__pyx_t_2) {
-            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L7_error)
+            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L7_error)
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_GOTREF(__pyx_t_1);
           } else {
-            __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 462, __pyx_L7_error)
+            __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 472, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
             __Pyx_GIVEREF(__pyx_t_4);
             PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_4);
             __pyx_t_4 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L7_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_1);
-          if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 462, __pyx_L7_error)
+          if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 472, __pyx_L7_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_v_coords = __pyx_t_6;
           __pyx_t_6.memview = NULL;
           __pyx_t_6.data = NULL;
 
-          /* "fatslimlib/core_datareading.pyx":463
+          /* "fatslimlib/core_datareading.pyx":473
  *         with gil:
  *             coords = numpy.empty((size, DIM))
  *             pos = self.coordinate_offsets[frame_id]             # <<<<<<<<<<<<<<
  *             filename = self.filename
  * 
  */
-          if (unlikely(!__pyx_v_self->__pyx_base.coordinate_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 463, __pyx_L7_error)}
+          if (unlikely(!__pyx_v_self->__pyx_base.coordinate_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 473, __pyx_L7_error)}
           __pyx_t_7 = __pyx_v_frame_id;
           if (__pyx_t_7 < 0) __pyx_t_7 += __pyx_v_self->__pyx_base.coordinate_offsets.shape[0];
           __pyx_v_pos = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->__pyx_base.coordinate_offsets.data + __pyx_t_7 * __pyx_v_self->__pyx_base.coordinate_offsets.strides[0]) )));
 
-          /* "fatslimlib/core_datareading.pyx":464
+          /* "fatslimlib/core_datareading.pyx":474
  *             coords = numpy.empty((size, DIM))
  *             pos = self.coordinate_offsets[frame_id]
  *             filename = self.filename             # <<<<<<<<<<<<<<
  * 
  *         # Retrieve the max atomid to get how many coordinates needs to be retrieved
  */
-          __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(0, 464, __pyx_L7_error)
+          __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(0, 474, __pyx_L7_error)
           __pyx_v_filename = __pyx_t_8;
         }
 
-        /* "fatslimlib/core_datareading.pyx":461
+        /* "fatslimlib/core_datareading.pyx":471
  *         cdef char *filename
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -7541,7 +7693,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
         }
     }
 
-    /* "fatslimlib/core_datareading.pyx":467
+    /* "fatslimlib/core_datareading.pyx":477
  * 
  *         # Retrieve the max atomid to get how many coordinates needs to be retrieved
  *         for i in range(size):             # <<<<<<<<<<<<<<
@@ -7552,7 +7704,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_i = __pyx_t_10;
 
-      /* "fatslimlib/core_datareading.pyx":468
+      /* "fatslimlib/core_datareading.pyx":478
  *         # Retrieve the max atomid to get how many coordinates needs to be retrieved
  *         for i in range(size):
  *             tmpid = atomids[i]             # <<<<<<<<<<<<<<
@@ -7563,7 +7715,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
       if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_atomids.shape[0];
       __pyx_v_tmpid = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_11 * __pyx_v_atomids.strides[0]) )));
 
-      /* "fatslimlib/core_datareading.pyx":469
+      /* "fatslimlib/core_datareading.pyx":479
  *         for i in range(size):
  *             tmpid = atomids[i]
  *             if tmpid > maxid:             # <<<<<<<<<<<<<<
@@ -7573,7 +7725,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
       __pyx_t_12 = ((__pyx_v_tmpid > __pyx_v_maxid) != 0);
       if (__pyx_t_12) {
 
-        /* "fatslimlib/core_datareading.pyx":470
+        /* "fatslimlib/core_datareading.pyx":480
  *             tmpid = atomids[i]
  *             if tmpid > maxid:
  *                 maxid = tmpid             # <<<<<<<<<<<<<<
@@ -7582,7 +7734,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
         __pyx_v_maxid = __pyx_v_tmpid;
 
-        /* "fatslimlib/core_datareading.pyx":469
+        /* "fatslimlib/core_datareading.pyx":479
  *         for i in range(size):
  *             tmpid = atomids[i]
  *             if tmpid > maxid:             # <<<<<<<<<<<<<<
@@ -7592,7 +7744,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
       }
     }
 
-    /* "fatslimlib/core_datareading.pyx":471
+    /* "fatslimlib/core_datareading.pyx":481
  *             if tmpid > maxid:
  *                 maxid = tmpid
  *         natoms = maxid             # <<<<<<<<<<<<<<
@@ -7601,7 +7753,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     __pyx_v_natoms = __pyx_v_maxid;
 
-    /* "fatslimlib/core_datareading.pyx":474
+    /* "fatslimlib/core_datareading.pyx":484
  * 
  *         # Open traj file
  *         xfp = xdrfile_open(filename, "rb")             # <<<<<<<<<<<<<<
@@ -7610,7 +7762,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     __pyx_v_xfp = xdrfile_open(__pyx_v_filename, ((char const *)"rb"));
 
-    /* "fatslimlib/core_datareading.pyx":475
+    /* "fatslimlib/core_datareading.pyx":485
  *         # Open traj file
  *         xfp = xdrfile_open(filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -7620,7 +7772,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
     __pyx_t_12 = ((__pyx_v_xfp == NULL) != 0);
     if (__pyx_t_12) {
 
-      /* "fatslimlib/core_datareading.pyx":476
+      /* "fatslimlib/core_datareading.pyx":486
  *         xfp = xdrfile_open(filename, "rb")
  *         if xfp == NULL:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -7633,29 +7785,29 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_datareading.pyx":477
+            /* "fatslimlib/core_datareading.pyx":487
  *         if xfp == NULL:
  *             with gil:
  *                 raise IOError("Could not read file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             with gil:
  */
-            __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L14_error)
+            __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 487, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 477, __pyx_L14_error)
+            __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 487, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L14_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 487, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_Raise(__pyx_t_1, 0, 0, 0);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __PYX_ERR(0, 477, __pyx_L14_error)
+            __PYX_ERR(0, 487, __pyx_L14_error)
           }
 
-          /* "fatslimlib/core_datareading.pyx":476
+          /* "fatslimlib/core_datareading.pyx":486
  *         xfp = xdrfile_open(filename, "rb")
  *         if xfp == NULL:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -7672,7 +7824,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           }
       }
 
-      /* "fatslimlib/core_datareading.pyx":475
+      /* "fatslimlib/core_datareading.pyx":485
  *         # Open traj file
  *         xfp = xdrfile_open(filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -7681,7 +7833,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":478
+    /* "fatslimlib/core_datareading.pyx":488
  *             with gil:
  *                 raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:             # <<<<<<<<<<<<<<
@@ -7691,7 +7843,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
     __pyx_t_12 = ((xdrfile_setpos(__pyx_v_xfp, __pyx_v_pos) == 0) != 0);
     if (__pyx_t_12) {
 
-      /* "fatslimlib/core_datareading.pyx":479
+      /* "fatslimlib/core_datareading.pyx":489
  *                 raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -7704,29 +7856,29 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_datareading.pyx":480
+            /* "fatslimlib/core_datareading.pyx":490
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             with gil:
  *                 raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *         # Get the number of coordinates in frame
  */
-            __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L18_error)
+            __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L18_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 480, __pyx_L18_error)
+            __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 490, __pyx_L18_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L18_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L18_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_Raise(__pyx_t_1, 0, 0, 0);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __PYX_ERR(0, 480, __pyx_L18_error)
+            __PYX_ERR(0, 490, __pyx_L18_error)
           }
 
-          /* "fatslimlib/core_datareading.pyx":479
+          /* "fatslimlib/core_datareading.pyx":489
  *                 raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -7743,7 +7895,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           }
       }
 
-      /* "fatslimlib/core_datareading.pyx":478
+      /* "fatslimlib/core_datareading.pyx":488
  *             with gil:
  *                 raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:             # <<<<<<<<<<<<<<
@@ -7752,7 +7904,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":483
+    /* "fatslimlib/core_datareading.pyx":493
  * 
  *         # Get the number of coordinates in frame
  *         xdrfile_read_int(&total_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -7761,7 +7913,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     xdrfile_read_int((&__pyx_v_total_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":486
+    /* "fatslimlib/core_datareading.pyx":496
  * 
  *         # Allocate memory
  *         with gil:             # <<<<<<<<<<<<<<
@@ -7774,7 +7926,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_datareading.pyx":487
+          /* "fatslimlib/core_datareading.pyx":497
  *         # Allocate memory
  *         with gil:
  *             real_coords = <rvec *> PyMem_Malloc(sizeof(rvec) * total_size)             # <<<<<<<<<<<<<<
@@ -7784,7 +7936,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           __pyx_v_real_coords = ((rvec *)PyMem_Malloc(((sizeof(rvec)) * __pyx_v_total_size)));
         }
 
-        /* "fatslimlib/core_datareading.pyx":486
+        /* "fatslimlib/core_datareading.pyx":496
  * 
  *         # Allocate memory
  *         with gil:             # <<<<<<<<<<<<<<
@@ -7802,7 +7954,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
         }
     }
 
-    /* "fatslimlib/core_datareading.pyx":490
+    /* "fatslimlib/core_datareading.pyx":500
  * 
  *         # Reset position to the beginning of the frame
  *         if xdrfile_setpos(xfp, pos) == 0:             # <<<<<<<<<<<<<<
@@ -7812,7 +7964,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
     __pyx_t_12 = ((xdrfile_setpos(__pyx_v_xfp, __pyx_v_pos) == 0) != 0);
     if (__pyx_t_12) {
 
-      /* "fatslimlib/core_datareading.pyx":491
+      /* "fatslimlib/core_datareading.pyx":501
  *         # Reset position to the beginning of the frame
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -7825,29 +7977,29 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_datareading.pyx":492
+            /* "fatslimlib/core_datareading.pyx":502
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             with gil:
  *                 raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *         # Load coordinates
  */
-            __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L25_error)
+            __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L25_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 492, __pyx_L25_error)
+            __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 502, __pyx_L25_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L25_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L25_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_Raise(__pyx_t_1, 0, 0, 0);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __PYX_ERR(0, 492, __pyx_L25_error)
+            __PYX_ERR(0, 502, __pyx_L25_error)
           }
 
-          /* "fatslimlib/core_datareading.pyx":491
+          /* "fatslimlib/core_datareading.pyx":501
  *         # Reset position to the beginning of the frame
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -7864,7 +8016,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           }
       }
 
-      /* "fatslimlib/core_datareading.pyx":490
+      /* "fatslimlib/core_datareading.pyx":500
  * 
  *         # Reset position to the beginning of the frame
  *         if xdrfile_setpos(xfp, pos) == 0:             # <<<<<<<<<<<<<<
@@ -7873,7 +8025,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":495
+    /* "fatslimlib/core_datareading.pyx":505
  * 
  *         # Load coordinates
  *         if xdrfile_decompress_coord_double_partial(real_coords[0], &total_size, &natoms, &prec, xfp) < -1:             # <<<<<<<<<<<<<<
@@ -7883,7 +8035,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
     __pyx_t_12 = ((xdrfile_decompress_coord_double_partial((__pyx_v_real_coords[0]), (&__pyx_v_total_size), (&__pyx_v_natoms), (&__pyx_v_prec), __pyx_v_xfp) < -1L) != 0);
     if (__pyx_t_12) {
 
-      /* "fatslimlib/core_datareading.pyx":496
+      /* "fatslimlib/core_datareading.pyx":506
  *         # Load coordinates
  *         if xdrfile_decompress_coord_double_partial(real_coords[0], &total_size, &natoms, &prec, xfp) < -1:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -7896,21 +8048,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_datareading.pyx":497
+            /* "fatslimlib/core_datareading.pyx":507
  *         if xdrfile_decompress_coord_double_partial(real_coords[0], &total_size, &natoms, &prec, xfp) < -1:
  *             with gil:
  *                 raise IOError("Could not decompress coordinates")             # <<<<<<<<<<<<<<
  * 
  *         # Close file
  */
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 497, __pyx_L29_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 507, __pyx_L29_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_Raise(__pyx_t_1, 0, 0, 0);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __PYX_ERR(0, 497, __pyx_L29_error)
+            __PYX_ERR(0, 507, __pyx_L29_error)
           }
 
-          /* "fatslimlib/core_datareading.pyx":496
+          /* "fatslimlib/core_datareading.pyx":506
  *         # Load coordinates
  *         if xdrfile_decompress_coord_double_partial(real_coords[0], &total_size, &natoms, &prec, xfp) < -1:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -7927,7 +8079,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           }
       }
 
-      /* "fatslimlib/core_datareading.pyx":495
+      /* "fatslimlib/core_datareading.pyx":505
  * 
  *         # Load coordinates
  *         if xdrfile_decompress_coord_double_partial(real_coords[0], &total_size, &natoms, &prec, xfp) < -1:             # <<<<<<<<<<<<<<
@@ -7936,7 +8088,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":500
+    /* "fatslimlib/core_datareading.pyx":510
  * 
  *         # Close file
  *         xdrfile_close(xfp)             # <<<<<<<<<<<<<<
@@ -7945,7 +8097,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
  */
     xdrfile_close(__pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":503
+    /* "fatslimlib/core_datareading.pyx":513
  * 
  *         # Build the output array
  *         for i in range(size):             # <<<<<<<<<<<<<<
@@ -7956,7 +8108,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_i = __pyx_t_10;
 
-      /* "fatslimlib/core_datareading.pyx":504
+      /* "fatslimlib/core_datareading.pyx":514
  *         # Build the output array
  *         for i in range(size):
  *             tmpid = atomids[i] - 1 # Reminder: atomids start at 1             # <<<<<<<<<<<<<<
@@ -7967,7 +8119,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
       if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_v_atomids.shape[0];
       __pyx_v_tmpid = ((*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_13 * __pyx_v_atomids.strides[0]) ))) - 1);
 
-      /* "fatslimlib/core_datareading.pyx":506
+      /* "fatslimlib/core_datareading.pyx":516
  *             tmpid = atomids[i] - 1 # Reminder: atomids start at 1
  * 
  *             coords[i, XX] = real_coords[tmpid][XX]             # <<<<<<<<<<<<<<
@@ -7980,7 +8132,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
       if (__pyx_t_15 < 0) __pyx_t_15 += __pyx_v_coords.shape[1];
       *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_14 * __pyx_v_coords.strides[0]) )) + __pyx_t_15)) )) = ((__pyx_v_real_coords[__pyx_v_tmpid])[0]);
 
-      /* "fatslimlib/core_datareading.pyx":507
+      /* "fatslimlib/core_datareading.pyx":517
  * 
  *             coords[i, XX] = real_coords[tmpid][XX]
  *             coords[i, YY] = real_coords[tmpid][YY]             # <<<<<<<<<<<<<<
@@ -7993,7 +8145,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
       if (__pyx_t_17 < 0) __pyx_t_17 += __pyx_v_coords.shape[1];
       *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_16 * __pyx_v_coords.strides[0]) )) + __pyx_t_17)) )) = ((__pyx_v_real_coords[__pyx_v_tmpid])[1]);
 
-      /* "fatslimlib/core_datareading.pyx":508
+      /* "fatslimlib/core_datareading.pyx":518
  *             coords[i, XX] = real_coords[tmpid][XX]
  *             coords[i, YY] = real_coords[tmpid][YY]
  *             coords[i, ZZ] = real_coords[tmpid][ZZ]             # <<<<<<<<<<<<<<
@@ -8007,7 +8159,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
       *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_18 * __pyx_v_coords.strides[0]) )) + __pyx_t_19)) )) = ((__pyx_v_real_coords[__pyx_v_tmpid])[2]);
     }
 
-    /* "fatslimlib/core_datareading.pyx":511
+    /* "fatslimlib/core_datareading.pyx":521
  * 
  *         # Free memory
  *         with gil:             # <<<<<<<<<<<<<<
@@ -8020,7 +8172,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_datareading.pyx":512
+          /* "fatslimlib/core_datareading.pyx":522
  *         # Free memory
  *         with gil:
  *             PyMem_Free(real_coords)             # <<<<<<<<<<<<<<
@@ -8030,7 +8182,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
           PyMem_Free(__pyx_v_real_coords);
         }
 
-        /* "fatslimlib/core_datareading.pyx":511
+        /* "fatslimlib/core_datareading.pyx":521
  * 
  *         # Free memory
  *         with gil:             # <<<<<<<<<<<<<<
@@ -8048,7 +8200,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
         }
     }
 
-    /* "fatslimlib/core_datareading.pyx":514
+    /* "fatslimlib/core_datareading.pyx":524
  *             PyMem_Free(real_coords)
  * 
  *         return coords             # <<<<<<<<<<<<<<
@@ -8060,7 +8212,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_datareading.pyx":450
+  /* "fatslimlib/core_datareading.pyx":460
  * 
  *     cdef real[:, ::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:
  *         cdef XDRFILE *xfp             # <<<<<<<<<<<<<<
@@ -8082,7 +8234,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
     }
   }
 
-  /* "fatslimlib/core_datareading.pyx":449
+  /* "fatslimlib/core_datareading.pyx":459
  * 
  * 
  *     cdef real[:, ::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:             # <<<<<<<<<<<<<<
@@ -8116,9 +8268,9 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoo
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":519
+/* "fatslimlib/core_datareading.pyx":528
+ * cdef class TrrReaderCoords(core_base.CoordinateReader):
  *     cdef bint use_double
- *     cdef int natoms
  *     cdef preload(self):             # <<<<<<<<<<<<<<
  *         cdef fsl_uint offset=0
  *         cdef fsl_uint max_offset = os.path.getsize(self.filename)
@@ -8164,8 +8316,8 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
   __Pyx_memviewslice __pyx_t_11 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_RefNannySetupContext("preload", 0);
 
-  /* "fatslimlib/core_datareading.pyx":520
- *     cdef int natoms
+  /* "fatslimlib/core_datareading.pyx":529
+ *     cdef bint use_double
  *     cdef preload(self):
  *         cdef fsl_uint offset=0             # <<<<<<<<<<<<<<
  *         cdef fsl_uint max_offset = os.path.getsize(self.filename)
@@ -8173,19 +8325,19 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
   __pyx_v_offset = 0;
 
-  /* "fatslimlib/core_datareading.pyx":521
+  /* "fatslimlib/core_datareading.pyx":530
  *     cdef preload(self):
  *         cdef fsl_uint offset=0
  *         cdef fsl_uint max_offset = os.path.getsize(self.filename)             # <<<<<<<<<<<<<<
  *         cdef int magic=-1, num_atoms_frame, frame_size, num_coords_bytes, nframes = 0
  *         cdef float timestep_float
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 521, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 530, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 521, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 530, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_getsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 521, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_getsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 530, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -8199,25 +8351,25 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 521, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 530, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 521, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 530, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
     __Pyx_INCREF(__pyx_v_self->__pyx_base.filename);
     __Pyx_GIVEREF(__pyx_v_self->__pyx_base.filename);
     PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_self->__pyx_base.filename);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 521, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 530, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyInt_As_fsl_uint(__pyx_t_1); if (unlikely((__pyx_t_5 == (fsl_uint)-1) && PyErr_Occurred())) __PYX_ERR(0, 521, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_fsl_uint(__pyx_t_1); if (unlikely((__pyx_t_5 == (fsl_uint)-1) && PyErr_Occurred())) __PYX_ERR(0, 530, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_max_offset = __pyx_t_5;
 
-  /* "fatslimlib/core_datareading.pyx":522
+  /* "fatslimlib/core_datareading.pyx":531
  *         cdef fsl_uint offset=0
  *         cdef fsl_uint max_offset = os.path.getsize(self.filename)
  *         cdef int magic=-1, num_atoms_frame, frame_size, num_coords_bytes, nframes = 0             # <<<<<<<<<<<<<<
@@ -8227,7 +8379,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
   __pyx_v_magic = -1;
   __pyx_v_nframes = 0;
 
-  /* "fatslimlib/core_datareading.pyx":526
+  /* "fatslimlib/core_datareading.pyx":535
  *         cdef real timestep
  *         cdef XDRFILE *xfp
  *         cdef char *version = "GMX_trn_file"             # <<<<<<<<<<<<<<
@@ -8236,7 +8388,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
   __pyx_v_version = ((char *)"GMX_trn_file");
 
-  /* "fatslimlib/core_datareading.pyx":528
+  /* "fatslimlib/core_datareading.pyx":537
  *         cdef char *version = "GMX_trn_file"
  *         cdef int ir_size, e_size, box_size, vir_size, pres_size, top_size, sym_size, x_size, v_size, f_size
  *         cdef int float_size = 0             # <<<<<<<<<<<<<<
@@ -8245,50 +8397,50 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
   __pyx_v_float_size = 0;
 
-  /* "fatslimlib/core_datareading.pyx":531
+  /* "fatslimlib/core_datareading.pyx":540
  *         cdef bint use_double
  * 
  *         frame_offsets = []             # <<<<<<<<<<<<<<
  *         timesteps = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 531, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 540, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_frame_offsets = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":532
+  /* "fatslimlib/core_datareading.pyx":541
  * 
  *         frame_offsets = []
  *         timesteps = []             # <<<<<<<<<<<<<<
  * 
  *         self.natoms = 0
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 532, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 541, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_timesteps = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":534
+  /* "fatslimlib/core_datareading.pyx":543
  *         timesteps = []
  * 
  *         self.natoms = 0             # <<<<<<<<<<<<<<
  * 
  *         # Open trajectory
  */
-  __pyx_v_self->natoms = 0;
+  __pyx_v_self->__pyx_base.natoms = 0;
 
-  /* "fatslimlib/core_datareading.pyx":537
+  /* "fatslimlib/core_datareading.pyx":546
  * 
  *         # Open trajectory
  *         xfp = xdrfile_open(self.filename, "rb")             # <<<<<<<<<<<<<<
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)
  */
-  __pyx_t_6 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 537, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 546, __pyx_L1_error)
   __pyx_v_xfp = xdrfile_open(__pyx_t_6, ((char const *)"rb"));
 
-  /* "fatslimlib/core_datareading.pyx":538
+  /* "fatslimlib/core_datareading.pyx":547
  *         # Open trajectory
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -8298,28 +8450,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
   __pyx_t_7 = ((__pyx_v_xfp == NULL) != 0);
   if (__pyx_t_7) {
 
-    /* "fatslimlib/core_datareading.pyx":539
+    /* "fatslimlib/core_datareading.pyx":548
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *         # Loop over all available frames
  */
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 539, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 548, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 539, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 548, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 539, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 548, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 539, __pyx_L1_error)
+    __PYX_ERR(0, 548, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":538
+    /* "fatslimlib/core_datareading.pyx":547
  *         # Open trajectory
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -8328,7 +8480,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":542
+  /* "fatslimlib/core_datareading.pyx":551
  * 
  *         # Loop over all available frames
  *         while offset < max_offset:             # <<<<<<<<<<<<<<
@@ -8339,7 +8491,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_offset < __pyx_v_max_offset) != 0);
     if (!__pyx_t_7) break;
 
-    /* "fatslimlib/core_datareading.pyx":544
+    /* "fatslimlib/core_datareading.pyx":553
  *         while offset < max_offset:
  *             # Get to the proper offset
  *             if xdrfile_setpos(xfp, offset) == 0:             # <<<<<<<<<<<<<<
@@ -8349,28 +8501,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((xdrfile_setpos(__pyx_v_xfp, __pyx_v_offset) == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":545
+      /* "fatslimlib/core_datareading.pyx":554
  *             # Get to the proper offset
  *             if xdrfile_setpos(xfp, offset) == 0:
  *                 raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *             # Check the magic number
  */
-      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 545, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 545, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 554, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 545, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 545, __pyx_L1_error)
+      __PYX_ERR(0, 554, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":544
+      /* "fatslimlib/core_datareading.pyx":553
  *         while offset < max_offset:
  *             # Get to the proper offset
  *             if xdrfile_setpos(xfp, offset) == 0:             # <<<<<<<<<<<<<<
@@ -8379,7 +8531,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":548
+    /* "fatslimlib/core_datareading.pyx":557
  * 
  *             # Check the magic number
  *             xdrfile_read_int(&magic, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8388,7 +8540,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_magic), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":549
+    /* "fatslimlib/core_datareading.pyx":558
  *             # Check the magic number
  *             xdrfile_read_int(&magic, 1, xfp)
  *             if magic != TRR_MAGIC:             # <<<<<<<<<<<<<<
@@ -8398,28 +8550,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_magic != 0x7C9) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":550
+      /* "fatslimlib/core_datareading.pyx":559
  *             xdrfile_read_int(&magic, 1, xfp)
  *             if magic != TRR_MAGIC:
  *                 raise IOError("Corrupted TRR file: '%s'" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *             # Check version string
  */
-      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Corrupted_TRR_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 550, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Corrupted_TRR_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 550, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 550, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 559, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 550, __pyx_L1_error)
+      __PYX_ERR(0, 559, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":549
+      /* "fatslimlib/core_datareading.pyx":558
  *             # Check the magic number
  *             xdrfile_read_int(&magic, 1, xfp)
  *             if magic != TRR_MAGIC:             # <<<<<<<<<<<<<<
@@ -8428,7 +8580,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":553
+    /* "fatslimlib/core_datareading.pyx":562
  * 
  *             # Check version string
  *             xdrfile_read_int(&frame_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8437,7 +8589,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_frame_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":554
+    /* "fatslimlib/core_datareading.pyx":563
  *             # Check version string
  *             xdrfile_read_int(&frame_size, 1, xfp)
  *             if frame_size != strlen(version)+1:             # <<<<<<<<<<<<<<
@@ -8447,28 +8599,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_frame_size != (strlen(__pyx_v_version) + 1)) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":555
+      /* "fatslimlib/core_datareading.pyx":564
  *             xdrfile_read_int(&frame_size, 1, xfp)
  *             if frame_size != strlen(version)+1:
  *                 raise IOError("Corrupted TRR file: '%s'" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *             if xdrfile_setpos(xfp, offset + 8 + 16) == 0: # Skip the version string
  */
-      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Corrupted_TRR_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 555, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Corrupted_TRR_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 564, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 555, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 564, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 555, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 564, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 555, __pyx_L1_error)
+      __PYX_ERR(0, 564, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":554
+      /* "fatslimlib/core_datareading.pyx":563
  *             # Check version string
  *             xdrfile_read_int(&frame_size, 1, xfp)
  *             if frame_size != strlen(version)+1:             # <<<<<<<<<<<<<<
@@ -8477,7 +8629,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":557
+    /* "fatslimlib/core_datareading.pyx":566
  *                 raise IOError("Corrupted TRR file: '%s'" % self.filename)
  * 
  *             if xdrfile_setpos(xfp, offset + 8 + 16) == 0: # Skip the version string             # <<<<<<<<<<<<<<
@@ -8487,28 +8639,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((xdrfile_setpos(__pyx_v_xfp, ((__pyx_v_offset + 8) + 16)) == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":558
+      /* "fatslimlib/core_datareading.pyx":567
  * 
  *             if xdrfile_setpos(xfp, offset + 8 + 16) == 0: # Skip the version string
  *                 raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *             xdrfile_read_int(&ir_size, 1, xfp)
  *             xdrfile_read_int(&e_size, 1, xfp)
  */
-      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 558, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 567, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 558, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 558, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 567, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 558, __pyx_L1_error)
+      __PYX_ERR(0, 567, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":557
+      /* "fatslimlib/core_datareading.pyx":566
  *                 raise IOError("Corrupted TRR file: '%s'" % self.filename)
  * 
  *             if xdrfile_setpos(xfp, offset + 8 + 16) == 0: # Skip the version string             # <<<<<<<<<<<<<<
@@ -8517,7 +8669,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":559
+    /* "fatslimlib/core_datareading.pyx":568
  *             if xdrfile_setpos(xfp, offset + 8 + 16) == 0: # Skip the version string
  *                 raise IOError("Could not set position in file: %s" % self.filename)
  *             xdrfile_read_int(&ir_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8526,7 +8678,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_ir_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":560
+    /* "fatslimlib/core_datareading.pyx":569
  *                 raise IOError("Could not set position in file: %s" % self.filename)
  *             xdrfile_read_int(&ir_size, 1, xfp)
  *             xdrfile_read_int(&e_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8535,7 +8687,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_e_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":561
+    /* "fatslimlib/core_datareading.pyx":570
  *             xdrfile_read_int(&ir_size, 1, xfp)
  *             xdrfile_read_int(&e_size, 1, xfp)
  *             xdrfile_read_int(&box_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8544,7 +8696,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_box_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":562
+    /* "fatslimlib/core_datareading.pyx":571
  *             xdrfile_read_int(&e_size, 1, xfp)
  *             xdrfile_read_int(&box_size, 1, xfp)
  *             xdrfile_read_int(&vir_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8553,7 +8705,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_vir_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":563
+    /* "fatslimlib/core_datareading.pyx":572
  *             xdrfile_read_int(&box_size, 1, xfp)
  *             xdrfile_read_int(&vir_size, 1, xfp)
  *             xdrfile_read_int(&pres_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8562,7 +8714,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_pres_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":564
+    /* "fatslimlib/core_datareading.pyx":573
  *             xdrfile_read_int(&vir_size, 1, xfp)
  *             xdrfile_read_int(&pres_size, 1, xfp)
  *             xdrfile_read_int(&top_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8571,7 +8723,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_top_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":565
+    /* "fatslimlib/core_datareading.pyx":574
  *             xdrfile_read_int(&pres_size, 1, xfp)
  *             xdrfile_read_int(&top_size, 1, xfp)
  *             xdrfile_read_int(&sym_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8580,7 +8732,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_sym_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":566
+    /* "fatslimlib/core_datareading.pyx":575
  *             xdrfile_read_int(&top_size, 1, xfp)
  *             xdrfile_read_int(&sym_size, 1, xfp)
  *             xdrfile_read_int(&x_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8589,7 +8741,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_x_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":567
+    /* "fatslimlib/core_datareading.pyx":576
  *             xdrfile_read_int(&sym_size, 1, xfp)
  *             xdrfile_read_int(&x_size, 1, xfp)
  *             xdrfile_read_int(&v_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8598,7 +8750,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_v_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":568
+    /* "fatslimlib/core_datareading.pyx":577
  *             xdrfile_read_int(&x_size, 1, xfp)
  *             xdrfile_read_int(&v_size, 1, xfp)
  *             xdrfile_read_int (&f_size, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8607,7 +8759,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_f_size), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":569
+    /* "fatslimlib/core_datareading.pyx":578
  *             xdrfile_read_int(&v_size, 1, xfp)
  *             xdrfile_read_int (&f_size, 1, xfp)
  *             xdrfile_read_int(&num_atoms_frame, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8616,7 +8768,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     xdrfile_read_int((&__pyx_v_num_atoms_frame), 1, __pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":572
+    /* "fatslimlib/core_datareading.pyx":581
  * 
  *             frame_size = TRR_HEADER_SIZE + ir_size + e_size + box_size + vir_size + pres_size + top_size + sym_size + \
  *                          x_size + v_size + f_size             # <<<<<<<<<<<<<<
@@ -8625,7 +8777,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     __pyx_v_frame_size = ((((((((((76 + __pyx_v_ir_size) + __pyx_v_e_size) + __pyx_v_box_size) + __pyx_v_vir_size) + __pyx_v_pres_size) + __pyx_v_top_size) + __pyx_v_sym_size) + __pyx_v_x_size) + __pyx_v_v_size) + __pyx_v_f_size);
 
-    /* "fatslimlib/core_datareading.pyx":574
+    /* "fatslimlib/core_datareading.pyx":583
  *                          x_size + v_size + f_size
  * 
  *             if x_size == 0:             # <<<<<<<<<<<<<<
@@ -8635,20 +8787,20 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_x_size == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":575
+      /* "fatslimlib/core_datareading.pyx":584
  * 
  *             if x_size == 0:
  *                 raise ValueError("Frames without coordinates are not supported. Please correct your trajectory")             # <<<<<<<<<<<<<<
  * 
  *             # Check trajectory homogeneity
  */
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 575, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 584, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_Raise(__pyx_t_1, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 575, __pyx_L1_error)
+      __PYX_ERR(0, 584, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":574
+      /* "fatslimlib/core_datareading.pyx":583
  *                          x_size + v_size + f_size
  * 
  *             if x_size == 0:             # <<<<<<<<<<<<<<
@@ -8657,7 +8809,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":578
+    /* "fatslimlib/core_datareading.pyx":587
  * 
  *             # Check trajectory homogeneity
  *             if offset == 0:             # <<<<<<<<<<<<<<
@@ -8667,16 +8819,16 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_offset == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":579
+      /* "fatslimlib/core_datareading.pyx":588
  *             # Check trajectory homogeneity
  *             if offset == 0:
  *                 self.natoms = num_atoms_frame             # <<<<<<<<<<<<<<
  *             else:
  *                 if num_atoms_frame != self.natoms:
  */
-      __pyx_v_self->natoms = __pyx_v_num_atoms_frame;
+      __pyx_v_self->__pyx_base.natoms = __pyx_v_num_atoms_frame;
 
-      /* "fatslimlib/core_datareading.pyx":578
+      /* "fatslimlib/core_datareading.pyx":587
  * 
  *             # Check trajectory homogeneity
  *             if offset == 0:             # <<<<<<<<<<<<<<
@@ -8686,7 +8838,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
       goto __pyx_L11;
     }
 
-    /* "fatslimlib/core_datareading.pyx":581
+    /* "fatslimlib/core_datareading.pyx":590
  *                 self.natoms = num_atoms_frame
  *             else:
  *                 if num_atoms_frame != self.natoms:             # <<<<<<<<<<<<<<
@@ -8694,23 +8846,23 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  *                                      Please correct your trajectory file.")
  */
     /*else*/ {
-      __pyx_t_7 = ((__pyx_v_num_atoms_frame != __pyx_v_self->natoms) != 0);
+      __pyx_t_7 = ((__pyx_v_num_atoms_frame != __pyx_v_self->__pyx_base.natoms) != 0);
       if (__pyx_t_7) {
 
-        /* "fatslimlib/core_datareading.pyx":582
+        /* "fatslimlib/core_datareading.pyx":591
  *             else:
  *                 if num_atoms_frame != self.natoms:
  *                     raise ValueError("Only trajectory with same number of atoms per frame is supported.\n\             # <<<<<<<<<<<<<<
  *                                      Please correct your trajectory file.")
  * 
  */
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 591, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_Raise(__pyx_t_1, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __PYX_ERR(0, 582, __pyx_L1_error)
+        __PYX_ERR(0, 591, __pyx_L1_error)
 
-        /* "fatslimlib/core_datareading.pyx":581
+        /* "fatslimlib/core_datareading.pyx":590
  *                 self.natoms = num_atoms_frame
  *             else:
  *                 if num_atoms_frame != self.natoms:             # <<<<<<<<<<<<<<
@@ -8721,7 +8873,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     }
     __pyx_L11:;
 
-    /* "fatslimlib/core_datareading.pyx":586
+    /* "fatslimlib/core_datareading.pyx":595
  * 
  *             # Check float size
  *             if box_size != 0:             # <<<<<<<<<<<<<<
@@ -8731,7 +8883,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_box_size != 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":587
+      /* "fatslimlib/core_datareading.pyx":596
  *             # Check float size
  *             if box_size != 0:
  *                 float_size = box_size / 9             # <<<<<<<<<<<<<<
@@ -8740,7 +8892,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
       __pyx_v_float_size = (__pyx_v_box_size / 9);
 
-      /* "fatslimlib/core_datareading.pyx":586
+      /* "fatslimlib/core_datareading.pyx":595
  * 
  *             # Check float size
  *             if box_size != 0:             # <<<<<<<<<<<<<<
@@ -8750,7 +8902,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
       goto __pyx_L13;
     }
 
-    /* "fatslimlib/core_datareading.pyx":589
+    /* "fatslimlib/core_datareading.pyx":598
  *                 float_size = box_size / 9
  *             else:
  *                 float_size = x_size / (3 * num_atoms_frame)             # <<<<<<<<<<<<<<
@@ -8762,7 +8914,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     }
     __pyx_L13:;
 
-    /* "fatslimlib/core_datareading.pyx":591
+    /* "fatslimlib/core_datareading.pyx":600
  *                 float_size = x_size / (3 * num_atoms_frame)
  * 
  *             if float_size == 4:             # <<<<<<<<<<<<<<
@@ -8772,7 +8924,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     switch (__pyx_v_float_size) {
       case 4:
 
-      /* "fatslimlib/core_datareading.pyx":592
+      /* "fatslimlib/core_datareading.pyx":601
  * 
  *             if float_size == 4:
  *                 use_double = False             # <<<<<<<<<<<<<<
@@ -8781,7 +8933,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
       __pyx_v_use_double = 0;
 
-      /* "fatslimlib/core_datareading.pyx":591
+      /* "fatslimlib/core_datareading.pyx":600
  *                 float_size = x_size / (3 * num_atoms_frame)
  * 
  *             if float_size == 4:             # <<<<<<<<<<<<<<
@@ -8790,7 +8942,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
       break;
 
-      /* "fatslimlib/core_datareading.pyx":593
+      /* "fatslimlib/core_datareading.pyx":602
  *             if float_size == 4:
  *                 use_double = False
  *             elif float_size == 8:             # <<<<<<<<<<<<<<
@@ -8799,7 +8951,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
       case 8:
 
-      /* "fatslimlib/core_datareading.pyx":594
+      /* "fatslimlib/core_datareading.pyx":603
  *                 use_double = False
  *             elif float_size == 8:
  *                 use_double = True             # <<<<<<<<<<<<<<
@@ -8808,7 +8960,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
       __pyx_v_use_double = 1;
 
-      /* "fatslimlib/core_datareading.pyx":593
+      /* "fatslimlib/core_datareading.pyx":602
  *             if float_size == 4:
  *                 use_double = False
  *             elif float_size == 8:             # <<<<<<<<<<<<<<
@@ -8818,33 +8970,33 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
       break;
       default:
 
-      /* "fatslimlib/core_datareading.pyx":596
+      /* "fatslimlib/core_datareading.pyx":605
  *                 use_double = True
  *             else:
  *                 raise ValueError("Float size is not correct (value: %i), trajectory must be corrupted!" % float_size)             # <<<<<<<<<<<<<<
  * 
  *             if offset == 0:
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_float_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_float_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 605, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Float_size_is_not_correct_value, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 596, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Float_size_is_not_correct_value, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 605, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 605, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 596, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 605, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 596, __pyx_L1_error)
+      __PYX_ERR(0, 605, __pyx_L1_error)
       break;
     }
 
-    /* "fatslimlib/core_datareading.pyx":598
+    /* "fatslimlib/core_datareading.pyx":607
  *                 raise ValueError("Float size is not correct (value: %i), trajectory must be corrupted!" % float_size)
  * 
  *             if offset == 0:             # <<<<<<<<<<<<<<
@@ -8854,7 +9006,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((__pyx_v_offset == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":599
+      /* "fatslimlib/core_datareading.pyx":608
  * 
  *             if offset == 0:
  *                 self.use_double = use_double             # <<<<<<<<<<<<<<
@@ -8863,7 +9015,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
       __pyx_v_self->use_double = __pyx_v_use_double;
 
-      /* "fatslimlib/core_datareading.pyx":598
+      /* "fatslimlib/core_datareading.pyx":607
  *                 raise ValueError("Float size is not correct (value: %i), trajectory must be corrupted!" % float_size)
  * 
  *             if offset == 0:             # <<<<<<<<<<<<<<
@@ -8873,7 +9025,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
       goto __pyx_L14;
     }
 
-    /* "fatslimlib/core_datareading.pyx":601
+    /* "fatslimlib/core_datareading.pyx":610
  *                 self.use_double = use_double
  *             else:
  *                 if self.use_double != use_double:             # <<<<<<<<<<<<<<
@@ -8884,20 +9036,20 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
       __pyx_t_7 = ((__pyx_v_self->use_double != __pyx_v_use_double) != 0);
       if (__pyx_t_7) {
 
-        /* "fatslimlib/core_datareading.pyx":602
+        /* "fatslimlib/core_datareading.pyx":611
  *             else:
  *                 if self.use_double != use_double:
  *                     raise ValueError("Only trajectory with homogeneous float size is supported.")             # <<<<<<<<<<<<<<
  * 
  *             if xdrfile_setpos(xfp, offset + TRR_HEADER_SIZE) == 0: # Skip the step and nre
  */
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 602, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_Raise(__pyx_t_2, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __PYX_ERR(0, 602, __pyx_L1_error)
+        __PYX_ERR(0, 611, __pyx_L1_error)
 
-        /* "fatslimlib/core_datareading.pyx":601
+        /* "fatslimlib/core_datareading.pyx":610
  *                 self.use_double = use_double
  *             else:
  *                 if self.use_double != use_double:             # <<<<<<<<<<<<<<
@@ -8908,7 +9060,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     }
     __pyx_L14:;
 
-    /* "fatslimlib/core_datareading.pyx":604
+    /* "fatslimlib/core_datareading.pyx":613
  *                     raise ValueError("Only trajectory with homogeneous float size is supported.")
  * 
  *             if xdrfile_setpos(xfp, offset + TRR_HEADER_SIZE) == 0: # Skip the step and nre             # <<<<<<<<<<<<<<
@@ -8918,28 +9070,28 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = ((xdrfile_setpos(__pyx_v_xfp, (__pyx_v_offset + 76)) == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":605
+      /* "fatslimlib/core_datareading.pyx":614
  * 
  *             if xdrfile_setpos(xfp, offset + TRR_HEADER_SIZE) == 0: # Skip the step and nre
  *                 raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *             if use_double:
  *                 xdrfile_read_double(&timestep, 1, xfp)
  */
-      __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 605, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 605, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 605, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 605, __pyx_L1_error)
+      __PYX_ERR(0, 614, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":604
+      /* "fatslimlib/core_datareading.pyx":613
  *                     raise ValueError("Only trajectory with homogeneous float size is supported.")
  * 
  *             if xdrfile_setpos(xfp, offset + TRR_HEADER_SIZE) == 0: # Skip the step and nre             # <<<<<<<<<<<<<<
@@ -8948,7 +9100,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":606
+    /* "fatslimlib/core_datareading.pyx":615
  *             if xdrfile_setpos(xfp, offset + TRR_HEADER_SIZE) == 0: # Skip the step and nre
  *                 raise IOError("Could not set position in file: %s" % self.filename)
  *             if use_double:             # <<<<<<<<<<<<<<
@@ -8958,7 +9110,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_t_7 = (__pyx_v_use_double != 0);
     if (__pyx_t_7) {
 
-      /* "fatslimlib/core_datareading.pyx":607
+      /* "fatslimlib/core_datareading.pyx":616
  *                 raise IOError("Could not set position in file: %s" % self.filename)
  *             if use_double:
  *                 xdrfile_read_double(&timestep, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8967,7 +9119,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
       xdrfile_read_double((&__pyx_v_timestep), 1, __pyx_v_xfp);
 
-      /* "fatslimlib/core_datareading.pyx":606
+      /* "fatslimlib/core_datareading.pyx":615
  *             if xdrfile_setpos(xfp, offset + TRR_HEADER_SIZE) == 0: # Skip the step and nre
  *                 raise IOError("Could not set position in file: %s" % self.filename)
  *             if use_double:             # <<<<<<<<<<<<<<
@@ -8977,7 +9129,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
       goto __pyx_L17;
     }
 
-    /* "fatslimlib/core_datareading.pyx":609
+    /* "fatslimlib/core_datareading.pyx":618
  *                 xdrfile_read_double(&timestep, 1, xfp)
  *             else:
  *                 xdrfile_read_float(&timestep_float, 1, xfp)             # <<<<<<<<<<<<<<
@@ -8987,7 +9139,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     /*else*/ {
       xdrfile_read_float((&__pyx_v_timestep_float), 1, __pyx_v_xfp);
 
-      /* "fatslimlib/core_datareading.pyx":610
+      /* "fatslimlib/core_datareading.pyx":619
  *             else:
  *                 xdrfile_read_float(&timestep_float, 1, xfp)
  *                 timestep = timestep_float             # <<<<<<<<<<<<<<
@@ -8998,31 +9150,31 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     }
     __pyx_L17:;
 
-    /* "fatslimlib/core_datareading.pyx":613
+    /* "fatslimlib/core_datareading.pyx":622
  * 
  *             # Store data
  *             frame_offsets.append(offset)             # <<<<<<<<<<<<<<
  *             timesteps.append(timestep)
  * 
  */
-    __pyx_t_2 = __Pyx_PyInt_From_fsl_uint(__pyx_v_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_fsl_uint(__pyx_v_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = __Pyx_PyObject_Append(__pyx_v_frame_offsets, __pyx_t_2); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Append(__pyx_v_frame_offsets, __pyx_t_2); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":614
+    /* "fatslimlib/core_datareading.pyx":623
  *             # Store data
  *             frame_offsets.append(offset)
  *             timesteps.append(timestep)             # <<<<<<<<<<<<<<
  * 
  *             # Update frame counter and offset
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_timestep); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_timestep); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 623, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = __Pyx_PyObject_Append(__pyx_v_timesteps, __pyx_t_2); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Append(__pyx_v_timesteps, __pyx_t_2); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 623, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "fatslimlib/core_datareading.pyx":617
+    /* "fatslimlib/core_datareading.pyx":626
  * 
  *             # Update frame counter and offset
  *             nframes += 1             # <<<<<<<<<<<<<<
@@ -9031,7 +9183,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
     __pyx_v_nframes = (__pyx_v_nframes + 1);
 
-    /* "fatslimlib/core_datareading.pyx":618
+    /* "fatslimlib/core_datareading.pyx":627
  *             # Update frame counter and offset
  *             nframes += 1
  *             offset += frame_size + 2 * float_size # the 2 floats are timestep and lamba_val             # <<<<<<<<<<<<<<
@@ -9041,7 +9193,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
     __pyx_v_offset = (__pyx_v_offset + (__pyx_v_frame_size + (2 * __pyx_v_float_size)));
   }
 
-  /* "fatslimlib/core_datareading.pyx":621
+  /* "fatslimlib/core_datareading.pyx":630
  * 
  * 
  *         xdrfile_close(xfp)             # <<<<<<<<<<<<<<
@@ -9050,33 +9202,33 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
   xdrfile_close(__pyx_v_xfp);
 
-  /* "fatslimlib/core_datareading.pyx":622
+  /* "fatslimlib/core_datareading.pyx":631
  * 
  *         xdrfile_close(xfp)
  *         frame_offsets = numpy.array(frame_offsets, dtype=np.int64)             # <<<<<<<<<<<<<<
  *         timesteps = numpy.array(timesteps, dtype=np.float64)
  *         self.timesteps = timesteps
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_frame_offsets);
   __Pyx_GIVEREF(__pyx_v_frame_offsets);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_frame_offsets);
-  __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_9) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_9) < 0) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9084,33 +9236,33 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
   __Pyx_DECREF_SET(__pyx_v_frame_offsets, __pyx_t_9);
   __pyx_t_9 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":623
+  /* "fatslimlib/core_datareading.pyx":632
  *         xdrfile_close(xfp)
  *         frame_offsets = numpy.array(frame_offsets, dtype=np.int64)
  *         timesteps = numpy.array(timesteps, dtype=np.float64)             # <<<<<<<<<<<<<<
  *         self.timesteps = timesteps
  *         self.box_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size
  */
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_INCREF(__pyx_v_timesteps);
   __Pyx_GIVEREF(__pyx_v_timesteps);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_timesteps);
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 623, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -9118,7 +9270,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
   __Pyx_DECREF_SET(__pyx_v_timesteps, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":624
+  /* "fatslimlib/core_datareading.pyx":633
  *         frame_offsets = numpy.array(frame_offsets, dtype=np.int64)
  *         timesteps = numpy.array(timesteps, dtype=np.float64)
  *         self.timesteps = timesteps             # <<<<<<<<<<<<<<
@@ -9126,77 +9278,77 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  *         self.coordinate_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size + box_size + vir_size + pres_size
  */
   __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_real(__pyx_v_timesteps);
-  if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 624, __pyx_L1_error)
+  if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 633, __pyx_L1_error)
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.timesteps, 0);
   __pyx_v_self->__pyx_base.timesteps = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":625
+  /* "fatslimlib/core_datareading.pyx":634
  *         timesteps = numpy.array(timesteps, dtype=np.float64)
  *         self.timesteps = timesteps
  *         self.box_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size             # <<<<<<<<<<<<<<
  *         self.coordinate_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size + box_size + vir_size + pres_size
  *         self.nframes = nframes
  */
-  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_frame_offsets, __pyx_int_76, 76, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 625, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_frame_offsets, __pyx_int_76, 76, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 634, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyInt_From_long((2 * __pyx_v_float_size)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 625, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_long((2 * __pyx_v_float_size)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 634, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 625, __pyx_L1_error)
+  __pyx_t_9 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 634, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_9);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 625, __pyx_L1_error)
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 634, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.box_offsets, 0);
   __pyx_v_self->__pyx_base.box_offsets = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":626
+  /* "fatslimlib/core_datareading.pyx":635
  *         self.timesteps = timesteps
  *         self.box_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size
  *         self.coordinate_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size + box_size + vir_size + pres_size             # <<<<<<<<<<<<<<
  *         self.nframes = nframes
  * 
  */
-  __pyx_t_9 = __Pyx_PyInt_AddObjC(__pyx_v_frame_offsets, __pyx_int_76, 76, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_AddObjC(__pyx_v_frame_offsets, __pyx_int_76, 76, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_2 = __Pyx_PyInt_From_long((2 * __pyx_v_float_size)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_long((2 * __pyx_v_float_size)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_box_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_box_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_9 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_vir_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_vir_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_pres_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_pres_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_9 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_fsl_int(__pyx_t_9);
-  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 626, __pyx_L1_error)
+  if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __PYX_XDEC_MEMVIEW(&__pyx_v_self->__pyx_base.coordinate_offsets, 0);
   __pyx_v_self->__pyx_base.coordinate_offsets = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":627
+  /* "fatslimlib/core_datareading.pyx":636
  *         self.box_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size
  *         self.coordinate_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size + box_size + vir_size + pres_size
  *         self.nframes = nframes             # <<<<<<<<<<<<<<
@@ -9205,9 +9357,9 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
  */
   __pyx_v_self->__pyx_base.nframes = __pyx_v_nframes;
 
-  /* "fatslimlib/core_datareading.pyx":519
+  /* "fatslimlib/core_datareading.pyx":528
+ * cdef class TrrReaderCoords(core_base.CoordinateReader):
  *     cdef bint use_double
- *     cdef int natoms
  *     cdef preload(self):             # <<<<<<<<<<<<<<
  *         cdef fsl_uint offset=0
  *         cdef fsl_uint max_offset = os.path.getsize(self.filename)
@@ -9234,7 +9386,7 @@ static PyObject *__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_prelo
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":629
+/* "fatslimlib/core_datareading.pyx":638
  *         self.nframes = nframes
  * 
  *     cdef core_base.PBCBox load_box(self, int frame_id):             # <<<<<<<<<<<<<<
@@ -9268,61 +9420,61 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   Py_ssize_t __pyx_t_14;
   __Pyx_RefNannySetupContext("load_box", 0);
 
-  /* "fatslimlib/core_datareading.pyx":631
+  /* "fatslimlib/core_datareading.pyx":640
  *     cdef core_base.PBCBox load_box(self, int frame_id):
  *         cdef XDRFILE *xfp
  *         cdef fsl_uint pos = self.box_offsets[frame_id]             # <<<<<<<<<<<<<<
  *         cdef real[:,::1] box = numpy.empty((DIM, DIM), dtype=np.float64)
  *         cdef float float_box[DIM][DIM]
  */
-  if (unlikely(!__pyx_v_self->__pyx_base.box_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 631, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_self->__pyx_base.box_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 640, __pyx_L1_error)}
   __pyx_t_1 = __pyx_v_frame_id;
   if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_self->__pyx_base.box_offsets.shape[0];
   __pyx_v_pos = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->__pyx_base.box_offsets.data + __pyx_t_1 * __pyx_v_self->__pyx_base.box_offsets.strides[0]) )));
 
-  /* "fatslimlib/core_datareading.pyx":632
+  /* "fatslimlib/core_datareading.pyx":641
  *         cdef XDRFILE *xfp
  *         cdef fsl_uint pos = self.box_offsets[frame_id]
  *         cdef real[:,::1] box = numpy.empty((DIM, DIM), dtype=np.float64)             # <<<<<<<<<<<<<<
  *         cdef float float_box[DIM][DIM]
  *         cdef real double_box[DIM][DIM]
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 632, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__37, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__37, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_5);
-  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 632, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_box = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fatslimlib/core_datareading.pyx":637
+  /* "fatslimlib/core_datareading.pyx":646
  *         cdef int i,j
  * 
  *         xfp = xdrfile_open(self.filename, "rb")             # <<<<<<<<<<<<<<
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)
  */
-  __pyx_t_7 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 637, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 646, __pyx_L1_error)
   __pyx_v_xfp = xdrfile_open(__pyx_t_7, ((char const *)"rb"));
 
-  /* "fatslimlib/core_datareading.pyx":638
+  /* "fatslimlib/core_datareading.pyx":647
  * 
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -9332,28 +9484,28 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   __pyx_t_8 = ((__pyx_v_xfp == NULL) != 0);
   if (__pyx_t_8) {
 
-    /* "fatslimlib/core_datareading.pyx":639
+    /* "fatslimlib/core_datareading.pyx":648
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             raise IOError("Could not set position in file: %s" % self.filename)
  */
-    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 639, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 648, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 648, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 639, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 648, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 639, __pyx_L1_error)
+    __PYX_ERR(0, 648, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":638
+    /* "fatslimlib/core_datareading.pyx":647
  * 
  *         xfp = xdrfile_open(self.filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -9362,7 +9514,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":640
+  /* "fatslimlib/core_datareading.pyx":649
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:             # <<<<<<<<<<<<<<
@@ -9372,28 +9524,28 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   __pyx_t_8 = ((xdrfile_setpos(__pyx_v_xfp, __pyx_v_pos) == 0) != 0);
   if (__pyx_t_8) {
 
-    /* "fatslimlib/core_datareading.pyx":641
+    /* "fatslimlib/core_datareading.pyx":650
  *             raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  *         if self.use_double:
  *             if xdrfile_read_double(double_box[0], DIM*DIM, xfp) != DIM*DIM:
  */
-    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 641, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 650, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 650, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 641, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 650, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 641, __pyx_L1_error)
+    __PYX_ERR(0, 650, __pyx_L1_error)
 
-    /* "fatslimlib/core_datareading.pyx":640
+    /* "fatslimlib/core_datareading.pyx":649
  *         if xfp == NULL:
  *             raise IOError("Could not read file: %s" % self.filename)
  *         if xdrfile_setpos(xfp, pos) == 0:             # <<<<<<<<<<<<<<
@@ -9402,7 +9554,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
   }
 
-  /* "fatslimlib/core_datareading.pyx":642
+  /* "fatslimlib/core_datareading.pyx":651
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             raise IOError("Could not set position in file: %s" % self.filename)
  *         if self.use_double:             # <<<<<<<<<<<<<<
@@ -9412,7 +9564,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   __pyx_t_8 = (__pyx_v_self->use_double != 0);
   if (__pyx_t_8) {
 
-    /* "fatslimlib/core_datareading.pyx":643
+    /* "fatslimlib/core_datareading.pyx":652
  *             raise IOError("Could not set position in file: %s" % self.filename)
  *         if self.use_double:
  *             if xdrfile_read_double(double_box[0], DIM*DIM, xfp) != DIM*DIM:             # <<<<<<<<<<<<<<
@@ -9422,20 +9574,20 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     __pyx_t_8 = ((xdrfile_read_double((__pyx_v_double_box[0]), 9, __pyx_v_xfp) != 9) != 0);
     if (__pyx_t_8) {
 
-      /* "fatslimlib/core_datareading.pyx":644
+      /* "fatslimlib/core_datareading.pyx":653
  *         if self.use_double:
  *             if xdrfile_read_double(double_box[0], DIM*DIM, xfp) != DIM*DIM:
  *                 raise IOError("Could not read matrix")             # <<<<<<<<<<<<<<
  *             for i in range(DIM):
  *                 for j in range(DIM):
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__38, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 644, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__38, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 653, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __PYX_ERR(0, 644, __pyx_L1_error)
+      __PYX_ERR(0, 653, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":643
+      /* "fatslimlib/core_datareading.pyx":652
  *             raise IOError("Could not set position in file: %s" % self.filename)
  *         if self.use_double:
  *             if xdrfile_read_double(double_box[0], DIM*DIM, xfp) != DIM*DIM:             # <<<<<<<<<<<<<<
@@ -9444,7 +9596,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":645
+    /* "fatslimlib/core_datareading.pyx":654
  *             if xdrfile_read_double(double_box[0], DIM*DIM, xfp) != DIM*DIM:
  *                 raise IOError("Could not read matrix")
  *             for i in range(DIM):             # <<<<<<<<<<<<<<
@@ -9454,7 +9606,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     for (__pyx_t_9 = 0; __pyx_t_9 < 3; __pyx_t_9+=1) {
       __pyx_v_i = __pyx_t_9;
 
-      /* "fatslimlib/core_datareading.pyx":646
+      /* "fatslimlib/core_datareading.pyx":655
  *                 raise IOError("Could not read matrix")
  *             for i in range(DIM):
  *                 for j in range(DIM):             # <<<<<<<<<<<<<<
@@ -9464,7 +9616,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
       for (__pyx_t_10 = 0; __pyx_t_10 < 3; __pyx_t_10+=1) {
         __pyx_v_j = __pyx_t_10;
 
-        /* "fatslimlib/core_datareading.pyx":647
+        /* "fatslimlib/core_datareading.pyx":656
  *             for i in range(DIM):
  *                 for j in range(DIM):
  *                     box[i, j] = double_box[i][j]             # <<<<<<<<<<<<<<
@@ -9479,7 +9631,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
       }
     }
 
-    /* "fatslimlib/core_datareading.pyx":642
+    /* "fatslimlib/core_datareading.pyx":651
  *         if xdrfile_setpos(xfp, pos) == 0:
  *             raise IOError("Could not set position in file: %s" % self.filename)
  *         if self.use_double:             # <<<<<<<<<<<<<<
@@ -9489,7 +9641,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     goto __pyx_L5;
   }
 
-  /* "fatslimlib/core_datareading.pyx":649
+  /* "fatslimlib/core_datareading.pyx":658
  *                     box[i, j] = double_box[i][j]
  *         else:
  *             if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:             # <<<<<<<<<<<<<<
@@ -9500,20 +9652,20 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     __pyx_t_8 = ((xdrfile_read_float((__pyx_v_float_box[0]), 9, __pyx_v_xfp) != 9) != 0);
     if (__pyx_t_8) {
 
-      /* "fatslimlib/core_datareading.pyx":650
+      /* "fatslimlib/core_datareading.pyx":659
  *         else:
  *             if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:
  *                 raise IOError("Could not read matrix")             # <<<<<<<<<<<<<<
  *             # Convert float to real
  *             for i in range(DIM):
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__39, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 650, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__39, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 659, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __PYX_ERR(0, 650, __pyx_L1_error)
+      __PYX_ERR(0, 659, __pyx_L1_error)
 
-      /* "fatslimlib/core_datareading.pyx":649
+      /* "fatslimlib/core_datareading.pyx":658
  *                     box[i, j] = double_box[i][j]
  *         else:
  *             if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:             # <<<<<<<<<<<<<<
@@ -9522,7 +9674,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":652
+    /* "fatslimlib/core_datareading.pyx":661
  *                 raise IOError("Could not read matrix")
  *             # Convert float to real
  *             for i in range(DIM):             # <<<<<<<<<<<<<<
@@ -9532,7 +9684,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
     for (__pyx_t_9 = 0; __pyx_t_9 < 3; __pyx_t_9+=1) {
       __pyx_v_i = __pyx_t_9;
 
-      /* "fatslimlib/core_datareading.pyx":653
+      /* "fatslimlib/core_datareading.pyx":662
  *             # Convert float to real
  *             for i in range(DIM):
  *                 for j in range(DIM):             # <<<<<<<<<<<<<<
@@ -9542,7 +9694,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
       for (__pyx_t_10 = 0; __pyx_t_10 < 3; __pyx_t_10+=1) {
         __pyx_v_j = __pyx_t_10;
 
-        /* "fatslimlib/core_datareading.pyx":654
+        /* "fatslimlib/core_datareading.pyx":663
  *             for i in range(DIM):
  *                 for j in range(DIM):
  *                     box[i, j] = <real> float_box[i][j]             # <<<<<<<<<<<<<<
@@ -9559,7 +9711,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   }
   __pyx_L5:;
 
-  /* "fatslimlib/core_datareading.pyx":657
+  /* "fatslimlib/core_datareading.pyx":666
  * 
  *         # Close file and release memory
  *         xdrfile_close(xfp)             # <<<<<<<<<<<<<<
@@ -9568,7 +9720,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  */
   xdrfile_close(__pyx_v_xfp);
 
-  /* "fatslimlib/core_datareading.pyx":659
+  /* "fatslimlib/core_datareading.pyx":668
  *         xdrfile_close(xfp)
  * 
  *         return core_base.PBCBox(box)             # <<<<<<<<<<<<<<
@@ -9576,21 +9728,21 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
  * 
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_box, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 659, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_box, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn_real, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 668, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 659, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_PBCBox), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 659, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10fatslimlib_9core_base_PBCBox), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 668, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = ((struct __pyx_obj_10fatslimlib_9core_base_PBCBox *)__pyx_t_5);
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "fatslimlib/core_datareading.pyx":629
+  /* "fatslimlib/core_datareading.pyx":638
  *         self.nframes = nframes
  * 
  *     cdef core_base.PBCBox load_box(self, int frame_id):             # <<<<<<<<<<<<<<
@@ -9614,7 +9766,7 @@ static struct __pyx_obj_10fatslimlib_9core_base_PBCBox *__pyx_f_10fatslimlib_16c
   return __pyx_r;
 }
 
-/* "fatslimlib/core_datareading.pyx":663
+/* "fatslimlib/core_datareading.pyx":672
  * 
  * 
  *     cdef real[:, ::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:             # <<<<<<<<<<<<<<
@@ -9668,7 +9820,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
   PyGILState_Release(__pyx_gilstate_save);
   #endif
 
-  /* "fatslimlib/core_datareading.pyx":664
+  /* "fatslimlib/core_datareading.pyx":673
  * 
  *     cdef real[:, ::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:
  *         cdef XDRFILE *xfp             # <<<<<<<<<<<<<<
@@ -9677,7 +9829,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
   /*try:*/ {
 
-    /* "fatslimlib/core_datareading.pyx":666
+    /* "fatslimlib/core_datareading.pyx":675
  *         cdef XDRFILE *xfp
  *         cdef fsl_uint pos
  *         cdef int size = atomids.shape[0]             # <<<<<<<<<<<<<<
@@ -9686,7 +9838,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
     __pyx_v_size = (__pyx_v_atomids.shape[0]);
 
-    /* "fatslimlib/core_datareading.pyx":673
+    /* "fatslimlib/core_datareading.pyx":682
  *         cdef rvec real_coords
  *         cdef fvec float_coords
  *         cdef int float_size = sizeof(real)             # <<<<<<<<<<<<<<
@@ -9695,7 +9847,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
     __pyx_v_float_size = (sizeof(real));
 
-    /* "fatslimlib/core_datareading.pyx":676
+    /* "fatslimlib/core_datareading.pyx":685
  *         cdef char *filename
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -9708,33 +9860,33 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         #endif
         /*try:*/ {
 
-          /* "fatslimlib/core_datareading.pyx":677
+          /* "fatslimlib/core_datareading.pyx":686
  * 
  *         with gil:
  *             pos = self.coordinate_offsets[frame_id]             # <<<<<<<<<<<<<<
  *             coords = numpy.empty((size, DIM))
  *             filename = self.filename
  */
-          if (unlikely(!__pyx_v_self->__pyx_base.coordinate_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 677, __pyx_L7_error)}
+          if (unlikely(!__pyx_v_self->__pyx_base.coordinate_offsets.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 686, __pyx_L7_error)}
           __pyx_t_1 = __pyx_v_frame_id;
           if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_self->__pyx_base.coordinate_offsets.shape[0];
           __pyx_v_pos = (*((fsl_int *) ( /* dim=0 */ (__pyx_v_self->__pyx_base.coordinate_offsets.data + __pyx_t_1 * __pyx_v_self->__pyx_base.coordinate_offsets.strides[0]) )));
 
-          /* "fatslimlib/core_datareading.pyx":678
+          /* "fatslimlib/core_datareading.pyx":687
  *         with gil:
  *             pos = self.coordinate_offsets[frame_id]
  *             coords = numpy.empty((size, DIM))             # <<<<<<<<<<<<<<
  *             filename = self.filename
  * 
  */
-          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 678, __pyx_L7_error)
+          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 687, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 678, __pyx_L7_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 687, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 678, __pyx_L7_error)
+          __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 687, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 678, __pyx_L7_error)
+          __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 687, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GIVEREF(__pyx_t_3);
           PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -9753,40 +9905,40 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
             }
           }
           if (!__pyx_t_3) {
-            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 678, __pyx_L7_error)
+            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L7_error)
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             __Pyx_GOTREF(__pyx_t_2);
           } else {
-            __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 678, __pyx_L7_error)
+            __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 687, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_6);
             __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __pyx_t_3 = NULL;
             __Pyx_GIVEREF(__pyx_t_5);
             PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_5);
             __pyx_t_5 = 0;
-            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 678, __pyx_L7_error)
+            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_nn_real(__pyx_t_2);
-          if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 678, __pyx_L7_error)
+          if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 687, __pyx_L7_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __pyx_v_coords = __pyx_t_7;
           __pyx_t_7.memview = NULL;
           __pyx_t_7.data = NULL;
 
-          /* "fatslimlib/core_datareading.pyx":679
+          /* "fatslimlib/core_datareading.pyx":688
  *             pos = self.coordinate_offsets[frame_id]
  *             coords = numpy.empty((size, DIM))
  *             filename = self.filename             # <<<<<<<<<<<<<<
  * 
  *         # Open traj file
  */
-          __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L7_error)
+          __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_self->__pyx_base.filename); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(0, 688, __pyx_L7_error)
           __pyx_v_filename = __pyx_t_8;
         }
 
-        /* "fatslimlib/core_datareading.pyx":676
+        /* "fatslimlib/core_datareading.pyx":685
  *         cdef char *filename
  * 
  *         with gil:             # <<<<<<<<<<<<<<
@@ -9810,7 +9962,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         }
     }
 
-    /* "fatslimlib/core_datareading.pyx":682
+    /* "fatslimlib/core_datareading.pyx":691
  * 
  *         # Open traj file
  *         xfp = xdrfile_open(filename, "rb")             # <<<<<<<<<<<<<<
@@ -9819,7 +9971,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
     __pyx_v_xfp = xdrfile_open(__pyx_v_filename, ((char const *)"rb"));
 
-    /* "fatslimlib/core_datareading.pyx":683
+    /* "fatslimlib/core_datareading.pyx":692
  *         # Open traj file
  *         xfp = xdrfile_open(filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -9829,7 +9981,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
     __pyx_t_9 = ((__pyx_v_xfp == NULL) != 0);
     if (__pyx_t_9) {
 
-      /* "fatslimlib/core_datareading.pyx":684
+      /* "fatslimlib/core_datareading.pyx":693
  *         xfp = xdrfile_open(filename, "rb")
  *         if xfp == NULL:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -9842,29 +9994,29 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
           #endif
           /*try:*/ {
 
-            /* "fatslimlib/core_datareading.pyx":685
+            /* "fatslimlib/core_datareading.pyx":694
  *         if xfp == NULL:
  *             with gil:
  *                 raise IOError("Could not read file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *         if self.use_double:
  */
-            __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 685, __pyx_L11_error)
+            __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_read_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 694, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_2);
-            __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 685, __pyx_L11_error)
+            __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 694, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_GIVEREF(__pyx_t_2);
             PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
             __pyx_t_2 = 0;
-            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 685, __pyx_L11_error)
+            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 694, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_Raise(__pyx_t_2, 0, 0, 0);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __PYX_ERR(0, 685, __pyx_L11_error)
+            __PYX_ERR(0, 694, __pyx_L11_error)
           }
 
-          /* "fatslimlib/core_datareading.pyx":684
+          /* "fatslimlib/core_datareading.pyx":693
  *         xfp = xdrfile_open(filename, "rb")
  *         if xfp == NULL:
  *             with gil:             # <<<<<<<<<<<<<<
@@ -9881,7 +10033,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
           }
       }
 
-      /* "fatslimlib/core_datareading.pyx":683
+      /* "fatslimlib/core_datareading.pyx":692
  *         # Open traj file
  *         xfp = xdrfile_open(filename, "rb")
  *         if xfp == NULL:             # <<<<<<<<<<<<<<
@@ -9890,7 +10042,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
     }
 
-    /* "fatslimlib/core_datareading.pyx":687
+    /* "fatslimlib/core_datareading.pyx":696
  *                 raise IOError("Could not read file: %s" % self.filename)
  * 
  *         if self.use_double:             # <<<<<<<<<<<<<<
@@ -9900,7 +10052,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
     __pyx_t_9 = (__pyx_v_self->use_double != 0);
     if (__pyx_t_9) {
 
-      /* "fatslimlib/core_datareading.pyx":688
+      /* "fatslimlib/core_datareading.pyx":697
  * 
  *         if self.use_double:
  *             float_size = sizeof(real)             # <<<<<<<<<<<<<<
@@ -9909,7 +10061,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
       __pyx_v_float_size = (sizeof(real));
 
-      /* "fatslimlib/core_datareading.pyx":691
+      /* "fatslimlib/core_datareading.pyx":700
  * 
  *             # Build the output array
  *             for i in range(size):             # <<<<<<<<<<<<<<
@@ -9920,7 +10072,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
       for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
         __pyx_v_i = __pyx_t_11;
 
-        /* "fatslimlib/core_datareading.pyx":692
+        /* "fatslimlib/core_datareading.pyx":701
  *             # Build the output array
  *             for i in range(size):
  *                 atomid = atomids[i] - 1 # Reminder: atomids start at 1             # <<<<<<<<<<<<<<
@@ -9931,7 +10083,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_v_atomids.shape[0];
         __pyx_v_atomid = ((*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_12 * __pyx_v_atomids.strides[0]) ))) - 1);
 
-        /* "fatslimlib/core_datareading.pyx":694
+        /* "fatslimlib/core_datareading.pyx":703
  *                 atomid = atomids[i] - 1 # Reminder: atomids start at 1
  * 
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size) == 0:             # <<<<<<<<<<<<<<
@@ -9941,7 +10093,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         __pyx_t_9 = ((xdrfile_setpos(__pyx_v_xfp, (__pyx_v_pos + (__pyx_v_atomid * __pyx_v_float_size))) == 0) != 0);
         if (__pyx_t_9) {
 
-          /* "fatslimlib/core_datareading.pyx":695
+          /* "fatslimlib/core_datareading.pyx":704
  * 
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size) == 0:
  *                     with gil:             # <<<<<<<<<<<<<<
@@ -9954,29 +10106,29 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
               #endif
               /*try:*/ {
 
-                /* "fatslimlib/core_datareading.pyx":696
+                /* "fatslimlib/core_datareading.pyx":705
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size) == 0:
  *                     with gil:
  *                         raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *                 # Load coordinates
  */
-                __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 696, __pyx_L20_error)
+                __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 705, __pyx_L20_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 696, __pyx_L20_error)
+                __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 705, __pyx_L20_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __Pyx_GIVEREF(__pyx_t_2);
                 PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
                 __pyx_t_2 = 0;
-                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 696, __pyx_L20_error)
+                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 705, __pyx_L20_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                 __Pyx_Raise(__pyx_t_2, 0, 0, 0);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __PYX_ERR(0, 696, __pyx_L20_error)
+                __PYX_ERR(0, 705, __pyx_L20_error)
               }
 
-              /* "fatslimlib/core_datareading.pyx":695
+              /* "fatslimlib/core_datareading.pyx":704
  * 
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size) == 0:
  *                     with gil:             # <<<<<<<<<<<<<<
@@ -9993,7 +10145,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
               }
           }
 
-          /* "fatslimlib/core_datareading.pyx":694
+          /* "fatslimlib/core_datareading.pyx":703
  *                 atomid = atomids[i] - 1 # Reminder: atomids start at 1
  * 
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size) == 0:             # <<<<<<<<<<<<<<
@@ -10002,7 +10154,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
         }
 
-        /* "fatslimlib/core_datareading.pyx":699
+        /* "fatslimlib/core_datareading.pyx":708
  * 
  *                 # Load coordinates
  *                 if xdrfile_read_double(real_coords, DIM, xfp) < -1:             # <<<<<<<<<<<<<<
@@ -10012,7 +10164,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         __pyx_t_9 = ((xdrfile_read_double(__pyx_v_real_coords, 3, __pyx_v_xfp) < -1L) != 0);
         if (__pyx_t_9) {
 
-          /* "fatslimlib/core_datareading.pyx":700
+          /* "fatslimlib/core_datareading.pyx":709
  *                 # Load coordinates
  *                 if xdrfile_read_double(real_coords, DIM, xfp) < -1:
  *                     with gil:             # <<<<<<<<<<<<<<
@@ -10025,21 +10177,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
               #endif
               /*try:*/ {
 
-                /* "fatslimlib/core_datareading.pyx":701
+                /* "fatslimlib/core_datareading.pyx":710
  *                 if xdrfile_read_double(real_coords, DIM, xfp) < -1:
  *                     with gil:
  *                         raise IOError("Could not load coordinates")             # <<<<<<<<<<<<<<
  * 
  * 
  */
-                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__40, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 701, __pyx_L26_error)
+                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__40, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 710, __pyx_L26_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_Raise(__pyx_t_2, 0, 0, 0);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __PYX_ERR(0, 701, __pyx_L26_error)
+                __PYX_ERR(0, 710, __pyx_L26_error)
               }
 
-              /* "fatslimlib/core_datareading.pyx":700
+              /* "fatslimlib/core_datareading.pyx":709
  *                 # Load coordinates
  *                 if xdrfile_read_double(real_coords, DIM, xfp) < -1:
  *                     with gil:             # <<<<<<<<<<<<<<
@@ -10056,7 +10208,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
               }
           }
 
-          /* "fatslimlib/core_datareading.pyx":699
+          /* "fatslimlib/core_datareading.pyx":708
  * 
  *                 # Load coordinates
  *                 if xdrfile_read_double(real_coords, DIM, xfp) < -1:             # <<<<<<<<<<<<<<
@@ -10065,7 +10217,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
         }
 
-        /* "fatslimlib/core_datareading.pyx":704
+        /* "fatslimlib/core_datareading.pyx":713
  * 
  * 
  *                 coords[i, XX] = real_coords[XX]             # <<<<<<<<<<<<<<
@@ -10078,7 +10230,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         if (__pyx_t_14 < 0) __pyx_t_14 += __pyx_v_coords.shape[1];
         *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_13 * __pyx_v_coords.strides[0]) )) + __pyx_t_14)) )) = (__pyx_v_real_coords[0]);
 
-        /* "fatslimlib/core_datareading.pyx":705
+        /* "fatslimlib/core_datareading.pyx":714
  * 
  *                 coords[i, XX] = real_coords[XX]
  *                 coords[i, YY] = real_coords[YY]             # <<<<<<<<<<<<<<
@@ -10091,7 +10243,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         if (__pyx_t_16 < 0) __pyx_t_16 += __pyx_v_coords.shape[1];
         *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_15 * __pyx_v_coords.strides[0]) )) + __pyx_t_16)) )) = (__pyx_v_real_coords[1]);
 
-        /* "fatslimlib/core_datareading.pyx":706
+        /* "fatslimlib/core_datareading.pyx":715
  *                 coords[i, XX] = real_coords[XX]
  *                 coords[i, YY] = real_coords[YY]
  *                 coords[i, ZZ] = real_coords[ZZ]             # <<<<<<<<<<<<<<
@@ -10105,7 +10257,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_17 * __pyx_v_coords.strides[0]) )) + __pyx_t_18)) )) = (__pyx_v_real_coords[2]);
       }
 
-      /* "fatslimlib/core_datareading.pyx":687
+      /* "fatslimlib/core_datareading.pyx":696
  *                 raise IOError("Could not read file: %s" % self.filename)
  * 
  *         if self.use_double:             # <<<<<<<<<<<<<<
@@ -10115,7 +10267,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
       goto __pyx_L13;
     }
 
-    /* "fatslimlib/core_datareading.pyx":709
+    /* "fatslimlib/core_datareading.pyx":718
  * 
  *         else:
  *             float_size = sizeof(float)             # <<<<<<<<<<<<<<
@@ -10125,7 +10277,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
     /*else*/ {
       __pyx_v_float_size = (sizeof(float));
 
-      /* "fatslimlib/core_datareading.pyx":712
+      /* "fatslimlib/core_datareading.pyx":721
  * 
  *             # Build the output array
  *             for i in range(size):             # <<<<<<<<<<<<<<
@@ -10136,7 +10288,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
       for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
         __pyx_v_i = __pyx_t_11;
 
-        /* "fatslimlib/core_datareading.pyx":713
+        /* "fatslimlib/core_datareading.pyx":722
  *             # Build the output array
  *             for i in range(size):
  *                 atomid = atomids[i] - 1 # Reminder: atomids start at 1             # <<<<<<<<<<<<<<
@@ -10147,7 +10299,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         if (__pyx_t_19 < 0) __pyx_t_19 += __pyx_v_atomids.shape[0];
         __pyx_v_atomid = ((*((fsl_int *) ( /* dim=0 */ (__pyx_v_atomids.data + __pyx_t_19 * __pyx_v_atomids.strides[0]) ))) - 1);
 
-        /* "fatslimlib/core_datareading.pyx":715
+        /* "fatslimlib/core_datareading.pyx":724
  *                 atomid = atomids[i] - 1 # Reminder: atomids start at 1
  * 
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size * DIM) == 0:             # <<<<<<<<<<<<<<
@@ -10157,7 +10309,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         __pyx_t_9 = ((xdrfile_setpos(__pyx_v_xfp, (__pyx_v_pos + ((__pyx_v_atomid * __pyx_v_float_size) * 3))) == 0) != 0);
         if (__pyx_t_9) {
 
-          /* "fatslimlib/core_datareading.pyx":716
+          /* "fatslimlib/core_datareading.pyx":725
  * 
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size * DIM) == 0:
  *                     with gil:             # <<<<<<<<<<<<<<
@@ -10170,29 +10322,29 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
               #endif
               /*try:*/ {
 
-                /* "fatslimlib/core_datareading.pyx":717
+                /* "fatslimlib/core_datareading.pyx":726
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size * DIM) == 0:
  *                     with gil:
  *                         raise IOError("Could not set position in file: %s" % self.filename)             # <<<<<<<<<<<<<<
  * 
  *                 # Load coordinates
  */
-                __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L34_error)
+                __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Could_not_set_position_in_file_s, __pyx_v_self->__pyx_base.filename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L34_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 717, __pyx_L34_error)
+                __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 726, __pyx_L34_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __Pyx_GIVEREF(__pyx_t_2);
                 PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
                 __pyx_t_2 = 0;
-                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L34_error)
+                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L34_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                 __Pyx_Raise(__pyx_t_2, 0, 0, 0);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __PYX_ERR(0, 717, __pyx_L34_error)
+                __PYX_ERR(0, 726, __pyx_L34_error)
               }
 
-              /* "fatslimlib/core_datareading.pyx":716
+              /* "fatslimlib/core_datareading.pyx":725
  * 
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size * DIM) == 0:
  *                     with gil:             # <<<<<<<<<<<<<<
@@ -10209,7 +10361,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
               }
           }
 
-          /* "fatslimlib/core_datareading.pyx":715
+          /* "fatslimlib/core_datareading.pyx":724
  *                 atomid = atomids[i] - 1 # Reminder: atomids start at 1
  * 
  *                 if xdrfile_setpos(xfp, pos + atomid * float_size * DIM) == 0:             # <<<<<<<<<<<<<<
@@ -10218,7 +10370,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
         }
 
-        /* "fatslimlib/core_datareading.pyx":720
+        /* "fatslimlib/core_datareading.pyx":729
  * 
  *                 # Load coordinates
  *                 if xdrfile_read_float(float_coords, DIM, xfp) < -1:             # <<<<<<<<<<<<<<
@@ -10228,7 +10380,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         __pyx_t_9 = ((xdrfile_read_float(__pyx_v_float_coords, 3, __pyx_v_xfp) < -1L) != 0);
         if (__pyx_t_9) {
 
-          /* "fatslimlib/core_datareading.pyx":721
+          /* "fatslimlib/core_datareading.pyx":730
  *                 # Load coordinates
  *                 if xdrfile_read_float(float_coords, DIM, xfp) < -1:
  *                     with gil:             # <<<<<<<<<<<<<<
@@ -10241,21 +10393,21 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
               #endif
               /*try:*/ {
 
-                /* "fatslimlib/core_datareading.pyx":722
+                /* "fatslimlib/core_datareading.pyx":731
  *                 if xdrfile_read_float(float_coords, DIM, xfp) < -1:
  *                     with gil:
  *                         raise IOError("Could not load coordinates")             # <<<<<<<<<<<<<<
  * 
  *                 coords[i, XX] = float_coords[XX]
  */
-                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__41, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 722, __pyx_L40_error)
+                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_tuple__41, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 731, __pyx_L40_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_Raise(__pyx_t_2, 0, 0, 0);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __PYX_ERR(0, 722, __pyx_L40_error)
+                __PYX_ERR(0, 731, __pyx_L40_error)
               }
 
-              /* "fatslimlib/core_datareading.pyx":721
+              /* "fatslimlib/core_datareading.pyx":730
  *                 # Load coordinates
  *                 if xdrfile_read_float(float_coords, DIM, xfp) < -1:
  *                     with gil:             # <<<<<<<<<<<<<<
@@ -10272,7 +10424,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
               }
           }
 
-          /* "fatslimlib/core_datareading.pyx":720
+          /* "fatslimlib/core_datareading.pyx":729
  * 
  *                 # Load coordinates
  *                 if xdrfile_read_float(float_coords, DIM, xfp) < -1:             # <<<<<<<<<<<<<<
@@ -10281,7 +10433,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
         }
 
-        /* "fatslimlib/core_datareading.pyx":724
+        /* "fatslimlib/core_datareading.pyx":733
  *                         raise IOError("Could not load coordinates")
  * 
  *                 coords[i, XX] = float_coords[XX]             # <<<<<<<<<<<<<<
@@ -10294,7 +10446,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         if (__pyx_t_21 < 0) __pyx_t_21 += __pyx_v_coords.shape[1];
         *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_20 * __pyx_v_coords.strides[0]) )) + __pyx_t_21)) )) = (__pyx_v_float_coords[0]);
 
-        /* "fatslimlib/core_datareading.pyx":725
+        /* "fatslimlib/core_datareading.pyx":734
  * 
  *                 coords[i, XX] = float_coords[XX]
  *                 coords[i, YY] = float_coords[YY]             # <<<<<<<<<<<<<<
@@ -10307,7 +10459,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
         if (__pyx_t_23 < 0) __pyx_t_23 += __pyx_v_coords.shape[1];
         *((real *) ( /* dim=1 */ ((char *) (((real *) ( /* dim=0 */ (__pyx_v_coords.data + __pyx_t_22 * __pyx_v_coords.strides[0]) )) + __pyx_t_23)) )) = (__pyx_v_float_coords[1]);
 
-        /* "fatslimlib/core_datareading.pyx":726
+        /* "fatslimlib/core_datareading.pyx":735
  *                 coords[i, XX] = float_coords[XX]
  *                 coords[i, YY] = float_coords[YY]
  *                 coords[i, ZZ] = float_coords[ZZ]             # <<<<<<<<<<<<<<
@@ -10323,7 +10475,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
     }
     __pyx_L13:;
 
-    /* "fatslimlib/core_datareading.pyx":729
+    /* "fatslimlib/core_datareading.pyx":738
  * 
  *         # Close file
  *         xdrfile_close(xfp)             # <<<<<<<<<<<<<<
@@ -10332,7 +10484,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
  */
     xdrfile_close(__pyx_v_xfp);
 
-    /* "fatslimlib/core_datareading.pyx":731
+    /* "fatslimlib/core_datareading.pyx":740
  *         xdrfile_close(xfp)
  * 
  *         return coords             # <<<<<<<<<<<<<<
@@ -10344,7 +10496,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
     goto __pyx_L3_return;
   }
 
-  /* "fatslimlib/core_datareading.pyx":664
+  /* "fatslimlib/core_datareading.pyx":673
  * 
  *     cdef real[:, ::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:
  *         cdef XDRFILE *xfp             # <<<<<<<<<<<<<<
@@ -10366,7 +10518,7 @@ static __Pyx_memviewslice __pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoo
     }
   }
 
-  /* "fatslimlib/core_datareading.pyx":663
+  /* "fatslimlib/core_datareading.pyx":672
  * 
  * 
  *     cdef real[:, ::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:             # <<<<<<<<<<<<<<
@@ -23091,6 +23243,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_H, __pyx_k_H, sizeof(__pyx_k_H), 0, 0, 1, 1},
   {&__pyx_n_b_HOH, __pyx_k_HOH, sizeof(__pyx_k_HOH), 0, 0, 0, 1},
   {&__pyx_n_s_IOError, __pyx_k_IOError, sizeof(__pyx_k_IOError), 0, 0, 1, 1},
+  {&__pyx_kp_s_Incoherent_number_of_atoms_in_fr, __pyx_k_Incoherent_number_of_atoms_in_fr, sizeof(__pyx_k_Incoherent_number_of_atoms_in_fr), 0, 0, 1, 0},
   {&__pyx_n_s_IndexError, __pyx_k_IndexError, sizeof(__pyx_k_IndexError), 0, 0, 1, 1},
   {&__pyx_n_s_Index_loaders, __pyx_k_Index_loaders, sizeof(__pyx_k_Index_loaders), 0, 0, 1, 1},
   {&__pyx_kp_s_Indirect_dimensions_not_supporte, __pyx_k_Indirect_dimensions_not_supporte, sizeof(__pyx_k_Indirect_dimensions_not_supporte), 0, 0, 1, 0},
@@ -23210,16 +23363,16 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 134, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 191, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 297, __pyx_L1_error)
-  __pyx_builtin_IOError = __Pyx_GetBuiltinName(__pyx_n_s_IOError); if (!__pyx_builtin_IOError) __PYX_ERR(0, 313, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_builtin_IOError = __Pyx_GetBuiltinName(__pyx_n_s_IOError); if (!__pyx_builtin_IOError) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 323, __pyx_L1_error)
+  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 396, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(1, 146, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(1, 149, __pyx_L1_error)
   __pyx_builtin_Ellipsis = __Pyx_GetBuiltinName(__pyx_n_s_Ellipsis); if (!__pyx_builtin_Ellipsis) __PYX_ERR(1, 396, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 425, __pyx_L1_error)
   __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) __PYX_ERR(1, 599, __pyx_L1_error)
-  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(1, 818, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -23229,47 +23382,47 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "fatslimlib/core_datareading.pyx":143
+  /* "fatslimlib/core_datareading.pyx":144
  *                 else:
  *                     if lino < natoms + 2:
  *                         resid = atoi(line[:5].encode())             # <<<<<<<<<<<<<<
  * 
  *                         # Correct the resid if necessary because resids are modulo 10000 in .gro
  */
-  __pyx_slice_ = PySlice_New(Py_None, __pyx_int_5, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_slice_ = PySlice_New(Py_None, __pyx_int_5, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice_);
   __Pyx_GIVEREF(__pyx_slice_);
 
-  /* "fatslimlib/core_datareading.pyx":161
+  /* "fatslimlib/core_datareading.pyx":162
  * 
  *                             # Read residue name
  *                             resname = line[5:10].strip().encode()             # <<<<<<<<<<<<<<
  * 
  *                             if is_solvent(resname): # Classified as solvent, we skip it
  */
-  __pyx_slice__2 = PySlice_New(__pyx_int_5, __pyx_int_10, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_slice__2 = PySlice_New(__pyx_int_5, __pyx_int_10, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__2);
   __Pyx_GIVEREF(__pyx_slice__2);
 
-  /* "fatslimlib/core_datareading.pyx":170
+  /* "fatslimlib/core_datareading.pyx":171
  * 
  *                             # Read atom information
  *                             atomname = line[10:15].strip()             # <<<<<<<<<<<<<<
  *                             #atomname = strip_name(line[10:15])
  * 
  */
-  __pyx_slice__3 = PySlice_New(__pyx_int_10, __pyx_int_15, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_slice__3 = PySlice_New(__pyx_int_10, __pyx_int_15, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 
-  /* "fatslimlib/core_datareading.pyx":176
+  /* "fatslimlib/core_datareading.pyx":177
  *                                 continue
  * 
  *                             atomid = atoi(line[15:20].encode()) + ((lino - 1)// 100000) * 100000             # <<<<<<<<<<<<<<
  * 
  *                             topol.internal_append(resid, resname, atomname.encode(), atomid)
  */
-  __pyx_slice__4 = PySlice_New(__pyx_int_15, __pyx_int_20, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_slice__4 = PySlice_New(__pyx_int_15, __pyx_int_20, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
 
@@ -23284,317 +23437,317 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "fatslimlib/core_datareading.pyx":190
+  /* "fatslimlib/core_datareading.pyx":191
  *         cdef bytes last_group = b""
  * 
  *         if self.filename.split(b".")[-1] != b"ndx":             # <<<<<<<<<<<<<<
  *             raise ValueError("%s is not a supported index file. supported: .ndx" % self.filename)
  *         groups = {}
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_b__7); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_b__7); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "fatslimlib/core_datareading.pyx":201
+  /* "fatslimlib/core_datareading.pyx":202
  *                     if last_group != b"":
  *                         groups[last_group] = numpy.fromstring(groups[last_group], dtype=np.int64, sep=" ")
  *                     last_group = line.strip(" []\n").encode()             # <<<<<<<<<<<<<<
  *                     groups[last_group] = b""
  *                 else:
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s__11); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s__11); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "fatslimlib/core_datareading.pyx":194
+  /* "fatslimlib/core_datareading.pyx":195
  *         groups = {}
  * 
  *         with open(self.filename, "r") as fp:             # <<<<<<<<<<<<<<
  * 
  *             # Use Python object to parse line... Much more easier!
  */
-  __pyx_tuple__13 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "fatslimlib/core_datareading.pyx":226
+  /* "fatslimlib/core_datareading.pyx":227
  *             raise ValueError("%s is not a supported gro file. supported: .gro" % self.filename)
  * 
  *         with open(self.filename, "r") as fp:             # <<<<<<<<<<<<<<
  *             while need_read:
  *                 lino += 1
  */
-  __pyx_tuple__14 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "fatslimlib/core_datareading.pyx":247
+  /* "fatslimlib/core_datareading.pyx":248
  *         self.assert_frame_id(frame_id)
  * 
  *         box = numpy.zeros((3,3), np.float64)             # <<<<<<<<<<<<<<
  * 
  *         with open(self.filename, "rb") as fp:
  */
-  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_int_3, __pyx_int_3); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_int_3, __pyx_int_3); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "fatslimlib/core_datareading.pyx":252
+  /* "fatslimlib/core_datareading.pyx":253
  *             with cython.boundscheck(True):
  *                 fp.seek(self.box_offsets[frame_id])
  *             box_str = fp.read().strip(b'\n\r').split()             # <<<<<<<<<<<<<<
  * 
  *         n_coords = len(box_str)
  */
-  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_b__16); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_b__16); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
 
-  /* "fatslimlib/core_datareading.pyx":249
+  /* "fatslimlib/core_datareading.pyx":250
  *         box = numpy.zeros((3,3), np.float64)
  * 
  *         with open(self.filename, "rb") as fp:             # <<<<<<<<<<<<<<
  *             with cython.boundscheck(True):
  *                 fp.seek(self.box_offsets[frame_id])
  */
-  __pyx_tuple__18 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "fatslimlib/core_datareading.pyx":256
+  /* "fatslimlib/core_datareading.pyx":257
  *         n_coords = len(box_str)
  * 
  *         box[0, 0] = float(box_str[0])             # <<<<<<<<<<<<<<
  *         box[1, 1] = float(box_str[1])
  *         box[2, 2] = float(box_str[2])
  */
-  __pyx_tuple__19 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "fatslimlib/core_datareading.pyx":257
+  /* "fatslimlib/core_datareading.pyx":258
  * 
  *         box[0, 0] = float(box_str[0])
  *         box[1, 1] = float(box_str[1])             # <<<<<<<<<<<<<<
  *         box[2, 2] = float(box_str[2])
  * 
  */
-  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_1); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_1); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "fatslimlib/core_datareading.pyx":258
+  /* "fatslimlib/core_datareading.pyx":259
  *         box[0, 0] = float(box_str[0])
  *         box[1, 1] = float(box_str[1])
  *         box[2, 2] = float(box_str[2])             # <<<<<<<<<<<<<<
  * 
  *         if n_coords == 9:
  */
-  __pyx_tuple__21 = PyTuple_Pack(2, __pyx_int_2, __pyx_int_2); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(2, __pyx_int_2, __pyx_int_2); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
 
-  /* "fatslimlib/core_datareading.pyx":261
+  /* "fatslimlib/core_datareading.pyx":262
  * 
  *         if n_coords == 9:
  *             box[0, 1] = float(box_str[3])             # <<<<<<<<<<<<<<
  *             box[0, 2] = float(box_str[4])
  *             box[1, 0] = float(box_str[5])
  */
-  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_1); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_1); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "fatslimlib/core_datareading.pyx":262
+  /* "fatslimlib/core_datareading.pyx":263
  *         if n_coords == 9:
  *             box[0, 1] = float(box_str[3])
  *             box[0, 2] = float(box_str[4])             # <<<<<<<<<<<<<<
  *             box[1, 0] = float(box_str[5])
  *             box[1, 2] = float(box_str[6])
  */
-  __pyx_tuple__23 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_2); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_2); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
 
-  /* "fatslimlib/core_datareading.pyx":263
+  /* "fatslimlib/core_datareading.pyx":264
  *             box[0, 1] = float(box_str[3])
  *             box[0, 2] = float(box_str[4])
  *             box[1, 0] = float(box_str[5])             # <<<<<<<<<<<<<<
  *             box[1, 2] = float(box_str[6])
  *             box[2, 0] = float(box_str[7])
  */
-  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_0); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_0); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 264, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
 
-  /* "fatslimlib/core_datareading.pyx":264
+  /* "fatslimlib/core_datareading.pyx":265
  *             box[0, 2] = float(box_str[4])
  *             box[1, 0] = float(box_str[5])
  *             box[1, 2] = float(box_str[6])             # <<<<<<<<<<<<<<
  *             box[2, 0] = float(box_str[7])
  *             box[2, 1] = float(box_str[8])
  */
-  __pyx_tuple__25 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_2); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_2); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
 
-  /* "fatslimlib/core_datareading.pyx":265
+  /* "fatslimlib/core_datareading.pyx":266
  *             box[1, 0] = float(box_str[5])
  *             box[1, 2] = float(box_str[6])
  *             box[2, 0] = float(box_str[7])             # <<<<<<<<<<<<<<
  *             box[2, 1] = float(box_str[8])
  * 
  */
-  __pyx_tuple__26 = PyTuple_Pack(2, __pyx_int_2, __pyx_int_0); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(2, __pyx_int_2, __pyx_int_0); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
 
-  /* "fatslimlib/core_datareading.pyx":266
+  /* "fatslimlib/core_datareading.pyx":267
  *             box[1, 2] = float(box_str[6])
  *             box[2, 0] = float(box_str[7])
  *             box[2, 1] = float(box_str[8])             # <<<<<<<<<<<<<<
  * 
  *         return core_base.PBCBox(box)
  */
-  __pyx_tuple__27 = PyTuple_Pack(2, __pyx_int_2, __pyx_int_1); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(2, __pyx_int_2, __pyx_int_1); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
 
-  /* "fatslimlib/core_datareading.pyx":322
+  /* "fatslimlib/core_datareading.pyx":323
  *             fclose(cfile)
  *             with gil:
  *                 raise RuntimeError("EOF reached!")             # <<<<<<<<<<<<<<
  *         fclose(cfile)
  * 
  */
-  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_EOF_reached); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_EOF_reached); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
 
-  /* "fatslimlib/core_datareading.pyx":427
+  /* "fatslimlib/core_datareading.pyx":437
  *         cdef XDRFILE *xfp
  *         cdef fsl_uint pos = self.box_offsets[frame_id]
  *         cdef real[:,::1] box = numpy.empty((DIM, DIM), dtype=np.float64)             # <<<<<<<<<<<<<<
  *         cdef float float_box[DIM][DIM]
  *         cdef int i,j
  */
-  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_int_3, __pyx_int_3); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_int_3, __pyx_int_3); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_tuple__29); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_tuple__29); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
 
-  /* "fatslimlib/core_datareading.pyx":437
+  /* "fatslimlib/core_datareading.pyx":447
  *             raise IOError("Could not set position in file: %s" % self.filename)
  *         if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:
  *             raise IOError("Could not read matrix")             # <<<<<<<<<<<<<<
  *         # Convert float to real
  *         for i in range(DIM):
  */
-  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_Could_not_read_matrix); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_Could_not_read_matrix); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
 
-  /* "fatslimlib/core_datareading.pyx":497
+  /* "fatslimlib/core_datareading.pyx":507
  *         if xdrfile_decompress_coord_double_partial(real_coords[0], &total_size, &natoms, &prec, xfp) < -1:
  *             with gil:
  *                 raise IOError("Could not decompress coordinates")             # <<<<<<<<<<<<<<
  * 
  *         # Close file
  */
-  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_Could_not_decompress_coordinates); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 497, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_Could_not_decompress_coordinates); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 507, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
 
-  /* "fatslimlib/core_datareading.pyx":575
+  /* "fatslimlib/core_datareading.pyx":584
  * 
  *             if x_size == 0:
  *                 raise ValueError("Frames without coordinates are not supported. Please correct your trajectory")             # <<<<<<<<<<<<<<
  * 
  *             # Check trajectory homogeneity
  */
-  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_Frames_without_coordinates_are_n); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 575, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_Frames_without_coordinates_are_n); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 584, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
 
-  /* "fatslimlib/core_datareading.pyx":582
+  /* "fatslimlib/core_datareading.pyx":591
  *             else:
  *                 if num_atoms_frame != self.natoms:
  *                     raise ValueError("Only trajectory with same number of atoms per frame is supported.\n\             # <<<<<<<<<<<<<<
  *                                      Please correct your trajectory file.")
  * 
  */
-  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_Only_trajectory_with_same_number); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_Only_trajectory_with_same_number); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
 
-  /* "fatslimlib/core_datareading.pyx":602
+  /* "fatslimlib/core_datareading.pyx":611
  *             else:
  *                 if self.use_double != use_double:
  *                     raise ValueError("Only trajectory with homogeneous float size is supported.")             # <<<<<<<<<<<<<<
  * 
  *             if xdrfile_setpos(xfp, offset + TRR_HEADER_SIZE) == 0: # Skip the step and nre
  */
-  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_Only_trajectory_with_homogeneous); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 602, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_Only_trajectory_with_homogeneous); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 611, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
 
-  /* "fatslimlib/core_datareading.pyx":632
+  /* "fatslimlib/core_datareading.pyx":641
  *         cdef XDRFILE *xfp
  *         cdef fsl_uint pos = self.box_offsets[frame_id]
  *         cdef real[:,::1] box = numpy.empty((DIM, DIM), dtype=np.float64)             # <<<<<<<<<<<<<<
  *         cdef float float_box[DIM][DIM]
  *         cdef real double_box[DIM][DIM]
  */
-  __pyx_tuple__36 = PyTuple_Pack(2, __pyx_int_3, __pyx_int_3); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(2, __pyx_int_3, __pyx_int_3); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_tuple__36); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_tuple__36); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__37);
   __Pyx_GIVEREF(__pyx_tuple__37);
 
-  /* "fatslimlib/core_datareading.pyx":644
+  /* "fatslimlib/core_datareading.pyx":653
  *         if self.use_double:
  *             if xdrfile_read_double(double_box[0], DIM*DIM, xfp) != DIM*DIM:
  *                 raise IOError("Could not read matrix")             # <<<<<<<<<<<<<<
  *             for i in range(DIM):
  *                 for j in range(DIM):
  */
-  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_kp_s_Could_not_read_matrix); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 644, __pyx_L1_error)
+  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_kp_s_Could_not_read_matrix); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
 
-  /* "fatslimlib/core_datareading.pyx":650
+  /* "fatslimlib/core_datareading.pyx":659
  *         else:
  *             if xdrfile_read_float(float_box[0], DIM*DIM, xfp) != DIM*DIM:
  *                 raise IOError("Could not read matrix")             # <<<<<<<<<<<<<<
  *             # Convert float to real
  *             for i in range(DIM):
  */
-  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_kp_s_Could_not_read_matrix); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 650, __pyx_L1_error)
+  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_kp_s_Could_not_read_matrix); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 659, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__39);
   __Pyx_GIVEREF(__pyx_tuple__39);
 
-  /* "fatslimlib/core_datareading.pyx":701
+  /* "fatslimlib/core_datareading.pyx":710
  *                 if xdrfile_read_double(real_coords, DIM, xfp) < -1:
  *                     with gil:
  *                         raise IOError("Could not load coordinates")             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_kp_s_Could_not_load_coordinates); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 701, __pyx_L1_error)
+  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_kp_s_Could_not_load_coordinates); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 710, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__40);
   __Pyx_GIVEREF(__pyx_tuple__40);
 
-  /* "fatslimlib/core_datareading.pyx":722
+  /* "fatslimlib/core_datareading.pyx":731
  *                 if xdrfile_read_float(float_coords, DIM, xfp) < -1:
  *                     with gil:
  *                         raise IOError("Could not load coordinates")             # <<<<<<<<<<<<<<
  * 
  *                 coords[i, XX] = float_coords[XX]
  */
-  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_kp_s_Could_not_load_coordinates); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 722, __pyx_L1_error)
+  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_kp_s_Could_not_load_coordinates); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 731, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__41);
   __Pyx_GIVEREF(__pyx_tuple__41);
 
@@ -23940,10 +24093,10 @@ PyMODINIT_FUNC PyInit_core_datareading(void)
   __pyx_vtable_10fatslimlib_16core_datareading_NdxReader.__pyx_base = *__pyx_vtabptr_10fatslimlib_9core_base_IndexReader;
   __pyx_vtable_10fatslimlib_16core_datareading_NdxReader.__pyx_base.fast_load = (PyObject *(*)(struct __pyx_obj_10fatslimlib_9core_base_IndexReader *))__pyx_f_10fatslimlib_16core_datareading_9NdxReader_fast_load;
   __pyx_type_10fatslimlib_16core_datareading_NdxReader.tp_base = __pyx_ptype_10fatslimlib_9core_base_IndexReader;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_16core_datareading_NdxReader) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_10fatslimlib_16core_datareading_NdxReader) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
   __pyx_type_10fatslimlib_16core_datareading_NdxReader.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_16core_datareading_NdxReader.tp_dict, __pyx_vtabptr_10fatslimlib_16core_datareading_NdxReader) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "NdxReader", (PyObject *)&__pyx_type_10fatslimlib_16core_datareading_NdxReader) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_16core_datareading_NdxReader.tp_dict, __pyx_vtabptr_10fatslimlib_16core_datareading_NdxReader) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "NdxReader", (PyObject *)&__pyx_type_10fatslimlib_16core_datareading_NdxReader) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
   __pyx_ptype_10fatslimlib_16core_datareading_NdxReader = &__pyx_type_10fatslimlib_16core_datareading_NdxReader;
   __pyx_ptype_10fatslimlib_9core_base_CoordinateReader = __Pyx_ImportType("fatslimlib.core_base", "CoordinateReader", sizeof(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_CoordinateReader)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader = (struct __pyx_vtabstruct_10fatslimlib_9core_base_CoordinateReader*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_CoordinateReader->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -23953,10 +24106,10 @@ PyMODINIT_FUNC PyInit_core_datareading(void)
   __pyx_vtable_10fatslimlib_16core_datareading_GroReaderCoords.__pyx_base.load_box = (struct __pyx_obj_10fatslimlib_9core_base_PBCBox *(*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int))__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_load_box;
   __pyx_vtable_10fatslimlib_16core_datareading_GroReaderCoords.__pyx_base.load_coords = (__Pyx_memviewslice (*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int, __Pyx_memviewslice))__pyx_f_10fatslimlib_16core_datareading_15GroReaderCoords_load_coords;
   __pyx_type_10fatslimlib_16core_datareading_GroReaderCoords.tp_base = __pyx_ptype_10fatslimlib_9core_base_CoordinateReader;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_16core_datareading_GroReaderCoords) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_10fatslimlib_16core_datareading_GroReaderCoords) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
   __pyx_type_10fatslimlib_16core_datareading_GroReaderCoords.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_16core_datareading_GroReaderCoords.tp_dict, __pyx_vtabptr_10fatslimlib_16core_datareading_GroReaderCoords) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "GroReaderCoords", (PyObject *)&__pyx_type_10fatslimlib_16core_datareading_GroReaderCoords) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_16core_datareading_GroReaderCoords.tp_dict, __pyx_vtabptr_10fatslimlib_16core_datareading_GroReaderCoords) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "GroReaderCoords", (PyObject *)&__pyx_type_10fatslimlib_16core_datareading_GroReaderCoords) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
   __pyx_ptype_10fatslimlib_16core_datareading_GroReaderCoords = &__pyx_type_10fatslimlib_16core_datareading_GroReaderCoords;
   __pyx_vtabptr_10fatslimlib_16core_datareading_XtcReaderCoords = &__pyx_vtable_10fatslimlib_16core_datareading_XtcReaderCoords;
   __pyx_vtable_10fatslimlib_16core_datareading_XtcReaderCoords.__pyx_base = *__pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader;
@@ -23964,10 +24117,10 @@ PyMODINIT_FUNC PyInit_core_datareading(void)
   __pyx_vtable_10fatslimlib_16core_datareading_XtcReaderCoords.__pyx_base.load_box = (struct __pyx_obj_10fatslimlib_9core_base_PBCBox *(*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int))__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_load_box;
   __pyx_vtable_10fatslimlib_16core_datareading_XtcReaderCoords.__pyx_base.load_coords = (__Pyx_memviewslice (*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int, __Pyx_memviewslice))__pyx_f_10fatslimlib_16core_datareading_15XtcReaderCoords_load_coords;
   __pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords.tp_base = __pyx_ptype_10fatslimlib_9core_base_CoordinateReader;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords) < 0) __PYX_ERR(0, 351, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords) < 0) __PYX_ERR(0, 352, __pyx_L1_error)
   __pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords.tp_dict, __pyx_vtabptr_10fatslimlib_16core_datareading_XtcReaderCoords) < 0) __PYX_ERR(0, 351, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "XtcReaderCoords", (PyObject *)&__pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords) < 0) __PYX_ERR(0, 351, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords.tp_dict, __pyx_vtabptr_10fatslimlib_16core_datareading_XtcReaderCoords) < 0) __PYX_ERR(0, 352, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "XtcReaderCoords", (PyObject *)&__pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords) < 0) __PYX_ERR(0, 352, __pyx_L1_error)
   __pyx_ptype_10fatslimlib_16core_datareading_XtcReaderCoords = &__pyx_type_10fatslimlib_16core_datareading_XtcReaderCoords;
   __pyx_vtabptr_10fatslimlib_16core_datareading_TrrReaderCoords = &__pyx_vtable_10fatslimlib_16core_datareading_TrrReaderCoords;
   __pyx_vtable_10fatslimlib_16core_datareading_TrrReaderCoords.__pyx_base = *__pyx_vtabptr_10fatslimlib_9core_base_CoordinateReader;
@@ -23975,10 +24128,10 @@ PyMODINIT_FUNC PyInit_core_datareading(void)
   __pyx_vtable_10fatslimlib_16core_datareading_TrrReaderCoords.__pyx_base.load_box = (struct __pyx_obj_10fatslimlib_9core_base_PBCBox *(*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int))__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_load_box;
   __pyx_vtable_10fatslimlib_16core_datareading_TrrReaderCoords.__pyx_base.load_coords = (__Pyx_memviewslice (*)(struct __pyx_obj_10fatslimlib_9core_base_CoordinateReader *, fsl_int, __Pyx_memviewslice))__pyx_f_10fatslimlib_16core_datareading_15TrrReaderCoords_load_coords;
   __pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords.tp_base = __pyx_ptype_10fatslimlib_9core_base_CoordinateReader;
-  if (PyType_Ready(&__pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords) < 0) __PYX_ERR(0, 526, __pyx_L1_error)
   __pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords.tp_dict, __pyx_vtabptr_10fatslimlib_16core_datareading_TrrReaderCoords) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "TrrReaderCoords", (PyObject *)&__pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords.tp_dict, __pyx_vtabptr_10fatslimlib_16core_datareading_TrrReaderCoords) < 0) __PYX_ERR(0, 526, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "TrrReaderCoords", (PyObject *)&__pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords) < 0) __PYX_ERR(0, 526, __pyx_L1_error)
   __pyx_ptype_10fatslimlib_16core_datareading_TrrReaderCoords = &__pyx_type_10fatslimlib_16core_datareading_TrrReaderCoords;
   __pyx_vtabptr_array = &__pyx_vtable_array;
   __pyx_vtable_array.get_memview = (PyObject *(*)(struct __pyx_array_obj *))__pyx_array_get_memview;
@@ -24020,10 +24173,10 @@ PyMODINIT_FUNC PyInit_core_datareading(void)
   __pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup = (struct __pyx_vtabstruct_10fatslimlib_9core_base_TopologyGroup*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_TopologyGroup->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_TopologyGroup)) __PYX_ERR(2, 124, __pyx_L1_error)
   __pyx_ptype_10fatslimlib_9core_base_Topology = __Pyx_ImportType("fatslimlib.core_base", "Topology", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Topology), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Topology)) __PYX_ERR(2, 142, __pyx_L1_error)
   __pyx_vtabptr_10fatslimlib_9core_base_Topology = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Topology*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Topology->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Topology)) __PYX_ERR(2, 142, __pyx_L1_error)
-  __pyx_ptype_10fatslimlib_9core_base_Frame = __Pyx_ImportType("fatslimlib.core_base", "Frame", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Frame), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Frame)) __PYX_ERR(2, 213, __pyx_L1_error)
-  __pyx_vtabptr_10fatslimlib_9core_base_Frame = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Frame->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Frame)) __PYX_ERR(2, 213, __pyx_L1_error)
-  __pyx_ptype_10fatslimlib_9core_base_Trajectory = __Pyx_ImportType("fatslimlib.core_base", "Trajectory", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Trajectory), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Trajectory)) __PYX_ERR(2, 266, __pyx_L1_error)
-  __pyx_vtabptr_10fatslimlib_9core_base_Trajectory = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Trajectory->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Trajectory)) __PYX_ERR(2, 266, __pyx_L1_error)
+  __pyx_ptype_10fatslimlib_9core_base_Frame = __Pyx_ImportType("fatslimlib.core_base", "Frame", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Frame), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Frame)) __PYX_ERR(2, 215, __pyx_L1_error)
+  __pyx_vtabptr_10fatslimlib_9core_base_Frame = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Frame*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Frame->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Frame)) __PYX_ERR(2, 215, __pyx_L1_error)
+  __pyx_ptype_10fatslimlib_9core_base_Trajectory = __Pyx_ImportType("fatslimlib.core_base", "Trajectory", sizeof(struct __pyx_obj_10fatslimlib_9core_base_Trajectory), 1); if (unlikely(!__pyx_ptype_10fatslimlib_9core_base_Trajectory)) __PYX_ERR(2, 268, __pyx_L1_error)
+  __pyx_vtabptr_10fatslimlib_9core_base_Trajectory = (struct __pyx_vtabstruct_10fatslimlib_9core_base_Trajectory*)__Pyx_GetVtable(__pyx_ptype_10fatslimlib_9core_base_Trajectory->tp_dict); if (unlikely(!__pyx_vtabptr_10fatslimlib_9core_base_Trajectory)) __PYX_ERR(2, 268, __pyx_L1_error)
   /*--- Variable import code ---*/
   __pyx_t_1 = __Pyx_ImportModule("fatslimlib.core_base"); if (!__pyx_t_1) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "OPENMP_MAX_THREADS", (void **)&__pyx_vp_10fatslimlib_9core_base_OPENMP_MAX_THREADS, "fsl_int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -24092,58 +24245,58 @@ PyMODINIT_FUNC PyInit_core_datareading(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_os, __pyx_t_3) < 0) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":183
+  /* "fatslimlib/core_datareading.pyx":184
  * 
  * 
  * _Topology_readers = {".gro": GroReaderTopol}             # <<<<<<<<<<<<<<
  * 
  * cdef class NdxReader(core_base.IndexReader):
  */
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_gro_2, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_GroReaderTopol)) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Topology_readers, __pyx_t_3) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_gro_2, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_GroReaderTopol)) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Topology_readers, __pyx_t_3) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":210
+  /* "fatslimlib/core_datareading.pyx":211
  *         self.groups = groups
  * 
  * _Index_loaders = {".ndx": NdxReader}             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_ndx_2, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_NdxReader)) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Index_loaders, __pyx_t_3) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_ndx_2, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_NdxReader)) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Index_loaders, __pyx_t_3) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fatslimlib/core_datareading.pyx":733
+  /* "fatslimlib/core_datareading.pyx":742
  *         return coords
  * 
  * _Coordinates_readers = {".gro": GroReaderCoords,             # <<<<<<<<<<<<<<
  *                         ".xtc": XtcReaderCoords,
  *                         ".trr": TrrReaderCoords}
  */
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 733, __pyx_L1_error)
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 742, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_gro_2, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_GroReaderCoords)) < 0) __PYX_ERR(0, 733, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_gro_2, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_GroReaderCoords)) < 0) __PYX_ERR(0, 742, __pyx_L1_error)
 
-  /* "fatslimlib/core_datareading.pyx":734
+  /* "fatslimlib/core_datareading.pyx":743
  * 
  * _Coordinates_readers = {".gro": GroReaderCoords,
  *                         ".xtc": XtcReaderCoords,             # <<<<<<<<<<<<<<
  *                         ".trr": TrrReaderCoords}
  */
-  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_xtc, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_XtcReaderCoords)) < 0) __PYX_ERR(0, 733, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_xtc, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_XtcReaderCoords)) < 0) __PYX_ERR(0, 742, __pyx_L1_error)
 
-  /* "fatslimlib/core_datareading.pyx":735
+  /* "fatslimlib/core_datareading.pyx":744
  * _Coordinates_readers = {".gro": GroReaderCoords,
  *                         ".xtc": XtcReaderCoords,
  *                         ".trr": TrrReaderCoords}             # <<<<<<<<<<<<<<
  */
-  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_trr, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_TrrReaderCoords)) < 0) __PYX_ERR(0, 733, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Coordinates_readers, __pyx_t_3) < 0) __PYX_ERR(0, 733, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_kp_s_trr, ((PyObject *)__pyx_ptype_10fatslimlib_16core_datareading_TrrReaderCoords)) < 0) __PYX_ERR(0, 742, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Coordinates_readers, __pyx_t_3) < 0) __PYX_ERR(0, 742, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "fatslimlib/core_datareading.pyx":1

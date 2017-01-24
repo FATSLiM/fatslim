@@ -3,6 +3,8 @@ All notable changes to FATSLiM are documented in this file.
 Version numbers comply with [Python recommandation](https://www.python.org/dev/peps/pep-0440/).
 
 ## [0.2.2] - Unreleased
+### Fixed
+- Error is now raised when topology and trajectory does not contain the same number of atoms.
 
 ## [0.2.1] - 2016-09-21
 ### Added

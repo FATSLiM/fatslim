@@ -29,7 +29,7 @@ from numpy.testing import assert_almost_equal
 
 # Local imports
 from .data import MODEL_BILAYER_GRO, MODEL_BILAYER_NDX, VESICLE_GRO, VESICLE_NDX, VESICLE_XTC, \
-    VESICLE_TRR, \
+    VESICLE_TRR, VESICLE_HG_XTC, \
     MODEL_BIG_GRO, MODEL_BIG_NDX, MODEL_BILAYER_PROT_GRO, MODEL_BILAYER_PROT_NDX, \
     BILAYER_ALLATOM_GRO, BILAYER_ALLATOM_NDX, BILAYER_PEPTIDE_GRO, BILAYER_PEPTIDE_H_NDX, \
     BILAYER_CHOL_GRO, BILAYER_CHOL_NDX
@@ -97,6 +97,11 @@ def test_trajectory_initialization_hydrogen():
     traj = load_trajectory(BILAYER_PEPTIDE_GRO, BILAYER_PEPTIDE_H_NDX)
     with pytest.raises(KeyError):
         traj.initialize()
+
+
+def test_trajectory_initialization_incoherent_traj():
+    with pytest.raises(IndexError):
+        traj = load_trajectory(VESICLE_GRO, VESICLE_NDX, VESICLE_HG_XTC)
 
 
 class TestTopolReading(TestCase):

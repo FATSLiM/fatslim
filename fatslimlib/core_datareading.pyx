@@ -138,6 +138,7 @@ cdef class GroReaderTopol(core_base.TopologyReader):
                     continue
                 elif lino == 1:
                     natoms = int(line)
+                    self.topology.natoms = natoms
                 else:
                     if lino < natoms + 2:
                         resid = atoi(line[:5].encode())
@@ -237,7 +238,7 @@ cdef class GroReaderCoords(core_base.CoordinateReader):
                 elif lino == (natoms + 1):
                     self.box_offsets = numpy.array((fp.tell(),), dtype=np.int64)
                     need_read = False
-
+        self.natoms = natoms
 
 
     cdef core_base.PBCBox load_box(self, int frame_id):
@@ -353,6 +354,7 @@ cdef class XtcReaderCoords(core_base.CoordinateReader):
         cdef fsl_uint offset=0
         cdef fsl_uint max_offset = os.path.getsize(self.filename)
         cdef int magic=-1, num_atoms_frame, frame_size, num_coords_bytes, nframes = 0
+        cdef int natoms = -1
         cdef float timestep_float
         cdef XDRFILE *xfp
 
@@ -388,6 +390,13 @@ cdef class XtcReaderCoords(core_base.CoordinateReader):
                 raise IOError("Could not set position in file: %s" % self.filename)
             xdrfile_read_int(&num_atoms_frame, 1, xfp)
 
+            if natoms < 0:
+                natoms = num_atoms_frame
+            elif natoms != num_atoms_frame:
+                raise IndexError("Incoherent number of atoms in frame #%i (%i but expecting %i)" % (nframes+1,
+                                                                                                    num_atoms_frame,
+                                                                                                    natoms))
+
             if num_atoms_frame <= 9: # No compression used
                 frame_size += num_atoms_frame * 3 * 4
             else:
@@ -420,6 +429,7 @@ cdef class XtcReaderCoords(core_base.CoordinateReader):
         self.coordinate_offsets = frame_offsets + 52
         self.box_offsets = frame_offsets + 16
         self.nframes = nframes
+        self.natoms = natoms
 
     cdef core_base.PBCBox load_box(self, int frame_id):
         cdef XDRFILE *xfp
@@ -515,7 +525,6 @@ cdef class XtcReaderCoords(core_base.CoordinateReader):
 
 cdef class TrrReaderCoords(core_base.CoordinateReader):
     cdef bint use_double
-    cdef int natoms
     cdef preload(self):
         cdef fsl_uint offset=0
         cdef fsl_uint max_offset = os.path.getsize(self.filename)
