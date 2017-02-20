@@ -179,6 +179,67 @@ cdef class GroReaderTopol(core_base.TopologyReader):
                             topol.internal_append(resid, resname, atomname.encode(), atomid)
 
 
+cdef class GroReaderTopolMDAnalysis(core_base.TopologyReader):
+    cdef load(self):
+        import MDAnalysis as mda
+        cdef int lino = -1, natoms = -1, last_resid = -1
+        cdef int resid, atomid, resid_offset = 0
+        cdef bytes resname
+        cdef str atomname
+        cdef bint skip = False
+
+        topol = self.topology
+        u = mda.Universe(self.filename)
+
+        self.topology.natoms = len(u.atoms)
+
+        with open(self.filename, "r") as fp:
+            for line in fp:
+                lino += 1
+                if lino == 0:
+                    continue
+                elif lino == 1:
+                    natoms = int(line)
+                    self.topology.natoms = natoms
+                else:
+                    if lino < natoms + 2:
+                        resid = atoi(line[:5].encode())
+
+                        # Correct the resid if necessary because resids are modulo 10000 in .gro
+                        if (resid+resid_offset * 10000) < last_resid:
+                            resid_offset += 1
+                        resid += resid_offset * 10000
+
+                        if resid == last_resid and skip:
+                            if skip: # Already selected to be skipped
+                                continue
+                        else:
+                            if resid != last_resid:
+                                skip = False
+
+                            # Update the last_resid counter
+                            last_resid = resid
+
+                            # Read residue name
+                            resname = line[5:10].strip().encode()
+
+                            if is_solvent(resname): # Classified as solvent, we skip it
+                                residue = None
+                                skip = True
+                                #print("Skipping %s - resid:%i" % (resname, resid))
+                                continue
+
+                            # Read atom information
+                            atomname = line[10:15].strip()
+                            #atomname = strip_name(line[10:15])
+
+                            if atomname[0:1] == "H": # Labelled as hydrogen -> skipped
+                                continue
+
+                            atomid = atoi(line[15:20].encode()) + ((lino - 1)// 100000) * 100000
+
+                            topol.internal_append(resid, resname, atomname.encode(), atomid)
+
 
 
 _Topology_readers = {".gro": GroReaderTopol}
