@@ -6,6 +6,20 @@ FATSLiM
 As you can imagine, the goal is to provide ~~the Ultimate Question of Life, the Universe, and Everything~~ a fast and efficient tool to extract membrane-related physical properties from Molecular Dynamics simulations of lipid bilayers.
 To see what `FATSLiM`_ is able to do, please visit the homepage at http://fatslim.github.io/.
 
+--------------
+Important Note
+--------------
+
+`FATSLiM`_ is currently undergoing a major rewrite (read it is rewritten from scratch) in progress to overcome some intrinsic limitations.
+The major goals of this rewrite are:
+
+  - To use MDAnalysis`_ as a backend for trajectory and topology files I/O.
+  - To provide an external API to use FATSLiM as a library so it can be use in e.g. `Jupyter`_ notebooks.
+  - To ease code maintainability.
+
+Please check out the `full-rewrite branch <https://github.com/FATSLiM/fatslim/tree/full-rewrite>`_ to follow the progression.
+
+
 ------
 Status
 ------
@@ -75,3 +89,5 @@ A full documentation is available at: `http://pythonhosted.org/fatslim`_
 .. _`develop branch`: https://github.com/FATSLiM/fatslim/tree/develop
 .. _`master branch`: https://github.com/FATSLiM/fatslim/tree/master
 .. _`http://pythonhosted.org/fatslim`: http://pythonhosted.org/fatslim
+.. _MDAnalysis: https://www.mdanalysis.org/
+.. _`Jupyter`: https://jupyter.org/
