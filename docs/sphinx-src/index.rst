@@ -15,6 +15,10 @@ FATSLiM (**F**\ ast **A**\ nalysis **T**\ oolbox for **S**\ imulations of **Li**
 - `fatslim.github.io`_) is a software dedicated to the analysis of molecular dynamics simulations
 of lipid membranes.
 
+.. important::
+   This documentation may be outdated and should not be used.
+   See https://github.com/FATSLiM/fatslim/issues/11 for details.
+
 It can read `Gromacs`_ file formats.
 
 .. _`fatslim.github.io`: http://fatslim.github.io
