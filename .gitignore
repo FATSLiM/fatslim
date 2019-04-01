@@ -55,4 +55,8 @@ docs/_build/
 # Additional stuff
 *.bak
 Useful/
+.dependencies/
+
+# direnv
+.envrc
 
