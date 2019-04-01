@@ -1,14 +1,16 @@
 # whitelist
 branches:
   only:
-    - master
-    - develop
+#    - master
+#    - develop
+    - full-rewrite
 
 language: python
 
 python:
-  - "2.7"
   - "3.5"
+  - "3.6"
+  - "3.7"
 
 env:
   - CYTHONIZE=false OPENMP=false
@@ -19,11 +21,7 @@ env:
 install:
   - sudo apt-get update
   - if [[ "$OPENMP" == "true" ]]; then sudo apt-get install libgomp1; fi
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
-    else
-      wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    fi
+  - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
@@ -45,7 +43,7 @@ install:
 
 
 script:
-  - OMP_NUM_THREADS=4 fatslim version
+  #- OMP_NUM_THREADS=4 fatslim version
   - OMP_NUM_THREADS=4 py.test --cov=`python -c "from distutils.sysconfig import get_python_lib; print(\"%s/fatslimlib\" % get_python_lib())"` `python -c "from distutils.sysconfig import get_python_lib; print(\"%s/fatslimlib/test\" % get_python_lib())"`
 
 after_success:
