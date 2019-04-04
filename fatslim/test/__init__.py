@@ -21,10 +21,24 @@ import pytest
 import MDAnalysis as mda
 
 # Local imports
-from .data import BILAYER_GRO, BILAYER_NDX
+from .data import BILAYER_GRO, MODEL_BILAYER_GRO, MODEL_BILAYER_NDX, BILAYER_GRO_ALLATOM
+from ..coreobjects import LipidSystem
 
 
 @pytest.fixture(scope="session")
-def universe_simple_bilayer():
+def universe_model_bilayer() -> mda.Universe:
+    u = mda.Universe(MODEL_BILAYER_GRO)
+    return u
+
+
+@pytest.fixture(scope="session")
+def system_model_bilayer() -> LipidSystem:
+    u = mda.Universe(MODEL_BILAYER_GRO)
+    system = LipidSystem(u, "name P")
+    return system
+
+
+@pytest.fixture(scope="session")
+def universe_simple_bilayer() -> mda.Universe:
     u = mda.Universe(BILAYER_GRO)
     return u

@@ -41,6 +41,7 @@ coverage.xml
 .project
 .pydevproject
 .idea
+.mypy_cache/
 
 # Rope
 .ropeproject
@@ -56,6 +57,8 @@ docs/_build/
 *.bak
 Useful/
 .dependencies/
+Refs/
+
 
 # direnv
 .envrc

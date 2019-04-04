@@ -1,8 +1,8 @@
 # -*- coding: utf-8; Mode: python; tab-width: 4; indent-tabs-mode:nil; -*-
 # vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
-#
+# 
 # This file is part of FATSLiM --- http://fatslim.github.io/
-#
+# 
 # Copyright (c) 2013-2018, Sébastien Buchoux
 # Copyright (c) 2019, by the FATSLiM development team (see AUTHORS file)
 #
@@ -16,21 +16,3 @@
 # Bioinformatics 33(1) (2017), 133--134, doi:10.1093/bioinformatics/btw563
 #
 
-import os
-
-
-def _fullpath_from_basename(fname):
-    return os.path.join(DATADIR, fname)
-
-
-DATADIR = "%s" % os.path.dirname(__file__)
-
-# Model bilayer
-MODEL_BILAYER_GRO = _fullpath_from_basename("model_bilayer.gro")
-MODEL_BILAYER_NDX = _fullpath_from_basename("model_bilayer.ndx")
-
-# Simple (yet experimental) bilayer
-BILAYER_GRO = _fullpath_from_basename("bilayer.gro")
-
-# All-atom bilayer
-BILAYER_GRO_ALLATOM = _fullpath_from_basename("bilayer_alltom.gro")
