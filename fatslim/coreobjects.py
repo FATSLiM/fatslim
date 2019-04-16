@@ -19,19 +19,27 @@
 import os
 import MDAnalysis as mda
 
+from ._core import SimplifiedLipid, LipidRegistry
 
-class Lipid(mda.core.groups.ComponentBase):
+
+class Lipid(mda.core.groups.ComponentBase, SimplifiedLipid):
+    def __new__(cls, *args, **kwargs):
+        # this method is inherited from MDAnalysis.core.groups._MutableBase which updates classes accessible to
+        # MDAnalysis.Universe objects.
+        # To avoid polluting pure MDAnalysis object with FATSLiM objects, this method is overridden and stripped
+        # down to the bare minimum
+        return SimplifiedLipid.__new__(cls)
 
     def __init__(self, atoms: mda.AtomGroup, hg_atoms: mda.AtomGroup):
-        super().__init__(atoms.ix, atoms.universe)
-
         try:
-            assert isinstance(hg_atoms, mda.AtomGroup)
+            assert isinstance(atoms, mda.AtomGroup)
         except AssertionError:
-            raise TypeError("hg_atoms must be a MDAnalysis.AtomGroup. (Actual type: {})".format(
+            raise TypeError("atoms must be a MDAnalysis.AtomGroup. (Actual type: {})".format(
                 type(atoms)
             ))
-        self._hg_atoms = hg_atoms
+        mda.core.groups.ComponentBase.__init__(self, atoms.ix, atoms.universe)
+
+        SimplifiedLipid.__init__(self, atoms, hg_atoms)
 
     def __len__(self):
         return self.n_atoms
@@ -41,43 +49,20 @@ class Lipid(mda.core.groups.ComponentBase):
         return len(self.atoms)
 
     @property
-    def atoms(self):
+    def atoms(self) -> mda.AtomGroup:
         """An :class:`MDAnalysis.AtomGroup` of :class:`Atoms<MDAnalysis.core.groups.Atom>` present in this
         :class:`Lipid`.
         """
-        ag = self.universe.atoms[self.ix]
-        ag._cache['isunique'] = True
-        ag._cache['unique'] = ag
-        return ag
-
-    @property
-    def position(self):
-        return self._hg_atoms.positions.mean(axis=0)
-
-    @property
-    def direction(self):
-        raise NotImplementedError
-
-    @property
-    def normal(self):
-        raise NotImplementedError
+        return self._atoms
 
 
 class Leaflet(mda.core.groups.GroupBase):
     pass
 
 
-class LipidSystem(object):
-    def __init__(self, universe: mda.Universe, headgroup_atoms: str, verbose: bool = False):
-        self.verbose = verbose
-
-        try:
-            assert isinstance(universe, mda.Universe)
-        except AssertionError:
-            raise TypeError("First argument must be an instance of MDAnalysis.Universe. (Actual type: {})".format(
-                str(type(universe))
-            ))
-        self.universe = universe
+class LipidSystem(LipidRegistry):
+    def __init__(self, universe: mda.Universe, headgroup_atoms: str):
+        super().__init__(universe)
 
         try:
             assert isinstance(headgroup_atoms, str)
@@ -96,32 +81,24 @@ class LipidSystem(object):
                     headgroup_atoms, excinfo.args[0]
                 ))
 
-        # We need to update universe so it can handle the Lipid custom class
-        # See MDAnalysis.core.groups._MutableBase class
-        # and _generate_from_topology method from MDAnalysis.core.universe.Universe for details
-
-        self.lipids = []
-
         # We need to check if the headgroup selection is coherent
         if len(self.hg_selection) == 0:  # Empty selection
             raise ValueError("Empty headgroup selection")
         elif len(self.hg_selection) == len(self.universe.atoms):  # No selection
             raise ValueError("Headgroup selection is whole universe")
-        else:
-            # We check if the selection correspond to just a few atoms from distinct residues
-            for resid, group in self.hg_selection.groupby("resids").items():
-                lipid = self.universe.residues[resid - 1].atoms  # resids start from 1!
-                try:
-                    assert len(group) < len(lipid)
-                except AssertionError:
-                    raise ValueError("Headgroup selection corresponds to whole residue")
 
-                self.lipids.append(Lipid(lipid, group))
+        # We check if the selection correspond to just a few atoms from distinct residues
+        for resid, group in self.hg_selection.groupby("resids").items():
+            lipid = self.universe.residues[resid - 1].atoms  # resids start from 1!
+            try:
+                assert len(group) < len(lipid)
+            except AssertionError:
+                raise ValueError("Headgroup selection corresponds to whole residue")
 
-        print(self.hg_selection, len(self.hg_selection))
+            self.add_lipid(Lipid(lipid, group))
 
     def __len__(self):
-        return len(self.lipids)
+        return self.nlipids
 
     def __getitem__(self, item):
         return self.lipids[item]

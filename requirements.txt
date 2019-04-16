@@ -3,3 +3,4 @@ mdanalysis>=0.19
 numpy>=1.16.2
 plotly>=3.7
 pytest>=4.4
+cython>=0.29
