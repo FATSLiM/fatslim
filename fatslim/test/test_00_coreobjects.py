@@ -104,7 +104,7 @@ def test_headgroup_selection_empty(universe_model_bilayer):
             LipidSystem(universe_model_bilayer, "")
         assert len(record) == 1
         assert str(record[0].message) == "Empty string to select atoms, empty group returned."
-    assert "Empty headgroup selection" in str(excinfo.value)
+    assert "headgroup selection" in str(excinfo.value)
 
 
 def test_headgroup_selection_all(universe_model_bilayer):
