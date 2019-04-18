@@ -15,10 +15,9 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install -v .
 
 # command to run tests
 script:
-  - pytest -v fatslim/test
+  - python setup.py test
 
 
