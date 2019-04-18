@@ -59,16 +59,17 @@ cmdclass['test'] = PyTest
 
 typedefs_ext = Extension("fatslim._typedefs",
                       ["fatslim/_typedefs.pyx"],
-                        include_dirs=[numpy.get_include()],
-                      extra_compile_args=[],
-                      extra_link_args=[])
+                        include_dirs=[numpy.get_include()],)
+
+geometry_ext = Extension("fatslim._geometry",
+                      ["fatslim/_geometry.pyx"],
+                        include_dirs=[numpy.get_include()],)
 
 core_ext = Extension("fatslim._core",
                       ["fatslim/_core.pyx"],
                         include_dirs=[numpy.get_include()],
-                     extra_compile_args=[],
-                     extra_link_args=[])
+)
 setup(name='fatslim',
-      ext_modules=cythonize([typedefs_ext, core_ext]),
+      ext_modules=cythonize([typedefs_ext, geometry_ext, core_ext]),
       cmdclass=cmdclass
       )

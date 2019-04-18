@@ -36,243 +36,10 @@ import MDAnalysis as mda
 from MDAnalysis.lib.mdamath import triclinic_vectors
 import warnings
 
-from ._typedefs cimport matrix, real, rvec, dreal, fsl_int, ivec
-from ._typedefs cimport rvec_norm2, rvec_smul, rvec_copy, rvec_inc, rvec_normalize
+from ._typedefs cimport real, rvec, dreal, fsl_int, ivec
+from ._typedefs cimport rvec_normalize
 
-
-###############################
-# Utility class to handle PBC #
-###############################
-cdef struct cPBCBox_t:
-    matrix     box
-    rvec       fbox_diag
-    rvec       hbox_diag
-    rvec       mhbox_diag
-    dreal      max_cutoff2
-
-# Class to handle PBC calculations
-@cython.initializedcheck(False)
-@cython.boundscheck(False)
-cdef class PBCBox(object):
-    """
-    Cython implementation of
-    `PBC-related <https://en.wikipedia.org/wiki/Periodic_boundary_conditions>`_
-    operations. This class is used by classes :class:`FastNS`
-    and :class:`_NSGrid` to put all particles inside a brick-shaped box
-    and to compute PBC-aware distance. The class can also handle
-    non-PBC aware distance evaluations through ``periodic`` argument.
-
-    .. warning::
-        This class is not meant to be used by end users.
-
-    .. warning::
-        Even if MD triclinic boxes can be handled by this class,
-        internal optimization is made based on the assumption that
-        particles are inside a brick-shaped box. When this is not
-        the case, calculated distances are not
-        warranted to be exact.
-    """
-
-    # Cdef attributes
-    cdef cPBCBox_t c_pbcbox
-    cdef bint is_triclinic
-
-    def __init__(self, real[:, ::1] box):
-        """
-        Parameters
-        ----------
-        box : numpy.ndarray
-            box vectors of shape ``(3, 3)`` or
-            as returned by ``MDAnalysis.lib.mdamath.triclinic_vectors``
-            ``dtype`` must be ``numpy.float32``
-        periodic : boolean
-            ``True`` for PBC-aware calculations
-            ``False`` for non PBC aware calculations
-        """
-
-        self.is_triclinic = False
-        self.update(box)
-
-    cdef void fast_update(self, real[:, ::1] box) nogil:
-        """
-        Updates the internal box parameters for
-        PBC-aware distance calculations. The internal
-        box parameters are used to define the brick-shaped
-        box which is eventually used for distance calculations.
-
-        """
-        cdef fsl_int i, j
-        cdef dreal min_hv2, min_ss, tmp
-
-        # Update matrix
-        self.is_triclinic = False
-        for i in range(DIM):
-            for j in range(DIM):
-                self.c_pbcbox.box[i][j] = box[i, j]
-
-                if i != j:
-                    # mdamath.triclinic_vectors explicitly sets the off-diagonal
-                    # elements to zero if the box is orthogonal, so we can
-                    # safely check floating point values for equality here
-                    if box[i, j] != 0.0:
-                        self.is_triclinic = True
-
-        # Update diagonals
-        for i in range(DIM):
-            self.c_pbcbox.fbox_diag[i] = box[i, i]
-            self.c_pbcbox.hbox_diag[i] = self.c_pbcbox.fbox_diag[i] * 0.5
-            self.c_pbcbox.mhbox_diag[i] = - self.c_pbcbox.hbox_diag[i]
-
-        # Update maximum cutoff
-
-        # Physical limitation of the cut-off
-        # by half the length of the shortest box vector.
-        min_hv2 = min(0.25 * rvec_norm2(&box[XX, XX]), 0.25 * rvec_norm2(&box[YY, XX]))
-        min_hv2 = min(min_hv2, 0.25 * rvec_norm2(&box[ZZ, XX]))
-
-        # Limitation to the smallest diagonal element due to optimizations:
-        # checking only linear combinations of single box-vectors (2 in x)
-        # in the grid search and pbc_dx is a lot faster
-        # than checking all possible combinations.
-        tmp = box[YY, YY]
-        if box[ZZ, YY] < 0:
-            tmp -= box[ZZ, YY]
-        else:
-            tmp += box[ZZ, YY]
-
-        min_ss = min(box[XX, XX], min(tmp, box[ZZ, ZZ]))
-        self.c_pbcbox.max_cutoff2 = min(min_hv2, min_ss * min_ss)
-
-    def update(self, real[:, ::1] box):
-        """
-        Updates internal MD box representation and parameters used for calculations.
-
-        Parameters
-        ----------
-        box : numpy.ndarray
-            Describes the MD box vectors as returned by
-            :func:`MDAnalysis.lib.mdamath.triclinic_vectors`.
-            `dtype` must be :class:`numpy.float32`
-
-        Note
-        ----
-        Call to this method is only needed when the MD box is changed
-        as it always called when class is instantiated.
-
-        """
-
-        if box.shape[0] != DIM or box.shape[1] != DIM:
-            raise ValueError("Box must be a {} x {} matrix. Got: {} x {})".format(
-                DIM, DIM, box.shape[0], box.shape[1]))
-        if (box[XX, XX] < EPSILON) or (box[YY, YY] < EPSILON) or (box[ZZ, ZZ] < EPSILON):
-            raise ValueError("Box does not correspond to PBC=xyz")
-        self.fast_update(box)
-
-    cdef void fast_pbc_dx(self, rvec ref, rvec other, rvec dx) nogil:
-        """Dislacement between two points for both
-        PBC and non-PBC conditions
-
-        Modifies the displacement vector between two points based
-        on the minimum image convention for PBC aware calculations.
-
-        For non-PBC aware distance evaluations, calculates the
-        displacement vector without any modifications
-        """
-
-        cdef fsl_int i, j
-
-        for i in range(DIM):
-            dx[i] = other[i] - ref[i]
-
-        for i in range(DIM-1, -1, -1):
-            while dx[i] > self.c_pbcbox.hbox_diag[i]:
-                for j in range(i, -1, -1):
-                    dx[j] -= self.c_pbcbox.box[i][j]
-
-            while dx[i] <= self.c_pbcbox.mhbox_diag[i]:
-                for j in range(i, -1, -1):
-                    dx[j] += self.c_pbcbox.box[i][j]
-
-    cdef dreal fast_distance2(self, rvec a, rvec b) nogil:
-        """Distance calculation between two points
-        for both PBC and non-PBC aware calculations
-
-        Returns the distance obeying minimum
-        image convention if periodic is set to ``True`` while
-        instantiating the :class:`_PBCBox` object.
-        """
-
-        cdef rvec dx
-        self.fast_pbc_dx(a, b, dx)
-        return rvec_norm2(dx)
-
-    cdef void fast_put_atoms_in_bbox(self, real[:, ::1] coords, real[:, ::1] bbox_coords) nogil:
-        """Shifts all ``coords`` to an orthogonal brick shaped box
-
-        All the coordinates are brought into an orthogonal
-        box. The box vectors for the brick-shaped box
-        are defined in ``fast_update`` method.
-
-        """
-
-        cdef fsl_int i, m, d, natoms
-
-        natoms = coords.shape[0]
-
-        if self.is_triclinic:
-            for i in range(natoms):
-                for m in range(DIM - 1, -1, -1):
-                    while bbox_coords[i, m] < 0:
-                        for d in range(m+1):
-                            bbox_coords[i, d] += self.c_pbcbox.box[m][d]
-                    while bbox_coords[i, m] >= self.c_pbcbox.box[m][m]:
-                        for d in range(m+1):
-                            bbox_coords[i, d] -= self.c_pbcbox.box[m][d]
-        else:
-            for i in range(natoms):
-                for m in range(DIM):
-                    while bbox_coords[i, m] < 0:
-                        bbox_coords[i, m] += self.c_pbcbox.box[m][m]
-                    while bbox_coords[i, m] >= self.c_pbcbox.box[m][m]:
-                        bbox_coords[i, m] -= self.c_pbcbox.box[m][m]
-
-
-    cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int[:] indices) nogil:
-        self.fast_pbc_xcm_from_ref(coords, &coords[0, XX], xcm, indices)
-
-    @cython.cdivision(True)
-    cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref,
-                                    rvec xcm, fsl_int[:] indices) nogil:
-        cdef fsl_int i
-        cdef fsl_int size
-        cdef rvec dx
-        cdef real[:,::1] bbox_coords
-        cdef fsl_int actual_index
-
-        size = indices.shape[0]
-
-        if size < 1:
-            return
-
-        rvec_copy(ref, xcm)
-        rvec_smul(size, xcm, xcm)
-
-        # Step 1: Get XCM
-        for i in range(size):
-            actual_index = indices[i]
-            self.fast_pbc_dx(ref, &coords[actual_index, XX], dx)
-            rvec_inc(xcm, dx)
-        rvec_smul(1.0/size, xcm, xcm)
-
-        # Step 2: Make sure it is inside the brick-shaped box
-        for i in range(DIM - 1, -1, -1):
-            while xcm[i] < 0:
-                for d in range(i+1):
-                    xcm[d] += self.c_pbcbox.box[i][d]
-            while xcm[i] >= self.c_pbcbox.box[i][i]:
-                for d in range(i+1):
-                    xcm[d] -= self.c_pbcbox.box[i][d]
-
+from ._geometry cimport PBCBox, normal_from_neighbours
 
 cdef class _NSGrid(object):
     # Cdef attributes
@@ -327,8 +94,10 @@ cdef class _NSGrid(object):
 
         #print("DEBUG: Grid initialized for a maximum of {} beads and a cutoff of {:.3f}".format(self.ncoords, self.cutoff))
 
-    cdef update(self):
+    @cython.cdivision(True)
+    cdef int update(self) nogil except -1:
         cdef fsl_int i
+        cdef dreal bbox_vol
 
         # First, we add a small margin to the cell size so that we can safely
         # use the condition d <= cutoff (instead of d < cutoff) for neighbor
@@ -356,9 +125,10 @@ cdef class _NSGrid(object):
         self.cell_offsets[ZZ] = self.ncells[XX] * self.ncells[YY]
 
         if new_size > self.size:
-            self.nbeads_in_cell = np.zeros(new_size, dtype=np.int)
-            self.beads_in_cell = np.empty((new_size, self.max_nbeads), dtype=np.int)
-            self.cell_lastcheckid = np.empty(new_size, dtype=np.int)
+            with gil:
+                self.nbeads_in_cell = np.zeros(new_size, dtype=np.int)
+                self.beads_in_cell = np.empty((new_size, self.max_nbeads), dtype=np.int)
+                self.cell_lastcheckid = np.empty(new_size, dtype=np.int)
 
         self.size = new_size
 
@@ -368,7 +138,7 @@ cdef class _NSGrid(object):
         #                                                                    self.size))
 
 
-
+    @cython.cdivision(True)
     cdef fsl_int coord2cellid(self, rvec coord) nogil:
         """Finds the cell-id for the given coordinate inside the brick shaped box
 
@@ -381,6 +151,7 @@ cdef class _NSGrid(object):
                <fsl_int> (coord[YY] / self.cellsize[YY]) * self.cell_offsets[YY] + \
                <fsl_int> (coord[XX] / self.cellsize[XX])
 
+    @cython.cdivision(True)
     cdef bint cellid2cellxyz(self, fsl_int cellid, ivec cellxyz) nogil:
         """Finds actual cell position `(x, y, z)` from a cell-id
         """
@@ -401,7 +172,7 @@ cdef class _NSGrid(object):
 
     @cython.initializedcheck(False)
     @cython.boundscheck(False)
-    cdef bint fill_grid(self, real[:, ::1] coords):
+    cdef int fill_grid(self, real[:, ::1] coords) nogil except -1:
         """Sorts atoms into cells based on their position in the brick shaped box
 
         Every atom inside the brick shaped box is assigned a
@@ -437,14 +208,13 @@ cdef class _NSGrid(object):
             self.cellids[i] = cellindex
 
             if self.nbeads_in_cell[cellindex] == self.max_nbeads:
-                self.resize_beadlist()
+                with gil:
+                    self.resize_beadlist()
 
             self.beads_in_cell[cellindex, self.nbeads_in_cell[cellindex]] = i
             self.nbeads_in_cell[cellindex] += 1
 
-        return True
-
-    cdef resize_beadlist(self):
+    cdef void resize_beadlist(self):
         cdef fsl_int[:, ::1] tmp_memview = self.beads_in_cell
         cdef fsl_int increment = 50
 
@@ -452,7 +222,8 @@ cdef class _NSGrid(object):
         self.beads_in_cell = np.empty((tmp_memview.shape[0], self.max_nbeads), dtype=np.int)
         self.beads_in_cell[:,:-increment] = tmp_memview
 
-
+@cython.initializedcheck(False)
+@cython.boundscheck(False)
 cdef class _NSResults:
     cdef fsl_int size
     cdef fsl_int max_nneighbours
@@ -469,9 +240,10 @@ cdef class _NSResults:
         self.neighbours = np.empty((self.size, self.max_nneighbours), dtype=np.int)
         self.distances = np.empty((self.size, self.max_nneighbours), dtype=np.float32)
 
-    cdef add_neighbour(self, fsl_int i, fsl_int j, real d2):
+    cdef int add_neighbour(self, fsl_int i, fsl_int j, real d2) nogil except -1:
         if self.nneighbours[i] == self.max_nneighbours:
-            self.resize_neighbourlist()
+            with gil:
+                self.resize_neighbourlist()
 
         self.neighbours[i, self.nneighbours[i]] = j
         self.distances[i, self.nneighbours[i]] = d2
@@ -481,7 +253,8 @@ cdef class _NSResults:
         #    print("DEBUG: Bead#{} has neighbor bead#{} (d2={}, total neighbors={})".format(i,j,d2, self.nneighbours[i]))
 
 
-    cdef reset(self):
+    cdef void reset(self) nogil:
+        cdef fsl_int i
         for i in range(self.size):
             self.nneighbours[i] = 0
 
@@ -514,13 +287,15 @@ cdef class _NSResults:
             for j in range(self.nneighbours[i]):
                 tuples[-1].append((self.neighbours[i, j], self.distances[i, j]))
 
-
-cdef bint self_search(_NSGrid grid, _NSResults results, real[:, ::1] positions):
+@cython.initializedcheck(False)
+@cython.boundscheck(False)
+cdef int fast_self_search(_NSGrid grid, _NSResults results, real[:, ::1] positions) nogil except -1:
     cdef fsl_int i, j, m, d
     cdef fsl_int current_beadid, bid, cellindex, cellindex_probe
     cdef fsl_int xi, yi, zi
     cdef rvec probe
     cdef dreal cutoff2 = grid.cutoff * grid.cutoff
+    cdef dreal d2
 
     # Empty results
     results.reset()
@@ -579,7 +354,6 @@ cdef bint self_search(_NSGrid grid, _NSResults results, real[:, ::1] positions):
                         if EPSILON < d2 <= cutoff2:
                             results.add_neighbour(current_beadid, bid, d2)
                             results.add_neighbour(bid, current_beadid, d2)
-    return True
 
 
 cdef class SimplifiedLipid:
@@ -671,6 +445,7 @@ cdef class LipidRegistry:
     cdef fsl_int[:] hg_indices
 
     cdef real[:, ::1] _lipid_positions
+    cdef real[:, ::1] _lipid_centers
     cdef real[:, ::1] _lipid_directions
     cdef real[:, ::1] _lipid_normals
     cdef _NSGrid _lipid_grid
@@ -701,6 +476,7 @@ cdef class LipidRegistry:
 
         # Simplified lipids
         self._lipid_positions = None
+        self._lipid_centers = None
         self._lipid_directions = None
         self._lipid_grid = None
         self._lipid_normals = None
@@ -755,7 +531,7 @@ cdef class LipidRegistry:
         cdef real[:, ::1] u_pos, positions, hg_positions_bbox
         cdef fsl_int[:] indices
         cdef fsl_int next_offset
-        cdef bint bad_normals = False
+        cdef bint should_raise = False
 
         if self._lastupdate == self.universe.trajectory.frame and not force_update:
             #warnings.warn("Already uptodate.. No need for update")
@@ -764,6 +540,7 @@ cdef class LipidRegistry:
 
         if not self._locked:
             self._lipid_positions = np.empty((self._nlipids, DIM), dtype=np.float32)
+            self._lipid_centers = np.empty((self._nlipids, DIM), dtype=np.float32)
             self._lipid_directions = np.empty((self._nlipids, DIM), dtype=np.float32)
             self._lipid_normals = np.empty((self._nlipids, DIM), dtype=np.float32)
             self._lipid_grid = _NSGrid(self._nlipids, self.ns_cutoff, self.box, self.max_gridsize)
@@ -780,41 +557,52 @@ cdef class LipidRegistry:
 
         self.box.fast_put_atoms_in_bbox(u_pos, self.universe_coords_bbox)
 
-        for i in range(self._nlipids):
+        with nogil:
+            for i in range(self._nlipids):
 
-            # First: bead position
-            if i == self._nlipids-1:
-                next_offset = self.hg_indices.shape[0]
-            else:
-                next_offset = self.hg_offsets[i+1]
-            indices = self.hg_indices[self.hg_offsets[i]: next_offset]
-            self.box.fast_pbc_xcm(self.universe_coords_bbox, &self._lipid_positions[i, XX], indices)
+                # First: bead position
+                if i == self._nlipids-1:
+                    next_offset = self.hg_indices.shape[0]
+                else:
+                    next_offset = self.hg_offsets[i+1]
+                indices = self.hg_indices[self.hg_offsets[i]: next_offset]
+                self.box.fast_pbc_xcm(self.universe_coords_bbox, &self._lipid_positions[i, XX], indices)
 
-            # Second: lipid directions
-            if i == self._nlipids-1:
-                next_offset = self.lipid_indices.shape[0]
-            else:
-                next_offset = self.lipid_offsets[i+1]
-            indices = self.lipid_indices[self.lipid_offsets[i]: next_offset]
-            self.box.fast_pbc_xcm(self.universe_coords_bbox, &self._lipid_directions[i, XX], indices)
-            self.box.fast_pbc_dx(&self._lipid_directions[i, XX],
-                                 &self._lipid_positions[i, XX],
-                                 &self._lipid_directions[i, XX])
-            rvec_normalize(&self._lipid_directions[i, XX])
+                # Second: lipid directions
+                if i == self._nlipids-1:
+                    next_offset = self.lipid_indices.shape[0]
+                else:
+                    next_offset = self.lipid_offsets[i+1]
+                indices = self.lipid_indices[self.lipid_offsets[i]: next_offset]
+                self.box.fast_pbc_xcm(self.universe_coords_bbox, &self._lipid_centers[i, XX], indices)
+                self.box.fast_pbc_dx(&self._lipid_centers[i, XX],
+                                     &self._lipid_positions[i, XX],
+                                     &self._lipid_directions[i, XX])
+                rvec_normalize(&self._lipid_directions[i, XX])
 
-        # Third: get neighbours for each lipid
-        self._lipid_grid.fill_grid(self._lipid_positions)
-        self_search(self._lipid_grid, self._lipid_neighbours, self._lipid_positions)
+            # Third: get neighbours for each lipid
+            self._lipid_grid.fill_grid(self._lipid_positions)
+            fast_self_search(self._lipid_grid, self._lipid_neighbours, self._lipid_positions)
 
-        # Fourth: get lipid normals
+            # Fourth: get lipid normals
+            for i in range(self._nlipids):
+                normal_from_neighbours(self._lipid_positions,
+                                   self._lipid_directions,
+                                   i,
+                                   self._lipid_neighbours.neighbours[i, :self._lipid_neighbours.nneighbours[i]],
+                                   self.box,
+                                   &self._lipid_normals[i, XX])
+                if self._lipid_neighbours.nneighbours[i] < 3:
+                    for j in range(DIM):
+                        self._lipid_normals[i, j] = self._lipid_directions[i, j]
+
 
         self._lastupdate = self.universe.trajectory.frame
 
-        return True
-
-    cdef self_search(self, _NSGrid grid, _NSResults results):
-        pass
-
+    @property
+    def positions_bbox(self) -> np.ndarray:
+        self.update()
+        return np.asarray(self.universe_coords_bbox).copy()
 
     @property
     def lipid_positions(self) -> np.ndarray:
@@ -825,6 +613,11 @@ cdef class LipidRegistry:
     def lipid_directions(self) -> np.ndarray:
         self.update()
         return np.asarray(self._lipid_directions).copy()
+
+    @property
+    def lipid_centers(self) -> np.ndarray:
+        self.update()
+        return np.asarray(self._lipid_centers).copy()
 
     @property
     def lipid_normals(self) -> np.ndarray:

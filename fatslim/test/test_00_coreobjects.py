@@ -113,12 +113,10 @@ def test_headgroup_selection_all(universe_model_bilayer):
     assert "Headgroup selection is whole universe" in str(excinfo.value)
 
 
+@pytest.mark.filterwarnings("ignore: Failed to guess the mass for the following atom")
 def test_headgroup_selection_whole_residue(universe_simple_bilayer):
     with pytest.raises(ValueError) as excinfo:
-        with pytest.warns(UserWarning) as record:
             LipidSystem(universe_simple_bilayer, "resname DPC")
-        assert len(record) == 1
-        assert str(record[0].message) == "Failed to guess the mass for the following atom types: G"
     assert "Headgroup selection corresponds to whole residue" in str(excinfo.value)
 
 
@@ -131,19 +129,75 @@ def test_lipid_system_size(lipid_system):
     assert len(lipid_system) == 72, "Bad number of lipids"
 
 
+def test_lipid_system_positions_bbox(lipid_system):
+    coords = lipid_system.universe.atoms.positions
+    assert_almost_equal(lipid_system.positions_bbox, coords, decimal=3)
+
+
 @pytest.mark.filterwarnings("ignore: Lipid does not belong")
-def test_lipid_system_single_position(lipid_system, single_lipid):
-    assert_almost_equal(lipid_system[6].position, np.array([11.85, 4.46, 76.25]), decimal=3)
+def test_lipid_system_positions(lipid_system, single_lipid):
     assert_almost_equal(lipid_system[6].position, single_lipid.position, decimal=3)
 
+    base_x = 3.85
+    nlipids_x = 6
+    unit_distance = 8
+    base_y = [4.46, 3.54]
+    base_z = [76.25, 23.75]
+    lipid_per_leaflet = int(72 / 2)
+
+    for i in range(2 * lipid_per_leaflet):
+        offset_z = int(i//lipid_per_leaflet)
+        if offset_z == 0:
+            offset_x = int((i - lipid_per_leaflet * offset_z) // nlipids_x)
+            offset_y = int(i - lipid_per_leaflet * offset_z - nlipids_x * offset_x)
+        else:
+            offset_x = int((i - lipid_per_leaflet * offset_z) // nlipids_x)
+            offset_y = nlipids_x - 1 - int(i - lipid_per_leaflet * offset_z - nlipids_x * offset_x)
+
+        expected_position = np.array([
+            base_x + offset_x * unit_distance,
+            base_y[offset_z] + offset_y * unit_distance,
+            base_z[offset_z]
+        ])
+
+        assert_almost_equal(lipid_system[i].position, expected_position, decimal=3,
+                            err_msg="Bad position for lipid #{} (offsets: {}, {}, {})".format(
+                                i,
+                                offset_x, offset_y, offset_z
+                            ))
+
+
+def test_lipid_system_centers(lipid_system):
+    u = lipid_system.universe
+
+    #print(u.residues[3].atoms._ix)
+    #print(lipid_system[3]._ix)
+    assert_almost_equal(u.residues[3].atoms.center_of_geometry(),
+                        lipid_system.positions_bbox[lipid_system[3]._ix].mean(axis=0),
+                        decimal=3
+                        )
+
+    for i, residue in enumerate(u.residues):
+        center = residue.atoms.center_of_geometry()
+
+        assert_almost_equal(lipid_system.lipid_centers[i], center, decimal=3,
+                            err_msg="Bad center for lipid #{}".format(i))
+
 
 @pytest.mark.filterwarnings("ignore: Lipid does not belong")
-def test_lipid_system_single_direction(lipid_system, single_lipid):
-    assert_almost_equal(lipid_system[6].direction, np.array([0.0, 0.0, 1.0]), decimal=1)
+def test_lipid_system_directions(lipid_system, single_lipid):
     assert_almost_equal(lipid_system[6].direction, single_lipid.direction, decimal=3)
 
+    for i in range(72):
+        direction = np.array([0.0, 0.0, 1.0])
+        if i > 35:
+            direction *= -1
 
-def test_lipid_system_single_neighbours(lipid_system):
+        assert_almost_equal(lipid_system[i].direction, direction, decimal=1,
+                            err_msg="Bad direction for lipid #{}".format(i))
+
+
+def test_lipid_system_neighbours(lipid_system):
     nlipids_x = 6
     nlipids_y = 6
     unit_distance = 8.0
@@ -186,16 +240,16 @@ def test_lipid_system_single_neighbours(lipid_system):
 
         return sorted(neighbours)
 
-    for bid in range(64):
+    for bid in range(72):
         assert_almost_equal(lipid_system[bid].neighbours_distances, get_results_from_bid(bid), decimal=4,
                             err_msg="Bad neigbours for lipid #{}".format(bid))
 
-@pytest.mark.xfail()
-def test_lipid_system_single_normal(lipid_system):
 
-    for i in range(64):
+def test_lipid_system_normals(lipid_system):
+
+    for i in range(72):
         normal = np.array([0.0, 0.0, 1.0])
-        if i > 31:
+        if i > 35:
             normal *= -1
 
         assert_almost_equal(lipid_system[i].normal, normal, decimal=4,

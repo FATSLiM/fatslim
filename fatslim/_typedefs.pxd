@@ -33,10 +33,16 @@ ctypedef real rvec[DIM]
 ctypedef fsl_int ivec[DIM]
 ctypedef real matrix[DIM][DIM]
 
-
+cdef void rvec_clear(rvec a) nogil
 cdef real rvec_norm2(const rvec a) nogil
 cdef void rvec_copy(rvec src, rvec dest) nogil
 cdef void rvec_smul(real a, const rvec v1, rvec v2) nogil
 cdef void rvec_inc(rvec a,const rvec b) nogil
+cdef void rvec_dec(rvec a,const rvec b) nogil
 cdef real rvec_norm(const rvec a) nogil
 cdef void rvec_normalize(rvec a) nogil
+cdef real rvec_dprod(const rvec a, const rvec b) nogil
+cdef void mat_clear(matrix a) nogil
+cdef void mat_copy(matrix src,matrix dest) nogil
+cdef void rvec_cprod(const rvec a, const rvec b, rvec c) nogil
+cdef void rvec_cprod_norm(const rvec a, const rvec b, rvec c) nogil

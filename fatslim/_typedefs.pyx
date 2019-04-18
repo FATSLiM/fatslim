@@ -25,6 +25,10 @@ DEF XX=0
 DEF YY=1
 DEF ZZ=2
 
+cdef void rvec_clear(rvec a) nogil:
+    a[XX] = 0
+    a[YY] = 0
+    a[ZZ] = 0
 
 cdef real rvec_norm2(const rvec a) nogil:
     return a[XX]*a[XX] + a[YY]*a[YY] + a[ZZ]*a[ZZ]
@@ -50,6 +54,16 @@ cdef void rvec_inc(rvec a,const rvec b) nogil:
     a[YY]=y
     a[ZZ]=z
 
+cdef void rvec_dec(rvec a,const rvec b) nogil:
+    cdef real x, y, z
+
+    x=a[XX]-b[XX]
+    y=a[YY]-b[YY]
+    z=a[ZZ]-b[ZZ]
+
+    a[XX]=x
+    a[YY]=y
+    a[ZZ]=z
 
 cdef real rvec_norm(const rvec a) nogil:
     return sqrt(rvec_norm2(a))
@@ -59,3 +73,28 @@ cdef void rvec_normalize(rvec a) nogil:
     a[XX] /= vec_norm
     a[YY] /= vec_norm
     a[ZZ] /= vec_norm
+
+cdef real rvec_dprod(const rvec a, const rvec b) nogil:
+    return a[XX] * b[XX] + a[YY] * b[YY] + a[ZZ] * b[ZZ]
+
+cdef void mat_clear(matrix a) nogil:
+    rvec_clear(a[XX])
+    rvec_clear(a[YY])
+    rvec_clear(a[ZZ])
+
+cdef void mat_copy(matrix src,matrix dest) nogil:
+    rvec_copy(src[XX],dest[XX])
+    rvec_copy(src[YY],dest[YY])
+    rvec_copy(src[ZZ],dest[ZZ])
+
+
+cdef void rvec_cprod(const rvec a, const rvec b, rvec c) nogil:
+    c[XX] = a[YY] * b[ZZ] - a[ZZ] * b[YY]
+    c[YY] = a[ZZ] * b[XX] - a[XX] * b[ZZ]
+    c[ZZ] = a[XX] * b[YY] - a[YY] * b[XX]
+
+
+cdef void rvec_cprod_norm(const rvec a, const rvec b, rvec c) nogil:
+    rvec_cprod(a, b, c)
+    rvec_normalize(c)
+
