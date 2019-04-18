@@ -1,5 +1,5 @@
 [run]
-omit = *fatslimlib/test/*
+omit = *fatslim/test/*
 
 [report]
 show_missing = true
