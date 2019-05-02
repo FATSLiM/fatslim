@@ -36,10 +36,10 @@ import MDAnalysis as mda
 from MDAnalysis.lib.mdamath import triclinic_vectors
 import warnings
 
-from ._typedefs cimport real, rvec, dreal, fsl_int, ivec
-from ._typedefs cimport rvec_normalize
+from ._typedefs cimport real, rvec, dreal, fsl_int, ivec, matrix
+from ._typedefs cimport rvec_normalize, rvec_clear, mat_clear
 
-from ._geometry cimport PBCBox, normal_from_neighbours
+from ._geometry cimport PBCBox, normal_from_neighbours, curvature_from_neighbours
 
 cdef class _NSGrid(object):
     # Cdef attributes
@@ -111,7 +111,8 @@ cdef class _NSGrid(object):
             self.optimized_cutoff *= 1.2
 
         #if self.optimized_cutoff > self.cutoff:
-        #    print("DEBUG: optimized cutoff for grid : {:.3f} instead of requested {:.3f}".format(self.optimized_cutoff,
+        #    with gil:
+        #        print("DEBUG: optimized cutoff for grid : {:.3f} instead of requested {:.3f}".format(self.optimized_cutoff,
         #                                                                                        self.cutoff))
 
         for i in range(DIM):
@@ -132,10 +133,14 @@ cdef class _NSGrid(object):
 
         self.size = new_size
 
-        #print("DEBUG: Grid updated to new size of {}x{}x{}={} cells".format(self.ncells[XX],
+        #with gil:
+        #    print("DEBUG: Grid updated to new size of {}x{}x{}={} cells".format(self.ncells[XX],
         #                                                                    self.ncells[YY],
         #                                                                    self.ncells[ZZ],
         #                                                                    self.size))
+        #    print("DEBUG: Grid cell sizes: {}x{}x{}".format(self.cellsize[XX],
+        #                                                    self.cellsize[YY],
+        #                                                    self.cellsize[ZZ]))
 
 
     @cython.cdivision(True)
@@ -204,6 +209,9 @@ cdef class _NSGrid(object):
         # Find cellindex for each bead
         for i in range(ncoords):
             cellindex = self.coord2cellid(&coords[i, XX])
+
+            #with gil:
+            #    print("DEBUG: Filling grid: Bead#{} is put inside cell#{}".format(i, cellindex))
 
             self.cellids[i] = cellindex
 
@@ -292,6 +300,7 @@ cdef class _NSResults:
 cdef int fast_self_search(_NSGrid grid, _NSResults results, real[:, ::1] positions) nogil except -1:
     cdef fsl_int i, j, m, d
     cdef fsl_int current_beadid, bid, cellindex, cellindex_probe
+    cdef ivec cellxyz
     cdef fsl_int xi, yi, zi
     cdef rvec probe
     cdef dreal cutoff2 = grid.cutoff * grid.cutoff
@@ -307,15 +316,16 @@ cdef int fast_self_search(_NSGrid grid, _NSResults results, real[:, ::1] positio
 
         # find the cellindex of the coordinate
         cellindex = grid.cellids[current_beadid]
+        grid.cellid2cellxyz(cellindex, cellxyz)
         for xi in range(DIM):
             for yi in range(DIM):
                 for zi in range(DIM):
 
                     # Calculate and/or reinitialize shifted coordinates
                     # Probe the search coordinates in a brick shaped box
-                    probe[XX] = positions[current_beadid, XX] + (xi - 1) * grid.cellsize[XX]
-                    probe[YY] = positions[current_beadid, YY] + (yi - 1) * grid.cellsize[YY]
-                    probe[ZZ] = positions[current_beadid, ZZ] + (zi - 1) * grid.cellsize[ZZ]
+                    probe[XX] = (cellxyz[XX] + 0.5 + xi - 1) * grid.cellsize[XX]
+                    probe[YY] = (cellxyz[YY] + 0.5 + yi - 1) * grid.cellsize[YY]
+                    probe[ZZ] = (cellxyz[ZZ] + 0.5 + zi - 1) * grid.cellsize[ZZ]
 
                     # Make sure the shifted coordinates is inside the brick-shaped box
                     for m in range(DIM - 1, -1, -1):
@@ -329,17 +339,19 @@ cdef int fast_self_search(_NSGrid grid, _NSResults results, real[:, ::1] positio
                     # Get the cell index corresponding to the probe
                     cellindex_probe = grid.coord2cellid(probe)
 
-                    #if i == 0:
-                    #    print("\nDEBUG: Probing cellindex #{} (Probe coordinates: [{:.3f}, {:.3f}, {:.3f}], offsets:[{},{},{}], actual cellindex:{}):".format(
-                    #        cellindex_probe,
-                    #        probe[XX], probe[YY], probe[ZZ],
-                    #        xi-1, yi-1, zi-1,
-                    #        cellindex
-                    #    ))
+                    #if current_beadid == 0:
+                    #    with gil:
+                    #        print("\nDEBUG: Probing cellindex #{} (Probe coordinates: [{:.3f}, {:.3f}, {:.3f}], offsets:[{},{},{}], actual cellindex:{}):".format(
+                    #            cellindex_probe,
+                    #            probe[XX], probe[YY], probe[ZZ],
+                    #            xi-1, yi-1, zi-1,
+                    #            cellindex
+                    #        ))
 
                     if grid.cell_lastcheckid[cellindex_probe] == current_beadid:
-                        #if i == 0:
-                        #    print("DEBUG: No need -> This cell was already checked!")
+                        #if current_beadid == 0:
+                        #    with gil:
+                        #        print("DEBUG: No need -> This cell was already checked!")
                         continue
                     grid.cell_lastcheckid[cellindex_probe] = current_beadid
 
@@ -347,6 +359,9 @@ cdef int fast_self_search(_NSGrid grid, _NSResults results, real[:, ::1] positio
                     for j in range(grid.nbeads_in_cell[cellindex_probe]):
                         bid = grid.beads_in_cell[cellindex_probe, j]
                         if bid < current_beadid:
+                            #with gil:
+                            #    if current_beadid == 0:
+                            #        print("DEBUG: bead#{} is ignored (should be already tested and added if necessary".format(bid))
                             continue
 
                         # find distance between search coords[i] and coords[bid]
@@ -354,6 +369,21 @@ cdef int fast_self_search(_NSGrid grid, _NSResults results, real[:, ::1] positio
                         if EPSILON < d2 <= cutoff2:
                             results.add_neighbour(current_beadid, bid, d2)
                             results.add_neighbour(bid, current_beadid, d2)
+
+                            #if current_beadid==0:
+                            #    with gil:
+                            #        print("DEBUG: Adding bead#{} as neighbour of bead#0".format(bid))
+                        #else:
+                        #    if current_beadid==0:
+                        #        with gil:
+                        #            print("DEBUG: bead#{} is too far from bead#0: d2={:.3f}, cutoff2={:.3f}".format(
+                        #                bid,
+                        #                d2,
+                        #                cutoff2
+                        #            ))
+                    #if grid.nbeads_in_cell[cellindex_probe] == 0 and current_beadid==0:
+                    #    with gil:
+                    #        print("DEBUG: Cell is empty!")
 
 
 cdef class SimplifiedLipid:
@@ -368,12 +398,28 @@ cdef class SimplifiedLipid:
         self._atoms._cache['isunique'] = True
         self._atoms._cache['unique'] = self._atoms
 
+        if len(atoms) == 0:
+            raise ValueError("'atoms' group is empty")
+
         try:
             assert isinstance(hg_atoms, mda.AtomGroup)
         except AssertionError:
             raise TypeError("hg_atoms must be a MDAnalysis.AtomGroup. (Actual type: {})".format(
                 type(hg_atoms)
             ))
+
+        if len(hg_atoms) == 0:
+            raise ValueError("'hg_atoms' group is empty")
+
+        residues = atoms.residues
+        if len(residues) > 1:
+            raise ValueError("Only lipids belonging to one single residue are supported")
+
+        hg_residues = hg_atoms.residues
+
+        if hg_residues != residues:
+            raise ValueError("'hg_atoms' group is not consistent with 'atoms' group")
+
         self._hg_atoms = hg_atoms
 
         self._registry = None
@@ -445,7 +491,7 @@ cdef class LipidRegistry:
     cdef fsl_int[:] hg_indices
 
     cdef real[:, ::1] _lipid_positions
-    cdef real[:, ::1] _lipid_centers
+    cdef real[:, ::1] _lipid_centroids
     cdef real[:, ::1] _lipid_directions
     cdef real[:, ::1] _lipid_normals
     cdef _NSGrid _lipid_grid
@@ -476,7 +522,7 @@ cdef class LipidRegistry:
 
         # Simplified lipids
         self._lipid_positions = None
-        self._lipid_centers = None
+        self._lipid_centroids = None
         self._lipid_directions = None
         self._lipid_grid = None
         self._lipid_normals = None
@@ -540,7 +586,7 @@ cdef class LipidRegistry:
 
         if not self._locked:
             self._lipid_positions = np.empty((self._nlipids, DIM), dtype=np.float32)
-            self._lipid_centers = np.empty((self._nlipids, DIM), dtype=np.float32)
+            self._lipid_centroids = np.empty((self._nlipids, DIM), dtype=np.float32)
             self._lipid_directions = np.empty((self._nlipids, DIM), dtype=np.float32)
             self._lipid_normals = np.empty((self._nlipids, DIM), dtype=np.float32)
             self._lipid_grid = _NSGrid(self._nlipids, self.ns_cutoff, self.box, self.max_gridsize)
@@ -566,7 +612,7 @@ cdef class LipidRegistry:
                 else:
                     next_offset = self.hg_offsets[i+1]
                 indices = self.hg_indices[self.hg_offsets[i]: next_offset]
-                self.box.fast_pbc_xcm(self.universe_coords_bbox, &self._lipid_positions[i, XX], indices)
+                self.box.fast_pbc_centroid(self.universe_coords_bbox, &self._lipid_positions[i, XX], indices)
 
                 # Second: lipid directions
                 if i == self._nlipids-1:
@@ -574,8 +620,11 @@ cdef class LipidRegistry:
                 else:
                     next_offset = self.lipid_offsets[i+1]
                 indices = self.lipid_indices[self.lipid_offsets[i]: next_offset]
-                self.box.fast_pbc_xcm(self.universe_coords_bbox, &self._lipid_centers[i, XX], indices)
-                self.box.fast_pbc_dx(&self._lipid_centers[i, XX],
+                self.box.fast_pbc_centroid_from_ref(self.universe_coords_bbox,
+                                                    &self._lipid_positions[i, XX],
+                                                    &self._lipid_centroids[i, XX],
+                                                    indices)
+                self.box.fast_pbc_dx(&self._lipid_centroids[i, XX],
                                      &self._lipid_positions[i, XX],
                                      &self._lipid_directions[i, XX])
                 rvec_normalize(&self._lipid_directions[i, XX])
@@ -600,6 +649,36 @@ cdef class LipidRegistry:
         self._lastupdate = self.universe.trajectory.frame
 
     @property
+    def curvatures(self):
+        cdef fsl_int i, dimi, dimj
+        cdef matrix eigvecs
+        cdef rvec eigvals
+        self.update()
+
+        py_eigval = np.empty((self._nlipids, 3), dtype=np.float32)
+        py_eigvecs = np.empty((self._nlipids, 3, 3))
+
+        for i in range(self._nlipids):
+            rvec_clear(eigvals)
+            mat_clear(eigvecs)
+            if not curvature_from_neighbours(self._lipid_positions,
+                                      self._lipid_directions,
+                                      i,
+                                      self._lipid_neighbours.neighbours[i, :self._lipid_neighbours.nneighbours[i]],
+                                      self.box,
+                                      eigvals,
+                                      eigvecs):
+                print("WARNING: not able to get curvature for lipids #{}".format(i))
+
+            for dimi in range(DIM):
+                for dimj in range(DIM):
+                    py_eigvecs[i][dimi][dimj] = eigvecs[dimi][dimj]
+                py_eigval[i][dimi] = eigvals[dimi]
+
+
+        return py_eigval, py_eigvecs
+
+    @property
     def positions_bbox(self) -> np.ndarray:
         self.update()
         return np.asarray(self.universe_coords_bbox).copy()
@@ -615,9 +694,9 @@ cdef class LipidRegistry:
         return np.asarray(self._lipid_directions).copy()
 
     @property
-    def lipid_centers(self) -> np.ndarray:
+    def lipid_centroids(self) -> np.ndarray:
         self.update()
-        return np.asarray(self._lipid_centers).copy()
+        return np.asarray(self._lipid_centroids).copy()
 
     @property
     def lipid_normals(self) -> np.ndarray:
@@ -632,3 +711,7 @@ cdef class LipidRegistry:
     @property
     def nlipids(self) -> int:
         return self._nlipids
+
+    @property
+    def pbcbox(self) -> PBCBox:
+        return self.box

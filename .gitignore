@@ -58,7 +58,7 @@ docs/_build/
 Useful/
 .dependencies/
 Refs/
-
+.DS_Store
 
 # direnv
 .envrc

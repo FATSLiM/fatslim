@@ -23,11 +23,12 @@ from ._core import SimplifiedLipid, LipidRegistry
 
 
 class Lipid(mda.core.groups.ComponentBase, SimplifiedLipid):
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, atoms: mda.AtomGroup, hg_atoms: mda.AtomGroup):
         # this method is inherited from MDAnalysis.core.groups._MutableBase which updates classes accessible to
         # MDAnalysis.Universe objects.
         # To avoid polluting pure MDAnalysis object with FATSLiM objects, this method is overridden and stripped
         # down to the bare minimum
+
         return SimplifiedLipid.__new__(cls)
 
     def __init__(self, atoms: mda.AtomGroup, hg_atoms: mda.AtomGroup):

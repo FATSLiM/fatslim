@@ -25,12 +25,9 @@ def _fullpath_from_basename(fname):
 
 DATADIR = "%s" % os.path.dirname(__file__)
 
-# Model bilayer
-MODEL_BILAYER_GRO = _fullpath_from_basename("model_bilayer.gro")
-MODEL_BILAYER_NDX = _fullpath_from_basename("model_bilayer.ndx")
+# Model systems
+MODEL_FLAT_GRO = _fullpath_from_basename("model_flat.gro")  # Flat membrane
+MODEL_FLAT_BBOX_GRO = _fullpath_from_basename("model_flat_bbox.gro")  # Flat membrane in brick-shaped box
+MODEL_VESICLE_GRO = _fullpath_from_basename("model_vesicle.gro")  # Vesicle
 
-# Simple (yet experimental) bilayer
-BILAYER_GRO = _fullpath_from_basename("bilayer.gro")
 
-# All-atom bilayer
-BILAYER_GRO_ALLATOM = _fullpath_from_basename("bilayer_alltom.gro")

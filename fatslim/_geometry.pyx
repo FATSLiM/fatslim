@@ -179,6 +179,18 @@ cdef class PBCBox(object):
                 for j in range(i, -1, -1):
                     dx[j] += self.c_pbcbox.box[i][j]
 
+    def pbc_dx(self, real[:]ref, real[:]other):
+        cdef rvec dx
+        self.fast_pbc_dx(&ref[0], &other[0], dx)
+
+        dx_py = np.empty(3, dtype=np.float32)
+
+        dx_py[XX] = dx[XX]
+        dx_py[YY] = dx[YY]
+        dx_py[ZZ] = dx[ZZ]
+
+        return dx_py
+
     cdef dreal fast_distance2(self, rvec a, rvec b) nogil:
         """Distance calculation between two points
         for both PBC and non-PBC aware calculations
@@ -223,13 +235,13 @@ cdef class PBCBox(object):
                         bbox_coords[i, m] -= self.c_pbcbox.box[m][m]
 
 
-    cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int[:] indices) nogil:
+    cdef void fast_pbc_centroid(self, real[:, ::1] coords, rvec xcm, fsl_int[:] indices) nogil:
         if indices.shape[0] < 1:
             return
-        self.fast_pbc_xcm_from_ref(coords, &coords[indices[0], XX], xcm, indices)
+        self.fast_pbc_centroid_from_ref(coords, &coords[indices[0], XX], xcm, indices)
 
     @cython.cdivision(True)
-    cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref,
+    cdef void fast_pbc_centroid_from_ref(self, real[:, ::1] coords, rvec ref,
                                     rvec xcm, fsl_int[:] indices) nogil:
         cdef fsl_int i
         cdef fsl_int size
@@ -369,6 +381,111 @@ cdef bint normal_from_neighbours(real[:, ::1] positions,
     rvec_normalize(normal)
 
     return True
+
+
+@cython.initializedcheck(False)
+@cython.boundscheck(False)
+@cython.cdivision(True)
+cdef bint curvature_from_neighbours(real[:, ::1] positions,
+                                 real[:, ::1] directions,
+                                 fsl_int refid,
+                                 fsl_int[:] neighbours_ids,
+                                 PBCBox box,
+                                 rvec eig_vals,
+                                 matrix eig_vecs) nogil:
+    cdef fsl_int i, nid
+    cdef fsl_int neighborhood_size = neighbours_ids.shape[0], useful_size = 0
+    cdef rvec dx, xcm
+    cdef rvec neighborhood_direction
+    cdef rvec ref_direction
+    cdef matrix cov_mat
+    cdef rvec tmp_vec
+    #cdef fsl_int[:] useful_neighbors = np.empty_like(neighbours_ids)
+    cdef fsl_int uselful_size
+
+    # Don't compute anything if less than 3 neighbors
+    # Assume the normal as the reverse of the lipid directions
+    if neighborhood_size < 3:
+        with gil:
+            print("Neighborhood too small for bead #{}".format(refid))
+        return False
+
+    # Compute center of masses
+    rvec_clear(xcm)
+    rvec_clear(neighborhood_direction)
+
+    rvec_copy(&directions[refid, XX], ref_direction)
+
+    for i in range(neighborhood_size):
+        nid = neighbours_ids[i]
+
+        # Only take into account the neighbors that are oriented toward the same direction (< 90°)
+        if rvec_dprod(ref_direction, &directions[nid, XX]) > 0:
+            #useful_neighbors[useful_size] = nid
+            useful_size += 1
+
+            # HG xcm
+            box.fast_pbc_dx(&positions[refid, XX], &positions[nid, XX], dx)
+            rvec_inc(xcm, dx)
+
+            rvec_inc(neighborhood_direction, &directions[nid, XX])
+
+    # Don't compute anything if less than 3 useful neighbors
+    # Instead, set it to notset as the flag for further computations
+    if useful_size < 3:
+        with gil:
+            print("Not enough useful neighbours for bead #{}".format(refid))
+        return False
+
+    rvec_smul(1.0/useful_size, xcm, xcm)
+    rvec_inc(xcm, &positions[refid, XX])
+    rvec_smul(1.0/useful_size, neighborhood_direction, neighborhood_direction)
+
+    # Build covariance matrix
+    mat_clear(cov_mat)
+    for i in range(neighborhood_size):
+        nid = neighbours_ids[i]
+        if rvec_dprod(ref_direction, &directions[nid, XX]) > 0:
+
+            # Retrieve neighbor and its image
+            box.fast_pbc_dx(xcm, &positions[nid, XX], tmp_vec)
+
+            cov_mat[YY][YY] += tmp_vec[YY] * tmp_vec[YY]
+            cov_mat[YY][ZZ] += tmp_vec[YY] * tmp_vec[ZZ]
+            cov_mat[ZZ][ZZ] += tmp_vec[ZZ] * tmp_vec[ZZ]
+
+            rvec_smul(tmp_vec[XX], tmp_vec, tmp_vec)
+
+            cov_mat[XX][XX] += tmp_vec[XX]
+            cov_mat[XX][YY] += tmp_vec[YY]
+            cov_mat[XX][ZZ] += tmp_vec[ZZ]
+    cov_mat[YY][XX] = cov_mat[XX][YY]
+    cov_mat[ZZ][XX] = cov_mat[XX][ZZ]
+    cov_mat[ZZ][YY] = cov_mat[YY][ZZ]
+
+    cov_mat[XX][XX] /= useful_size
+    cov_mat[XX][YY] /= useful_size
+    cov_mat[XX][ZZ] /= useful_size
+    cov_mat[YY][XX] /= useful_size
+    cov_mat[YY][YY] /= useful_size
+    cov_mat[YY][ZZ] /= useful_size
+    cov_mat[ZZ][XX] /= useful_size
+    cov_mat[ZZ][YY] /= useful_size
+    cov_mat[ZZ][ZZ] /= useful_size
+
+    # Get eigenvalues
+    rvec_clear(eig_vals)
+    mat_clear(eig_vecs)
+    eigen_33_sym(cov_mat, eig_vecs, eig_vals)
+
+
+    # Retrieve the normal from the chosen eigen vector
+    if rvec_dprod(eig_vecs[0], &neighborhood_direction[XX]) < 0:
+        for i in range(DIM):
+            eig_vecs[0][i] *= -1
+
+    return True
+
 
 @cython.cdivision(True)
 cdef void eigen_33_sym(matrix a, matrix eig_vec, rvec eig_val) nogil:

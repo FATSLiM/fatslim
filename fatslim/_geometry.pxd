@@ -38,8 +38,8 @@ cdef class PBCBox(object):
     cdef void fast_pbc_dx(self, rvec ref, rvec other, rvec dx) nogil
     cdef dreal fast_distance2(self, rvec a, rvec b) nogil
     cdef void fast_put_atoms_in_bbox(self, real[:, ::1] coords, real[:, ::1] bbox_coords) nogil
-    cdef void fast_pbc_xcm(self, real[:, ::1] coords, rvec xcm, fsl_int[:] indices) nogil
-    cdef void fast_pbc_xcm_from_ref(self, real[:, ::1] coords, rvec ref, rvec xcm, fsl_int[:] indices) nogil
+    cdef void fast_pbc_centroid(self, real[:, ::1] coords, rvec xcm, fsl_int[:] indices) nogil
+    cdef void fast_pbc_centroid_from_ref(self, real[:, ::1] coords, rvec ref, rvec xcm, fsl_int[:] indices) nogil
 
 
 cdef bint normal_from_neighbours(real[:, ::1] positions,
@@ -48,6 +48,14 @@ cdef bint normal_from_neighbours(real[:, ::1] positions,
                                  fsl_int[:] neighbours_ids,
                                  PBCBox box,
                                  rvec normal) nogil
+
+cdef bint curvature_from_neighbours(real[:, ::1] positions,
+                                 real[:, ::1] directions,
+                                 fsl_int refid,
+                                 fsl_int[:] neighbours_ids,
+                                 PBCBox box,
+                                 rvec eig_vals,
+                                 matrix eig_vecs) nogil
 
 cdef void eigen_33_sym(matrix a, matrix eig_vec, rvec eig_val) nogil
 cdef void complete_basis(rvec z_axis, rvec x_axis, rvec y_axis) nogil

@@ -15,3 +15,5 @@
 # FATSLiM: a fast and robust software to analyze MD simulations of membranes.
 # Bioinformatics 33(1) (2017), 133--134, doi:10.1093/bioinformatics/btw563
 #
+
+__version__ = "0.99.0-dev"
