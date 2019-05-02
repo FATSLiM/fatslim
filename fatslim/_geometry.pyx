@@ -18,6 +18,7 @@
 
 # Cython directives
 # cython: language_level=3
+
 DEF DIM = 3
 DEF XX = 0
 DEF YY = 1

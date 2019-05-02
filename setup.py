@@ -57,22 +57,8 @@ class PyTest(TestCommand):
 
 cmdclass['test'] = PyTest
 
-typedefs_ext = Extension("fatslim._typedefs",
-                      ["fatslim/_typedefs.pyx"],
-                        include_dirs=[numpy.get_include()],)
-
-geometry_ext = Extension("fatslim._geometry",
-                      ["fatslim/_geometry.pyx"],
-                        include_dirs=[numpy.get_include()],)
-
-core_ext = Extension("fatslim._core",
-                      ["fatslim/_core.pyx"],
-                        include_dirs=[numpy.get_include()],
-)
-
 
 # Check if coverage is needed
-compiler_directives = {}
 cmd = ""
 for arg in sys.argv[1:]:
     if arg.startswith("-"):
@@ -83,10 +69,36 @@ for arg in sys.argv[1:]:
 
 if cmd == "test":
     print("INFO: Coverage is enabled for Cython code (Expect low performances)")
-    #compiler_directives = {"linetrace": True}
+    cython_linetrace = True
+    force_cythonize = True
+    cython_coverage = 1
+else:
+    cython_coverage = 0
+    force_cythonize = False
+    cython_linetrace = False
+
+typedefs_ext = Extension("fatslim._typedefs",
+                         ["fatslim/_typedefs.pyx"],
+                         include_dirs=[numpy.get_include()],
+                         define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
+                         )
+
+geometry_ext = Extension("fatslim._geometry",
+                         ["fatslim/_geometry.pyx"],
+                         include_dirs=[numpy.get_include()],
+                         define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
+                         )
+
+core_ext = Extension("fatslim._core",
+                     ["fatslim/_core.pyx"],
+                     include_dirs=[numpy.get_include()],
+                     define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
+                     )
 
 setup(name='fatslim',
-      ext_modules=cythonize([typedefs_ext, geometry_ext, core_ext]),
+      ext_modules=cythonize([typedefs_ext, geometry_ext, core_ext],
+                            force=force_cythonize,
+                            compiler_directives={'linetrace': cython_linetrace, 'binding': True},
+                            ),
       cmdclass=cmdclass,
-      compiler_directives=compiler_directives
       )
