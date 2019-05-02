@@ -42,7 +42,7 @@ install:
 
 # command to run tests
 script:
-  - python3 ./setup.py test
+  - python3 ./setup.py test || python ./setup.py test
 
 # Upload coverage data to codecov
 after_success:
