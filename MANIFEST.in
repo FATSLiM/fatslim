@@ -1,8 +1,4 @@
-recursive-include fatslimlib/test/data *.gro *.ndx *.trr *.xtc *.csv *.xvg
-recursive-include include *
-recursive-include src *
-recursive-include fatslimlib *.pxd *.pyx
-include fatslim
+recursive-include fatslim/test/data *.gro
+recursive-include fatslim *.pxd *.pyx
 include setup.py
 include README.rst
-include extra/fatslim-completion.bash
