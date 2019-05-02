@@ -32,12 +32,13 @@ cmdclass = {}
 
 # Test command
 class PyTest(TestCommand):
-    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
-
     def initialize_options(self):
         TestCommand.initialize_options(self)
         # Default py.test options (overriden if --pytest-args/-a is set)
-        self.pytest_args = ["-v", "-x", "--durations=3", "--tb=short"]
+        self.pytest_args = ["-v", "-x", "--durations=3", "--tb=short",
+                            "--cov-report=xml",
+                            "--cov-report=html",
+                            "--cov=fatslim"]
 
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -47,16 +48,11 @@ class PyTest(TestCommand):
     def run_tests(self):
         # import here, cause outside the eggs aren't loaded
         import pytest
-        print("py.test args: '%s'" % self.pytest_args)
-        errno = pytest.main(self.pytest_args)
-        if errno != 0:
-            print("Ouch... Congratulations! you probably found a bug!")
-            print("Please contact the FATSLiM devs with this output so they can work it out!")
-        sys.exit(errno)
+        print("INFO: py.tests arguments: '{}'".format(self.pytest_args))
+        pytest.main(self.pytest_args)
 
 
 cmdclass['test'] = PyTest
-
 
 # Check if coverage is needed
 cmd = ""

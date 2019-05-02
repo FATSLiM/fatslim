@@ -1,23 +1,42 @@
+
+codecov: true
+
 # whitelist
 branches:
   only:
-#    - master
-#    - develop
+    - master
+    - develop
     - full-rewrite
 
 language: python
-dist: xenial   # required for Python >= 3.7
+
 python:
   - "3.5"
   - "3.6"
   - "3.7"
 
+matrix:
+  include:
+    - os: linux
+      dist: xenial          # required for Python >= 3.7
+    - os: osx
+      osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
+      language: shell       # 'language: python' is an error on Travis CI macOS
+    - os: windows           # Windows 10.0.17134 N/A Build 17134
+      language: shell       # 'language: python' is an error on Travis CI Windows
+      before_install: choco install python
+      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+
 
 install:
-  - pip install -r requirements.txt
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements.txt
+  - pip3 install codecov
 
 # command to run tests
 script:
-  - python setup.py test
+  - python3 ./setup.py test
 
-
+# Upload coverage data to codecov
+after_success:
+  - codecov

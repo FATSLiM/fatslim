@@ -1,7 +1,11 @@
 [run]
-omit = *fatslim/test/*
+omit = */fatslim/test/*
 plugins = Cython.Coverage
+source = fatslim
 
 [report]
-show_missing = true
-precision = 2
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
