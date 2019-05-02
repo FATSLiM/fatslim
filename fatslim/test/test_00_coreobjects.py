@@ -25,7 +25,7 @@ from unittest import TestCase
 # Local imports
 from ..coreobjects import LipidSystem, Lipid
 from . import universe_model_flat, system_model_flat, system_model_vesicle
-from .data import MODEL_FLAT_BBOX_GRO
+from .data import MODEL_FLAT_BBOX_GRO, MODEL_FLAT_NDX
 
 # TODO: Add test for neighbors when position is (0,0)
 
@@ -107,6 +107,38 @@ def test_no_headgroup(universe_model_flat):
     assert "headgroup_atoms argument must be a string" in str(excinfo.value)
 
 
+def test_headgroup_file_bad(universe_model_flat):
+    import tempfile
+    import os
+
+    tmpfd, tmpname = tempfile.mkstemp(suffix=".notndx")
+
+    with pytest.raises(ValueError) as excinfo:
+        LipidSystem(universe_model_flat, tmpname)
+    assert "Only Gromacs .ndx files are supported!" in str(excinfo.value)
+
+    os.unlink(tmpname)
+
+
+def test_headgroup_file_noselection(universe_model_flat):
+    import tempfile
+    import os
+
+    tmpfd, tmpname = tempfile.mkstemp(suffix=".ndx")
+
+    with pytest.raises(ValueError) as excinfo:
+        LipidSystem(universe_model_flat, tmpname)
+    assert ".ndx does not contain group named 'headgroups'!" in str(excinfo.value)
+
+    os.unlink(tmpname)
+
+
+def test_headgroup_ndx(universe_model_flat):
+    system = LipidSystem(universe_model_flat, MODEL_FLAT_NDX)
+
+    assert len(system) == 128, "Bad number of lipids"
+
+
 def test_headgroup_selection_bad(universe_model_flat):
     with pytest.raises(ValueError) as excinfo:
         LipidSystem(universe_model_flat, "azerty")
@@ -179,6 +211,12 @@ def test_lipid_system_positions(system_model_flat, single_lipid):
                                 offset_x, offset_y, offset_z
                             ))
 
+
+def test_lipid_positions_ndx(universe_model_flat, system_model_flat):
+    system = LipidSystem(universe_model_flat, MODEL_FLAT_NDX)
+
+    assert_almost_equal(system.lipid_positions, system_model_flat.lipid_positions, decimal=3,
+                        err_msg="Bad lipid positions using .ndx file")
 
 def test_lipid_system_centers_naive(system_model_flat):
     # Centroids naively calculated from BBox positions should match MDAnalysis centroid computed using PBC

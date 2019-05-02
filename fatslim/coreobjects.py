@@ -18,6 +18,7 @@
 
 import os
 import MDAnalysis as mda
+import numpy as np
 
 from ._core import SimplifiedLipid, LipidRegistry
 
@@ -62,7 +63,7 @@ class Leaflet(mda.core.groups.GroupBase):
 
 
 class LipidSystem(LipidRegistry):
-    def __init__(self, universe: mda.Universe, headgroup_atoms: str):
+    def __init__(self, universe: mda.Universe, headgroup_atoms: str, headgroup_index_group: str = "headgroups"):
         super().__init__(universe)
 
         try:
@@ -73,7 +74,22 @@ class LipidSystem(LipidRegistry):
             ))
 
         if os.path.isfile(headgroup_atoms):  # needs to read selection from file
-            raise NotImplementedError
+            if os.path.splitext(headgroup_atoms)[1] != ".ndx":
+                raise ValueError("Only Gromacs .ndx files are supported!")
+            indices = []
+            section = None
+            with open(headgroup_atoms) as fp:
+                for line in fp:
+                    line = line.strip()
+                    if line.startswith("["):
+                        section = line.strip(" []")
+                    elif section == headgroup_index_group:
+                        indices.extend([int(val) for val in line.split()])
+            if len(indices) == 0:
+                raise ValueError(".ndx does not contain group named '{}'!".format(headgroup_index_group))
+            indices = np.array(indices) - 1  # Substract 1 to the atom indices as gromacs starts counting at 1
+            self.hg_selection = self.universe.atoms[indices]
+
         else:  # headgroup_atoms is a selection string
             try:
                 self.hg_selection = self.universe.select_atoms(headgroup_atoms)

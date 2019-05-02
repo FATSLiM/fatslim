@@ -27,6 +27,7 @@ DATADIR = "%s" % os.path.dirname(__file__)
 
 # Model systems
 MODEL_FLAT_GRO = _fullpath_from_basename("model_flat.gro")  # Flat membrane
+MODEL_FLAT_NDX = _fullpath_from_basename("model_flat.ndx")  # Flat membrane index file
 MODEL_FLAT_BBOX_GRO = _fullpath_from_basename("model_flat_bbox.gro")  # Flat membrane in brick-shaped box
 MODEL_VESICLE_GRO = _fullpath_from_basename("model_vesicle.gro")  # Vesicle
 

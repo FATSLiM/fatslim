@@ -69,7 +69,24 @@ core_ext = Extension("fatslim._core",
                       ["fatslim/_core.pyx"],
                         include_dirs=[numpy.get_include()],
 )
+
+
+# Check if coverage is needed
+compiler_directives = {}
+cmd = ""
+for arg in sys.argv[1:]:
+    if arg.startswith("-"):
+        continue
+    else:
+        cmd = arg
+        break
+
+if cmd == "test":
+    print("INFO: Coverage is enabled for Cython code (Expect low performances)")
+    #compiler_directives = {"linetrace": True}
+
 setup(name='fatslim',
       ext_modules=cythonize([typedefs_ext, geometry_ext, core_ext]),
-      cmdclass=cmdclass
+      cmdclass=cmdclass,
+      compiler_directives=compiler_directives
       )

@@ -1,5 +1,6 @@
 [run]
 omit = *fatslim/test/*
+plugins = Cython.Coverage
 
 [report]
 show_missing = true
