@@ -17,7 +17,7 @@
 # Bioinformatics 33(1) (2017), 133--134, doi:10.1093/bioinformatics/btw563
 #
 import sys
-
+import os
 from setuptools import setup
 from setuptools import Extension
 from setuptools.command.test import test as TestCommand
@@ -34,11 +34,14 @@ cmdclass = {}
 class PyTest(TestCommand):
     def initialize_options(self):
         TestCommand.initialize_options(self)
-        # Default py.test options (overriden if --pytest-args/-a is set)
-        self.pytest_args = ["-v", "-x", "--durations=3", "--tb=short",
-                            "--cov-report=xml",
-                            "--cov-report=html",
-                            "--cov=fatslim"]
+        self.pytest_args = ["-v", "-x", "--durations=3", "--tb=short"]
+
+        if os.environ.get("CYTHON_COVERAGE") == 1:
+            self.pytest_args += [
+                "--cov-report=xml",
+                "--cov-report=html",
+                "--cov=fatslim"
+            ]
 
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -54,24 +57,17 @@ class PyTest(TestCommand):
 
 cmdclass['test'] = PyTest
 
-# Check if coverage is needed
-cmd = ""
-for arg in sys.argv[1:]:
-    if arg.startswith("-"):
-        continue
-    else:
-        cmd = arg
-        break
 
-if cmd == "test":
+cython_coverage = 0
+force_cythonize = False
+cython_linetrace = False
+if os.environ.get("CYTHON_COVERAGE") == 1:
     print("INFO: Coverage is enabled for Cython code (Expect low performances)")
     cython_linetrace = True
     force_cythonize = True
     cython_coverage = 1
-else:
-    cython_coverage = 0
-    force_cythonize = False
-    cython_linetrace = False
+
+
 
 typedefs_ext = Extension("fatslim._typedefs",
                          ["fatslim/_typedefs.pyx"],
