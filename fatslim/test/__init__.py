@@ -21,7 +21,8 @@ import pytest
 import MDAnalysis as mda
 
 # Local imports
-from .data import MODEL_FLAT_GRO, MODEL_VESICLE_GRO
+from .data import MODEL_FLAT_GRO, MODEL_VESICLE_GRO, MODEL_BICELLE_GRO, MODEL_BULGED_GRO, MODEL_CURVED_GRO
+from .data import BIG_DEFORMED_GRO
 from ..coreobjects import LipidSystem
 
 
@@ -41,5 +42,33 @@ def system_model_flat() -> LipidSystem:
 @pytest.fixture(scope="session")
 def system_model_vesicle() -> LipidSystem:
     u = mda.Universe(MODEL_VESICLE_GRO)
+    system = LipidSystem(u, "name PO4")
+    return system
+
+
+@pytest.fixture(scope="session")
+def system_model_bicelle() -> LipidSystem:
+    u = mda.Universe(MODEL_BICELLE_GRO)
+    system = LipidSystem(u, "name PO4")
+    return system
+
+
+@pytest.fixture(scope="session")
+def system_model_curved() -> LipidSystem:
+    u = mda.Universe(MODEL_CURVED_GRO)
+    system = LipidSystem(u, "name PO4")
+    return system
+
+
+@pytest.fixture(scope="session")
+def system_model_bulged() -> LipidSystem:
+    u = mda.Universe(MODEL_BULGED_GRO)
+    system = LipidSystem(u, "name PO4")
+    return system
+
+
+@pytest.fixture(scope="session")
+def system_big_deformed() -> LipidSystem:
+    u = mda.Universe(BIG_DEFORMED_GRO)
     system = LipidSystem(u, "name PO4")
     return system

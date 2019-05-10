@@ -23,9 +23,10 @@ import pytest
 from unittest import TestCase
 
 # Local imports
-from ..coreobjects import LipidSystem, Lipid
-from . import universe_model_flat, system_model_flat, system_model_vesicle
+from fatslim.coreobjects import LipidSystem, Lipid
+from . import universe_model_flat, system_model_flat, system_model_vesicle, system_big_deformed
 from .data import MODEL_FLAT_BBOX_GRO, MODEL_FLAT_NDX
+from .data import MODELS_METADATA
 
 # TODO: Add test for neighbors when position is (0,0)
 
@@ -172,7 +173,7 @@ def test_headgroup_selection_whole_residue(universe_model_flat):
 
 
 def test_lipid_system_size(system_model_flat):
-    assert len(system_model_flat) == 128, "Bad number of lipids"
+    assert len(system_model_flat) == MODELS_METADATA["flat"]["size"], "Bad number of lipids"
 
 
 def test_lipid_system_positions_bbox(system_model_flat):
@@ -182,34 +183,16 @@ def test_lipid_system_positions_bbox(system_model_flat):
 
 
 @pytest.mark.filterwarnings("ignore: Lipid does not belong")
-def test_lipid_system_positions(system_model_flat, single_lipid):
+def test_lipid_system_positions_same_as_single(system_model_flat, single_lipid):
     assert_almost_equal(system_model_flat[6].position, single_lipid.position, decimal=3)
 
-    base_x = 0
-    nlipids = 8
-    unit_distance = 8
-    base_y = [0, 0]
-    base_z = [92.5, 57.5]
-    lipid_per_leaflet = 64
 
-    for i in range(2 * lipid_per_leaflet):
-        offset_z = int(i//lipid_per_leaflet)
-        offset_x = int((i - lipid_per_leaflet * offset_z) // nlipids)
-        offset_y = int(i - lipid_per_leaflet * offset_z - nlipids * offset_x)
-        if offset_x % 2 == 1:
-            offset_y += 0.5
+def test_model_flat_lipid_positions(system_model_flat):
+    system = system_model_flat
+    expected_positions = MODELS_METADATA["flat"]["positions"]
 
-        expected_position = np.array([
-            base_x + offset_x * unit_distance,
-            base_y[offset_z] + offset_y * unit_distance,
-            base_z[offset_z]
-        ])
-
-        assert_almost_equal(system_model_flat[i].position, expected_position, decimal=3,
-                            err_msg="Bad position for lipid #{} (offsets: {}, {}, {})".format(
-                                i,
-                                offset_x, offset_y, offset_z
-                            ))
+    assert_almost_equal(system.lipid_positions, expected_positions, decimal=3,
+                        err_msg="Bad positions for model flat")
 
 
 def test_lipid_positions_ndx(universe_model_flat, system_model_flat):
@@ -361,3 +344,8 @@ def test_vesicle_normals(system_model_vesicle):
         assert_almost_equal(lipid.normal, normal, decimal=1,
                             err_msg="Bad normal for lipid #{}".format(i))
 
+
+def test_system_big(system_big_deformed):
+    system = system_big_deformed
+
+    assert len(system) == 24056

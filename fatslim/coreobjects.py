@@ -57,6 +57,18 @@ class Lipid(mda.core.groups.ComponentBase, SimplifiedLipid):
         """
         return self._atoms
 
+    @property
+    def resid(self) -> int:
+        return self.residue.resid
+
+    @property
+    def resindex(self) -> int:
+        return self.residue.resindex
+
+    @property
+    def residue(self) -> int:
+        return self._atoms.residues[0]
+
 
 class Leaflet(mda.core.groups.GroupBase):
     pass
@@ -105,8 +117,8 @@ class LipidSystem(LipidRegistry):
             raise ValueError("Headgroup selection is whole universe")
 
         # We check if the selection correspond to just a few atoms from distinct residues
-        for resid, group in self.hg_selection.groupby("resids").items():
-            lipid = self.universe.residues[resid - 1].atoms  # resids start from 1!
+        for resindex, group in self.hg_selection.groupby("resindices").items():
+            lipid = self.universe.residues[resindex].atoms
             try:
                 assert len(group) < len(lipid)
             except AssertionError:

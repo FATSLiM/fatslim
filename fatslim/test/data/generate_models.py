@@ -16,10 +16,19 @@
 # Bioinformatics 33(1) (2017), 133--134, doi:10.1093/bioinformatics/btw563
 #
 
+"""
+This module contains some quick and dirty code to generate model system to test FATSLiM.
+
+Do not expect anything polished here...
+"""
+
 import numpy as np
 import scipy.integrate
 import MDAnalysis as mda
+import pickle
 
+
+# Lipid definitions
 lipids = {
     'DPPC': mda.Universe("DPPC-em.gro"),
     'DTPC': mda.Universe("DTPC-em.gro")
@@ -30,6 +39,8 @@ refs = {
     'DTPC': lipids['DTPC'].select_atoms("name PO4").positions[0],
 }
 
+
+# Useful functions
 def create_dummy_universe(composition: dict):
     n_residues = 0
     atom_resindex = []
@@ -189,7 +200,15 @@ def planar_surface(nx, ny, apl, z_func=None):
 APL = 64
 THICKNESS = 35
 
-# Build bicelle
+# Exported data
+
+metadata = {}
+
+#################
+# Build bicelle #
+#################
+bicelle_metadata = {}
+
 nlipids = 1000
 box_z = 150
 ratio = 0.75
@@ -202,9 +221,17 @@ bicelle_radius = np.sqrt((n_dppc * APL) / np.pi)
 rs, phis = get_sunflower_seeds_arragement(int(n_dppc/2) + 1)
 rs *= bicelle_radius
 
+bicelle_metadata["size"] = nlipids
+bicelle_metadata["n_dppc"] = n_dppc
+bicelle_metadata["n_dtpc"] = n_dtpc
+bicelle_metadata["radius"] = bicelle_radius
+bicelle_metadata["apl"] = APL
+bicelle_metadata["thickness"] = THICKNESS
+
 bicelle_u = create_dummy_universe({"DPPC": n_dppc, "DTPC": n_dtpc})
 
 # Build bicelle plane
+bicelle_plane_positions = np.empty((n_dppc, 3), dtype=np.float32)
 for i in range(n_dppc):
     resname = bicelle_u.atoms.resnames[i]
 
@@ -223,10 +250,14 @@ for i in range(n_dppc):
         phi = phis[i]
 
     bicelle_u.residues[i].atoms.positions = move_to_spherical_position(positions, ref_position, r, np.pi / 2, phi)
+    x = r * np.cos(phi)
+    y = r * np.sin(phi)
+    bicelle_plane_positions[i] = [x, y, z]
 
     bicelle_u.residues[i].atoms.positions += np.array([0, 0, z])
 
 # Build bicelle edges
+
 
 def x_func(t):
     return bicelle_radius + THICKNESS * 0.5 * np.sin(t)
@@ -234,6 +265,7 @@ def x_func(t):
 
 def z_func(t):
     return THICKNESS * 0.5 * np.cos(t)
+
 
 t = np.linspace(0, np.pi, n_dtpc)
 
@@ -269,6 +301,15 @@ bicelle_u.atoms.positions += np.array([2 * bicelle_radius, 2 * bicelle_radius, 0
 bicelle_u.dimensions = np.array([4 * bicelle_radius, 4 * bicelle_radius, box_z, 90, 90, 90], dtype=np.float32)
 bicelle_u.atoms.write("model_bicelle.gro")
 
+bicelle_metadata["dimensions"] = np.array([4 * bicelle_radius, 4 * bicelle_radius, box_z, 90, 90, 90], dtype=np.float32)
+positions = np.concatenate((bicelle_plane_positions, edge_positions)) + \
+            np.array([2 * bicelle_radius, 2 * bicelle_radius, 0.5 * box_z])
+bicelle_metadata["positions"] = positions
+bicelle_metadata["upper_leaflet_ids"] = np.argwhere(positions[:, 2] >= 0.5 * box_z).flatten()
+bicelle_metadata["lower_leaflet_ids"] = np.argwhere(positions[:, 2] < 0.5 * box_z).flatten()
+bicelle_metadata["leaflet_pivot_ids"] = np.argwhere(np.abs(positions[:, 2] - 0.5 * box_z) / box_z < 0.01).flatten()
+
+metadata["bicelle"] = bicelle_metadata
 
 # Build vesicle
 
@@ -278,6 +319,16 @@ inner_radius = outer_radius - THICKNESS
 n_lipids_outer = int(np.round(4 * np.pi * outer_radius**2 / APL))
 n_lipids_inner = int(np.round(4 * np.pi * inner_radius**2 / (APL * 0.75)))
 
+vesicle_metadata = {
+    "size": n_lipids_inner + n_lipids_outer,
+    "n_outer": n_lipids_outer,
+    "n_inner": n_lipids_inner,
+    "outer_radius": outer_radius,
+    "inner_radius": inner_radius,
+    "outer_apl": APL,
+    "inner_apl": APL * 0.75,
+    "thickness": THICKNESS
+}
 
 vesicle_u = create_dummy_universe({"DPPC": n_lipids_inner + n_lipids_outer})
 
@@ -342,6 +393,14 @@ vesicle_u.atoms.positions += np.array([1.5 * outer_radius, 1.5 * outer_radius, 1
 vesicle_u.dimensions = np.array([3 * outer_radius, 3 * outer_radius, 3 * outer_radius, 90, 90, 90], dtype=np.float32)
 vesicle_u.atoms.write("model_vesicle.gro")
 
+vesicle_metadata["dimensions"] = vesicle_u.dimensions
+vesicle_metadata["positions"] = np.concatenate((sphere_positions_outer, sphere_positions_inner)) + \
+                                np.array([1.5 * outer_radius, 1.5 * outer_radius, 1.5 * outer_radius])
+vesicle_metadata["outer_leaflet_ids"] = np.arange(n_lipids_outer)
+vesicle_metadata["inner_leaflet_ids"] = np.arange(n_lipids_inner) + n_lipids_outer
+
+metadata["vesicle"] = vesicle_metadata
+
 
 # Build flat membrane
 nx = 8
@@ -351,6 +410,12 @@ box_x = nx * np.sqrt(APL)
 box_y = ny * np.sqrt(APL)
 
 nlipids = 2 * nx * ny
+
+flat_metadata = {
+    "size": nlipids,
+    "apl": APL,
+    "thickness": THICKNESS
+}
 flat_u = create_dummy_universe({"DPPC": nlipids})
 
 flat_positions = planar_surface(nx, ny, APL)
@@ -378,6 +443,15 @@ flat_u.atoms.positions += np.array([0, 0, box_z / 2])
 flat_u.dimensions = np.array([box_x, box_y, box_z, 90, 90, 90], dtype=np.float32)
 flat_u.atoms.write("model_flat.gro")
 
+flat_metadata["dimensions"] = flat_u.dimensions
+positions = flat_positions + np.array([0, 0, box_z / 2])
+upper = positions + np.array([0, 0, THICKNESS/2])
+lower = positions - np.array([0, 0, THICKNESS/2])
+flat_metadata["positions"] = np.concatenate((upper, lower))
+flat_metadata["upper_leaflet_ids"] = np.arange(nx * ny)
+flat_metadata["lower_leaflet_ids"] = np.arange(nx * ny) + nx * ny
+
+metadata["flat"] = flat_metadata
 
 # Build curved membrane
 nx = 20
@@ -489,3 +563,8 @@ for resindex in range(nlipids):
 current_u.atoms.positions += np.array([0, 0, box_z / 2])
 current_u.dimensions = np.array([box_x, box_y, box_z, 90, 90, 90], dtype=np.float32)
 current_u.atoms.write("model_bulged.gro")
+
+
+# Export metadata to help writing tests
+with open("models_metadata.pickle", "wb") as fp:
+    pickle.dump(metadata, fp)

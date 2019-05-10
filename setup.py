@@ -61,11 +61,13 @@ cmdclass['test'] = PyTest
 cython_coverage = 0
 force_cythonize = False
 cython_linetrace = False
+tests_require = ["pytest"]
 if os.environ.get("CYTHON_COVERAGE") == 1:
     print("INFO: Coverage is enabled for Cython code (Expect low performances)")
     cython_linetrace = True
     force_cythonize = True
     cython_coverage = 1
+    tests_require += ["pytest-cov"]
 
 
 
@@ -93,4 +95,5 @@ setup(name='fatslim',
                             compiler_directives={'linetrace': cython_linetrace, 'binding': True},
                             ),
       cmdclass=cmdclass,
+      tests_require=tests_require,
       )

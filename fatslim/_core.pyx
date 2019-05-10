@@ -27,7 +27,7 @@ DEF XX = 0
 DEF YY = 1
 DEF ZZ = 2
 DEF EPSILON = 1e-6
-
+DEF PI = 3.141592653589793
 
 import numpy as np
 cimport numpy as np
@@ -37,9 +37,13 @@ from MDAnalysis.lib.mdamath import triclinic_vectors
 import warnings
 
 from ._typedefs cimport real, rvec, dreal, fsl_int, ivec, matrix
-from ._typedefs cimport rvec_normalize, rvec_clear, mat_clear
+from ._typedefs cimport rvec_normalize, rvec_clear, mat_clear, rvec_dprod
+
+from ._typedefs cimport rvec_norm
 
 from ._geometry cimport PBCBox, normal_from_neighbours, curvature_from_neighbours
+
+from libc.math cimport acos
 
 cdef class _NSGrid(object):
     # Cdef attributes
@@ -295,6 +299,10 @@ cdef class _NSResults:
             for j in range(self.nneighbours[i]):
                 tuples[-1].append((self.neighbours[i, j], self.distances[i, j]))
 
+    @property
+    def shape(self):
+        return (self.size, self.max_nneighbours)
+
 @cython.initializedcheck(False)
 @cython.boundscheck(False)
 cdef int fast_self_search(_NSGrid grid, _NSResults results, real[:, ::1] positions) nogil except -1:
@@ -415,9 +423,11 @@ cdef class SimplifiedLipid:
         if len(residues) > 1:
             raise ValueError("Only lipids belonging to one single residue are supported")
 
-        hg_residues = hg_atoms.residues
+        resindex = residues[0].resindex
 
-        if hg_residues != residues:
+        hg_residues = hg_atoms.residues
+        hg_resindex = hg_residues[0].resindex
+        if len(hg_residues) != 1 or hg_resindex != resindex:
             raise ValueError("'hg_atoms' group is not consistent with 'atoms' group")
 
         self._hg_atoms = hg_atoms
@@ -536,13 +546,18 @@ cdef class LipidRegistry:
         self.ns_cutoff = ns_cutoff
         self.max_gridsize = max_gridsize
 
-
         self._lastupdate = -1
         self._locked = False
 
         # PBCBox and NS preparation
         box = triclinic_vectors(self.universe.dimensions)
         self.box = PBCBox(box)
+
+        self._membranes = None
+        self._lastupdate_membrane = -1
+
+        self._aggregates = None
+        self._lastupdate_aggregates = -1
 
     def add_lipid(self, SimplifiedLipid lipid):
         try:
@@ -648,6 +663,7 @@ cdef class LipidRegistry:
 
         self._lastupdate = self.universe.trajectory.frame
 
+    # TODO: Temp stuff
     @property
     def curvatures(self):
         cdef fsl_int i, dimi, dimj
@@ -677,6 +693,440 @@ cdef class LipidRegistry:
 
 
         return py_eigval, py_eigvecs
+
+    #@cython.initializedcheck(False)
+    #@cython.boundscheck(False)
+    def find_membranes(self, force_update=False):
+        cdef fsl_int bead_id, seed_id, n_edgers, n_leftovers, nid, ref_nid
+        cdef real angle, min_angle, max_angle, angle_range, dprod_value
+        cdef dreal d_val, best_d
+        cdef fsl_int i, j
+        cdef fsl_int stack_size
+        cdef fsl_int[:] aggregate_lipid_ids
+        cdef fsl_int maybe_leaflet_current_id, current_leaflet_size
+        cdef LipidAggregate aggregate
+
+        cdef fsl_int[:] edgers, maybe_leaflet_ids, stack, current_leaflet_ids, leftovers
+
+        cdef real[:] normal
+
+        cdef bint in_edger
+        # No need to do anything if the membranes are already identified for the current frame
+        if self._lastupdate_membrane == self.universe.trajectory.frame and not force_update:
+            return
+
+        # Make sure everything is updated
+        self.update()
+
+        # Initialize memory
+        edgers = np.empty(self._nlipids, dtype=int)
+        maybe_leaflet_ids = np.empty(self._nlipids, dtype=int)
+        stack = np.empty(self._nlipids, dtype=int)
+        current_leaflet_ids = np.empty(self._nlipids, dtype=int)
+        leftovers = np.empty(self._nlipids, dtype=int)
+        n_leftovers = 0
+
+
+        # Step 1: Get "naive" aggregates (i.e. aggregates based only on distance)
+        self.find_aggregates(force_update=force_update)
+
+        # Step 2: Iterate over the known aggregates to find if they can be splitted into potential leaflets
+        maybe_leaflets = []
+        for aggregate in self._aggregates:
+            aggregate_lipid_ids = aggregate.indices
+            # Step 2.1: Find if some lipids are located on edges
+            n_edgers = 0
+
+            for i in range(aggregate_lipid_ids.shape[0]):
+                bead_id = aggregate_lipid_ids[i]
+                min_angle = PI + EPSILON
+                max_angle = -EPSILON
+                for j in range(self._lipid_neighbours.nneighbours[bead_id]):
+                    nid = self._lipid_neighbours.neighbours[bead_id][j]
+                    # Check the angle between the local normal and the Z axis
+                    # The axis does not really matter as it is just the variation of that angle that matters
+                    # But using the Z axis simplify things since dot product is trivial
+
+                    angle = acos(self._lipid_normals[nid, ZZ])
+
+                    if angle > max_angle:
+                        max_angle = angle
+
+                    if angle < min_angle:
+                        min_angle = angle
+
+                angle_range = max_angle - min_angle
+
+                # if bead_id == DEBUG_BEAD:
+                    # print("Checking if resid {} is an edger (angle range: {:.3f}°)".format(
+                    #     self.lipids[bead_id].resid,
+                    # angle_range))
+
+                if angle_range > PI * 0.45:  #
+                    edgers[n_edgers] = bead_id
+                    n_edgers += 1
+
+                    # if bead_id == DEBUG_BEAD:
+                    #     print("Resid {} is an edger".format(self.lipids[bead_id].resid))
+                # else:
+                #     if bead_id == DEBUG_BEAD:
+                #         print("Resid {} is NOT an edger".format(self.lipids[bead_id].resid))
+
+
+            # Step 2.2: Loop over the lipids in the aggregate to check if they can fit if a potential leaflet
+
+            maybe_leaflet_current_id = -1
+            maybe_leaflet_ids[:] = maybe_leaflet_current_id   # (Re)initialize the found leaflets
+
+            maybe_leaflets_from_aggregates = []
+            for i in range(aggregate_lipid_ids.shape[0]):
+                seed_id = aggregate_lipid_ids[i]
+
+                if maybe_leaflet_ids[seed_id] > -1:  # This lipid already belong to an aggregate, we can skip it
+                    continue
+
+                # If this lipid is on an edge, we will deal with it later
+                in_edger = False
+                for j in range(n_edgers):
+                    if edgers[j] == seed_id:
+                        in_edger = True
+                        break
+                if in_edger:
+                    continue
+
+                # Increment the leaflet id as we are dealing with another aggregate
+                maybe_leaflet_current_id += 1
+
+                # print("\n\nCreating new aggregate #{} from resid {}".format(maybe_leaflet_current_id,
+                #                                                             self.lipids[seed_id].resid))
+
+                # Add the seed bead to the new leaflet
+                maybe_leaflet_ids[seed_id] = maybe_leaflet_current_id
+
+                current_leaflet_size = 1
+                current_leaflet_ids[0] = seed_id
+
+                # Reset the stack
+                stack_size = 1
+                stack[0] = seed_id
+
+                # Search for all the lipids that belong to the current leaflet
+                # This is done by exhausting the stack that contains all the candidates
+                while stack_size > 0:
+
+                    # Pop the stack
+                    ref_nid = stack[stack_size - 1]
+                    stack_size -= 1
+
+                    for j in range(self._lipid_neighbours.nneighbours[ref_nid]):
+                        nid = self._lipid_neighbours.neighbours[ref_nid][j]
+
+                        if maybe_leaflet_ids[nid] > -1:  # This lipid already belong to an aggregate, we can skip it
+                            continue
+
+                        # if nid == DEBUG_BEAD:
+                        #     print("Dealing with resid {}:".format(self.lipids[nid].resid))
+
+                        # If this lipid is on an edge, we will deal with it later
+                        in_edger = False
+                        for j in range(n_edgers):
+                            if edgers[j] == nid:
+                                in_edger = True
+                                break
+                        if in_edger:
+                            # if nid == DEBUG_BEAD:
+                            #     print("resid {} is in edger".format(self.lipids[nid].resid))
+                            continue
+
+                        dprod_value = rvec_dprod(&self._lipid_normals[ref_nid, XX],
+                                                 &self._lipid_normals[nid, XX])
+
+                        # if nid == DEBUG_BEAD:
+                        #     print("dot product for resid {}: {:.3f} (ref resid: {} from aggregate {})".format(
+                        #         self.lipids[nid].resid,
+                        #         dprod_value, self.lipids[ref_nid].resid, maybe_leaflet_current_id
+                        #     ))
+
+                        # Angle between the two normals must be smaller than 45°.
+                        # Otherwise, it would correspond to a rather small curvature radius which is barely compatible
+                        # with a lipid bilayer
+                        if dprod_value <= 0.7071067811865476:
+                            # if nid == DEBUG_BEAD:
+                            #     print("Resid {} rejected!".format(self.lipids[nid].resid))
+                            continue
+
+                        # If still here, add bead to current leaflet
+                        maybe_leaflet_ids[nid] = maybe_leaflet_current_id
+                        current_leaflet_ids[current_leaflet_size] = nid
+                        current_leaflet_size += 1
+
+                        # Append bead to stack
+                        stack[stack_size] = nid
+                        stack_size += 1
+
+                        # if nid == DEBUG_BEAD:
+                        #     print("Resid {} accepted in aggregate {}".format(self.lipids[nid].resid, maybe_leaflet_current_id))
+
+                # Store the incomplete leaflet
+                maybe_leaflets_from_aggregates.append(current_leaflet_ids[:current_leaflet_size].copy())
+
+
+            # Step 2.3: Handle the edgers to check if they can be added to current leaflets
+
+            n_added = n_edgers
+            n_pass = 0
+
+            leaflet_neighbour = np.empty_like(edgers)
+            leaflet_neighbour[:] = -1
+
+            new_members = []
+            for l in maybe_leaflets_from_aggregates:
+                new_members.append([])
+
+            n_leftovers = 0
+
+            # print("{} edgers to merge into {} leaflet(s):".format(n_edgers, len(maybe_leaflets_from_aggregates)))
+
+            for i in range(n_edgers):
+                edger_id = edgers[i]
+
+                if edger_id in range(870, 881):
+                    print("\n")
+
+                if True:
+                    best_value = 0
+                    best_d2min = 1000000
+
+                    best_leaflet = -1
+
+                    for lid, indices in enumerate(maybe_leaflets_from_aggregates):
+                        current_stack = np.empty(self._nlipids, dtype=int)
+                        current_stack[0] = edger_id
+                        current_stack_size = 1
+
+                        next_stack = np.empty(self._nlipids, dtype=int)
+
+                        used_nodes = np.zeros(self._nlipids, dtype=bool)
+
+                        closest_bead_ids = []
+                        generation = 0
+
+                        n_checks = 0
+
+                        while len(closest_bead_ids) == 0 and generation < 10:
+                            next_stack_size = 0
+
+                            for j in range(current_stack_size):
+                                ref_nid = current_stack[j]
+
+                                used_nodes[ref_nid] = True
+
+                                for k in range(self._lipid_neighbours.nneighbours[ref_nid]):
+                                    n_checks += 1
+
+                                    nid = self._lipid_neighbours.neighbours[ref_nid][k]
+
+                                    if maybe_leaflet_ids[nid] == lid:
+                                        closest_bead_ids.append(nid)
+                                    elif maybe_leaflet_ids[nid] == -1 and not used_nodes[nid]:
+                                        next_stack[next_stack_size] = nid
+                                        next_stack_size += 1
+
+                            generation += 1
+
+                            current_stack = next_stack.copy()
+                            current_stack_size = next_stack_size
+
+                        # print("Took {} checks ({} generations) to find {} lipids from leaflet #{}".format(
+                        #     n_checks,
+                        #     generation,
+                        #     len(closest_bead_ids),
+                        #     lid
+                        # ))
+
+                        if len(closest_bead_ids) == 0:
+                            continue
+
+
+                        d2 = 0
+                        dprod_value = 0
+                        position = np.zeros(3, dtype=np.float32)
+                        normal = np.zeros(3, dtype=np.float32)
+
+                        for bead_id in closest_bead_ids:
+                            d2 += self.box.fast_distance2(&self._lipid_positions[edger_id, XX],
+                                                         &self._lipid_positions[bead_id, XX])
+
+                            dprod_value += rvec_dprod(&self._lipid_normals[edger_id, XX],
+                                                      &self._lipid_normals[bead_id, XX])
+
+                            position += self._lipid_positions[bead_id]
+
+                            for j in range(DIM):
+                                normal[j] += self._lipid_normals[bead_id, j]
+
+                        d2 /= len(closest_bead_ids)
+                        dprod_value /= len(closest_bead_ids)
+                        position /= len(closest_bead_ids)
+
+                        for j in range(DIM):
+                            normal[j] /= len(closest_bead_ids)
+
+
+                        d_leaflet = np.abs(np.dot(normal, position - self._lipid_positions[edger_id]))
+
+                        d2 = d_leaflet
+                        if dprod_value > best_value * 0.9 and d2 < best_d2min:
+                            best_value = dprod_value
+                            best_d2min = d2
+                            best_leaflet = lid
+
+                    if best_leaflet > -1:
+                        # print("Edger resid {} should be added to leaflet #{}".format(
+                        #     self.lipids[edger_id].resid,
+                        #     best_leaflet
+                        # ))
+                        new_members[best_leaflet].append(edger_id)
+                    else:
+                        # print("Edger resid {} should be added to leftovers".format(
+                        #     self.lipids[edger_id].resid,
+                        # ))
+                        leftovers[n_leftovers] = edger_id
+                        n_leftovers += 1
+
+                    # print("")
+
+
+            for leaflet_id in range(len(maybe_leaflets_from_aggregates)):
+                if len(new_members[leaflet_id]) > 0:
+
+                    temp = np.concatenate(
+                        (maybe_leaflets_from_aggregates[leaflet_id], new_members[leaflet_id])
+                    )
+                    maybe_leaflets_from_aggregates[leaflet_id] = temp
+
+
+
+            #leftovers = np.unique(leftovers[:n_leftovers])
+            # print("{} leftovers: resid {}".format(
+            #     n_leftovers,
+            #     " ".join([str(self.lipids[val].resid) for val in np.sort(leftovers[:n_leftovers])])
+            # ))
+
+            # Step 2.4: Store the completed leaflets
+            for ids in maybe_leaflets_from_aggregates:
+                maybe_leaflets.append(LipidAggregate(ids, self))
+
+        # Step 3: Inspect potential leaflet to check if they are compatible
+
+        maybe_leaflets.sort(key = len, reverse=True) # Sort leaflets according to their populations
+        maybe_leaflets_clean = []
+        for maybe_leaflet in maybe_leaflets:
+            if maybe_leaflet.size < 50:
+                continue
+
+            maybe_leaflets_clean.append(maybe_leaflet)
+
+        # print("{} potential leaflets:".format(len(maybe_leaflets_clean)))
+        # for lid, leaflet_ids in enumerate(maybe_leaflets_clean):
+        #     print("- leaflet #{}: {} lipids".format(lid, len(leaflet_ids)))
+
+        membranes = []
+        while len(maybe_leaflets_clean) > 0:
+            ref_leaflet = maybe_leaflets_clean.pop(0)
+
+            compatibles = []
+            for leaflet in maybe_leaflets_clean:
+                # Todo: check compatibility
+                compatibles.append(leaflet)
+
+            companion = None
+            for leaflet in compatibles:
+                # Todo: check compatibility
+                companion = leaflet
+
+            if companion is not None:
+                membranes.append(Membrane(ref_leaflet, companion))
+                maybe_leaflets_clean.remove(companion)
+
+        self._membranes = membranes
+        self._lastupdate_membrane = self.universe.trajectory.frame
+        return self._membranes
+
+
+
+    def find_aggregates(self, force_update=False) -> [LipidAggregate]:
+        # No need to do anything if the membranes are already identified for the current frame
+        if self._lastupdate_aggregates == self.universe.trajectory.frame and not force_update:
+            return self._aggregates
+
+        # Make sure everything is updated
+        self.update()
+
+        current_aggregate_id = -1
+
+        aggregate_ids = np.ones(self._nlipids, dtype=np.int) * -1
+
+        stack = np.zeros(self._nlipids, dtype=np.int)
+        stack_size = 0
+
+        current_aggregate_lipid_ids = np.zeros(self._nlipids, dtype=np.int)
+        current_aggregate_size = 0
+
+
+        aggregates = []
+
+        # First step find potential leaflets
+        for seed_id in range(self._nlipids):
+
+            if aggregate_ids[seed_id] > -1:  # This lipid already belong to an aggregate, we can skip it
+                continue
+
+            # Increment the aggregate id as we are dealing with another aggregate
+            current_aggregate_id += 1
+
+            # Add this seed bead to the new aggregate
+            aggregate_ids[seed_id] = current_aggregate_id
+            current_aggregate_size = 1
+            current_aggregate_lipid_ids[0] = seed_id
+
+            # Reset the stack
+            stack_size = 1
+            stack[0] = seed_id
+
+            # Search for all the lipids that belong to the current aggregate
+            # This is done by exhausting the stack that contains all the candidates
+            while stack_size > 0:
+
+                # Pop the stack
+                ref_nid = stack[stack_size - 1]
+                stack_size -= 1
+
+                for nid in self.lipid_neighbours[ref_nid]:
+
+                    if aggregate_ids[nid] > -1:  # This lipid already belong to an aggregate, we can skip it
+                        continue
+
+                    # If still here, add bead to current aggregate
+                    aggregate_ids[nid] = current_aggregate_id
+                    current_aggregate_lipid_ids[current_aggregate_size] = nid
+                    current_aggregate_size += 1
+
+                    # Append bead to stack
+                    stack[stack_size] = nid
+                    stack_size += 1
+
+            # Store the aggregate
+            ids = np.sort(current_aggregate_lipid_ids[:current_aggregate_size])
+            aggregates.append(ids)
+
+        self._aggregates = []
+        aggregates.sort(key = len, reverse=True) # Sort aggregates according to their populations
+        for ids in aggregates:
+            self._aggregates.append(LipidAggregate(ids, self))
+
+        self._lastupdate_aggregates = self.universe.trajectory.frame
+        return self._aggregates
 
     @property
     def positions_bbox(self) -> np.ndarray:
@@ -715,3 +1165,70 @@ cdef class LipidRegistry:
     @property
     def pbcbox(self) -> PBCBox:
         return self.box
+
+    @property
+    def membranes(self) -> [Membrane]:
+        self.find_membranes()
+        return self._membranes
+
+
+    @property
+    def aggregates(self) -> [LipidAggregate]:
+        self.find_aggregates()
+        return self._aggregates
+
+
+
+cdef class Membrane(object):
+    cdef LipidAggregate _leaflet1
+    cdef LipidAggregate _leaflet2
+    cdef readonly LipidRegistry system
+
+    def __init__(self, leaflet1, leaflet2):
+        self.system = leaflet1.system
+        self._leaflet1 = leaflet1
+        self._leaflet2 = leaflet2
+
+    def __getitem__(self, item):
+        if item in (-2, 0):
+            return self._leaflet1
+        elif item in (-1, 1):
+            return self._leaflet2
+        else:
+            raise IndexError("A membrane contains two leaflets")
+
+
+cdef class LipidAggregate(object):
+    cdef readonly LipidRegistry system
+    cdef fsl_int[:] _lipid_ids
+    cdef fsl_int _size
+
+    def __init__(self, lipid_ids, system):
+        self.system = system
+
+        self._lipid_ids = np.sort(lipid_ids)
+
+        self._size = self._lipid_ids.shape[0]
+
+    def __len__(self):
+        return self._size
+
+    @property
+    def indices(self):
+        return np.asarray(self._lipid_ids)
+
+    @property
+    def size(self):
+        return self._size
+
+    def __getitem__(self, item):
+        return self.indices[item]
+
+
+cdef class Leaflet(LipidAggregate):
+    def __init__(self, ids_or_aggregate, system=None):
+        if isinstance(ids_or_aggregate, LipidAggregate):
+            system = ids_or_aggregate.system
+            ids_or_aggregate = ids_or_aggregate._lipid_ids
+
+        super().__init__(ids_or_aggregate, system)
