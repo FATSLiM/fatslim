@@ -461,6 +461,13 @@ box_x = nx * np.sqrt(APL)
 box_y = ny * np.sqrt(APL)
 
 nlipids = 2 * nx * ny
+
+curved_metadata = {
+    "size": nlipids,
+    "apl": APL,
+    "thickness": THICKNESS
+}
+
 curved_u = create_dummy_universe({"DPPC": nlipids})
 current_u = curved_u
 
@@ -502,6 +509,16 @@ for resindex in range(nlipids):
 
 current_u.atoms.positions += np.array([0, 0, box_z / 2])
 current_u.dimensions = np.array([box_x, box_y, box_z, 90, 90, 90], dtype=np.float32)
+
+curved_metadata["dimensions"] = current_u.dimensions
+positions = current_positions + np.array([0, 0, box_z / 2])
+upper = positions + np.array([0, 0, THICKNESS/2])
+lower = positions - np.array([0, 0, THICKNESS/2])
+curved_metadata["positions"] = np.concatenate((upper, lower))
+curved_metadata["upper_leaflet_ids"] = np.arange(nx * ny)
+curved_metadata["lower_leaflet_ids"] = np.arange(nx * ny) + nx * ny
+metadata["curved"] = curved_metadata
+
 current_u.atoms.write("model_curved.gro")
 
 
@@ -518,6 +535,14 @@ radius = (2 * bulge_radius)**2 / (8 * bulge_height) + bulge_height / 2
 bulge_offset = bulge_height - radius
 
 nlipids = 2 * nx * ny
+
+bulged_metadata = {
+    "size": nlipids,
+    "apl": APL,
+    "thickness": THICKNESS,
+    "bulge_radius": bulge_radius,
+    "bulge_height": bulge_height
+}
 bulged_u = create_dummy_universe({"DPPC": nlipids})
 current_u = bulged_u
 
@@ -563,6 +588,17 @@ for resindex in range(nlipids):
 current_u.atoms.positions += np.array([0, 0, box_z / 2])
 current_u.dimensions = np.array([box_x, box_y, box_z, 90, 90, 90], dtype=np.float32)
 current_u.atoms.write("model_bulged.gro")
+
+bulged_metadata["dimensions"] = current_u.dimensions
+positions = current_positions
+upper = positions + np.array([0, 0, THICKNESS/2])
+lower = positions + np.array([0, 0, THICKNESS/2])
+lower[:, 2] *= -1
+bulged_metadata["positions"] = np.concatenate((upper, lower)) + np.array([0, 0, box_z / 2])
+bulged_metadata["upper_leaflet_ids"] = np.arange(nx * ny)
+bulged_metadata["lower_leaflet_ids"] = np.arange(nx * ny) + nx * ny
+
+metadata["bulged"] = bulged_metadata
 
 
 # Export metadata to help writing tests

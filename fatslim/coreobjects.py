@@ -59,7 +59,11 @@ class Lipid(mda.core.groups.ComponentBase, SimplifiedLipid):
 
     @property
     def resid(self) -> int:
-        return self.residue.resid
+        return self.residue.resid\
+
+    @property
+    def resname(self) -> int:
+        return self.residue.resname
 
     @property
     def resindex(self) -> int:

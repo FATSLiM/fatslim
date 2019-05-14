@@ -192,6 +192,37 @@ cdef class PBCBox(object):
 
         return dx_py
 
+    cdef void fast_pbc_dx_leaflet(self, rvec ref, rvec other, rvec dx, rvec ref_normal) nogil:
+        cdef fsl_int i, j, xoffset, yoffset, zoffset, notset=1
+        cdef rvec dx_raw, dx_try, offset, offset_x, offset_y, offset_z
+        cdef real d2min, d2try
+        cdef real coord_val, tmp
+        cdef fsl_int shift_axis, sign
+
+        # First: get the actual pbc dx
+        self.fast_pbc_dx(ref, other, dx)
+
+        # If dprod(dx, normal) < 0, dx goes through the bilayer
+        # because dx = vector from ref to other
+        if rvec_dprod(dx, ref_normal) < 0:
+            return # Nothing to do!
+
+        # Second: If the pbc dx is not right, we need to find the correct direction to go
+        shift_axis = ZZ
+        coord_val = fabs(ref_normal[ZZ])
+        for i in range(DIM-1):
+            tmp = fabs(ref_normal[i])
+            if tmp > coord_val:
+                shift_axis = i
+
+        # Third: once we found the correct direction to shift,
+        # make one shift in that direction to get the right distance
+        sign = 1
+        if ref_normal[shift_axis] > 0:
+            sign = -1
+        for i in range (shift_axis, -1, -1):
+            dx[i] += sign * self.c_pbcbox.box[shift_axis][i]
+
     cdef dreal fast_distance2(self, rvec a, rvec b) nogil:
         """Distance calculation between two points
         for both PBC and non-PBC aware calculations

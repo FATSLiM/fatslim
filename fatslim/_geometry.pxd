@@ -36,6 +36,7 @@ cdef class PBCBox(object):
 
     cdef void fast_update(self, real[:, ::1] box) nogil
     cdef void fast_pbc_dx(self, rvec ref, rvec other, rvec dx) nogil
+    cdef void fast_pbc_dx_leaflet(self, rvec ref, rvec other, rvec dx, rvec ref_normal) nogil
     cdef dreal fast_distance2(self, rvec a, rvec b) nogil
     cdef void fast_put_atoms_in_bbox(self, real[:, ::1] coords, real[:, ::1] bbox_coords) nogil
     cdef void fast_pbc_centroid(self, real[:, ::1] coords, rvec xcm, fsl_int[:] indices) nogil
