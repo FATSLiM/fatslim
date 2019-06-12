@@ -1,0 +1,3 @@
+recursive-include fatslimtest/data *.gro *.ndx *.xtc
+include setup.py
+include README.rst

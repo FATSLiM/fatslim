@@ -41,13 +41,18 @@ matrix:
 
 
 install:
-  - pip3 install -r requirements.txt
+  - pip3 install -r package/requirements.txt
   - pip3 install codecov
   - pip3 install pytest
 
 # command to run tests
 script:
-  - python3 ./setup.py test || python ./setup.py test
+  - pip3 install -e package/
+  - |
+    if [[ $CYTHON_COVERAGE == 1 ]]; then \
+      pytest --cov-report=xml --cov=fatslim testsuite/fatslimtest; else \
+      pytest testsuite/fatslimtest
+    fi
 
 # Upload coverage data to codecov
 after_success:

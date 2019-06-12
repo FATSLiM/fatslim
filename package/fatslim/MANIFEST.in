@@ -1,0 +1,3 @@
+include fatslim/*.pyx
+include setup.py
+include README.rst

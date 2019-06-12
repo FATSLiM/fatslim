@@ -60,6 +60,7 @@ Useful/
 .dependencies/
 Refs/
 .DS_Store
+ProofsOfConcept/
 
 # direnv
 .envrc
