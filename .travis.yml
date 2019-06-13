@@ -22,6 +22,11 @@ matrix:
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
       python: 3.7
       language: shell       # 'language: python' is an error on Travis CI macOS
+    - name: "Python 3.7 with coverage"
+      os: linux
+      python: 3.7
+      env: CYTHON_COVERAGE=1
+  allow_failures:
     - name: "Python 3.5 on Windows"
       os: windows
       python: 3.5
@@ -34,10 +39,7 @@ matrix:
       language: shell       # 'language: python' is an error on Travis CI Windows
       before_install: choco install python --version 3.6.8
       env: PATH=/c/Python36:/c/Python36/Scripts:$PATH
-    - name: "Python 3.7 with coverage"
-      os: linux
-      python: 3.7
-      env: CYTHON_COVERAGE=1
+
 
 
 install:

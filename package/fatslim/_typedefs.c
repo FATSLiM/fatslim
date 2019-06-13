@@ -1057,15 +1057,15 @@ typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 /* "fatslim/_typedefs.pxd":29
  * DEF DIM=3
  * 
- * ctypedef np.intp_t fsl_int             # <<<<<<<<<<<<<<
+ * ctypedef np.int_t fsl_int             # <<<<<<<<<<<<<<
  * ctypedef np.float32_t real
  * ctypedef np.float64_t dreal
  */
-typedef __pyx_t_5numpy_intp_t __pyx_t_7fatslim_9_typedefs_fsl_int;
+typedef __pyx_t_5numpy_int_t __pyx_t_7fatslim_9_typedefs_fsl_int;
 
 /* "fatslim/_typedefs.pxd":30
  * 
- * ctypedef np.intp_t fsl_int
+ * ctypedef np.int_t fsl_int
  * ctypedef np.float32_t real             # <<<<<<<<<<<<<<
  * ctypedef np.float64_t dreal
  * ctypedef real rvec[DIM]
@@ -1073,7 +1073,7 @@ typedef __pyx_t_5numpy_intp_t __pyx_t_7fatslim_9_typedefs_fsl_int;
 typedef __pyx_t_5numpy_float32_t __pyx_t_7fatslim_9_typedefs_real;
 
 /* "fatslim/_typedefs.pxd":31
- * ctypedef np.intp_t fsl_int
+ * ctypedef np.int_t fsl_int
  * ctypedef np.float32_t real
  * ctypedef np.float64_t dreal             # <<<<<<<<<<<<<<
  * ctypedef real rvec[DIM]
