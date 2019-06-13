@@ -26,7 +26,7 @@ cimport numpy as np
 
 DEF DIM=3
 
-ctypedef np.int_t fsl_int
+ctypedef np.intp_t fsl_int
 ctypedef np.float32_t real
 ctypedef np.float64_t dreal
 ctypedef real rvec[DIM]

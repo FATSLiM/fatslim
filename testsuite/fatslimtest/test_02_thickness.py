@@ -203,7 +203,7 @@ def test_thickness_model_bicelle(system_model_bicelle):
         for j, ind in enumerate(leaflet.indices):
             if system.lipids[ind].resname == "DPPC":
                 indices.append(j)
-        indices = np.array(indices, dtype=np.int)
+        indices = np.array(indices, dtype=int)
 
         lipid_thicknesses = leaflet.lipid_thicknesses[indices]
 

@@ -6,7 +6,7 @@
         "define_macros": [
             [
                 "CYTHON_TRACE_NOGIL",
-                1
+                0
             ]
         ],
         "depends": [
@@ -1057,15 +1057,15 @@ typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 /* "fatslim/_typedefs.pxd":29
  * DEF DIM=3
  * 
- * ctypedef np.int_t fsl_int             # <<<<<<<<<<<<<<
+ * ctypedef np.intp_t fsl_int             # <<<<<<<<<<<<<<
  * ctypedef np.float32_t real
  * ctypedef np.float64_t dreal
  */
-typedef __pyx_t_5numpy_int_t __pyx_t_7fatslim_9_typedefs_fsl_int;
+typedef __pyx_t_5numpy_intp_t __pyx_t_7fatslim_9_typedefs_fsl_int;
 
 /* "fatslim/_typedefs.pxd":30
  * 
- * ctypedef np.int_t fsl_int
+ * ctypedef np.intp_t fsl_int
  * ctypedef np.float32_t real             # <<<<<<<<<<<<<<
  * ctypedef np.float64_t dreal
  * ctypedef real rvec[DIM]
@@ -1073,7 +1073,7 @@ typedef __pyx_t_5numpy_int_t __pyx_t_7fatslim_9_typedefs_fsl_int;
 typedef __pyx_t_5numpy_float32_t __pyx_t_7fatslim_9_typedefs_real;
 
 /* "fatslim/_typedefs.pxd":31
- * ctypedef np.int_t fsl_int
+ * ctypedef np.intp_t fsl_int
  * ctypedef np.float32_t real
  * ctypedef np.float64_t dreal             # <<<<<<<<<<<<<<
  * ctypedef real rvec[DIM]
@@ -1268,208 +1268,6 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 #define __Pyx_ErrFetchInState(tstate, type, value, tb)  PyErr_Fetch(type, value, tb)
 #define __Pyx_ErrRestore(type, value, tb)  PyErr_Restore(type, value, tb)
 #define __Pyx_ErrFetch(type, value, tb)  PyErr_Fetch(type, value, tb)
-#endif
-
-/* Profile.proto */
-#ifndef CYTHON_PROFILE
-#if CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_PYSTON
-  #define CYTHON_PROFILE 0
-#else
-  #define CYTHON_PROFILE 1
-#endif
-#endif
-#ifndef CYTHON_TRACE_NOGIL
-  #define CYTHON_TRACE_NOGIL 0
-#else
-  #if CYTHON_TRACE_NOGIL && !defined(CYTHON_TRACE)
-    #define CYTHON_TRACE 1
-  #endif
-#endif
-#ifndef CYTHON_TRACE
-  #define CYTHON_TRACE 0
-#endif
-#if CYTHON_TRACE
-  #undef CYTHON_PROFILE_REUSE_FRAME
-#endif
-#ifndef CYTHON_PROFILE_REUSE_FRAME
-  #define CYTHON_PROFILE_REUSE_FRAME 0
-#endif
-#if CYTHON_PROFILE || CYTHON_TRACE
-  #include "compile.h"
-  #include "frameobject.h"
-  #include "traceback.h"
-  #if CYTHON_PROFILE_REUSE_FRAME
-    #define CYTHON_FRAME_MODIFIER static
-    #define CYTHON_FRAME_DEL(frame)
-  #else
-    #define CYTHON_FRAME_MODIFIER
-    #define CYTHON_FRAME_DEL(frame) Py_CLEAR(frame)
-  #endif
-  #define __Pyx_TraceDeclarations\
-  static PyCodeObject *__pyx_frame_code = NULL;\
-  CYTHON_FRAME_MODIFIER PyFrameObject *__pyx_frame = NULL;\
-  int __Pyx_use_tracing = 0;
-  #define __Pyx_TraceFrameInit(codeobj)\
-  if (codeobj) __pyx_frame_code = (PyCodeObject*) codeobj;
-  #ifdef WITH_THREAD
-  #define __Pyx_TraceCall(funcname, srcfile, firstlineno, nogil, goto_error)\
-  if (nogil) {\
-      if (CYTHON_TRACE_NOGIL) {\
-          PyThreadState *tstate;\
-          PyGILState_STATE state = PyGILState_Ensure();\
-          tstate = __Pyx_PyThreadState_Current;\
-          if (unlikely(tstate->use_tracing) && !tstate->tracing &&\
-                  (tstate->c_profilefunc || (CYTHON_TRACE && tstate->c_tracefunc))) {\
-              __Pyx_use_tracing = __Pyx_TraceSetupAndCall(&__pyx_frame_code, &__pyx_frame, tstate, funcname, srcfile, firstlineno);\
-          }\
-          PyGILState_Release(state);\
-          if (unlikely(__Pyx_use_tracing < 0)) goto_error;\
-      }\
-  } else {\
-      PyThreadState* tstate = PyThreadState_GET();\
-      if (unlikely(tstate->use_tracing) && !tstate->tracing &&\
-              (tstate->c_profilefunc || (CYTHON_TRACE && tstate->c_tracefunc))) {\
-          __Pyx_use_tracing = __Pyx_TraceSetupAndCall(&__pyx_frame_code, &__pyx_frame, tstate, funcname, srcfile, firstlineno);\
-          if (unlikely(__Pyx_use_tracing < 0)) goto_error;\
-      }\
-  }
-  #else
-  #define __Pyx_TraceCall(funcname, srcfile, firstlineno, nogil, goto_error)\
-  {   PyThreadState* tstate = PyThreadState_GET();\
-      if (unlikely(tstate->use_tracing) && !tstate->tracing &&\
-              (tstate->c_profilefunc || (CYTHON_TRACE && tstate->c_tracefunc))) {\
-          __Pyx_use_tracing = __Pyx_TraceSetupAndCall(&__pyx_frame_code, &__pyx_frame, tstate, funcname, srcfile, firstlineno);\
-          if (unlikely(__Pyx_use_tracing < 0)) goto_error;\
-      }\
-  }
-  #endif
-  #define __Pyx_TraceException()\
-  if (likely(!__Pyx_use_tracing)); else {\
-      PyThreadState* tstate = __Pyx_PyThreadState_Current;\
-      if (tstate->use_tracing &&\
-              (tstate->c_profilefunc || (CYTHON_TRACE && tstate->c_tracefunc))) {\
-          tstate->tracing++;\
-          tstate->use_tracing = 0;\
-          PyObject *exc_info = __Pyx_GetExceptionTuple(tstate);\
-          if (exc_info) {\
-              if (CYTHON_TRACE && tstate->c_tracefunc)\
-                  tstate->c_tracefunc(\
-                      tstate->c_traceobj, __pyx_frame, PyTrace_EXCEPTION, exc_info);\
-              tstate->c_profilefunc(\
-                  tstate->c_profileobj, __pyx_frame, PyTrace_EXCEPTION, exc_info);\
-              Py_DECREF(exc_info);\
-          }\
-          tstate->use_tracing = 1;\
-          tstate->tracing--;\
-      }\
-  }
-  static void __Pyx_call_return_trace_func(PyThreadState *tstate, PyFrameObject *frame, PyObject *result) {
-      PyObject *type, *value, *traceback;
-      __Pyx_ErrFetchInState(tstate, &type, &value, &traceback);
-      tstate->tracing++;
-      tstate->use_tracing = 0;
-      if (CYTHON_TRACE && tstate->c_tracefunc)
-          tstate->c_tracefunc(tstate->c_traceobj, frame, PyTrace_RETURN, result);
-      if (tstate->c_profilefunc)
-          tstate->c_profilefunc(tstate->c_profileobj, frame, PyTrace_RETURN, result);
-      CYTHON_FRAME_DEL(frame);
-      tstate->use_tracing = 1;
-      tstate->tracing--;
-      __Pyx_ErrRestoreInState(tstate, type, value, traceback);
-  }
-  #ifdef WITH_THREAD
-  #define __Pyx_TraceReturn(result, nogil)\
-  if (likely(!__Pyx_use_tracing)); else {\
-      if (nogil) {\
-          if (CYTHON_TRACE_NOGIL) {\
-              PyThreadState *tstate;\
-              PyGILState_STATE state = PyGILState_Ensure();\
-              tstate = __Pyx_PyThreadState_Current;\
-              if (tstate->use_tracing) {\
-                  __Pyx_call_return_trace_func(tstate, __pyx_frame, (PyObject*)result);\
-              }\
-              PyGILState_Release(state);\
-          }\
-      } else {\
-          PyThreadState* tstate = __Pyx_PyThreadState_Current;\
-          if (tstate->use_tracing) {\
-              __Pyx_call_return_trace_func(tstate, __pyx_frame, (PyObject*)result);\
-          }\
-      }\
-  }
-  #else
-  #define __Pyx_TraceReturn(result, nogil)\
-  if (likely(!__Pyx_use_tracing)); else {\
-      PyThreadState* tstate = __Pyx_PyThreadState_Current;\
-      if (tstate->use_tracing) {\
-          __Pyx_call_return_trace_func(tstate, __pyx_frame, (PyObject*)result);\
-      }\
-  }
-  #endif
-  static PyCodeObject *__Pyx_createFrameCodeObject(const char *funcname, const char *srcfile, int firstlineno);
-  static int __Pyx_TraceSetupAndCall(PyCodeObject** code, PyFrameObject** frame, PyThreadState* tstate, const char *funcname, const char *srcfile, int firstlineno);
-#else
-  #define __Pyx_TraceDeclarations
-  #define __Pyx_TraceFrameInit(codeobj)
-  #define __Pyx_TraceCall(funcname, srcfile, firstlineno, nogil, goto_error)   if ((1)); else goto_error;
-  #define __Pyx_TraceException()
-  #define __Pyx_TraceReturn(result, nogil)
-#endif
-#if CYTHON_TRACE
-  static int __Pyx_call_line_trace_func(PyThreadState *tstate, PyFrameObject *frame, int lineno) {
-      int ret;
-      PyObject *type, *value, *traceback;
-      __Pyx_ErrFetchInState(tstate, &type, &value, &traceback);
-      __Pyx_PyFrame_SetLineNumber(frame, lineno);
-      tstate->tracing++;
-      tstate->use_tracing = 0;
-      ret = tstate->c_tracefunc(tstate->c_traceobj, frame, PyTrace_LINE, NULL);
-      tstate->use_tracing = 1;
-      tstate->tracing--;
-      if (likely(!ret)) {
-          __Pyx_ErrRestoreInState(tstate, type, value, traceback);
-      } else {
-          Py_XDECREF(type);
-          Py_XDECREF(value);
-          Py_XDECREF(traceback);
-      }
-      return ret;
-  }
-  #ifdef WITH_THREAD
-  #define __Pyx_TraceLine(lineno, nogil, goto_error)\
-  if (likely(!__Pyx_use_tracing)); else {\
-      if (nogil) {\
-          if (CYTHON_TRACE_NOGIL) {\
-              int ret = 0;\
-              PyThreadState *tstate;\
-              PyGILState_STATE state = PyGILState_Ensure();\
-              tstate = __Pyx_PyThreadState_Current;\
-              if (unlikely(tstate->use_tracing && tstate->c_tracefunc && __pyx_frame->f_trace)) {\
-                  ret = __Pyx_call_line_trace_func(tstate, __pyx_frame, lineno);\
-              }\
-              PyGILState_Release(state);\
-              if (unlikely(ret)) goto_error;\
-          }\
-      } else {\
-          PyThreadState* tstate = __Pyx_PyThreadState_Current;\
-          if (unlikely(tstate->use_tracing && tstate->c_tracefunc && __pyx_frame->f_trace)) {\
-              int ret = __Pyx_call_line_trace_func(tstate, __pyx_frame, lineno);\
-              if (unlikely(ret)) goto_error;\
-          }\
-      }\
-  }
-  #else
-  #define __Pyx_TraceLine(lineno, nogil, goto_error)\
-  if (likely(!__Pyx_use_tracing)); else {\
-      PyThreadState* tstate = __Pyx_PyThreadState_Current;\
-      if (unlikely(tstate->use_tracing && tstate->c_tracefunc && __pyx_frame->f_trace)) {\
-          int ret = __Pyx_call_line_trace_func(tstate, __pyx_frame, lineno);\
-          if (unlikely(ret)) goto_error;\
-      }\
-  }
-  #endif
-#else
-  #define __Pyx_TraceLine(lineno, nogil, goto_error)   if ((1)); else goto_error;
 #endif
 
 /* WriteUnraisableException.proto */
@@ -1888,8 +1686,6 @@ static PyObject *__pyx_tuple__7;
  */
 
 static void __pyx_f_7fatslim_9_typedefs_rvec_clear(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_a) {
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_clear", __pyx_f[0], 28, 1, __PYX_ERR(0, 28, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":29
  * 
@@ -1898,7 +1694,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_clear(__pyx_t_7fatslim_9_typedefs_r
  *     a[YY] = 0
  *     a[ZZ] = 0
  */
-  __Pyx_TraceLine(29,1,__PYX_ERR(0, 29, __pyx_L1_error))
   (__pyx_v_a[0]) = 0.0;
 
   /* "fatslim/_typedefs.pyx":30
@@ -1908,7 +1703,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_clear(__pyx_t_7fatslim_9_typedefs_r
  *     a[ZZ] = 0
  * 
  */
-  __Pyx_TraceLine(30,1,__PYX_ERR(0, 30, __pyx_L1_error))
   (__pyx_v_a[1]) = 0.0;
 
   /* "fatslim/_typedefs.pyx":31
@@ -1918,7 +1712,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_clear(__pyx_t_7fatslim_9_typedefs_r
  * 
  * cdef real rvec_norm2(const rvec a) nogil:
  */
-  __Pyx_TraceLine(31,1,__PYX_ERR(0, 31, __pyx_L1_error))
   (__pyx_v_a[2]) = 0.0;
 
   /* "fatslim/_typedefs.pyx":28
@@ -1930,11 +1723,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_clear(__pyx_t_7fatslim_9_typedefs_r
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_clear", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":33
@@ -1947,8 +1735,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_clear(__pyx_t_7fatslim_9_typedefs_r
 
 static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_norm2(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_a) {
   __pyx_t_7fatslim_9_typedefs_real __pyx_r;
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_norm2", __pyx_f[0], 33, 1, __PYX_ERR(0, 33, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":34
  * 
@@ -1957,7 +1743,6 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_norm2(_
  * 
  * cdef void rvec_copy(rvec src, rvec dest) nogil:
  */
-  __Pyx_TraceLine(34,1,__PYX_ERR(0, 34, __pyx_L1_error))
   __pyx_r = ((((__pyx_v_a[0]) * (__pyx_v_a[0])) + ((__pyx_v_a[1]) * (__pyx_v_a[1]))) + ((__pyx_v_a[2]) * (__pyx_v_a[2])));
   goto __pyx_L0;
 
@@ -1970,11 +1755,7 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_norm2(_
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_norm2", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_r = 0;
   __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
   return __pyx_r;
 }
 
@@ -1987,8 +1768,6 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_norm2(_
  */
 
 static void __pyx_f_7fatslim_9_typedefs_rvec_copy(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_src, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_dest) {
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_copy", __pyx_f[0], 36, 1, __PYX_ERR(0, 36, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":37
  * 
@@ -1997,7 +1776,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_copy(__pyx_t_7fatslim_9_typedefs_re
  *     dest[YY]=src[YY]
  *     dest[ZZ]=src[ZZ]
  */
-  __Pyx_TraceLine(37,1,__PYX_ERR(0, 37, __pyx_L1_error))
   (__pyx_v_dest[0]) = (__pyx_v_src[0]);
 
   /* "fatslim/_typedefs.pyx":38
@@ -2007,7 +1785,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_copy(__pyx_t_7fatslim_9_typedefs_re
  *     dest[ZZ]=src[ZZ]
  * 
  */
-  __Pyx_TraceLine(38,1,__PYX_ERR(0, 38, __pyx_L1_error))
   (__pyx_v_dest[1]) = (__pyx_v_src[1]);
 
   /* "fatslim/_typedefs.pyx":39
@@ -2017,7 +1794,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_copy(__pyx_t_7fatslim_9_typedefs_re
  * 
  * cdef void rvec_smul(real a, const rvec v1, rvec v2) nogil:
  */
-  __Pyx_TraceLine(39,1,__PYX_ERR(0, 39, __pyx_L1_error))
   (__pyx_v_dest[2]) = (__pyx_v_src[2]);
 
   /* "fatslim/_typedefs.pyx":36
@@ -2029,11 +1805,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_copy(__pyx_t_7fatslim_9_typedefs_re
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_copy", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":41
@@ -2045,8 +1816,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_copy(__pyx_t_7fatslim_9_typedefs_re
  */
 
 static void __pyx_f_7fatslim_9_typedefs_rvec_smul(__pyx_t_7fatslim_9_typedefs_real __pyx_v_a, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_v1, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_v2) {
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_smul", __pyx_f[0], 41, 1, __PYX_ERR(0, 41, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":42
  * 
@@ -2055,7 +1824,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_smul(__pyx_t_7fatslim_9_typedefs_re
  *     v2[YY] = a * v1[YY]
  *     v2[ZZ] = a * v1[ZZ]
  */
-  __Pyx_TraceLine(42,1,__PYX_ERR(0, 42, __pyx_L1_error))
   (__pyx_v_v2[0]) = (__pyx_v_a * (__pyx_v_v1[0]));
 
   /* "fatslim/_typedefs.pyx":43
@@ -2065,7 +1833,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_smul(__pyx_t_7fatslim_9_typedefs_re
  *     v2[ZZ] = a * v1[ZZ]
  * 
  */
-  __Pyx_TraceLine(43,1,__PYX_ERR(0, 43, __pyx_L1_error))
   (__pyx_v_v2[1]) = (__pyx_v_a * (__pyx_v_v1[1]));
 
   /* "fatslim/_typedefs.pyx":44
@@ -2075,7 +1842,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_smul(__pyx_t_7fatslim_9_typedefs_re
  * 
  * cdef void rvec_inc(rvec a,const rvec b) nogil:
  */
-  __Pyx_TraceLine(44,1,__PYX_ERR(0, 44, __pyx_L1_error))
   (__pyx_v_v2[2]) = (__pyx_v_a * (__pyx_v_v1[2]));
 
   /* "fatslim/_typedefs.pyx":41
@@ -2087,11 +1853,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_smul(__pyx_t_7fatslim_9_typedefs_re
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_smul", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":46
@@ -2106,8 +1867,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_inc(__pyx_t_7fatslim_9_typedefs_rea
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_x;
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_y;
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_z;
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_inc", __pyx_f[0], 46, 1, __PYX_ERR(0, 46, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":49
  *     cdef real x,y,z
@@ -2116,7 +1875,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_inc(__pyx_t_7fatslim_9_typedefs_rea
  *     y=a[YY]+b[YY]
  *     z=a[ZZ]+b[ZZ]
  */
-  __Pyx_TraceLine(49,1,__PYX_ERR(0, 49, __pyx_L1_error))
   __pyx_v_x = ((__pyx_v_a[0]) + (__pyx_v_b[0]));
 
   /* "fatslim/_typedefs.pyx":50
@@ -2126,7 +1884,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_inc(__pyx_t_7fatslim_9_typedefs_rea
  *     z=a[ZZ]+b[ZZ]
  * 
  */
-  __Pyx_TraceLine(50,1,__PYX_ERR(0, 50, __pyx_L1_error))
   __pyx_v_y = ((__pyx_v_a[1]) + (__pyx_v_b[1]));
 
   /* "fatslim/_typedefs.pyx":51
@@ -2136,7 +1893,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_inc(__pyx_t_7fatslim_9_typedefs_rea
  * 
  *     a[XX]=x
  */
-  __Pyx_TraceLine(51,1,__PYX_ERR(0, 51, __pyx_L1_error))
   __pyx_v_z = ((__pyx_v_a[2]) + (__pyx_v_b[2]));
 
   /* "fatslim/_typedefs.pyx":53
@@ -2146,7 +1902,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_inc(__pyx_t_7fatslim_9_typedefs_rea
  *     a[YY]=y
  *     a[ZZ]=z
  */
-  __Pyx_TraceLine(53,1,__PYX_ERR(0, 53, __pyx_L1_error))
   (__pyx_v_a[0]) = __pyx_v_x;
 
   /* "fatslim/_typedefs.pyx":54
@@ -2156,7 +1911,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_inc(__pyx_t_7fatslim_9_typedefs_rea
  *     a[ZZ]=z
  * 
  */
-  __Pyx_TraceLine(54,1,__PYX_ERR(0, 54, __pyx_L1_error))
   (__pyx_v_a[1]) = __pyx_v_y;
 
   /* "fatslim/_typedefs.pyx":55
@@ -2166,7 +1920,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_inc(__pyx_t_7fatslim_9_typedefs_rea
  * 
  * cdef void rvec_dec(rvec a,const rvec b) nogil:
  */
-  __Pyx_TraceLine(55,1,__PYX_ERR(0, 55, __pyx_L1_error))
   (__pyx_v_a[2]) = __pyx_v_z;
 
   /* "fatslim/_typedefs.pyx":46
@@ -2178,11 +1931,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_inc(__pyx_t_7fatslim_9_typedefs_rea
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_inc", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":57
@@ -2197,8 +1945,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_x;
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_y;
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_z;
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_dec", __pyx_f[0], 57, 1, __PYX_ERR(0, 57, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":60
  *     cdef real x, y, z
@@ -2207,7 +1953,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
  *     y=a[YY]-b[YY]
  *     z=a[ZZ]-b[ZZ]
  */
-  __Pyx_TraceLine(60,1,__PYX_ERR(0, 60, __pyx_L1_error))
   __pyx_v_x = ((__pyx_v_a[0]) - (__pyx_v_b[0]));
 
   /* "fatslim/_typedefs.pyx":61
@@ -2217,7 +1962,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
  *     z=a[ZZ]-b[ZZ]
  * 
  */
-  __Pyx_TraceLine(61,1,__PYX_ERR(0, 61, __pyx_L1_error))
   __pyx_v_y = ((__pyx_v_a[1]) - (__pyx_v_b[1]));
 
   /* "fatslim/_typedefs.pyx":62
@@ -2227,7 +1971,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
  * 
  *     a[XX]=x
  */
-  __Pyx_TraceLine(62,1,__PYX_ERR(0, 62, __pyx_L1_error))
   __pyx_v_z = ((__pyx_v_a[2]) - (__pyx_v_b[2]));
 
   /* "fatslim/_typedefs.pyx":64
@@ -2237,7 +1980,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
  *     a[YY]=y
  *     a[ZZ]=z
  */
-  __Pyx_TraceLine(64,1,__PYX_ERR(0, 64, __pyx_L1_error))
   (__pyx_v_a[0]) = __pyx_v_x;
 
   /* "fatslim/_typedefs.pyx":65
@@ -2247,7 +1989,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
  *     a[ZZ]=z
  * 
  */
-  __Pyx_TraceLine(65,1,__PYX_ERR(0, 65, __pyx_L1_error))
   (__pyx_v_a[1]) = __pyx_v_y;
 
   /* "fatslim/_typedefs.pyx":66
@@ -2257,7 +1998,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
  * 
  * cdef real rvec_norm(const rvec a) nogil:
  */
-  __Pyx_TraceLine(66,1,__PYX_ERR(0, 66, __pyx_L1_error))
   (__pyx_v_a[2]) = __pyx_v_z;
 
   /* "fatslim/_typedefs.pyx":57
@@ -2269,11 +2009,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_dec", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":68
@@ -2286,8 +2021,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_dec(__pyx_t_7fatslim_9_typedefs_rea
 
 static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_norm(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_a) {
   __pyx_t_7fatslim_9_typedefs_real __pyx_r;
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_norm", __pyx_f[0], 68, 1, __PYX_ERR(0, 68, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":69
  * 
@@ -2296,7 +2029,6 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_norm(__
  * 
  * cdef void rvec_normalize(rvec a) nogil:
  */
-  __Pyx_TraceLine(69,1,__PYX_ERR(0, 69, __pyx_L1_error))
   __pyx_r = sqrt(__pyx_f_7fatslim_9_typedefs_rvec_norm2(__pyx_v_a));
   goto __pyx_L0;
 
@@ -2309,11 +2041,7 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_norm(__
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_norm", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_r = 0;
   __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
   return __pyx_r;
 }
 
@@ -2327,9 +2055,7 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_norm(__
 
 static void __pyx_f_7fatslim_9_typedefs_rvec_normalize(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_a) {
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_vec_norm;
-  __Pyx_TraceDeclarations
   long __pyx_t_1;
-  __Pyx_TraceCall("rvec_normalize", __pyx_f[0], 71, 1, __PYX_ERR(0, 71, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":72
  * 
@@ -2338,7 +2064,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_normalize(__pyx_t_7fatslim_9_typede
  *     a[XX] /= vec_norm
  *     a[YY] /= vec_norm
  */
-  __Pyx_TraceLine(72,1,__PYX_ERR(0, 72, __pyx_L1_error))
   __pyx_v_vec_norm = __pyx_f_7fatslim_9_typedefs_rvec_norm(__pyx_v_a);
 
   /* "fatslim/_typedefs.pyx":73
@@ -2348,7 +2073,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_normalize(__pyx_t_7fatslim_9_typede
  *     a[YY] /= vec_norm
  *     a[ZZ] /= vec_norm
  */
-  __Pyx_TraceLine(73,1,__PYX_ERR(0, 73, __pyx_L1_error))
   __pyx_t_1 = 0;
   if (unlikely(__pyx_v_vec_norm == 0)) {
     #ifdef WITH_THREAD
@@ -2369,7 +2093,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_normalize(__pyx_t_7fatslim_9_typede
  *     a[ZZ] /= vec_norm
  * 
  */
-  __Pyx_TraceLine(74,1,__PYX_ERR(0, 74, __pyx_L1_error))
   __pyx_t_1 = 1;
   if (unlikely(__pyx_v_vec_norm == 0)) {
     #ifdef WITH_THREAD
@@ -2390,7 +2113,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_normalize(__pyx_t_7fatslim_9_typede
  * 
  * cdef real rvec_dprod(const rvec a, const rvec b) nogil:
  */
-  __Pyx_TraceLine(75,1,__PYX_ERR(0, 75, __pyx_L1_error))
   __pyx_t_1 = 2;
   if (unlikely(__pyx_v_vec_norm == 0)) {
     #ifdef WITH_THREAD
@@ -2417,7 +2139,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_normalize(__pyx_t_7fatslim_9_typede
   __pyx_L1_error:;
   __Pyx_WriteUnraisable("fatslim._typedefs.rvec_normalize", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
   __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":77
@@ -2430,8 +2151,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_normalize(__pyx_t_7fatslim_9_typede
 
 static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_dprod(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_a, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_b) {
   __pyx_t_7fatslim_9_typedefs_real __pyx_r;
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_dprod", __pyx_f[0], 77, 1, __PYX_ERR(0, 77, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":78
  * 
@@ -2440,7 +2159,6 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_dprod(_
  * 
  * cdef void mat_clear(matrix a) nogil:
  */
-  __Pyx_TraceLine(78,1,__PYX_ERR(0, 78, __pyx_L1_error))
   __pyx_r = ((((__pyx_v_a[0]) * (__pyx_v_b[0])) + ((__pyx_v_a[1]) * (__pyx_v_b[1]))) + ((__pyx_v_a[2]) * (__pyx_v_b[2])));
   goto __pyx_L0;
 
@@ -2453,11 +2171,7 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_dprod(_
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_dprod", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_r = 0;
   __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
   return __pyx_r;
 }
 
@@ -2470,8 +2184,6 @@ static __pyx_t_7fatslim_9_typedefs_real __pyx_f_7fatslim_9_typedefs_rvec_dprod(_
  */
 
 static void __pyx_f_7fatslim_9_typedefs_mat_clear(__pyx_t_7fatslim_9_typedefs_real (*__pyx_v_a)[3]) {
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("mat_clear", __pyx_f[0], 80, 1, __PYX_ERR(0, 80, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":81
  * 
@@ -2480,7 +2192,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_clear(__pyx_t_7fatslim_9_typedefs_re
  *     rvec_clear(a[YY])
  *     rvec_clear(a[ZZ])
  */
-  __Pyx_TraceLine(81,1,__PYX_ERR(0, 81, __pyx_L1_error))
   __pyx_f_7fatslim_9_typedefs_rvec_clear((__pyx_v_a[0]));
 
   /* "fatslim/_typedefs.pyx":82
@@ -2490,7 +2201,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_clear(__pyx_t_7fatslim_9_typedefs_re
  *     rvec_clear(a[ZZ])
  * 
  */
-  __Pyx_TraceLine(82,1,__PYX_ERR(0, 82, __pyx_L1_error))
   __pyx_f_7fatslim_9_typedefs_rvec_clear((__pyx_v_a[1]));
 
   /* "fatslim/_typedefs.pyx":83
@@ -2500,7 +2210,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_clear(__pyx_t_7fatslim_9_typedefs_re
  * 
  * cdef void mat_copy(matrix src,matrix dest) nogil:
  */
-  __Pyx_TraceLine(83,1,__PYX_ERR(0, 83, __pyx_L1_error))
   __pyx_f_7fatslim_9_typedefs_rvec_clear((__pyx_v_a[2]));
 
   /* "fatslim/_typedefs.pyx":80
@@ -2512,11 +2221,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_clear(__pyx_t_7fatslim_9_typedefs_re
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.mat_clear", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":85
@@ -2528,8 +2232,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_clear(__pyx_t_7fatslim_9_typedefs_re
  */
 
 static void __pyx_f_7fatslim_9_typedefs_mat_copy(__pyx_t_7fatslim_9_typedefs_real (*__pyx_v_src)[3], __pyx_t_7fatslim_9_typedefs_real (*__pyx_v_dest)[3]) {
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("mat_copy", __pyx_f[0], 85, 1, __PYX_ERR(0, 85, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":86
  * 
@@ -2538,7 +2240,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_copy(__pyx_t_7fatslim_9_typedefs_rea
  *     rvec_copy(src[YY],dest[YY])
  *     rvec_copy(src[ZZ],dest[ZZ])
  */
-  __Pyx_TraceLine(86,1,__PYX_ERR(0, 86, __pyx_L1_error))
   __pyx_f_7fatslim_9_typedefs_rvec_copy((__pyx_v_src[0]), (__pyx_v_dest[0]));
 
   /* "fatslim/_typedefs.pyx":87
@@ -2548,7 +2249,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_copy(__pyx_t_7fatslim_9_typedefs_rea
  *     rvec_copy(src[ZZ],dest[ZZ])
  * 
  */
-  __Pyx_TraceLine(87,1,__PYX_ERR(0, 87, __pyx_L1_error))
   __pyx_f_7fatslim_9_typedefs_rvec_copy((__pyx_v_src[1]), (__pyx_v_dest[1]));
 
   /* "fatslim/_typedefs.pyx":88
@@ -2558,7 +2258,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_copy(__pyx_t_7fatslim_9_typedefs_rea
  * 
  * 
  */
-  __Pyx_TraceLine(88,1,__PYX_ERR(0, 88, __pyx_L1_error))
   __pyx_f_7fatslim_9_typedefs_rvec_copy((__pyx_v_src[2]), (__pyx_v_dest[2]));
 
   /* "fatslim/_typedefs.pyx":85
@@ -2570,11 +2269,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_copy(__pyx_t_7fatslim_9_typedefs_rea
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.mat_copy", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":91
@@ -2586,8 +2280,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_copy(__pyx_t_7fatslim_9_typedefs_rea
  */
 
 static void __pyx_f_7fatslim_9_typedefs_rvec_cprod(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_a, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_b, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_c) {
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_cprod", __pyx_f[0], 91, 1, __PYX_ERR(0, 91, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":92
  * 
@@ -2596,7 +2288,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_cprod(__pyx_t_7fatslim_9_typedefs_r
  *     c[YY] = a[ZZ] * b[XX] - a[XX] * b[ZZ]
  *     c[ZZ] = a[XX] * b[YY] - a[YY] * b[XX]
  */
-  __Pyx_TraceLine(92,1,__PYX_ERR(0, 92, __pyx_L1_error))
   (__pyx_v_c[0]) = (((__pyx_v_a[1]) * (__pyx_v_b[2])) - ((__pyx_v_a[2]) * (__pyx_v_b[1])));
 
   /* "fatslim/_typedefs.pyx":93
@@ -2606,7 +2297,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_cprod(__pyx_t_7fatslim_9_typedefs_r
  *     c[ZZ] = a[XX] * b[YY] - a[YY] * b[XX]
  * 
  */
-  __Pyx_TraceLine(93,1,__PYX_ERR(0, 93, __pyx_L1_error))
   (__pyx_v_c[1]) = (((__pyx_v_a[2]) * (__pyx_v_b[0])) - ((__pyx_v_a[0]) * (__pyx_v_b[2])));
 
   /* "fatslim/_typedefs.pyx":94
@@ -2616,7 +2306,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_cprod(__pyx_t_7fatslim_9_typedefs_r
  * 
  * 
  */
-  __Pyx_TraceLine(94,1,__PYX_ERR(0, 94, __pyx_L1_error))
   (__pyx_v_c[2]) = (((__pyx_v_a[0]) * (__pyx_v_b[1])) - ((__pyx_v_a[1]) * (__pyx_v_b[0])));
 
   /* "fatslim/_typedefs.pyx":91
@@ -2628,11 +2317,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_cprod(__pyx_t_7fatslim_9_typedefs_r
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_cprod", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":97
@@ -2644,8 +2328,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_cprod(__pyx_t_7fatslim_9_typedefs_r
  */
 
 static void __pyx_f_7fatslim_9_typedefs_rvec_cprod_norm(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_a, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_b, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_c) {
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("rvec_cprod_norm", __pyx_f[0], 97, 1, __PYX_ERR(0, 97, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":98
  * 
@@ -2654,7 +2336,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_cprod_norm(__pyx_t_7fatslim_9_typed
  *     rvec_normalize(c)
  * 
  */
-  __Pyx_TraceLine(98,1,__PYX_ERR(0, 98, __pyx_L1_error))
   __pyx_f_7fatslim_9_typedefs_rvec_cprod(__pyx_v_a, __pyx_v_b, __pyx_v_c);
 
   /* "fatslim/_typedefs.pyx":99
@@ -2664,7 +2345,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_cprod_norm(__pyx_t_7fatslim_9_typed
  * 
  * 
  */
-  __Pyx_TraceLine(99,1,__PYX_ERR(0, 99, __pyx_L1_error))
   __pyx_f_7fatslim_9_typedefs_rvec_normalize(__pyx_v_c);
 
   /* "fatslim/_typedefs.pyx":97
@@ -2676,11 +2356,6 @@ static void __pyx_f_7fatslim_9_typedefs_rvec_cprod_norm(__pyx_t_7fatslim_9_typed
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.rvec_cprod_norm", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":102
@@ -2711,8 +2386,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_g;
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_h;
   __pyx_t_7fatslim_9_typedefs_real __pyx_v_k;
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("invert_mat", __pyx_f[0], 102, 1, __PYX_ERR(0, 102, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":107
  *     cdef real a, b, c, d, e, f, g, h, k
@@ -2721,7 +2394,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     b = mat[XX][YY]
  *     c = mat[XX][ZZ]
  */
-  __Pyx_TraceLine(107,1,__PYX_ERR(0, 107, __pyx_L1_error))
   __pyx_v_a = ((__pyx_v_mat[0])[0]);
 
   /* "fatslim/_typedefs.pyx":108
@@ -2731,7 +2403,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     c = mat[XX][ZZ]
  *     d = mat[YY][XX]
  */
-  __Pyx_TraceLine(108,1,__PYX_ERR(0, 108, __pyx_L1_error))
   __pyx_v_b = ((__pyx_v_mat[0])[1]);
 
   /* "fatslim/_typedefs.pyx":109
@@ -2741,7 +2412,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     d = mat[YY][XX]
  *     e = mat[YY][YY]
  */
-  __Pyx_TraceLine(109,1,__PYX_ERR(0, 109, __pyx_L1_error))
   __pyx_v_c = ((__pyx_v_mat[0])[2]);
 
   /* "fatslim/_typedefs.pyx":110
@@ -2751,7 +2421,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     e = mat[YY][YY]
  *     f = mat[YY][ZZ]
  */
-  __Pyx_TraceLine(110,1,__PYX_ERR(0, 110, __pyx_L1_error))
   __pyx_v_d = ((__pyx_v_mat[1])[0]);
 
   /* "fatslim/_typedefs.pyx":111
@@ -2761,7 +2430,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     f = mat[YY][ZZ]
  *     g = mat[ZZ][XX]
  */
-  __Pyx_TraceLine(111,1,__PYX_ERR(0, 111, __pyx_L1_error))
   __pyx_v_e = ((__pyx_v_mat[1])[1]);
 
   /* "fatslim/_typedefs.pyx":112
@@ -2771,7 +2439,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     g = mat[ZZ][XX]
  *     h = mat[ZZ][YY]
  */
-  __Pyx_TraceLine(112,1,__PYX_ERR(0, 112, __pyx_L1_error))
   __pyx_v_f = ((__pyx_v_mat[1])[2]);
 
   /* "fatslim/_typedefs.pyx":113
@@ -2781,7 +2448,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     h = mat[ZZ][YY]
  *     k = mat[ZZ][ZZ]
  */
-  __Pyx_TraceLine(113,1,__PYX_ERR(0, 113, __pyx_L1_error))
   __pyx_v_g = ((__pyx_v_mat[2])[0]);
 
   /* "fatslim/_typedefs.pyx":114
@@ -2791,7 +2457,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     k = mat[ZZ][ZZ]
  * 
  */
-  __Pyx_TraceLine(114,1,__PYX_ERR(0, 114, __pyx_L1_error))
   __pyx_v_h = ((__pyx_v_mat[2])[1]);
 
   /* "fatslim/_typedefs.pyx":115
@@ -2801,7 +2466,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  * 
  *     A = e * k - f * h  # ek-fh
  */
-  __Pyx_TraceLine(115,1,__PYX_ERR(0, 115, __pyx_L1_error))
   __pyx_v_k = ((__pyx_v_mat[2])[2]);
 
   /* "fatslim/_typedefs.pyx":117
@@ -2811,7 +2475,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     B = f * g - d * k  # fg-dk
  *     C = d * h - e * g  # dh-eg
  */
-  __Pyx_TraceLine(117,1,__PYX_ERR(0, 117, __pyx_L1_error))
   __pyx_v_A = ((__pyx_v_e * __pyx_v_k) - (__pyx_v_f * __pyx_v_h));
 
   /* "fatslim/_typedefs.pyx":118
@@ -2821,7 +2484,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     C = d * h - e * g  # dh-eg
  *     D = c * h - b * k  # ch-bk
  */
-  __Pyx_TraceLine(118,1,__PYX_ERR(0, 118, __pyx_L1_error))
   __pyx_v_B = ((__pyx_v_f * __pyx_v_g) - (__pyx_v_d * __pyx_v_k));
 
   /* "fatslim/_typedefs.pyx":119
@@ -2831,7 +2493,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     D = c * h - b * k  # ch-bk
  *     E = a * k - c * g  # ak-cg
  */
-  __Pyx_TraceLine(119,1,__PYX_ERR(0, 119, __pyx_L1_error))
   __pyx_v_C = ((__pyx_v_d * __pyx_v_h) - (__pyx_v_e * __pyx_v_g));
 
   /* "fatslim/_typedefs.pyx":120
@@ -2841,7 +2502,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     E = a * k - c * g  # ak-cg
  *     F = g * b - a * h  # gb-ah
  */
-  __Pyx_TraceLine(120,1,__PYX_ERR(0, 120, __pyx_L1_error))
   __pyx_v_D = ((__pyx_v_c * __pyx_v_h) - (__pyx_v_b * __pyx_v_k));
 
   /* "fatslim/_typedefs.pyx":121
@@ -2851,7 +2511,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     F = g * b - a * h  # gb-ah
  *     G = b * f - c * e  # bf-ce
  */
-  __Pyx_TraceLine(121,1,__PYX_ERR(0, 121, __pyx_L1_error))
   __pyx_v_E = ((__pyx_v_a * __pyx_v_k) - (__pyx_v_c * __pyx_v_g));
 
   /* "fatslim/_typedefs.pyx":122
@@ -2861,7 +2520,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     G = b * f - c * e  # bf-ce
  *     H = c * d - a * f  # cd-af
  */
-  __Pyx_TraceLine(122,1,__PYX_ERR(0, 122, __pyx_L1_error))
   __pyx_v_F = ((__pyx_v_g * __pyx_v_b) - (__pyx_v_a * __pyx_v_h));
 
   /* "fatslim/_typedefs.pyx":123
@@ -2871,7 +2529,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     H = c * d - a * f  # cd-af
  *     K = a * e - b * d  # ae-bd
  */
-  __Pyx_TraceLine(123,1,__PYX_ERR(0, 123, __pyx_L1_error))
   __pyx_v_G = ((__pyx_v_b * __pyx_v_f) - (__pyx_v_c * __pyx_v_e));
 
   /* "fatslim/_typedefs.pyx":124
@@ -2881,7 +2538,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     K = a * e - b * d  # ae-bd
  * 
  */
-  __Pyx_TraceLine(124,1,__PYX_ERR(0, 124, __pyx_L1_error))
   __pyx_v_H = ((__pyx_v_c * __pyx_v_d) - (__pyx_v_a * __pyx_v_f));
 
   /* "fatslim/_typedefs.pyx":125
@@ -2891,7 +2547,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  * 
  *     det = a * A + b * B + c * C
  */
-  __Pyx_TraceLine(125,1,__PYX_ERR(0, 125, __pyx_L1_error))
   __pyx_v_K = ((__pyx_v_a * __pyx_v_e) - (__pyx_v_b * __pyx_v_d));
 
   /* "fatslim/_typedefs.pyx":127
@@ -2901,7 +2556,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     det = 1 / det  # Beware: determinant MUST not be 0!
  * 
  */
-  __Pyx_TraceLine(127,1,__PYX_ERR(0, 127, __pyx_L1_error))
   __pyx_v_det = (((__pyx_v_a * __pyx_v_A) + (__pyx_v_b * __pyx_v_B)) + (__pyx_v_c * __pyx_v_C));
 
   /* "fatslim/_typedefs.pyx":128
@@ -2911,7 +2565,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  * 
  *     inverted_mat[XX][XX] = det * A
  */
-  __Pyx_TraceLine(128,1,__PYX_ERR(0, 128, __pyx_L1_error))
   if (unlikely(__pyx_v_det == 0)) {
     #ifdef WITH_THREAD
     PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
@@ -2931,7 +2584,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     inverted_mat[XX][YY] = det * D
  *     inverted_mat[XX][ZZ] = det * G
  */
-  __Pyx_TraceLine(130,1,__PYX_ERR(0, 130, __pyx_L1_error))
   ((__pyx_v_inverted_mat[0])[0]) = (__pyx_v_det * __pyx_v_A);
 
   /* "fatslim/_typedefs.pyx":131
@@ -2941,7 +2593,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     inverted_mat[XX][ZZ] = det * G
  *     inverted_mat[YY][XX] = det * B
  */
-  __Pyx_TraceLine(131,1,__PYX_ERR(0, 131, __pyx_L1_error))
   ((__pyx_v_inverted_mat[0])[1]) = (__pyx_v_det * __pyx_v_D);
 
   /* "fatslim/_typedefs.pyx":132
@@ -2951,7 +2602,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     inverted_mat[YY][XX] = det * B
  *     inverted_mat[YY][YY] = det * E
  */
-  __Pyx_TraceLine(132,1,__PYX_ERR(0, 132, __pyx_L1_error))
   ((__pyx_v_inverted_mat[0])[2]) = (__pyx_v_det * __pyx_v_G);
 
   /* "fatslim/_typedefs.pyx":133
@@ -2961,7 +2611,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     inverted_mat[YY][YY] = det * E
  *     inverted_mat[YY][ZZ] = det * H
  */
-  __Pyx_TraceLine(133,1,__PYX_ERR(0, 133, __pyx_L1_error))
   ((__pyx_v_inverted_mat[1])[0]) = (__pyx_v_det * __pyx_v_B);
 
   /* "fatslim/_typedefs.pyx":134
@@ -2971,7 +2620,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     inverted_mat[YY][ZZ] = det * H
  *     inverted_mat[ZZ][XX] = det * C
  */
-  __Pyx_TraceLine(134,1,__PYX_ERR(0, 134, __pyx_L1_error))
   ((__pyx_v_inverted_mat[1])[1]) = (__pyx_v_det * __pyx_v_E);
 
   /* "fatslim/_typedefs.pyx":135
@@ -2981,7 +2629,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     inverted_mat[ZZ][XX] = det * C
  *     inverted_mat[ZZ][YY] = det * F
  */
-  __Pyx_TraceLine(135,1,__PYX_ERR(0, 135, __pyx_L1_error))
   ((__pyx_v_inverted_mat[1])[2]) = (__pyx_v_det * __pyx_v_H);
 
   /* "fatslim/_typedefs.pyx":136
@@ -2991,7 +2638,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     inverted_mat[ZZ][YY] = det * F
  *     inverted_mat[ZZ][ZZ] = det * K
  */
-  __Pyx_TraceLine(136,1,__PYX_ERR(0, 136, __pyx_L1_error))
   ((__pyx_v_inverted_mat[2])[0]) = (__pyx_v_det * __pyx_v_C);
 
   /* "fatslim/_typedefs.pyx":137
@@ -3001,7 +2647,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  *     inverted_mat[ZZ][ZZ] = det * K
  * 
  */
-  __Pyx_TraceLine(137,1,__PYX_ERR(0, 137, __pyx_L1_error))
   ((__pyx_v_inverted_mat[2])[1]) = (__pyx_v_det * __pyx_v_F);
 
   /* "fatslim/_typedefs.pyx":138
@@ -3011,7 +2656,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  * 
  * 
  */
-  __Pyx_TraceLine(138,1,__PYX_ERR(0, 138, __pyx_L1_error))
   ((__pyx_v_inverted_mat[2])[2]) = (__pyx_v_det * __pyx_v_K);
 
   /* "fatslim/_typedefs.pyx":102
@@ -3027,7 +2671,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
   __pyx_L1_error:;
   __Pyx_WriteUnraisable("fatslim._typedefs.invert_mat", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
   __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "fatslim/_typedefs.pyx":141
@@ -3039,8 +2682,6 @@ static void __pyx_f_7fatslim_9_typedefs_invert_mat(__pyx_t_7fatslim_9_typedefs_r
  */
 
 static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedefs_real *__pyx_v_v1, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_v2, __pyx_t_7fatslim_9_typedefs_real *__pyx_v_v3, __pyx_t_7fatslim_9_typedefs_real (*__pyx_v_mat)[3]) {
-  __Pyx_TraceDeclarations
-  __Pyx_TraceCall("mat_from_rvec", __pyx_f[0], 141, 1, __PYX_ERR(0, 141, __pyx_L1_error));
 
   /* "fatslim/_typedefs.pyx":142
  * 
@@ -3049,7 +2690,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[XX][YY] = v2[XX]
  *     mat[XX][ZZ] = v3[XX]
  */
-  __Pyx_TraceLine(142,1,__PYX_ERR(0, 142, __pyx_L1_error))
   ((__pyx_v_mat[0])[0]) = (__pyx_v_v1[0]);
 
   /* "fatslim/_typedefs.pyx":143
@@ -3059,7 +2699,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[XX][ZZ] = v3[XX]
  *     mat[YY][XX] = v1[YY]
  */
-  __Pyx_TraceLine(143,1,__PYX_ERR(0, 143, __pyx_L1_error))
   ((__pyx_v_mat[0])[1]) = (__pyx_v_v2[0]);
 
   /* "fatslim/_typedefs.pyx":144
@@ -3069,7 +2708,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[YY][XX] = v1[YY]
  *     mat[YY][YY] = v2[YY]
  */
-  __Pyx_TraceLine(144,1,__PYX_ERR(0, 144, __pyx_L1_error))
   ((__pyx_v_mat[0])[2]) = (__pyx_v_v3[0]);
 
   /* "fatslim/_typedefs.pyx":145
@@ -3079,7 +2717,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[YY][YY] = v2[YY]
  *     mat[YY][ZZ] = v3[YY]
  */
-  __Pyx_TraceLine(145,1,__PYX_ERR(0, 145, __pyx_L1_error))
   ((__pyx_v_mat[1])[0]) = (__pyx_v_v1[1]);
 
   /* "fatslim/_typedefs.pyx":146
@@ -3089,7 +2726,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[YY][ZZ] = v3[YY]
  *     mat[ZZ][XX] = v1[ZZ]
  */
-  __Pyx_TraceLine(146,1,__PYX_ERR(0, 146, __pyx_L1_error))
   ((__pyx_v_mat[1])[1]) = (__pyx_v_v2[1]);
 
   /* "fatslim/_typedefs.pyx":147
@@ -3099,7 +2735,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[ZZ][XX] = v1[ZZ]
  *     mat[ZZ][YY] = v2[ZZ]
  */
-  __Pyx_TraceLine(147,1,__PYX_ERR(0, 147, __pyx_L1_error))
   ((__pyx_v_mat[1])[2]) = (__pyx_v_v3[1]);
 
   /* "fatslim/_typedefs.pyx":148
@@ -3109,7 +2744,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[ZZ][YY] = v2[ZZ]
  *     mat[ZZ][ZZ] = v3[ZZ]
  */
-  __Pyx_TraceLine(148,1,__PYX_ERR(0, 148, __pyx_L1_error))
   ((__pyx_v_mat[2])[0]) = (__pyx_v_v1[2]);
 
   /* "fatslim/_typedefs.pyx":149
@@ -3118,7 +2752,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[ZZ][YY] = v2[ZZ]             # <<<<<<<<<<<<<<
  *     mat[ZZ][ZZ] = v3[ZZ]
  */
-  __Pyx_TraceLine(149,1,__PYX_ERR(0, 149, __pyx_L1_error))
   ((__pyx_v_mat[2])[1]) = (__pyx_v_v2[2]);
 
   /* "fatslim/_typedefs.pyx":150
@@ -3126,7 +2759,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  *     mat[ZZ][YY] = v2[ZZ]
  *     mat[ZZ][ZZ] = v3[ZZ]             # <<<<<<<<<<<<<<
  */
-  __Pyx_TraceLine(150,1,__PYX_ERR(0, 150, __pyx_L1_error))
   ((__pyx_v_mat[2])[2]) = (__pyx_v_v3[2]);
 
   /* "fatslim/_typedefs.pyx":141
@@ -3138,11 +2770,6 @@ static void __pyx_f_7fatslim_9_typedefs_mat_from_rvec(__pyx_t_7fatslim_9_typedef
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("fatslim._typedefs.mat_from_rvec", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 1);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 1);
 }
 
 /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":258
@@ -3176,7 +2803,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   PyArray_Descr *__pyx_v_descr = 0;
   int __pyx_v_offset;
   int __pyx_r;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
@@ -3194,7 +2820,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   __Pyx_RefNannySetupContext("__getbuffer__", 0);
   __pyx_v_info->obj = Py_None; __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(__pyx_v_info->obj);
-  __Pyx_TraceCall("__getbuffer__", __pyx_f[1], 258, 0, __PYX_ERR(1, 258, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":265
  * 
@@ -3203,7 +2828,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             cdef bint little_endian = ((<char*>&endian_detector)[0] != 0)
  * 
  */
-  __Pyx_TraceLine(265,0,__PYX_ERR(1, 265, __pyx_L1_error))
   __pyx_v_endian_detector = 1;
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":266
@@ -3213,7 +2837,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             ndim = PyArray_NDIM(self)
  */
-  __Pyx_TraceLine(266,0,__PYX_ERR(1, 266, __pyx_L1_error))
   __pyx_v_little_endian = ((((char *)(&__pyx_v_endian_detector))[0]) != 0);
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":268
@@ -3223,7 +2846,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
  */
-  __Pyx_TraceLine(268,0,__PYX_ERR(1, 268, __pyx_L1_error))
   __pyx_v_ndim = PyArray_NDIM(__pyx_v_self);
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":270
@@ -3233,7 +2855,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 and not PyArray_CHKFLAGS(self, NPY_ARRAY_C_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not C contiguous")
  */
-  __Pyx_TraceLine(270,0,__PYX_ERR(1, 270, __pyx_L1_error))
   __pyx_t_2 = (((__pyx_v_flags & PyBUF_C_CONTIGUOUS) == PyBUF_C_CONTIGUOUS) != 0);
   if (__pyx_t_2) {
   } else {
@@ -3248,7 +2869,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 raise ValueError(u"ndarray is not C contiguous")
  * 
  */
-  __Pyx_TraceLine(271,0,__PYX_ERR(1, 271, __pyx_L1_error))
   __pyx_t_2 = ((!(PyArray_CHKFLAGS(__pyx_v_self, NPY_ARRAY_C_CONTIGUOUS) != 0)) != 0);
   __pyx_t_1 = __pyx_t_2;
   __pyx_L4_bool_binop_done:;
@@ -3260,7 +2880,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 and not PyArray_CHKFLAGS(self, NPY_ARRAY_C_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not C contiguous")
  */
-  __Pyx_TraceLine(270,0,__PYX_ERR(1, 270, __pyx_L1_error))
   if (unlikely(__pyx_t_1)) {
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":272
@@ -3270,7 +2889,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
-    __Pyx_TraceLine(272,0,__PYX_ERR(1, 272, __pyx_L1_error))
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 272, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
@@ -3293,7 +2911,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 and not PyArray_CHKFLAGS(self, NPY_ARRAY_F_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not Fortran contiguous")
  */
-  __Pyx_TraceLine(274,0,__PYX_ERR(1, 274, __pyx_L1_error))
   __pyx_t_2 = (((__pyx_v_flags & PyBUF_F_CONTIGUOUS) == PyBUF_F_CONTIGUOUS) != 0);
   if (__pyx_t_2) {
   } else {
@@ -3308,7 +2925,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 raise ValueError(u"ndarray is not Fortran contiguous")
  * 
  */
-  __Pyx_TraceLine(275,0,__PYX_ERR(1, 275, __pyx_L1_error))
   __pyx_t_2 = ((!(PyArray_CHKFLAGS(__pyx_v_self, NPY_ARRAY_F_CONTIGUOUS) != 0)) != 0);
   __pyx_t_1 = __pyx_t_2;
   __pyx_L7_bool_binop_done:;
@@ -3320,7 +2936,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 and not PyArray_CHKFLAGS(self, NPY_ARRAY_F_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not Fortran contiguous")
  */
-  __Pyx_TraceLine(274,0,__PYX_ERR(1, 274, __pyx_L1_error))
   if (unlikely(__pyx_t_1)) {
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":276
@@ -3330,7 +2945,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             info.buf = PyArray_DATA(self)
  */
-    __Pyx_TraceLine(276,0,__PYX_ERR(1, 276, __pyx_L1_error))
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
@@ -3353,7 +2967,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             info.ndim = ndim
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):
  */
-  __Pyx_TraceLine(278,0,__PYX_ERR(1, 278, __pyx_L1_error))
   __pyx_v_info->buf = PyArray_DATA(__pyx_v_self);
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":279
@@ -3363,7 +2976,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):
  *                 # Allocate new buffer for strides and shape info.
  */
-  __Pyx_TraceLine(279,0,__PYX_ERR(1, 279, __pyx_L1_error))
   __pyx_v_info->ndim = __pyx_v_ndim;
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":280
@@ -3373,7 +2985,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 # Allocate new buffer for strides and shape info.
  *                 # This is allocated as one block, strides first.
  */
-  __Pyx_TraceLine(280,0,__PYX_ERR(1, 280, __pyx_L1_error))
   __pyx_t_1 = (((sizeof(npy_intp)) != (sizeof(Py_ssize_t))) != 0);
   if (__pyx_t_1) {
 
@@ -3384,7 +2995,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 info.shape = info.strides + ndim
  *                 for i in range(ndim):
  */
-    __Pyx_TraceLine(283,0,__PYX_ERR(1, 283, __pyx_L1_error))
     __pyx_v_info->strides = ((Py_ssize_t *)PyObject_Malloc((((sizeof(Py_ssize_t)) * 2) * ((size_t)__pyx_v_ndim))));
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":284
@@ -3394,7 +3004,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 for i in range(ndim):
  *                     info.strides[i] = PyArray_STRIDES(self)[i]
  */
-    __Pyx_TraceLine(284,0,__PYX_ERR(1, 284, __pyx_L1_error))
     __pyx_v_info->shape = (__pyx_v_info->strides + __pyx_v_ndim);
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":285
@@ -3404,7 +3013,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                     info.strides[i] = PyArray_STRIDES(self)[i]
  *                     info.shape[i] = PyArray_DIMS(self)[i]
  */
-    __Pyx_TraceLine(285,0,__PYX_ERR(1, 285, __pyx_L1_error))
     __pyx_t_4 = __pyx_v_ndim;
     __pyx_t_5 = __pyx_t_4;
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
@@ -3417,7 +3025,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                     info.shape[i] = PyArray_DIMS(self)[i]
  *             else:
  */
-      __Pyx_TraceLine(286,0,__PYX_ERR(1, 286, __pyx_L1_error))
       (__pyx_v_info->strides[__pyx_v_i]) = (PyArray_STRIDES(__pyx_v_self)[__pyx_v_i]);
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":287
@@ -3427,7 +3034,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             else:
  *                 info.strides = <Py_ssize_t*>PyArray_STRIDES(self)
  */
-      __Pyx_TraceLine(287,0,__PYX_ERR(1, 287, __pyx_L1_error))
       (__pyx_v_info->shape[__pyx_v_i]) = (PyArray_DIMS(__pyx_v_self)[__pyx_v_i]);
     }
 
@@ -3448,7 +3054,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 info.shape = <Py_ssize_t*>PyArray_DIMS(self)
  *             info.suboffsets = NULL
  */
-  __Pyx_TraceLine(289,0,__PYX_ERR(1, 289, __pyx_L1_error))
   /*else*/ {
     __pyx_v_info->strides = ((Py_ssize_t *)PyArray_STRIDES(__pyx_v_self));
 
@@ -3459,7 +3064,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             info.suboffsets = NULL
  *             info.itemsize = PyArray_ITEMSIZE(self)
  */
-    __Pyx_TraceLine(290,0,__PYX_ERR(1, 290, __pyx_L1_error))
     __pyx_v_info->shape = ((Py_ssize_t *)PyArray_DIMS(__pyx_v_self));
   }
   __pyx_L9:;
@@ -3471,7 +3075,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             info.itemsize = PyArray_ITEMSIZE(self)
  *             info.readonly = not PyArray_ISWRITEABLE(self)
  */
-  __Pyx_TraceLine(291,0,__PYX_ERR(1, 291, __pyx_L1_error))
   __pyx_v_info->suboffsets = NULL;
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":292
@@ -3481,7 +3084,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             info.readonly = not PyArray_ISWRITEABLE(self)
  * 
  */
-  __Pyx_TraceLine(292,0,__PYX_ERR(1, 292, __pyx_L1_error))
   __pyx_v_info->itemsize = PyArray_ITEMSIZE(__pyx_v_self);
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":293
@@ -3491,7 +3093,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             cdef int t
  */
-  __Pyx_TraceLine(293,0,__PYX_ERR(1, 293, __pyx_L1_error))
   __pyx_v_info->readonly = (!(PyArray_ISWRITEABLE(__pyx_v_self) != 0));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":296
@@ -3501,7 +3102,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             cdef dtype descr = <dtype>PyArray_DESCR(self)
  *             cdef int offset
  */
-  __Pyx_TraceLine(296,0,__PYX_ERR(1, 296, __pyx_L1_error))
   __pyx_v_f = NULL;
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":297
@@ -3511,7 +3111,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             cdef int offset
  * 
  */
-  __Pyx_TraceLine(297,0,__PYX_ERR(1, 297, __pyx_L1_error))
   __pyx_t_7 = PyArray_DESCR(__pyx_v_self);
   __pyx_t_3 = ((PyObject *)__pyx_t_7);
   __Pyx_INCREF(__pyx_t_3);
@@ -3525,7 +3124,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             if not PyDataType_HASFIELDS(descr):
  */
-  __Pyx_TraceLine(300,0,__PYX_ERR(1, 300, __pyx_L1_error))
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __Pyx_GOTREF(__pyx_v_info->obj);
@@ -3539,7 +3137,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or
  */
-  __Pyx_TraceLine(302,0,__PYX_ERR(1, 302, __pyx_L1_error))
   __pyx_t_1 = ((!(PyDataType_HASFIELDS(__pyx_v_descr) != 0)) != 0);
   if (__pyx_t_1) {
 
@@ -3550,7 +3147,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 if ((descr.byteorder == c'>' and little_endian) or
  *                     (descr.byteorder == c'<' and not little_endian)):
  */
-    __Pyx_TraceLine(303,0,__PYX_ERR(1, 303, __pyx_L1_error))
     __pyx_t_4 = __pyx_v_descr->type_num;
     __pyx_v_t = __pyx_t_4;
 
@@ -3561,7 +3157,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                     (descr.byteorder == c'<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")
  */
-    __Pyx_TraceLine(304,0,__PYX_ERR(1, 304, __pyx_L1_error))
     __pyx_t_2 = ((__pyx_v_descr->byteorder == '>') != 0);
     if (!__pyx_t_2) {
       goto __pyx_L15_next_or;
@@ -3582,7 +3177,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                     raise ValueError(u"Non-native byte order not supported")
  *                 if   t == NPY_BYTE:        f = "b"
  */
-    __Pyx_TraceLine(305,0,__PYX_ERR(1, 305, __pyx_L1_error))
     __pyx_t_2 = ((__pyx_v_descr->byteorder == '<') != 0);
     if (__pyx_t_2) {
     } else {
@@ -3600,7 +3194,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                     (descr.byteorder == c'<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")
  */
-    __Pyx_TraceLine(304,0,__PYX_ERR(1, 304, __pyx_L1_error))
     if (unlikely(__pyx_t_1)) {
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":306
@@ -3610,7 +3203,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  */
-      __Pyx_TraceLine(306,0,__PYX_ERR(1, 306, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 306, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
@@ -3633,7 +3225,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_UBYTE:       f = "B"
  *                 elif t == NPY_SHORT:       f = "h"
  */
-    __Pyx_TraceLine(307,0,__PYX_ERR(1, 307, __pyx_L1_error))
     switch (__pyx_v_t) {
       case NPY_BYTE:
       __pyx_v_f = ((char *)"b");
@@ -3647,7 +3238,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_SHORT:       f = "h"
  *                 elif t == NPY_USHORT:      f = "H"
  */
-      __Pyx_TraceLine(308,0,__PYX_ERR(1, 308, __pyx_L1_error))
       __pyx_v_f = ((char *)"B");
       break;
       case NPY_SHORT:
@@ -3659,7 +3249,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_USHORT:      f = "H"
  *                 elif t == NPY_INT:         f = "i"
  */
-      __Pyx_TraceLine(309,0,__PYX_ERR(1, 309, __pyx_L1_error))
       __pyx_v_f = ((char *)"h");
       break;
       case NPY_USHORT:
@@ -3671,7 +3260,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_INT:         f = "i"
  *                 elif t == NPY_UINT:        f = "I"
  */
-      __Pyx_TraceLine(310,0,__PYX_ERR(1, 310, __pyx_L1_error))
       __pyx_v_f = ((char *)"H");
       break;
       case NPY_INT:
@@ -3683,7 +3271,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_UINT:        f = "I"
  *                 elif t == NPY_LONG:        f = "l"
  */
-      __Pyx_TraceLine(311,0,__PYX_ERR(1, 311, __pyx_L1_error))
       __pyx_v_f = ((char *)"i");
       break;
       case NPY_UINT:
@@ -3695,7 +3282,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_LONG:        f = "l"
  *                 elif t == NPY_ULONG:       f = "L"
  */
-      __Pyx_TraceLine(312,0,__PYX_ERR(1, 312, __pyx_L1_error))
       __pyx_v_f = ((char *)"I");
       break;
       case NPY_LONG:
@@ -3707,7 +3293,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_ULONG:       f = "L"
  *                 elif t == NPY_LONGLONG:    f = "q"
  */
-      __Pyx_TraceLine(313,0,__PYX_ERR(1, 313, __pyx_L1_error))
       __pyx_v_f = ((char *)"l");
       break;
       case NPY_ULONG:
@@ -3719,7 +3304,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_LONGLONG:    f = "q"
  *                 elif t == NPY_ULONGLONG:   f = "Q"
  */
-      __Pyx_TraceLine(314,0,__PYX_ERR(1, 314, __pyx_L1_error))
       __pyx_v_f = ((char *)"L");
       break;
       case NPY_LONGLONG:
@@ -3731,7 +3315,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_ULONGLONG:   f = "Q"
  *                 elif t == NPY_FLOAT:       f = "f"
  */
-      __Pyx_TraceLine(315,0,__PYX_ERR(1, 315, __pyx_L1_error))
       __pyx_v_f = ((char *)"q");
       break;
       case NPY_ULONGLONG:
@@ -3743,7 +3326,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_FLOAT:       f = "f"
  *                 elif t == NPY_DOUBLE:      f = "d"
  */
-      __Pyx_TraceLine(316,0,__PYX_ERR(1, 316, __pyx_L1_error))
       __pyx_v_f = ((char *)"Q");
       break;
       case NPY_FLOAT:
@@ -3755,7 +3337,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_DOUBLE:      f = "d"
  *                 elif t == NPY_LONGDOUBLE:  f = "g"
  */
-      __Pyx_TraceLine(317,0,__PYX_ERR(1, 317, __pyx_L1_error))
       __pyx_v_f = ((char *)"f");
       break;
       case NPY_DOUBLE:
@@ -3767,7 +3348,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_LONGDOUBLE:  f = "g"
  *                 elif t == NPY_CFLOAT:      f = "Zf"
  */
-      __Pyx_TraceLine(318,0,__PYX_ERR(1, 318, __pyx_L1_error))
       __pyx_v_f = ((char *)"d");
       break;
       case NPY_LONGDOUBLE:
@@ -3779,7 +3359,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_CFLOAT:      f = "Zf"
  *                 elif t == NPY_CDOUBLE:     f = "Zd"
  */
-      __Pyx_TraceLine(319,0,__PYX_ERR(1, 319, __pyx_L1_error))
       __pyx_v_f = ((char *)"g");
       break;
       case NPY_CFLOAT:
@@ -3791,7 +3370,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_CDOUBLE:     f = "Zd"
  *                 elif t == NPY_CLONGDOUBLE: f = "Zg"
  */
-      __Pyx_TraceLine(320,0,__PYX_ERR(1, 320, __pyx_L1_error))
       __pyx_v_f = ((char *)"Zf");
       break;
       case NPY_CDOUBLE:
@@ -3803,7 +3381,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_CLONGDOUBLE: f = "Zg"
  *                 elif t == NPY_OBJECT:      f = "O"
  */
-      __Pyx_TraceLine(321,0,__PYX_ERR(1, 321, __pyx_L1_error))
       __pyx_v_f = ((char *)"Zd");
       break;
       case NPY_CLONGDOUBLE:
@@ -3815,7 +3392,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_OBJECT:      f = "O"
  *                 else:
  */
-      __Pyx_TraceLine(322,0,__PYX_ERR(1, 322, __pyx_L1_error))
       __pyx_v_f = ((char *)"Zg");
       break;
       case NPY_OBJECT:
@@ -3827,7 +3403,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 else:
  *                     raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  */
-      __Pyx_TraceLine(323,0,__PYX_ERR(1, 323, __pyx_L1_error))
       __pyx_v_f = ((char *)"O");
       break;
       default:
@@ -3839,7 +3414,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 info.format = f
  *                 return
  */
-      __Pyx_TraceLine(325,0,__PYX_ERR(1, 325, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 325, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_8 = PyUnicode_Format(__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_t_3); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 325, __pyx_L1_error)
@@ -3861,7 +3435,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 return
  *             else:
  */
-    __Pyx_TraceLine(326,0,__PYX_ERR(1, 326, __pyx_L1_error))
     __pyx_v_info->format = __pyx_v_f;
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":327
@@ -3871,7 +3444,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             else:
  *                 info.format = <char*>PyObject_Malloc(_buffer_format_string_len)
  */
-    __Pyx_TraceLine(327,0,__PYX_ERR(1, 327, __pyx_L1_error))
     __pyx_r = 0;
     goto __pyx_L0;
 
@@ -3891,7 +3463,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 info.format[0] = c'^' # Native data types, manual alignment
  *                 offset = 0
  */
-  __Pyx_TraceLine(329,0,__PYX_ERR(1, 329, __pyx_L1_error))
   /*else*/ {
     __pyx_v_info->format = ((char *)PyObject_Malloc(0xFF));
 
@@ -3902,7 +3473,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 offset = 0
  *                 f = _util_dtypestring(descr, info.format + 1,
  */
-    __Pyx_TraceLine(330,0,__PYX_ERR(1, 330, __pyx_L1_error))
     (__pyx_v_info->format[0]) = '^';
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":331
@@ -3912,7 +3482,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 f = _util_dtypestring(descr, info.format + 1,
  *                                       info.format + _buffer_format_string_len,
  */
-    __Pyx_TraceLine(331,0,__PYX_ERR(1, 331, __pyx_L1_error))
     __pyx_v_offset = 0;
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":332
@@ -3922,7 +3491,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                                       info.format + _buffer_format_string_len,
  *                                       &offset)
  */
-    __Pyx_TraceLine(332,0,__PYX_ERR(1, 332, __pyx_L1_error))
     __pyx_t_9 = __pyx_f_5numpy__util_dtypestring(__pyx_v_descr, (__pyx_v_info->format + 1), (__pyx_v_info->format + 0xFF), (&__pyx_v_offset)); if (unlikely(__pyx_t_9 == ((char *)NULL))) __PYX_ERR(1, 332, __pyx_L1_error)
     __pyx_v_f = __pyx_t_9;
 
@@ -3933,7 +3501,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):
  */
-    __Pyx_TraceLine(335,0,__PYX_ERR(1, 335, __pyx_L1_error))
     (__pyx_v_f[0]) = '\x00';
   }
 
@@ -3965,7 +3532,6 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   }
   __pyx_L2:;
   __Pyx_XDECREF((PyObject *)__pyx_v_descr);
-  __Pyx_TraceReturn(Py_None, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -3990,11 +3556,9 @@ static CYTHON_UNUSED void __pyx_pw_5numpy_7ndarray_3__releasebuffer__(PyObject *
 }
 
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info) {
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__releasebuffer__", 0);
-  __Pyx_TraceCall("__releasebuffer__", __pyx_f[1], 337, 0, __PYX_ERR(1, 337, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":338
  * 
@@ -4003,7 +3567,6 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  *                 PyObject_Free(info.format)
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):
  */
-  __Pyx_TraceLine(338,0,__PYX_ERR(1, 338, __pyx_L1_error))
   __pyx_t_1 = (PyArray_HASFIELDS(__pyx_v_self) != 0);
   if (__pyx_t_1) {
 
@@ -4014,7 +3577,6 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):
  *                 PyObject_Free(info.strides)
  */
-    __Pyx_TraceLine(339,0,__PYX_ERR(1, 339, __pyx_L1_error))
     PyObject_Free(__pyx_v_info->format);
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":338
@@ -4033,7 +3595,6 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  *                 PyObject_Free(info.strides)
  *                 # info.shape was stored after info.strides in the same block
  */
-  __Pyx_TraceLine(340,0,__PYX_ERR(1, 340, __pyx_L1_error))
   __pyx_t_1 = (((sizeof(npy_intp)) != (sizeof(Py_ssize_t))) != 0);
   if (__pyx_t_1) {
 
@@ -4044,7 +3605,6 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  *                 # info.shape was stored after info.strides in the same block
  * 
  */
-    __Pyx_TraceLine(341,0,__PYX_ERR(1, 341, __pyx_L1_error))
     PyObject_Free(__pyx_v_info->strides);
 
     /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":340
@@ -4065,11 +3625,6 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("numpy.ndarray.__releasebuffer__", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 0);
   __Pyx_RefNannyFinishContext();
 }
 
@@ -4083,11 +3638,9 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
 
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__pyx_v_a) {
   PyObject *__pyx_r = NULL;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 0);
-  __Pyx_TraceCall("PyArray_MultiIterNew1", __pyx_f[1], 821, 0, __PYX_ERR(1, 821, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":822
  * 
@@ -4096,7 +3649,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  */
-  __Pyx_TraceLine(822,0,__PYX_ERR(1, 822, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = PyArray_MultiIterNew(1, ((void *)__pyx_v_a)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4119,7 +3671,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -4134,11 +3685,9 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
 
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__pyx_v_a, PyObject *__pyx_v_b) {
   PyObject *__pyx_r = NULL;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 0);
-  __Pyx_TraceCall("PyArray_MultiIterNew2", __pyx_f[1], 824, 0, __PYX_ERR(1, 824, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":825
  * 
@@ -4147,7 +3696,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  */
-  __Pyx_TraceLine(825,0,__PYX_ERR(1, 825, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = PyArray_MultiIterNew(2, ((void *)__pyx_v_a), ((void *)__pyx_v_b)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4170,7 +3718,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -4185,11 +3732,9 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
 
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__pyx_v_a, PyObject *__pyx_v_b, PyObject *__pyx_v_c) {
   PyObject *__pyx_r = NULL;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 0);
-  __Pyx_TraceCall("PyArray_MultiIterNew3", __pyx_f[1], 827, 0, __PYX_ERR(1, 827, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":828
  * 
@@ -4198,7 +3743,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  */
-  __Pyx_TraceLine(828,0,__PYX_ERR(1, 828, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = PyArray_MultiIterNew(3, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 828, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4221,7 +3765,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -4236,11 +3779,9 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
 
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__pyx_v_a, PyObject *__pyx_v_b, PyObject *__pyx_v_c, PyObject *__pyx_v_d) {
   PyObject *__pyx_r = NULL;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 0);
-  __Pyx_TraceCall("PyArray_MultiIterNew4", __pyx_f[1], 830, 0, __PYX_ERR(1, 830, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":831
  * 
@@ -4249,7 +3790,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  */
-  __Pyx_TraceLine(831,0,__PYX_ERR(1, 831, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = PyArray_MultiIterNew(4, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4272,7 +3812,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -4287,11 +3826,9 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
 
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__pyx_v_a, PyObject *__pyx_v_b, PyObject *__pyx_v_c, PyObject *__pyx_v_d, PyObject *__pyx_v_e) {
   PyObject *__pyx_r = NULL;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 0);
-  __Pyx_TraceCall("PyArray_MultiIterNew5", __pyx_f[1], 833, 0, __PYX_ERR(1, 833, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":834
  * 
@@ -4300,7 +3837,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  */
-  __Pyx_TraceLine(834,0,__PYX_ERR(1, 834, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = PyArray_MultiIterNew(5, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d), ((void *)__pyx_v_e)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 834, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4323,7 +3859,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -4338,11 +3873,9 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
 
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__pyx_v_d) {
   PyObject *__pyx_r = NULL;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 0);
-  __Pyx_TraceCall("PyDataType_SHAPE", __pyx_f[1], 836, 0, __PYX_ERR(1, 836, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":837
  * 
@@ -4351,7 +3884,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  *         return <tuple>d.subarray.shape
  *     else:
  */
-  __Pyx_TraceLine(837,0,__PYX_ERR(1, 837, __pyx_L1_error))
   __pyx_t_1 = (PyDataType_HASSUBARRAY(__pyx_v_d) != 0);
   if (__pyx_t_1) {
 
@@ -4362,7 +3894,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  *     else:
  *         return ()
  */
-    __Pyx_TraceLine(838,0,__PYX_ERR(1, 838, __pyx_L1_error))
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(((PyObject*)__pyx_v_d->subarray->shape));
     __pyx_r = ((PyObject*)__pyx_v_d->subarray->shape);
@@ -4384,7 +3915,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  * 
  * cdef inline char* _util_dtypestring(dtype descr, char* f, char* end, int* offset) except NULL:
  */
-  __Pyx_TraceLine(840,0,__PYX_ERR(1, 840, __pyx_L1_error))
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_empty_tuple);
@@ -4401,12 +3931,8 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("numpy.PyDataType_SHAPE", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -4428,7 +3954,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   PyObject *__pyx_v_new_offset = NULL;
   PyObject *__pyx_v_t = NULL;
   char *__pyx_r;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -4440,7 +3965,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   long __pyx_t_8;
   char *__pyx_t_9;
   __Pyx_RefNannySetupContext("_util_dtypestring", 0);
-  __Pyx_TraceCall("_util_dtypestring", __pyx_f[1], 842, 0, __PYX_ERR(1, 842, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":847
  * 
@@ -4449,7 +3973,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *     cdef bint little_endian = ((<char*>&endian_detector)[0] != 0)
  *     cdef tuple fields
  */
-  __Pyx_TraceLine(847,0,__PYX_ERR(1, 847, __pyx_L1_error))
   __pyx_v_endian_detector = 1;
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":848
@@ -4459,7 +3982,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *     cdef tuple fields
  * 
  */
-  __Pyx_TraceLine(848,0,__PYX_ERR(1, 848, __pyx_L1_error))
   __pyx_v_little_endian = ((((char *)(&__pyx_v_endian_detector))[0]) != 0);
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":851
@@ -4469,7 +3991,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *         fields = descr.fields[childname]
  *         child, new_offset = fields
  */
-  __Pyx_TraceLine(851,0,__PYX_ERR(1, 851, __pyx_L1_error))
   if (unlikely(__pyx_v_descr->names == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
     __PYX_ERR(1, 851, __pyx_L1_error)
@@ -4493,7 +4014,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *         child, new_offset = fields
  * 
  */
-    __Pyx_TraceLine(852,0,__PYX_ERR(1, 852, __pyx_L1_error))
     if (unlikely(__pyx_v_descr->fields == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(1, 852, __pyx_L1_error)
@@ -4511,7 +4031,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:
  */
-    __Pyx_TraceLine(853,0,__PYX_ERR(1, 853, __pyx_L1_error))
     if (likely(__pyx_v_fields != Py_None)) {
       PyObject* sequence = __pyx_v_fields;
       Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
@@ -4547,7 +4066,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")
  * 
  */
-    __Pyx_TraceLine(855,0,__PYX_ERR(1, 855, __pyx_L1_error))
     __pyx_t_4 = __Pyx_PyInt_From_int((__pyx_v_offset[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 855, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = PyNumber_Subtract(__pyx_v_new_offset, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 855, __pyx_L1_error)
@@ -4565,7 +4083,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  */
-      __Pyx_TraceLine(856,0,__PYX_ERR(1, 856, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 856, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
@@ -4588,7 +4105,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             (child.byteorder == c'<' and not little_endian)):
  *             raise ValueError(u"Non-native byte order not supported")
  */
-    __Pyx_TraceLine(858,0,__PYX_ERR(1, 858, __pyx_L1_error))
     __pyx_t_7 = ((__pyx_v_child->byteorder == '>') != 0);
     if (!__pyx_t_7) {
       goto __pyx_L8_next_or;
@@ -4609,7 +4125,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             raise ValueError(u"Non-native byte order not supported")
  *             # One could encode it in the format string and have Cython
  */
-    __Pyx_TraceLine(859,0,__PYX_ERR(1, 859, __pyx_L1_error))
     __pyx_t_7 = ((__pyx_v_child->byteorder == '<') != 0);
     if (__pyx_t_7) {
     } else {
@@ -4627,7 +4142,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             (child.byteorder == c'<' and not little_endian)):
  *             raise ValueError(u"Non-native byte order not supported")
  */
-    __Pyx_TraceLine(858,0,__PYX_ERR(1, 858, __pyx_L1_error))
     if (unlikely(__pyx_t_6)) {
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":860
@@ -4637,7 +4151,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             # One could encode it in the format string and have Cython
  *             # complain instead, BUT: < and > in format strings also imply
  */
-      __Pyx_TraceLine(860,0,__PYX_ERR(1, 860, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 860, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
@@ -4660,7 +4173,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             f[0] = 120 # "x"; pad byte
  *             f += 1
  */
-    __Pyx_TraceLine(870,0,__PYX_ERR(1, 870, __pyx_L1_error))
     while (1) {
       __pyx_t_3 = __Pyx_PyInt_From_int((__pyx_v_offset[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 870, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
@@ -4677,7 +4189,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             f += 1
  *             offset[0] += 1
  */
-      __Pyx_TraceLine(871,0,__PYX_ERR(1, 871, __pyx_L1_error))
       (__pyx_v_f[0]) = 0x78;
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":872
@@ -4687,7 +4198,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             offset[0] += 1
  * 
  */
-      __Pyx_TraceLine(872,0,__PYX_ERR(1, 872, __pyx_L1_error))
       __pyx_v_f = (__pyx_v_f + 1);
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":873
@@ -4697,7 +4207,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *         offset[0] += child.itemsize
  */
-      __Pyx_TraceLine(873,0,__PYX_ERR(1, 873, __pyx_L1_error))
       __pyx_t_8 = 0;
       (__pyx_v_offset[__pyx_t_8]) = ((__pyx_v_offset[__pyx_t_8]) + 1);
     }
@@ -4709,7 +4218,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *         if not PyDataType_HASFIELDS(child):
  */
-    __Pyx_TraceLine(875,0,__PYX_ERR(1, 875, __pyx_L1_error))
     __pyx_t_8 = 0;
     (__pyx_v_offset[__pyx_t_8]) = ((__pyx_v_offset[__pyx_t_8]) + __pyx_v_child->elsize);
 
@@ -4720,7 +4228,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             t = child.type_num
  *             if end - f < 5:
  */
-    __Pyx_TraceLine(877,0,__PYX_ERR(1, 877, __pyx_L1_error))
     __pyx_t_6 = ((!(PyDataType_HASFIELDS(__pyx_v_child) != 0)) != 0);
     if (__pyx_t_6) {
 
@@ -4731,7 +4238,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             if end - f < 5:
  *                 raise RuntimeError(u"Format string allocated too short.")
  */
-      __Pyx_TraceLine(878,0,__PYX_ERR(1, 878, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_child->type_num); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 878, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_XDECREF_SET(__pyx_v_t, __pyx_t_4);
@@ -4744,7 +4250,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *                 raise RuntimeError(u"Format string allocated too short.")
  * 
  */
-      __Pyx_TraceLine(879,0,__PYX_ERR(1, 879, __pyx_L1_error))
       __pyx_t_6 = (((__pyx_v_end - __pyx_v_f) < 5) != 0);
       if (unlikely(__pyx_t_6)) {
 
@@ -4755,7 +4260,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
-        __Pyx_TraceLine(880,0,__PYX_ERR(1, 880, __pyx_L1_error))
         __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 880, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
@@ -4778,7 +4282,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_UBYTE:       f[0] =  66 #"B"
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"
  */
-      __Pyx_TraceLine(883,0,__PYX_ERR(1, 883, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_BYTE); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 883, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 883, __pyx_L1_error)
@@ -4797,7 +4300,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"
  */
-      __Pyx_TraceLine(884,0,__PYX_ERR(1, 884, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_UBYTE); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 884, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 884, __pyx_L1_error)
@@ -4816,7 +4318,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"
  *             elif t == NPY_INT:         f[0] = 105 #"i"
  */
-      __Pyx_TraceLine(885,0,__PYX_ERR(1, 885, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_SHORT); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 885, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 885, __pyx_L1_error)
@@ -4835,7 +4336,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_INT:         f[0] = 105 #"i"
  *             elif t == NPY_UINT:        f[0] =  73 #"I"
  */
-      __Pyx_TraceLine(886,0,__PYX_ERR(1, 886, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_USHORT); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 886, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 886, __pyx_L1_error)
@@ -4854,7 +4354,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_UINT:        f[0] =  73 #"I"
  *             elif t == NPY_LONG:        f[0] = 108 #"l"
  */
-      __Pyx_TraceLine(887,0,__PYX_ERR(1, 887, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_INT); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 887, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 887, __pyx_L1_error)
@@ -4873,7 +4372,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_LONG:        f[0] = 108 #"l"
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"
  */
-      __Pyx_TraceLine(888,0,__PYX_ERR(1, 888, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_UINT); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 888, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 888, __pyx_L1_error)
@@ -4892,7 +4390,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"
  */
-      __Pyx_TraceLine(889,0,__PYX_ERR(1, 889, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONG); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 889, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 889, __pyx_L1_error)
@@ -4911,7 +4408,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"
  */
-      __Pyx_TraceLine(890,0,__PYX_ERR(1, 890, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_ULONG); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 890, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 890, __pyx_L1_error)
@@ -4930,7 +4426,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"
  */
-      __Pyx_TraceLine(891,0,__PYX_ERR(1, 891, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONGLONG); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 891, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 891, __pyx_L1_error)
@@ -4949,7 +4444,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"
  */
-      __Pyx_TraceLine(892,0,__PYX_ERR(1, 892, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_ULONGLONG); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 892, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 892, __pyx_L1_error)
@@ -4968,7 +4462,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"
  */
-      __Pyx_TraceLine(893,0,__PYX_ERR(1, 893, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_FLOAT); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 893, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 893, __pyx_L1_error)
@@ -4987,7 +4480,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf
  */
-      __Pyx_TraceLine(894,0,__PYX_ERR(1, 894, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_DOUBLE); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 894, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 894, __pyx_L1_error)
@@ -5006,7 +4498,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd
  */
-      __Pyx_TraceLine(895,0,__PYX_ERR(1, 895, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONGDOUBLE); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 895, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 895, __pyx_L1_error)
@@ -5025,7 +4516,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd
  *             elif t == NPY_CLONGDOUBLE: f[0] = 90; f[1] = 103; f += 1 # Zg
  */
-      __Pyx_TraceLine(896,0,__PYX_ERR(1, 896, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CFLOAT); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 896, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 896, __pyx_L1_error)
@@ -5046,7 +4536,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_CLONGDOUBLE: f[0] = 90; f[1] = 103; f += 1 # Zg
  *             elif t == NPY_OBJECT:      f[0] = 79 #"O"
  */
-      __Pyx_TraceLine(897,0,__PYX_ERR(1, 897, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CDOUBLE); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 897, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 897, __pyx_L1_error)
@@ -5067,7 +4556,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             elif t == NPY_OBJECT:      f[0] = 79 #"O"
  *             else:
  */
-      __Pyx_TraceLine(898,0,__PYX_ERR(1, 898, __pyx_L1_error))
       __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CLONGDOUBLE); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 898, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 898, __pyx_L1_error)
@@ -5088,7 +4576,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             else:
  *                 raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  */
-      __Pyx_TraceLine(899,0,__PYX_ERR(1, 899, __pyx_L1_error))
       __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_OBJECT); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 899, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 899, __pyx_L1_error)
@@ -5107,7 +4594,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             f += 1
  *         else:
  */
-      __Pyx_TraceLine(901,0,__PYX_ERR(1, 901, __pyx_L1_error))
       /*else*/ {
         __pyx_t_3 = __Pyx_PyUnicode_FormatSafe(__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_v_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 901, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
@@ -5127,7 +4613,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *         else:
  *             # Cython ignores struct boundary information ("T{...}"),
  */
-      __Pyx_TraceLine(902,0,__PYX_ERR(1, 902, __pyx_L1_error))
       __pyx_v_f = (__pyx_v_f + 1);
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":877
@@ -5147,7 +4632,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *     return f
  * 
  */
-    __Pyx_TraceLine(906,0,__PYX_ERR(1, 906, __pyx_L1_error))
     /*else*/ {
       __pyx_t_9 = __pyx_f_5numpy__util_dtypestring(__pyx_v_child, __pyx_v_f, __pyx_v_end, __pyx_v_offset); if (unlikely(__pyx_t_9 == ((char *)NULL))) __PYX_ERR(1, 906, __pyx_L1_error)
       __pyx_v_f = __pyx_t_9;
@@ -5161,7 +4645,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *         fields = descr.fields[childname]
  *         child, new_offset = fields
  */
-    __Pyx_TraceLine(851,0,__PYX_ERR(1, 851, __pyx_L1_error))
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
@@ -5172,7 +4655,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  * 
  */
-  __Pyx_TraceLine(907,0,__PYX_ERR(1, 907, __pyx_L1_error))
   __pyx_r = __pyx_v_f;
   goto __pyx_L0;
 
@@ -5197,7 +4679,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   __Pyx_XDECREF(__pyx_v_childname);
   __Pyx_XDECREF(__pyx_v_new_offset);
   __Pyx_XDECREF(__pyx_v_t);
-  __Pyx_TraceReturn(Py_None, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -5211,10 +4692,8 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
 
 static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_arr, PyObject *__pyx_v_base) {
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_array_base", 0);
-  __Pyx_TraceCall("set_array_base", __pyx_f[1], 1022, 0, __PYX_ERR(1, 1022, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1023
  * 
@@ -5223,7 +4702,6 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  *     PyArray_SetBaseObject(arr, base)
  * 
  */
-  __Pyx_TraceLine(1023,0,__PYX_ERR(1, 1023, __pyx_L1_error))
   Py_INCREF(__pyx_v_base);
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1024
@@ -5233,7 +4711,6 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  * 
  * cdef inline object get_array_base(ndarray arr):
  */
-  __Pyx_TraceLine(1024,0,__PYX_ERR(1, 1024, __pyx_L1_error))
   (void)(PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1022
@@ -5245,11 +4722,6 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_WriteUnraisable("numpy.set_array_base", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
-  __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 0);
   __Pyx_RefNannyFinishContext();
 }
 
@@ -5264,11 +4736,9 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__pyx_v_arr) {
   PyObject *__pyx_v_base;
   PyObject *__pyx_r = NULL;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
-  __Pyx_TraceCall("get_array_base", __pyx_f[1], 1026, 0, __PYX_ERR(1, 1026, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1027
  * 
@@ -5277,7 +4747,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  *     if base is NULL:
  *         return None
  */
-  __Pyx_TraceLine(1027,0,__PYX_ERR(1, 1027, __pyx_L1_error))
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1028
@@ -5287,7 +4756,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  *         return None
  *     return <object>base
  */
-  __Pyx_TraceLine(1028,0,__PYX_ERR(1, 1028, __pyx_L1_error))
   __pyx_t_1 = ((__pyx_v_base == NULL) != 0);
   if (__pyx_t_1) {
 
@@ -5298,7 +4766,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  *     return <object>base
  * 
  */
-    __Pyx_TraceLine(1029,0,__PYX_ERR(1, 1029, __pyx_L1_error))
     __Pyx_XDECREF(__pyx_r);
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
@@ -5319,7 +4786,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  * 
  * # Versions of the import_* functions which are more suitable for
  */
-  __Pyx_TraceLine(1030,0,__PYX_ERR(1, 1030, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(((PyObject *)__pyx_v_base));
   __pyx_r = ((PyObject *)__pyx_v_base);
@@ -5334,12 +4800,8 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("numpy.get_array_base", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -5354,7 +4816,6 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
 
 static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_r;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -5365,7 +4826,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   PyObject *__pyx_t_7 = NULL;
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("import_array", 0);
-  __Pyx_TraceCall("import_array", __pyx_f[1], 1034, 0, __PYX_ERR(1, 1034, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1035
  * # Cython code.
@@ -5374,7 +4834,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  *         _import_array()
  *     except Exception:
  */
-  __Pyx_TraceLine(1035,0,__PYX_ERR(1, 1035, __pyx_L1_error))
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
@@ -5391,7 +4850,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")
  */
-      __Pyx_TraceLine(1036,0,__PYX_ERR(1, 1036, __pyx_L3_error))
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1036, __pyx_L3_error)
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1035
@@ -5415,7 +4873,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  */
-    __Pyx_TraceLine(1037,0,__PYX_ERR(1, 1037, __pyx_L5_except_error))
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -5431,7 +4888,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-      __Pyx_TraceLine(1038,0,__PYX_ERR(1, 1038, __pyx_L5_except_error))
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1038, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
@@ -5475,7 +4931,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   __Pyx_AddTraceback("numpy.import_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -5490,7 +4945,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
 
 static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_r;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -5501,7 +4955,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   PyObject *__pyx_t_7 = NULL;
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("import_umath", 0);
-  __Pyx_TraceCall("import_umath", __pyx_f[1], 1040, 0, __PYX_ERR(1, 1040, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1041
  * 
@@ -5510,7 +4963,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  *         _import_umath()
  *     except Exception:
  */
-  __Pyx_TraceLine(1041,0,__PYX_ERR(1, 1041, __pyx_L1_error))
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
@@ -5527,7 +4979,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __Pyx_TraceLine(1042,0,__PYX_ERR(1, 1042, __pyx_L3_error))
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1042, __pyx_L3_error)
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1041
@@ -5551,7 +5002,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  */
-    __Pyx_TraceLine(1043,0,__PYX_ERR(1, 1043, __pyx_L5_except_error))
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_umath", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -5567,7 +5017,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __Pyx_TraceLine(1044,0,__PYX_ERR(1, 1044, __pyx_L5_except_error))
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1044, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
@@ -5611,7 +5060,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   __Pyx_AddTraceback("numpy.import_umath", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -5626,7 +5074,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
 
 static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_r;
-  __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -5637,7 +5084,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   PyObject *__pyx_t_7 = NULL;
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
-  __Pyx_TraceCall("import_ufunc", __pyx_f[1], 1046, 0, __PYX_ERR(1, 1046, __pyx_L1_error));
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1047
  * 
@@ -5646,7 +5092,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  *         _import_umath()
  *     except Exception:
  */
-  __Pyx_TraceLine(1047,0,__PYX_ERR(1, 1047, __pyx_L1_error))
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
@@ -5663,7 +5108,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __Pyx_TraceLine(1048,0,__PYX_ERR(1, 1048, __pyx_L3_error))
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1048, __pyx_L3_error)
 
       /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1047
@@ -5686,7 +5130,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  *     except Exception:             # <<<<<<<<<<<<<<
  *         raise ImportError("numpy.core.umath failed to import")
  */
-    __Pyx_TraceLine(1049,0,__PYX_ERR(1, 1049, __pyx_L5_except_error))
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_ufunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -5700,7 +5143,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  */
-      __Pyx_TraceLine(1050,0,__PYX_ERR(1, 1050, __pyx_L5_except_error))
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1050, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
@@ -5744,7 +5186,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   __Pyx_AddTraceback("numpy.import_ufunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
-  __Pyx_TraceReturn(Py_None, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -6120,7 +5561,6 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec__typedefs(PyObject *__pyx_pyinit_m
 #endif
 #endif
 {
-  __Pyx_TraceDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannyDeclarations
   #if CYTHON_PEP489_MULTI_PHASE_INIT
@@ -6225,278 +5665,16 @@ if (!__Pyx_RefNanny) {
   #if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  __Pyx_TraceCall("__Pyx_PyMODINIT_FUNC PyInit__typedefs(void)", __pyx_f[0], 1, 0, __PYX_ERR(0, 1, __pyx_L1_error));
-
-  /* "fatslim/_typedefs.pyx":28
- * DEF ZZ=2
- * 
- * cdef void rvec_clear(rvec a) nogil:             # <<<<<<<<<<<<<<
- *     a[XX] = 0
- *     a[YY] = 0
- */
-  __Pyx_TraceLine(28,0,__PYX_ERR(0, 28, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":33
- *     a[ZZ] = 0
- * 
- * cdef real rvec_norm2(const rvec a) nogil:             # <<<<<<<<<<<<<<
- *     return a[XX]*a[XX] + a[YY]*a[YY] + a[ZZ]*a[ZZ]
- * 
- */
-  __Pyx_TraceLine(33,0,__PYX_ERR(0, 33, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":36
- *     return a[XX]*a[XX] + a[YY]*a[YY] + a[ZZ]*a[ZZ]
- * 
- * cdef void rvec_copy(rvec src, rvec dest) nogil:             # <<<<<<<<<<<<<<
- *     dest[XX]=src[XX]
- *     dest[YY]=src[YY]
- */
-  __Pyx_TraceLine(36,0,__PYX_ERR(0, 36, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":41
- *     dest[ZZ]=src[ZZ]
- * 
- * cdef void rvec_smul(real a, const rvec v1, rvec v2) nogil:             # <<<<<<<<<<<<<<
- *     v2[XX] = a * v1[XX]
- *     v2[YY] = a * v1[YY]
- */
-  __Pyx_TraceLine(41,0,__PYX_ERR(0, 41, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":46
- *     v2[ZZ] = a * v1[ZZ]
- * 
- * cdef void rvec_inc(rvec a,const rvec b) nogil:             # <<<<<<<<<<<<<<
- *     cdef real x,y,z
- * 
- */
-  __Pyx_TraceLine(46,0,__PYX_ERR(0, 46, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":57
- *     a[ZZ]=z
- * 
- * cdef void rvec_dec(rvec a,const rvec b) nogil:             # <<<<<<<<<<<<<<
- *     cdef real x, y, z
- * 
- */
-  __Pyx_TraceLine(57,0,__PYX_ERR(0, 57, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":68
- *     a[ZZ]=z
- * 
- * cdef real rvec_norm(const rvec a) nogil:             # <<<<<<<<<<<<<<
- *     return sqrt(rvec_norm2(a))
- * 
- */
-  __Pyx_TraceLine(68,0,__PYX_ERR(0, 68, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":71
- *     return sqrt(rvec_norm2(a))
- * 
- * cdef void rvec_normalize(rvec a) nogil:             # <<<<<<<<<<<<<<
- *     cdef real vec_norm = rvec_norm(a)
- *     a[XX] /= vec_norm
- */
-  __Pyx_TraceLine(71,0,__PYX_ERR(0, 71, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":77
- *     a[ZZ] /= vec_norm
- * 
- * cdef real rvec_dprod(const rvec a, const rvec b) nogil:             # <<<<<<<<<<<<<<
- *     return a[XX] * b[XX] + a[YY] * b[YY] + a[ZZ] * b[ZZ]
- * 
- */
-  __Pyx_TraceLine(77,0,__PYX_ERR(0, 77, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":80
- *     return a[XX] * b[XX] + a[YY] * b[YY] + a[ZZ] * b[ZZ]
- * 
- * cdef void mat_clear(matrix a) nogil:             # <<<<<<<<<<<<<<
- *     rvec_clear(a[XX])
- *     rvec_clear(a[YY])
- */
-  __Pyx_TraceLine(80,0,__PYX_ERR(0, 80, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":85
- *     rvec_clear(a[ZZ])
- * 
- * cdef void mat_copy(matrix src,matrix dest) nogil:             # <<<<<<<<<<<<<<
- *     rvec_copy(src[XX],dest[XX])
- *     rvec_copy(src[YY],dest[YY])
- */
-  __Pyx_TraceLine(85,0,__PYX_ERR(0, 85, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":91
- * 
- * 
- * cdef void rvec_cprod(const rvec a, const rvec b, rvec c) nogil:             # <<<<<<<<<<<<<<
- *     c[XX] = a[YY] * b[ZZ] - a[ZZ] * b[YY]
- *     c[YY] = a[ZZ] * b[XX] - a[XX] * b[ZZ]
- */
-  __Pyx_TraceLine(91,0,__PYX_ERR(0, 91, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":97
- * 
- * 
- * cdef void rvec_cprod_norm(const rvec a, const rvec b, rvec c) nogil:             # <<<<<<<<<<<<<<
- *     rvec_cprod(a, b, c)
- *     rvec_normalize(c)
- */
-  __Pyx_TraceLine(97,0,__PYX_ERR(0, 97, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":102
- * 
- * 
- * cdef void invert_mat(matrix mat, matrix inverted_mat) nogil:             # <<<<<<<<<<<<<<
- *     cdef real det
- *     cdef real A, B, C, D, E, F, G, H, K
- */
-  __Pyx_TraceLine(102,0,__PYX_ERR(0, 102, __pyx_L1_error))
-
-
-  /* "fatslim/_typedefs.pyx":141
- * 
- * 
- * cdef void mat_from_rvec(rvec v1, rvec v2, rvec v3, matrix mat) nogil:             # <<<<<<<<<<<<<<
- *     mat[XX][XX] = v1[XX]
- *     mat[XX][YY] = v2[XX]
- */
-  __Pyx_TraceLine(141,0,__PYX_ERR(0, 141, __pyx_L1_error))
-
 
   /* "fatslim/_typedefs.pyx":1
  * # -*- coding: utf-8; Mode: python; tab-width: 4; indent-tabs-mode:nil; -*-             # <<<<<<<<<<<<<<
  * # vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
  * #
  */
-  __Pyx_TraceLine(1,0,__PYX_ERR(0, 1, __pyx_L1_error))
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":821
- * ctypedef npy_cdouble     complex_t
- * 
- * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
- *     return PyArray_MultiIterNew(1, <void*>a)
- * 
- */
-  __Pyx_TraceLine(821,0,__PYX_ERR(1, 821, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":824
- *     return PyArray_MultiIterNew(1, <void*>a)
- * 
- * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
- *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
- * 
- */
-  __Pyx_TraceLine(824,0,__PYX_ERR(1, 824, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":827
- *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
- * 
- * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
- *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
- * 
- */
-  __Pyx_TraceLine(827,0,__PYX_ERR(1, 827, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":830
- *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
- * 
- * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
- *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
- * 
- */
-  __Pyx_TraceLine(830,0,__PYX_ERR(1, 830, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":833
- *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
- * 
- * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
- *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
- * 
- */
-  __Pyx_TraceLine(833,0,__PYX_ERR(1, 833, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":836
- *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
- * 
- * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
- *     if PyDataType_HASSUBARRAY(d):
- *         return <tuple>d.subarray.shape
- */
-  __Pyx_TraceLine(836,0,__PYX_ERR(1, 836, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":842
- *         return ()
- * 
- * cdef inline char* _util_dtypestring(dtype descr, char* f, char* end, int* offset) except NULL:             # <<<<<<<<<<<<<<
- *     # Recursive utility function used in __getbuffer__ to get format
- *     # string. The new location in the format string is returned.
- */
-  __Pyx_TraceLine(842,0,__PYX_ERR(1, 842, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1022
- *     int _import_umath() except -1
- * 
- * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
- *     Py_INCREF(base) # important to do this before stealing the reference below!
- *     PyArray_SetBaseObject(arr, base)
- */
-  __Pyx_TraceLine(1022,0,__PYX_ERR(1, 1022, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1026
- *     PyArray_SetBaseObject(arr, base)
- * 
- * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
- *     base = PyArray_BASE(arr)
- *     if base is NULL:
- */
-  __Pyx_TraceLine(1026,0,__PYX_ERR(1, 1026, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1034
- * # Versions of the import_* functions which are more suitable for
- * # Cython code.
- * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
- *     try:
- *         _import_array()
- */
-  __Pyx_TraceLine(1034,0,__PYX_ERR(1, 1034, __pyx_L1_error))
-
-
-  /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1040
- *         raise ImportError("numpy.core.multiarray failed to import")
- * 
- * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
- *     try:
- *         _import_umath()
- */
-  __Pyx_TraceLine(1040,0,__PYX_ERR(1, 1040, __pyx_L1_error))
-
 
   /* "../../../anaconda3/envs/FatslimDev/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1046
  *         raise ImportError("numpy.core.umath failed to import")
@@ -6505,9 +5683,6 @@ if (!__Pyx_RefNanny) {
  *     try:
  *         _import_umath()
  */
-  __Pyx_TraceLine(1046,0,__PYX_ERR(1, 1046, __pyx_L1_error))
-
-  __Pyx_TraceReturn(Py_None, 0);
 
   /*--- Wrapped vars code ---*/
 
@@ -6572,99 +5747,6 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
     tstate->curexc_type = 0;
     tstate->curexc_value = 0;
     tstate->curexc_traceback = 0;
-}
-#endif
-
-/* Profile */
-#if CYTHON_PROFILE
-static int __Pyx_TraceSetupAndCall(PyCodeObject** code,
-                                   PyFrameObject** frame,
-                                   PyThreadState* tstate,
-                                   const char *funcname,
-                                   const char *srcfile,
-                                   int firstlineno) {
-    PyObject *type, *value, *traceback;
-    int retval;
-    if (*frame == NULL || !CYTHON_PROFILE_REUSE_FRAME) {
-        if (*code == NULL) {
-            *code = __Pyx_createFrameCodeObject(funcname, srcfile, firstlineno);
-            if (*code == NULL) return 0;
-        }
-        *frame = PyFrame_New(
-            tstate,                          /*PyThreadState *tstate*/
-            *code,                           /*PyCodeObject *code*/
-            __pyx_d,                  /*PyObject *globals*/
-            0                                /*PyObject *locals*/
-        );
-        if (*frame == NULL) return 0;
-        if (CYTHON_TRACE && (*frame)->f_trace == NULL) {
-            Py_INCREF(Py_None);
-            (*frame)->f_trace = Py_None;
-        }
-#if PY_VERSION_HEX < 0x030400B1
-    } else {
-        (*frame)->f_tstate = tstate;
-#endif
-    }
-      __Pyx_PyFrame_SetLineNumber(*frame, firstlineno);
-    retval = 1;
-    tstate->tracing++;
-    tstate->use_tracing = 0;
-    __Pyx_ErrFetchInState(tstate, &type, &value, &traceback);
-    #if CYTHON_TRACE
-    if (tstate->c_tracefunc)
-        retval = tstate->c_tracefunc(tstate->c_traceobj, *frame, PyTrace_CALL, NULL) == 0;
-    if (retval && tstate->c_profilefunc)
-    #endif
-        retval = tstate->c_profilefunc(tstate->c_profileobj, *frame, PyTrace_CALL, NULL) == 0;
-    tstate->use_tracing = (tstate->c_profilefunc ||
-                           (CYTHON_TRACE && tstate->c_tracefunc));
-    tstate->tracing--;
-    if (retval) {
-        __Pyx_ErrRestoreInState(tstate, type, value, traceback);
-        return tstate->use_tracing && retval;
-    } else {
-        Py_XDECREF(type);
-        Py_XDECREF(value);
-        Py_XDECREF(traceback);
-        return -1;
-    }
-}
-static PyCodeObject *__Pyx_createFrameCodeObject(const char *funcname, const char *srcfile, int firstlineno) {
-    PyObject *py_srcfile = 0;
-    PyObject *py_funcname = 0;
-    PyCodeObject *py_code = 0;
-    #if PY_MAJOR_VERSION < 3
-    py_funcname = PyString_FromString(funcname);
-    py_srcfile = PyString_FromString(srcfile);
-    #else
-    py_funcname = PyUnicode_FromString(funcname);
-    py_srcfile = PyUnicode_FromString(srcfile);
-    #endif
-    if (!py_funcname | !py_srcfile) goto bad;
-    py_code = PyCode_New(
-        0,
-        #if PY_MAJOR_VERSION >= 3
-        0,
-        #endif
-        0,
-        0,
-        CO_OPTIMIZED | CO_NEWLOCALS,
-        __pyx_empty_bytes,     /*PyObject *code,*/
-        __pyx_empty_tuple,     /*PyObject *consts,*/
-        __pyx_empty_tuple,     /*PyObject *names,*/
-        __pyx_empty_tuple,     /*PyObject *varnames,*/
-        __pyx_empty_tuple,     /*PyObject *freevars,*/
-        __pyx_empty_tuple,     /*PyObject *cellvars,*/
-        py_srcfile,       /*PyObject *filename,*/
-        py_funcname,      /*PyObject *name,*/
-        firstlineno,
-        __pyx_empty_bytes      /*PyObject *lnotab*/
-    );
-bad:
-    Py_XDECREF(py_srcfile);
-    Py_XDECREF(py_funcname);
-    return py_code;
 }
 #endif
 

@@ -314,7 +314,7 @@ cdef class PBCBox(object):
         cdef fsl_int[:] indices
         cdef rvec xcm
 
-        indices = np.arange(coords.shape[0], dtype=np.int)
+        indices = np.arange(coords.shape[0], dtype=int)
 
         if ref is None:
             ref = coords[0]

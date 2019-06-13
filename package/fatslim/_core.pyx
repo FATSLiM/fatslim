@@ -92,7 +92,7 @@ cdef class _NSGrid(object):
         self.size = -1
 
         # Allocate memory
-        self.cellids = np.empty(self.ncoords, dtype=np.int)
+        self.cellids = np.empty(self.ncoords, dtype=int)
 
         self.max_nbeads = 50
 
@@ -135,9 +135,9 @@ cdef class _NSGrid(object):
 
         if new_size > self.size:
             with gil:
-                self.nbeads_in_cell = np.zeros(new_size, dtype=np.int)
-                self.beads_in_cell = np.empty((new_size, self.max_nbeads), dtype=np.int)
-                self.cell_lastcheckid = np.empty(new_size, dtype=np.int)
+                self.nbeads_in_cell = np.zeros(new_size, dtype=int)
+                self.beads_in_cell = np.empty((new_size, self.max_nbeads), dtype=int)
+                self.cell_lastcheckid = np.empty(new_size, dtype=int)
 
         self.size = new_size
 
@@ -235,7 +235,7 @@ cdef class _NSGrid(object):
         cdef fsl_int increment = 50
 
         self.max_nbeads = tmp_memview.shape[1] + increment
-        self.beads_in_cell = np.empty((tmp_memview.shape[0], self.max_nbeads), dtype=np.int)
+        self.beads_in_cell = np.empty((tmp_memview.shape[0], self.max_nbeads), dtype=int)
         self.beads_in_cell[:,:-increment] = tmp_memview
 
 @cython.initializedcheck(False)
@@ -252,8 +252,8 @@ cdef class _NSResults:
         self.size = size
         self.max_nneighbours = 50
 
-        self.nneighbours = np.zeros(self.size, dtype=np.int)
-        self.neighbours = np.empty((self.size, self.max_nneighbours), dtype=np.int)
+        self.nneighbours = np.zeros(self.size, dtype=int)
+        self.neighbours = np.empty((self.size, self.max_nneighbours), dtype=int)
         self.distances = np.empty((self.size, self.max_nneighbours), dtype=np.float32)
 
     cdef int add_neighbour(self, fsl_int i, fsl_int j, real d2) nogil except -1:
@@ -281,7 +281,7 @@ cdef class _NSResults:
 
         self.max_nneighbours = tmp_memview.shape[1] + increment
 
-        self.neighbours = np.empty((tmp_memview.shape[0], self.max_nneighbours), dtype=np.int)
+        self.neighbours = np.empty((tmp_memview.shape[0], self.max_nneighbours), dtype=int)
         self.neighbours[:, :-increment] = tmp_memview
 
         self.distances = np.empty((tmp_memview2.shape[0], self.max_nneighbours), dtype=np.float32)
@@ -552,12 +552,12 @@ cdef class LipidRegistry:
         # Headgroups
         self.hg_coords = None
         self.hg_coords_bbox = None
-        self.hg_indices = np.empty(0, dtype=np.int)
-        self.hg_offsets = np.empty(0, dtype=np.int)
+        self.hg_indices = np.empty(0, dtype=int)
+        self.hg_offsets = np.empty(0, dtype=int)
 
         # Lipids
-        self.lipid_indices = np.empty(0, dtype=np.int)
-        self.lipid_offsets = np.empty(0, dtype=np.int)
+        self.lipid_indices = np.empty(0, dtype=int)
+        self.lipid_offsets = np.empty(0, dtype=int)
 
         # Simplified lipids
         self._lipid_positions = None
@@ -748,11 +748,11 @@ cdef class LipidRegistry:
         self.update()
 
         # Initialize memory
-        edgers = np.empty(self._nlipids, dtype=np.int)
-        maybe_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
-        stack = np.empty(self._nlipids, dtype=np.int)
-        current_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
-        leftovers = np.empty(self._nlipids, dtype=np.int)
+        edgers = np.empty(self._nlipids, dtype=int)
+        maybe_leaflet_ids = np.empty(self._nlipids, dtype=int)
+        stack = np.empty(self._nlipids, dtype=int)
+        current_leaflet_ids = np.empty(self._nlipids, dtype=int)
+        leftovers = np.empty(self._nlipids, dtype=int)
         n_leftovers = 0
 
 
@@ -929,11 +929,11 @@ cdef class LipidRegistry:
                     best_leaflet = -1
 
                     for lid, indices in enumerate(maybe_leaflets_from_aggregates):
-                        current_stack = np.empty(self._nlipids, dtype=np.int)
+                        current_stack = np.empty(self._nlipids, dtype=int)
                         current_stack[0] = edger_id
                         current_stack_size = 1
 
-                        next_stack = np.empty(self._nlipids, dtype=np.int)
+                        next_stack = np.empty(self._nlipids, dtype=int)
 
                         used_nodes = np.zeros(self._nlipids, dtype=bool)
 
@@ -1094,12 +1094,12 @@ cdef class LipidRegistry:
 
         current_aggregate_id = -1
 
-        aggregate_ids = np.ones(self._nlipids, dtype=np.int) * -1
+        aggregate_ids = np.ones(self._nlipids, dtype=int) * -1
 
-        stack = np.zeros(self._nlipids, dtype=np.int)
+        stack = np.zeros(self._nlipids, dtype=int)
         stack_size = 0
 
-        current_aggregate_lipid_ids = np.zeros(self._nlipids, dtype=np.int)
+        current_aggregate_lipid_ids = np.zeros(self._nlipids, dtype=int)
         current_aggregate_size = 0
 
 
@@ -1304,7 +1304,7 @@ cdef class LipidAggregate:
         self.system = system
 
         self._lipid_ids = np.sort(lipid_ids)
-        self._is_lipid_id_used = np.zeros(self.system._nlipids, dtype=np.int)
+        self._is_lipid_id_used = np.zeros(self.system._nlipids, dtype=int)
         for beadid in self._lipid_ids:
             self._is_lipid_id_used[beadid] = 1
 
@@ -1318,10 +1318,10 @@ cdef class LipidAggregate:
         self._position = np.empty(DIM, dtype=np.float32)
 
         # clusterization
-        self._clustered = np.empty(self.system._nlipids, dtype=np.int)
+        self._clustered = np.empty(self.system._nlipids, dtype=int)
         self._positions_clustered_buffer = np.empty((self.system._nlipids, DIM), dtype=np.float32)
         self._positions_clustered = np.empty((self._size, DIM), dtype=np.float32)
-        self._cluster_stack = np.empty((self.system._nlipids, 2), dtype=np.int)
+        self._cluster_stack = np.empty((self.system._nlipids, 2), dtype=int)
 
     @cython.initializedcheck(False)
     @cython.boundscheck(False)
@@ -1463,7 +1463,7 @@ cdef class LipidAggregate:
 
     @property
     def indices(self):
-        return np.asarray(self._lipid_ids, dtype=np.int)
+        return np.asarray(self._lipid_ids, dtype=int)
 
     @property
     def lipids(self):
