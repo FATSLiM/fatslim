@@ -61,14 +61,11 @@ cmdclass['test'] = PyTest
 cython_coverage = 0
 force_cythonize = False
 cython_linetrace = False
-if os.environ.get("CYTHON_COVERAGE") is not None:
+if os.environ.get("CYTHON_COVERAGE") in("1", 1, True):
     print("INFO: Coverage is enabled for Cython code (Expect low performances)")
     cython_linetrace = True
     force_cythonize = True
     cython_coverage = 1
-else:
-    print("INFO: Setuping fatslim")
-    print(os.environ.get("CYTHON_COVERAGE"))
 
 
 if __name__ == "__main__":

@@ -42,8 +42,11 @@ matrix:
 
 install:
   - pip3 install -r package/requirements.txt
-  - pip3 install codecov
   - pip3 install pytest
+  - |
+    if [[ $CYTHON_COVERAGE == 1 ]]; then \
+      pip3 install codecov pytest-cov;
+    fi
 
 # command to run tests
 script:
