@@ -13077,19 +13077,19 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
   int __pyx_t_5;
   int __pyx_t_6;
   PyObject *__pyx_t_7 = NULL;
-  __Pyx_memviewslice __pyx_t_8 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_9;
-  PyObject *(*__pyx_t_10)(PyObject *);
-  Py_ssize_t __pyx_t_11;
+  PyObject *__pyx_t_8 = NULL;
+  __Pyx_memviewslice __pyx_t_9 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_10;
+  PyObject *(*__pyx_t_11)(PyObject *);
   Py_ssize_t __pyx_t_12;
-  __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_13;
-  Py_ssize_t __pyx_t_14;
-  int __pyx_t_15;
-  Py_ssize_t __pyx_t_16;
-  __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_17;
+  Py_ssize_t __pyx_t_13;
+  __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_14;
+  Py_ssize_t __pyx_t_15;
+  int __pyx_t_16;
+  Py_ssize_t __pyx_t_17;
   __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_18;
   __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_19;
-  Py_ssize_t __pyx_t_20;
+  __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_20;
   Py_ssize_t __pyx_t_21;
   Py_ssize_t __pyx_t_22;
   Py_ssize_t __pyx_t_23;
@@ -13105,10 +13105,10 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
   Py_ssize_t __pyx_t_33;
   Py_ssize_t __pyx_t_34;
   Py_ssize_t __pyx_t_35;
-  __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_36;
+  Py_ssize_t __pyx_t_36;
   __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_37;
   __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_38;
-  Py_ssize_t __pyx_t_39;
+  __pyx_t_7fatslim_9_typedefs_fsl_int __pyx_t_39;
   Py_ssize_t __pyx_t_40;
   Py_ssize_t __pyx_t_41;
   Py_ssize_t __pyx_t_42;
@@ -13116,23 +13116,23 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
   Py_ssize_t __pyx_t_44;
   Py_ssize_t __pyx_t_45;
   Py_ssize_t __pyx_t_46;
-  __Pyx_memviewslice __pyx_t_47 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_48;
-  PyObject *__pyx_t_49 = NULL;
+  Py_ssize_t __pyx_t_47;
+  __Pyx_memviewslice __pyx_t_48 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  int __pyx_t_49;
   Py_ssize_t __pyx_t_50;
   PyObject *__pyx_t_51 = NULL;
   PyObject *__pyx_t_52 = NULL;
-  long __pyx_t_53;
+  PyObject *__pyx_t_53 = NULL;
   long __pyx_t_54;
-  Py_ssize_t __pyx_t_55;
-  PyObject *(*__pyx_t_56)(PyObject *);
-  Py_ssize_t __pyx_t_57;
+  long __pyx_t_55;
+  Py_ssize_t __pyx_t_56;
+  PyObject *(*__pyx_t_57)(PyObject *);
   Py_ssize_t __pyx_t_58;
   Py_ssize_t __pyx_t_59;
   Py_ssize_t __pyx_t_60;
   Py_ssize_t __pyx_t_61;
-  __Pyx_memviewslice __pyx_t_62 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_63;
+  Py_ssize_t __pyx_t_62;
+  __Pyx_memviewslice __pyx_t_63 = { 0, 0, { 0 }, { 0 }, { 0 } };
   Py_ssize_t __pyx_t_64;
   Py_ssize_t __pyx_t_65;
   Py_ssize_t __pyx_t_66;
@@ -13140,12 +13140,12 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
   Py_ssize_t __pyx_t_68;
   Py_ssize_t __pyx_t_69;
   Py_ssize_t __pyx_t_70;
-  __Pyx_memviewslice __pyx_t_71 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_72;
+  Py_ssize_t __pyx_t_71;
+  __Pyx_memviewslice __pyx_t_72 = { 0, 0, { 0 }, { 0 }, { 0 } };
   Py_ssize_t __pyx_t_73;
   Py_ssize_t __pyx_t_74;
   Py_ssize_t __pyx_t_75;
-  PyObject *__pyx_t_76 = NULL;
+  Py_ssize_t __pyx_t_76;
   PyObject *__pyx_t_77 = NULL;
   PyObject *__pyx_t_78 = NULL;
   PyObject *__pyx_t_79 = NULL;
@@ -13240,9 +13240,9 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
   /* "fatslim/_core.pyx":751
  * 
  *         # Initialize memory
- *         edgers = np.empty(self._nlipids, dtype=int)             # <<<<<<<<<<<<<<
- *         maybe_leaflet_ids = np.empty(self._nlipids, dtype=int)
- *         stack = np.empty(self._nlipids, dtype=int)
+ *         edgers = np.empty(self._nlipids, dtype=np.int)             # <<<<<<<<<<<<<<
+ *         maybe_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
+ *         stack = np.empty(self._nlipids, dtype=np.int)
  */
   __Pyx_TraceLine(751,0,__PYX_ERR(0, 751, __pyx_L1_error))
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 751, __pyx_L1_error)
@@ -13259,157 +13259,187 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
   __pyx_t_4 = 0;
   __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 751, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 751, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 751, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 751, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_int); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 751, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_8) < 0) __PYX_ERR(0, 751, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 751, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_7, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 751, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_edgers = __pyx_t_8;
-  __pyx_t_8.memview = NULL;
-  __pyx_t_8.data = NULL;
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_8, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 751, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_v_edgers = __pyx_t_9;
+  __pyx_t_9.memview = NULL;
+  __pyx_t_9.data = NULL;
 
   /* "fatslim/_core.pyx":752
  *         # Initialize memory
- *         edgers = np.empty(self._nlipids, dtype=int)
- *         maybe_leaflet_ids = np.empty(self._nlipids, dtype=int)             # <<<<<<<<<<<<<<
- *         stack = np.empty(self._nlipids, dtype=int)
- *         current_leaflet_ids = np.empty(self._nlipids, dtype=int)
+ *         edgers = np.empty(self._nlipids, dtype=np.int)
+ *         maybe_leaflet_ids = np.empty(self._nlipids, dtype=np.int)             # <<<<<<<<<<<<<<
+ *         stack = np.empty(self._nlipids, dtype=np.int)
+ *         current_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
  */
   __Pyx_TraceLine(752,0,__PYX_ERR(0, 752, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 752, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 752, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 752, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_8);
+  __pyx_t_8 = 0;
+  __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_7, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_v_maybe_leaflet_ids = __pyx_t_9;
+  __pyx_t_9.memview = NULL;
+  __pyx_t_9.data = NULL;
+
+  /* "fatslim/_core.pyx":753
+ *         edgers = np.empty(self._nlipids, dtype=np.int)
+ *         maybe_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
+ *         stack = np.empty(self._nlipids, dtype=np.int)             # <<<<<<<<<<<<<<
+ *         current_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
+ *         leftovers = np.empty(self._nlipids, dtype=np.int)
+ */
+  __Pyx_TraceLine(753,0,__PYX_ERR(0, 753, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 753, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_7);
   __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 753, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 752, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 753, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 753, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 753, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_maybe_leaflet_ids = __pyx_t_8;
-  __pyx_t_8.memview = NULL;
-  __pyx_t_8.data = NULL;
+  __pyx_v_stack = __pyx_t_9;
+  __pyx_t_9.memview = NULL;
+  __pyx_t_9.data = NULL;
 
-  /* "fatslim/_core.pyx":753
- *         edgers = np.empty(self._nlipids, dtype=int)
- *         maybe_leaflet_ids = np.empty(self._nlipids, dtype=int)
- *         stack = np.empty(self._nlipids, dtype=int)             # <<<<<<<<<<<<<<
- *         current_leaflet_ids = np.empty(self._nlipids, dtype=int)
- *         leftovers = np.empty(self._nlipids, dtype=int)
+  /* "fatslim/_core.pyx":754
+ *         maybe_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
+ *         stack = np.empty(self._nlipids, dtype=np.int)
+ *         current_leaflet_ids = np.empty(self._nlipids, dtype=np.int)             # <<<<<<<<<<<<<<
+ *         leftovers = np.empty(self._nlipids, dtype=np.int)
+ *         n_leftovers = 0
  */
-  __Pyx_TraceLine(753,0,__PYX_ERR(0, 753, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __Pyx_TraceLine(754,0,__PYX_ERR(0, 754, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 753, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 754, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 754, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 754, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_stack = __pyx_t_8;
-  __pyx_t_8.memview = NULL;
-  __pyx_t_8.data = NULL;
-
-  /* "fatslim/_core.pyx":754
- *         maybe_leaflet_ids = np.empty(self._nlipids, dtype=int)
- *         stack = np.empty(self._nlipids, dtype=int)
- *         current_leaflet_ids = np.empty(self._nlipids, dtype=int)             # <<<<<<<<<<<<<<
- *         leftovers = np.empty(self._nlipids, dtype=int)
- *         n_leftovers = 0
- */
-  __Pyx_TraceLine(754,0,__PYX_ERR(0, 754, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 754, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 754, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 754, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 754, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4);
-  __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 754, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 754, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 754, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_7, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 754, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_current_leaflet_ids = __pyx_t_8;
-  __pyx_t_8.memview = NULL;
-  __pyx_t_8.data = NULL;
+  __pyx_v_current_leaflet_ids = __pyx_t_9;
+  __pyx_t_9.memview = NULL;
+  __pyx_t_9.data = NULL;
 
   /* "fatslim/_core.pyx":755
- *         stack = np.empty(self._nlipids, dtype=int)
- *         current_leaflet_ids = np.empty(self._nlipids, dtype=int)
- *         leftovers = np.empty(self._nlipids, dtype=int)             # <<<<<<<<<<<<<<
+ *         stack = np.empty(self._nlipids, dtype=np.int)
+ *         current_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
+ *         leftovers = np.empty(self._nlipids, dtype=np.int)             # <<<<<<<<<<<<<<
  *         n_leftovers = 0
  * 
  */
   __Pyx_TraceLine(755,0,__PYX_ERR(0, 755, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 755, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 755, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 755, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 755, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_7);
-  __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 755, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 755, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 755, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_int); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 755, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_8) < 0) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_leftovers = __pyx_t_8;
-  __pyx_t_8.memview = NULL;
-  __pyx_t_8.data = NULL;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_8, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 755, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_v_leftovers = __pyx_t_9;
+  __pyx_t_9.memview = NULL;
+  __pyx_t_9.data = NULL;
 
   /* "fatslim/_core.pyx":756
- *         current_leaflet_ids = np.empty(self._nlipids, dtype=int)
- *         leftovers = np.empty(self._nlipids, dtype=int)
+ *         current_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
+ *         leftovers = np.empty(self._nlipids, dtype=np.int)
  *         n_leftovers = 0             # <<<<<<<<<<<<<<
  * 
  * 
@@ -13425,15 +13455,15 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *         # Step 2: Iterate over the known aggregates to find if they can be splitted into potential leaflets
  */
   __Pyx_TraceLine(760,0,__PYX_ERR(0, 760, __pyx_L1_error))
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_find_aggregates); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 760, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 760, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_force_update, __pyx_v_force_update) < 0) __PYX_ERR(0, 760, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 760, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_find_aggregates); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 760, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 760, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_force_update, __pyx_v_force_update) < 0) __PYX_ERR(0, 760, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 760, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "fatslim/_core.pyx":763
@@ -13460,35 +13490,35 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_aggregates); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 764, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
-    __pyx_t_7 = __pyx_t_2; __Pyx_INCREF(__pyx_t_7); __pyx_t_9 = 0;
-    __pyx_t_10 = NULL;
+    __pyx_t_4 = __pyx_t_2; __Pyx_INCREF(__pyx_t_4); __pyx_t_10 = 0;
+    __pyx_t_11 = NULL;
   } else {
-    __pyx_t_9 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 764, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_10 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 764, __pyx_L1_error)
+    __pyx_t_10 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 764, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_11 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 764, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
-    if (likely(!__pyx_t_10)) {
-      if (likely(PyList_CheckExact(__pyx_t_7))) {
-        if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_7)) break;
+    if (likely(!__pyx_t_11)) {
+      if (likely(PyList_CheckExact(__pyx_t_4))) {
+        if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 764, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 764, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_7, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 764, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 764, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
-        if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_7)) break;
+        if (__pyx_t_10 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 764, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 764, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_7, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 764, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 764, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
     } else {
-      __pyx_t_2 = __pyx_t_10(__pyx_t_7);
+      __pyx_t_2 = __pyx_t_11(__pyx_t_4);
       if (unlikely(!__pyx_t_2)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
@@ -13513,12 +13543,12 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
     __Pyx_TraceLine(765,0,__PYX_ERR(0, 765, __pyx_L1_error))
     __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_aggregate), __pyx_n_s_indices); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 765, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 765, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 765, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_aggregate_lipid_ids, 1);
-    __pyx_v_aggregate_lipid_ids = __pyx_t_8;
-    __pyx_t_8.memview = NULL;
-    __pyx_t_8.data = NULL;
+    __pyx_v_aggregate_lipid_ids = __pyx_t_9;
+    __pyx_t_9.memview = NULL;
+    __pyx_t_9.data = NULL;
 
     /* "fatslim/_core.pyx":767
  *             aggregate_lipid_ids = aggregate.indices
@@ -13538,10 +13568,10 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                 min_angle = PI + EPSILON
  */
     __Pyx_TraceLine(769,0,__PYX_ERR(0, 769, __pyx_L1_error))
-    __pyx_t_11 = (__pyx_v_aggregate_lipid_ids.shape[0]);
-    __pyx_t_12 = __pyx_t_11;
-    for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-      __pyx_v_i = __pyx_t_13;
+    __pyx_t_12 = (__pyx_v_aggregate_lipid_ids.shape[0]);
+    __pyx_t_13 = __pyx_t_12;
+    for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
+      __pyx_v_i = __pyx_t_14;
 
       /* "fatslim/_core.pyx":770
  * 
@@ -13551,17 +13581,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                 max_angle = -EPSILON
  */
       __Pyx_TraceLine(770,0,__PYX_ERR(0, 770, __pyx_L1_error))
-      __pyx_t_14 = __pyx_v_i;
-      __pyx_t_15 = -1;
-      if (__pyx_t_14 < 0) {
-        __pyx_t_14 += __pyx_v_aggregate_lipid_ids.shape[0];
-        if (unlikely(__pyx_t_14 < 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_14 >= __pyx_v_aggregate_lipid_ids.shape[0])) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+      __pyx_t_15 = __pyx_v_i;
+      __pyx_t_16 = -1;
+      if (__pyx_t_15 < 0) {
+        __pyx_t_15 += __pyx_v_aggregate_lipid_ids.shape[0];
+        if (unlikely(__pyx_t_15 < 0)) __pyx_t_16 = 0;
+      } else if (unlikely(__pyx_t_15 >= __pyx_v_aggregate_lipid_ids.shape[0])) __pyx_t_16 = 0;
+      if (unlikely(__pyx_t_16 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_16);
         __PYX_ERR(0, 770, __pyx_L1_error)
       }
-      __pyx_v_bead_id = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_aggregate_lipid_ids.data + __pyx_t_14 * __pyx_v_aggregate_lipid_ids.strides[0]) )));
+      __pyx_v_bead_id = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_aggregate_lipid_ids.data + __pyx_t_15 * __pyx_v_aggregate_lipid_ids.strides[0]) )));
 
       /* "fatslim/_core.pyx":771
  *             for i in range(aggregate_lipid_ids.shape[0]):
@@ -13592,20 +13622,20 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  */
       __Pyx_TraceLine(773,0,__PYX_ERR(0, 773, __pyx_L1_error))
       if (unlikely(!__pyx_v_self->_lipid_neighbours->nneighbours.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 773, __pyx_L1_error)}
-      __pyx_t_16 = __pyx_v_bead_id;
-      __pyx_t_15 = -1;
-      if (__pyx_t_16 < 0) {
-        __pyx_t_16 += __pyx_v_self->_lipid_neighbours->nneighbours.shape[0];
-        if (unlikely(__pyx_t_16 < 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_16 >= __pyx_v_self->_lipid_neighbours->nneighbours.shape[0])) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+      __pyx_t_17 = __pyx_v_bead_id;
+      __pyx_t_16 = -1;
+      if (__pyx_t_17 < 0) {
+        __pyx_t_17 += __pyx_v_self->_lipid_neighbours->nneighbours.shape[0];
+        if (unlikely(__pyx_t_17 < 0)) __pyx_t_16 = 0;
+      } else if (unlikely(__pyx_t_17 >= __pyx_v_self->_lipid_neighbours->nneighbours.shape[0])) __pyx_t_16 = 0;
+      if (unlikely(__pyx_t_16 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_16);
         __PYX_ERR(0, 773, __pyx_L1_error)
       }
-      __pyx_t_17 = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->nneighbours.data + __pyx_t_16 * __pyx_v_self->_lipid_neighbours->nneighbours.strides[0]) )));
-      __pyx_t_18 = __pyx_t_17;
-      for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
-        __pyx_v_j = __pyx_t_19;
+      __pyx_t_18 = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->nneighbours.data + __pyx_t_17 * __pyx_v_self->_lipid_neighbours->nneighbours.strides[0]) )));
+      __pyx_t_19 = __pyx_t_18;
+      for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
+        __pyx_v_j = __pyx_t_20;
 
         /* "fatslim/_core.pyx":774
  *                 max_angle = -EPSILON
@@ -13616,22 +13646,22 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  */
         __Pyx_TraceLine(774,0,__PYX_ERR(0, 774, __pyx_L1_error))
         if (unlikely(!__pyx_v_self->_lipid_neighbours->neighbours.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 774, __pyx_L1_error)}
-        __pyx_t_20 = __pyx_v_bead_id;
-        __pyx_t_21 = __pyx_v_j;
-        __pyx_t_15 = -1;
-        if (__pyx_t_20 < 0) {
-          __pyx_t_20 += __pyx_v_self->_lipid_neighbours->neighbours.shape[0];
-          if (unlikely(__pyx_t_20 < 0)) __pyx_t_15 = 0;
-        } else if (unlikely(__pyx_t_20 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[0])) __pyx_t_15 = 0;
+        __pyx_t_21 = __pyx_v_bead_id;
+        __pyx_t_22 = __pyx_v_j;
+        __pyx_t_16 = -1;
         if (__pyx_t_21 < 0) {
-          __pyx_t_21 += __pyx_v_self->_lipid_neighbours->neighbours.shape[1];
-          if (unlikely(__pyx_t_21 < 0)) __pyx_t_15 = 1;
-        } else if (unlikely(__pyx_t_21 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[1])) __pyx_t_15 = 1;
-        if (unlikely(__pyx_t_15 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_15);
+          __pyx_t_21 += __pyx_v_self->_lipid_neighbours->neighbours.shape[0];
+          if (unlikely(__pyx_t_21 < 0)) __pyx_t_16 = 0;
+        } else if (unlikely(__pyx_t_21 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[0])) __pyx_t_16 = 0;
+        if (__pyx_t_22 < 0) {
+          __pyx_t_22 += __pyx_v_self->_lipid_neighbours->neighbours.shape[1];
+          if (unlikely(__pyx_t_22 < 0)) __pyx_t_16 = 1;
+        } else if (unlikely(__pyx_t_22 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[1])) __pyx_t_16 = 1;
+        if (unlikely(__pyx_t_16 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_16);
           __PYX_ERR(0, 774, __pyx_L1_error)
         }
-        __pyx_v_nid = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->neighbours.data + __pyx_t_20 * __pyx_v_self->_lipid_neighbours->neighbours.strides[0]) )) + __pyx_t_21)) )));
+        __pyx_v_nid = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->neighbours.data + __pyx_t_21 * __pyx_v_self->_lipid_neighbours->neighbours.strides[0]) )) + __pyx_t_22)) )));
 
         /* "fatslim/_core.pyx":779
  *                     # But using the Z axis simplify things since dot product is trivial
@@ -13642,22 +13672,22 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  */
         __Pyx_TraceLine(779,0,__PYX_ERR(0, 779, __pyx_L1_error))
         if (unlikely(!__pyx_v_self->_lipid_normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 779, __pyx_L1_error)}
-        __pyx_t_22 = __pyx_v_nid;
-        __pyx_t_23 = 2;
-        __pyx_t_15 = -1;
-        if (__pyx_t_22 < 0) {
-          __pyx_t_22 += __pyx_v_self->_lipid_normals.shape[0];
-          if (unlikely(__pyx_t_22 < 0)) __pyx_t_15 = 0;
-        } else if (unlikely(__pyx_t_22 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_15 = 0;
+        __pyx_t_23 = __pyx_v_nid;
+        __pyx_t_24 = 2;
+        __pyx_t_16 = -1;
         if (__pyx_t_23 < 0) {
-          __pyx_t_23 += __pyx_v_self->_lipid_normals.shape[1];
-          if (unlikely(__pyx_t_23 < 0)) __pyx_t_15 = 1;
-        } else if (unlikely(__pyx_t_23 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_15 = 1;
-        if (unlikely(__pyx_t_15 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_15);
+          __pyx_t_23 += __pyx_v_self->_lipid_normals.shape[0];
+          if (unlikely(__pyx_t_23 < 0)) __pyx_t_16 = 0;
+        } else if (unlikely(__pyx_t_23 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_16 = 0;
+        if (__pyx_t_24 < 0) {
+          __pyx_t_24 += __pyx_v_self->_lipid_normals.shape[1];
+          if (unlikely(__pyx_t_24 < 0)) __pyx_t_16 = 1;
+        } else if (unlikely(__pyx_t_24 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_16 = 1;
+        if (unlikely(__pyx_t_16 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_16);
           __PYX_ERR(0, 779, __pyx_L1_error)
         }
-        __pyx_v_angle = acos((*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_22 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_23)) ))));
+        __pyx_v_angle = acos((*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_23 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_24)) ))));
 
         /* "fatslim/_core.pyx":781
  *                     angle = acos(self._lipid_normals[nid, ZZ])
@@ -13749,17 +13779,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
         __Pyx_TraceLine(795,0,__PYX_ERR(0, 795, __pyx_L1_error))
-        __pyx_t_24 = __pyx_v_n_edgers;
-        __pyx_t_15 = -1;
-        if (__pyx_t_24 < 0) {
-          __pyx_t_24 += __pyx_v_edgers.shape[0];
-          if (unlikely(__pyx_t_24 < 0)) __pyx_t_15 = 0;
-        } else if (unlikely(__pyx_t_24 >= __pyx_v_edgers.shape[0])) __pyx_t_15 = 0;
-        if (unlikely(__pyx_t_15 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_15);
+        __pyx_t_25 = __pyx_v_n_edgers;
+        __pyx_t_16 = -1;
+        if (__pyx_t_25 < 0) {
+          __pyx_t_25 += __pyx_v_edgers.shape[0];
+          if (unlikely(__pyx_t_25 < 0)) __pyx_t_16 = 0;
+        } else if (unlikely(__pyx_t_25 >= __pyx_v_edgers.shape[0])) __pyx_t_16 = 0;
+        if (unlikely(__pyx_t_16 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_16);
           __PYX_ERR(0, 795, __pyx_L1_error)
         }
-        *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_edgers.data + __pyx_t_24 * __pyx_v_edgers.strides[0]) )) = __pyx_v_bead_id;
+        *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_edgers.data + __pyx_t_25 * __pyx_v_edgers.strides[0]) )) = __pyx_v_bead_id;
 
         /* "fatslim/_core.pyx":796
  *                 if angle_range > PI * 0.5:  #
@@ -13835,10 +13865,10 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
     __Pyx_TraceLine(811,0,__PYX_ERR(0, 811, __pyx_L1_error))
-    __pyx_t_11 = (__pyx_v_aggregate_lipid_ids.shape[0]);
-    __pyx_t_12 = __pyx_t_11;
-    for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-      __pyx_v_i = __pyx_t_13;
+    __pyx_t_12 = (__pyx_v_aggregate_lipid_ids.shape[0]);
+    __pyx_t_13 = __pyx_t_12;
+    for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
+      __pyx_v_i = __pyx_t_14;
 
       /* "fatslim/_core.pyx":812
  *             maybe_leaflets_from_aggregates = []
@@ -13848,17 +13878,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                 if maybe_leaflet_ids[seed_id] > -1:  # This lipid already belong to an aggregate, we can skip it
  */
       __Pyx_TraceLine(812,0,__PYX_ERR(0, 812, __pyx_L1_error))
-      __pyx_t_25 = __pyx_v_i;
-      __pyx_t_15 = -1;
-      if (__pyx_t_25 < 0) {
-        __pyx_t_25 += __pyx_v_aggregate_lipid_ids.shape[0];
-        if (unlikely(__pyx_t_25 < 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_25 >= __pyx_v_aggregate_lipid_ids.shape[0])) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+      __pyx_t_26 = __pyx_v_i;
+      __pyx_t_16 = -1;
+      if (__pyx_t_26 < 0) {
+        __pyx_t_26 += __pyx_v_aggregate_lipid_ids.shape[0];
+        if (unlikely(__pyx_t_26 < 0)) __pyx_t_16 = 0;
+      } else if (unlikely(__pyx_t_26 >= __pyx_v_aggregate_lipid_ids.shape[0])) __pyx_t_16 = 0;
+      if (unlikely(__pyx_t_16 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_16);
         __PYX_ERR(0, 812, __pyx_L1_error)
       }
-      __pyx_v_seed_id = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_aggregate_lipid_ids.data + __pyx_t_25 * __pyx_v_aggregate_lipid_ids.strides[0]) )));
+      __pyx_v_seed_id = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_aggregate_lipid_ids.data + __pyx_t_26 * __pyx_v_aggregate_lipid_ids.strides[0]) )));
 
       /* "fatslim/_core.pyx":814
  *                 seed_id = aggregate_lipid_ids[i]
@@ -13868,17 +13898,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
       __Pyx_TraceLine(814,0,__PYX_ERR(0, 814, __pyx_L1_error))
-      __pyx_t_26 = __pyx_v_seed_id;
-      __pyx_t_15 = -1;
-      if (__pyx_t_26 < 0) {
-        __pyx_t_26 += __pyx_v_maybe_leaflet_ids.shape[0];
-        if (unlikely(__pyx_t_26 < 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_26 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+      __pyx_t_27 = __pyx_v_seed_id;
+      __pyx_t_16 = -1;
+      if (__pyx_t_27 < 0) {
+        __pyx_t_27 += __pyx_v_maybe_leaflet_ids.shape[0];
+        if (unlikely(__pyx_t_27 < 0)) __pyx_t_16 = 0;
+      } else if (unlikely(__pyx_t_27 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_16 = 0;
+      if (unlikely(__pyx_t_16 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_16);
         __PYX_ERR(0, 814, __pyx_L1_error)
       }
-      __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_26 * __pyx_v_maybe_leaflet_ids.strides[0]) ))) > -1L) != 0);
+      __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_27 * __pyx_v_maybe_leaflet_ids.strides[0]) ))) > -1L) != 0);
       if (__pyx_t_1) {
 
         /* "fatslim/_core.pyx":815
@@ -13918,10 +13948,10 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                         in_edger = True
  */
       __Pyx_TraceLine(819,0,__PYX_ERR(0, 819, __pyx_L1_error))
-      __pyx_t_17 = __pyx_v_n_edgers;
-      __pyx_t_18 = __pyx_t_17;
-      for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
-        __pyx_v_j = __pyx_t_19;
+      __pyx_t_18 = __pyx_v_n_edgers;
+      __pyx_t_19 = __pyx_t_18;
+      for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
+        __pyx_v_j = __pyx_t_20;
 
         /* "fatslim/_core.pyx":820
  *                 in_edger = False
@@ -13931,17 +13961,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                         break
  */
         __Pyx_TraceLine(820,0,__PYX_ERR(0, 820, __pyx_L1_error))
-        __pyx_t_27 = __pyx_v_j;
-        __pyx_t_15 = -1;
-        if (__pyx_t_27 < 0) {
-          __pyx_t_27 += __pyx_v_edgers.shape[0];
-          if (unlikely(__pyx_t_27 < 0)) __pyx_t_15 = 0;
-        } else if (unlikely(__pyx_t_27 >= __pyx_v_edgers.shape[0])) __pyx_t_15 = 0;
-        if (unlikely(__pyx_t_15 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_15);
+        __pyx_t_28 = __pyx_v_j;
+        __pyx_t_16 = -1;
+        if (__pyx_t_28 < 0) {
+          __pyx_t_28 += __pyx_v_edgers.shape[0];
+          if (unlikely(__pyx_t_28 < 0)) __pyx_t_16 = 0;
+        } else if (unlikely(__pyx_t_28 >= __pyx_v_edgers.shape[0])) __pyx_t_16 = 0;
+        if (unlikely(__pyx_t_16 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_16);
           __PYX_ERR(0, 820, __pyx_L1_error)
         }
-        __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_edgers.data + __pyx_t_27 * __pyx_v_edgers.strides[0]) ))) == __pyx_v_seed_id) != 0);
+        __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_edgers.data + __pyx_t_28 * __pyx_v_edgers.strides[0]) ))) == __pyx_v_seed_id) != 0);
         if (__pyx_t_1) {
 
           /* "fatslim/_core.pyx":821
@@ -14023,17 +14053,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                 current_leaflet_size = 1
  */
       __Pyx_TraceLine(833,0,__PYX_ERR(0, 833, __pyx_L1_error))
-      __pyx_t_28 = __pyx_v_seed_id;
-      __pyx_t_15 = -1;
-      if (__pyx_t_28 < 0) {
-        __pyx_t_28 += __pyx_v_maybe_leaflet_ids.shape[0];
-        if (unlikely(__pyx_t_28 < 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_28 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+      __pyx_t_29 = __pyx_v_seed_id;
+      __pyx_t_16 = -1;
+      if (__pyx_t_29 < 0) {
+        __pyx_t_29 += __pyx_v_maybe_leaflet_ids.shape[0];
+        if (unlikely(__pyx_t_29 < 0)) __pyx_t_16 = 0;
+      } else if (unlikely(__pyx_t_29 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_16 = 0;
+      if (unlikely(__pyx_t_16 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_16);
         __PYX_ERR(0, 833, __pyx_L1_error)
       }
-      *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_28 * __pyx_v_maybe_leaflet_ids.strides[0]) )) = __pyx_v_maybe_leaflet_current_id;
+      *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_29 * __pyx_v_maybe_leaflet_ids.strides[0]) )) = __pyx_v_maybe_leaflet_current_id;
 
       /* "fatslim/_core.pyx":835
  *                 maybe_leaflet_ids[seed_id] = maybe_leaflet_current_id
@@ -14053,17 +14083,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                 # Reset the stack
  */
       __Pyx_TraceLine(836,0,__PYX_ERR(0, 836, __pyx_L1_error))
-      __pyx_t_29 = 0;
-      __pyx_t_15 = -1;
-      if (__pyx_t_29 < 0) {
-        __pyx_t_29 += __pyx_v_current_leaflet_ids.shape[0];
-        if (unlikely(__pyx_t_29 < 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_29 >= __pyx_v_current_leaflet_ids.shape[0])) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+      __pyx_t_30 = 0;
+      __pyx_t_16 = -1;
+      if (__pyx_t_30 < 0) {
+        __pyx_t_30 += __pyx_v_current_leaflet_ids.shape[0];
+        if (unlikely(__pyx_t_30 < 0)) __pyx_t_16 = 0;
+      } else if (unlikely(__pyx_t_30 >= __pyx_v_current_leaflet_ids.shape[0])) __pyx_t_16 = 0;
+      if (unlikely(__pyx_t_16 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_16);
         __PYX_ERR(0, 836, __pyx_L1_error)
       }
-      *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_current_leaflet_ids.data + __pyx_t_29 * __pyx_v_current_leaflet_ids.strides[0]) )) = __pyx_v_seed_id;
+      *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_current_leaflet_ids.data + __pyx_t_30 * __pyx_v_current_leaflet_ids.strides[0]) )) = __pyx_v_seed_id;
 
       /* "fatslim/_core.pyx":839
  * 
@@ -14083,17 +14113,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                 # Search for all the lipids that belong to the current leaflet
  */
       __Pyx_TraceLine(840,0,__PYX_ERR(0, 840, __pyx_L1_error))
-      __pyx_t_30 = 0;
-      __pyx_t_15 = -1;
-      if (__pyx_t_30 < 0) {
-        __pyx_t_30 += __pyx_v_stack.shape[0];
-        if (unlikely(__pyx_t_30 < 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_30 >= __pyx_v_stack.shape[0])) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+      __pyx_t_31 = 0;
+      __pyx_t_16 = -1;
+      if (__pyx_t_31 < 0) {
+        __pyx_t_31 += __pyx_v_stack.shape[0];
+        if (unlikely(__pyx_t_31 < 0)) __pyx_t_16 = 0;
+      } else if (unlikely(__pyx_t_31 >= __pyx_v_stack.shape[0])) __pyx_t_16 = 0;
+      if (unlikely(__pyx_t_16 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_16);
         __PYX_ERR(0, 840, __pyx_L1_error)
       }
-      *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_stack.data + __pyx_t_30 * __pyx_v_stack.strides[0]) )) = __pyx_v_seed_id;
+      *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_stack.data + __pyx_t_31 * __pyx_v_stack.strides[0]) )) = __pyx_v_seed_id;
 
       /* "fatslim/_core.pyx":844
  *                 # Search for all the lipids that belong to the current leaflet
@@ -14115,17 +14145,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
         __Pyx_TraceLine(847,0,__PYX_ERR(0, 847, __pyx_L1_error))
-        __pyx_t_31 = (__pyx_v_stack_size - 1);
-        __pyx_t_15 = -1;
-        if (__pyx_t_31 < 0) {
-          __pyx_t_31 += __pyx_v_stack.shape[0];
-          if (unlikely(__pyx_t_31 < 0)) __pyx_t_15 = 0;
-        } else if (unlikely(__pyx_t_31 >= __pyx_v_stack.shape[0])) __pyx_t_15 = 0;
-        if (unlikely(__pyx_t_15 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_15);
+        __pyx_t_32 = (__pyx_v_stack_size - 1);
+        __pyx_t_16 = -1;
+        if (__pyx_t_32 < 0) {
+          __pyx_t_32 += __pyx_v_stack.shape[0];
+          if (unlikely(__pyx_t_32 < 0)) __pyx_t_16 = 0;
+        } else if (unlikely(__pyx_t_32 >= __pyx_v_stack.shape[0])) __pyx_t_16 = 0;
+        if (unlikely(__pyx_t_16 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_16);
           __PYX_ERR(0, 847, __pyx_L1_error)
         }
-        __pyx_v_ref_nid = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_stack.data + __pyx_t_31 * __pyx_v_stack.strides[0]) )));
+        __pyx_v_ref_nid = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_stack.data + __pyx_t_32 * __pyx_v_stack.strides[0]) )));
 
         /* "fatslim/_core.pyx":848
  *                     # Pop the stack
@@ -14146,20 +14176,20 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  */
         __Pyx_TraceLine(850,0,__PYX_ERR(0, 850, __pyx_L1_error))
         if (unlikely(!__pyx_v_self->_lipid_neighbours->nneighbours.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 850, __pyx_L1_error)}
-        __pyx_t_32 = __pyx_v_ref_nid;
-        __pyx_t_15 = -1;
-        if (__pyx_t_32 < 0) {
-          __pyx_t_32 += __pyx_v_self->_lipid_neighbours->nneighbours.shape[0];
-          if (unlikely(__pyx_t_32 < 0)) __pyx_t_15 = 0;
-        } else if (unlikely(__pyx_t_32 >= __pyx_v_self->_lipid_neighbours->nneighbours.shape[0])) __pyx_t_15 = 0;
-        if (unlikely(__pyx_t_15 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_15);
+        __pyx_t_33 = __pyx_v_ref_nid;
+        __pyx_t_16 = -1;
+        if (__pyx_t_33 < 0) {
+          __pyx_t_33 += __pyx_v_self->_lipid_neighbours->nneighbours.shape[0];
+          if (unlikely(__pyx_t_33 < 0)) __pyx_t_16 = 0;
+        } else if (unlikely(__pyx_t_33 >= __pyx_v_self->_lipid_neighbours->nneighbours.shape[0])) __pyx_t_16 = 0;
+        if (unlikely(__pyx_t_16 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_16);
           __PYX_ERR(0, 850, __pyx_L1_error)
         }
-        __pyx_t_17 = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->nneighbours.data + __pyx_t_32 * __pyx_v_self->_lipid_neighbours->nneighbours.strides[0]) )));
-        __pyx_t_18 = __pyx_t_17;
-        for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
-          __pyx_v_j = __pyx_t_19;
+        __pyx_t_18 = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->nneighbours.data + __pyx_t_33 * __pyx_v_self->_lipid_neighbours->nneighbours.strides[0]) )));
+        __pyx_t_19 = __pyx_t_18;
+        for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
+          __pyx_v_j = __pyx_t_20;
 
           /* "fatslim/_core.pyx":851
  * 
@@ -14170,22 +14200,22 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  */
           __Pyx_TraceLine(851,0,__PYX_ERR(0, 851, __pyx_L1_error))
           if (unlikely(!__pyx_v_self->_lipid_neighbours->neighbours.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 851, __pyx_L1_error)}
-          __pyx_t_33 = __pyx_v_ref_nid;
-          __pyx_t_34 = __pyx_v_j;
-          __pyx_t_15 = -1;
-          if (__pyx_t_33 < 0) {
-            __pyx_t_33 += __pyx_v_self->_lipid_neighbours->neighbours.shape[0];
-            if (unlikely(__pyx_t_33 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_33 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[0])) __pyx_t_15 = 0;
+          __pyx_t_34 = __pyx_v_ref_nid;
+          __pyx_t_35 = __pyx_v_j;
+          __pyx_t_16 = -1;
           if (__pyx_t_34 < 0) {
-            __pyx_t_34 += __pyx_v_self->_lipid_neighbours->neighbours.shape[1];
-            if (unlikely(__pyx_t_34 < 0)) __pyx_t_15 = 1;
-          } else if (unlikely(__pyx_t_34 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[1])) __pyx_t_15 = 1;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_34 += __pyx_v_self->_lipid_neighbours->neighbours.shape[0];
+            if (unlikely(__pyx_t_34 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_34 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[0])) __pyx_t_16 = 0;
+          if (__pyx_t_35 < 0) {
+            __pyx_t_35 += __pyx_v_self->_lipid_neighbours->neighbours.shape[1];
+            if (unlikely(__pyx_t_35 < 0)) __pyx_t_16 = 1;
+          } else if (unlikely(__pyx_t_35 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[1])) __pyx_t_16 = 1;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 851, __pyx_L1_error)
           }
-          __pyx_v_nid = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->neighbours.data + __pyx_t_33 * __pyx_v_self->_lipid_neighbours->neighbours.strides[0]) )) + __pyx_t_34)) )));
+          __pyx_v_nid = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->neighbours.data + __pyx_t_34 * __pyx_v_self->_lipid_neighbours->neighbours.strides[0]) )) + __pyx_t_35)) )));
 
           /* "fatslim/_core.pyx":853
  *                         nid = self._lipid_neighbours.neighbours[ref_nid][j]
@@ -14195,17 +14225,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
           __Pyx_TraceLine(853,0,__PYX_ERR(0, 853, __pyx_L1_error))
-          __pyx_t_35 = __pyx_v_nid;
-          __pyx_t_15 = -1;
-          if (__pyx_t_35 < 0) {
-            __pyx_t_35 += __pyx_v_maybe_leaflet_ids.shape[0];
-            if (unlikely(__pyx_t_35 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_35 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_15 = 0;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+          __pyx_t_36 = __pyx_v_nid;
+          __pyx_t_16 = -1;
+          if (__pyx_t_36 < 0) {
+            __pyx_t_36 += __pyx_v_maybe_leaflet_ids.shape[0];
+            if (unlikely(__pyx_t_36 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_36 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_16 = 0;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 853, __pyx_L1_error)
           }
-          __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_35 * __pyx_v_maybe_leaflet_ids.strides[0]) ))) > -1L) != 0);
+          __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_36 * __pyx_v_maybe_leaflet_ids.strides[0]) ))) > -1L) != 0);
           if (__pyx_t_1) {
 
             /* "fatslim/_core.pyx":854
@@ -14245,10 +14275,10 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                                 in_edger = True
  */
           __Pyx_TraceLine(861,0,__PYX_ERR(0, 861, __pyx_L1_error))
-          __pyx_t_36 = __pyx_v_n_edgers;
-          __pyx_t_37 = __pyx_t_36;
-          for (__pyx_t_38 = 0; __pyx_t_38 < __pyx_t_37; __pyx_t_38+=1) {
-            __pyx_v_j = __pyx_t_38;
+          __pyx_t_37 = __pyx_v_n_edgers;
+          __pyx_t_38 = __pyx_t_37;
+          for (__pyx_t_39 = 0; __pyx_t_39 < __pyx_t_38; __pyx_t_39+=1) {
+            __pyx_v_j = __pyx_t_39;
 
             /* "fatslim/_core.pyx":862
  *                         in_edger = False
@@ -14258,17 +14288,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                                 break
  */
             __Pyx_TraceLine(862,0,__PYX_ERR(0, 862, __pyx_L1_error))
-            __pyx_t_39 = __pyx_v_j;
-            __pyx_t_15 = -1;
-            if (__pyx_t_39 < 0) {
-              __pyx_t_39 += __pyx_v_edgers.shape[0];
-              if (unlikely(__pyx_t_39 < 0)) __pyx_t_15 = 0;
-            } else if (unlikely(__pyx_t_39 >= __pyx_v_edgers.shape[0])) __pyx_t_15 = 0;
-            if (unlikely(__pyx_t_15 != -1)) {
-              __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_40 = __pyx_v_j;
+            __pyx_t_16 = -1;
+            if (__pyx_t_40 < 0) {
+              __pyx_t_40 += __pyx_v_edgers.shape[0];
+              if (unlikely(__pyx_t_40 < 0)) __pyx_t_16 = 0;
+            } else if (unlikely(__pyx_t_40 >= __pyx_v_edgers.shape[0])) __pyx_t_16 = 0;
+            if (unlikely(__pyx_t_16 != -1)) {
+              __Pyx_RaiseBufferIndexError(__pyx_t_16);
               __PYX_ERR(0, 862, __pyx_L1_error)
             }
-            __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_edgers.data + __pyx_t_39 * __pyx_v_edgers.strides[0]) ))) == __pyx_v_nid) != 0);
+            __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_edgers.data + __pyx_t_40 * __pyx_v_edgers.strides[0]) ))) == __pyx_v_nid) != 0);
             if (__pyx_t_1) {
 
               /* "fatslim/_core.pyx":863
@@ -14341,19 +14371,19 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  */
           __Pyx_TraceLine(870,0,__PYX_ERR(0, 870, __pyx_L1_error))
           if (unlikely(!__pyx_v_self->_lipid_normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 870, __pyx_L1_error)}
-          __pyx_t_40 = __pyx_v_ref_nid;
-          __pyx_t_41 = 0;
-          __pyx_t_15 = -1;
-          if (__pyx_t_40 < 0) {
-            __pyx_t_40 += __pyx_v_self->_lipid_normals.shape[0];
-            if (unlikely(__pyx_t_40 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_40 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_15 = 0;
+          __pyx_t_41 = __pyx_v_ref_nid;
+          __pyx_t_42 = 0;
+          __pyx_t_16 = -1;
           if (__pyx_t_41 < 0) {
-            __pyx_t_41 += __pyx_v_self->_lipid_normals.shape[1];
-            if (unlikely(__pyx_t_41 < 0)) __pyx_t_15 = 1;
-          } else if (unlikely(__pyx_t_41 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_15 = 1;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_41 += __pyx_v_self->_lipid_normals.shape[0];
+            if (unlikely(__pyx_t_41 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_41 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_16 = 0;
+          if (__pyx_t_42 < 0) {
+            __pyx_t_42 += __pyx_v_self->_lipid_normals.shape[1];
+            if (unlikely(__pyx_t_42 < 0)) __pyx_t_16 = 1;
+          } else if (unlikely(__pyx_t_42 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_16 = 1;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 870, __pyx_L1_error)
           }
 
@@ -14366,19 +14396,19 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  */
           __Pyx_TraceLine(871,0,__PYX_ERR(0, 871, __pyx_L1_error))
           if (unlikely(!__pyx_v_self->_lipid_normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 871, __pyx_L1_error)}
-          __pyx_t_42 = __pyx_v_nid;
-          __pyx_t_43 = 0;
-          __pyx_t_15 = -1;
-          if (__pyx_t_42 < 0) {
-            __pyx_t_42 += __pyx_v_self->_lipid_normals.shape[0];
-            if (unlikely(__pyx_t_42 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_42 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_15 = 0;
+          __pyx_t_43 = __pyx_v_nid;
+          __pyx_t_44 = 0;
+          __pyx_t_16 = -1;
           if (__pyx_t_43 < 0) {
-            __pyx_t_43 += __pyx_v_self->_lipid_normals.shape[1];
-            if (unlikely(__pyx_t_43 < 0)) __pyx_t_15 = 1;
-          } else if (unlikely(__pyx_t_43 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_15 = 1;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_43 += __pyx_v_self->_lipid_normals.shape[0];
+            if (unlikely(__pyx_t_43 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_43 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_16 = 0;
+          if (__pyx_t_44 < 0) {
+            __pyx_t_44 += __pyx_v_self->_lipid_normals.shape[1];
+            if (unlikely(__pyx_t_44 < 0)) __pyx_t_16 = 1;
+          } else if (unlikely(__pyx_t_44 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_16 = 1;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 871, __pyx_L1_error)
           }
 
@@ -14390,7 +14420,7 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
           __Pyx_TraceLine(870,0,__PYX_ERR(0, 870, __pyx_L1_error))
-          __pyx_v_dprod_value = __pyx_f_7fatslim_9_typedefs_rvec_dprod((&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_40 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_41)) )))), (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_42 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_43)) )))));
+          __pyx_v_dprod_value = __pyx_f_7fatslim_9_typedefs_rvec_dprod((&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_41 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_42)) )))), (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_43 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_44)) )))));
 
           /* "fatslim/_core.pyx":882
  *                         # Otherwise, it would correspond to a rather small curvature radius which is barely compatible
@@ -14430,17 +14460,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  *                         current_leaflet_size += 1
  */
           __Pyx_TraceLine(888,0,__PYX_ERR(0, 888, __pyx_L1_error))
-          __pyx_t_44 = __pyx_v_nid;
-          __pyx_t_15 = -1;
-          if (__pyx_t_44 < 0) {
-            __pyx_t_44 += __pyx_v_maybe_leaflet_ids.shape[0];
-            if (unlikely(__pyx_t_44 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_44 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_15 = 0;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+          __pyx_t_45 = __pyx_v_nid;
+          __pyx_t_16 = -1;
+          if (__pyx_t_45 < 0) {
+            __pyx_t_45 += __pyx_v_maybe_leaflet_ids.shape[0];
+            if (unlikely(__pyx_t_45 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_45 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_16 = 0;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 888, __pyx_L1_error)
           }
-          *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_44 * __pyx_v_maybe_leaflet_ids.strides[0]) )) = __pyx_v_maybe_leaflet_current_id;
+          *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_45 * __pyx_v_maybe_leaflet_ids.strides[0]) )) = __pyx_v_maybe_leaflet_current_id;
 
           /* "fatslim/_core.pyx":889
  *                         # If still here, add bead to current leaflet
@@ -14450,17 +14480,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
           __Pyx_TraceLine(889,0,__PYX_ERR(0, 889, __pyx_L1_error))
-          __pyx_t_45 = __pyx_v_current_leaflet_size;
-          __pyx_t_15 = -1;
-          if (__pyx_t_45 < 0) {
-            __pyx_t_45 += __pyx_v_current_leaflet_ids.shape[0];
-            if (unlikely(__pyx_t_45 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_45 >= __pyx_v_current_leaflet_ids.shape[0])) __pyx_t_15 = 0;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+          __pyx_t_46 = __pyx_v_current_leaflet_size;
+          __pyx_t_16 = -1;
+          if (__pyx_t_46 < 0) {
+            __pyx_t_46 += __pyx_v_current_leaflet_ids.shape[0];
+            if (unlikely(__pyx_t_46 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_46 >= __pyx_v_current_leaflet_ids.shape[0])) __pyx_t_16 = 0;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 889, __pyx_L1_error)
           }
-          *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_current_leaflet_ids.data + __pyx_t_45 * __pyx_v_current_leaflet_ids.strides[0]) )) = __pyx_v_nid;
+          *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_current_leaflet_ids.data + __pyx_t_46 * __pyx_v_current_leaflet_ids.strides[0]) )) = __pyx_v_nid;
 
           /* "fatslim/_core.pyx":890
  *                         maybe_leaflet_ids[nid] = maybe_leaflet_current_id
@@ -14480,17 +14510,17 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
           __Pyx_TraceLine(893,0,__PYX_ERR(0, 893, __pyx_L1_error))
-          __pyx_t_46 = __pyx_v_stack_size;
-          __pyx_t_15 = -1;
-          if (__pyx_t_46 < 0) {
-            __pyx_t_46 += __pyx_v_stack.shape[0];
-            if (unlikely(__pyx_t_46 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_46 >= __pyx_v_stack.shape[0])) __pyx_t_15 = 0;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+          __pyx_t_47 = __pyx_v_stack_size;
+          __pyx_t_16 = -1;
+          if (__pyx_t_47 < 0) {
+            __pyx_t_47 += __pyx_v_stack.shape[0];
+            if (unlikely(__pyx_t_47 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_47 >= __pyx_v_stack.shape[0])) __pyx_t_16 = 0;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 893, __pyx_L1_error)
           }
-          *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_stack.data + __pyx_t_46 * __pyx_v_stack.strides[0]) )) = __pyx_v_nid;
+          *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_stack.data + __pyx_t_47 * __pyx_v_stack.strides[0]) )) = __pyx_v_nid;
 
           /* "fatslim/_core.pyx":894
  *                         # Append bead to stack
@@ -14513,16 +14543,16 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
  * 
  */
       __Pyx_TraceLine(900,0,__PYX_ERR(0, 900, __pyx_L1_error))
-      __pyx_t_8.data = __pyx_v_current_leaflet_ids.data;
-      __pyx_t_8.memview = __pyx_v_current_leaflet_ids.memview;
-      __PYX_INC_MEMVIEW(&__pyx_t_8, 0);
-      __pyx_t_15 = -1;
+      __pyx_t_9.data = __pyx_v_current_leaflet_ids.data;
+      __pyx_t_9.memview = __pyx_v_current_leaflet_ids.memview;
+      __PYX_INC_MEMVIEW(&__pyx_t_9, 0);
+      __pyx_t_16 = -1;
       if (unlikely(__pyx_memoryview_slice_memviewslice(
-    &__pyx_t_8,
+    &__pyx_t_9,
     __pyx_v_current_leaflet_ids.shape[0], __pyx_v_current_leaflet_ids.strides[0], __pyx_v_current_leaflet_ids.suboffsets[0],
     0,
     0,
-    &__pyx_t_15,
+    &__pyx_t_16,
     0,
     __pyx_v_current_leaflet_size,
     0,
@@ -14534,16 +14564,16 @@ static PyObject *__pyx_pf_7fatslim_5_core_13LipidRegistry_6find_membranes(struct
     __PYX_ERR(0, 900, __pyx_L1_error)
 }
 
-__pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_int_c(__pyx_t_8); if (unlikely(!__pyx_t_47.memview)) __PYX_ERR(0, 900, __pyx_L1_error)
-      __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
-      __pyx_t_8.memview = NULL;
-      __pyx_t_8.data = NULL;
-      __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_47, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_fsl_int, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 900, __pyx_L1_error)
+__pyx_t_48 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_int_c(__pyx_t_9); if (unlikely(!__pyx_t_48.memview)) __PYX_ERR(0, 900, __pyx_L1_error)
+      __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
+      __pyx_t_9.memview = NULL;
+      __pyx_t_9.data = NULL;
+      __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_48, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_fsl_int, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 900, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __PYX_XDEC_MEMVIEW(&__pyx_t_47, 1);
-      __pyx_t_47.memview = NULL;
-      __pyx_t_47.data = NULL;
-      __pyx_t_48 = __Pyx_PyList_Append(__pyx_v_maybe_leaflets_from_aggregates, __pyx_t_2); if (unlikely(__pyx_t_48 == ((int)-1))) __PYX_ERR(0, 900, __pyx_L1_error)
+      __PYX_XDEC_MEMVIEW(&__pyx_t_48, 1);
+      __pyx_t_48.memview = NULL;
+      __pyx_t_48.data = NULL;
+      __pyx_t_49 = __Pyx_PyList_Append(__pyx_v_maybe_leaflets_from_aggregates, __pyx_t_2); if (unlikely(__pyx_t_49 == ((int)-1))) __PYX_ERR(0, 900, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_L15_continue:;
     }
@@ -14576,29 +14606,29 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
     __Pyx_TraceLine(908,0,__PYX_ERR(0, 908, __pyx_L1_error))
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 908, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 908, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_empty_like); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 908, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty_like); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 908, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_edgers, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_fsl_int, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 908, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_49 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_49 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_49)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_49);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_edgers, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_fsl_int, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 908, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_7 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_7)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_7);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
       }
     }
-    __pyx_t_2 = (__pyx_t_49) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_49, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
-    __Pyx_XDECREF(__pyx_t_49); __pyx_t_49 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_7, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 908, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF_SET(__pyx_v_leaflet_neighbour, __pyx_t_2);
     __pyx_t_2 = 0;
 
@@ -14633,17 +14663,17 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
     __Pyx_TraceLine(912,0,__PYX_ERR(0, 912, __pyx_L1_error))
-    __pyx_t_2 = __pyx_v_maybe_leaflets_from_aggregates; __Pyx_INCREF(__pyx_t_2); __pyx_t_11 = 0;
+    __pyx_t_2 = __pyx_v_maybe_leaflets_from_aggregates; __Pyx_INCREF(__pyx_t_2); __pyx_t_12 = 0;
     for (;;) {
-      if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_2)) break;
+      if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_2)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_11); __Pyx_INCREF(__pyx_t_4); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 912, __pyx_L1_error)
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_12); __Pyx_INCREF(__pyx_t_3); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 912, __pyx_L1_error)
       #else
-      __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 912, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 912, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       #endif
-      __Pyx_XDECREF_SET(__pyx_v_l, __pyx_t_4);
-      __pyx_t_4 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_l, __pyx_t_3);
+      __pyx_t_3 = 0;
 
       /* "fatslim/_core.pyx":913
  *             new_members = []
@@ -14653,10 +14683,10 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *             n_leftovers = 0
  */
       __Pyx_TraceLine(913,0,__PYX_ERR(0, 913, __pyx_L1_error))
-      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 913, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_48 = __Pyx_PyList_Append(__pyx_v_new_members, __pyx_t_4); if (unlikely(__pyx_t_48 == ((int)-1))) __PYX_ERR(0, 913, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 913, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_49 = __Pyx_PyList_Append(__pyx_v_new_members, __pyx_t_3); if (unlikely(__pyx_t_49 == ((int)-1))) __PYX_ERR(0, 913, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
       /* "fatslim/_core.pyx":912
  * 
@@ -14687,10 +14717,10 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
     __Pyx_TraceLine(919,0,__PYX_ERR(0, 919, __pyx_L1_error))
-    __pyx_t_13 = __pyx_v_n_edgers;
-    __pyx_t_17 = __pyx_t_13;
-    for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
-      __pyx_v_i = __pyx_t_18;
+    __pyx_t_14 = __pyx_v_n_edgers;
+    __pyx_t_18 = __pyx_t_14;
+    for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
+      __pyx_v_i = __pyx_t_19;
 
       /* "fatslim/_core.pyx":920
  * 
@@ -14701,13 +14731,13 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
       __Pyx_TraceLine(920,0,__PYX_ERR(0, 920, __pyx_L1_error))
       __pyx_t_50 = __pyx_v_i;
-      __pyx_t_15 = -1;
+      __pyx_t_16 = -1;
       if (__pyx_t_50 < 0) {
         __pyx_t_50 += __pyx_v_edgers.shape[0];
-        if (unlikely(__pyx_t_50 < 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_50 >= __pyx_v_edgers.shape[0])) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+        if (unlikely(__pyx_t_50 < 0)) __pyx_t_16 = 0;
+      } else if (unlikely(__pyx_t_50 >= __pyx_v_edgers.shape[0])) __pyx_t_16 = 0;
+      if (unlikely(__pyx_t_16 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_16);
         __PYX_ERR(0, 920, __pyx_L1_error)
       }
       __pyx_t_2 = __Pyx_PyInt_From_npy_long((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_edgers.data + __pyx_t_50 * __pyx_v_edgers.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 920, __pyx_L1_error)
@@ -14788,65 +14818,71 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *                     best_leaflet = -1
  * 
  *                     for lid, indices in enumerate(maybe_leaflets_from_aggregates):             # <<<<<<<<<<<<<<
- *                         current_stack = np.empty(self._nlipids, dtype=int)
+ *                         current_stack = np.empty(self._nlipids, dtype=np.int)
  *                         current_stack[0] = edger_id
  */
       __Pyx_TraceLine(931,0,__PYX_ERR(0, 931, __pyx_L1_error))
       __Pyx_INCREF(__pyx_int_0);
       __pyx_t_2 = __pyx_int_0;
-      __pyx_t_4 = __pyx_v_maybe_leaflets_from_aggregates; __Pyx_INCREF(__pyx_t_4); __pyx_t_11 = 0;
+      __pyx_t_3 = __pyx_v_maybe_leaflets_from_aggregates; __Pyx_INCREF(__pyx_t_3); __pyx_t_12 = 0;
       for (;;) {
-        if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_4)) break;
+        if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_11); __Pyx_INCREF(__pyx_t_3); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 931, __pyx_L1_error)
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_12); __Pyx_INCREF(__pyx_t_8); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 931, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 931, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_3, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 931, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
         #endif
-        __Pyx_XDECREF_SET(__pyx_v_indices, __pyx_t_3);
-        __pyx_t_3 = 0;
+        __Pyx_XDECREF_SET(__pyx_v_indices, __pyx_t_8);
+        __pyx_t_8 = 0;
         __Pyx_INCREF(__pyx_t_2);
         __Pyx_XDECREF_SET(__pyx_v_lid, __pyx_t_2);
-        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 931, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 931, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_2);
-        __pyx_t_2 = __pyx_t_3;
-        __pyx_t_3 = 0;
+        __pyx_t_2 = __pyx_t_8;
+        __pyx_t_8 = 0;
 
         /* "fatslim/_core.pyx":932
  * 
  *                     for lid, indices in enumerate(maybe_leaflets_from_aggregates):
- *                         current_stack = np.empty(self._nlipids, dtype=int)             # <<<<<<<<<<<<<<
+ *                         current_stack = np.empty(self._nlipids, dtype=np.int)             # <<<<<<<<<<<<<<
  *                         current_stack[0] = edger_id
  *                         current_stack_size = 1
  */
         __Pyx_TraceLine(932,0,__PYX_ERR(0, 932, __pyx_L1_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 932, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_49 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 932, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 932, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 932, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_empty); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 932, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __pyx_t_8 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 932, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
         __pyx_t_51 = PyTuple_New(1); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 932, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_51);
-        __Pyx_GIVEREF(__pyx_t_3);
-        PyTuple_SET_ITEM(__pyx_t_51, 0, __pyx_t_3);
-        __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 932, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 932, __pyx_L1_error)
-        __pyx_t_52 = __Pyx_PyObject_Call(__pyx_t_49, __pyx_t_51, __pyx_t_3); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 932, __pyx_L1_error)
+        __Pyx_GIVEREF(__pyx_t_8);
+        PyTuple_SET_ITEM(__pyx_t_51, 0, __pyx_t_8);
+        __pyx_t_8 = 0;
+        __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 932, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GetModuleGlobalName(__pyx_t_52, __pyx_n_s_np); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 932, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_52);
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+        __pyx_t_53 = __Pyx_PyObject_GetAttrStr(__pyx_t_52, __pyx_n_s_int); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 932, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_53) < 0) __PYX_ERR(0, 932, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+        __pyx_t_53 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_51, __pyx_t_8); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 932, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_XDECREF_SET(__pyx_v_current_stack, __pyx_t_52);
-        __pyx_t_52 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_XDECREF_SET(__pyx_v_current_stack, __pyx_t_53);
+        __pyx_t_53 = 0;
 
         /* "fatslim/_core.pyx":933
  *                     for lid, indices in enumerate(maybe_leaflets_from_aggregates):
- *                         current_stack = np.empty(self._nlipids, dtype=int)
+ *                         current_stack = np.empty(self._nlipids, dtype=np.int)
  *                         current_stack[0] = edger_id             # <<<<<<<<<<<<<<
  *                         current_stack_size = 1
  * 
@@ -14855,11 +14891,11 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
         if (unlikely(__Pyx_SetItemInt(__pyx_v_current_stack, 0, __pyx_v_edger_id, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 933, __pyx_L1_error)
 
         /* "fatslim/_core.pyx":934
- *                         current_stack = np.empty(self._nlipids, dtype=int)
+ *                         current_stack = np.empty(self._nlipids, dtype=np.int)
  *                         current_stack[0] = edger_id
  *                         current_stack_size = 1             # <<<<<<<<<<<<<<
  * 
- *                         next_stack = np.empty(self._nlipids, dtype=int)
+ *                         next_stack = np.empty(self._nlipids, dtype=np.int)
  */
         __Pyx_TraceLine(934,0,__PYX_ERR(0, 934, __pyx_L1_error))
         __Pyx_INCREF(__pyx_int_1);
@@ -14868,64 +14904,70 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
         /* "fatslim/_core.pyx":936
  *                         current_stack_size = 1
  * 
- *                         next_stack = np.empty(self._nlipids, dtype=int)             # <<<<<<<<<<<<<<
+ *                         next_stack = np.empty(self._nlipids, dtype=np.int)             # <<<<<<<<<<<<<<
  * 
  *                         used_nodes = np.zeros(self._nlipids, dtype=bool)
  */
         __Pyx_TraceLine(936,0,__PYX_ERR(0, 936, __pyx_L1_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_52, __pyx_n_s_np); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 936, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_52);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_52, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 936, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-        __pyx_t_52 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 936, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_52);
+        __Pyx_GetModuleGlobalName(__pyx_t_53, __pyx_n_s_np); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 936, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_53, __pyx_n_s_empty); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 936, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+        __pyx_t_53 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 936, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
         __pyx_t_51 = PyTuple_New(1); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 936, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_51);
-        __Pyx_GIVEREF(__pyx_t_52);
-        PyTuple_SET_ITEM(__pyx_t_51, 0, __pyx_t_52);
-        __pyx_t_52 = 0;
-        __pyx_t_52 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 936, __pyx_L1_error)
+        __Pyx_GIVEREF(__pyx_t_53);
+        PyTuple_SET_ITEM(__pyx_t_51, 0, __pyx_t_53);
+        __pyx_t_53 = 0;
+        __pyx_t_53 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 936, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 936, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_52 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_int); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 936, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_52);
-        if (PyDict_SetItem(__pyx_t_52, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 936, __pyx_L1_error)
-        __pyx_t_49 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_51, __pyx_t_52); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 936, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        if (PyDict_SetItem(__pyx_t_53, __pyx_n_s_dtype, __pyx_t_52) < 0) __PYX_ERR(0, 936, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-        __Pyx_XDECREF_SET(__pyx_v_next_stack, __pyx_t_49);
-        __pyx_t_49 = 0;
+        __pyx_t_52 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_51, __pyx_t_53); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 936, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_52);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+        __Pyx_XDECREF_SET(__pyx_v_next_stack, __pyx_t_52);
+        __pyx_t_52 = 0;
 
         /* "fatslim/_core.pyx":938
- *                         next_stack = np.empty(self._nlipids, dtype=int)
+ *                         next_stack = np.empty(self._nlipids, dtype=np.int)
  * 
  *                         used_nodes = np.zeros(self._nlipids, dtype=bool)             # <<<<<<<<<<<<<<
  * 
  *                         closest_bead_ids = []
  */
         __Pyx_TraceLine(938,0,__PYX_ERR(0, 938, __pyx_L1_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_49, __pyx_n_s_np); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 938, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __pyx_t_52 = __Pyx_PyObject_GetAttrStr(__pyx_t_49, __pyx_n_s_zeros); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 938, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_52, __pyx_n_s_np); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 938, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_52);
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
-        __pyx_t_49 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 938, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
+        __pyx_t_53 = __Pyx_PyObject_GetAttrStr(__pyx_t_52, __pyx_n_s_zeros); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 938, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        __pyx_t_52 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_nlipids); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 938, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_52);
         __pyx_t_51 = PyTuple_New(1); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 938, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_51);
-        __Pyx_GIVEREF(__pyx_t_49);
-        PyTuple_SET_ITEM(__pyx_t_51, 0, __pyx_t_49);
-        __pyx_t_49 = 0;
-        __pyx_t_49 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 938, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        if (PyDict_SetItem(__pyx_t_49, __pyx_n_s_dtype, ((PyObject*)&PyBool_Type)) < 0) __PYX_ERR(0, 938, __pyx_L1_error)
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_52, __pyx_t_51, __pyx_t_49); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 938, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        __Pyx_GIVEREF(__pyx_t_52);
+        PyTuple_SET_ITEM(__pyx_t_51, 0, __pyx_t_52);
+        __pyx_t_52 = 0;
+        __pyx_t_52 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 938, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_52);
+        if (PyDict_SetItem(__pyx_t_52, __pyx_n_s_dtype, ((PyObject*)&PyBool_Type)) < 0) __PYX_ERR(0, 938, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_53, __pyx_t_51, __pyx_t_52); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 938, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
         __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
-        __Pyx_XDECREF_SET(__pyx_v_used_nodes, __pyx_t_3);
-        __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        __Pyx_XDECREF_SET(__pyx_v_used_nodes, __pyx_t_8);
+        __pyx_t_8 = 0;
 
         /* "fatslim/_core.pyx":940
  *                         used_nodes = np.zeros(self._nlipids, dtype=bool)
@@ -14935,10 +14977,10 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
         __Pyx_TraceLine(940,0,__PYX_ERR(0, 940, __pyx_L1_error))
-        __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 940, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_XDECREF_SET(__pyx_v_closest_bead_ids, ((PyObject*)__pyx_t_3));
-        __pyx_t_3 = 0;
+        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 940, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_XDECREF_SET(__pyx_v_closest_bead_ids, ((PyObject*)__pyx_t_8));
+        __pyx_t_8 = 0;
 
         /* "fatslim/_core.pyx":941
  * 
@@ -14971,16 +15013,16 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
         __Pyx_TraceLine(945,0,__PYX_ERR(0, 945, __pyx_L1_error))
         while (1) {
-          __pyx_t_12 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 945, __pyx_L1_error)
-          __pyx_t_1 = ((__pyx_t_12 == 0) != 0);
+          __pyx_t_13 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 945, __pyx_L1_error)
+          __pyx_t_1 = ((__pyx_t_13 == 0) != 0);
           if (__pyx_t_1) {
           } else {
             __pyx_t_6 = __pyx_t_1;
             goto __pyx_L41_bool_binop_done;
           }
-          __pyx_t_3 = PyObject_RichCompare(__pyx_v_generation, __pyx_int_10, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 945, __pyx_L1_error)
-          __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 945, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __pyx_t_8 = PyObject_RichCompare(__pyx_v_generation, __pyx_int_10, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 945, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 945, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_6 = __pyx_t_1;
           __pyx_L41_bool_binop_done:;
           if (!__pyx_t_6) break;
@@ -15004,10 +15046,10 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
           __Pyx_TraceLine(948,0,__PYX_ERR(0, 948, __pyx_L1_error))
-          __pyx_t_53 = __Pyx_PyInt_As_long(__pyx_v_current_stack_size); if (unlikely((__pyx_t_53 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 948, __pyx_L1_error)
-          __pyx_t_54 = __pyx_t_53;
-          for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_54; __pyx_t_19+=1) {
-            __pyx_v_j = __pyx_t_19;
+          __pyx_t_54 = __Pyx_PyInt_As_long(__pyx_v_current_stack_size); if (unlikely((__pyx_t_54 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 948, __pyx_L1_error)
+          __pyx_t_55 = __pyx_t_54;
+          for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_55; __pyx_t_20+=1) {
+            __pyx_v_j = __pyx_t_20;
 
             /* "fatslim/_core.pyx":949
  * 
@@ -15017,11 +15059,11 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *                                 used_nodes[ref_nid] = True
  */
             __Pyx_TraceLine(949,0,__PYX_ERR(0, 949, __pyx_L1_error))
-            __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_current_stack, __pyx_v_j, __pyx_t_7fatslim_9_typedefs_fsl_int, 1, __Pyx_PyInt_From_npy_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 949, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_36 = __Pyx_PyInt_As_npy_long(__pyx_t_3); if (unlikely((__pyx_t_36 == ((npy_long)-1)) && PyErr_Occurred())) __PYX_ERR(0, 949, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            __pyx_v_ref_nid = __pyx_t_36;
+            __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_current_stack, __pyx_v_j, __pyx_t_7fatslim_9_typedefs_fsl_int, 1, __Pyx_PyInt_From_npy_long, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 949, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_8);
+            __pyx_t_37 = __Pyx_PyInt_As_npy_long(__pyx_t_8); if (unlikely((__pyx_t_37 == ((npy_long)-1)) && PyErr_Occurred())) __PYX_ERR(0, 949, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+            __pyx_v_ref_nid = __pyx_t_37;
 
             /* "fatslim/_core.pyx":951
  *                                 ref_nid = current_stack[j]
@@ -15042,52 +15084,52 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
             __Pyx_TraceLine(953,0,__PYX_ERR(0, 953, __pyx_L1_error))
             if (unlikely(!__pyx_v_self->_lipid_neighbours->nneighbours.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 953, __pyx_L1_error)}
-            __pyx_t_55 = __pyx_v_ref_nid;
-            __pyx_t_15 = -1;
-            if (__pyx_t_55 < 0) {
-              __pyx_t_55 += __pyx_v_self->_lipid_neighbours->nneighbours.shape[0];
-              if (unlikely(__pyx_t_55 < 0)) __pyx_t_15 = 0;
-            } else if (unlikely(__pyx_t_55 >= __pyx_v_self->_lipid_neighbours->nneighbours.shape[0])) __pyx_t_15 = 0;
-            if (unlikely(__pyx_t_15 != -1)) {
-              __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_56 = __pyx_v_ref_nid;
+            __pyx_t_16 = -1;
+            if (__pyx_t_56 < 0) {
+              __pyx_t_56 += __pyx_v_self->_lipid_neighbours->nneighbours.shape[0];
+              if (unlikely(__pyx_t_56 < 0)) __pyx_t_16 = 0;
+            } else if (unlikely(__pyx_t_56 >= __pyx_v_self->_lipid_neighbours->nneighbours.shape[0])) __pyx_t_16 = 0;
+            if (unlikely(__pyx_t_16 != -1)) {
+              __Pyx_RaiseBufferIndexError(__pyx_t_16);
               __PYX_ERR(0, 953, __pyx_L1_error)
             }
-            __pyx_t_3 = __Pyx_PyInt_From_npy_long((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->nneighbours.data + __pyx_t_55 * __pyx_v_self->_lipid_neighbours->nneighbours.strides[0]) )))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 953, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_49 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_3); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 953, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_49);
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            if (likely(PyList_CheckExact(__pyx_t_49)) || PyTuple_CheckExact(__pyx_t_49)) {
-              __pyx_t_3 = __pyx_t_49; __Pyx_INCREF(__pyx_t_3); __pyx_t_12 = 0;
-              __pyx_t_56 = NULL;
+            __pyx_t_8 = __Pyx_PyInt_From_npy_long((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->nneighbours.data + __pyx_t_56 * __pyx_v_self->_lipid_neighbours->nneighbours.strides[0]) )))); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 953, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_8);
+            __pyx_t_52 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 953, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_52);
+            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+            if (likely(PyList_CheckExact(__pyx_t_52)) || PyTuple_CheckExact(__pyx_t_52)) {
+              __pyx_t_8 = __pyx_t_52; __Pyx_INCREF(__pyx_t_8); __pyx_t_13 = 0;
+              __pyx_t_57 = NULL;
             } else {
-              __pyx_t_12 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_49); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 953, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_56 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_56)) __PYX_ERR(0, 953, __pyx_L1_error)
+              __pyx_t_13 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_52); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 953, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_8);
+              __pyx_t_57 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_57)) __PYX_ERR(0, 953, __pyx_L1_error)
             }
-            __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+            __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
             for (;;) {
-              if (likely(!__pyx_t_56)) {
-                if (likely(PyList_CheckExact(__pyx_t_3))) {
-                  if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_3)) break;
+              if (likely(!__pyx_t_57)) {
+                if (likely(PyList_CheckExact(__pyx_t_8))) {
+                  if (__pyx_t_13 >= PyList_GET_SIZE(__pyx_t_8)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_49 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_12); __Pyx_INCREF(__pyx_t_49); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 953, __pyx_L1_error)
+                  __pyx_t_52 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_13); __Pyx_INCREF(__pyx_t_52); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 953, __pyx_L1_error)
                   #else
-                  __pyx_t_49 = PySequence_ITEM(__pyx_t_3, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 953, __pyx_L1_error)
-                  __Pyx_GOTREF(__pyx_t_49);
+                  __pyx_t_52 = PySequence_ITEM(__pyx_t_8, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 953, __pyx_L1_error)
+                  __Pyx_GOTREF(__pyx_t_52);
                   #endif
                 } else {
-                  if (__pyx_t_12 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+                  if (__pyx_t_13 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_49 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_12); __Pyx_INCREF(__pyx_t_49); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 953, __pyx_L1_error)
+                  __pyx_t_52 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_13); __Pyx_INCREF(__pyx_t_52); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 953, __pyx_L1_error)
                   #else
-                  __pyx_t_49 = PySequence_ITEM(__pyx_t_3, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 953, __pyx_L1_error)
-                  __Pyx_GOTREF(__pyx_t_49);
+                  __pyx_t_52 = PySequence_ITEM(__pyx_t_8, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 953, __pyx_L1_error)
+                  __Pyx_GOTREF(__pyx_t_52);
                   #endif
                 }
               } else {
-                __pyx_t_49 = __pyx_t_56(__pyx_t_3);
-                if (unlikely(!__pyx_t_49)) {
+                __pyx_t_52 = __pyx_t_57(__pyx_t_8);
+                if (unlikely(!__pyx_t_52)) {
                   PyObject* exc_type = PyErr_Occurred();
                   if (exc_type) {
                     if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
@@ -15095,10 +15137,10 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
                   }
                   break;
                 }
-                __Pyx_GOTREF(__pyx_t_49);
+                __Pyx_GOTREF(__pyx_t_52);
               }
-              __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_49);
-              __pyx_t_49 = 0;
+              __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_52);
+              __pyx_t_52 = 0;
 
               /* "fatslim/_core.pyx":954
  * 
@@ -15108,10 +15150,10 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *                                     nid = self._lipid_neighbours.neighbours[ref_nid][k]
  */
               __Pyx_TraceLine(954,0,__PYX_ERR(0, 954, __pyx_L1_error))
-              __pyx_t_49 = __Pyx_PyInt_AddObjC(__pyx_v_n_checks, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 954, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_49);
-              __Pyx_DECREF_SET(__pyx_v_n_checks, __pyx_t_49);
-              __pyx_t_49 = 0;
+              __pyx_t_52 = __Pyx_PyInt_AddObjC(__pyx_v_n_checks, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 954, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_52);
+              __Pyx_DECREF_SET(__pyx_v_n_checks, __pyx_t_52);
+              __pyx_t_52 = 0;
 
               /* "fatslim/_core.pyx":956
  *                                     n_checks += 1
@@ -15122,23 +15164,23 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
               __Pyx_TraceLine(956,0,__PYX_ERR(0, 956, __pyx_L1_error))
               if (unlikely(!__pyx_v_self->_lipid_neighbours->neighbours.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 956, __pyx_L1_error)}
-              __pyx_t_57 = __Pyx_PyIndex_AsSsize_t(__pyx_v_k); if (unlikely((__pyx_t_57 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 956, __pyx_L1_error)
-              __pyx_t_58 = __pyx_v_ref_nid;
-              __pyx_t_59 = __pyx_t_57;
-              __pyx_t_15 = -1;
-              if (__pyx_t_58 < 0) {
-                __pyx_t_58 += __pyx_v_self->_lipid_neighbours->neighbours.shape[0];
-                if (unlikely(__pyx_t_58 < 0)) __pyx_t_15 = 0;
-              } else if (unlikely(__pyx_t_58 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[0])) __pyx_t_15 = 0;
+              __pyx_t_58 = __Pyx_PyIndex_AsSsize_t(__pyx_v_k); if (unlikely((__pyx_t_58 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 956, __pyx_L1_error)
+              __pyx_t_59 = __pyx_v_ref_nid;
+              __pyx_t_60 = __pyx_t_58;
+              __pyx_t_16 = -1;
               if (__pyx_t_59 < 0) {
-                __pyx_t_59 += __pyx_v_self->_lipid_neighbours->neighbours.shape[1];
-                if (unlikely(__pyx_t_59 < 0)) __pyx_t_15 = 1;
-              } else if (unlikely(__pyx_t_59 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[1])) __pyx_t_15 = 1;
-              if (unlikely(__pyx_t_15 != -1)) {
-                __Pyx_RaiseBufferIndexError(__pyx_t_15);
+                __pyx_t_59 += __pyx_v_self->_lipid_neighbours->neighbours.shape[0];
+                if (unlikely(__pyx_t_59 < 0)) __pyx_t_16 = 0;
+              } else if (unlikely(__pyx_t_59 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[0])) __pyx_t_16 = 0;
+              if (__pyx_t_60 < 0) {
+                __pyx_t_60 += __pyx_v_self->_lipid_neighbours->neighbours.shape[1];
+                if (unlikely(__pyx_t_60 < 0)) __pyx_t_16 = 1;
+              } else if (unlikely(__pyx_t_60 >= __pyx_v_self->_lipid_neighbours->neighbours.shape[1])) __pyx_t_16 = 1;
+              if (unlikely(__pyx_t_16 != -1)) {
+                __Pyx_RaiseBufferIndexError(__pyx_t_16);
                 __PYX_ERR(0, 956, __pyx_L1_error)
               }
-              __pyx_v_nid = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->neighbours.data + __pyx_t_58 * __pyx_v_self->_lipid_neighbours->neighbours.strides[0]) )) + __pyx_t_59)) )));
+              __pyx_v_nid = (*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_self->_lipid_neighbours->neighbours.data + __pyx_t_59 * __pyx_v_self->_lipid_neighbours->neighbours.strides[0]) )) + __pyx_t_60)) )));
 
               /* "fatslim/_core.pyx":958
  *                                     nid = self._lipid_neighbours.neighbours[ref_nid][k]
@@ -15148,20 +15190,20 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *                                     elif maybe_leaflet_ids[nid] == -1 and not used_nodes[nid]:
  */
               __Pyx_TraceLine(958,0,__PYX_ERR(0, 958, __pyx_L1_error))
-              __pyx_t_60 = __pyx_v_nid;
-              __pyx_t_15 = -1;
-              if (__pyx_t_60 < 0) {
-                __pyx_t_60 += __pyx_v_maybe_leaflet_ids.shape[0];
-                if (unlikely(__pyx_t_60 < 0)) __pyx_t_15 = 0;
-              } else if (unlikely(__pyx_t_60 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_15 = 0;
-              if (unlikely(__pyx_t_15 != -1)) {
-                __Pyx_RaiseBufferIndexError(__pyx_t_15);
+              __pyx_t_61 = __pyx_v_nid;
+              __pyx_t_16 = -1;
+              if (__pyx_t_61 < 0) {
+                __pyx_t_61 += __pyx_v_maybe_leaflet_ids.shape[0];
+                if (unlikely(__pyx_t_61 < 0)) __pyx_t_16 = 0;
+              } else if (unlikely(__pyx_t_61 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_16 = 0;
+              if (unlikely(__pyx_t_16 != -1)) {
+                __Pyx_RaiseBufferIndexError(__pyx_t_16);
                 __PYX_ERR(0, 958, __pyx_L1_error)
               }
-              __pyx_t_49 = __Pyx_PyInt_From_npy_long((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_60 * __pyx_v_maybe_leaflet_ids.strides[0]) )))); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 958, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_49);
-              __pyx_t_51 = PyObject_RichCompare(__pyx_t_49, __pyx_v_lid, Py_EQ); __Pyx_XGOTREF(__pyx_t_51); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 958, __pyx_L1_error)
-              __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+              __pyx_t_52 = __Pyx_PyInt_From_npy_long((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_61 * __pyx_v_maybe_leaflet_ids.strides[0]) )))); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 958, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_52);
+              __pyx_t_51 = PyObject_RichCompare(__pyx_t_52, __pyx_v_lid, Py_EQ); __Pyx_XGOTREF(__pyx_t_51); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 958, __pyx_L1_error)
+              __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
               __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_51); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 958, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
               if (__pyx_t_6) {
@@ -15176,7 +15218,7 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
                 __Pyx_TraceLine(959,0,__PYX_ERR(0, 959, __pyx_L1_error))
                 __pyx_t_51 = __Pyx_PyInt_From_npy_long(__pyx_v_nid); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 959, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_51);
-                __pyx_t_48 = __Pyx_PyList_Append(__pyx_v_closest_bead_ids, __pyx_t_51); if (unlikely(__pyx_t_48 == ((int)-1))) __PYX_ERR(0, 959, __pyx_L1_error)
+                __pyx_t_49 = __Pyx_PyList_Append(__pyx_v_closest_bead_ids, __pyx_t_51); if (unlikely(__pyx_t_49 == ((int)-1))) __PYX_ERR(0, 959, __pyx_L1_error)
                 __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
 
                 /* "fatslim/_core.pyx":958
@@ -15197,17 +15239,17 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *                                         next_stack_size += 1
  */
               __Pyx_TraceLine(960,0,__PYX_ERR(0, 960, __pyx_L1_error))
-              __pyx_t_61 = __pyx_v_nid;
-              __pyx_t_15 = -1;
-              if (__pyx_t_61 < 0) {
-                __pyx_t_61 += __pyx_v_maybe_leaflet_ids.shape[0];
-                if (unlikely(__pyx_t_61 < 0)) __pyx_t_15 = 0;
-              } else if (unlikely(__pyx_t_61 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_15 = 0;
-              if (unlikely(__pyx_t_15 != -1)) {
-                __Pyx_RaiseBufferIndexError(__pyx_t_15);
+              __pyx_t_62 = __pyx_v_nid;
+              __pyx_t_16 = -1;
+              if (__pyx_t_62 < 0) {
+                __pyx_t_62 += __pyx_v_maybe_leaflet_ids.shape[0];
+                if (unlikely(__pyx_t_62 < 0)) __pyx_t_16 = 0;
+              } else if (unlikely(__pyx_t_62 >= __pyx_v_maybe_leaflet_ids.shape[0])) __pyx_t_16 = 0;
+              if (unlikely(__pyx_t_16 != -1)) {
+                __Pyx_RaiseBufferIndexError(__pyx_t_16);
                 __PYX_ERR(0, 960, __pyx_L1_error)
               }
-              __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_61 * __pyx_v_maybe_leaflet_ids.strides[0]) ))) == -1L) != 0);
+              __pyx_t_1 = (((*((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_maybe_leaflet_ids.data + __pyx_t_62 * __pyx_v_maybe_leaflet_ids.strides[0]) ))) == -1L) != 0);
               if (__pyx_t_1) {
               } else {
                 __pyx_t_6 = __pyx_t_1;
@@ -15267,7 +15309,7 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
               __Pyx_TraceLine(953,0,__PYX_ERR(0, 953, __pyx_L1_error))
             }
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           }
 
           /* "fatslim/_core.pyx":964
@@ -15278,10 +15320,10 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *                             current_stack = next_stack.copy()
  */
           __Pyx_TraceLine(964,0,__PYX_ERR(0, 964, __pyx_L1_error))
-          __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_generation, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 964, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __Pyx_DECREF_SET(__pyx_v_generation, __pyx_t_3);
-          __pyx_t_3 = 0;
+          __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_generation, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 964, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_8);
+          __Pyx_DECREF_SET(__pyx_v_generation, __pyx_t_8);
+          __pyx_t_8 = 0;
 
           /* "fatslim/_core.pyx":966
  *                             generation += 1
@@ -15293,23 +15335,23 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
           __Pyx_TraceLine(966,0,__PYX_ERR(0, 966, __pyx_L1_error))
           __pyx_t_51 = __Pyx_PyObject_GetAttrStr(__pyx_v_next_stack, __pyx_n_s_copy); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 966, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_51);
-          __pyx_t_49 = NULL;
+          __pyx_t_52 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_51))) {
-            __pyx_t_49 = PyMethod_GET_SELF(__pyx_t_51);
-            if (likely(__pyx_t_49)) {
+            __pyx_t_52 = PyMethod_GET_SELF(__pyx_t_51);
+            if (likely(__pyx_t_52)) {
               PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_51);
-              __Pyx_INCREF(__pyx_t_49);
+              __Pyx_INCREF(__pyx_t_52);
               __Pyx_INCREF(function);
               __Pyx_DECREF_SET(__pyx_t_51, function);
             }
           }
-          __pyx_t_3 = (__pyx_t_49) ? __Pyx_PyObject_CallOneArg(__pyx_t_51, __pyx_t_49) : __Pyx_PyObject_CallNoArg(__pyx_t_51);
-          __Pyx_XDECREF(__pyx_t_49); __pyx_t_49 = 0;
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 966, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
+          __pyx_t_8 = (__pyx_t_52) ? __Pyx_PyObject_CallOneArg(__pyx_t_51, __pyx_t_52) : __Pyx_PyObject_CallNoArg(__pyx_t_51);
+          __Pyx_XDECREF(__pyx_t_52); __pyx_t_52 = 0;
+          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 966, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
-          __Pyx_DECREF_SET(__pyx_v_current_stack, __pyx_t_3);
-          __pyx_t_3 = 0;
+          __Pyx_DECREF_SET(__pyx_v_current_stack, __pyx_t_8);
+          __pyx_t_8 = 0;
 
           /* "fatslim/_core.pyx":967
  * 
@@ -15331,8 +15373,8 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
         __Pyx_TraceLine(976,0,__PYX_ERR(0, 976, __pyx_L1_error))
-        __pyx_t_12 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 976, __pyx_L1_error)
-        __pyx_t_6 = ((__pyx_t_12 == 0) != 0);
+        __pyx_t_13 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 976, __pyx_L1_error)
+        __pyx_t_6 = ((__pyx_t_13 == 0) != 0);
         if (__pyx_t_6) {
 
           /* "fatslim/_core.pyx":977
@@ -15383,26 +15425,26 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
         __Pyx_TraceLine(982,0,__PYX_ERR(0, 982, __pyx_L1_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 982, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_51 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 982, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 982, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_51 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zeros); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 982, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_51);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 982, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_GetModuleGlobalName(__pyx_t_49, __pyx_n_s_np); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 982, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __pyx_t_52 = __Pyx_PyObject_GetAttrStr(__pyx_t_49, __pyx_n_s_float32); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 982, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 982, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GetModuleGlobalName(__pyx_t_52, __pyx_n_s_np); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 982, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_52);
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_52) < 0) __PYX_ERR(0, 982, __pyx_L1_error)
+        __pyx_t_53 = __Pyx_PyObject_GetAttrStr(__pyx_t_52, __pyx_n_s_float32); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 982, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
         __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-        __pyx_t_52 = __Pyx_PyObject_Call(__pyx_t_51, __pyx_tuple__25, __pyx_t_3); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 982, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_52);
+        if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_53) < 0) __PYX_ERR(0, 982, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+        __pyx_t_53 = __Pyx_PyObject_Call(__pyx_t_51, __pyx_tuple__25, __pyx_t_8); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 982, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
         __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_XDECREF_SET(__pyx_v_position, __pyx_t_52);
-        __pyx_t_52 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_XDECREF_SET(__pyx_v_position, __pyx_t_53);
+        __pyx_t_53 = 0;
 
         /* "fatslim/_core.pyx":983
  *                         dprod_value = 0
@@ -15412,30 +15454,30 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *                         for bead_id in closest_bead_ids:
  */
         __Pyx_TraceLine(983,0,__PYX_ERR(0, 983, __pyx_L1_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_52, __pyx_n_s_np); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 983, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_52);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_52, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 983, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-        __pyx_t_52 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 983, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_52);
+        __Pyx_GetModuleGlobalName(__pyx_t_53, __pyx_n_s_np); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 983, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_53, __pyx_n_s_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 983, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+        __pyx_t_53 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 983, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
         __Pyx_GetModuleGlobalName(__pyx_t_51, __pyx_n_s_np); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 983, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_51);
-        __pyx_t_49 = __Pyx_PyObject_GetAttrStr(__pyx_t_51, __pyx_n_s_float32); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 983, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
+        __pyx_t_52 = __Pyx_PyObject_GetAttrStr(__pyx_t_51, __pyx_n_s_float32); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 983, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_52);
         __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
-        if (PyDict_SetItem(__pyx_t_52, __pyx_n_s_dtype, __pyx_t_49) < 0) __PYX_ERR(0, 983, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
-        __pyx_t_49 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__25, __pyx_t_52); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 983, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        if (PyDict_SetItem(__pyx_t_53, __pyx_n_s_dtype, __pyx_t_52) < 0) __PYX_ERR(0, 983, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-        __pyx_t_62 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_real(__pyx_t_49, PyBUF_WRITABLE); if (unlikely(!__pyx_t_62.memview)) __PYX_ERR(0, 983, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+        __pyx_t_52 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_tuple__25, __pyx_t_53); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 983, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_52);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+        __pyx_t_63 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_real(__pyx_t_52, PyBUF_WRITABLE); if (unlikely(!__pyx_t_63.memview)) __PYX_ERR(0, 983, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
         __PYX_XDEC_MEMVIEW(&__pyx_v_normal, 1);
-        __pyx_v_normal = __pyx_t_62;
-        __pyx_t_62.memview = NULL;
-        __pyx_t_62.data = NULL;
+        __pyx_v_normal = __pyx_t_63;
+        __pyx_t_63.memview = NULL;
+        __pyx_t_63.data = NULL;
 
         /* "fatslim/_core.pyx":985
  *                         normal = np.zeros(3, dtype=np.float32)
@@ -15445,18 +15487,18 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  *                                                          &self._lipid_positions[bead_id, XX])
  */
         __Pyx_TraceLine(985,0,__PYX_ERR(0, 985, __pyx_L1_error))
-        __pyx_t_49 = __pyx_v_closest_bead_ids; __Pyx_INCREF(__pyx_t_49); __pyx_t_12 = 0;
+        __pyx_t_52 = __pyx_v_closest_bead_ids; __Pyx_INCREF(__pyx_t_52); __pyx_t_13 = 0;
         for (;;) {
-          if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_49)) break;
+          if (__pyx_t_13 >= PyList_GET_SIZE(__pyx_t_52)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_52 = PyList_GET_ITEM(__pyx_t_49, __pyx_t_12); __Pyx_INCREF(__pyx_t_52); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 985, __pyx_L1_error)
+          __pyx_t_53 = PyList_GET_ITEM(__pyx_t_52, __pyx_t_13); __Pyx_INCREF(__pyx_t_53); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 985, __pyx_L1_error)
           #else
-          __pyx_t_52 = PySequence_ITEM(__pyx_t_49, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 985, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_52);
+          __pyx_t_53 = PySequence_ITEM(__pyx_t_52, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 985, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_53);
           #endif
-          __pyx_t_19 = __Pyx_PyInt_As_npy_long(__pyx_t_52); if (unlikely((__pyx_t_19 == ((npy_long)-1)) && PyErr_Occurred())) __PYX_ERR(0, 985, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-          __pyx_v_bead_id = __pyx_t_19;
+          __pyx_t_20 = __Pyx_PyInt_As_npy_long(__pyx_t_53); if (unlikely((__pyx_t_20 == ((npy_long)-1)) && PyErr_Occurred())) __PYX_ERR(0, 985, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+          __pyx_v_bead_id = __pyx_t_20;
 
           /* "fatslim/_core.pyx":986
  * 
@@ -15467,20 +15509,20 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
           __Pyx_TraceLine(986,0,__PYX_ERR(0, 986, __pyx_L1_error))
           if (unlikely(!__pyx_v_self->_lipid_positions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 986, __pyx_L1_error)}
-          __pyx_t_57 = __Pyx_PyIndex_AsSsize_t(__pyx_v_edger_id); if (unlikely((__pyx_t_57 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 986, __pyx_L1_error)
-          __pyx_t_63 = __pyx_t_57;
-          __pyx_t_64 = 0;
-          __pyx_t_15 = -1;
-          if (__pyx_t_63 < 0) {
-            __pyx_t_63 += __pyx_v_self->_lipid_positions.shape[0];
-            if (unlikely(__pyx_t_63 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_63 >= __pyx_v_self->_lipid_positions.shape[0])) __pyx_t_15 = 0;
+          __pyx_t_58 = __Pyx_PyIndex_AsSsize_t(__pyx_v_edger_id); if (unlikely((__pyx_t_58 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 986, __pyx_L1_error)
+          __pyx_t_64 = __pyx_t_58;
+          __pyx_t_65 = 0;
+          __pyx_t_16 = -1;
           if (__pyx_t_64 < 0) {
-            __pyx_t_64 += __pyx_v_self->_lipid_positions.shape[1];
-            if (unlikely(__pyx_t_64 < 0)) __pyx_t_15 = 1;
-          } else if (unlikely(__pyx_t_64 >= __pyx_v_self->_lipid_positions.shape[1])) __pyx_t_15 = 1;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_64 += __pyx_v_self->_lipid_positions.shape[0];
+            if (unlikely(__pyx_t_64 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_64 >= __pyx_v_self->_lipid_positions.shape[0])) __pyx_t_16 = 0;
+          if (__pyx_t_65 < 0) {
+            __pyx_t_65 += __pyx_v_self->_lipid_positions.shape[1];
+            if (unlikely(__pyx_t_65 < 0)) __pyx_t_16 = 1;
+          } else if (unlikely(__pyx_t_65 >= __pyx_v_self->_lipid_positions.shape[1])) __pyx_t_16 = 1;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 986, __pyx_L1_error)
           }
 
@@ -15493,19 +15535,19 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
           __Pyx_TraceLine(987,0,__PYX_ERR(0, 987, __pyx_L1_error))
           if (unlikely(!__pyx_v_self->_lipid_positions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 987, __pyx_L1_error)}
-          __pyx_t_65 = __pyx_v_bead_id;
-          __pyx_t_66 = 0;
-          __pyx_t_15 = -1;
-          if (__pyx_t_65 < 0) {
-            __pyx_t_65 += __pyx_v_self->_lipid_positions.shape[0];
-            if (unlikely(__pyx_t_65 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_65 >= __pyx_v_self->_lipid_positions.shape[0])) __pyx_t_15 = 0;
+          __pyx_t_66 = __pyx_v_bead_id;
+          __pyx_t_67 = 0;
+          __pyx_t_16 = -1;
           if (__pyx_t_66 < 0) {
-            __pyx_t_66 += __pyx_v_self->_lipid_positions.shape[1];
-            if (unlikely(__pyx_t_66 < 0)) __pyx_t_15 = 1;
-          } else if (unlikely(__pyx_t_66 >= __pyx_v_self->_lipid_positions.shape[1])) __pyx_t_15 = 1;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_66 += __pyx_v_self->_lipid_positions.shape[0];
+            if (unlikely(__pyx_t_66 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_66 >= __pyx_v_self->_lipid_positions.shape[0])) __pyx_t_16 = 0;
+          if (__pyx_t_67 < 0) {
+            __pyx_t_67 += __pyx_v_self->_lipid_positions.shape[1];
+            if (unlikely(__pyx_t_67 < 0)) __pyx_t_16 = 1;
+          } else if (unlikely(__pyx_t_67 >= __pyx_v_self->_lipid_positions.shape[1])) __pyx_t_16 = 1;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 987, __pyx_L1_error)
           }
 
@@ -15517,13 +15559,13 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
           __Pyx_TraceLine(986,0,__PYX_ERR(0, 986, __pyx_L1_error))
-          __pyx_t_52 = PyFloat_FromDouble(((struct __pyx_vtabstruct_7fatslim_9_geometry_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_distance2(__pyx_v_self->box, (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_positions.data + __pyx_t_63 * __pyx_v_self->_lipid_positions.strides[0]) )) + __pyx_t_64)) )))), (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_positions.data + __pyx_t_65 * __pyx_v_self->_lipid_positions.strides[0]) )) + __pyx_t_66)) )))))); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 986, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_52);
-          __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_d2, __pyx_t_52); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 986, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-          __Pyx_DECREF_SET(__pyx_v_d2, __pyx_t_3);
-          __pyx_t_3 = 0;
+          __pyx_t_53 = PyFloat_FromDouble(((struct __pyx_vtabstruct_7fatslim_9_geometry_PBCBox *)__pyx_v_self->box->__pyx_vtab)->fast_distance2(__pyx_v_self->box, (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_positions.data + __pyx_t_64 * __pyx_v_self->_lipid_positions.strides[0]) )) + __pyx_t_65)) )))), (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_positions.data + __pyx_t_66 * __pyx_v_self->_lipid_positions.strides[0]) )) + __pyx_t_67)) )))))); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 986, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_53);
+          __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_v_d2, __pyx_t_53); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 986, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_8);
+          __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+          __Pyx_DECREF_SET(__pyx_v_d2, __pyx_t_8);
+          __pyx_t_8 = 0;
 
           /* "fatslim/_core.pyx":989
  *                                                          &self._lipid_positions[bead_id, XX])
@@ -15534,20 +15576,20 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
           __Pyx_TraceLine(989,0,__PYX_ERR(0, 989, __pyx_L1_error))
           if (unlikely(!__pyx_v_self->_lipid_normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 989, __pyx_L1_error)}
-          __pyx_t_57 = __Pyx_PyIndex_AsSsize_t(__pyx_v_edger_id); if (unlikely((__pyx_t_57 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 989, __pyx_L1_error)
-          __pyx_t_67 = __pyx_t_57;
-          __pyx_t_68 = 0;
-          __pyx_t_15 = -1;
-          if (__pyx_t_67 < 0) {
-            __pyx_t_67 += __pyx_v_self->_lipid_normals.shape[0];
-            if (unlikely(__pyx_t_67 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_67 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_15 = 0;
+          __pyx_t_58 = __Pyx_PyIndex_AsSsize_t(__pyx_v_edger_id); if (unlikely((__pyx_t_58 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 989, __pyx_L1_error)
+          __pyx_t_68 = __pyx_t_58;
+          __pyx_t_69 = 0;
+          __pyx_t_16 = -1;
           if (__pyx_t_68 < 0) {
-            __pyx_t_68 += __pyx_v_self->_lipid_normals.shape[1];
-            if (unlikely(__pyx_t_68 < 0)) __pyx_t_15 = 1;
-          } else if (unlikely(__pyx_t_68 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_15 = 1;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_68 += __pyx_v_self->_lipid_normals.shape[0];
+            if (unlikely(__pyx_t_68 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_68 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_16 = 0;
+          if (__pyx_t_69 < 0) {
+            __pyx_t_69 += __pyx_v_self->_lipid_normals.shape[1];
+            if (unlikely(__pyx_t_69 < 0)) __pyx_t_16 = 1;
+          } else if (unlikely(__pyx_t_69 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_16 = 1;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 989, __pyx_L1_error)
           }
 
@@ -15560,19 +15602,19 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
           __Pyx_TraceLine(990,0,__PYX_ERR(0, 990, __pyx_L1_error))
           if (unlikely(!__pyx_v_self->_lipid_normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 990, __pyx_L1_error)}
-          __pyx_t_69 = __pyx_v_bead_id;
-          __pyx_t_70 = 0;
-          __pyx_t_15 = -1;
-          if (__pyx_t_69 < 0) {
-            __pyx_t_69 += __pyx_v_self->_lipid_normals.shape[0];
-            if (unlikely(__pyx_t_69 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_69 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_15 = 0;
+          __pyx_t_70 = __pyx_v_bead_id;
+          __pyx_t_71 = 0;
+          __pyx_t_16 = -1;
           if (__pyx_t_70 < 0) {
-            __pyx_t_70 += __pyx_v_self->_lipid_normals.shape[1];
-            if (unlikely(__pyx_t_70 < 0)) __pyx_t_15 = 1;
-          } else if (unlikely(__pyx_t_70 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_15 = 1;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+            __pyx_t_70 += __pyx_v_self->_lipid_normals.shape[0];
+            if (unlikely(__pyx_t_70 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_70 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_16 = 0;
+          if (__pyx_t_71 < 0) {
+            __pyx_t_71 += __pyx_v_self->_lipid_normals.shape[1];
+            if (unlikely(__pyx_t_71 < 0)) __pyx_t_16 = 1;
+          } else if (unlikely(__pyx_t_71 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_16 = 1;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 990, __pyx_L1_error)
           }
 
@@ -15584,7 +15626,7 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  * 
  */
           __Pyx_TraceLine(989,0,__PYX_ERR(0, 989, __pyx_L1_error))
-          __pyx_v_dprod_value = (__pyx_v_dprod_value + __pyx_f_7fatslim_9_typedefs_rvec_dprod((&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_67 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_68)) )))), (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_69 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_70)) ))))));
+          __pyx_v_dprod_value = (__pyx_v_dprod_value + __pyx_f_7fatslim_9_typedefs_rvec_dprod((&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_68 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_69)) )))), (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_70 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_71)) ))))));
 
           /* "fatslim/_core.pyx":992
  *                                                       &self._lipid_normals[bead_id, XX])
@@ -15595,9 +15637,9 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
  */
           __Pyx_TraceLine(992,0,__PYX_ERR(0, 992, __pyx_L1_error))
           if (unlikely(!__pyx_v_self->_lipid_positions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 992, __pyx_L1_error)}
-          __pyx_t_71.data = __pyx_v_self->_lipid_positions.data;
-          __pyx_t_71.memview = __pyx_v_self->_lipid_positions.memview;
-          __PYX_INC_MEMVIEW(&__pyx_t_71, 0);
+          __pyx_t_72.data = __pyx_v_self->_lipid_positions.data;
+          __pyx_t_72.memview = __pyx_v_self->_lipid_positions.memview;
+          __PYX_INC_MEMVIEW(&__pyx_t_72, 0);
           {
     Py_ssize_t __pyx_tmp_idx = __pyx_v_bead_id;
         Py_ssize_t __pyx_tmp_shape = __pyx_v_self->_lipid_positions.shape[0];
@@ -15609,23 +15651,23 @@ __pyx_t_47 = __pyx_memoryview_copy_slice_dc_nn___pyx_t_7fatslim_9_typedefs_fsl_i
                             "Index out of bounds (axis 0)");
             __PYX_ERR(0, 992, __pyx_L1_error)
         }
-        __pyx_t_71.data += __pyx_tmp_idx * __pyx_tmp_stride;
+        __pyx_t_72.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
 
-__pyx_t_71.shape[0] = __pyx_v_self->_lipid_positions.shape[1];
-__pyx_t_71.strides[0] = __pyx_v_self->_lipid_positions.strides[1];
-    __pyx_t_71.suboffsets[0] = -1;
+__pyx_t_72.shape[0] = __pyx_v_self->_lipid_positions.shape[1];
+__pyx_t_72.strides[0] = __pyx_v_self->_lipid_positions.strides[1];
+    __pyx_t_72.suboffsets[0] = -1;
 
-__pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_real, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 992, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __PYX_XDEC_MEMVIEW(&__pyx_t_71, 1);
-          __pyx_t_71.memview = NULL;
-          __pyx_t_71.data = NULL;
-          __pyx_t_52 = PyNumber_InPlaceAdd(__pyx_v_position, __pyx_t_3); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 992, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_52);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF_SET(__pyx_v_position, __pyx_t_52);
-          __pyx_t_52 = 0;
+__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_72, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_real, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 992, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_8);
+          __PYX_XDEC_MEMVIEW(&__pyx_t_72, 1);
+          __pyx_t_72.memview = NULL;
+          __pyx_t_72.data = NULL;
+          __pyx_t_53 = PyNumber_InPlaceAdd(__pyx_v_position, __pyx_t_8); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 992, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_53);
+          __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+          __Pyx_DECREF_SET(__pyx_v_position, __pyx_t_53);
+          __pyx_t_53 = 0;
 
           /* "fatslim/_core.pyx":994
  *                             position += self._lipid_positions[bead_id]
@@ -15635,8 +15677,8 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  * 
  */
           __Pyx_TraceLine(994,0,__PYX_ERR(0, 994, __pyx_L1_error))
-          for (__pyx_t_19 = 0; __pyx_t_19 < 3; __pyx_t_19+=1) {
-            __pyx_v_j = __pyx_t_19;
+          for (__pyx_t_20 = 0; __pyx_t_20 < 3; __pyx_t_20+=1) {
+            __pyx_v_j = __pyx_t_20;
 
             /* "fatslim/_core.pyx":995
  * 
@@ -15647,32 +15689,32 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  */
             __Pyx_TraceLine(995,0,__PYX_ERR(0, 995, __pyx_L1_error))
             if (unlikely(!__pyx_v_self->_lipid_normals.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 995, __pyx_L1_error)}
-            __pyx_t_72 = __pyx_v_bead_id;
-            __pyx_t_73 = __pyx_v_j;
-            __pyx_t_15 = -1;
-            if (__pyx_t_72 < 0) {
-              __pyx_t_72 += __pyx_v_self->_lipid_normals.shape[0];
-              if (unlikely(__pyx_t_72 < 0)) __pyx_t_15 = 0;
-            } else if (unlikely(__pyx_t_72 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_15 = 0;
-            if (__pyx_t_73 < 0) {
-              __pyx_t_73 += __pyx_v_self->_lipid_normals.shape[1];
-              if (unlikely(__pyx_t_73 < 0)) __pyx_t_15 = 1;
-            } else if (unlikely(__pyx_t_73 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_15 = 1;
-            if (unlikely(__pyx_t_15 != -1)) {
-              __Pyx_RaiseBufferIndexError(__pyx_t_15);
-              __PYX_ERR(0, 995, __pyx_L1_error)
-            }
+            __pyx_t_73 = __pyx_v_bead_id;
             __pyx_t_74 = __pyx_v_j;
-            __pyx_t_15 = -1;
+            __pyx_t_16 = -1;
+            if (__pyx_t_73 < 0) {
+              __pyx_t_73 += __pyx_v_self->_lipid_normals.shape[0];
+              if (unlikely(__pyx_t_73 < 0)) __pyx_t_16 = 0;
+            } else if (unlikely(__pyx_t_73 >= __pyx_v_self->_lipid_normals.shape[0])) __pyx_t_16 = 0;
             if (__pyx_t_74 < 0) {
-              __pyx_t_74 += __pyx_v_normal.shape[0];
-              if (unlikely(__pyx_t_74 < 0)) __pyx_t_15 = 0;
-            } else if (unlikely(__pyx_t_74 >= __pyx_v_normal.shape[0])) __pyx_t_15 = 0;
-            if (unlikely(__pyx_t_15 != -1)) {
-              __Pyx_RaiseBufferIndexError(__pyx_t_15);
+              __pyx_t_74 += __pyx_v_self->_lipid_normals.shape[1];
+              if (unlikely(__pyx_t_74 < 0)) __pyx_t_16 = 1;
+            } else if (unlikely(__pyx_t_74 >= __pyx_v_self->_lipid_normals.shape[1])) __pyx_t_16 = 1;
+            if (unlikely(__pyx_t_16 != -1)) {
+              __Pyx_RaiseBufferIndexError(__pyx_t_16);
               __PYX_ERR(0, 995, __pyx_L1_error)
             }
-            *((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_normal.data + __pyx_t_74 * __pyx_v_normal.strides[0]) )) += (*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_72 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_73)) )));
+            __pyx_t_75 = __pyx_v_j;
+            __pyx_t_16 = -1;
+            if (__pyx_t_75 < 0) {
+              __pyx_t_75 += __pyx_v_normal.shape[0];
+              if (unlikely(__pyx_t_75 < 0)) __pyx_t_16 = 0;
+            } else if (unlikely(__pyx_t_75 >= __pyx_v_normal.shape[0])) __pyx_t_16 = 0;
+            if (unlikely(__pyx_t_16 != -1)) {
+              __Pyx_RaiseBufferIndexError(__pyx_t_16);
+              __PYX_ERR(0, 995, __pyx_L1_error)
+            }
+            *((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_normal.data + __pyx_t_75 * __pyx_v_normal.strides[0]) )) += (*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=1 */ ((char *) (((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_self->_lipid_normals.data + __pyx_t_73 * __pyx_v_self->_lipid_normals.strides[0]) )) + __pyx_t_74)) )));
           }
 
           /* "fatslim/_core.pyx":985
@@ -15684,7 +15726,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  */
           __Pyx_TraceLine(985,0,__PYX_ERR(0, 985, __pyx_L1_error))
         }
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
 
         /* "fatslim/_core.pyx":997
  *                                 normal[j] += self._lipid_normals[bead_id, j]
@@ -15694,14 +15736,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  *                         position /= len(closest_bead_ids)
  */
         __Pyx_TraceLine(997,0,__PYX_ERR(0, 997, __pyx_L1_error))
-        __pyx_t_12 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 997, __pyx_L1_error)
-        __pyx_t_49 = PyInt_FromSsize_t(__pyx_t_12); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 997, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __pyx_t_52 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_d2, __pyx_t_49); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 997, __pyx_L1_error)
+        __pyx_t_13 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 997, __pyx_L1_error)
+        __pyx_t_52 = PyInt_FromSsize_t(__pyx_t_13); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 997, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_52);
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
-        __Pyx_DECREF_SET(__pyx_v_d2, __pyx_t_52);
-        __pyx_t_52 = 0;
+        __pyx_t_53 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_d2, __pyx_t_52); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 997, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        __Pyx_DECREF_SET(__pyx_v_d2, __pyx_t_53);
+        __pyx_t_53 = 0;
 
         /* "fatslim/_core.pyx":998
  * 
@@ -15711,12 +15753,12 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  * 
  */
         __Pyx_TraceLine(998,0,__PYX_ERR(0, 998, __pyx_L1_error))
-        __pyx_t_12 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 998, __pyx_L1_error)
-        if (unlikely(__pyx_t_12 == 0)) {
+        __pyx_t_13 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 998, __pyx_L1_error)
+        if (unlikely(__pyx_t_13 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
           __PYX_ERR(0, 998, __pyx_L1_error)
         }
-        __pyx_v_dprod_value = (__pyx_v_dprod_value / __pyx_t_12);
+        __pyx_v_dprod_value = (__pyx_v_dprod_value / __pyx_t_13);
 
         /* "fatslim/_core.pyx":999
  *                         d2 /= len(closest_bead_ids)
@@ -15726,14 +15768,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  *                         for j in range(DIM):
  */
         __Pyx_TraceLine(999,0,__PYX_ERR(0, 999, __pyx_L1_error))
-        __pyx_t_12 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 999, __pyx_L1_error)
-        __pyx_t_52 = PyInt_FromSsize_t(__pyx_t_12); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 999, __pyx_L1_error)
+        __pyx_t_13 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 999, __pyx_L1_error)
+        __pyx_t_53 = PyInt_FromSsize_t(__pyx_t_13); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 999, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __pyx_t_52 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_position, __pyx_t_53); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 999, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_52);
-        __pyx_t_49 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_position, __pyx_t_52); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 999, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-        __Pyx_DECREF_SET(__pyx_v_position, __pyx_t_49);
-        __pyx_t_49 = 0;
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+        __Pyx_DECREF_SET(__pyx_v_position, __pyx_t_52);
+        __pyx_t_52 = 0;
 
         /* "fatslim/_core.pyx":1001
  *                         position /= len(closest_bead_ids)
@@ -15743,8 +15785,8 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  * 
  */
         __Pyx_TraceLine(1001,0,__PYX_ERR(0, 1001, __pyx_L1_error))
-        for (__pyx_t_19 = 0; __pyx_t_19 < 3; __pyx_t_19+=1) {
-          __pyx_v_j = __pyx_t_19;
+        for (__pyx_t_20 = 0; __pyx_t_20 < 3; __pyx_t_20+=1) {
+          __pyx_v_j = __pyx_t_20;
 
           /* "fatslim/_core.pyx":1002
  * 
@@ -15754,18 +15796,18 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  * 
  */
           __Pyx_TraceLine(1002,0,__PYX_ERR(0, 1002, __pyx_L1_error))
-          __pyx_t_12 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1002, __pyx_L1_error)
-          __pyx_t_75 = __pyx_v_j;
-          __pyx_t_15 = -1;
-          if (__pyx_t_75 < 0) {
-            __pyx_t_75 += __pyx_v_normal.shape[0];
-            if (unlikely(__pyx_t_75 < 0)) __pyx_t_15 = 0;
-          } else if (unlikely(__pyx_t_75 >= __pyx_v_normal.shape[0])) __pyx_t_15 = 0;
-          if (unlikely(__pyx_t_15 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_15);
+          __pyx_t_13 = PyList_GET_SIZE(__pyx_v_closest_bead_ids); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1002, __pyx_L1_error)
+          __pyx_t_76 = __pyx_v_j;
+          __pyx_t_16 = -1;
+          if (__pyx_t_76 < 0) {
+            __pyx_t_76 += __pyx_v_normal.shape[0];
+            if (unlikely(__pyx_t_76 < 0)) __pyx_t_16 = 0;
+          } else if (unlikely(__pyx_t_76 >= __pyx_v_normal.shape[0])) __pyx_t_16 = 0;
+          if (unlikely(__pyx_t_16 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_16);
             __PYX_ERR(0, 1002, __pyx_L1_error)
           }
-          *((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_normal.data + __pyx_t_75 * __pyx_v_normal.strides[0]) )) /= __pyx_t_12;
+          *((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_normal.data + __pyx_t_76 * __pyx_v_normal.strides[0]) )) /= __pyx_t_13;
         }
 
         /* "fatslim/_core.pyx":1005
@@ -15776,25 +15818,25 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
  *                         d2 = d_leaflet
  */
         __Pyx_TraceLine(1005,0,__PYX_ERR(0, 1005, __pyx_L1_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_52, __pyx_n_s_np); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1005, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_52);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_52, __pyx_n_s_abs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1005, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        __Pyx_GetModuleGlobalName(__pyx_t_53, __pyx_n_s_np); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1005, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_53, __pyx_n_s_abs); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1005, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
         __Pyx_GetModuleGlobalName(__pyx_t_51, __pyx_n_s_np); if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 1005, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_51);
-        __pyx_t_76 = __Pyx_PyObject_GetAttrStr(__pyx_t_51, __pyx_n_s_dot); if (unlikely(!__pyx_t_76)) __PYX_ERR(0, 1005, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_76);
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_51, __pyx_n_s_dot); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1005, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
         __pyx_t_51 = __pyx_memoryview_fromslice(__pyx_v_normal, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_real, 0);; if (unlikely(!__pyx_t_51)) __PYX_ERR(0, 1005, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_51);
         if (unlikely(!__pyx_v_self->_lipid_positions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 1005, __pyx_L1_error)}
-        __pyx_t_12 = __Pyx_PyIndex_AsSsize_t(__pyx_v_edger_id); if (unlikely((__pyx_t_12 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 1005, __pyx_L1_error)
-        __pyx_t_71.data = __pyx_v_self->_lipid_positions.data;
-        __pyx_t_71.memview = __pyx_v_self->_lipid_positions.memview;
-        __PYX_INC_MEMVIEW(&__pyx_t_71, 0);
+        __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_v_edger_id); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 1005, __pyx_L1_error)
+        __pyx_t_72.data = __pyx_v_self->_lipid_positions.data;
+        __pyx_t_72.memview = __pyx_v_self->_lipid_positions.memview;
+        __PYX_INC_MEMVIEW(&__pyx_t_72, 0);
         {
-    Py_ssize_t __pyx_tmp_idx = __pyx_t_12;
+    Py_ssize_t __pyx_tmp_idx = __pyx_t_13;
         Py_ssize_t __pyx_tmp_shape = __pyx_v_self->_lipid_positions.shape[0];
     Py_ssize_t __pyx_tmp_stride = __pyx_v_self->_lipid_positions.strides[0];
         if (__pyx_tmp_idx < 0)
@@ -15804,88 +15846,88 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __
                             "Index out of bounds (axis 0)");
             __PYX_ERR(0, 1005, __pyx_L1_error)
         }
-        __pyx_t_71.data += __pyx_tmp_idx * __pyx_tmp_stride;
+        __pyx_t_72.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
 
-__pyx_t_71.shape[0] = __pyx_v_self->_lipid_positions.shape[1];
-__pyx_t_71.strides[0] = __pyx_v_self->_lipid_positions.strides[1];
-    __pyx_t_71.suboffsets[0] = -1;
+__pyx_t_72.shape[0] = __pyx_v_self->_lipid_positions.shape[1];
+__pyx_t_72.strides[0] = __pyx_v_self->_lipid_positions.strides[1];
+    __pyx_t_72.suboffsets[0] = -1;
 
-__pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_real, 0);; if (unlikely(!__pyx_t_77)) __PYX_ERR(0, 1005, __pyx_L1_error)
+__pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_72, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_real, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_real, 0);; if (unlikely(!__pyx_t_77)) __PYX_ERR(0, 1005, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_77);
-        __PYX_XDEC_MEMVIEW(&__pyx_t_71, 1);
-        __pyx_t_71.memview = NULL;
-        __pyx_t_71.data = NULL;
+        __PYX_XDEC_MEMVIEW(&__pyx_t_72, 1);
+        __pyx_t_72.memview = NULL;
+        __pyx_t_72.data = NULL;
         __pyx_t_78 = PyNumber_Subtract(__pyx_v_position, __pyx_t_77); if (unlikely(!__pyx_t_78)) __PYX_ERR(0, 1005, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_78);
         __Pyx_DECREF(__pyx_t_77); __pyx_t_77 = 0;
         __pyx_t_77 = NULL;
-        __pyx_t_15 = 0;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_76))) {
-          __pyx_t_77 = PyMethod_GET_SELF(__pyx_t_76);
+        __pyx_t_16 = 0;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
+          __pyx_t_77 = PyMethod_GET_SELF(__pyx_t_7);
           if (likely(__pyx_t_77)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_76);
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
             __Pyx_INCREF(__pyx_t_77);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_76, function);
-            __pyx_t_15 = 1;
+            __Pyx_DECREF_SET(__pyx_t_7, function);
+            __pyx_t_16 = 1;
           }
         }
         #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_76)) {
+        if (PyFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[3] = {__pyx_t_77, __pyx_t_51, __pyx_t_78};
-          __pyx_t_52 = __Pyx_PyFunction_FastCall(__pyx_t_76, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1005, __pyx_L1_error)
+          __pyx_t_53 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1005, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_77); __pyx_t_77 = 0;
-          __Pyx_GOTREF(__pyx_t_52);
+          __Pyx_GOTREF(__pyx_t_53);
           __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
           __Pyx_DECREF(__pyx_t_78); __pyx_t_78 = 0;
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_76)) {
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[3] = {__pyx_t_77, __pyx_t_51, __pyx_t_78};
-          __pyx_t_52 = __Pyx_PyCFunction_FastCall(__pyx_t_76, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1005, __pyx_L1_error)
+          __pyx_t_53 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1005, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_77); __pyx_t_77 = 0;
-          __Pyx_GOTREF(__pyx_t_52);
+          __Pyx_GOTREF(__pyx_t_53);
           __Pyx_DECREF(__pyx_t_51); __pyx_t_51 = 0;
           __Pyx_DECREF(__pyx_t_78); __pyx_t_78 = 0;
         } else
         #endif
         {
-          __pyx_t_79 = PyTuple_New(2+__pyx_t_15); if (unlikely(!__pyx_t_79)) __PYX_ERR(0, 1005, __pyx_L1_error)
+          __pyx_t_79 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_79)) __PYX_ERR(0, 1005, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_79);
           if (__pyx_t_77) {
             __Pyx_GIVEREF(__pyx_t_77); PyTuple_SET_ITEM(__pyx_t_79, 0, __pyx_t_77); __pyx_t_77 = NULL;
           }
           __Pyx_GIVEREF(__pyx_t_51);
-          PyTuple_SET_ITEM(__pyx_t_79, 0+__pyx_t_15, __pyx_t_51);
+          PyTuple_SET_ITEM(__pyx_t_79, 0+__pyx_t_16, __pyx_t_51);
           __Pyx_GIVEREF(__pyx_t_78);
-          PyTuple_SET_ITEM(__pyx_t_79, 1+__pyx_t_15, __pyx_t_78);
+          PyTuple_SET_ITEM(__pyx_t_79, 1+__pyx_t_16, __pyx_t_78);
           __pyx_t_51 = 0;
           __pyx_t_78 = 0;
-          __pyx_t_52 = __Pyx_PyObject_Call(__pyx_t_76, __pyx_t_79, NULL); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1005, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_52);
+          __pyx_t_53 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_79, NULL); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1005, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_53);
           __Pyx_DECREF(__pyx_t_79); __pyx_t_79 = 0;
         }
-        __Pyx_DECREF(__pyx_t_76); __pyx_t_76 = 0;
-        __pyx_t_76 = NULL;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-          __pyx_t_76 = PyMethod_GET_SELF(__pyx_t_3);
-          if (likely(__pyx_t_76)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-            __Pyx_INCREF(__pyx_t_76);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __pyx_t_7 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
+          __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_8);
+          if (likely(__pyx_t_7)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+            __Pyx_INCREF(__pyx_t_7);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_3, function);
+            __Pyx_DECREF_SET(__pyx_t_8, function);
           }
         }
-        __pyx_t_49 = (__pyx_t_76) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_76, __pyx_t_52) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_52);
-        __Pyx_XDECREF(__pyx_t_76); __pyx_t_76 = 0;
-        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-        if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1005, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_XDECREF_SET(__pyx_v_d_leaflet, __pyx_t_49);
-        __pyx_t_49 = 0;
+        __pyx_t_52 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_7, __pyx_t_53) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_53);
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+        if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1005, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_52);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_XDECREF_SET(__pyx_v_d_leaflet, __pyx_t_52);
+        __pyx_t_52 = 0;
 
         /* "fatslim/_core.pyx":1007
  *                         d_leaflet = np.abs(np.dot(normal, position - self._lipid_positions[edger_id]))
@@ -15906,23 +15948,23 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                             best_d2min = d2
  */
         __Pyx_TraceLine(1008,0,__PYX_ERR(0, 1008, __pyx_L1_error))
-        __pyx_t_49 = PyFloat_FromDouble(__pyx_v_dprod_value); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1008, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __pyx_t_3 = PyNumber_Multiply(__pyx_v_best_value, __pyx_float_0_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1008, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_52 = PyObject_RichCompare(__pyx_t_49, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_52); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1008, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_52); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 1008, __pyx_L1_error)
+        __pyx_t_52 = PyFloat_FromDouble(__pyx_v_dprod_value); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1008, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_52);
+        __pyx_t_8 = PyNumber_Multiply(__pyx_v_best_value, __pyx_float_0_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1008, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_53 = PyObject_RichCompare(__pyx_t_52, __pyx_t_8, Py_GT); __Pyx_XGOTREF(__pyx_t_53); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1008, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_53); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 1008, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
         if (__pyx_t_5) {
         } else {
           __pyx_t_6 = __pyx_t_5;
           goto __pyx_L58_bool_binop_done;
         }
-        __pyx_t_52 = PyObject_RichCompare(__pyx_v_d2, __pyx_v_best_d2min, Py_LT); __Pyx_XGOTREF(__pyx_t_52); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1008, __pyx_L1_error)
-        __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_52); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 1008, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        __pyx_t_53 = PyObject_RichCompare(__pyx_v_d2, __pyx_v_best_d2min, Py_LT); __Pyx_XGOTREF(__pyx_t_53); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1008, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_53); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 1008, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
         __pyx_t_6 = __pyx_t_5;
         __pyx_L58_bool_binop_done:;
         if (__pyx_t_6) {
@@ -15935,10 +15977,10 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                             best_leaflet = lid
  */
           __Pyx_TraceLine(1009,0,__PYX_ERR(0, 1009, __pyx_L1_error))
-          __pyx_t_52 = PyFloat_FromDouble(__pyx_v_dprod_value); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1009, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_52);
-          __Pyx_DECREF_SET(__pyx_v_best_value, __pyx_t_52);
-          __pyx_t_52 = 0;
+          __pyx_t_53 = PyFloat_FromDouble(__pyx_v_dprod_value); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1009, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_53);
+          __Pyx_DECREF_SET(__pyx_v_best_value, __pyx_t_53);
+          __pyx_t_53 = 0;
 
           /* "fatslim/_core.pyx":1010
  *                         if dprod_value > best_value * 0.9 and d2 < best_d2min:
@@ -15975,13 +16017,13 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                     best_leaflet = -1
  * 
  *                     for lid, indices in enumerate(maybe_leaflets_from_aggregates):             # <<<<<<<<<<<<<<
- *                         current_stack = np.empty(self._nlipids, dtype=int)
+ *                         current_stack = np.empty(self._nlipids, dtype=np.int)
  *                         current_stack[0] = edger_id
  */
         __Pyx_TraceLine(931,0,__PYX_ERR(0, 931, __pyx_L1_error))
         __pyx_L37_continue:;
       }
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
       /* "fatslim/_core.pyx":1013
@@ -16007,7 +16049,7 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
         __Pyx_TraceLine(1018,0,__PYX_ERR(0, 1018, __pyx_L1_error))
         __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_new_members, __pyx_v_best_leaflet); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1018, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_48 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_v_edger_id); if (unlikely(__pyx_t_48 == ((int)-1))) __PYX_ERR(0, 1018, __pyx_L1_error)
+        __pyx_t_49 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_v_edger_id); if (unlikely(__pyx_t_49 == ((int)-1))) __PYX_ERR(0, 1018, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
         /* "fatslim/_core.pyx":1013
@@ -16029,18 +16071,18 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  */
       __Pyx_TraceLine(1023,0,__PYX_ERR(0, 1023, __pyx_L1_error))
       /*else*/ {
-        __pyx_t_19 = __Pyx_PyInt_As_npy_long(__pyx_v_edger_id); if (unlikely((__pyx_t_19 == ((npy_long)-1)) && PyErr_Occurred())) __PYX_ERR(0, 1023, __pyx_L1_error)
+        __pyx_t_20 = __Pyx_PyInt_As_npy_long(__pyx_v_edger_id); if (unlikely((__pyx_t_20 == ((npy_long)-1)) && PyErr_Occurred())) __PYX_ERR(0, 1023, __pyx_L1_error)
         __pyx_t_80 = __pyx_v_n_leftovers;
-        __pyx_t_15 = -1;
+        __pyx_t_16 = -1;
         if (__pyx_t_80 < 0) {
           __pyx_t_80 += __pyx_v_leftovers.shape[0];
-          if (unlikely(__pyx_t_80 < 0)) __pyx_t_15 = 0;
-        } else if (unlikely(__pyx_t_80 >= __pyx_v_leftovers.shape[0])) __pyx_t_15 = 0;
-        if (unlikely(__pyx_t_15 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_15);
+          if (unlikely(__pyx_t_80 < 0)) __pyx_t_16 = 0;
+        } else if (unlikely(__pyx_t_80 >= __pyx_v_leftovers.shape[0])) __pyx_t_16 = 0;
+        if (unlikely(__pyx_t_16 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_16);
           __PYX_ERR(0, 1023, __pyx_L1_error)
         }
-        *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_leftovers.data + __pyx_t_80 * __pyx_v_leftovers.strides[0]) )) = __pyx_t_19;
+        *((__pyx_t_7fatslim_9_typedefs_fsl_int *) ( /* dim=0 */ (__pyx_v_leftovers.data + __pyx_t_80 * __pyx_v_leftovers.strides[0]) )) = __pyx_t_20;
 
         /* "fatslim/_core.pyx":1024
  *                         # ))
@@ -16063,10 +16105,10 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  * 
  */
     __Pyx_TraceLine(1029,0,__PYX_ERR(0, 1029, __pyx_L1_error))
-    __pyx_t_11 = PyList_GET_SIZE(__pyx_v_maybe_leaflets_from_aggregates); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1029, __pyx_L1_error)
-    __pyx_t_12 = __pyx_t_11;
-    for (__pyx_t_57 = 0; __pyx_t_57 < __pyx_t_12; __pyx_t_57+=1) {
-      __pyx_v_leaflet_id = __pyx_t_57;
+    __pyx_t_12 = PyList_GET_SIZE(__pyx_v_maybe_leaflets_from_aggregates); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1029, __pyx_L1_error)
+    __pyx_t_13 = __pyx_t_12;
+    for (__pyx_t_58 = 0; __pyx_t_58 < __pyx_t_13; __pyx_t_58+=1) {
+      __pyx_v_leaflet_id = __pyx_t_58;
 
       /* "fatslim/_core.pyx":1030
  * 
@@ -16091,11 +16133,11 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                     )
  */
         __Pyx_TraceLine(1032,0,__PYX_ERR(0, 1032, __pyx_L1_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1032, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_52 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1032, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_52);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1032, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_53 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1032, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_53);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
         /* "fatslim/_core.pyx":1033
  * 
@@ -16105,34 +16147,34 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                     maybe_leaflets_from_aggregates[leaflet_id] = temp
  */
         __Pyx_TraceLine(1033,0,__PYX_ERR(0, 1033, __pyx_L1_error))
-        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_maybe_leaflets_from_aggregates, __pyx_v_leaflet_id, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1033, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_new_members, __pyx_v_leaflet_id, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1033, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_maybe_leaflets_from_aggregates, __pyx_v_leaflet_id, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1033, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_49 = PyTuple_New(2); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1033, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_49);
-        __Pyx_GIVEREF(__pyx_t_4);
-        PyTuple_SET_ITEM(__pyx_t_49, 0, __pyx_t_4);
+        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_new_members, __pyx_v_leaflet_id, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1033, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_52 = PyTuple_New(2); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1033, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_52);
         __Pyx_GIVEREF(__pyx_t_3);
-        PyTuple_SET_ITEM(__pyx_t_49, 1, __pyx_t_3);
-        __pyx_t_4 = 0;
+        PyTuple_SET_ITEM(__pyx_t_52, 0, __pyx_t_3);
+        __Pyx_GIVEREF(__pyx_t_8);
+        PyTuple_SET_ITEM(__pyx_t_52, 1, __pyx_t_8);
         __pyx_t_3 = 0;
-        __pyx_t_3 = NULL;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_52))) {
-          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_52);
-          if (likely(__pyx_t_3)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_52);
-            __Pyx_INCREF(__pyx_t_3);
+        __pyx_t_8 = 0;
+        __pyx_t_8 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_53))) {
+          __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_53);
+          if (likely(__pyx_t_8)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_53);
+            __Pyx_INCREF(__pyx_t_8);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_52, function);
+            __Pyx_DECREF_SET(__pyx_t_53, function);
           }
         }
-        __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_52, __pyx_t_3, __pyx_t_49) : __Pyx_PyObject_CallOneArg(__pyx_t_52, __pyx_t_49);
-        __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+        __pyx_t_2 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_53, __pyx_t_8, __pyx_t_52) : __Pyx_PyObject_CallOneArg(__pyx_t_53, __pyx_t_52);
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
         if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1032, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+        __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
         __Pyx_XDECREF_SET(__pyx_v_temp, __pyx_t_2);
         __pyx_t_2 = 0;
 
@@ -16164,17 +16206,17 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  * 
  */
     __Pyx_TraceLine(1046,0,__PYX_ERR(0, 1046, __pyx_L1_error))
-    __pyx_t_2 = __pyx_v_maybe_leaflets_from_aggregates; __Pyx_INCREF(__pyx_t_2); __pyx_t_11 = 0;
+    __pyx_t_2 = __pyx_v_maybe_leaflets_from_aggregates; __Pyx_INCREF(__pyx_t_2); __pyx_t_12 = 0;
     for (;;) {
-      if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_2)) break;
+      if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_2)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_52 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_11); __Pyx_INCREF(__pyx_t_52); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 1046, __pyx_L1_error)
+      __pyx_t_53 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_12); __Pyx_INCREF(__pyx_t_53); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 1046, __pyx_L1_error)
       #else
-      __pyx_t_52 = PySequence_ITEM(__pyx_t_2, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1046, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_52);
+      __pyx_t_53 = PySequence_ITEM(__pyx_t_2, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1046, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_53);
       #endif
-      __Pyx_XDECREF_SET(__pyx_v_ids, __pyx_t_52);
-      __pyx_t_52 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_ids, __pyx_t_53);
+      __pyx_t_53 = 0;
 
       /* "fatslim/_core.pyx":1047
  *             # Step 2.4: Store the completed leaflets
@@ -16184,19 +16226,19 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *         # Step 3: Inspect potential leaflet to check if they are compatible
  */
       __Pyx_TraceLine(1047,0,__PYX_ERR(0, 1047, __pyx_L1_error))
-      __pyx_t_52 = PyTuple_New(2); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1047, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_52);
+      __pyx_t_53 = PyTuple_New(2); if (unlikely(!__pyx_t_53)) __PYX_ERR(0, 1047, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_53);
       __Pyx_INCREF(__pyx_v_ids);
       __Pyx_GIVEREF(__pyx_v_ids);
-      PyTuple_SET_ITEM(__pyx_t_52, 0, __pyx_v_ids);
+      PyTuple_SET_ITEM(__pyx_t_53, 0, __pyx_v_ids);
       __Pyx_INCREF(((PyObject *)__pyx_v_self));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
-      PyTuple_SET_ITEM(__pyx_t_52, 1, ((PyObject *)__pyx_v_self));
-      __pyx_t_49 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7fatslim_5_core_LipidAggregate), __pyx_t_52, NULL); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1047, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_49);
+      PyTuple_SET_ITEM(__pyx_t_53, 1, ((PyObject *)__pyx_v_self));
+      __pyx_t_52 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7fatslim_5_core_LipidAggregate), __pyx_t_53, NULL); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1047, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_52);
+      __Pyx_DECREF(__pyx_t_53); __pyx_t_53 = 0;
+      __pyx_t_49 = __Pyx_PyList_Append(__pyx_v_maybe_leaflets, __pyx_t_52); if (unlikely(__pyx_t_49 == ((int)-1))) __PYX_ERR(0, 1047, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
-      __pyx_t_48 = __Pyx_PyList_Append(__pyx_v_maybe_leaflets, __pyx_t_49); if (unlikely(__pyx_t_48 == ((int)-1))) __PYX_ERR(0, 1047, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
 
       /* "fatslim/_core.pyx":1046
  * 
@@ -16218,7 +16260,7 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  */
     __Pyx_TraceLine(764,0,__PYX_ERR(0, 764, __pyx_L1_error))
   }
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "fatslim/_core.pyx":1051
  *         # Step 3: Inspect potential leaflet to check if they are compatible
@@ -16228,20 +16270,20 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *         for maybe_leaflet in maybe_leaflets:
  */
   __Pyx_TraceLine(1051,0,__PYX_ERR(0, 1051, __pyx_L1_error))
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_maybe_leaflets, __pyx_n_s_sort); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1051, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_maybe_leaflets, __pyx_n_s_sort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1051, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1051, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_49 = __Pyx_GetBuiltinName(__pyx_n_s_len); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1051, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_49);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_key, __pyx_t_49) < 0) __PYX_ERR(0, 1051, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+  __pyx_t_52 = __Pyx_GetBuiltinName(__pyx_n_s_len); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1051, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_52);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_key, __pyx_t_52) < 0) __PYX_ERR(0, 1051, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
   if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 1051, __pyx_L1_error)
-  __pyx_t_49 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1051, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_49);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_52 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1051, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_52);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+  __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
 
   /* "fatslim/_core.pyx":1052
  * 
@@ -16251,10 +16293,10 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *             if maybe_leaflet.size < 50:
  */
   __Pyx_TraceLine(1052,0,__PYX_ERR(0, 1052, __pyx_L1_error))
-  __pyx_t_49 = PyList_New(0); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1052, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_49);
-  __pyx_v_maybe_leaflets_clean = ((PyObject*)__pyx_t_49);
-  __pyx_t_49 = 0;
+  __pyx_t_52 = PyList_New(0); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1052, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_52);
+  __pyx_v_maybe_leaflets_clean = ((PyObject*)__pyx_t_52);
+  __pyx_t_52 = 0;
 
   /* "fatslim/_core.pyx":1053
  *         maybe_leaflets.sort(key = len, reverse=True) # Sort leaflets according to their populations
@@ -16264,13 +16306,13 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                 continue
  */
   __Pyx_TraceLine(1053,0,__PYX_ERR(0, 1053, __pyx_L1_error))
-  __pyx_t_49 = __pyx_v_maybe_leaflets; __Pyx_INCREF(__pyx_t_49); __pyx_t_9 = 0;
+  __pyx_t_52 = __pyx_v_maybe_leaflets; __Pyx_INCREF(__pyx_t_52); __pyx_t_10 = 0;
   for (;;) {
-    if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_49)) break;
+    if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_52)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_49, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 1053, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_52, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 1053, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_49, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1053, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_52, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1053, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_maybe_leaflet, __pyx_t_2);
@@ -16286,10 +16328,10 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
     __Pyx_TraceLine(1054,0,__PYX_ERR(0, 1054, __pyx_L1_error))
     __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_maybe_leaflet, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1054, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_2, __pyx_int_50, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1054, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_2, __pyx_int_50, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1054, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 1054, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 1054, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_6) {
 
       /* "fatslim/_core.pyx":1055
@@ -16319,7 +16361,7 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *         # print("{} potential leaflets:".format(len(maybe_leaflets_clean)))
  */
     __Pyx_TraceLine(1057,0,__PYX_ERR(0, 1057, __pyx_L1_error))
-    __pyx_t_48 = __Pyx_PyList_Append(__pyx_v_maybe_leaflets_clean, __pyx_v_maybe_leaflet); if (unlikely(__pyx_t_48 == ((int)-1))) __PYX_ERR(0, 1057, __pyx_L1_error)
+    __pyx_t_49 = __Pyx_PyList_Append(__pyx_v_maybe_leaflets_clean, __pyx_v_maybe_leaflet); if (unlikely(__pyx_t_49 == ((int)-1))) __PYX_ERR(0, 1057, __pyx_L1_error)
 
     /* "fatslim/_core.pyx":1053
  *         maybe_leaflets.sort(key = len, reverse=True) # Sort leaflets according to their populations
@@ -16331,7 +16373,7 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
     __Pyx_TraceLine(1053,0,__PYX_ERR(0, 1053, __pyx_L1_error))
     __pyx_L66_continue:;
   }
-  __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+  __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
 
   /* "fatslim/_core.pyx":1063
  *         #     print("- leaflet #{}: {} lipids".format(lid, len(leaflet_ids)))
@@ -16341,10 +16383,10 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *             ref_leaflet = maybe_leaflets_clean.pop(0)
  */
   __Pyx_TraceLine(1063,0,__PYX_ERR(0, 1063, __pyx_L1_error))
-  __pyx_t_49 = PyList_New(0); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1063, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_49);
-  __pyx_v_membranes = ((PyObject*)__pyx_t_49);
-  __pyx_t_49 = 0;
+  __pyx_t_52 = PyList_New(0); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1063, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_52);
+  __pyx_v_membranes = ((PyObject*)__pyx_t_52);
+  __pyx_t_52 = 0;
 
   /* "fatslim/_core.pyx":1064
  * 
@@ -16355,8 +16397,8 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  */
   __Pyx_TraceLine(1064,0,__PYX_ERR(0, 1064, __pyx_L1_error))
   while (1) {
-    __pyx_t_9 = PyList_GET_SIZE(__pyx_v_maybe_leaflets_clean); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1064, __pyx_L1_error)
-    __pyx_t_6 = ((__pyx_t_9 > 0) != 0);
+    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_maybe_leaflets_clean); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1064, __pyx_L1_error)
+    __pyx_t_6 = ((__pyx_t_10 > 0) != 0);
     if (!__pyx_t_6) break;
 
     /* "fatslim/_core.pyx":1065
@@ -16367,10 +16409,10 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *             compatibles = []
  */
     __Pyx_TraceLine(1065,0,__PYX_ERR(0, 1065, __pyx_L1_error))
-    __pyx_t_49 = __Pyx_PyList_PopIndex(__pyx_v_maybe_leaflets_clean, __pyx_int_0, 0, 1, Py_ssize_t, PyInt_FromSsize_t); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1065, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_49);
-    __Pyx_XDECREF_SET(__pyx_v_ref_leaflet, __pyx_t_49);
-    __pyx_t_49 = 0;
+    __pyx_t_52 = __Pyx_PyList_PopIndex(__pyx_v_maybe_leaflets_clean, __pyx_int_0, 0, 1, Py_ssize_t, PyInt_FromSsize_t); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1065, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_52);
+    __Pyx_XDECREF_SET(__pyx_v_ref_leaflet, __pyx_t_52);
+    __pyx_t_52 = 0;
 
     /* "fatslim/_core.pyx":1067
  *             ref_leaflet = maybe_leaflets_clean.pop(0)
@@ -16380,10 +16422,10 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                 # Todo: check compatibility
  */
     __Pyx_TraceLine(1067,0,__PYX_ERR(0, 1067, __pyx_L1_error))
-    __pyx_t_49 = PyList_New(0); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1067, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_49);
-    __Pyx_XDECREF_SET(__pyx_v_compatibles, ((PyObject*)__pyx_t_49));
-    __pyx_t_49 = 0;
+    __pyx_t_52 = PyList_New(0); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1067, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_52);
+    __Pyx_XDECREF_SET(__pyx_v_compatibles, ((PyObject*)__pyx_t_52));
+    __pyx_t_52 = 0;
 
     /* "fatslim/_core.pyx":1068
  * 
@@ -16393,17 +16435,17 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                 compatibles.append(leaflet)
  */
     __Pyx_TraceLine(1068,0,__PYX_ERR(0, 1068, __pyx_L1_error))
-    __pyx_t_49 = __pyx_v_maybe_leaflets_clean; __Pyx_INCREF(__pyx_t_49); __pyx_t_9 = 0;
+    __pyx_t_52 = __pyx_v_maybe_leaflets_clean; __Pyx_INCREF(__pyx_t_52); __pyx_t_10 = 0;
     for (;;) {
-      if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_49)) break;
+      if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_52)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_7 = PyList_GET_ITEM(__pyx_t_49, __pyx_t_9); __Pyx_INCREF(__pyx_t_7); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 1068, __pyx_L1_error)
+      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_52, __pyx_t_10); __Pyx_INCREF(__pyx_t_4); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 1068, __pyx_L1_error)
       #else
-      __pyx_t_7 = PySequence_ITEM(__pyx_t_49, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1068, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_4 = PySequence_ITEM(__pyx_t_52, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1068, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
       #endif
-      __Pyx_XDECREF_SET(__pyx_v_leaflet, __pyx_t_7);
-      __pyx_t_7 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_leaflet, __pyx_t_4);
+      __pyx_t_4 = 0;
 
       /* "fatslim/_core.pyx":1070
  *             for leaflet in maybe_leaflets_clean:
@@ -16413,7 +16455,7 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *             companion = None
  */
       __Pyx_TraceLine(1070,0,__PYX_ERR(0, 1070, __pyx_L1_error))
-      __pyx_t_48 = __Pyx_PyList_Append(__pyx_v_compatibles, __pyx_v_leaflet); if (unlikely(__pyx_t_48 == ((int)-1))) __PYX_ERR(0, 1070, __pyx_L1_error)
+      __pyx_t_49 = __Pyx_PyList_Append(__pyx_v_compatibles, __pyx_v_leaflet); if (unlikely(__pyx_t_49 == ((int)-1))) __PYX_ERR(0, 1070, __pyx_L1_error)
 
       /* "fatslim/_core.pyx":1068
  * 
@@ -16424,7 +16466,7 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  */
       __Pyx_TraceLine(1068,0,__PYX_ERR(0, 1068, __pyx_L1_error))
     }
-    __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+    __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
 
     /* "fatslim/_core.pyx":1072
  *                 compatibles.append(leaflet)
@@ -16445,17 +16487,17 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *                 companion = leaflet
  */
     __Pyx_TraceLine(1073,0,__PYX_ERR(0, 1073, __pyx_L1_error))
-    __pyx_t_49 = __pyx_v_compatibles; __Pyx_INCREF(__pyx_t_49); __pyx_t_9 = 0;
+    __pyx_t_52 = __pyx_v_compatibles; __Pyx_INCREF(__pyx_t_52); __pyx_t_10 = 0;
     for (;;) {
-      if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_49)) break;
+      if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_52)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_7 = PyList_GET_ITEM(__pyx_t_49, __pyx_t_9); __Pyx_INCREF(__pyx_t_7); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 1073, __pyx_L1_error)
+      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_52, __pyx_t_10); __Pyx_INCREF(__pyx_t_4); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 1073, __pyx_L1_error)
       #else
-      __pyx_t_7 = PySequence_ITEM(__pyx_t_49, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1073, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_4 = PySequence_ITEM(__pyx_t_52, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1073, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
       #endif
-      __Pyx_XDECREF_SET(__pyx_v_leaflet, __pyx_t_7);
-      __pyx_t_7 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_leaflet, __pyx_t_4);
+      __pyx_t_4 = 0;
 
       /* "fatslim/_core.pyx":1075
  *             for leaflet in compatibles:
@@ -16477,7 +16519,7 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  */
       __Pyx_TraceLine(1073,0,__PYX_ERR(0, 1073, __pyx_L1_error))
     }
-    __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
+    __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
 
     /* "fatslim/_core.pyx":1077
  *                 companion = leaflet
@@ -16499,19 +16541,19 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  * 
  */
       __Pyx_TraceLine(1078,0,__PYX_ERR(0, 1078, __pyx_L1_error))
-      __pyx_t_49 = PyTuple_New(2); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1078, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_49);
+      __pyx_t_52 = PyTuple_New(2); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1078, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_52);
       __Pyx_INCREF(__pyx_v_ref_leaflet);
       __Pyx_GIVEREF(__pyx_v_ref_leaflet);
-      PyTuple_SET_ITEM(__pyx_t_49, 0, __pyx_v_ref_leaflet);
+      PyTuple_SET_ITEM(__pyx_t_52, 0, __pyx_v_ref_leaflet);
       __Pyx_INCREF(__pyx_v_companion);
       __Pyx_GIVEREF(__pyx_v_companion);
-      PyTuple_SET_ITEM(__pyx_t_49, 1, __pyx_v_companion);
-      __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7fatslim_5_core_Membrane), __pyx_t_49, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1078, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
-      __pyx_t_48 = __Pyx_PyList_Append(__pyx_v_membranes, __pyx_t_7); if (unlikely(__pyx_t_48 == ((int)-1))) __PYX_ERR(0, 1078, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      PyTuple_SET_ITEM(__pyx_t_52, 1, __pyx_v_companion);
+      __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7fatslim_5_core_Membrane), __pyx_t_52, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1078, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+      __pyx_t_49 = __Pyx_PyList_Append(__pyx_v_membranes, __pyx_t_4); if (unlikely(__pyx_t_49 == ((int)-1))) __PYX_ERR(0, 1078, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
       /* "fatslim/_core.pyx":1079
  *             if companion is not None:
@@ -16521,9 +16563,9 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  *         self._membranes = membranes
  */
       __Pyx_TraceLine(1079,0,__PYX_ERR(0, 1079, __pyx_L1_error))
-      __pyx_t_7 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_remove, __pyx_v_maybe_leaflets_clean, __pyx_v_companion); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1079, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_4 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_remove, __pyx_v_maybe_leaflets_clean, __pyx_v_companion); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1079, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
       /* "fatslim/_core.pyx":1077
  *                 companion = leaflet
@@ -16553,16 +16595,16 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  * 
  */
   __Pyx_TraceLine(1082,0,__PYX_ERR(0, 1082, __pyx_L1_error))
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_universe); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1082, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_49 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_trajectory); if (unlikely(!__pyx_t_49)) __PYX_ERR(0, 1082, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_49);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_49, __pyx_n_s_frame); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1082, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_49); __pyx_t_49 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_lastupdate_membrane, __pyx_t_7) < 0) __PYX_ERR(0, 1082, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_universe); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1082, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_52 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_trajectory); if (unlikely(!__pyx_t_52)) __PYX_ERR(0, 1082, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_52);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_52, __pyx_n_s_frame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1082, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_52); __pyx_t_52 = 0;
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_lastupdate_membrane, __pyx_t_4) < 0) __PYX_ERR(0, 1082, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "fatslim/_core.pyx":1083
  *         self._membranes = membranes
@@ -16573,10 +16615,10 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
  */
   __Pyx_TraceLine(1083,0,__PYX_ERR(0, 1083, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_membranes); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1083, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_r = __pyx_t_7;
-  __pyx_t_7 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_membranes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1083, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
   goto __pyx_L0;
 
   /* "fatslim/_core.pyx":728
@@ -16593,14 +16635,14 @@ __pyx_t_77 = __pyx_memoryview_fromslice(__pyx_t_71, 1, (PyObject *(*)(char *)) _
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_47, 1);
-  __Pyx_XDECREF(__pyx_t_49);
+  __Pyx_XDECREF(__pyx_t_8);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_48, 1);
   __Pyx_XDECREF(__pyx_t_51);
   __Pyx_XDECREF(__pyx_t_52);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_62, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_71, 1);
-  __Pyx_XDECREF(__pyx_t_76);
+  __Pyx_XDECREF(__pyx_t_53);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_63, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_72, 1);
   __Pyx_XDECREF(__pyx_t_77);
   __Pyx_XDECREF(__pyx_t_78);
   __Pyx_XDECREF(__pyx_t_79);
@@ -22427,7 +22469,7 @@ static Py_ssize_t __pyx_pf_7fatslim_5_core_14LipidAggregate_2__len__(struct __py
  * 
  *     @property
  *     def indices(self):             # <<<<<<<<<<<<<<
- *         return np.asarray(self._lipid_ids, dtype=int)
+ *         return np.asarray(self._lipid_ids, dtype=np.int)
  * 
  */
 
@@ -22452,13 +22494,14 @@ static PyObject *__pyx_pf_7fatslim_5_core_14LipidAggregate_7indices___get__(stru
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_TraceCall("__get__", __pyx_f[0], 1465, 0, __PYX_ERR(0, 1465, __pyx_L1_error));
 
   /* "fatslim/_core.pyx":1466
  *     @property
  *     def indices(self):
- *         return np.asarray(self._lipid_ids, dtype=int)             # <<<<<<<<<<<<<<
+ *         return np.asarray(self._lipid_ids, dtype=np.int)             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
@@ -22479,21 +22522,27 @@ static PyObject *__pyx_pf_7fatslim_5_core_14LipidAggregate_7indices___get__(stru
   __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 1466, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1466, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1466, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 1466, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1466, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_r = __pyx_t_4;
-  __pyx_t_4 = 0;
+  __pyx_r = __pyx_t_5;
+  __pyx_t_5 = 0;
   goto __pyx_L0;
 
   /* "fatslim/_core.pyx":1465
  * 
  *     @property
  *     def indices(self):             # <<<<<<<<<<<<<<
- *         return np.asarray(self._lipid_ids, dtype=int)
+ *         return np.asarray(self._lipid_ids, dtype=np.int)
  * 
  */
 
@@ -22503,6 +22552,7 @@ static PyObject *__pyx_pf_7fatslim_5_core_14LipidAggregate_7indices___get__(stru
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("fatslim._core.LipidAggregate.indices.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;

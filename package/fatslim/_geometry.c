@@ -2667,6 +2667,7 @@ static const char __pyx_k_dx[] = "dx";
 static const char __pyx_k_id[] = "id";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_box[] = "box";
+static const char __pyx_k_int[] = "int";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
 static const char __pyx_k_pts[] = "pts";
@@ -2901,6 +2902,7 @@ static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_indices;
+static PyObject *__pyx_n_s_int;
 static PyObject *__pyx_n_s_is_inside;
 static PyObject *__pyx_n_s_is_inside_polygon;
 static PyObject *__pyx_n_s_itemsize;
@@ -5227,10 +5229,11 @@ static PyObject *__pyx_pf_7fatslim_9_geometry_6PBCBox_6pbc_centroid(struct __pyx
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  __Pyx_memviewslice __pyx_t_5 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_6;
-  __Pyx_memviewslice __pyx_t_7 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_8;
+  PyObject *__pyx_t_5 = NULL;
+  __Pyx_memviewslice __pyx_t_6 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  int __pyx_t_7;
+  __Pyx_memviewslice __pyx_t_8 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_9;
   __Pyx_TraceFrameInit(__pyx_codeobj__6)
   __Pyx_RefNannySetupContext("pbc_centroid", 0);
   __Pyx_TraceCall("pbc_centroid", __pyx_f[0], 313, 0, __PYX_ERR(0, 313, __pyx_L1_error));
@@ -5238,7 +5241,7 @@ static PyObject *__pyx_pf_7fatslim_9_geometry_6PBCBox_6pbc_centroid(struct __pyx
   /* "fatslim/_geometry.pyx":317
  *         cdef rvec xcm
  * 
- *         indices = np.arange(coords.shape[0], dtype=int)             # <<<<<<<<<<<<<<
+ *         indices = np.arange(coords.shape[0], dtype=np.int)             # <<<<<<<<<<<<<<
  * 
  *         if ref is None:
  */
@@ -5257,28 +5260,34 @@ static PyObject *__pyx_pf_7fatslim_9_geometry_6PBCBox_6pbc_centroid(struct __pyx
   __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 317, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 317, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 317, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 317, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 317, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 317, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_indices = __pyx_t_5;
-  __pyx_t_5.memview = NULL;
-  __pyx_t_5.data = NULL;
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_7fatslim_9_typedefs_fsl_int(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 317, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_v_indices = __pyx_t_6;
+  __pyx_t_6.memview = NULL;
+  __pyx_t_6.data = NULL;
 
   /* "fatslim/_geometry.pyx":319
- *         indices = np.arange(coords.shape[0], dtype=int)
+ *         indices = np.arange(coords.shape[0], dtype=np.int)
  * 
  *         if ref is None:             # <<<<<<<<<<<<<<
  *             ref = coords[0]
  * 
  */
   __Pyx_TraceLine(319,0,__PYX_ERR(0, 319, __pyx_L1_error))
-  __pyx_t_6 = ((((PyObject *) __pyx_v_ref.memview) == Py_None) != 0);
-  if (__pyx_t_6) {
+  __pyx_t_7 = ((((PyObject *) __pyx_v_ref.memview) == Py_None) != 0);
+  if (__pyx_t_7) {
 
     /* "fatslim/_geometry.pyx":320
  * 
@@ -5288,9 +5297,9 @@ static PyObject *__pyx_pf_7fatslim_9_geometry_6PBCBox_6pbc_centroid(struct __pyx
  *         self.fast_pbc_centroid_from_ref(coords, &ref[XX], xcm, indices)
  */
     __Pyx_TraceLine(320,0,__PYX_ERR(0, 320, __pyx_L1_error))
-    __pyx_t_7.data = __pyx_v_coords.data;
-    __pyx_t_7.memview = __pyx_v_coords.memview;
-    __PYX_INC_MEMVIEW(&__pyx_t_7, 0);
+    __pyx_t_8.data = __pyx_v_coords.data;
+    __pyx_t_8.memview = __pyx_v_coords.memview;
+    __PYX_INC_MEMVIEW(&__pyx_t_8, 0);
     {
     Py_ssize_t __pyx_tmp_idx = 0;
         Py_ssize_t __pyx_tmp_shape = __pyx_v_coords.shape[0];
@@ -5298,20 +5307,20 @@ static PyObject *__pyx_pf_7fatslim_9_geometry_6PBCBox_6pbc_centroid(struct __pyx
         if (__pyx_tmp_idx < 0)
             __pyx_tmp_idx += __pyx_tmp_shape;
         if ((0)) __PYX_ERR(0, 320, __pyx_L1_error)
-        __pyx_t_7.data += __pyx_tmp_idx * __pyx_tmp_stride;
+        __pyx_t_8.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
 
-__pyx_t_7.shape[0] = __pyx_v_coords.shape[1];
-__pyx_t_7.strides[0] = __pyx_v_coords.strides[1];
-    __pyx_t_7.suboffsets[0] = -1;
+__pyx_t_8.shape[0] = __pyx_v_coords.shape[1];
+__pyx_t_8.strides[0] = __pyx_v_coords.strides[1];
+    __pyx_t_8.suboffsets[0] = -1;
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_ref, 1);
-    __pyx_v_ref = __pyx_t_7;
-    __pyx_t_7.memview = NULL;
-    __pyx_t_7.data = NULL;
+    __pyx_v_ref = __pyx_t_8;
+    __pyx_t_8.memview = NULL;
+    __pyx_t_8.data = NULL;
 
     /* "fatslim/_geometry.pyx":319
- *         indices = np.arange(coords.shape[0], dtype=int)
+ *         indices = np.arange(coords.shape[0], dtype=np.int)
  * 
  *         if ref is None:             # <<<<<<<<<<<<<<
  *             ref = coords[0]
@@ -5327,9 +5336,9 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_ref, 1);
  *         centroid = np.empty(3, dtype=np.float32)
  */
   __Pyx_TraceLine(322,0,__PYX_ERR(0, 322, __pyx_L1_error))
-  __pyx_t_8 = 0;
-  if (__pyx_t_8 < 0) __pyx_t_8 += __pyx_v_ref.shape[0];
-  ((struct __pyx_vtabstruct_7fatslim_9_geometry_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_pbc_centroid_from_ref(__pyx_v_self, __pyx_v_coords, (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_ref.data + __pyx_t_8 * __pyx_v_ref.strides[0]) )))), __pyx_v_xcm, __pyx_v_indices);
+  __pyx_t_9 = 0;
+  if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_ref.shape[0];
+  ((struct __pyx_vtabstruct_7fatslim_9_geometry_PBCBox *)__pyx_v_self->__pyx_vtab)->fast_pbc_centroid_from_ref(__pyx_v_self, __pyx_v_coords, (&(*((__pyx_t_7fatslim_9_typedefs_real *) ( /* dim=0 */ (__pyx_v_ref.data + __pyx_t_9 * __pyx_v_ref.strides[0]) )))), __pyx_v_xcm, __pyx_v_indices);
 
   /* "fatslim/_geometry.pyx":324
  *         self.fast_pbc_centroid_from_ref(coords, &ref[XX], xcm, indices)
@@ -5339,24 +5348,24 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_ref, 1);
  *         centroid[XX] = xcm[XX]
  */
   __Pyx_TraceLine(324,0,__PYX_ERR(0, 324, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 324, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 324, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_float32); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_2) < 0) __PYX_ERR(0, 324, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_2) < 0) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__4, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_centroid = __pyx_t_2;
   __pyx_t_2 = 0;
 
@@ -5426,8 +5435,9 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_ref, 1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
+  __Pyx_XDECREF(__pyx_t_5);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
   __Pyx_AddTraceback("fatslim._geometry.PBCBox.pbc_centroid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -31480,6 +31490,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_indices, __pyx_k_indices, sizeof(__pyx_k_indices), 0, 0, 1, 1},
+  {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
   {&__pyx_n_s_is_inside, __pyx_k_is_inside, sizeof(__pyx_k_is_inside), 0, 0, 1, 1},
   {&__pyx_n_s_is_inside_polygon, __pyx_k_is_inside_polygon, sizeof(__pyx_k_is_inside_polygon), 0, 0, 1, 1},
   {&__pyx_n_s_itemsize, __pyx_k_itemsize, sizeof(__pyx_k_itemsize), 0, 0, 1, 1},

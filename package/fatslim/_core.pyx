@@ -748,11 +748,11 @@ cdef class LipidRegistry:
         self.update()
 
         # Initialize memory
-        edgers = np.empty(self._nlipids, dtype=int)
-        maybe_leaflet_ids = np.empty(self._nlipids, dtype=int)
-        stack = np.empty(self._nlipids, dtype=int)
-        current_leaflet_ids = np.empty(self._nlipids, dtype=int)
-        leftovers = np.empty(self._nlipids, dtype=int)
+        edgers = np.empty(self._nlipids, dtype=np.int)
+        maybe_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
+        stack = np.empty(self._nlipids, dtype=np.int)
+        current_leaflet_ids = np.empty(self._nlipids, dtype=np.int)
+        leftovers = np.empty(self._nlipids, dtype=np.int)
         n_leftovers = 0
 
 
@@ -929,11 +929,11 @@ cdef class LipidRegistry:
                     best_leaflet = -1
 
                     for lid, indices in enumerate(maybe_leaflets_from_aggregates):
-                        current_stack = np.empty(self._nlipids, dtype=int)
+                        current_stack = np.empty(self._nlipids, dtype=np.int)
                         current_stack[0] = edger_id
                         current_stack_size = 1
 
-                        next_stack = np.empty(self._nlipids, dtype=int)
+                        next_stack = np.empty(self._nlipids, dtype=np.int)
 
                         used_nodes = np.zeros(self._nlipids, dtype=bool)
 
@@ -1463,7 +1463,7 @@ cdef class LipidAggregate:
 
     @property
     def indices(self):
-        return np.asarray(self._lipid_ids, dtype=int)
+        return np.asarray(self._lipid_ids, dtype=np.int)
 
     @property
     def lipids(self):
