@@ -22,7 +22,7 @@ python setup.py build_ext -i
 cd ${SCRIPTPATH}/../testsuite
 if [[ $CYTHON_COVERAGE == 1 ]]; then \
     pytest --cov-report=xml --cov-report=html --cov=fatslim fatslimtest; else \
-    pytest fatslimtest -xv
+    pytest fatslimtest -xv --durations=3 --tb=short
 fi
 
 unset CYTHON_COVERAGE

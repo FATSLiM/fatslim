@@ -44,5 +44,6 @@ BIG_DEFORMED_GRO = _fullpath_from_basename("deformed.gro")
 VESICLE_GRO = _fullpath_from_basename("dppc_vesicle.gro")
 VESICLE_XTC = _fullpath_from_basename("dppc_vesicle.xtc")
 
+BILAYER_GANGLIO = _fullpath_from_basename("bilayer_ganglio.gro")
 
 

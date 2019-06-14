@@ -462,7 +462,8 @@ cdef class SimplifiedLipid:
             return self._registry.lipid_directions[self._regid]
         else:
             warnings.warn("Lipid does not belong to any registry. No fast calculation nor PBC-awareness available")
-            direction = self._hg_atoms.positions.mean(axis=0) - self._atoms.positions.mean(axis=0)
+            direction = self._hg_atoms.positions.mean(axis=0) - \
+                        self._atoms[self._atoms.ix >= self._hg_atoms.ix[0]].positions.mean(axis=0)
             direction /= np.linalg.norm(direction)
             return direction
 
@@ -619,7 +620,8 @@ cdef class LipidRegistry:
     def update(self, force_update=False):
         cdef fsl_int i, offset
         cdef real[:, ::1] u_pos, positions, hg_positions_bbox
-        cdef fsl_int[:] indices
+        cdef fsl_int[:] indices, indices_directions
+        cdef rvec cog_directions
         cdef fsl_int next_offset
         cdef bint should_raise = False
 
@@ -664,11 +666,16 @@ cdef class LipidRegistry:
                 else:
                     next_offset = self.lipid_offsets[i+1]
                 indices = self.lipid_indices[self.lipid_offsets[i]: next_offset]
+                indices_directions = self.lipid_indices[self.hg_indices[self.hg_offsets[i]]: next_offset]
                 self.box.fast_pbc_centroid_from_ref(self.universe_coords_bbox,
                                                     &self._lipid_positions[i, XX],
                                                     &self._lipid_centroids[i, XX],
                                                     indices)
-                self.box.fast_pbc_dx(&self._lipid_centroids[i, XX],
+                self.box.fast_pbc_centroid_from_ref(self.universe_coords_bbox,
+                                                    &self._lipid_positions[i, XX],
+                                                    cog_directions,
+                                                    indices_directions)
+                self.box.fast_pbc_dx(cog_directions,
                                      &self._lipid_positions[i, XX],
                                      &self._lipid_directions[i, XX])
                 rvec_normalize(&self._lipid_directions[i, XX])

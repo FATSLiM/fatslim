@@ -29,7 +29,6 @@ from .data import MODEL_FLAT_BBOX_GRO, MODEL_FLAT_NDX, MODEL_FLAT_GRO
 from .data import MODELS_METADATA
 from .data import VESICLE_GRO, VESICLE_XTC
 
-# TODO: Add test for neighbors when position is (0,0)
 
 def test_lipid_bad_init(universe_model_flat):
     atoms = universe_model_flat.select_atoms("resid 1")
@@ -193,6 +192,7 @@ def test_lipid_positions_ndx(universe_model_flat, system_model_flat):
     assert_almost_equal(system.lipid_positions, system_model_flat.lipid_positions, decimal=3,
                         err_msg="Bad lipid positions using .ndx file")
 
+
 def test_lipid_system_centers_naive(system_model_flat):
     # Centroids naively calculated from BBox positions should match MDAnalysis centroid computed using PBC
     u = system_model_flat.universe
@@ -229,6 +229,11 @@ def test_lipid_system_centers_from_headgroups(system_model_flat):
 
 @pytest.mark.filterwarnings("ignore: Lipid does not belong")
 def test_lipid_system_directions(system_model_flat, single_lipid):
+    print(single_lipid.atoms.positions, single_lipid.hg_atoms.positions)
+    cog = single_lipid.atoms.positions[4:].mean(axis=0)
+    direction = single_lipid.hg_atoms.positions[0] - cog
+    direction /= np.linalg.norm(direction)
+    print(np.round(direction, 3))
     assert_almost_equal(system_model_flat[6].direction, single_lipid.direction, decimal=3)
 
     for i in range(128):
@@ -238,6 +243,16 @@ def test_lipid_system_directions(system_model_flat, single_lipid):
 
         assert_almost_equal(system_model_flat[i].direction, direction, decimal=1,
                             err_msg="Bad direction for lipid #{}".format(i))
+
+
+def test_lipid_system_directions_ganglio(system_ganglio):
+    system = system_ganglio
+
+    ref_ganglio = 812
+    ref_chol = 27
+
+    assert system[ref_chol].direction[2] > 0, "Cholesterol's direction is wrong"
+    assert system[ref_ganglio].direction[2] > 0, "Ganglioside's direction is wrong"
 
 
 def test_lipid_system_neighbours(system_model_flat):

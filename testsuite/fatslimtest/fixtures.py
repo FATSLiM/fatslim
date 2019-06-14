@@ -22,7 +22,7 @@ import MDAnalysis as mda
 
 # Local imports
 from .data import MODEL_FLAT_GRO, MODEL_VESICLE_GRO, MODEL_BICELLE_GRO, MODEL_BULGED_GRO, MODEL_CURVED_GRO
-from .data import BIG_DEFORMED_GRO, VESICLE_GRO, VESICLE_XTC
+from .data import BIG_DEFORMED_GRO, VESICLE_GRO, VESICLE_XTC, BILAYER_GANGLIO
 from fatslim.coreobjects import LipidSystem, Lipid
 
 @pytest.fixture(scope="session")
@@ -84,4 +84,11 @@ def system_big_deformed() -> LipidSystem:
 def system_vesicle() -> LipidSystem:
     u = mda.Universe(VESICLE_GRO, VESICLE_XTC)
     system = LipidSystem(u, "name PO4")
+    return system
+
+
+@pytest.fixture(scope="session")
+def system_ganglio() -> LipidSystem:
+    u = mda.Universe(BILAYER_GANGLIO)
+    system = LipidSystem(u, "name PO4 ROH or (resname DPG1 and name AM1)")
     return system
