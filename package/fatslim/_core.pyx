@@ -545,12 +545,14 @@ cdef class LipidRegistry:
     @cython.initializedcheck(False)
     @cython.boundscheck(False)
     def update(self, force_update=False):
-        cdef fsl_int i, offset
+        cdef fsl_int i, j, offset
         cdef real[:, ::1] u_pos, positions, hg_positions_bbox
         cdef fsl_int[:] indices, indices_directions
         cdef rvec cog_directions
-        cdef fsl_int next_offset
+        cdef fsl_int next_offset, starting_index
         cdef bint should_raise = False
+
+        #import sys; print("DEBUG: 0");sys.stdout.flush()
 
         if self._lastupdate == self.universe.trajectory.frame and not force_update:
             #warnings.warn("Already uptodate.. No need for update")
@@ -593,7 +595,16 @@ cdef class LipidRegistry:
                 else:
                     next_offset = self.lipid_offsets[i+1]
                 indices = self.lipid_indices[self.lipid_offsets[i]: next_offset]
-                indices_directions = self.lipid_indices[self.hg_indices[self.hg_offsets[i]]: next_offset]
+
+                # Find the offset to avoid taking into account the whole headgroup (in case it is huge) to calculate the
+                # lipid direction
+                starting_index = 0
+                for j in range(indices.shape[0]):
+                    if indices[j] == self.hg_indices[self.hg_offsets[i]]:
+                        starting_index = j
+                        break
+                indices_directions = indices[starting_index:]
+
                 self.box.fast_pbc_centroid_from_ref(self.universe_coords_bbox,
                                                     &self._lipid_positions[i, XX],
                                                     &self._lipid_centroids[i, XX],
@@ -602,6 +613,7 @@ cdef class LipidRegistry:
                                                     &self._lipid_positions[i, XX],
                                                     cog_directions,
                                                     indices_directions)
+
                 self.box.fast_pbc_dx(cog_directions,
                                      &self._lipid_positions[i, XX],
                                      &self._lipid_directions[i, XX])

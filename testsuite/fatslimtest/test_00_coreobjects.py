@@ -357,6 +357,8 @@ def test_system_big(system_big_deformed):
 
     assert len(system) == 24056
 
+    assert system.lipid_positions.shape[0] == 24056
+
 
 def test_xtc_reading(system_vesicle):
     import MDAnalysis as mda
