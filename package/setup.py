@@ -27,16 +27,14 @@ from Cython.Build import cythonize
 
 import numpy
 
-
 cython_coverage = 0
 force_cythonize = False
 cython_linetrace = False
-if os.environ.get("CYTHON_COVERAGE") in("1", 1, True):
+if os.environ.get("CYTHON_COVERAGE") in ("1", 1, True):
     print("INFO: Coverage is enabled for Cython code (Expect low performances)")
     cython_linetrace = True
     force_cythonize = True
     cython_coverage = 1
-
 
 if __name__ == "__main__":
     # MUST match fatslim.__version__
@@ -61,10 +59,30 @@ if __name__ == "__main__":
                          define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
                          )
 
-    setup(name='fatslim',
-          version=VERSION,
-          ext_modules=cythonize([typedefs_ext, geometry_ext, core_ext],
-                                force=force_cythonize,
-                                compiler_directives={'linetrace': cython_linetrace, 'binding': True},
-                                ),
-          )
+    aggregate_ext = Extension("fatslim._aggregate",
+                              ["fatslim/_aggregate.pyx"],
+                              include_dirs=[numpy.get_include()],
+                              define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
+                              )
+
+    membrane_ext = Extension("fatslim._membrane",
+                             ["fatslim/_membrane.pyx"],
+                             include_dirs=[numpy.get_include()],
+                             define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
+                             )
+
+    setup(
+        name='fatslim',
+        version=VERSION,
+        ext_modules=cythonize(
+            [
+                typedefs_ext,
+                geometry_ext,
+                core_ext,
+                aggregate_ext,
+                membrane_ext
+            ],
+            force=force_cythonize,
+            compiler_directives={'linetrace': cython_linetrace, 'binding': True},
+        ),
+    )
