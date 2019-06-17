@@ -29,6 +29,8 @@ from .data import MODEL_FLAT_BBOX_GRO, MODEL_FLAT_NDX, MODEL_FLAT_GRO
 from .data import MODELS_METADATA
 from .data import VESICLE_GRO, VESICLE_XTC
 
+# MD Analysis specific warning
+pytestmark = pytest.mark.filterwarnings("ignore: Failed to guess the mass for the following atom")
 
 def test_stack():
     queue = FixedQueue(10)
@@ -177,7 +179,6 @@ def test_headgroup_selection_all(universe_model_flat):
     assert "Headgroup selection is whole universe" in str(excinfo.value)
 
 
-@pytest.mark.filterwarnings("ignore: Failed to guess the mass for the following atom")
 def test_headgroup_selection_whole_residue(universe_model_flat):
     with pytest.raises(ValueError) as excinfo:
             LipidSystem(universe_model_flat, "resname DPPC and resid 1")

@@ -23,6 +23,9 @@ import pytest
 from .fixtures import *
 from .data import MODELS_METADATA
 
+# MD Analysis specific warning
+pytestmark = pytest.mark.filterwarnings("ignore: Failed to guess the mass for the following atom")
+
 
 def test_aggregate_model_flat(system_model_flat):
     system = system_model_flat
@@ -276,6 +279,7 @@ def test_membrane_model_bulged(system_model_bulged):
         assert_allclose(leaflet.indices, expected_leaflets[i], err_msg="Bad lipid ids for leaflet #{}".format(i))
 
         assert leaflet.is_planar
+
 
 @pytest.mark.xfail(reason="Algo needs update")
 def test_membrane_model_bicelle(system_model_bicelle):

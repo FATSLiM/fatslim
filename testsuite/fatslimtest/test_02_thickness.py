@@ -16,12 +16,15 @@
 # Bioinformatics 33(1) (2017), 133--134, doi:10.1093/bioinformatics/btw563
 #
 
+import pytest
 import numpy as np
 from numpy.testing import assert_allclose, assert_equal
 
 from .fixtures import system_model_flat, system_model_vesicle, system_model_bulged, system_model_curved, system_model_bicelle
 from .data import MODELS_METADATA
 
+# MD Analysis specific warning
+pytestmark = pytest.mark.filterwarnings("ignore: Failed to guess the mass for the following atom")
 
 def test_thickness_model_flat(system_model_flat):
     system = system_model_flat
