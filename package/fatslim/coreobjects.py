@@ -20,7 +20,7 @@ import os
 import MDAnalysis as mda
 import numpy as np
 
-from ._core import SimplifiedLipid, LipidRegistry
+from ._core import SimplifiedLipid, LipidRegistry, FixedQueue
 
 
 class Lipid(mda.core.groups.ComponentBase, SimplifiedLipid):

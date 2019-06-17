@@ -31,6 +31,19 @@ from ._typedefs cimport real, rvec, dreal, fsl_int, ivec
 
 from ._geometry cimport PBCBox
 
+cdef class FixedQueue(object):
+    # Cdef attributes
+    cdef fsl_int[:] elements
+    cdef fsl_int capacity
+    cdef fsl_int size
+    cdef fsl_int front
+    cdef fsl_int rear
+
+    # Cdef methods
+    cdef void fast_empty(self) nogil
+    cdef bint fast_add(self, fsl_int elem) nogil
+    cdef fsl_int fast_pop(self) nogil
+
 cdef class _NSGrid(object):
     # Cdef attributes
     cdef PBCBox box

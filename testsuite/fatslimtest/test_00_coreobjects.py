@@ -24,10 +24,31 @@ import MDAnalysis as mda
 
 # Local imports
 from .fixtures import *
-from fatslim.coreobjects import LipidSystem, Lipid
+from fatslim.coreobjects import LipidSystem, Lipid, FixedQueue
 from .data import MODEL_FLAT_BBOX_GRO, MODEL_FLAT_NDX, MODEL_FLAT_GRO
 from .data import MODELS_METADATA
 from .data import VESICLE_GRO, VESICLE_XTC
+
+
+def test_stack():
+    queue = FixedQueue(10)
+
+    with pytest.raises(ValueError):
+        queue.add(1.2)
+
+    for i in range(10):
+        queue.add(i)
+
+    with pytest.raises(IndexError) as excinfo:
+        queue.add(11)
+    assert str(excinfo.value) == "Queue is full! (Capacity: 10)"
+
+    for i in range(10):
+        assert queue.pop() == i
+
+    with pytest.raises(IndexError) as excinfo:
+        queue.pop()
+    assert str(excinfo.value) == "Queue is empty"
 
 
 def test_lipid_bad_init(universe_model_flat):

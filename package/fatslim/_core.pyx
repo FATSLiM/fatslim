@@ -48,6 +48,75 @@ from ._aggregate cimport LipidAggregate
 from libc.math cimport acos
 
 
+
+cdef class FixedQueue(object):
+
+    def __init__(self, fsl_int capacity):
+        self.elements = np.empty(capacity, dtype=np.int)
+        self.capacity = capacity
+
+        self.size = 0
+        self.front = 0
+        self.rear = -1
+
+
+    cdef void fast_empty(self) nogil:
+        self.size = 0
+        self.front = 0
+        self.rear = -1
+
+
+    @cython.boundscheck(False)
+    cdef bint fast_add(self, fsl_int elem) nogil:
+        cdef fsl_int[:] new_elements
+        cdef fsl_int new_capacity
+        cdef fsl_int i, actual_head
+
+        if self.size == self.capacity: # the queue is full, we can not add a new element
+            return False
+
+        self.size += 1
+        self.rear += 1
+        if self.rear == self.capacity:
+            self.rear = 0
+
+        self.elements[self.rear] = elem
+
+        return True
+
+    @cython.boundscheck(False)
+    cdef fsl_int fast_pop(self) nogil:
+        cdef fsl_int ret_val
+
+        if self.size == 0:
+            return NOTSET
+
+        ret_val = self.elements[self.front]
+        self.size -= 1
+        self.front += 1
+        if self.front == self.capacity:
+            self.front = 0
+
+        return ret_val
+
+    # Python API
+    def empty(self):
+        self.fast_empty()
+
+    def add(self, elem):
+        if not isinstance(elem, (int, np.integer)):
+            raise ValueError("Queue only accept integer elements")
+
+        if not self.fast_add(elem):
+            raise IndexError("Queue is full! (Capacity: {})".format(self.capacity))
+
+    def pop(self):
+        if self.size == 0:
+            raise IndexError("Queue is empty")
+        else:
+            return self.fast_pop()
+
+
 cdef class _NSGrid(object):
 
     def __init__(self, fsl_int ncoords, real cutoff, PBCBox box, fsl_int max_size):
