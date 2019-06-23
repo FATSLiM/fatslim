@@ -21,12 +21,13 @@
 
 from ._typedefs cimport real, fsl_int
 
-from ._core cimport LipidRegistry
+from ._core cimport LipidRegistry, _NSResults
 
 
 cdef class LipidAggregate:
     cdef readonly LipidRegistry system
     cdef fsl_int[:] _lipid_ids
+    cdef fsl_int[:] _system2aggregate_ids
     cdef fsl_int[:] _is_lipid_id_used
     cdef fsl_int _size
 
@@ -36,12 +37,17 @@ cdef class LipidAggregate:
     cdef real[:] _position
     cdef bint _isplanar
 
+    cdef real[:, ::1] _lipid_positions
+    cdef real[:, ::1] _lipid_directions
+    cdef real[:, ::1] _lipid_normals
+
+    cdef _NSResults _lipid_neighbours
+
     # cluster-related
     cdef fsl_int[:] _clustered
     cdef real[:, ::1] _positions_clustered_buffer
-    cdef real[:, ::1] _positions_clustered
+    cdef real[:, ::1] _lipid_positions_clustered
     cdef fsl_int [:, ::1] _cluster_stack
-
 
     # Cdef methods
     cdef update(self, force_update=*)

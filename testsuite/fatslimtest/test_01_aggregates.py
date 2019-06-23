@@ -43,6 +43,75 @@ def test_aggregate_model_flat(system_model_flat):
         assert_equal(aggregate.indices, expected_aggregate_ids[i], err_msg="Bad lipid ids for aggregate #{}".format(i))
 
 
+def test_aggregate_neighbours(system_model_flat):
+    system = system_model_flat
+
+    for aggid, aggregate in enumerate(system.aggregates):
+        tuples = aggregate.lipid_neighbours.tuples
+
+        for i in range(aggregate.size):
+            beadid = aggregate.indices[i]
+
+            tuple = []
+            for j, d in tuples[i]:
+                tuple.append((j + aggregate.indices[0], d))
+
+            assert_almost_equal(system[beadid].neighbours_distances,
+                                tuple, decimal=4,
+                                err_msg="Bad neigbours for lipid #{} from aggregate #{} (beadid #{})".format(i,
+                                                                                                             aggid,
+                                                                                                             beadid
+                                                                                                             ))
+
+
+def test_aggregate_positions_raw(system_model_flat):
+    system = system_model_flat
+
+    for aggid, aggregate in enumerate(system.aggregates):
+
+        for i in range(aggregate.size):
+            beadid = aggregate.indices[i]
+
+            assert_almost_equal(system.lipid_positions[beadid],
+                                aggregate.lipid_positions_raw[i], decimal=4,
+                                err_msg="Bad raw positions for lipid #{} from aggregate #{} (beadid #{})".format(i,
+                                                                                                                 aggid,
+                                                                                                                 beadid
+                                                                                                                 ))
+
+
+def test_aggregate_directions(system_model_flat):
+    system = system_model_flat
+
+    for aggid, aggregate in enumerate(system.aggregates):
+
+        for i in range(aggregate.size):
+            beadid = aggregate.indices[i]
+
+            assert_almost_equal(system.lipid_directions[beadid],
+                                aggregate.lipid_directions[i], decimal=4,
+                                err_msg="Bad direction for lipid #{} from aggregate #{} (beadid #{})".format(i,
+                                                                                                             aggid,
+                                                                                                             beadid
+                                                                                                             ))
+
+
+def test_aggregate_normals(system_model_flat):
+    system = system_model_flat
+
+    for aggid, aggregate in enumerate(system.aggregates):
+
+        for i in range(aggregate.size):
+            beadid = aggregate.indices[i]
+
+            assert_almost_equal(system.lipid_normals[beadid],
+                                aggregate.lipid_normals[i], decimal=4,
+                                err_msg="Bad normal for lipid #{} from aggregate #{} (beadid #{})".format(i,
+                                                                                                             aggid,
+                                                                                                             beadid
+                                                                                                             ))
+
+
 def test_aggregate_model_vesicle(system_model_vesicle):
     system = system_model_vesicle
 
@@ -192,15 +261,14 @@ def test_clusterize_vesicle(system_vesicle):
         for j, aggregate in enumerate(aggregates[:2]):
             assert len(aggregate) == sizes[i, j]
 
-            positions = aggregate.positions
+            positions = aggregate.lipid_positions
             assert_almost_equal(centroids[i, j, 0], positions.mean(axis=0), decimal=3)
             assert_almost_equal(centroids[i, j, 0], aggregate.position, decimal=3)
 
-            positions = aggregate.positions_raw
+            positions = aggregate.lipid_positions_raw
             assert_almost_equal(centroids[i, j, 1], positions.mean(axis=0), decimal=3)
 
 
-@pytest.mark.skip
 def test_aggregate_big_deformed(system_big_deformed):
     system = system_big_deformed
     expected_sizes = [12152, 11903, 1]
@@ -211,104 +279,3 @@ def test_aggregate_big_deformed(system_big_deformed):
 
     for i, aggregate in enumerate(aggregates):
         assert aggregate.size == expected_sizes[i]
-
-
-def test_membrane_model_flat(system_model_flat):
-    system = system_model_flat
-
-    expected_leaflets = [
-        MODELS_METADATA["flat"]["upper_leaflet_ids"],
-        MODELS_METADATA["flat"]["lower_leaflet_ids"]
-    ]
-
-    assert len(system.membranes) == 1
-
-    membrane = system.membranes[0]
-    for i, leaflet in enumerate(membrane):
-        assert_allclose(leaflet.indices, expected_leaflets[i], err_msg="Bad lipid ids for leaflet #{}".format(i))
-
-        assert leaflet.is_planar
-
-
-def test_membrane_model_vesicle(system_model_vesicle):
-    system = system_model_vesicle
-
-    expected_leaflets = [
-        MODELS_METADATA["vesicle"]["outer_leaflet_ids"],
-        MODELS_METADATA["vesicle"]["inner_leaflet_ids"]
-    ]
-
-    assert len(system.membranes) == 1
-
-    membrane = system.membranes[0]
-    for i, leaflet in enumerate(membrane):
-        assert_allclose(leaflet.indices, expected_leaflets[i], err_msg="Bad lipid ids for leaflet #{}".format(i))
-
-        assert not leaflet.is_planar
-
-
-def test_membrane_model_curved(system_model_curved):
-    system = system_model_curved
-
-    expected_leaflets = [
-        MODELS_METADATA["curved"]["upper_leaflet_ids"],
-        MODELS_METADATA["curved"]["lower_leaflet_ids"]
-    ]
-
-    assert len(system.membranes) == 1
-
-    membrane = system.membranes[0]
-    for i, leaflet in enumerate(membrane):
-        assert_allclose(leaflet.indices, expected_leaflets[i], err_msg="Bad lipid ids for leaflet #{}".format(i))
-
-        assert leaflet.is_planar
-
-
-def test_membrane_model_bulged(system_model_bulged):
-    system = system_model_bulged
-
-    expected_leaflets = [
-        MODELS_METADATA["bulged"]["upper_leaflet_ids"],
-        MODELS_METADATA["bulged"]["lower_leaflet_ids"]
-    ]
-
-    assert len(system.membranes) == 1
-
-    membrane = system.membranes[0]
-    for i, leaflet in enumerate(membrane):
-        assert_allclose(leaflet.indices, expected_leaflets[i], err_msg="Bad lipid ids for leaflet #{}".format(i))
-
-        assert leaflet.is_planar
-
-
-@pytest.mark.xfail(reason="Algo needs update")
-def test_membrane_model_bicelle(system_model_bicelle):
-    system = system_model_bicelle
-
-    expected_leaflets = [
-        np.array([val for val in MODELS_METADATA["bicelle"]["upper_leaflet_ids"] if val not in MODELS_METADATA["bicelle"]["leaflet_pivot_ids"]]),
-        np.array([val for val in MODELS_METADATA["bicelle"]["lower_leaflet_ids"] if val not in MODELS_METADATA["bicelle"]["leaflet_pivot_ids"]]),
-    ]
-
-    assert len(system.membranes) == 1
-
-    membrane = system.membranes[0]
-
-    for i, leaflet in enumerate(membrane):
-        indices = np.array([val for val in leaflet.indices if val not in MODELS_METADATA["bicelle"]["leaflet_pivot_ids"]])
-        assert_allclose(indices, expected_leaflets[i], err_msg="Bad lipid ids for leaflet #{}".format(i))
-
-        assert leaflet.is_planar
-
-@pytest.mark.skip
-@pytest.mark.xfail(reason="Algo needs update")
-def test_membrane_big_deformed(system_big_deformed):
-    system = system_big_deformed
-    expected_sizes = [12152, 11861]
-
-    assert len(system.membranes) == 1
-
-    membrane = system.membranes[0]
-    for i, leaflet in enumerate(membrane):
-        assert leaflet.size == expected_sizes[i]
-        assert leaflet.is_planar

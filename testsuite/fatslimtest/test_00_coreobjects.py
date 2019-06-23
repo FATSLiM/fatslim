@@ -32,14 +32,21 @@ from .data import VESICLE_GRO, VESICLE_XTC
 # MD Analysis specific warning
 pytestmark = pytest.mark.filterwarnings("ignore: Failed to guess the mass for the following atom")
 
+
 def test_stack():
     queue = FixedQueue(10)
 
     with pytest.raises(ValueError):
         queue.add(1.2)
 
+    with pytest.raises(ValueError):
+        assert 1.2 not in queue
+
     for i in range(10):
         queue.add(i)
+
+    assert 1 in queue
+    assert 10 not in queue
 
     with pytest.raises(IndexError) as excinfo:
         queue.add(11)
@@ -301,6 +308,18 @@ def test_lipid_system_neighbours(system_model_flat):
         print(system_model_flat[beadid].neighbours_distances)
         print(ref_result)
         assert_almost_equal(system_model_flat[beadid].neighbours_distances, ref_result, decimal=4,
+                            err_msg="Bad neigbours for lipid #{}".format(beadid))
+
+
+def test_lipid_system_neighbours_tuples(system_model_flat):
+    system = system_model_flat
+
+    tuples = system.lipid_neighbours.tuples
+
+    for beadid in range(len(system)):
+        assert_almost_equal(system[beadid].neighbours_distances,
+                            tuples[beadid],
+                            decimal=4,
                             err_msg="Bad neigbours for lipid #{}".format(beadid))
 
 

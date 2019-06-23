@@ -18,6 +18,7 @@
 
 from libc.math cimport sqrt
 
+cimport cython
 # Cython directives
 # cython: language_level=3
 
@@ -68,6 +69,7 @@ cdef void rvec_dec(rvec a,const rvec b) nogil:
 cdef real rvec_norm(const rvec a) nogil:
     return sqrt(rvec_norm2(a))
 
+@cython.cdivision(True)
 cdef void rvec_normalize(rvec a) nogil:
     cdef real vec_norm = rvec_norm(a)
     a[XX] /= vec_norm
@@ -98,7 +100,7 @@ cdef void rvec_cprod_norm(const rvec a, const rvec b, rvec c) nogil:
     rvec_cprod(a, b, c)
     rvec_normalize(c)
 
-
+@cython.cdivision(True)
 cdef void invert_mat(matrix mat, matrix inverted_mat) nogil:
     cdef real det
     cdef real A, B, C, D, E, F, G, H, K

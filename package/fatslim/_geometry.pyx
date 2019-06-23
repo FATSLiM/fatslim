@@ -228,6 +228,19 @@ cdef class PBCBox(object):
         for i in range (shift_axis, -1, -1):
             dx[i] += sign * self.c_pbcbox.box[shift_axis][i]
 
+
+    def pbc_dx_leaflet(self, real[:]ref, real[:]other, real[:] ref_normal):
+        cdef rvec dx
+        self.fast_pbc_dx_leaflet(&ref[XX], &other[XX], dx, &ref_normal[XX])
+
+        dx_py = np.empty(3, dtype=np.float32)
+
+        dx_py[XX] = dx[XX]
+        dx_py[YY] = dx[YY]
+        dx_py[ZZ] = dx[ZZ]
+
+        return dx_py
+
     cdef dreal fast_distance2(self, rvec a, rvec b) nogil:
         """Distance calculation between two points
         for both PBC and non-PBC aware calculations
@@ -240,6 +253,12 @@ cdef class PBCBox(object):
         cdef rvec dx
         self.fast_pbc_dx(a, b, dx)
         return rvec_norm2(dx)
+
+    def pbc_distance(self, real[:]ref, real[:]other):
+        cdef dreal d2
+        d2 = self.fast_distance2(&ref[0], &other[0])
+
+        return np.sqrt(d2)
 
     cdef void fast_put_atoms_in_bbox(self, real[:, ::1] coords, real[:, ::1] bbox_coords) nogil:
         """Shifts all ``coords`` to an orthogonal brick shaped box

@@ -45,7 +45,7 @@ from ._geometry cimport PBCBox, normal_from_neighbours, curvature_from_neighbour
 
 from ._aggregate cimport LipidAggregate
 
-from libc.math cimport acos
+from libc.math cimport acos, sqrt
 
 
 
@@ -65,6 +65,16 @@ cdef class FixedQueue(object):
         self.front = 0
         self.rear = -1
 
+    @cython.boundscheck(False)
+    cdef bint fast_contains(self, fsl_int elem) nogil:
+        cdef fsl_int i
+
+        for i in range(self.size):
+            if self.elements[i] == elem:
+                return True
+
+        return False
+
 
     @cython.boundscheck(False)
     cdef bint fast_add(self, fsl_int elem) nogil:
@@ -83,6 +93,12 @@ cdef class FixedQueue(object):
         self.elements[self.rear] = elem
 
         return True
+
+    cdef bint fast_add_unique(self, fsl_int elem) nogil:
+        if not self.fast_contains(elem):
+            self.fast_add(elem)
+            return True
+        return False
 
     @cython.boundscheck(False)
     cdef fsl_int fast_pop(self) nogil:
@@ -110,11 +126,22 @@ cdef class FixedQueue(object):
         if not self.fast_add(elem):
             raise IndexError("Queue is full! (Capacity: {})".format(self.capacity))
 
+    def add_unique(self, elem):
+        if elem in self:
+            return False
+        self.add(elem)
+        return True
+
     def pop(self):
         if self.size == 0:
             raise IndexError("Queue is empty")
         else:
             return self.fast_pop()
+
+    def __contains__(self, item):
+        if not isinstance(item, (int, np.integer)):
+            raise ValueError("Queue only accept integer elements")
+        return self.fast_contains(item)
 
 
 cdef class _NSGrid(object):
@@ -285,6 +312,7 @@ cdef class _NSGrid(object):
         self.beads_in_cell = np.empty((tmp_memview.shape[0], self.max_nbeads), dtype=int)
         self.beads_in_cell[:,:-increment] = tmp_memview
 
+
 @cython.initializedcheck(False)
 @cython.boundscheck(False)
 cdef class _NSResults:
@@ -297,6 +325,8 @@ cdef class _NSResults:
         self.nneighbours = np.zeros(self.size, dtype=int)
         self.neighbours = np.empty((self.size, self.max_nneighbours), dtype=int)
         self.distances = np.empty((self.size, self.max_nneighbours), dtype=np.float32)
+
+        self._tuples = None
 
     cdef int add_neighbour(self, fsl_int i, fsl_int j, real d2) nogil except -1:
         if self.nneighbours[i] == self.max_nneighbours:
@@ -335,19 +365,32 @@ cdef class _NSResults:
     def get_nth_distances(self, fsl_int item):
         return np.sqrt(np.asarray(self.distances[item, :self.nneighbours[item]]))
 
-    def get_tuples(self):
+    @property
+    def tuples(self):
         cdef fsl_int i, j
 
-        tuples = []
-        for i in range(self.size):
-            tuples.append([])
+        if self._tuples is None:
+            tuples = []
+            for i in range(self.size):
+                tuples.append([])
 
-            for j in range(self.nneighbours[i]):
-                tuples[-1].append((self.neighbours[i, j], self.distances[i, j]))
+                for j in range(self.nneighbours[i]):
+                    tuples[-1].append((self.neighbours[i, j], sqrt(self.distances[i, j])))
+
+                tuples[-1] = sorted(tuples[-1])
+
+            self._tuples = tuples
+
+        return self._tuples
+
 
     @property
     def shape(self):
-        return (self.size, self.max_nneighbours)
+        return self.size, self.max_nneighbours
+
+    def __repr__(self):
+        return "<NSResults with {} elements >".format(self.size)
+
 
 @cython.initializedcheck(False)
 @cython.boundscheck(False)
@@ -738,9 +781,10 @@ cdef class LipidRegistry:
 
         return py_eigval, py_eigvecs
 
+
     #@cython.initializedcheck(False)
     #@cython.boundscheck(False)
-    def find_membranes(self, force_update=False):
+    def find_membranes_old(self, force_update=False):
         from ._membrane import Membrane
         cdef fsl_int bead_id, seed_id, n_edgers, n_leftovers, nid, ref_nid
         cdef real angle, min_angle, max_angle, angle_range, dprod_value
@@ -1173,6 +1217,20 @@ cdef class LipidRegistry:
         self._lastupdate_aggregates = self.universe.trajectory.frame
         return self._aggregates
 
+
+    def find_membranes(self, bint force_update=False):
+        from ._membrane import identify_membranes
+
+        # No need to do anything if the membranes are already identified for the current frame
+        if self._lastupdate_membrane == self.universe.trajectory.frame and not force_update:
+            return
+
+        self._membranes = identify_membranes(self, force_update)
+        self._lastupdate_membrane = self.universe.trajectory.frame
+
+        return self._membranes
+
+
     cdef void compute_weighted_average(self, fsl_int ref_beadid, rvec weighted_position, rvec weighted_normal):
         cdef fsl_int i, j
         cdef rvec dx
@@ -1251,7 +1309,7 @@ cdef class LipidRegistry:
         return self.box
 
     @property
-    def membranes(self) -> [Membrane]:
+    def membranes(self):
         self.find_membranes()
         return self._membranes
 

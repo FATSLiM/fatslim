@@ -33,6 +33,22 @@ cdef class Membrane(object):
     cdef list _leaflets
     cdef readonly LipidRegistry system
 
+cdef class Monolayer(LipidAggregate):
+    # Cdef attributes
+    cdef fsl_int _core_size
+    cdef fsl_int _border_size
+    cdef fsl_int[:] _lipid_core_ids
+    cdef fsl_int[:] _lipid_border_ids
+
+    cdef real[:, ::1] _lipid_core_positions
+    cdef real[:, ::1] _lipid_core_directions
+    cdef real[:, ::1] _lipid_core_normals
+
+cdef class Bilayer:
+    # Cdef attributes
+    cdef readonly LipidRegistry system
+    cdef Monolayer _leaflet1
+    cdef Monolayer _leaflet2
 
 cdef class Leaflet(LipidAggregate):
     # Cdef attributes

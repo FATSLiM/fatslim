@@ -38,18 +38,42 @@ from ._typedefs cimport rvec_clear
 
 from ._typedefs cimport rvec_norm
 
+from ._core cimport _NSResults
+
 
 cdef class LipidAggregate:
 
     def __init__(self, fsl_int[:] lipid_ids, LipidRegistry system):
+        cdef fsl_int i, j, nneighbours, nid, beadid, nid_agg
+        cdef real d2
+
         self.system = system
 
-        self._lipid_ids = np.sort(lipid_ids)
-        self._is_lipid_id_used = np.zeros(self.system._nlipids, dtype=int)
-        for beadid in self._lipid_ids:
-            self._is_lipid_id_used[beadid] = 1
+        self._system2aggregate_ids = np.empty(system._nlipids, dtype=int)
+        self._system2aggregate_ids[:] = -1
 
+        self._lipid_ids = np.sort(lipid_ids)
         self._size = self._lipid_ids.shape[0]
+
+        self._lipid_neighbours = _NSResults(self._size)
+        self._is_lipid_id_used = np.zeros(self.system._nlipids, dtype=int)
+
+        for i in range(self._size):
+            beadid = self._lipid_ids[i]
+
+            self._is_lipid_id_used[beadid] = 1
+            self._system2aggregate_ids[beadid] = i
+
+        for i in range(self._size):
+            beadid = self._lipid_ids[i]
+
+            for j in range(system._lipid_neighbours.nneighbours[beadid]):
+                nid = system._lipid_neighbours.neighbours[beadid][j]
+
+                nid_agg = self._system2aggregate_ids[nid]
+                d2 = system._lipid_neighbours.distances[beadid][j]
+
+                self._lipid_neighbours.add_neighbour(i, nid_agg, d2)
 
         self._lastupdate = -1
 
@@ -61,8 +85,12 @@ cdef class LipidAggregate:
         # clusterization
         self._clustered = np.empty(self.system._nlipids, dtype=int)
         self._positions_clustered_buffer = np.empty((self.system._nlipids, DIM), dtype=np.float32)
-        self._positions_clustered = np.empty((self._size, DIM), dtype=np.float32)
+        self._lipid_positions_clustered = np.empty((self._size, DIM), dtype=np.float32)
         self._cluster_stack = np.empty((self.system._nlipids, 2), dtype=int)
+
+        self._lipid_directions = np.empty((self._size, DIM), dtype=np.float32)
+        self._lipid_normals = np.empty((self._size, DIM), dtype=np.float32)
+        self._lipid_positions = np.empty((self._size, DIM), dtype=np.float32)
 
     @cython.initializedcheck(False)
     @cython.boundscheck(False)
@@ -92,6 +120,10 @@ cdef class LipidAggregate:
                 for j in range(DIM):
                     self._normal[j] += self.system._lipid_normals[bead_id, j]
                     self._position[j] += self.system._lipid_positions[bead_id, j]
+
+                    self._lipid_directions[i, j] = self.system._lipid_directions[bead_id, j]
+                    self._lipid_normals[i, j] = self.system._lipid_normals[bead_id, j]
+                    self._lipid_positions[i, j] = self.system._lipid_positions[bead_id, j]
 
 
             self.fast_clusterize()
@@ -191,7 +223,7 @@ cdef class LipidAggregate:
 
             for j in range(DIM):
                 cluster_centroid[j] += self._positions_clustered_buffer[beadid, j]
-                self._positions_clustered[i][j] = self._positions_clustered_buffer[beadid][j]
+                self._lipid_positions_clustered[i][j] = self._positions_clustered_buffer[beadid][j]
         for j in range(DIM):
             cluster_centroid[j] /= self._size
 
@@ -240,17 +272,28 @@ cdef class LipidAggregate:
         return self.centroid
 
     @property
-    def positions(self):
+    def lipid_positions(self):
         self.update()
-        return np.array(self._positions_clustered)
+        return np.array(self._lipid_positions_clustered)
 
     @property
-    def positions_raw(self):
+    def lipid_positions_raw(self):
         self.update()
-        return np.asarray(self.system.lipid_positions[self._lipid_ids])
+        return np.asarray(self._lipid_positions)
 
-    def __str__(self):
-        return "Lipid aggregate made of {} lipids".format(self._size)
+    @property
+    def lipid_directions(self):
+        self.update()
+        return np.array(self._lipid_directions)
+
+    @property
+    def lipid_normals(self):
+        self.update()
+        return np.array(self._lipid_normals)
+
+    @property
+    def lipid_neighbours(self) -> _NSResults:
+        return self._lipid_neighbours
 
     def __repr__(self):
         return "<LipidAggregate with {} lipids>".format(self._size)

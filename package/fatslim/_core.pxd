@@ -41,7 +41,9 @@ cdef class FixedQueue(object):
 
     # Cdef methods
     cdef void fast_empty(self) nogil
+    cdef bint fast_contains(self, fsl_int elem) nogil
     cdef bint fast_add(self, fsl_int elem) nogil
+    cdef bint fast_add_unique(self, fsl_int elem) nogil
     cdef fsl_int fast_pop(self) nogil
 
 cdef class _NSGrid(object):
@@ -80,6 +82,7 @@ cdef class _NSResults:
     cdef fsl_int[:] nneighbours
     cdef fsl_int[:, ::1] neighbours
     cdef real[:, ::1] distances
+    cdef readonly list _tuples
 
     # Cdef methods
     cdef int add_neighbour(self, fsl_int i, fsl_int j, real d2) nogil except -1
