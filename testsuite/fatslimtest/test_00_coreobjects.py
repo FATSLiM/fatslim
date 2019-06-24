@@ -23,7 +23,6 @@ import pytest
 import MDAnalysis as mda
 
 # Local imports
-from .fixtures import *
 from fatslim.coreobjects import LipidSystem, Lipid, FixedQueue
 from .data import MODEL_FLAT_BBOX_GRO, MODEL_FLAT_NDX, MODEL_FLAT_GRO
 from .data import MODELS_METADATA
@@ -258,11 +257,9 @@ def test_lipid_system_centers_from_headgroups(system_model_flat):
 
 @pytest.mark.filterwarnings("ignore: Lipid does not belong")
 def test_lipid_system_directions(system_model_flat, single_lipid):
-    print(single_lipid.atoms.positions, single_lipid.hg_atoms.positions)
     cog = single_lipid.atoms.positions[4:].mean(axis=0)
     direction = single_lipid.hg_atoms.positions[0] - cog
     direction /= np.linalg.norm(direction)
-    print(np.round(direction, 3))
     assert_almost_equal(system_model_flat[6].direction, single_lipid.direction, decimal=3)
 
     for i in range(128):
@@ -305,8 +302,6 @@ def test_lipid_system_neighbours(system_model_flat):
 
     for beadid in range(nlipids):
         ref_result = sorted(mda_neighbours[beadid])
-        print(system_model_flat[beadid].neighbours_distances)
-        print(ref_result)
         assert_almost_equal(system_model_flat[beadid].neighbours_distances, ref_result, decimal=4,
                             err_msg="Bad neigbours for lipid #{}".format(beadid))
 
@@ -393,7 +388,7 @@ def test_vesicle_normals(system_model_vesicle):
                             err_msg="Bad normal for lipid #{}".format(i))
 
 
-def test_system_big(system_big_deformed):
+def test_system_big_loading(system_big_deformed):
     system = system_big_deformed
 
     assert len(system) == 24056

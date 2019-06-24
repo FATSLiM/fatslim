@@ -20,7 +20,6 @@ import pytest
 import numpy as np
 from numpy.testing import assert_allclose, assert_equal
 
-from .fixtures import *
 from .data import MODELS_METADATA
 
 # MD Analysis specific warning

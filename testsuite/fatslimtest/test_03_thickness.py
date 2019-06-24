@@ -20,7 +20,6 @@ import pytest
 import numpy as np
 from numpy.testing import assert_allclose, assert_equal
 
-from .fixtures import system_model_flat, system_model_vesicle, system_model_bulged, system_model_curved, system_model_bicelle
 from .data import MODELS_METADATA
 
 # MD Analysis specific warning
@@ -121,17 +120,13 @@ def test_thickness_model_curved(system_model_curved):
 
         lipid_thicknesses = leaflet.lipid_thicknesses
 
-        for j, val in enumerate(lipid_thicknesses):
-            print("resid {}: thickness: {:.3f} - expected: {:.3f} - diff: {:.2f}".format(leaflet.lipids[j].resid, val,
-                                                                          expected_lipid_thicknesses[i][j],
-                                                                                         np.abs(val - expected_lipid_thicknesses[i][j])/val))
-
         assert_allclose(thickness, expected_lipid_thicknesses[i].mean(), rtol=5e-2,
                         err_msg="Bad thickness value for leaflet #{}".format(i))
 
         assert_allclose(lipid_thicknesses, expected_lipid_thicknesses[i], rtol=10e-2,
                         err_msg="Bad thicknesses values for leaflet #{}".format(i)
                         )
+
 
 def test_thickness_model_bulged(system_model_bulged):
     system = system_model_bulged
@@ -145,8 +140,6 @@ def test_thickness_model_bulged(system_model_bulged):
         metadata["lower_leaflet_ids"]
     ]
     positions = metadata["positions"]
-
-    print(positions[:10], positions[390:410], positions[-10:])
 
     for i, vals in enumerate(lipid_ids):
         thicknesses = []
@@ -165,7 +158,6 @@ def test_thickness_model_bulged(system_model_bulged):
                     best_id = k
 
             thicknesses.append(np.abs(positions[j, 2] - positions[best_id, 2]))
-            print(i, j, best_id, np.abs(positions[j, 2] - positions[best_id, 2]), positions[j], positions[best_id])
 
         expected_lipid_thicknesses.append(np.array(thicknesses))
 
@@ -176,14 +168,6 @@ def test_thickness_model_bulged(system_model_bulged):
         thickness = leaflet.thickness
 
         lipid_thicknesses = leaflet.lipid_thicknesses
-
-        for j, val in enumerate(lipid_thicknesses):
-            print("resid {}: thickness: {:.3f} - expected: {:.3f} - diff: {:.2f}".format(leaflet.lipids[j].resid, val,
-                                                                                         expected_lipid_thicknesses[i][
-                                                                                             j],
-                                                                                         np.abs(val -
-                                                                                                expected_lipid_thicknesses[
-                                                                                                    i][j]) / val))
 
         assert_allclose(thickness, expected_lipid_thicknesses[i].mean(), rtol=5e-2,
                         err_msg="Bad thickness value for leaflet #{}".format(i))
@@ -211,12 +195,6 @@ def test_thickness_model_bicelle(system_model_bicelle):
         indices = np.array(indices, dtype=int)
 
         lipid_thicknesses = leaflet.lipid_thicknesses[indices]
-
-        for j, val in enumerate(lipid_thicknesses):
-            print("resid {}: thickness: {:.3f} - expected: {:.3f} - diff: {:.2f}".format(leaflet.lipids[j].resid, val,
-                                                                                         expected_thickness,
-                                                                                         np.abs(val -
-                                                                                                expected_thickness) / val))
 
         assert_allclose(lipid_thicknesses.mean(), expected_thickness, rtol=2e-2,
                         err_msg="Bad thickness value for leaflet #{}".format(i))

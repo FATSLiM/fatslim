@@ -75,8 +75,20 @@ def system_model_bulged() -> LipidSystem:
 
 @pytest.fixture(scope="session")
 def system_big_deformed() -> LipidSystem:
+    import time
+    start = time.time()
     u = mda.Universe(BIG_DEFORMED_GRO)
     system = LipidSystem(u, "name PO4")
+    end = time.time()
+    print("Loaded deformed system in {:.3g} s".format(end - start))
+    start = time.time()
+    system.lipid_positions
+    end = time.time()
+    print("Loaded positions in {:.3g} s".format(end - start))
+    start = time.time()
+    system.lipid_positions
+    end = time.time()
+    print("Reloaded positions in {:.3g} s".format(end - start))
     return system
 
 
