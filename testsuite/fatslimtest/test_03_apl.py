@@ -24,7 +24,6 @@ from .data import MODELS_METADATA
 
 # MD Analysis specific warning
 pytestmark = pytest.mark.filterwarnings("ignore: Failed to guess the mass for the following atom")
-pytestmark = pytest.mark.xfail(reason="Algorithm not implemented in new class")
 
 
 def test_thickness_model_flat(system_model_flat):

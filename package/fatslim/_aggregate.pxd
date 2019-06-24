@@ -35,7 +35,7 @@ cdef class LipidAggregate:
 
     cdef real[:] _normal
     cdef real[:] _position
-    cdef bint _isplanar
+    cdef bint _is_planar
 
     cdef real[:, ::1] _lipid_positions
     cdef real[:, ::1] _lipid_directions

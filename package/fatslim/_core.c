@@ -1379,7 +1379,7 @@ struct __pyx_obj_7fatslim_10_aggregate_LipidAggregate {
   __pyx_t_7fatslim_9_typedefs_fsl_int _lastupdate;
   __Pyx_memviewslice _normal;
   __Pyx_memviewslice _position;
-  int _isplanar;
+  int _is_planar;
   __Pyx_memviewslice _lipid_positions;
   __Pyx_memviewslice _lipid_directions;
   __Pyx_memviewslice _lipid_normals;

@@ -51,33 +51,6 @@ from ._geometry cimport real_point, Polygon, polygon_new, polygon_get_area, fast
 from libc.math cimport acos, fabs
 
 
-## TEMP function for debugging
-def pretty_print_aggregate_indices(aggregate, indices, name="Generic",
-                                   show_internal=False,
-                                   show_system=False,
-                                   show_vmd=True,
-                                   force_show=False
-                                  ):
-    system = aggregate.system
-    if len(indices) == 0:
-        print("'{}' selection is empty".format(name))
-        return
-    print("'{}' selection made of {} lipids:".format(name, len(indices)))
-
-    if len(indices) > 5000 and not force_show:
-        show_internal = show_system = show_vmd = False
-        print("  -> too big to display")
-
-    if show_internal:
-        print(" -> internal indices: np.array([{}])".format(", ".join([str(val) for val in indices])))
-    if show_system:
-        print(" -> system beads: np.array([{}])".format(
-            ", ".join([str(val) for val in aggregate.indices[indices]])))
-    if show_vmd:
-        print(" -> VMD selection: resid {}".format(
-            " ".join([str(system.lipids[val].resid) for val in aggregate.indices[indices]])))
-
-
 @cython.boundscheck(False)
 @cython.initializedcheck(False)
 @cython.cdivision(True)
@@ -352,9 +325,6 @@ def identify_membranes(LipidRegistry system, bint force_update=False):
             #     len(np.argwhere(np.asarray(lipid_status) == ADDED_TO_LEAFLET1).flatten()),
             #     len(np.argwhere(np.asarray(lipid_status) == ADDED_TO_LEAFLET2).flatten()),
             # ))
-            #
-            # pretty_print_aggregate_indices(aggregate, np.argwhere(np.asarray(lipid_status) == ADDED_TO_LEAFLET1).flatten(), "added to L1")
-            # pretty_print_aggregate_indices(aggregate, np.argwhere(np.asarray(lipid_status) == ADDED_TO_LEAFLET2).flatten(), "added to L2")
 
             if n_leaflets == 1:
                 # Check if make sense to add the rejected lipid the unique leaflet
@@ -575,21 +545,6 @@ def identify_membranes(LipidRegistry system, bint force_update=False):
     return membranes
 
 
-cdef class Membrane(object):
-    def __init__(self, system, l1_core_ids, l2_core_ids, l1_border_ids=None, l2_border_ids=None):
-        self.system = system
-
-        self._leaflets = list()
-
-    def __getitem__(self, item):
-        if item in (-2, 0):
-            return self._leaflets[0]
-        elif item in (-1, 1):
-            return self._leaflets[1]
-        else:
-            raise IndexError("A membrane contains two leaflets")
-
-
 cdef class Monolayer(LipidAggregate):
     def __init__(self, fsl_int[:] core_ids, LipidRegistry system, fsl_int[:] border_ids=None):
         cdef fsl_int[:] lipids_ids
@@ -611,6 +566,14 @@ cdef class Monolayer(LipidAggregate):
 
         self._lipid_border_ids = np.sort(border_ids)
         self._border_size = self._lipid_border_ids.shape[0]
+
+        self._parent = None
+
+        # APL-related
+        self._lastupdate_apl = -1
+        self._area = 0
+        self._apl = 0
+        self._lipid_apls = np.empty(self._size, dtype=np.float32)
 
     def __repr__(self):
         return "<Monolayer: {} lipids (core: {} - border: {})>".format(self._size, self._core_size, self._border_size)
@@ -642,386 +605,22 @@ cdef class Monolayer(LipidAggregate):
 
         return True
 
+    @property
+    def lipid_thicknesses(self):
+        if self._parent is None:
+            raise AttributeError("Not a membrane leaflet: thickness is not available")
 
-
-
-
-cdef class Bilayer:
-    def __init__(self, Monolayer leaflet1, Monolayer leaflet2):
-        if not leaflet1.is_compatible(leaflet2):
-            raise ValueError("Can not build bilayer from incompatible monolayers")
-
-        self.system = leaflet1.system
-
-        if leaflet1._isplanar:
-            if leaflet1._position[ZZ] > leaflet2._position[ZZ]:
-                self._leaflet1 = leaflet1
-                self._leaflet2 = leaflet2
-            else:
-                self._leaflet1 = leaflet2
-                self._leaflet2 = leaflet1
-        elif leaflet1._size > leaflet2._size:
-            self._leaflet1 = leaflet1
-            self._leaflet2 = leaflet2
+        if self._parent._leaflet1 == self:
+            start = 0
         else:
-            self._leaflet1 = leaflet2
-            self._leaflet2 = leaflet1
+            start = self._parent._leaflet1._size
+        end = start + self._size
 
-    def __repr__(self):
-        if self._leaflet1._isplanar:
-            membrane_type = "Planar membrane"
-            l1_type = "upper"
-            l2_type = "lower"
-        else:
-            membrane_type = "Vesicle"
-            l1_type = "outer"
-            l2_type = "inner"
-        return "<{}: {} lipids on {} leaflet - {} lipids on {} leaflet>".format(
-            membrane_type,
-            self._leaflet1._size,
-            l1_type,
-            self._leaflet2._size,
-            l2_type
-        )
-
-    def __getitem__(self, item):
-        if item in (-2, 0):
-            return self._leaflet1
-        elif item in (-1, 1):
-            return self._leaflet2
-        else:
-            raise IndexError("A BIlayer contains two leaflets")
-
-
-cdef class Leaflet(LipidAggregate):
-
-    def __init__(self, ids_or_aggregate, Membrane membrane, fsl_int leaflet_id):
-        cdef SimplifiedLipid lipid
-
-        if isinstance(ids_or_aggregate, LipidAggregate):
-            ids_or_aggregate = ids_or_aggregate.indices
-
-        system = membrane.system
-
-        super().__init__(ids_or_aggregate, system)
-
-        for i, val in enumerate(self.indices):
-            lipid = self.system.lipids[val]
-
-            lipid._regid_leaflet = i
-            lipid._leaflet = self
-
-        self._membrane = membrane
-        self._leaflet_id = leaflet_id
-
-        # Thickness
-        self._lastupdate_thickness = -1
-        self._thickness = 0
-        self._lipid_thicknesses = np.empty(self._size, dtype=np.float32)
-        self._lipid_interleaflet_gaps = np.empty(self._size, dtype=np.float32)
-
-        # APL
-        self._lastupdate_apl = -1
-        self._apl = 0
-        self._lipid_apls = np.empty(self._size, dtype=np.float32)
-        self._area = 0
-
-
-    cdef compute_thickness(self, bint force_update=False):
-        cdef fsl_int i, j, ix
-        cdef fsl_int ref_beadid, beadid
-        cdef Leaflet other_leaflet
-        cdef PBCBox box
-        cdef rvec dx
-        cdef rvec ref_normal, ref_position
-
-        cdef fsl_int locnorm_beadid
-        cdef rvec locnorm_position, locnorm_normal, locnorm_dx
-
-        cdef fsl_int closest_beadid
-        cdef rvec closest_position, closest_normal, closest_dx
-
-        cdef fsl_int leafnorm_beadid
-        cdef rvec leafnorm_position, leafnorm_normal, leafnorm_dx
-
-        cdef fsl_int other_beadid
-        cdef rvec other_position, other_normal
-
-        cdef real[:,::] universe_positions
-
-
-        if self._membrane is None:
-            raise ValueError("Can not calculate thickness if leaflet does not belong to a membrane")
-
-        # No need to do anything if the membranes are already identified for the current frame
-        if self._lastupdate_thickness == self.system._lastupdate and not force_update:
-            return self._thickness, self._lipid_thicknesses
-
-
-        self.update(force_update)
-        box = self.system.box
-        universe_positions = self.system.universe_coords_bbox
-
-        if self._leaflet_id == 0:
-            other_leaflet = self._membrane._leaflets[1]
-        else:
-            other_leaflet = self._membrane._leaflets[0]
-
-        for i in range(self._size):
-            ref_beadid = self._lipid_ids[i]
-
-            # Get average normal and position for the reference bead
-            self.system.compute_weighted_average(ref_beadid, ref_position, ref_normal)
-
-            # print("Weighted position for resid {}: [{:.3f}, {:.3f}, {:.3f}], weighted normal: [{:.3f}, {:.3f}, {:.3f}] - actual position: {}".format(
-            #     self.system.lipids[ref_beadid].resid,
-            #     ref_position[XX], ref_position[YY], ref_position[ZZ],
-            #     ref_normal[XX], ref_normal[YY], ref_normal[ZZ],
-            #     np.asarray(self.system._lipid_positions[ref_beadid])
-            # ))
-
-            # Get the bead from the other leaflet which can be used to compute thickness
-            # The candidate is selected by checking the dot product of dx and reference normal
-            beadid_best = -1
-            dprod_best = 0
-
-            for j in range(other_leaflet._size):
-                beadid = other_leaflet._lipid_ids[j]
-
-
-                box.fast_pbc_dx_leaflet(
-                    &self.system._lipid_positions[ref_beadid, XX],
-                    &self.system._lipid_positions[beadid, XX],
-                    dx,
-                    &ref_normal[XX])
-
-                dprod_val = rvec_dprod(&ref_normal[XX],
-                                       dx)
-
-                norm = rvec_norm(dx)
-
-                dprod_val2 = rvec_dprod(&ref_normal[XX],
-                                       &self.system._lipid_normals[beadid, XX])
-
-                if dprod_val/norm < dprod_best and dprod_val2 < -0.707:
-                    dprod_best = dprod_val/norm
-                    beadid_best = beadid
-
-            box.fast_pbc_dx_leaflet(
-                    &self.system._lipid_positions[ref_beadid, XX],
-                    &self.system._lipid_positions[beadid_best, XX],
-                    dx,
-                    &ref_normal[XX])
-
-            # print("\nRef bead resid {}, Best bead resid {}: dx:[{}, {}, {}], ref normal:{}, dprod:{}".format(
-            #     self.system.lipids[ref_beadid].resid,
-            #     self.system.lipids[beadid_best].resid,
-            #     dx[XX], dx[YY], dx[ZZ],
-            #     np.asarray(ref_normal),
-            #     dprod_best
-            # ))
-
-            box.fast_pbc_dx_leaflet(
-                    &self.system._lipid_positions[ref_beadid, XX],
-                    &self.system._lipid_positions[beadid_best, XX],
-                    locnorm_dx,
-                    &ref_normal[XX])
-
-            self.system.compute_weighted_average(beadid_best, locnorm_position, locnorm_normal)
-            locnorm_beadid = beadid_best
-
-
-            dprod_val = rvec_dprod(&self._normal[XX],
-                                   &ref_normal[XX])
-
-            rvec_copy(locnorm_normal, other_normal)
-            rvec_copy(locnorm_position, other_position)
-            other_beadid = beadid_best
-
-            if self._isplanar and acos(dprod_val) > 10 / 180 * np.pi:
-                    # print("lipid resid {} normal is off (by {:.1f}°): {} vs avg normal: {}".format(
-                    #     self.system.lipids[ref_beadid].resid,
-                    #     acos(dprod_val) / np.pi * 180,
-                    #     np.asarray(ref_normal),
-                    #     np.asarray(self._normal)
-                    # ))
-
-
-                    # Get closest bead
-                    d_min = 100000
-                    beadid_best = -1
-
-                    for j in range(other_leaflet._size):
-                        beadid = other_leaflet._lipid_ids[j]
-
-
-                        box.fast_pbc_dx_leaflet(
-                            &self.system._lipid_positions[ref_beadid, XX],
-                            &self.system._lipid_positions[beadid, XX],
-                            dx,
-                            &ref_normal[XX])
-
-                        norm = rvec_norm(dx)
-
-                        if norm < d_min:
-                            beadid_best = beadid
-                            d_min = norm
-
-                    box.fast_pbc_dx_leaflet(
-                        &self.system._lipid_positions[ref_beadid, XX],
-                        &self.system._lipid_positions[beadid_best, XX],
-                        closest_dx,
-                        &ref_normal[XX])
-
-                    self.system.compute_weighted_average(beadid_best, closest_position, closest_normal)
-                    closest_beadid = beadid_best
-
-
-                    # Get best using leaflet normal
-                    beadid_best = -1
-                    dprod_best = 0
-
-                    for j in range(other_leaflet._size):
-                        beadid = other_leaflet._lipid_ids[j]
-
-
-                        box.fast_pbc_dx_leaflet(
-                            &self.system._lipid_positions[ref_beadid, XX],
-                            &self.system._lipid_positions[beadid, XX],
-                            dx,
-                            &self._normal[XX])
-
-                        dprod_val = rvec_dprod(&self._normal[XX],
-                                               dx)
-
-                        norm = rvec_norm(dx)
-
-                        if dprod_val/norm < dprod_best:
-                            dprod_best = dprod_val/norm
-                            beadid_best = beadid
-
-                    box.fast_pbc_dx_leaflet(
-                    &self.system._lipid_positions[ref_beadid, XX],
-                    &self.system._lipid_positions[beadid_best, XX],
-                    leafnorm_dx,
-                    &ref_normal[XX])
-
-
-                    self.system.compute_weighted_average(beadid_best, leafnorm_position, leafnorm_normal)
-                    leafnorm_beadid = beadid_best
-
-                    delta = fabs(rvec_norm(closest_dx) - rvec_norm(locnorm_dx))/rvec_norm(closest_dx)
-
-
-                    # print("-> Candidates for resid {} (p:[{:.1f},{:.1f},{:.1f}], n: [{:.1f},{:.1f},{:.1f}]):\n  ->locnorm ({}): p:[{:.1f},{:.1f},{:.1f}], n:[{:.1f},{:.1f},{:.1f}], d:{:.1f}\n  ->"
-                    #       "leafnorm ({}): p:[{:.1f},{:.1f},{:.1f}], n:[{:.1f},{:.1f},{:.1f}], d:{:.1f}\n  ->"
-                    #       "closest ({}): p:[{:.1f},{:.1f},{:.1f}], n:[{:.1f},{:.1f},{:.1f}], d:{:.1f} => delta: {:.3f}\n".format(
-                    #     self.system.lipids[ref_beadid].resid,
-                    #     ref_position[XX], ref_position[YY], ref_position[ZZ],
-                    #     ref_normal[XX], ref_normal[YY], ref_normal[ZZ],
-                    #     self.system.lipids[locnorm_beadid].resid,
-                    #     locnorm_position[XX], locnorm_position[YY], locnorm_position[ZZ],
-                    #     locnorm_normal[XX], locnorm_normal[YY], locnorm_normal[ZZ],
-                    #     rvec_norm(locnorm_dx),
-                    #     self.system.lipids[leafnorm_beadid].resid,
-                    #     leafnorm_position[XX], leafnorm_position[YY], leafnorm_position[ZZ],
-                    #     leafnorm_normal[XX], leafnorm_normal[YY], leafnorm_normal[ZZ],
-                    #     rvec_norm(leafnorm_dx),
-                    #     self.system.lipids[closest_beadid].resid,
-                    #     closest_position[XX], closest_position[YY], closest_position[ZZ],
-                    #     closest_normal[XX], closest_normal[YY], closest_normal[ZZ],
-                    #     rvec_norm(closest_dx),
-                    #     delta
-                    # ))
-
-                    if delta > 0.2:
-                        if delta > 5:
-                            self._lipid_thicknesses[i] = np.nan
-                            continue
-                        else:
-                            rvec_copy(leafnorm_normal, other_normal)
-                            rvec_copy(leafnorm_position, other_position)
-                            rvec_copy(&self._normal[XX], ref_normal)
-                            other_beadid = leafnorm_beadid
-
-            box.fast_pbc_dx_leaflet(
-            ref_position,
-            other_position,
-            dx,
-            ref_normal)
-
-            norm = rvec_norm(dx)
-
-            dprod_val = fabs(rvec_dprod(dx, ref_normal))
-            other_dprod_val = fabs(rvec_dprod(dx, other_normal))
-
-
-            self._lipid_thicknesses[i] = 0.5 * (dprod_val + other_dprod_val)
-
-            # print("Thickness for resid {}: ref {:.3f}, dx norm: {:.3f}, other: {:.3f}, avg:{:.3f}".format(
-            #     self.system.lipids[ref_beadid].resid,
-            #     dprod_val,
-            #     norm,
-            #     abs(rvec_dprod(dx, other_normal)),
-            #     0.5 * (dprod_val + abs(rvec_dprod(dx, other_normal)))
-            # ))
-
-            # Compute interleaflet gap
-            ref_d = 0
-
-            for ix in self.system.lipids[ref_beadid]._ix:
-                box.fast_pbc_dx(
-                    &self.system._lipid_positions[ref_beadid, XX],
-                    &universe_positions[ix, XX],
-                    dx)
-
-                dprod_val = rvec_dprod(dx, ref_normal)
-
-                # print("d ref atom-atom {}: {:.3f} (dz={:.3f})".format(
-                #     self.system.universe.atoms[ix].name,
-                #     dprod_val,
-                #     self.system._lipid_positions[ref_beadid, ZZ] - self.system.universe.atoms[ix].position[ZZ]
-                # ))
-
-                if dprod_val < ref_d:
-                    ref_d = dprod_val
-            # print("")
-
-            other_d = 0
-            for ix in self.system.lipids[other_beadid]._ix:
-                box.fast_pbc_dx_leaflet(
-                    &self.system._lipid_positions[ref_beadid, XX],
-                    &universe_positions[ix, XX],
-                    dx,
-                ref_normal)
-
-                dprod_val = rvec_dprod(dx, ref_normal)
-
-                if dprod_val < other_d:
-                    other_d = dprod_val
-
-            self._lipid_interleaflet_gaps[i] = 0.5 * self._lipid_thicknesses[i] - np.abs(other_d)
-
-
-        self._thickness = np.nanmean(self._lipid_thicknesses)
-        self._lastupdate_thickness = self.system._lastupdate
-
-        return self._thickness, self._lipid_thicknesses
+        return self._parent.lipid_thicknesses[start:end].copy()
 
     @property
     def thickness(self):
-        self.compute_thickness()
-        return self._thickness
-
-    @property
-    def lipid_thicknesses(self):
-        self.compute_thickness()
-        return np.asarray(self._lipid_thicknesses).copy()
-
-    @property
-    def lipid_interleaflet_gaps(self):
-        self.compute_thickness()
-        return np.asarray(self._lipid_interleaflet_gaps).copy()
+        return np.nanmean(self.lipid_thicknesses)
 
 
     cdef compute_apl(self, bint force_update=False):
@@ -1039,12 +638,13 @@ cdef class Leaflet(LipidAggregate):
         cdef real_point ref_point_2d
         cdef real_point current_position_2d
 
-        if self._membrane is None:
-            raise ValueError("Can not calculate APL if leaflet does not belong to a membrane")
 
         # No need to do anything if the membranes are already identified for the current frame
         if self._lastupdate_apl == self.system._lastupdate and not force_update:
-            return self._apl, self._lipid_apls
+            return self._apl, self._lipid_apls, self._area
+
+        warnings.warn("Current implementation of APL calculation supports only the core lipids and ignores all the "
+                      " interacting atoms (eg protein)")
 
 
         self.update(force_update)
@@ -1055,13 +655,13 @@ cdef class Leaflet(LipidAggregate):
         ref_point_2d[XX] = 0
         ref_point_2d[YY] = 0
 
-        for i in range(self._size):
-            ref_beadid = self._lipid_ids[i]
+        self._lipid_apls[:] = np.nan
+
+        for i in range(self._core_size):
+            ref_beadid = self._lipid_core_ids[i]
 
             ref_normal = self.system._lipid_normals[ref_beadid]
             ref_position = self.system._lipid_positions[ref_beadid]
-
-
 
 
             # Compute projection matrix
@@ -1125,8 +725,8 @@ cdef class Leaflet(LipidAggregate):
         polygon_destroy(buffer)
 
         self._lastupdate_apl = self.system._lastupdate
-        self._apl = np.mean(self._lipid_apls)
-        self._area = np.sum(self._lipid_apls)
+        self._apl = np.nanmean(self._lipid_apls)
+        self._area = np.nansum(self._lipid_apls)
 
         return self._apl, self._lipid_apls, self._area
 
@@ -1144,3 +744,318 @@ cdef class Leaflet(LipidAggregate):
     def area(self):
         self.compute_apl()
         return self._area
+
+
+
+cdef class Bilayer:
+    def __init__(self, Monolayer leaflet1, Monolayer leaflet2):
+        if not leaflet1.is_compatible(leaflet2):
+            raise ValueError("Can not build bilayer from incompatible monolayers")
+
+        self.system = leaflet1.system
+        self._is_planar = leaflet1._is_planar
+
+        if leaflet1._is_planar:
+            if leaflet1._position[ZZ] > leaflet2._position[ZZ]:
+                self._leaflet1 = leaflet1
+                self._leaflet2 = leaflet2
+            else:
+                self._leaflet1 = leaflet2
+                self._leaflet2 = leaflet1
+        elif leaflet1._size > leaflet2._size:
+            self._leaflet1 = leaflet1
+            self._leaflet2 = leaflet2
+        else:
+            self._leaflet1 = leaflet2
+            self._leaflet2 = leaflet1
+
+        self._leaflet1._parent = self
+        self._leaflet2._parent = self
+
+        self._size = self._leaflet1._size + self._leaflet2._size
+
+        # Thickness-related
+        self._lastupdate_thickness = -1
+        self._thickness = 0
+        self._lipid_thicknesses = np.empty(self._size, dtype=np.float32)
+        self._lipid_interleaflet_gaps = np.empty(self._size, dtype=np.float32)
+
+    def __repr__(self):
+        if self._leaflet1._is_planar:
+            membrane_type = "Planar membrane"
+            l1_type = "upper"
+            l2_type = "lower"
+        else:
+            membrane_type = "Vesicle"
+            l1_type = "outer"
+            l2_type = "inner"
+        return "<{}: {} lipids on {} leaflet - {} lipids on {} leaflet>".format(
+            membrane_type,
+            self._leaflet1._size,
+            l1_type,
+            self._leaflet2._size,
+            l2_type
+        )
+
+    def __getitem__(self, item):
+        if item in (-2, 0):
+            return self._leaflet1
+        elif item in (-1, 1):
+            return self._leaflet2
+        else:
+            raise IndexError("A *bi*layer contains two leaflets")
+
+    @cython.initializedcheck(False)
+    @cython.boundscheck(False)
+    @cython.cdivision(True)
+    cdef compute_thickness(self, bint force_update=False):
+        # Cdef variables
+        cdef PBCBox box
+        cdef Monolayer ref_leaflet, other_leaflet
+        cdef fsl_int internal_id, ref_internal_id, ref_beadid, beadid
+        cdef real dprod_best, dprod_val, norm, dprod_val2, d_min
+        cdef rvec ref_position, ref_normal
+        cdef rvec dx
+        cdef fsl_int locnorm_beadid
+        cdef rvec locnorm_position, locnorm_normal, locnorm_dx
+
+        cdef fsl_int closest_beadid
+        cdef rvec closest_position, closest_normal, closest_dx
+
+        cdef fsl_int leafnorm_beadid
+        cdef rvec leafnorm_position, leafnorm_normal, leafnorm_dx
+
+        cdef fsl_int other_beadid
+        cdef rvec other_position, other_normal
+
+        # No need to do anything if thicknessed are already calculated for the current frame
+        if self._lastupdate_thickness == self.system._lastupdate and not force_update:
+            return self._thickness, self._lipid_thicknesses
+
+        # Update leaflets (and system)
+        self._leaflet1.update(force_update=force_update)
+        self._leaflet2.update(force_update=force_update)
+
+        # Load useful stuff
+        box = self.system.box
+        universe_positions = self.system.universe_coords_bbox
+
+        for internal_id in range(self._size):
+            if internal_id < self._leaflet1._size:
+                ref_leaflet = self._leaflet1
+                other_leaflet = self._leaflet2
+                ref_internal_id = internal_id
+            else:
+                ref_leaflet = self._leaflet2
+                other_leaflet = self._leaflet1
+                ref_internal_id = internal_id - self._leaflet1._size
+
+
+            if ref_internal_id > ref_leaflet._core_size:
+                self._lipid_thicknesses[ref_internal_id] = NOTSET
+                continue
+
+            # Get actual beadid
+            ref_beadid = ref_leaflet._lipid_ids[ref_internal_id]
+
+            # Get average normal and position for the reference bead
+            self.system.compute_weighted_average(ref_beadid, ref_position, ref_normal)
+
+
+            # Get the bead from the other leaflet which can be used to compute thickness
+            # The candidate is selected by checking the dot product of dx and reference normal
+            beadid_best = -1
+            dprod_best = 0
+
+            for j in range(other_leaflet._size):
+                beadid = other_leaflet._lipid_ids[j]
+
+
+                box.fast_pbc_dx_leaflet(
+                    &self.system._lipid_positions[ref_beadid, XX],
+                    &self.system._lipid_positions[beadid, XX],
+                    dx,
+                    &ref_normal[XX])
+
+                dprod_val = rvec_dprod(&ref_normal[XX],
+                                       dx)
+
+                norm = rvec_norm(dx)
+
+                dprod_val2 = rvec_dprod(&ref_normal[XX],
+                                       &self.system._lipid_normals[beadid, XX])
+
+                if dprod_val/norm < dprod_best and dprod_val2 < -0.707:
+                    dprod_best = dprod_val/norm
+                    beadid_best = beadid
+
+
+            box.fast_pbc_dx_leaflet(
+                    &self.system._lipid_positions[ref_beadid, XX],
+                    &self.system._lipid_positions[beadid_best, XX],
+                    dx,
+                    &ref_normal[XX])
+
+            # print("\nRef bead resid {}, Best bead resid {}: dx:[{}, {}, {}], ref normal:{}, dprod:{}".format(
+            #     self.system.lipids[ref_beadid].resid,
+            #     self.system.lipids[beadid_best].resid,
+            #     dx[XX], dx[YY], dx[ZZ],
+            #     np.asarray(ref_normal),
+            #     dprod_best
+            # ))
+
+            box.fast_pbc_dx_leaflet(
+                    &self.system._lipid_positions[ref_beadid, XX],
+                    &self.system._lipid_positions[beadid_best, XX],
+                    locnorm_dx,
+                    &ref_normal[XX])
+
+            self.system.compute_weighted_average(beadid_best, locnorm_position, locnorm_normal)
+            locnorm_beadid = beadid_best
+
+
+            dprod_val = rvec_dprod(&ref_leaflet._normal[XX],
+                                   &ref_normal[XX])
+
+            rvec_copy(locnorm_normal, other_normal)
+            rvec_copy(locnorm_position, other_position)
+            other_beadid = beadid_best
+
+            if self._is_planar and acos(dprod_val) > 10 / 180 * PI:
+                    # print("lipid resid {} normal is off (by {:.1f}°): {} vs avg normal: {}".format(
+                    #     self.system.lipids[ref_beadid].resid,
+                    #     acos(dprod_val) / np.pi * 180,
+                    #     np.asarray(ref_normal),
+                    #     np.asarray(self._normal)
+                    # ))
+
+
+                    # Get closest bead
+                    d_min = 100000
+                    beadid_best = -1
+
+                    for j in range(other_leaflet._size):
+                        beadid = other_leaflet._lipid_ids[j]
+
+
+                        box.fast_pbc_dx_leaflet(
+                            &self.system._lipid_positions[ref_beadid, XX],
+                            &self.system._lipid_positions[beadid, XX],
+                            dx,
+                            &ref_normal[XX])
+
+                        norm = rvec_norm(dx)
+
+                        if norm < d_min:
+                            beadid_best = beadid
+                            d_min = norm
+
+                    box.fast_pbc_dx_leaflet(
+                        &self.system._lipid_positions[ref_beadid, XX],
+                        &self.system._lipid_positions[beadid_best, XX],
+                        closest_dx,
+                        &ref_normal[XX])
+
+                    self.system.compute_weighted_average(beadid_best, closest_position, closest_normal)
+                    closest_beadid = beadid_best
+
+
+                    # Get best using leaflet normal
+                    beadid_best = -1
+                    dprod_best = 0
+
+                    for j in range(other_leaflet._size):
+                        beadid = other_leaflet._lipid_ids[j]
+
+
+                        box.fast_pbc_dx_leaflet(
+                            &self.system._lipid_positions[ref_beadid, XX],
+                            &self.system._lipid_positions[beadid, XX],
+                            dx,
+                            &ref_leaflet._normal[XX])
+
+                        dprod_val = rvec_dprod(&ref_leaflet._normal[XX],
+                                               dx)
+
+                        norm = rvec_norm(dx)
+
+                        if dprod_val/norm < dprod_best:
+                            dprod_best = dprod_val/norm
+                            beadid_best = beadid
+
+                    box.fast_pbc_dx_leaflet(
+                    &self.system._lipid_positions[ref_beadid, XX],
+                    &self.system._lipid_positions[beadid_best, XX],
+                    leafnorm_dx,
+                    &ref_normal[XX])
+
+
+                    self.system.compute_weighted_average(beadid_best, leafnorm_position, leafnorm_normal)
+                    leafnorm_beadid = beadid_best
+
+                    delta = fabs(rvec_norm(closest_dx) - rvec_norm(locnorm_dx))/rvec_norm(closest_dx)
+
+
+                    # print("-> Candidates for resid {} (p:[{:.1f},{:.1f},{:.1f}], n: [{:.1f},{:.1f},{:.1f}]):\n  ->locnorm ({}): p:[{:.1f},{:.1f},{:.1f}], n:[{:.1f},{:.1f},{:.1f}], d:{:.1f}\n  ->"
+                    #       "leafnorm ({}): p:[{:.1f},{:.1f},{:.1f}], n:[{:.1f},{:.1f},{:.1f}], d:{:.1f}\n  ->"
+                    #       "closest ({}): p:[{:.1f},{:.1f},{:.1f}], n:[{:.1f},{:.1f},{:.1f}], d:{:.1f} => delta: {:.3f}\n".format(
+                    #     self.system.lipids[ref_beadid].resid,
+                    #     ref_position[XX], ref_position[YY], ref_position[ZZ],
+                    #     ref_normal[XX], ref_normal[YY], ref_normal[ZZ],
+                    #     self.system.lipids[locnorm_beadid].resid,
+                    #     locnorm_position[XX], locnorm_position[YY], locnorm_position[ZZ],
+                    #     locnorm_normal[XX], locnorm_normal[YY], locnorm_normal[ZZ],
+                    #     rvec_norm(locnorm_dx),
+                    #     self.system.lipids[leafnorm_beadid].resid,
+                    #     leafnorm_position[XX], leafnorm_position[YY], leafnorm_position[ZZ],
+                    #     leafnorm_normal[XX], leafnorm_normal[YY], leafnorm_normal[ZZ],
+                    #     rvec_norm(leafnorm_dx),
+                    #     self.system.lipids[closest_beadid].resid,
+                    #     closest_position[XX], closest_position[YY], closest_position[ZZ],
+                    #     closest_normal[XX], closest_normal[YY], closest_normal[ZZ],
+                    #     rvec_norm(closest_dx),
+                    #     delta
+                    # ))
+
+                    if delta > 0.2:
+                        if delta > 5:
+                            self._lipid_thicknesses[internal_id] = NOTSET
+                            continue
+                        else:
+                            rvec_copy(leafnorm_normal, other_normal)
+                            rvec_copy(leafnorm_position, other_position)
+                            rvec_copy(&ref_leaflet._normal[XX], ref_normal)
+                            other_beadid = leafnorm_beadid
+
+            box.fast_pbc_dx_leaflet(
+            ref_position,
+            other_position,
+            dx,
+            ref_normal)
+
+            norm = rvec_norm(dx)
+
+            dprod_val = fabs(rvec_dprod(dx, ref_normal))
+            other_dprod_val = fabs(rvec_dprod(dx, other_normal))
+
+
+            self._lipid_thicknesses[internal_id] = 0.5 * (dprod_val + other_dprod_val)
+
+        for internal_id in range(self._size):
+            if self._lipid_thicknesses[internal_id] < 0:
+                self._lipid_thicknesses[internal_id] = np.nan
+
+        self._thickness = np.nanmean(self._lipid_thicknesses)
+        self._lastupdate_thickness = self.system._lastupdate
+
+        return self._thickness, self._lipid_thicknesses
+
+    @property
+    def thickness(self):
+        self.compute_thickness()
+        return self._thickness
+
+    @property
+    def lipid_thicknesses(self):
+        self.compute_thickness()
+        return np.asarray(self._lipid_thicknesses)

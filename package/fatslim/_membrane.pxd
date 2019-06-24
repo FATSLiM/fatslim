@@ -28,37 +28,17 @@ from ._core cimport LipidRegistry
 from ._aggregate cimport LipidAggregate
 
 
-cdef class Membrane(object):
-    # Cdef attributes
-    cdef list _leaflets
-    cdef readonly LipidRegistry system
-
 cdef class Monolayer(LipidAggregate):
     # Cdef attributes
     cdef fsl_int _core_size
     cdef fsl_int _border_size
     cdef fsl_int[:] _lipid_core_ids
     cdef fsl_int[:] _lipid_border_ids
+    cdef Bilayer _parent
 
     cdef real[:, ::1] _lipid_core_positions
     cdef real[:, ::1] _lipid_core_directions
     cdef real[:, ::1] _lipid_core_normals
-
-cdef class Bilayer:
-    # Cdef attributes
-    cdef readonly LipidRegistry system
-    cdef Monolayer _leaflet1
-    cdef Monolayer _leaflet2
-
-cdef class Leaflet(LipidAggregate):
-    # Cdef attributes
-    cdef Membrane _membrane
-    cdef fsl_int _leaflet_id
-
-    cdef fsl_int _lastupdate_thickness
-    cdef real _thickness
-    cdef real[:] _lipid_thicknesses
-    cdef real[:] _lipid_interleaflet_gaps
 
     cdef fsl_int _lastupdate_apl
     cdef real _apl
@@ -66,5 +46,20 @@ cdef class Leaflet(LipidAggregate):
     cdef real _area
 
     # Cdef methods
-    cdef compute_thickness(self, bint force_update=*)
     cdef compute_apl(self, bint force_update=*)
+
+cdef class Bilayer:
+    # Cdef attributes
+    cdef readonly LipidRegistry system
+    cdef fsl_int _size
+    cdef Monolayer _leaflet1
+    cdef Monolayer _leaflet2
+    cdef bint _is_planar
+
+    cdef fsl_int _lastupdate_thickness
+    cdef real _thickness
+    cdef real[:] _lipid_thicknesses
+    cdef real[:] _lipid_interleaflet_gaps
+
+    # Cdef methods
+    cdef compute_thickness(self, bint force_update=*)

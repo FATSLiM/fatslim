@@ -1486,7 +1486,7 @@ struct __pyx_obj_7fatslim_10_aggregate_LipidAggregate {
   __pyx_t_7fatslim_9_typedefs_fsl_int _lastupdate;
   __Pyx_memviewslice _normal;
   __Pyx_memviewslice _position;
-  int _isplanar;
+  int _is_planar;
   __Pyx_memviewslice _lipid_positions;
   __Pyx_memviewslice _lipid_directions;
   __Pyx_memviewslice _lipid_normals;
@@ -2772,8 +2772,8 @@ static const char __pyx_k_Cannot_assign_to_read_only_memor[] = "Cannot assign to
 static const char __pyx_k_Cannot_create_writable_memory_vi[] = "Cannot create writable memory view from read-only memoryview";
 static const char __pyx_k_Empty_shape_tuple_for_cython_arr[] = "Empty shape tuple for cython.array";
 static const char __pyx_k_Format_string_allocated_too_shor[] = "Format string allocated too short, see comment in numpy.pxd";
-static const char __pyx_k_Incompatible_checksums_s_vs_0x60[] = "Incompatible checksums (%s vs 0x6061c2f = (_cluster_stack, _clustered, _is_lipid_id_used, _isplanar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0xb0[] = "Incompatible checksums (%s vs 0xb068931 = (name))";
+static const char __pyx_k_Incompatible_checksums_s_vs_0xf6[] = "Incompatible checksums (%s vs 0xf6155e5 = (_cluster_stack, _clustered, _is_lipid_id_used, _is_planar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))";
 static const char __pyx_k_Indirect_dimensions_not_supporte[] = "Indirect dimensions not supported";
 static const char __pyx_k_Invalid_mode_expected_c_or_fortr[] = "Invalid mode, expected 'c' or 'fortran', got %s";
 static const char __pyx_k_LipidAggregate___setstate_cython[] = "LipidAggregate.__setstate_cython__";
@@ -2797,8 +2797,8 @@ static PyObject *__pyx_kp_s_Empty_shape_tuple_for_cython_arr;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor_2;
 static PyObject *__pyx_n_s_ImportError;
-static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x60;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xb0;
+static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xf6;
 static PyObject *__pyx_n_s_IndexError;
 static PyObject *__pyx_kp_s_Indirect_dimensions_not_supporte;
 static PyObject *__pyx_kp_s_Invalid_mode_expected_c_or_fortr;
@@ -2980,8 +2980,8 @@ static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
 static PyObject *__pyx_int_3;
-static PyObject *__pyx_int_101063727;
 static PyObject *__pyx_int_184977713;
+static PyObject *__pyx_int_258037221;
 static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
@@ -3525,15 +3525,15 @@ static int __pyx_pf_7fatslim_10_aggregate_14LipidAggregate___init__(struct __pyx
   /* "fatslim/_aggregate.pyx":81
  * 
  *         # planarity and average normal and position
- *         self._isplanar = False             # <<<<<<<<<<<<<<
+ *         self._is_planar = False             # <<<<<<<<<<<<<<
  *         self._normal = np.empty(DIM, dtype=np.float32)
  *         self._position = np.empty(DIM, dtype=np.float32)
  */
-  __pyx_v_self->_isplanar = 0;
+  __pyx_v_self->_is_planar = 0;
 
   /* "fatslim/_aggregate.pyx":82
  *         # planarity and average normal and position
- *         self._isplanar = False
+ *         self._is_planar = False
  *         self._normal = np.empty(DIM, dtype=np.float32)             # <<<<<<<<<<<<<<
  *         self._position = np.empty(DIM, dtype=np.float32)
  * 
@@ -3564,7 +3564,7 @@ static int __pyx_pf_7fatslim_10_aggregate_14LipidAggregate___init__(struct __pyx
   __pyx_t_23.data = NULL;
 
   /* "fatslim/_aggregate.pyx":83
- *         self._isplanar = False
+ *         self._is_planar = False
  *         self._normal = np.empty(DIM, dtype=np.float32)
  *         self._position = np.empty(DIM, dtype=np.float32)             # <<<<<<<<<<<<<<
  * 
@@ -4236,7 +4236,7 @@ static PyObject *__pyx_f_7fatslim_10_aggregate_14LipidAggregate_update(struct __
  *             # ))
  * 
  *             if norm > 0.75 * self._size:             # <<<<<<<<<<<<<<
- *                 self._isplanar = True
+ *                 self._is_planar = True
  *             else:
  */
         __pyx_t_1 = ((__pyx_v_norm > (0.75 * __pyx_v_self->_size)) != 0);
@@ -4245,36 +4245,36 @@ static PyObject *__pyx_f_7fatslim_10_aggregate_14LipidAggregate_update(struct __
           /* "fatslim/_aggregate.pyx":142
  * 
  *             if norm > 0.75 * self._size:
- *                 self._isplanar = True             # <<<<<<<<<<<<<<
+ *                 self._is_planar = True             # <<<<<<<<<<<<<<
  *             else:
- *                 self._isplanar = False
+ *                 self._is_planar = False
  */
-          __pyx_v_self->_isplanar = 1;
+          __pyx_v_self->_is_planar = 1;
 
           /* "fatslim/_aggregate.pyx":141
  *             # ))
  * 
  *             if norm > 0.75 * self._size:             # <<<<<<<<<<<<<<
- *                 self._isplanar = True
+ *                 self._is_planar = True
  *             else:
  */
           goto __pyx_L13;
         }
 
         /* "fatslim/_aggregate.pyx":144
- *                 self._isplanar = True
+ *                 self._is_planar = True
  *             else:
- *                 self._isplanar = False             # <<<<<<<<<<<<<<
+ *                 self._is_planar = False             # <<<<<<<<<<<<<<
  * 
  *             for j in range(DIM):
  */
         /*else*/ {
-          __pyx_v_self->_isplanar = 0;
+          __pyx_v_self->_is_planar = 0;
         }
         __pyx_L13:;
 
         /* "fatslim/_aggregate.pyx":146
- *                 self._isplanar = False
+ *                 self._is_planar = False
  * 
  *             for j in range(DIM):             # <<<<<<<<<<<<<<
  *                 self._normal[j] /= norm
@@ -5472,7 +5472,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_4__getitem__(st
  *     @property
  *     def is_planar(self):             # <<<<<<<<<<<<<<
  *         self.update()
- *         return self._isplanar
+ *         return self._is_planar
  */
 
 /* Python wrapper */
@@ -5498,7 +5498,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_9is_planar___ge
  *     @property
  *     def is_planar(self):
  *         self.update()             # <<<<<<<<<<<<<<
- *         return self._isplanar
+ *         return self._is_planar
  * 
  */
   __pyx_t_1 = ((struct __pyx_vtabstruct_7fatslim_10_aggregate_LipidAggregate *)__pyx_v_self->__pyx_vtab)->update(__pyx_v_self, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
@@ -5508,12 +5508,12 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_9is_planar___ge
   /* "fatslim/_aggregate.pyx":258
  *     def is_planar(self):
  *         self.update()
- *         return self._isplanar             # <<<<<<<<<<<<<<
+ *         return self._is_planar             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->_isplanar); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_planar); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5524,7 +5524,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_9is_planar___ge
  *     @property
  *     def is_planar(self):             # <<<<<<<<<<<<<<
  *         self.update()
- *         return self._isplanar
+ *         return self._is_planar
  */
 
   /* function exit code */
@@ -6412,7 +6412,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
   /* "(tree fragment)":5
  *     cdef object _dict
  *     cdef bint use_setstate
- *     state = (self._cluster_stack, self._clustered, self._is_lipid_id_used, self._isplanar, self._lastupdate, self._lipid_directions, self._lipid_ids, self._lipid_neighbours, self._lipid_normals, self._lipid_positions, self._lipid_positions_clustered, self._normal, self._position, self._positions_clustered_buffer, self._size, self._system2aggregate_ids, self.system)             # <<<<<<<<<<<<<<
+ *     state = (self._cluster_stack, self._clustered, self._is_lipid_id_used, self._is_planar, self._lastupdate, self._lipid_directions, self._lipid_ids, self._lipid_neighbours, self._lipid_normals, self._lipid_positions, self._lipid_positions_clustered, self._normal, self._position, self._positions_clustered_buffer, self._size, self._system2aggregate_ids, self.system)             # <<<<<<<<<<<<<<
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:
  */
@@ -6425,7 +6425,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
   if (unlikely(!__pyx_v_self->_is_lipid_id_used.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(1, 5, __pyx_L1_error)}
   __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_self->_is_lipid_id_used, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_7fatslim_9_typedefs_fsl_int, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_7fatslim_9_typedefs_fsl_int, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->_isplanar); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_planar); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = __Pyx_PyInt_From_npy_long(__pyx_v_self->_lastupdate); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
@@ -6516,7 +6516,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
 
   /* "(tree fragment)":6
  *     cdef bint use_setstate
- *     state = (self._cluster_stack, self._clustered, self._is_lipid_id_used, self._isplanar, self._lastupdate, self._lipid_directions, self._lipid_ids, self._lipid_neighbours, self._lipid_normals, self._lipid_positions, self._lipid_positions_clustered, self._normal, self._position, self._positions_clustered_buffer, self._size, self._system2aggregate_ids, self.system)
+ *     state = (self._cluster_stack, self._clustered, self._is_lipid_id_used, self._is_planar, self._lastupdate, self._lipid_directions, self._lipid_ids, self._lipid_neighbours, self._lipid_normals, self._lipid_positions, self._lipid_positions_clustered, self._normal, self._position, self._positions_clustered_buffer, self._size, self._system2aggregate_ids, self.system)
  *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
  *     if _dict is not None:
  *         state += (_dict,)
@@ -6527,7 +6527,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
   __pyx_t_16 = 0;
 
   /* "(tree fragment)":7
- *     state = (self._cluster_stack, self._clustered, self._is_lipid_id_used, self._isplanar, self._lastupdate, self._lipid_directions, self._lipid_ids, self._lipid_neighbours, self._lipid_normals, self._lipid_positions, self._lipid_positions_clustered, self._normal, self._position, self._positions_clustered_buffer, self._size, self._system2aggregate_ids, self.system)
+ *     state = (self._cluster_stack, self._clustered, self._is_lipid_id_used, self._is_planar, self._lastupdate, self._lipid_directions, self._lipid_ids, self._lipid_neighbours, self._lipid_normals, self._lipid_positions, self._lipid_positions_clustered, self._normal, self._position, self._positions_clustered_buffer, self._size, self._system2aggregate_ids, self.system)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -6565,7 +6565,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
     __pyx_v_use_setstate = 1;
 
     /* "(tree fragment)":7
- *     state = (self._cluster_stack, self._clustered, self._is_lipid_id_used, self._isplanar, self._lastupdate, self._lipid_directions, self._lipid_ids, self._lipid_neighbours, self._lipid_normals, self._lipid_positions, self._lipid_positions_clustered, self._normal, self._position, self._positions_clustered_buffer, self._size, self._system2aggregate_ids, self.system)
+ *     state = (self._cluster_stack, self._clustered, self._is_lipid_id_used, self._is_planar, self._lastupdate, self._lipid_directions, self._lipid_ids, self._lipid_neighbours, self._lipid_normals, self._lipid_positions, self._lipid_positions_clustered, self._normal, self._position, self._positions_clustered_buffer, self._size, self._system2aggregate_ids, self.system)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -6579,7 +6579,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
  *     else:
  *         use_setstate = self._lipid_neighbours is not None or self.system is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, None), state
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, None), state
  */
   /*else*/ {
     __pyx_t_17 = (((PyObject *)__pyx_v_self->_lipid_neighbours) != Py_None);
@@ -6601,7 +6601,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
  *     else:
  *         use_setstate = self._lipid_neighbours is not None or self.system is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, None), state
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, None), state
  *     else:
  */
   __pyx_t_18 = (__pyx_v_use_setstate != 0);
@@ -6610,9 +6610,9 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
     /* "(tree fragment)":13
  *         use_setstate = self._lipid_neighbours is not None or self.system is not None
  *     if use_setstate:
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, state)
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, state)
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_pyx_unpickle_LipidAggregate); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 13, __pyx_L1_error)
@@ -6622,9 +6622,9 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     PyTuple_SET_ITEM(__pyx_t_16, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_101063727);
-    __Pyx_GIVEREF(__pyx_int_101063727);
-    PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_int_101063727);
+    __Pyx_INCREF(__pyx_int_258037221);
+    __Pyx_GIVEREF(__pyx_int_258037221);
+    PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_int_258037221);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
     PyTuple_SET_ITEM(__pyx_t_16, 2, Py_None);
@@ -6647,15 +6647,15 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
  *     else:
  *         use_setstate = self._lipid_neighbours is not None or self.system is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, None), state
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, None), state
  *     else:
  */
   }
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, None), state
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, None), state
  *     else:
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_LipidAggregate__set_state(self, __pyx_state)
  */
@@ -6668,9 +6668,9 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     PyTuple_SET_ITEM(__pyx_t_16, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_101063727);
-    __Pyx_GIVEREF(__pyx_int_101063727);
-    PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_int_101063727);
+    __Pyx_INCREF(__pyx_int_258037221);
+    __Pyx_GIVEREF(__pyx_int_258037221);
+    PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_int_258037221);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
     PyTuple_SET_ITEM(__pyx_t_16, 2, __pyx_v_state);
@@ -6723,7 +6723,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_8__reduce_cytho
 
 /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, state)
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_LipidAggregate__set_state(self, __pyx_state)
  */
@@ -6749,7 +6749,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_10__setstate_cy
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":17
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, state)
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, state)
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_LipidAggregate__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
@@ -6760,7 +6760,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate_14LipidAggregate_10__setstate_cy
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, state)
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_LipidAggregate__set_state(self, __pyx_state)
  */
@@ -6873,18 +6873,18 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate(CY
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum != 0x6061c2f:             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0xf6155e5:             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x6061c2f = (_cluster_stack, _clustered, _is_lipid_id_used, _isplanar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xf6155e5 = (_cluster_stack, _clustered, _is_lipid_id_used, _is_planar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
  */
-  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0x6061c2f) != 0);
+  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0xf6155e5) != 0);
   if (__pyx_t_1) {
 
     /* "(tree fragment)":5
  *     cdef object __pyx_result
- *     if __pyx_checksum != 0x6061c2f:
+ *     if __pyx_checksum != 0xf6155e5:
  *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x6061c2f = (_cluster_stack, _clustered, _is_lipid_id_used, _isplanar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xf6155e5 = (_cluster_stack, _clustered, _is_lipid_id_used, _is_planar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
  *     __pyx_result = LipidAggregate.__new__(__pyx_type)
  */
     __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
@@ -6903,15 +6903,15 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate(CY
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "(tree fragment)":6
- *     if __pyx_checksum != 0x6061c2f:
+ *     if __pyx_checksum != 0xf6155e5:
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x6061c2f = (_cluster_stack, _clustered, _is_lipid_id_used, _isplanar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)             # <<<<<<<<<<<<<<
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xf6155e5 = (_cluster_stack, _clustered, _is_lipid_id_used, _is_planar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)             # <<<<<<<<<<<<<<
  *     __pyx_result = LipidAggregate.__new__(__pyx_type)
  *     if __pyx_state is not None:
  */
     __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 6, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0x60, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 6, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0xf6, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 6, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_INCREF(__pyx_v___pyx_PickleError);
@@ -6938,15 +6938,15 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate(CY
     /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum != 0x6061c2f:             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0xf6155e5:             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x6061c2f = (_cluster_stack, _clustered, _is_lipid_id_used, _isplanar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xf6155e5 = (_cluster_stack, _clustered, _is_lipid_id_used, _is_planar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
  */
   }
 
   /* "(tree fragment)":7
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x6061c2f = (_cluster_stack, _clustered, _is_lipid_id_used, _isplanar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xf6155e5 = (_cluster_stack, _clustered, _is_lipid_id_used, _is_planar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
  *     __pyx_result = LipidAggregate.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
  *         __pyx_unpickle_LipidAggregate__set_state(<LipidAggregate> __pyx_result, __pyx_state)
@@ -6972,7 +6972,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate(CY
   __pyx_t_3 = 0;
 
   /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x6061c2f = (_cluster_stack, _clustered, _is_lipid_id_used, _isplanar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xf6155e5 = (_cluster_stack, _clustered, _is_lipid_id_used, _is_planar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
  *     __pyx_result = LipidAggregate.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_LipidAggregate__set_state(<LipidAggregate> __pyx_result, __pyx_state)
@@ -6995,7 +6995,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate(CY
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x6061c2f = (_cluster_stack, _clustered, _is_lipid_id_used, _isplanar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xf6155e5 = (_cluster_stack, _clustered, _is_lipid_id_used, _is_planar, _lastupdate, _lipid_directions, _lipid_ids, _lipid_neighbours, _lipid_normals, _lipid_positions, _lipid_positions_clustered, _normal, _position, _positions_clustered_buffer, _size, _system2aggregate_ids, system))" % __pyx_checksum)
  *     __pyx_result = LipidAggregate.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_LipidAggregate__set_state(<LipidAggregate> __pyx_result, __pyx_state)
@@ -7008,7 +7008,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate(CY
  *         __pyx_unpickle_LipidAggregate__set_state(<LipidAggregate> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
  * cdef __pyx_unpickle_LipidAggregate__set_state(LipidAggregate __pyx_result, tuple __pyx_state):
- *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._isplanar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
+ *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._is_planar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v___pyx_result);
@@ -7041,7 +7041,7 @@ static PyObject *__pyx_pf_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate(CY
  *         __pyx_unpickle_LipidAggregate__set_state(<LipidAggregate> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_LipidAggregate__set_state(LipidAggregate __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._isplanar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
+ *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._is_planar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
  *     if len(__pyx_state) > 17 and hasattr(__pyx_result, '__dict__'):
  */
 
@@ -7066,7 +7066,7 @@ static PyObject *__pyx_f_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate__se
   /* "(tree fragment)":12
  *     return __pyx_result
  * cdef __pyx_unpickle_LipidAggregate__set_state(LipidAggregate __pyx_result, tuple __pyx_state):
- *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._isplanar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]             # <<<<<<<<<<<<<<
+ *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._is_planar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]             # <<<<<<<<<<<<<<
  *     if len(__pyx_state) > 17 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[17])
  */
@@ -7114,7 +7114,7 @@ static PyObject *__pyx_f_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate__se
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->_isplanar = __pyx_t_4;
+  __pyx_v___pyx_result->_is_planar = __pyx_t_4;
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
@@ -7268,7 +7268,7 @@ static PyObject *__pyx_f_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate__se
 
   /* "(tree fragment)":13
  * cdef __pyx_unpickle_LipidAggregate__set_state(LipidAggregate __pyx_result, tuple __pyx_state):
- *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._isplanar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
+ *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._is_planar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
  *     if len(__pyx_state) > 17 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
  *         __pyx_result.__dict__.update(__pyx_state[17])
  */
@@ -7290,7 +7290,7 @@ static PyObject *__pyx_f_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate__se
   if (__pyx_t_4) {
 
     /* "(tree fragment)":14
- *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._isplanar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
+ *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._is_planar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
  *     if len(__pyx_state) > 17 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[17])             # <<<<<<<<<<<<<<
  */
@@ -7325,7 +7325,7 @@ static PyObject *__pyx_f_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate__se
 
     /* "(tree fragment)":13
  * cdef __pyx_unpickle_LipidAggregate__set_state(LipidAggregate __pyx_result, tuple __pyx_state):
- *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._isplanar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
+ *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._is_planar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
  *     if len(__pyx_state) > 17 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
  *         __pyx_result.__dict__.update(__pyx_state[17])
  */
@@ -7335,7 +7335,7 @@ static PyObject *__pyx_f_7fatslim_10_aggregate___pyx_unpickle_LipidAggregate__se
  *         __pyx_unpickle_LipidAggregate__set_state(<LipidAggregate> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_LipidAggregate__set_state(LipidAggregate __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._isplanar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
+ *     __pyx_result._cluster_stack = __pyx_state[0]; __pyx_result._clustered = __pyx_state[1]; __pyx_result._is_lipid_id_used = __pyx_state[2]; __pyx_result._is_planar = __pyx_state[3]; __pyx_result._lastupdate = __pyx_state[4]; __pyx_result._lipid_directions = __pyx_state[5]; __pyx_result._lipid_ids = __pyx_state[6]; __pyx_result._lipid_neighbours = __pyx_state[7]; __pyx_result._lipid_normals = __pyx_state[8]; __pyx_result._lipid_positions = __pyx_state[9]; __pyx_result._lipid_positions_clustered = __pyx_state[10]; __pyx_result._normal = __pyx_state[11]; __pyx_result._position = __pyx_state[12]; __pyx_result._positions_clustered_buffer = __pyx_state[13]; __pyx_result._size = __pyx_state[14]; __pyx_result._system2aggregate_ids = __pyx_state[15]; __pyx_result.system = __pyx_state[16]
  *     if len(__pyx_state) > 17 and hasattr(__pyx_result, '__dict__'):
  */
 
@@ -23540,8 +23540,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_Format_string_allocated_too_shor, __pyx_k_Format_string_allocated_too_shor, sizeof(__pyx_k_Format_string_allocated_too_shor), 0, 1, 0, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor_2, __pyx_k_Format_string_allocated_too_shor_2, sizeof(__pyx_k_Format_string_allocated_too_shor_2), 0, 1, 0, 0},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
-  {&__pyx_kp_s_Incompatible_checksums_s_vs_0x60, __pyx_k_Incompatible_checksums_s_vs_0x60, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x60), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0xb0, __pyx_k_Incompatible_checksums_s_vs_0xb0, sizeof(__pyx_k_Incompatible_checksums_s_vs_0xb0), 0, 0, 1, 0},
+  {&__pyx_kp_s_Incompatible_checksums_s_vs_0xf6, __pyx_k_Incompatible_checksums_s_vs_0xf6, sizeof(__pyx_k_Incompatible_checksums_s_vs_0xf6), 0, 0, 1, 0},
   {&__pyx_n_s_IndexError, __pyx_k_IndexError, sizeof(__pyx_k_IndexError), 0, 0, 1, 1},
   {&__pyx_kp_s_Indirect_dimensions_not_supporte, __pyx_k_Indirect_dimensions_not_supporte, sizeof(__pyx_k_Indirect_dimensions_not_supporte), 0, 0, 1, 0},
   {&__pyx_kp_s_Invalid_mode_expected_c_or_fortr, __pyx_k_Invalid_mode_expected_c_or_fortr, sizeof(__pyx_k_Invalid_mode_expected_c_or_fortr), 0, 0, 1, 0},
@@ -23674,7 +23674,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
   /* "fatslim/_aggregate.pyx":82
  *         # planarity and average normal and position
- *         self._isplanar = False
+ *         self._is_planar = False
  *         self._normal = np.empty(DIM, dtype=np.float32)             # <<<<<<<<<<<<<<
  *         self._position = np.empty(DIM, dtype=np.float32)
  * 
@@ -23964,7 +23964,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, state)
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_LipidAggregate__set_state(self, __pyx_state)
  */
@@ -24060,8 +24060,8 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_101063727 = PyInt_FromLong(101063727L); if (unlikely(!__pyx_int_101063727)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_184977713 = PyInt_FromLong(184977713L); if (unlikely(!__pyx_int_184977713)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_258037221 = PyInt_FromLong(258037221L); if (unlikely(!__pyx_int_258037221)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -24478,7 +24478,7 @@ if (!__Pyx_RefNanny) {
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_LipidAggregate, (type(self), 0x6061c2f, state)
+ *         return __pyx_unpickle_LipidAggregate, (type(self), 0xf6155e5, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_LipidAggregate__set_state(self, __pyx_state)
  */

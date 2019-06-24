@@ -78,7 +78,7 @@ cdef class LipidAggregate:
         self._lastupdate = -1
 
         # planarity and average normal and position
-        self._isplanar = False
+        self._is_planar = False
         self._normal = np.empty(DIM, dtype=np.float32)
         self._position = np.empty(DIM, dtype=np.float32)
 
@@ -139,9 +139,9 @@ cdef class LipidAggregate:
             # ))
 
             if norm > 0.75 * self._size:
-                self._isplanar = True
+                self._is_planar = True
             else:
-                self._isplanar = False
+                self._is_planar = False
 
             for j in range(DIM):
                 self._normal[j] /= norm
@@ -255,7 +255,7 @@ cdef class LipidAggregate:
     @property
     def is_planar(self):
         self.update()
-        return self._isplanar
+        return self._is_planar
 
     @property
     def normal(self):
