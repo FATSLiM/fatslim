@@ -87,7 +87,6 @@ cdef class Membrane:
     cdef Frame frame
     cdef readonly Aggregate leaflet1
     cdef readonly Aggregate leaflet2
-    cdef rvec xcm
     cdef fsl_int type
 
     # Thickness related
