@@ -31,10 +31,8 @@ from libc.stdlib cimport atof, atoi
 from cpython.mem cimport PyMem_Malloc, PyMem_Realloc, PyMem_Free
 from libc.stdlib cimport free, malloc
 
-from . import core_base
-cimport core_base
-from .core_base cimport OPENMP_NUM_THREADS
-from typedefs cimport real, rvec, fsl_int, fsl_uint
+from .core_base cimport OPENMP_NUM_THREADS, PBCBox, TopologyReader, IndexReader, CoordinateReader
+from .typedefs cimport real, rvec, fsl_int, fsl_uint
 cimport cython
 import numpy as np
 
@@ -122,7 +120,7 @@ cdef bint is_solvent(bytes resname):
         return True
     return False
 
-cdef class GroReaderTopol(core_base.TopologyReader):
+cdef class GroReaderTopol(TopologyReader):
     cdef load(self):
         cdef int lino = -1, natoms = -1, last_resid = -1
         cdef int resid, atomid, resid_offset = 0
@@ -182,7 +180,7 @@ cdef class GroReaderTopol(core_base.TopologyReader):
 
 _Topology_readers = {".gro": GroReaderTopol}
 
-cdef class NdxReader(core_base.IndexReader):
+cdef class NdxReader(IndexReader):
     cdef fast_load(self):
         cdef str line
         cdef bytes last_group = b""
@@ -210,7 +208,7 @@ cdef class NdxReader(core_base.IndexReader):
 _Index_loaders = {".ndx": NdxReader}
 
 
-cdef class GroReaderCoords(core_base.CoordinateReader):
+cdef class GroReaderCoords(CoordinateReader):
     cdef fsl_int coordline_length
 
     cdef preload(self):
@@ -240,7 +238,7 @@ cdef class GroReaderCoords(core_base.CoordinateReader):
 
 
 
-    cdef core_base.PBCBox load_box(self, int frame_id):
+    cdef PBCBox load_box(self, int frame_id):
         cdef int n_coords, i, j
         self.assert_frame_id(frame_id)
 
@@ -265,7 +263,7 @@ cdef class GroReaderCoords(core_base.CoordinateReader):
             box[2, 0] = float(box_str[7])
             box[2, 1] = float(box_str[8])
 
-        return core_base.PBCBox(box)
+        return PBCBox(box)
 
     cdef real[:,::1] load_coords(self, int frame_id, fsl_int[:] atomids) nogil except *:
         cdef int natoms = atomids.shape[0]
@@ -348,7 +346,7 @@ cdef class GroReaderCoords(core_base.CoordinateReader):
         return coords_memview
 
 
-cdef class XtcReaderCoords(core_base.CoordinateReader):
+cdef class XtcReaderCoords(CoordinateReader):
     cdef preload(self):
         cdef fsl_uint offset=0
         cdef fsl_uint max_offset = os.path.getsize(self.filename)
@@ -421,7 +419,7 @@ cdef class XtcReaderCoords(core_base.CoordinateReader):
         self.box_offsets = frame_offsets + 16
         self.nframes = nframes
 
-    cdef core_base.PBCBox load_box(self, int frame_id):
+    cdef PBCBox load_box(self, int frame_id):
         cdef XDRFILE *xfp
         cdef fsl_uint pos = self.box_offsets[frame_id]
         cdef real[:,::1] box = numpy.empty((DIM, DIM), dtype=np.float64)
@@ -442,7 +440,7 @@ cdef class XtcReaderCoords(core_base.CoordinateReader):
         # Close file and release memory
         xdrfile_close(xfp)
 
-        return core_base.PBCBox(box)
+        return PBCBox(box)
 
 
 
@@ -513,7 +511,7 @@ cdef class XtcReaderCoords(core_base.CoordinateReader):
 
         return coords
 
-cdef class TrrReaderCoords(core_base.CoordinateReader):
+cdef class TrrReaderCoords(CoordinateReader):
     cdef bint use_double
     cdef int natoms
     cdef preload(self):
@@ -626,7 +624,7 @@ cdef class TrrReaderCoords(core_base.CoordinateReader):
         self.coordinate_offsets = frame_offsets + TRR_HEADER_SIZE + 2 * float_size + box_size + vir_size + pres_size
         self.nframes = nframes
 
-    cdef core_base.PBCBox load_box(self, int frame_id):
+    cdef PBCBox load_box(self, int frame_id):
         cdef XDRFILE *xfp
         cdef fsl_uint pos = self.box_offsets[frame_id]
         cdef real[:,::1] box = numpy.empty((DIM, DIM), dtype=np.float64)
@@ -656,7 +654,7 @@ cdef class TrrReaderCoords(core_base.CoordinateReader):
         # Close file and release memory
         xdrfile_close(xfp)
 
-        return core_base.PBCBox(box)
+        return PBCBox(box)
 
 
 

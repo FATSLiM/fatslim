@@ -329,8 +329,8 @@ def neighbor_search(PBCBox box, real[:, ::1] ref_coords, real[:, ::1] neighbor_c
     cdef ns_neighborhood_holder *holder
     cdef ns_neighborhood *neighborhood
 
-    print "Performing a neighbor search on %i beads using a cutoff of %.2f (%i threads used)" % (ref_coords.shape[0],
-    cutoff, OPENMP_NUM_THREADS)
+    print("Performing a neighbor search on {} beads using a cutoff of {:.2f} ({} threads used)".format(ref_coords.shape[0],
+    cutoff, OPENMP_NUM_THREADS))
 
     # Make sure atoms are inside the brick-shaped box
     ref_coords_bbox = box.fast_put_atoms_in_bbox(ref_coords)

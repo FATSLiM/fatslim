@@ -43,7 +43,7 @@ END: Cython Metadata */
 #else
 #define CYTHON_ABI "0_29_14"
 #define CYTHON_HEX_VERSION 0x001D0EF0
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -2358,7 +2358,7 @@ static void __pyx_f_10fatslimlib_13core_geometry_fast_compute_intersection(real 
  *         intersection[YY] = (n1 * dp[1] - n2 * dc[1]) * n3
  */
   /*else*/ {
-    __pyx_v_n3 = (1.0 / __pyx_v_n3);
+    __pyx_v_n3 = (((real)1.0) / __pyx_v_n3);
 
     /* "fatslimlib/core_geometry.pyx":64
  *     else:
@@ -20935,7 +20935,7 @@ if (!__Pyx_RefNanny) {
  * 
  * DEF POLYGON_ALLOCATION_INCREMENT = 10
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
