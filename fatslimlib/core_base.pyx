@@ -60,10 +60,10 @@ from cpython.mem cimport PyMem_Realloc, PyMem_Free
 cimport cython
 from cython.parallel cimport prange
 
-from typedefs cimport real, fsl_int, real_min, real_abs
-from typedefs cimport rvec, rvec_copy, rvec_inc, rvec_clear, rvec_smul, rvec_dprod, \
+from .typedefs cimport real, fsl_int, real_min, real_abs
+from .typedefs cimport rvec, rvec_copy, rvec_inc, rvec_clear, rvec_smul, rvec_dprod, \
     rvec_normalize, rvec_dec, rvec_norm2
-from typedefs cimport matrix, mat_clear
+from .typedefs cimport matrix, mat_clear
 
 cdef extern from "eig_mat.h" nogil:
     void eigen_33_sym(matrix a, matrix eig_vec, rvec eig_val)
@@ -75,7 +75,6 @@ cdef extern from "openmp_wrapper.h" nogil:
 
 from .core_ns cimport ns_neighborhood, fast_neighbor_search, free_neighborhood_holder
 from .core_analysis cimport Aggregate, Membrane
-cimport core_analysis
 
 import numpy as np
 from time import time
@@ -1636,6 +1635,8 @@ cdef class Frame(object):
 
 
     cpdef list get_aggregates(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):
+        from .core_analysis import retrieve_aggregates
+
         if self.aggregates_cutoff == cutoff and self.aggregates_retrieved and not update:
             return self.aggregates
 
@@ -1648,7 +1649,7 @@ cdef class Frame(object):
             for aggregate in traj_aggregates:
                 self.aggregates.append(Aggregate(self, aggregate))
         else:
-            self.aggregates = core_analysis.retrieve_aggregates(self, cutoff)
+            self.aggregates = retrieve_aggregates(self, cutoff)
             self.trajectory.aggregates = []
             for aggregate in self.aggregates:
                 self.trajectory.aggregates.append(np.asarray(aggregate.beadids))
@@ -1657,6 +1658,8 @@ cdef class Frame(object):
         return self.aggregates
 
     cpdef list get_membranes(self, real cutoff=DEFAULT_PROXIMITY_CUTOFF, bint update=False):
+        from .core_analysis import retrieve_membranes
+
         if self.membranes_cutoff == cutoff and self.membranes_retrieved and not update:
             return self.membranes
 
@@ -1669,7 +1672,7 @@ cdef class Frame(object):
                 l2 = Aggregate(self, membrane[1])
                 self.membranes.append(Membrane(self, l1, l2))
         else:
-            self.membranes = core_analysis.retrieve_membranes(self, cutoff)
+            self.membranes = retrieve_membranes(self, cutoff)
             traj_membranes = []
             for membrane in self.membranes:
                 memb_beadids = [np.asarray(membrane.leaflet1.beadids),

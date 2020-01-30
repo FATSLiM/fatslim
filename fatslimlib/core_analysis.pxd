@@ -87,7 +87,6 @@ cdef class Membrane:
     cdef Frame frame
     cdef readonly Aggregate leaflet1
     cdef readonly Aggregate leaflet2
-    cdef rvec xcm
     cdef fsl_int type
 
     # Thickness related
@@ -99,8 +98,3 @@ cdef class Membrane:
     # Analysis methods
     cdef void fast_compute_thickness(self, real interleaflet_cutoff=*, bint force=*) nogil except*
     cdef void fast_compute_apl(self, real cutoff=*, real area_limit=*, bint force=*) nogil except*
-
-
-# Analysis stuff
-cdef list retrieve_aggregates(Frame frame, real cutoff)
-cdef list retrieve_membranes(Frame frame, real cutoff)

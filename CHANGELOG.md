@@ -2,7 +2,12 @@
 All notable changes to FATSLiM are documented in this file.
 Version numbers comply with [Python recommandation](https://www.python.org/dev/peps/pep-0440/).
 
-## [0.2.2] - Unreleased
+## [0.2.2] - 2020-01-xx
+### Changed
+- Python 2 is now deprecated and not supported anymore
+
+### Fixed
+- compilation with recent version of Cython (See Issues #5 and #15)
 
 ## [0.2.1] - 2016-09-21
 ### Added

@@ -1463,7 +1463,7 @@ cdef class Membrane(object):
 # Analysis Stuff
 #
 ########################################################################################################################
-cdef list retrieve_aggregates(Frame frame, real cutoff):
+def retrieve_aggregates(Frame frame, real cutoff):
     if cutoff < 0:
         raise ValueError("Cutoff MUST be > 0!")
 
@@ -1703,7 +1703,7 @@ cdef list retrieve_aggregates(Frame frame, real cutoff):
     return aggregates_list
 
 
-cdef list retrieve_membranes(Frame frame, real cutoff):
+def retrieve_membranes(Frame frame, real cutoff):
     cdef Aggregate ref_leaflet, leaflet
     cdef fsl_int membrane_type = MT_UNKNOWN
 

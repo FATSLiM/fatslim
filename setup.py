@@ -25,14 +25,14 @@ from __future__ import print_function
 from os import chdir, environ
 from os.path import realpath, dirname
 import sys
+if sys.version_info.major < 3:
+    print("ERROR: FATSLiM needs python 3. Python 2 is not supported anymore.")
+    sys.exit(1)
 
 from setuptools import setup, find_packages
 from setuptools import Extension
 from setuptools.command.test import test as TestCommand
-try:
-    from StringIO import StringIO  # python 2, not cStringIO due to unicode strings
-except ImportError:
-    from io import StringIO  # python 3
+from io import StringIO  # python 3
 from contextlib import contextmanager
 
 @contextmanager
@@ -57,7 +57,7 @@ include_dirs = [numpy.get_include()]
 try:
     import Cython
     from distutils.version import LooseVersion
-    req_version = "0.16"
+    req_version = "0.29"
 
     if not LooseVersion(Cython.__version__) >= LooseVersion(req_version):
         print("INFO: Cython is present but installed version (%s) "
@@ -73,7 +73,8 @@ except ImportError:
     use_cython = False
 
     print("INFO: Cython will NOT be used.")
-    def cythonize(obj):
+
+    def cythonize(obj, **kwargs):
         return obj
 
 
@@ -271,7 +272,8 @@ if __name__ == "__main__":
                                  core_datareading,
                                  core_geometry,
                                  core_ns,
-                                 core_analysis]),
+                                 core_analysis],
+                                compiler_directives={"language_level": "3"}),
           install_requires=["numpy>=1.5"],
           tests_require=['pytest'],
           scripts=['fatslim'])
