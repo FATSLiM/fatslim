@@ -27,8 +27,8 @@ Status
 `Master branch`_:
 -----------------
 
-.. image:: https://travis-ci.org/FATSLiM/fatslim.svg?branch=master
-    :target: https://travis-ci.org/FATSLiM/fatslim
+.. image:: https://travis-ci.com/FATSLiM/fatslim.svg?branch=master
+    :target: https://travis-ci.com/FATSLiM/fatslim
 
 .. image:: https://coveralls.io/repos/github/FATSLiM/fatslim/badge.svg?branch=master
     :target: https://coveralls.io/github/FATSLiM/fatslim?branch=master
@@ -36,8 +36,8 @@ Status
 `Develop branch`_:
 ------------------
 
-.. image:: https://travis-ci.org/FATSLiM/fatslim.svg?branch=develop
-    :target: https://travis-ci.org/FATSLiM/fatslim
+.. image:: https://travis-ci.com/FATSLiM/fatslim.svg?branch=develop
+    :target: https://travis-ci.com/FATSLiM/fatslim
 
 .. image:: https://coveralls.io/repos/github/FATSLiM/fatslim/badge.svg?branch=develop
     :target: https://coveralls.io/github/FATSLiM/fatslim?branch=develop
