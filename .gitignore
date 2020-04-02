@@ -66,3 +66,5 @@ package/fatslim/*.html
 # direnv
 .envrc
 
+# numpy
+.*.npz

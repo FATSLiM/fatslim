@@ -20,7 +20,21 @@ import sys
 import os
 from setuptools import setup
 from setuptools import Extension
-from setuptools.command.test import test as TestCommand
+from setuptools.command.build_ext import build_ext as _build_ext
+
+class build_ext(_build_ext): # subclass the build_ext class to defer numpy and cython import to prevent setup.py from failing if run on a clean system
+
+    def finalize_options(self):
+        super().finalize_options()
+        __builtins__.__NUMPY_SETUP__ = False
+        import numpy
+        for extension in self.distribution.ext_modules:
+            extension.include_dirs.append(numpy.get_include())
+            extension.define_macros.append(
+                ('CYTHON_TRACE_NOGIL', cython_coverage))
+        from Cython.Build import cythonize
+        self.distribution.ext_modules = cythonize(self.distribution.ext_modules,
+                                                  language_level=3)
 
 # Handle cython modules
 from Cython.Build import cythonize
@@ -43,37 +57,28 @@ if __name__ == "__main__":
     # Extensions
     typedefs_ext = Extension("fatslim._typedefs",
                              ["fatslim/_typedefs.pyx"],
-                             include_dirs=[numpy.get_include()],
-                             define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
                              )
 
     geometry_ext = Extension("fatslim._geometry",
                              ["fatslim/_geometry.pyx"],
-                             include_dirs=[numpy.get_include()],
-                             define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
                              )
 
     core_ext = Extension("fatslim._core",
                          ["fatslim/_core.pyx"],
-                         include_dirs=[numpy.get_include()],
-                         define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
                          )
 
     aggregate_ext = Extension("fatslim._aggregate",
                               ["fatslim/_aggregate.pyx"],
-                              include_dirs=[numpy.get_include()],
-                              define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
                               )
 
     membrane_ext = Extension("fatslim._membrane",
                              ["fatslim/_membrane.pyx"],
-                             include_dirs=[numpy.get_include()],
-                             define_macros=[('CYTHON_TRACE_NOGIL', cython_coverage)]
                              )
 
     setup(
         name='fatslim',
         version=VERSION,
+        packages=['fatslim'],
         ext_modules=cythonize(
             [
                 typedefs_ext,
@@ -85,4 +90,7 @@ if __name__ == "__main__":
             force=force_cythonize,
             compiler_directives={'linetrace': cython_linetrace, 'binding': True},
         ),
+        setup_requires=["cython", "numpy", "mdanalysis"],
+        install_requires=["numpy", "mdanalysis"],
+        cmdclass={"build_ext": build_ext},
     )

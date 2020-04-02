@@ -18,6 +18,7 @@
 
 # Cython directives
 # cython: language_level=3
+# cython: boundscheck=False
 
 DEF POLYGON_ALLOCATION_INCREMENT = 10
 DEF ZOI_DEFAULT_SIZE = 1e6

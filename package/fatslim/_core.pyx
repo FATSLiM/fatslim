@@ -786,10 +786,10 @@ cdef class LipidRegistry:
     #@cython.boundscheck(False)
     def find_membranes_old(self, force_update=False):
         from ._membrane import Membrane
-        cdef fsl_int bead_id, seed_id, n_edgers, n_leftovers, nid, ref_nid
+        cdef fsl_int bead_id, edger_id, seed_id, n_edgers, n_leftovers, nid, ref_nid
         cdef real angle, min_angle, max_angle, angle_range, dprod_value
         cdef dreal d_val, best_d
-        cdef fsl_int i, j
+        cdef fsl_int i, j, k
         cdef fsl_int stack_size
         cdef fsl_int[:] aggregate_lipid_ids
         cdef fsl_int maybe_leaflet_current_id, current_leaflet_size
@@ -1232,7 +1232,7 @@ cdef class LipidRegistry:
 
 
     cdef void compute_weighted_average(self, fsl_int ref_beadid, rvec weighted_position, rvec weighted_normal):
-        cdef fsl_int i, j
+        cdef fsl_int i, j, beadid
         cdef rvec dx
         cdef real weight, total_weight, norm
 
