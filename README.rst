@@ -2,22 +2,23 @@
 FATSLiM
 =======
 
-`FATSLiM`_ means "**\ F**\ ast **\ A**\ nalysis **\ T**\ oolbox for **\ S**\ imulation of **\ Li**\ pid **\ M**\ embranes".
-As you can imagine, the goal is to provide ~~the Ultimate Question of Life, the Universe, and Everything~~ a fast and efficient tool to extract membrane-related physical properties from Molecular Dynamics simulations of lipid bilayers.
-To see what `FATSLiM`_ is able to do, please visit the homepage at http://fatslim.github.io/.
-
 --------------
 Important Note
 --------------
 
-`FATSLiM`_ is currently undergoing a major rewrite (read it is rewritten from scratch) in progress to overcome some intrinsic limitations.
-The major goals of this rewrite are:
+**This repository is archived!**
 
-  - To use MDAnalysis`_ as a backend for trajectory and topology files I/O.
-  - To provide an external API to use FATSLiM as a library so it can be use in e.g. `Jupyter`_ notebooks.
-  - To ease code maintainability.
+*I do not work on MD simulations of lipid membranes anymore and do not have time to work on FATSLiM.*
 
-Please check out the `full-rewrite branch <https://github.com/FATSLiM/fatslim/tree/full-rewrite>`_ to follow the progression.
+I encourage users to switch to similar (yet mainained) tools like e.g. `LiPyphilic`_.
+
+-----
+About
+-----
+
+`FATSLiM`_ means "**\ F**\ ast **\ A**\ nalysis **\ T**\ oolbox for **\ S**\ imulation of **\ Li**\ pid **\ M**\ embranes".
+As you can imagine, the goal is to provide a fast and efficient tool to extract membrane-related physical properties from Molecular Dynamics simulations of lipid bilayers.
+To see what `FATSLiM`_ is able to do, please visit the homepage at http://fatslim.github.io/.
 
 
 ------
@@ -91,3 +92,4 @@ A full documentation is available at: `http://pythonhosted.org/fatslim`_
 .. _`http://pythonhosted.org/fatslim`: http://pythonhosted.org/fatslim
 .. _MDAnalysis: https://www.mdanalysis.org/
 .. _`Jupyter`: https://jupyter.org/
+.. _`LiPyphilic`: https://pubs.acs.org/doi/10.1021/acs.jctc.1c00447
